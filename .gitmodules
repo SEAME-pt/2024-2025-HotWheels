@@ -1,0 +1,3 @@
+[submodule "warmup"]
+	path = warmup
+	url = git@github.com:SEAME-pt/HotWheels-Warmup.git
