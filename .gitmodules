@@ -3,3 +3,7 @@
 	path = warmup
 	url = git@github.com:SEAME-pt/HotWheels-Warmup.git
 	branch = main
+[submodule "cluster"]
+	path = cluster
+	url = git@github.com:SEAME-pt/HotWheels-Cluster.git
+	branch = main
