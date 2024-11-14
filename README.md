@@ -1,2 +1,2 @@
-# HotWheels-Cluster
-Instrument Cluster repository of the SEA:ME Project 2024/2025 for Team01 (HotWheels)
+# HotWheels - Instrument Cluster ⏲ 🎮
+Welcome to the Instrument Cluster repository of the HotWheels team! Here you'll find all the work done during the SEAM:ME Instrument Cluster project.
