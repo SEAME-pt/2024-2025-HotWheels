@@ -6,7 +6,10 @@ labels: ''
 assignees: ''
 
 ---
+<!-- Small description of the issue -->
+`Description:`
 
-*` Description: `*
-</br></br></br>
-*` Definition of done: `*
+</br>
+
+<!-- Some parameters that define the issue as done -->
+`Definition of done:`
