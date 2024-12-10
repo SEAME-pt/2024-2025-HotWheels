@@ -1,0 +1,33 @@
+name: Car controls
+
+on:
+  push:
+    branches:
+      - 41-setup-car-code-synchronization
+  pull_request:
+    branches:
+      - 41-setup-car-code-synchronization
+
+jobs:
+  build-and-deliver:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+
+      - name: Compile car controlss
+        run: |
+          cd car_controls
+          make
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: car_controls
+          path: car_controls/car_controls
