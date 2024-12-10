@@ -3,10 +3,10 @@ name: Car controls
 on:
   push:
     branches:
-      - 41-setup-car-code-synchronization
+      - 43-github-actions-compilation
   pull_request:
     branches:
-      - 41-setup-car-code-synchronization
+      - 43-github-actions-compilation
 
 jobs:
   build-and-deliver:
@@ -21,7 +21,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
-      - name: Compile car controlss
+      - name: Compile car controls
         run: |
           cd car_controls
           make
