@@ -1,26 +1,47 @@
-name: Car controls
+name: Compile car controls for aarch64
 
 on:
   push:
     branches:
-      - 43-github-actions-compilation
+      - main
   pull_request:
     branches:
-      - 43-github-actions-compilation
+      - main
 
 jobs:
-  build-and-deliver:
+  build-aarch64:
+    # Use Ubuntu on ARM architecture
     runs-on: ubuntu-latest
 
+    # Explicitly set up emulation for arm64
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install libraries
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build in aarch64 container
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/arm64
+          push: false
+          load: true
+          tags: my-aarch64-build:latest
+          
+      - name: Compile in aarch64 container
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
-
+          docker run --platform linux/arm64 my-aarch64-build:latest /bin/bash -c "
+            uname -a &&
+            pwd &&
+            ls -la
+          "
       - name: Compile car controls
         run: |
           cd car_controls
