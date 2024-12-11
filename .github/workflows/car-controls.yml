@@ -3,10 +3,10 @@ name: Compile car controls for aarch64
 on:
   push:
     branches:
-      - main
+      - 43-github-actions-compilation
   pull_request:
     branches:
-      - main
+      - 43-github-actions-compilation
 
 jobs:
   build-aarch64:
