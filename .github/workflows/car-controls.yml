@@ -19,7 +19,8 @@ jobs:
     - name: Set up cross-compilation environment
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -y g++-aarch64-linux-gnu libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+        sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+        sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
         
 
     - name: Compile the project
