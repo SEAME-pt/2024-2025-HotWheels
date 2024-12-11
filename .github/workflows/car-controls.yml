@@ -9,40 +9,35 @@ on:
 jobs:
   build-and-deliver:
     runs-on: ubuntu-latest
+    container:
+      image: arm64v8/ubuntu:22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Set up QEMU for cross-compilation
-        uses: docker/setup-qemu-action@v2
-        with:
-          platforms: arm64
-      
-      - name: Install cross-compilation toolchain
+      - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          apt-get update
+          apt-get install -y \
+            build-essential \
+            crossbuild-essential-arm64 \
+            libsdl2-dev \
+            libsdl2-image-dev \
+            libsdl2-ttf-dev \
+            libsdl2-mixer-dev \
+            gcc \
+            g++ \
+            make \
+            wget \
+            ca-certificates
       
-      - name: Install aarch64 libraries
-        run: |
-          sudo dpkg --add-architecture arm64
-          sudo sed -i 's/deb http/deb [arch=amd64] http/g' /etc/apt/sources.list
-          echo "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports jammy main restricted" | sudo tee /etc/apt/sources.list.d/arm64.list
-          echo "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports jammy-updates main restricted" | sudo tee -a /etc/apt/sources.list.d/arm64.list
-          sudo apt-get update
-          sudo apt-get install -y \
-            libsdl2-dev:arm64 \
-            libsdl2-image-dev:arm64 \
-            libsdl2-ttf-dev:arm64 \
-            libsdl2-mixer-dev:arm64
-      
-      - name: Compile car controls for aarch64
+      - name: Compile car controls
         run: |
           cd car_controls
-          make CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ARCH=aarch64
+          make
       
       - name: Create Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: car_controls-aarch64
+          name: car_controls
           path: car_controls/car_controls
