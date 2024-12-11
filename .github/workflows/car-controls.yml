@@ -1,4 +1,4 @@
-name: Car controls
+name: Compile Project
 
 on:
   push:
@@ -9,25 +9,23 @@ on:
       - 43-github-actions-compilation
 
 jobs:
-  build-and-deliver:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-22.04 # Uses the latest Ubuntu image which includes ARM architecture support
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Check out the repository
+      uses: actions/checkout@v2
 
-      - name: Install libraries
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+    - name: Set up cross-compilation environment
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y g++-aarch64-linux-gnu sdl2-dev
+        libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
-      - name: Compile car controls
-        run: |
-          cd car_controls
-          make
-
-      - name: Create Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: car_controls
-          path: car_controls/car_controls
+    - name: Compile the project
+      run: |
+        cd car_controls
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=../aarch64_toolchain.cmake
+        cmake --build .

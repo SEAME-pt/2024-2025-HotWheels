@@ -8,7 +8,6 @@
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 #include <SDL2/SDL.h>
-#include <cstdint>
 
 class Jetcar {
 
