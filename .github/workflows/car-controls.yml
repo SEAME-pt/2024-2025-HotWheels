@@ -9,29 +9,34 @@ on:
 jobs:
   build-and-deliver:
     runs-on: ubuntu-latest
-    container:
-      image: arm64v8/ubuntu:22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Install dependencies
-        run: |
-          apt-get update
-          apt-get install -y \
-            build-essential \
-            crossbuild-essential-arm64 \
-            libsdl2-dev \
-            libsdl2-image-dev \
-            libsdl2-ttf-dev \
-            libsdl2-mixer-dev \
-            gcc \
-            g++ \
-            make \
-            wget \
-            ca-certificates
+      - name: Set up QEMU for cross-compilation
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
       
-      - name: Compile car controls
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Install cross-compilation toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            gcc-aarch64-linux-gnu \
+            g++-aarch64-linux-gnu \
+            libsdl2-dev:arm64 \
+            libsdl2-image-dev:arm64 \
+            libsdl2-ttf-dev:arm64 \
+            libsdl2-mixer-dev:arm64 \
+            crossbuild-essential-arm64
+      
+      - name: Compile car controls for aarch64
+        env:
+          CC: aarch64-linux-gnu-gcc
+          CXX: aarch64-linux-gnu-g++
         run: |
           cd car_controls
           make
@@ -39,5 +44,5 @@ jobs:
       - name: Create Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: car_controls
+          name: car_controls-aarch64
           path: car_controls/car_controls
