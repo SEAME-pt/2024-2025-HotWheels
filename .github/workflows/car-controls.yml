@@ -1,4 +1,4 @@
-name: Compile car controls for aarch64
+name: Car controls
 
 on:
   push:
@@ -9,42 +9,21 @@ on:
       - 43-github-actions-compilation
 
 jobs:
-  build-aarch64:
-    # Use Ubuntu on ARM architecture
+  build-and-deliver:
     runs-on: ubuntu-latest
 
-    # Explicitly set up emulation for arm64
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-        with:
-          platforms: arm64
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build in aarch64 container
-        uses: docker/build-push-action@v5
-        with:
-          context: .  # Ensure the context is the root directory where the Dockerfile is located
-          platforms: linux/arm64
-          push: false
-          load: true
-          tags: my-aarch64-build:latest
-          
-      - name: Compile in aarch64 container
+      - name: Install libraries
         run: |
-          docker run --platform linux/arm64 my-aarch64-build:latest /bin/bash -c "
-            uname -a &&
-            pwd &&
-            ls -la
-          "
+          sudo apt-get update
+          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+
       - name: Compile car controls
         run: |
-          cd car_controls  # Navigate to the directory containing the Makefile
+          cd car_controls
           make
 
       - name: Create Artifact
