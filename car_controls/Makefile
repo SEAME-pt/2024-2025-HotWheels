@@ -1,6 +1,6 @@
 # Variables
-CXX = aarch64-linux-gnu-g++
-CXXFLAGS = $(shell sdl2-config --cflags) -lSDL2 -pthread
+CXX = g++
+CXXFLAGS = -lSDL2 -pthread
 TARGET = car_controls
 SOURCES = main.cpp Jetcar.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -26,4 +26,3 @@ fclean:
 	@echo "Done!"
 
 re: fclean all
-
