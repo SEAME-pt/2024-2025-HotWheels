@@ -29,7 +29,7 @@ jobs:
       - name: Build in aarch64 container
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: .  # Ensure the context is the root directory where the Dockerfile is located
           platforms: linux/arm64
           push: false
           load: true
@@ -44,7 +44,7 @@ jobs:
           "
       - name: Compile car controls
         run: |
-          cd car_controls
+          cd car_controls  # Navigate to the directory containing the Makefile
           make
 
       - name: Create Artifact
