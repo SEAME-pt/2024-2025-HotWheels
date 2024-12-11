@@ -1,4 +1,5 @@
-name: Car Controls
+name: Car controls
+
 on:
   push:
     branches:
@@ -6,74 +7,27 @@ on:
   pull_request:
     branches:
       - 43-github-actions-compilation
+
 jobs:
   build-and-deliver:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
-      - name: Install cross-compilation toolchain
+
+      - name: Install libraries
         run: |
-          sudo dpkg --add-architecture arm64
           sudo apt-get update
-          sudo apt-get install -y \
-            gcc-aarch64-linux-gnu \
-            g++-aarch64-linux-gnu \
-            crossbuild-essential-arm64 \
-            libc6-dev-arm64-cross \
-            libgcc-11-dev-arm64-cross
-      
-      - name: Install SDL dependencies for cross-compilation
-        run: |
-          # Download and install SDL2 for ARM64
-          wget https://github.com/libsdl-org/SDL/releases/download/release-2.26.5/SDL2-2.26.5.tar.gz
-          tar -xzvf SDL2-2.26.5.tar.gz
-          cd SDL2-2.26.5
-          ./configure --host=aarch64-linux-gnu --prefix=/usr/aarch64-linux-gnu
-          make
-          sudo make install
-          cd ..
+          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
-          # Download and install SDL2_image for ARM64
-          wget https://github.com/libsdl-org/SDL_image/releases/download/release-2.6.3/SDL2_image-2.6.3.tar.gz
-          tar -xzvf SDL2_image-2.6.3.tar.gz
-          cd SDL2_image-2.6.3
-          ./configure --host=aarch64-linux-gnu --prefix=/usr/aarch64-linux-gnu
-          make
-          sudo make install
-          cd ..
-
-          # Download and install SDL2_ttf for ARM64
-          wget https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.20.2/SDL2_ttf-2.20.2.tar.gz
-          tar -xzvf SDL2_ttf-2.20.2.tar.gz
-          cd SDL2_ttf-2.20.2
-          ./configure --host=aarch64-linux-gnu --prefix=/usr/aarch64-linux-gnu
-          make
-          sudo make install
-          cd ..
-
-          # Download and install SDL2_mixer for ARM64
-          wget https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.3/SDL2_mixer-2.6.3.tar.gz
-          tar -xzvf SDL2_mixer-2.6.3.tar.gz
-          cd SDL2_mixer-2.6.3
-          ./configure --host=aarch64-linux-gnu --prefix=/usr/aarch64-linux-gnu
-          make
-          sudo make install
-          cd ..
-      
-      - name: Compile car controls for aarch64
-        env:
-          CC: aarch64-linux-gnu-gcc
-          CXX: aarch64-linux-gnu-g++
-          CFLAGS: "-I/usr/aarch64-linux-gnu/include/SDL2"
-          LDFLAGS: "-L/usr/aarch64-linux-gnu/lib"
+      - name: Compile car controls
         run: |
           cd car_controls
           make
-      
+
       - name: Create Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: car_controls-aarch64
+          name: car_controls
           path: car_controls/car_controls
