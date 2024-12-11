@@ -16,15 +16,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install libraries
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+      - name: Set up QEMU for ARM
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: aarch64
 
-      - name: Compile car controls
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Use AArch64 Docker Image
         run: |
-          cd car_controls
-          make
+          docker run --rm --platform linux/arm64 \
+          -v ${{ github.workspace }}:/workspace \
+          -w /workspace \
+          ubuntu:20.04 /bin/bash -c "
+            apt-get update &&
+            apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev &&
+            cd car_controls &&
+            make
+          "
 
       - name: Create Artifact
         uses: actions/upload-artifact@v3
