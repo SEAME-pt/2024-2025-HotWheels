@@ -1,4 +1,4 @@
-name: Car controls
+name: Cross-Compile Car Controls to aarch64
 
 on:
   push:
@@ -9,25 +9,26 @@ on:
       - 43-github-actions-compilation
 
 jobs:
-  build-and-deliver:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install libraries
+      - name: Install Cross-Compiler
         run: |
           sudo apt-get update
-          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
-      - name: Compile car controls
+      - name: Build for AArch64
         run: |
           cd car_controls
-          make
+          mkdir -p build
+          aarch64-linux-gnu-gcc -o build/car_controls Jetcar.cpp Jetcar.hpp main.cpp
 
-      - name: Create Artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload AArch64 Executable
+        uses: actions/upload-artifact@v3
         with:
-          name: car_controls
-          path: car_controls/car_controls
+          name: aarch64-executable
+          path: build/car_controls
