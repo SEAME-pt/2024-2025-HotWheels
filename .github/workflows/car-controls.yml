@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-deliver:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout code
@@ -21,13 +21,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
-      - name: Compile car controlss
+      - name: Compile car controls
         run: |
           cd car_controls
           make
 
       - name: Create Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: car_controls
           path: car_controls/car_controls
