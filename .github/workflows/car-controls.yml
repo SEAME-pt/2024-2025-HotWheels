@@ -25,11 +25,8 @@ jobs:
         run: |
           cd car_controls
           mkdir -p build && cd build
-          cmake -DCMAKE_TOOLCHAIN_FILE=../aarch64-toolchain.cmake \
-                -DSDL2_INCLUDE_DIR=/usr/aarch64-linux-gnu/include/SDL2 \
-                -DSDL2_LIBRARY=/usr/aarch64-linux-gnu/lib/libSDL2.so ..
+          cmake -DCMAKE_TOOLCHAIN_FILE=../aarch64-toolchain.cmake ..
           make
-        #aarch64-linux-gnu-gcc -o build/car_controls Jetcar.cpp Jetcar.hpp main.cpp
 
       - name: Upload AArch64 Executable
         uses: actions/upload-artifact@v3

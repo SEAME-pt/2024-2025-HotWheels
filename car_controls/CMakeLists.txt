@@ -14,18 +14,25 @@ set(SOURCES
     Jetcar.cpp
 )
 
-# Include directories
+# Include project directories
 include_directories(${CMAKE_SOURCE_DIR})
 
-# Manually specify SDL2 include and library paths
-set(SDL2_INCLUDE_DIR /usr/aarch64-linux-gnu/include/SDL2)
-set(SDL2_LIBRARY /usr/aarch64-linux-gnu/lib/libSDL2.so)
+# Cross-compilation setup
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+    # Manually specify SDL2 include and library paths for AArch64
+    set(SDL2_INCLUDE_DIR /usr/aarch64-linux-gnu/include/SDL2)
+    set(SDL2_LIBRARY /usr/aarch64-linux-gnu/lib/libSDL2.so)
 
-include_directories(${SDL2_INCLUDE_DIR})
-target_link_libraries(jetcar ${SDL2_LIBRARY})
+    include_directories(${SDL2_INCLUDE_DIR})
+else()
+    # Use find_package for native builds (optional)
+    find_package(SDL2 REQUIRED)
+    include_directories(${SDL2_INCLUDE_DIRS})
+endif()
 
 # Add the executable
 add_executable(jetcar ${SOURCES})
 
 # Link SDL2
-target_link_libraries(jetcar ${SDL2_LIBRARIES})
+target_link_libraries(jetcar ${SDL2_LIBRARY})
+
