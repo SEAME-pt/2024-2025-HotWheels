@@ -17,9 +17,12 @@ set(SOURCES
 # Include directories
 include_directories(${CMAKE_SOURCE_DIR})
 
-# Find SDL2
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
+# Manually specify SDL2 include and library paths
+set(SDL2_INCLUDE_DIR /usr/aarch64-linux-gnu/include/SDL2)
+set(SDL2_LIBRARY /usr/aarch64-linux-gnu/lib/libSDL2.so)
+
+include_directories(${SDL2_INCLUDE_DIR})
+target_link_libraries(jetcar ${SDL2_LIBRARY})
 
 # Add the executable
 add_executable(jetcar ${SOURCES})
