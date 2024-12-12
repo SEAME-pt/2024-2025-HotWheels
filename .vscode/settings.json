@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "iostream": "cpp",
-        "atomic": "cpp",
-        "stdexcept": "cpp"
-    }
-}

@@ -35,4 +35,3 @@ add_executable(car_controls ${SOURCES})
 
 # Link SDL2
 target_link_libraries(car_controls ${SDL2_LIBRARY})
-
