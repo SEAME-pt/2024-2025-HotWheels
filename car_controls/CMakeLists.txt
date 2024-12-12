@@ -31,8 +31,8 @@ else()
 endif()
 
 # Add the executable
-add_executable(jetcar ${SOURCES})
+add_executable(car_controls ${SOURCES})
 
 # Link SDL2
-target_link_libraries(jetcar ${SDL2_LIBRARY})
+target_link_libraries(car_controls ${SDL2_LIBRARY})
 
