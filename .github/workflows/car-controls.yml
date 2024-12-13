@@ -25,7 +25,7 @@ jobs:
           cd /home/michel/docker
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
-      - name: Upload AArch64 Executable
+      - name: Upload AArch64 Executables
         uses: actions/upload-artifact@v3
         with:
           name: aarch64-executable
