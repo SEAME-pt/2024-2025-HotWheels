@@ -20,6 +20,7 @@ jobs:
         run: |
           if [ -d "/home/michel/docker/car_controls" ]; then
             rm -rf /home/michel/docker/car_controls
+            echo entrei aqui
           fi
           cp -r /home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/car_controls /home/michel/docker/
 
