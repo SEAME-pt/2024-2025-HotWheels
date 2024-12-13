@@ -18,7 +18,7 @@ jobs:
       
       - name: Copy Files to Docker
         run: |
-          cp -r /home/michel/actions-runner/_work/HotWheels-Cluster/car_controls /home/michel/docker/
+          cp -r /home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/car_controls /home/michel/docker/
 
       - name: Build for AArch64
         run: |
