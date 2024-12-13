@@ -15,14 +15,18 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+      
+      - name: Copy Files to Docker
+        run: |
+          cp -r ./build/car_controls /home/michel/docker/
 
       - name: Build for AArch64
         run: |
           cd /home/michel/docker
-          docker exec sad_curran /bin/bash -c "touch amor.txt"
+          docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
       - name: Upload AArch64 Executable
         uses: actions/upload-artifact@v3
         with:
           name: aarch64-executable
-          path: build/car_controls
+          path: /home/michel/docker/car_controls/car_controls
