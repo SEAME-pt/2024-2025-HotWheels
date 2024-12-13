@@ -10,23 +10,15 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install Cross-Compiler dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-
       - name: Build for AArch64
         run: |
-          cd car_controls
-          mkdir -p build && cd build
-          cmake -DCMAKE_TOOLCHAIN_FILE=../aarch64-toolchain.cmake ..
-          make
+          echo $PWD
 
       - name: Upload AArch64 Executable
         uses: actions/upload-artifact@v3
