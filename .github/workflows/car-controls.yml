@@ -18,7 +18,9 @@ jobs:
 
       - name: Build for AArch64
         run: |
-          echo $PWD
+          cd /home/michel/docker
+          docker exec -it sad_curran /bin/bash
+          touch amor.txt
 
       - name: Upload AArch64 Executable
         uses: actions/upload-artifact@v3
