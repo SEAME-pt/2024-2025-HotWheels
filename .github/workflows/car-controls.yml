@@ -18,14 +18,14 @@ jobs:
       
       - name: Copy Files to Docker
         run: |
-          cp -r /home/actions-runner/_Work/HotWheels-Cluster/car_controls /home/michel/docker/
+          cp -r /home/michel/actions-runner/_Work/HotWheels-Cluster/car_controls /home/michel/docker/
 
       - name: Build for AArch64
         run: |
           cd /home/michel/docker
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
-      - name: Upload AArch64 Executables
+      - name: Upload AArch64 Executable
         uses: actions/upload-artifact@v3
         with:
           name: aarch64-executable
