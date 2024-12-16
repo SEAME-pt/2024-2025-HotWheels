@@ -160,7 +160,7 @@ void Jetcar::set_speed(int speed) {
     speed = clamp(speed, -100, 100);
     int pwm_value = static_cast<int>(std::abs(speed) / 100.0 * 4096);
 
-    if (speed < 0) { // Backward
+    if (speed > 0) { // Forward
         //left motor
         set_motor_pwm(0, pwm_value);
         set_motor_pwm(1, 0);
@@ -169,7 +169,7 @@ void Jetcar::set_speed(int speed) {
         set_motor_pwm(5, pwm_value);
         set_motor_pwm(6, 0);
         set_motor_pwm(7, pwm_value);
-    } else if (speed > 0) { // Forward
+    } else if (speed < 0) { // Backwards
         //left motor
         set_motor_pwm(0, pwm_value);
         set_motor_pwm(1, pwm_value);
