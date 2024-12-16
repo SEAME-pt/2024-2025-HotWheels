@@ -163,8 +163,8 @@ void Jetcar::set_speed(int speed) {
     if (speed < 0) { // Backward
         //left motor
         set_motor_pwm(0, pwm_value);
-        set_motor_pwm(1, pwm_value);
-        set_motor_pwm(2, 0);
+        set_motor_pwm(1, 0);
+        set_motor_pwm(2, pwm_value);
         //right motor
         set_motor_pwm(5, pwm_value);
         set_motor_pwm(6, 0);
@@ -172,8 +172,8 @@ void Jetcar::set_speed(int speed) {
     } else if (speed > 0) { // Forward
         //left motor
         set_motor_pwm(0, pwm_value);
-        set_motor_pwm(1, 0);
-        set_motor_pwm(2, pwm_value);
+        set_motor_pwm(1, pwm_value);
+        set_motor_pwm(2, 0);
         //right motor
         set_motor_pwm(5, 0);
         set_motor_pwm(6, pwm_value);
