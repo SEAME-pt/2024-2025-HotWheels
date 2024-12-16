@@ -1,7 +1,7 @@
 # Variables
 CXX = g++
 CXXFLAGS = -lSDL2 -pthread
-TARGET = car_controls
+TARGET = aarch64-car-controls
 SOURCES = main.cpp Jetcar.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
