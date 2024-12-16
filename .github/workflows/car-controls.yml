@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: aarch64-car-controls
-          path: /home/michel/docker/car_controls/car_controls
+          path: /home/michel/docker/car_controls/aarch64-car-controls
