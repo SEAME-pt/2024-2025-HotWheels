@@ -1,7 +1,7 @@
 #!/bin/bash
 REPO_OWNER="SEAME-pt"
 REPO_NAME="HotWheels-Cluster"
-ARTIFACT_NAME="aarch64-car-controls"
+ARTIFACT_NAME="car_controls"
 
 # GitHub Personal Access Token (replace with your token)
 GITHUB_TOKEN=""
@@ -23,8 +23,8 @@ get_latest_run_id() {
         "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/runs?per_page=1")
     
     # Extract the latest run ID
-    echo "$runs" | jq -r '.workflow_runs[0].id // empty'
-    #echo "$runs" | jq -r '.workflow_runs[] | select(.name == "aarch64-car-controls") | .id'
+    #echo "$runs" | jq -r '.workflow_runs[0].id // empty'
+    echo "$runs" | jq -r '.workflow_runs[] | select(.name == "Car controls") | .id'
 }
 
 # Function to fetch artifacts for a specific run ID
@@ -63,9 +63,9 @@ download_and_extract_artifact() {
         echo "Artifact downloaded successfully."
         
         # Check if the directory already exists
-        if [ -f "/home/tpereira/teste/aarch64-car-controls" ]; then
-            echo "Removing existing aarch64-car-controls file in /home/tpereira/teste..."
-            rm -f /home/tpereira/teste/aarch64-car-controls  # using -f to suppress prompt
+        if [ -f "/home/tpereira/teste/car_controls" ]; then
+            echo "Removing existing car_controls file in /home/tpereira/teste..."
+            rm -f /home/tpereira/teste/car_controls  # using -f to suppress prompt
         fi
         
         # Unzip the downloaded artifact into the target directory
