@@ -33,7 +33,7 @@ jobs:
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
       - name: Upload AArch64 Executable
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: aarch64-car-controls
           path: /home/michel/docker/car_controls/aarch64-car-controls
