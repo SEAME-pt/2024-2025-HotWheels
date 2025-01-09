@@ -1,0 +1,6 @@
+<RCC>
+	<qresource prefix="/data">
+		<file>speed-simulation.fake.json</file>
+		<file>rpm-simulation.fake.json</file>
+	</qresource>
+</RCC>
