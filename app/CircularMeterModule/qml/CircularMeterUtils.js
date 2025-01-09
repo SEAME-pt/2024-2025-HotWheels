@@ -1,9 +1,9 @@
 
 function drawBackgroundCircle(ctx, centerX, centerY, radius) {
+    ctx.lineWidth = radius * 0.1; // Proportional line width
+    ctx.strokeStyle = "#000000";
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
-    ctx.lineWidth = 28;
-    ctx.strokeStyle = "#000000";
     ctx.stroke();
 }
 

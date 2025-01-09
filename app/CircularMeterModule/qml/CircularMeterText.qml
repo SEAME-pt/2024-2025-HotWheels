@@ -8,7 +8,7 @@ Item {
 
     Text {
         id: meterValue
-        font.pixelSize: meterFontSize
+        font.pixelSize: Math.min(parent.width, parent.height) * 0.2
         color: "white"
         text: Math.round(meterText.displayedValue)
         anchors.horizontalCenter: parent.horizontalCenter
@@ -17,10 +17,11 @@ Item {
 
     Text {
         id: meterUnit
-        font.pixelSize: 24
+        font.pixelSize: Math.min(parent.width, parent.height) * 0.1
         color: "white"
         text: meterLabel
         anchors.horizontalCenter: meterValue.horizontalCenter
         anchors.top: meterValue.bottom
     }
+
 }

@@ -28,5 +28,6 @@ void CircularMeterSetup::setupQuickWidget(QQuickWidget *quickWidget,
 
     quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
     QVBoxLayout *layout = new QVBoxLayout(parentWidget);
+    // layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(quickWidget);
 }

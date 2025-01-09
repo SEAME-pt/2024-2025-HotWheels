@@ -3,10 +3,10 @@ import "CircularMeterUtils.js" as Utils
 
 Rectangle {
     id: circularMeter
-    width: 300
-    height: 300
-    color: parentColor
-    anchors.centerIn: parent
+    width: Math.min(parent.width, parent.height)
+        height: width
+       color: parentColor
+       anchors.fill: parent
 
     property real displayedValue: 0
 
