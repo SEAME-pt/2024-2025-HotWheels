@@ -1,29 +1,21 @@
 #!/bin/bash
 
 # Variables
-SERVICE_NAME="cluster.service"
+SERVICE_NAME="mini_display_info.service"
 SERVICE_PATH="/etc/systemd/system/$SERVICE_NAME"
 SERVICE_USER="hotweels"
 SERVICE_GROUP="hotweels"
-EXECUTABLE_PATH="/home/hotweels/apps/CarCluster/CarCluster"
-DISPLAY_ENV=":0"
-RUNTIME_DIR="/run/user/1000"
 
 # Service content
 SERVICE_CONTENT="[Unit]
-Description=Cluster Service
-After=multi-user.target graphical.target network.target display-manager.service
-Requires=graphical.target
+Description=Mini Display Info
+After=network.target
 
 [Service]
-Type=idle
-ExecStart=/home/hotweels/apps/CarCluster/CarCluster
-Restart=on-failure
-RestartSec=5
+ExecStart=/usr/bin/python3 /home/hotweels/Documents/UPS-Power-Module/ups_display/display_server.py
+Restart=always
 User=hotweels
 Group=hotweels
-Environment=DISPLAY=:0
-Environment=XDG_RUNTIME_DIR=$/run/user/1000
 
 [Install]
 WantedBy=multi-user.target"
@@ -55,4 +47,3 @@ echo "Starting the $SERVICE_NAME service..."
 sudo systemctl start $SERVICE_NAME
 
 echo "Done! The $SERVICE_NAME service is now set up and running."
-
