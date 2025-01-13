@@ -5,7 +5,7 @@ ARTIFACT_NAME="aarch64-car-controls"
 LATEST_RUN_ENV=0
 
 # GitHub Personal Access Token (replace with your token)
-GITHUB_TOKEN="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"
+GITHUB_TOKEN=""
 
 # Function to check repository existence
 check_repository() {
