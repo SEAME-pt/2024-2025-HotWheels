@@ -240,16 +240,20 @@ void Jetcar::init_servo() {
  */
 void Jetcar::init_motors() {
     write_byte_data(motor_bus_fd_, 0x00, 0x20);
+    usleep(100000);
 
     int prescale = static_cast<int>(std::floor(25000000.0 / 4096.0 / 100 - 1));
     int oldmode = read_byte_data(motor_bus_fd_, 0x00);
     int newmode = (oldmode & 0x7F) | 0x10;
 
     write_byte_data(motor_bus_fd_, 0x00, newmode);
+    usleep(100000);
     write_byte_data(motor_bus_fd_, 0xFE, prescale);
+    usleep(100000);
     write_byte_data(motor_bus_fd_, 0x00, oldmode);
-    usleep(10000);
+    usleep(100000);
     write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1);
+    usleep(100000);
 }
 
 /**
@@ -340,9 +344,6 @@ void Jetcar::process_joystick() {
 
     SDL_Joystick* joystick = SDL_JoystickOpen(0);
     if (!joystick) {
-        /* std::cerr << "Failed to open joystick: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        return; */
         process_joystick();
     }
 
