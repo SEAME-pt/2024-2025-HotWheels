@@ -248,7 +248,7 @@ void Jetcar::init_motors() {
     write_byte_data(motor_bus_fd_, 0x00, newmode);
     write_byte_data(motor_bus_fd_, 0xFE, prescale);
     write_byte_data(motor_bus_fd_, 0x00, oldmode);
-    usleep(10000);
+    usleep(100000);
     write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1);
 }
 
