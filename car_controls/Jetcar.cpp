@@ -10,7 +10,7 @@
  */
 union i2c_smbus_data {
     uint8_t byte;
-    uint16_t word; 
+    uint16_t word;
     uint8_t block[34]; // Block size for SMBus
 };
 
@@ -22,7 +22,7 @@ union i2c_smbus_data {
 
 /**
  * Writes a single byte of data to a specified I2C device register.
- * 
+ *
  * - `file`: File descriptor for the I2C device.
  * - `command`: The register address or command to write to.
  * - `value`: The byte of data to write to the register.
@@ -44,7 +44,7 @@ int i2c_smbus_write_byte_data(int file, uint8_t command, uint8_t value) {
 
 /**
  * Reads a single byte of data from a specified I2C device register.
- * 
+ *
  * - `file`: File descriptor for the I2C device.
  * - `command`: The register address or command to read from.
  *
@@ -67,11 +67,11 @@ int i2c_smbus_read_byte_data(int file, uint8_t command) {
 
 /**
  * Clamps a value within the specified range.
- * 
+ *
  * - `value`: The value to clamp.
  * - `min_val`: The minimum allowed value.
  * - `max_val`: The maximum allowed value.
- * 
+ *
  * Returns `value` if it is within the range [min_val, max_val],
  * otherwise returns `min_val` or `max_val` if the value is outside the range.
  */
@@ -85,12 +85,12 @@ Jetcar::Jetcar() {}
 
 /**
  * Constructor for the Jetcar class.
- * 
+ *
  * Initializes the Jetcar object with optional I2C addresses for the servo and motor.
- * 
+ *
  * - `servo_addr`: The I2C address for the servo (default is 0x40).
  * - `motor_addr`: The I2C address for the motor (default is 0x60).
- * 
+ *
  * Opens the I2C buses, sets the addresses for the servo and motor, and initializes them.
  * Throws exceptions if the I2C devices cannot be opened or addressed.
  */
@@ -116,7 +116,7 @@ Jetcar::Jetcar(int servo_addr = 0x40, int motor_addr = 0x60)
 
 /**
  * Destructor for the Jetcar class.
- * 
+ *
  * Stops the car's movement and closes the I2C buses for the servo and motor.
  */
 Jetcar::~Jetcar() {
@@ -149,10 +149,10 @@ void Jetcar::stop() {
 
 /**
  * Sets the speed of the Jetcar by adjusting the PWM values for the motors.
- * 
+ *
  * - `speed`: The desired speed, clamped between -100 and 100.
  * Negative values move the car backward, positive values move it forward, and zero stops the car.
- * 
+ *
  * The function adjusts the appropriate motor channels for forward, backward, or stop movement
  * based on the clamped speed value.
  */
@@ -187,10 +187,10 @@ void Jetcar::set_speed(int speed) {
 
 /**
  * Sets the steering angle of the Jetcar by adjusting the PWM value for the servo.
- * 
+ *
  * - `angle`: The desired steering angle, clamped between -MAX_ANGLE and MAX_ANGLE.
  *   Negative values steer left, positive values steer right, and zero centers the steering.
- * 
+ *
  * The function calculates the corresponding PWM value for the servo and applies it to the steering channel.
  */
 void Jetcar::set_steering(int angle) {
@@ -210,7 +210,7 @@ void Jetcar::set_steering(int angle) {
 
 /**
  * Initializes the servo by sending a series of configuration commands over I2C.
- * 
+ *
  * This function configures the servo controller with specific initialization commands,
  * including setting registers and applying delays to ensure proper initialization.
  */
@@ -233,8 +233,8 @@ void Jetcar::init_servo() {
 
 /**
  * Initializes the motors by configuring the motor controller over I2C.
- * 
- * This function sets up the motor controller by writing specific initialization commands, 
+ *
+ * This function sets up the motor controller by writing specific initialization commands,
  * adjusting the prescale value for the PWM frequency, and setting the operating mode.
  * It also includes a small delay to ensure proper motor initialization.
  */
@@ -248,17 +248,17 @@ void Jetcar::init_motors() {
     write_byte_data(motor_bus_fd_, 0x00, newmode);
     write_byte_data(motor_bus_fd_, 0xFE, prescale);
     write_byte_data(motor_bus_fd_, 0x00, oldmode);
-    usleep(5000);
+    usleep(10000);
     write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1);
 }
 
 /**
  * Sets the PWM value for a specific servo channel.
- * 
+ *
  * - `channel`: The servo channel to control.
  * - `on_value`: The "on" time for the PWM signal (low byte and high byte).
  * - `off_value`: The "off" time for the PWM signal (low byte and high byte).
- * 
+ *
  * This function writes the corresponding PWM values to the servo controller's registers
  * over I2C to adjust the position of the servo.
  */
@@ -272,10 +272,10 @@ void Jetcar::set_servo_pwm(int channel, int on_value, int off_value) {
 
 /**
  * Sets the PWM value for a specific motor channel.
- * 
+ *
  * - `channel`: The motor channel to control.
  * - `value`: The PWM value to set (clamped between 0 and 4096).
- * 
+ *
  * This function writes the PWM value to the motor controller's registers over I2C
  * to control the motor's speed and direction.
  */
@@ -288,11 +288,11 @@ void Jetcar::set_motor_pwm(int channel, int value) {
 
 /**
  * Writes a single byte of data to a specified I2C register.
- * 
+ *
  * - `fd`: The file descriptor for the I2C device.
  * - `reg`: The register address to write to.
  * - `value`: The byte value to write to the register.
- * 
+ *
  * This function performs an I2C write operation and throws an exception if the write fails.
  */
 void Jetcar::write_byte_data(int fd, int reg, int value) {
@@ -303,32 +303,32 @@ void Jetcar::write_byte_data(int fd, int reg, int value) {
 
 /**
  * Reads a single byte of data from a specified I2C register.
- * 
+ *
  * - `fd`: The file descriptor for the I2C device.
  * - `reg`: The register address to read from.
- * 
+ *
  * This function performs an I2C read operation and throws an exception if the read fails.
- * 
+ *
  * @return The byte value read from the register.
  */
 int Jetcar::read_byte_data(int fd, int reg) {
     int result = i2c_smbus_read_byte_data(fd, reg);
     if (result < 0) {
         throw std::runtime_error("I2C read failed");
-    }  
+    }
     return result;
 }
 
 /**
  * Processes joystick input to control the Jetcar's steering and speed.
- * 
+ *
  * Initializes the SDL library and opens the first available joystick.
  * Continuously reads the joystick's axes (steering and throttle) while the car is running,
  * updating the car's steering and speed accordingly.
- * 
+ *
  * - Steering is mapped to the X-axis of the left joystick.
  * - Speed is mapped to the Y-axis of the right joystick.
- * 
+ *
  * The function runs in a separate thread and updates the car's controls at a set interval.
  * The joystick is closed and SDL is quit when the function ends.
  */
