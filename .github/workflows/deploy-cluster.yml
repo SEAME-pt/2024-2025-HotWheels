@@ -1,0 +1,29 @@
+name: Cross-Compile Cluster to aarch64
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-on-self-hosted:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Update ui config
+        run: |
+          cd CarCluster
+          uic -o includes/ui_CarCluster.h forms/CarCluster.ui
+
+      - name: Build arm64 executable
+        run: |
+          mkdir build
+          cd build
+          /home/seame/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
+          make -j$(nproc)
+
+      - name: Deploy executable to target
+        run: |
+          rsync -avz --rsync-path="sudo rsync" --delete build/CarCluster/CarCluster $JETSON:/home/hotweels/apps/

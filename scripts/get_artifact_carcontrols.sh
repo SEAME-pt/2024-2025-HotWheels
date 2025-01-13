@@ -1,7 +1,8 @@
 #!/bin/bash
 REPO_OWNER="SEAME-pt"
 REPO_NAME="HotWheels-Cluster"
-ARTIFACT_NAME="car_controls"
+ARTIFACT_NAME="aarch64-car-controls"
+LATEST_RUN_ENV=0
 
 # GitHub Personal Access Token (replace with your token)
 GITHUB_TOKEN=""
@@ -13,7 +14,6 @@ check_repository() {
     
     if echo "$response" | grep -q "Not Found"; then
         echo "Error: Repository $REPO_OWNER/$REPO_NAME does not exist or is not accessible."
-        exit 1
     fi
 }
 
@@ -23,8 +23,8 @@ get_latest_run_id() {
         "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/runs?per_page=1")
     
     # Extract the latest run ID
-    #echo "$runs" | jq -r '.workflow_runs[0].id // empty'
-    echo "$runs" | jq -r '.workflow_runs[] | select(.name == "Car controls") | .id'
+    echo "$runs" | jq -r '.workflow_runs[0].id // empty'
+    #echo "$runs" | jq -r '.workflow_runs[] | select(.name == "aarch64-car-controls") | .id'
 }
 
 # Function to fetch artifacts for a specific run ID
@@ -42,7 +42,6 @@ fetch_artifacts() {
     # Check if artifact URL was found
     if [ -z "$artifact_url" ]; then
         echo "No artifact found with name: $ARTIFACT_NAME"
-        exit 1
     fi
     
     echo "$artifact_url"
@@ -63,45 +62,50 @@ download_and_extract_artifact() {
         echo "Artifact downloaded successfully."
         
         # Check if the directory already exists
-        if [ -f "/home/tpereira/teste/car_controls" ]; then
-            echo "Removing existing car_controls file in /home/tpereira/teste..."
-            rm -f /home/tpereira/teste/car_controls  # using -f to suppress prompt
+        if [ -f "/home/hotweels/service_executables/aarch64-car-controls" ]; then
+            echo "Removing existing aarch64-car-controls file in /home/hotweels/service_executables..."
+            rm -f /home/hotweels/service_executables/aarch64-car-controls  # using -f to suppress prompt
         fi
         
         # Unzip the downloaded artifact into the target directory
-        unzip -qo "$zip_file" -d /home/tpereira/teste
+        unzip -qo "$zip_file" -d /home/hotweels/service_executables
+	chmod +x /home/hotweels/service_executables/aarch64-car-controls
         
         # Clean up the zip file
         rm "$zip_file"
         
-        echo "Artifact extracted to /home/tpereira/teste/"
+        echo "Artifact extracted to /home/hotweels/service_executables"
     else
         echo "Failed to download artifact"
-        exit 1
     fi
 }
 
-
-
 # Main script execution
 main() {
-    # Check repository existence
-    check_repository
-    
-    # Get latest run ID
-    local latest_run=$(get_latest_run_id)
-    echo "Latest run: "
-    echo $latest_run
-    
-    # Check if we got a valid run ID
-    if [ -z "$latest_run" ]; then
-        echo "No workflow runs found in the repository."
-        exit 1
-    fi
-    
-    # Fetch and download the artifact
-    local artifact_url=$(fetch_artifacts "$latest_run")
-    download_and_extract_artifact "$artifact_url"
+    while true; do
+        # Check repository existence
+        check_repository
+        
+        # Get latest run ID
+        local latest_run=$(get_latest_run_id)
+        echo "Latest run: "
+        echo $latest_run
+        
+        # Check if we got a valid run ID
+        if [ -z "$latest_run" ]; then
+            echo "No workflow runs found in the repository."
+
+        elif [ "$LATEST_RUN_ENV" == "$latest_run" ]; then
+            echo "No new workflow run detected."
+        else
+            # Fetch and download the artifact
+            local artifact_url=$(fetch_artifacts "$latest_run")
+            download_and_extract_artifact "$artifact_url"
+	    LATEST_RUN_ENV=$latest_run
+        fi
+        echo "Waiting 10 minutes until it executes again"
+        sleep 600
+    done
 }
 
 # Run the main function
