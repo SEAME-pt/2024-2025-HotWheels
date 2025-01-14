@@ -1,0 +1,22 @@
+# WORKSPACE file
+
+load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "cc_toolchain_suite", "cc_toolchain")
+
+# Define the ARM64 cross-compile toolchain
+cc_toolchain_suite(
+    name = "arm64_toolchain_suite",
+    toolchains = {
+        "arm64": ":arm64_toolchain",  # Toolchain for ARM64 architecture
+    },
+)
+
+cc_toolchain(
+    name = "arm64_toolchain",
+    cpu = "arm64",  # Specify the architecture to use for compilation
+    toolchain_identifier = "arm64-linux-gnu-gcc",
+    compiler = "/usr/bin/aarch64-linux-gnu-g++",  # Path to the ARM64 C++ compiler
+    linker = "/usr/bin/aarch64-linux-gnu-ld",    # Path to the ARM64 linker
+    ar = "/usr/bin/aarch64-linux-gnu-ar",        # Path to ARM64 'ar'
+    nm = "/usr/bin/aarch64-linux-gnu-nm",        # Path to ARM64 'nm'
+    strip = "/usr/bin/aarch64-linux-gnu-strip",  # Path to ARM64 'strip'
+)

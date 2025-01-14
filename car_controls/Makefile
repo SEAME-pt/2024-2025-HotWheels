@@ -20,7 +20,7 @@ $(TARGET): $(OBJECTS)
 clean:
 	@rm -f $(OBJECTS)
 
-fclean:
+fclean: clean
 	@echo "Cleaning the executable..."
 	@rm -f $(TARGET)
 	@echo "Done!"
