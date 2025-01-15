@@ -32,16 +32,16 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: ${{ github.ref }}   # Tag name (e.g., v1.0)
-          release_name: "Release ${{ github.ref }}"  # Optional release name
+          tag_name: ${{ github.ref }}
+          release_name: "Release ${{ github.ref }}"
           body: "Release for version ${{ github.ref }}"
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}  # GitHub token for authentication
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Upload AArch64 Executable to Release
         uses: softprops/action-gh-release@v2
         with:
-          files: /home/michel/docker/car_controls/aarch64-car-controls  # The path to your built artifact
-          token: ${{ secrets.ACCESS_TOKEN }}  # GitHub token for authentication
+          files: /home/michel/docker/car_controls/aarch64-car-controls
+          token: ${{ secrets.ACCESS_TOKEN }}
