@@ -29,19 +29,13 @@ jobs:
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref }}
-          release_name: "Release ${{ github.ref }}"
-          body: "Release for version ${{ github.ref }}"
+          files: /home/michel/docker/car_controls/aarch64-car-controls
+          name: Release ${{ steps.tag.outputs.new_tag }}
           draft: false
           prerelease: false
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload AArch64 Executable to Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: /home/michel/docker/car_controls/aarch64-car-controls
-          token: ${{ secrets.GITHUB_TOKEN }}
