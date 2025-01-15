@@ -10,10 +10,10 @@ SOURCES += \
     sources/main.cpp \
     sources/CarCluster.cpp \
     sources/DisplayManager.cpp \
-	sources/CanController.cpp \
 	sources/FakeSimulation.cpp \
-	sources/SpiController.cpp \
 	sources/CircularMeterSetup.cpp \
+	sources/MCP2515.cpp \
+	sources/CanReceiverWorker.cpp \
 	sources/SystemInfoUtility.cpp
 
 RESOURCES += ../CircularMeterModule/qml/qml.qrc
@@ -25,10 +25,10 @@ RESOURCES += \
 HEADERS += \
     includes/CarCluster.h \
     includes/DisplayManager.hpp \
-	includes/CanController.hpp \
-	includes/SpiController.hpp \
 	includes/FakeSimulation.hpp \
 	includes/CircularMeterSetup.hpp \
+	includes/CanReceiverWorker.hpp \
+	includes/MCP2515.hpp \
 	includes/SystemInfoUtility.hpp
 
 FORMS += \

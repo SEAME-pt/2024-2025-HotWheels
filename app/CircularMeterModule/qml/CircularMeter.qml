@@ -36,7 +36,7 @@ Rectangle {
         id: animation
         target: circularMeter
         property: "displayedValue"
-        duration: 125
+        duration: 200
         easing.type: Easing.InOutQuad
     }
 }

@@ -36,7 +36,7 @@ void DisplayManager::setupWidgets()
                                          m_speedParentWidget,
                                          m_speedController,
                                          "#000080",
-                                         2,
+                                         1,
                                          "km",
                                          96);
 
@@ -44,7 +44,7 @@ void DisplayManager::setupWidgets()
                                          m_rpmParentWidget,
                                          m_rpmController,
                                          "#000080",
-                                         200,
+                                         100,
                                          "rpm",
                                          64);
 }

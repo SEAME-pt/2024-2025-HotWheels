@@ -52,7 +52,7 @@ public:
         rpmMeterWidget->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         systemInfoLabel = new QLabel(clusterWindowWidget);
         systemInfoLabel->setObjectName(QString::fromUtf8("systemInfoLabel"));
-        systemInfoLabel->setGeometry(QRect(100, 20, 841, 51));
+        systemInfoLabel->setGeometry(QRect(350, 130, 391, 131));
         QFont font;
         font.setPointSize(10);
         systemInfoLabel->setFont(font);
