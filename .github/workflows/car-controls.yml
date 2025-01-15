@@ -28,7 +28,7 @@ jobs:
           cd /home/michel/docker
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
-        - name: Create Release
+      - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         with:
