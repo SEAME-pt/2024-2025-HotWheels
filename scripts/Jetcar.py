@@ -10,17 +10,17 @@ class JetCar:
         self.servo_bus = smbus2.SMBus(1)
         self.SERVO_ADDR = servo_addr
         self.STEERING_CHANNEL = 0
-        
+
         # Servo config
         self.MAX_ANGLE = 180
         self.SERVO_CENTER_PWM = 330 + 0
         self.SERVO_LEFT_PWM = 330 - 250
         self.SERVO_RIGHT_PWM = 330 + 250
-        
+
         # Motor controller setup
         self.motor_bus = smbus2.SMBus(1)
         self.MOTOR_ADDR = motor_addr
-        
+
         # Control flags
         self.running = False
         self.current_speed = 0
@@ -29,29 +29,29 @@ class JetCar:
         # Initialize both systems
         self.init_servo()
         self.init_motors()
-        
+
     def init_servo(self):
         try:
             # Reset PCA9685
             self.servo_bus.write_byte_data(self.SERVO_ADDR, 0x00, 0x06)
             time.sleep(0.1)
-            
+
             # Setup servo control
             self.servo_bus.write_byte_data(self.SERVO_ADDR, 0x00, 0x10)
             time.sleep(0.1)
-            
+
             # Set frequency (~50Hz)
             self.servo_bus.write_byte_data(self.SERVO_ADDR, 0xFE, 0x79)
             time.sleep(0.1)
-            
+
             # Configure MODE2
             self.servo_bus.write_byte_data(self.SERVO_ADDR, 0x01, 0x04)
             time.sleep(0.1)
-            
+
             # Enable auto-increment
             self.servo_bus.write_byte_data(self.SERVO_ADDR, 0x00, 0x20)
             time.sleep(0.1)
-            
+
             return True
         except Exception as e:
             print(f"Servo init error: {e}")
@@ -61,7 +61,7 @@ class JetCar:
         try:
             # Configure motor controller
             self.motor_bus.write_byte_data(self.MOTOR_ADDR, 0x00, 0x20)
-            
+
             # Set frequency to 60Hz
             prescale = int(math.floor(25000000.0 / 4096.0 / 100 - 1))
             oldmode = self.motor_bus.read_byte_data(self.MOTOR_ADDR, 0x00)
@@ -71,7 +71,7 @@ class JetCar:
             self.motor_bus.write_byte_data(self.MOTOR_ADDR, 0x00, oldmode)
             time.sleep(0.005)
             self.motor_bus.write_byte_data(self.MOTOR_ADDR, 0x00, oldmode | 0xa1)
-            
+
             return True
         except Exception as e:
             print(f"Motor init error: {e}")
@@ -81,16 +81,16 @@ class JetCar:
     def set_steering(self, angle):
         """Set steering angle (-90 to +90 degrees)"""
         angle = max(-self.MAX_ANGLE, min(self.MAX_ANGLE, angle))
-        
+
         if angle < 0:
-            pwm = int(self.SERVO_CENTER_PWM + 
+            pwm = int(self.SERVO_CENTER_PWM +
                      (angle / self.MAX_ANGLE) * (self.SERVO_CENTER_PWM - self.SERVO_LEFT_PWM))
         elif angle > 0:
-            pwm = int(self.SERVO_CENTER_PWM + 
+            pwm = int(self.SERVO_CENTER_PWM +
                      (angle / self.MAX_ANGLE) * (self.SERVO_RIGHT_PWM - self.SERVO_CENTER_PWM))
         else:
             pwm = self.SERVO_CENTER_PWM
-            
+
         self.set_servo_pwm(self.STEERING_CHANNEL, 0, pwm)
         self.current_angle = angle
 
@@ -106,14 +106,14 @@ class JetCar:
         """
         # Limita o ângulo entre -90 e +90
         angle = max(-self.MAX_ANGLE, min(self.MAX_ANGLE, angle))
-        
+
         if angle < 0:  # Esquerda
             # Interpola entre centro e esquerda
-            return int(self.SERVO_CENTER_PWM + 
+            return int(self.SERVO_CENTER_PWM +
                       (angle / self.MAX_ANGLE) * (self.SERVO_CENTER_PWM - self.SERVO_LEFT_PWM))
         elif angle > 0:  # Direita
             # Interpola entre centro e direita
-            return int(self.SERVO_CENTER_PWM + 
+            return int(self.SERVO_CENTER_PWM +
                       (angle / self.MAX_ANGLE) * (self.SERVO_RIGHT_PWM - self.SERVO_CENTER_PWM))
         else:  # Centro
             return self.SERVO_CENTER_PWM
@@ -128,14 +128,14 @@ class JetCar:
    #     if not isinstance(angle, (int, float)):
    #         print("Ângulo deve ser um número")
    #         return False
-   #         
+   #
    #     if abs(angle) > self.MAX_ANGLE:
    #         print(f"Ângulo deve estar entre -{self.MAX_ANGLE} e +{self.MAX_ANGLE} graus")
    #         return False
-   #     
+   #
    #     direction = "centro" if angle == 0 else "esquerda" if angle < 0 else "direita"
    #     print(f"Movendo servo para {abs(angle)}° ({direction})")
-   #     
+   #
    #     pwm_value = self.angle_to_pwm(angle)
    #     return self.set_pwm(self.STEERING_CHANNEL, 0, pwm_value)
 #
@@ -167,7 +167,7 @@ class JetCar:
         """Set motor speed (-100 to +100)"""
         speed = max(-100, min(100, speed))
         pwm_value = int(abs(speed) / 100.0 * 4095)
-        
+
         if speed > 0:  # Forward
             self.set_motor_pwm(0, pwm_value)  # IN1
             self.set_motor_pwm(1, 0)          # IN2
@@ -185,7 +185,7 @@ class JetCar:
         else:  # Stop
             for channel in range(9):
                 self.set_motor_pwm(channel, 0)
-        
+
         self.current_speed = speed
 
     def process_joystick(self):
@@ -193,7 +193,7 @@ class JetCar:
         print("Left stick: steering")
         print("RT: forward, LT: reverse")
         print("START/SELECT: exit")
-        
+
         while self.running:
             try:
                 events = get_gamepad()
@@ -229,8 +229,8 @@ class JetCar:
     def start(self):
         """Start the car control"""
         self.running = True
-        self.joystick_thread = threading.Thread(target=self.process_joystick)
-        self.joystick_thread.start()
+        #self.joystick_thread = threading.Thread(target=self.process_joystick)
+        #self.joystick_thread.start()
 
     def stop(self):
         """Stop the car and cleanup"""
@@ -246,11 +246,11 @@ class JetCar:
 try:
     car = JetCar()
     car.start()
-    while car.running:
-        time.sleep(0.5)
+    #while car.running:
+        #time.sleep(0.5)
 except Exception as e:
     print(f"Error: {e}")
     car.stop()
     exit(1)
-    
+
 car.stop()
