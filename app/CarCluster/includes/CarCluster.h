@@ -2,9 +2,8 @@
 #define CARCLUSTER_H
 
 #include <QMainWindow>
-#include "CanController.hpp"
 #include "FakeSimulation.hpp"
-#include "SpiController.hpp"
+#include "MCP2515.hpp"
 
 class QQuickView;
 class MeterController;
@@ -30,8 +29,7 @@ private:
     MeterController *m_speedMeterController;
     MeterController *m_rpmMeterController;
     DisplayManager *m_clusterDisplayManager;
-    CanController *m_canBusController;
-    SpiController *m_spiController;
+    MCP2515 *m_canBusController;
     FakeSimulation *m_fakeSimulation;
 
     void initializeComponents();

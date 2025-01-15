@@ -11,11 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,88 +21,45 @@ QT_BEGIN_NAMESPACE
 class Ui_CarCluster
 {
 public:
-    QWidget *centralWidget;
-    QVBoxLayout *mainVerticalLayout;
-    QSpacerItem *topSpacer;
-    QHBoxLayout *mainHorizontalLayout;
-    QSpacerItem *leftSpacer;
+    QWidget *clusterWindowWidget;
+    QFrame *sliderFrame;
+    QWidget *speedMeterWidget;
     QWidget *rpmMeterWidget;
     QLabel *systemInfoLabel;
-    QWidget *speedMeterWidget;
-    QSpacerItem *rightSpacer;
-    QSpacerItem *bottomSpacer;
 
     void setupUi(QMainWindow *CarCluster)
     {
         if (CarCluster->objectName().isEmpty())
             CarCluster->setObjectName(QString::fromUtf8("CarCluster"));
-        CarCluster->resize(442, 222);
-        centralWidget = new QWidget(CarCluster);
-        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        centralWidget->setAutoFillBackground(false);
-        centralWidget->setStyleSheet(QString::fromUtf8("background-color: #000080;"));
-        mainVerticalLayout = new QVBoxLayout(centralWidget);
-        mainVerticalLayout->setObjectName(QString::fromUtf8("mainVerticalLayout"));
-        topSpacer = new QSpacerItem(0, 4, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        mainVerticalLayout->addItem(topSpacer);
-
-        mainHorizontalLayout = new QHBoxLayout();
-        mainHorizontalLayout->setSpacing(6);
-        mainHorizontalLayout->setObjectName(QString::fromUtf8("mainHorizontalLayout"));
-        mainHorizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
-        leftSpacer = new QSpacerItem(4, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        mainHorizontalLayout->addItem(leftSpacer);
-
-        rpmMeterWidget = new QWidget(centralWidget);
+        CarCluster->resize(1080, 400);
+        clusterWindowWidget = new QWidget(CarCluster);
+        clusterWindowWidget->setObjectName(QString::fromUtf8("clusterWindowWidget"));
+        clusterWindowWidget->setAutoFillBackground(false);
+        clusterWindowWidget->setStyleSheet(QString::fromUtf8("background-color: #000080;"));
+        sliderFrame = new QFrame(clusterWindowWidget);
+        sliderFrame->setObjectName(QString::fromUtf8("sliderFrame"));
+        sliderFrame->setGeometry(QRect(20, 339, 371, 41));
+        sliderFrame->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
+        sliderFrame->setFrameShape(QFrame::StyledPanel);
+        sliderFrame->setFrameShadow(QFrame::Raised);
+        speedMeterWidget = new QWidget(clusterWindowWidget);
+        speedMeterWidget->setObjectName(QString::fromUtf8("speedMeterWidget"));
+        speedMeterWidget->setGeometry(QRect(760, 90, 300, 300));
+        speedMeterWidget->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
+        rpmMeterWidget = new QWidget(clusterWindowWidget);
         rpmMeterWidget->setObjectName(QString::fromUtf8("rpmMeterWidget"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(rpmMeterWidget->sizePolicy().hasHeightForWidth());
-        rpmMeterWidget->setSizePolicy(sizePolicy);
-        rpmMeterWidget->setMinimumSize(QSize(150, 150));
+        rpmMeterWidget->setGeometry(QRect(10, 80, 300, 300));
         rpmMeterWidget->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
-
-        mainHorizontalLayout->addWidget(rpmMeterWidget);
-
-        systemInfoLabel = new QLabel(centralWidget);
+        systemInfoLabel = new QLabel(clusterWindowWidget);
         systemInfoLabel->setObjectName(QString::fromUtf8("systemInfoLabel"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(systemInfoLabel->sizePolicy().hasHeightForWidth());
-        systemInfoLabel->setSizePolicy(sizePolicy1);
+        systemInfoLabel->setGeometry(QRect(350, 130, 391, 131));
         QFont font;
         font.setPointSize(10);
         systemInfoLabel->setFont(font);
-        systemInfoLabel->setStyleSheet(QString::fromUtf8("color: rgb(246, 245, 244);"));
+        systemInfoLabel->setLayoutDirection(Qt::LeftToRight);
+        systemInfoLabel->setStyleSheet(QString::fromUtf8("color: rgb(246, 245, 244)"));
         systemInfoLabel->setAlignment(Qt::AlignCenter);
-
-        mainHorizontalLayout->addWidget(systemInfoLabel);
-
-        speedMeterWidget = new QWidget(centralWidget);
-        speedMeterWidget->setObjectName(QString::fromUtf8("speedMeterWidget"));
-        sizePolicy.setHeightForWidth(speedMeterWidget->sizePolicy().hasHeightForWidth());
-        speedMeterWidget->setSizePolicy(sizePolicy);
-        speedMeterWidget->setMinimumSize(QSize(150, 150));
-        speedMeterWidget->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
-
-        mainHorizontalLayout->addWidget(speedMeterWidget);
-
-        rightSpacer = new QSpacerItem(4, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        mainHorizontalLayout->addItem(rightSpacer);
-
-
-        mainVerticalLayout->addLayout(mainHorizontalLayout);
-
-        bottomSpacer = new QSpacerItem(0, 4, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        mainVerticalLayout->addItem(bottomSpacer);
-
-        CarCluster->setCentralWidget(centralWidget);
+        CarCluster->setCentralWidget(clusterWindowWidget);
 
         retranslateUi(CarCluster);
 

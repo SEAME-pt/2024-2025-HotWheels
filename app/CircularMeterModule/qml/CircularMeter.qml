@@ -3,10 +3,10 @@ import "CircularMeterUtils.js" as Utils
 
 Rectangle {
     id: circularMeter
-    width: Math.min(parent.width, parent.height)
-        height: width
-       color: parentColor
-       anchors.fill: parent
+    width: 300
+    height: 300
+    color: parentColor
+    anchors.centerIn: parent
 
     property real displayedValue: 0
 
@@ -36,7 +36,7 @@ Rectangle {
         id: animation
         target: circularMeter
         property: "displayedValue"
-        duration: 125
+        duration: 200
         easing.type: Easing.InOutQuad
     }
 }
