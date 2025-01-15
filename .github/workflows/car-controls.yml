@@ -32,3 +32,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: /home/michel/docker/car_controls/aarch64-car-controls
+          token: ${{ secrets.Github API Token }}
