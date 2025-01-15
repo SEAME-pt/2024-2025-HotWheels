@@ -3,14 +3,10 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - testing-control-scripts
   pull_request:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - testing-control-scripts
 
 jobs:
   build:
@@ -32,8 +28,8 @@ jobs:
           cd /home/michel/docker
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
-      - name: Upload AArch64 Executable
-        uses: actions/upload-artifact@v4
+      - name: Release executable
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: aarch64-car-controls
-          path: /home/michel/docker/car_controls/aarch64-car-controls
+          files: /home/michel/docker/car_controls/aarch64-car-controls
