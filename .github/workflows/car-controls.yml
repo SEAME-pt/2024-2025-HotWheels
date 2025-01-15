@@ -38,10 +38,10 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload AArch64 Executable to Release
         uses: softprops/action-gh-release@v2
         with:
           files: /home/michel/docker/car_controls/aarch64-car-controls
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
