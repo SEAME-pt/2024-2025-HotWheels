@@ -4,26 +4,34 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'app/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'app/**'
 
 jobs:
   run-on-self-hosted:
-    runs-on: self-hosted
+    runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Update ui config
         run: |
-          cd CarCluster
+          cd app/CarCluster
           uic -o includes/ui_CarCluster.h forms/CarCluster.ui
 
       - name: Build arm64 executable
         run: |
+          cd app
           mkdir build
           cd build
-          /home/seame/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
+          ~/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
           make -j$(nproc)
 
       - name: Deploy executable to target
         run: |
-          rsync -avz --rsync-path="sudo rsync" --delete build/CarCluster/CarCluster $JETSON:/home/hotweels/apps/
+          rsync -avz --rsync-path="sudo rsync" --delete app/build/CarCluster/CarCluster $JETSON:/home/hotweels/apps/
