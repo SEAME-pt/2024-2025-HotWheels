@@ -15,7 +15,7 @@ jobs:
       - name: Update ui config
         run: |
           cd app
-          ls
+          cd CarCluster
           uic -o includes/ui_CarCluster.h forms/CarCluster.ui
 
       - name: Build arm64 executable
