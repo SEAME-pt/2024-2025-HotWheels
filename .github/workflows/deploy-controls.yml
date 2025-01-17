@@ -4,17 +4,13 @@ on:
   push:
     branches:
       - fix-yaml-files
-    paths:
-      - 'car_controls/**'
   pull_request:
     branches:
       - fix-yaml-files
-    paths:
-      - 'car_controls/**'
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: [self-hosted, seame-computer-2]
 
     steps:
       - name: Checkout Code
