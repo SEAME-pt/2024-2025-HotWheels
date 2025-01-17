@@ -14,6 +14,7 @@ jobs:
 
       - name: Update ui config
         run: |
+          echo ola
           ls
           cd /app/CarCluster
           uic -o includes/ui_CarCluster.h forms/CarCluster.ui
