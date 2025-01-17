@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-on-self-hosted:
-    runs-on: self-hosted
+    runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
           mkdir build
           cd build
           ls
-          /home/michel/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
+          /home/seame/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
           make -j$(nproc)
 
       - name: Deploy executable to target
