@@ -3,7 +3,7 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - fix-yaml-files
+      - main
 
 jobs:
   run-on-self-hosted:
