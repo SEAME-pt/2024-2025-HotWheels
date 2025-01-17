@@ -32,6 +32,11 @@ jobs:
           cd /home/michel/docker
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
+        - name: Running tests
+        run: |
+          cd /home/michel/docker
+          docker exec sad_curran /bin/bash -c "cd car_controls && make test"
+
       - name: Get latest tag and increment
         id: tag
         run: |
