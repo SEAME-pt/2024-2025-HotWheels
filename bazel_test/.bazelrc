@@ -1,3 +1,0 @@
-build:aarch64 --platforms=//:aarch64_linux
-build:aarch64 --cpu=aarch64
-build:aarch64 --incompatible_enable_cc_toolchain_resolution
