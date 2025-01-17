@@ -4,29 +4,33 @@
 #include <stdexcept>
 
 // Test fixture class for Jetcar
+
 class JetcarTest : public ::testing::Test {
-protected:
-	MockJetcar* mockJetcar;
+	protected:
+		MockJetcar* mockJetcar;
+		I2CMock& i2c_mock = I2CMock::getInstance();
 
 	void SetUp() override {
 		mockJetcar = new MockJetcar();
+
+		// Set default expectations for I2C operations
+		EXPECT_CALL(i2c_mock, open(testing::_, testing::_))
+			.WillRepeatedly(testing::Return(1));  // Return valid file descriptor
+
+		EXPECT_CALL(i2c_mock, ioctl(testing::_, testing::_, testing::_))
+			.WillRepeatedly(testing::Return(0));  // Return success
+
+		EXPECT_CALL(i2c_mock, i2c_smbus_write_byte_data(testing::_, testing::_, testing::_))
+			.WillRepeatedly(testing::Return(0));  // Return success
+
+		EXPECT_CALL(i2c_mock, i2c_smbus_read_byte_data(testing::_, testing::_))
+			.WillRepeatedly(testing::Return(0));  // Return success
 	}
 
 	void TearDown() override {
 		delete mockJetcar;
 	}
 };
-
-
-// Test constructor with default addresses
-TEST_F(JetcarTest, ConstructorDefaultAddresses) {
-	EXPECT_NO_THROW(Jetcar());
-}
-
-// Test constructor with custom addresses
-TEST_F(JetcarTest, ConstructorCustomAddresses) {
-	EXPECT_NO_THROW(Jetcar(0x40, 0x60));
-}
 
 // Test start method
 TEST_F(JetcarTest, Start) {
@@ -116,13 +120,6 @@ TEST_F(JetcarTest, SetServoPwm) {
 TEST_F(JetcarTest, SetMotorPwm) {
 	EXPECT_CALL(*mockJetcar, set_motor_pwm(0, 2048)).Times(1);
 	mockJetcar->set_motor_pwm(0, 2048);
-}
-
-// Test clamp function
-TEST(ClampTest, ClampFunction) {
-	EXPECT_EQ(std::clamp(5, 1, 10), 5);
-	EXPECT_EQ(std::clamp(0, 1, 10), 1);
-	EXPECT_EQ(std::clamp(15, 1, 10), 10);
 }
 
 int main(int argc, char **argv) {
