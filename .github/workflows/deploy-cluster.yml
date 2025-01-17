@@ -23,7 +23,7 @@ jobs:
           mkdir build
           cd build
           ls
-          ~/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
+          /home/michel/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
           make -j$(nproc)
 
       - name: Deploy executable to target
