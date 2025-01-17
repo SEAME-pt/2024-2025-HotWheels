@@ -6,7 +6,7 @@ SOURCES = main.cpp Jetcar.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Test variables
-TEST_TARGET = test_Jetcar
+TEST_TARGET = tests/test_Jetcar
 TEST_SOURCES = tests/test_Jetcar.cpp Jetcar.cpp
 TEST_OBJECTS = $(TEST_SOURCES:.cpp=.o)
 
