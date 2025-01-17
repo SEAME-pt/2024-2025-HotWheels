@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - fix-yaml-files
+    paths:
+      - 'car_controls/**'
   pull_request:
     branches:
       - fix-yaml-files
+    paths:
+      - 'car_controls/**'
 
 jobs:
   build:
