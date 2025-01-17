@@ -6,8 +6,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     CarCluster w;
-    // w.show();
+    w.show();
 
-    w.showFullScreen();
+    // w.showFullScreen();
     return a.exec();
 }

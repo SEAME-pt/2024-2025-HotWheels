@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
@@ -22,7 +21,6 @@ class Ui_CarCluster
 {
 public:
     QWidget *clusterWindowWidget;
-    QFrame *sliderFrame;
     QWidget *speedMeterWidget;
     QWidget *rpmMeterWidget;
     QLabel *systemInfoLabel;
@@ -31,33 +29,29 @@ public:
     {
         if (CarCluster->objectName().isEmpty())
             CarCluster->setObjectName(QString::fromUtf8("CarCluster"));
-        CarCluster->resize(1080, 400);
+        CarCluster->resize(1024, 600);
+        CarCluster->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         clusterWindowWidget = new QWidget(CarCluster);
         clusterWindowWidget->setObjectName(QString::fromUtf8("clusterWindowWidget"));
         clusterWindowWidget->setAutoFillBackground(false);
-        clusterWindowWidget->setStyleSheet(QString::fromUtf8("background-color: #000080;"));
-        sliderFrame = new QFrame(clusterWindowWidget);
-        sliderFrame->setObjectName(QString::fromUtf8("sliderFrame"));
-        sliderFrame->setGeometry(QRect(20, 339, 371, 41));
-        sliderFrame->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
-        sliderFrame->setFrameShape(QFrame::StyledPanel);
-        sliderFrame->setFrameShadow(QFrame::Raised);
+        clusterWindowWidget->setStyleSheet(QString::fromUtf8("background-color: #000957;"));
         speedMeterWidget = new QWidget(clusterWindowWidget);
         speedMeterWidget->setObjectName(QString::fromUtf8("speedMeterWidget"));
-        speedMeterWidget->setGeometry(QRect(760, 90, 300, 300));
+        speedMeterWidget->setGeometry(QRect(644, 230, 290, 300));
         speedMeterWidget->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         rpmMeterWidget = new QWidget(clusterWindowWidget);
         rpmMeterWidget->setObjectName(QString::fromUtf8("rpmMeterWidget"));
-        rpmMeterWidget->setGeometry(QRect(10, 80, 300, 300));
+        rpmMeterWidget->setGeometry(QRect(80, 230, 300, 300));
         rpmMeterWidget->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         systemInfoLabel = new QLabel(clusterWindowWidget);
         systemInfoLabel->setObjectName(QString::fromUtf8("systemInfoLabel"));
-        systemInfoLabel->setGeometry(QRect(350, 130, 391, 131));
+        systemInfoLabel->setGeometry(QRect(312, 50, 400, 130));
         QFont font;
-        font.setPointSize(10);
+        font.setPointSize(14);
         systemInfoLabel->setFont(font);
         systemInfoLabel->setLayoutDirection(Qt::LeftToRight);
-        systemInfoLabel->setStyleSheet(QString::fromUtf8("color: rgb(246, 245, 244)"));
+        systemInfoLabel->setAutoFillBackground(false);
+        systemInfoLabel->setStyleSheet(QString::fromUtf8("color: rgb(246, 245, 244); background-color: transparent"));
         systemInfoLabel->setAlignment(Qt::AlignCenter);
         CarCluster->setCentralWidget(clusterWindowWidget);
 

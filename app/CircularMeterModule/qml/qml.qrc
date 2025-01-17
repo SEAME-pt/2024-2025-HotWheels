@@ -6,5 +6,7 @@
         <file>CircularMeterText.qml</file>
         <file>CircleTicks.qml</file>
         <file>CircularMeterUtils.js</file>
+        <file>ArcUtils.js</file>
+        <file>Arc.qml</file>
     </qresource>
 </RCC>

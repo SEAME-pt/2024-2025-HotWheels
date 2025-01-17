@@ -20,14 +20,18 @@ DisplayManager::DisplayManager(QWidget *parent,
     , m_systemInfoLabel(systemInfoLabel)
     , m_timeUpdateTimer(new QTimer(this))
 {
+    SystemInfoUtility::printClassInfo("DisplayManager", SystemInfoUtility::InfoType::CreBegin);
     setupTimeLabel();
     setupWidgets();
+    SystemInfoUtility::printClassInfo("DisplayManager", SystemInfoUtility::InfoType::CreEnd);
 }
 
 DisplayManager::~DisplayManager()
 {
+    SystemInfoUtility::printClassInfo("DisplayManager", SystemInfoUtility::InfoType::DesBegin);
     delete m_speedWidget;
     delete m_rpmWidget;
+    SystemInfoUtility::printClassInfo("DisplayManager", SystemInfoUtility::InfoType::DesEnd);
 }
 
 void DisplayManager::setupWidgets()
@@ -35,7 +39,7 @@ void DisplayManager::setupWidgets()
     CircularMeterSetup::setupQuickWidget(m_speedWidget,
                                          m_speedParentWidget,
                                          m_speedController,
-                                         "#000080",
+                                         "#000957",
                                          1,
                                          "km",
                                          96);
@@ -43,7 +47,7 @@ void DisplayManager::setupWidgets()
     CircularMeterSetup::setupQuickWidget(m_rpmWidget,
                                          m_rpmParentWidget,
                                          m_rpmController,
-                                         "#000080",
+                                         "#000957",
                                          100,
                                          "rpm",
                                          64);

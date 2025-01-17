@@ -4,6 +4,27 @@
 #include <QProcess>
 #include <QTextStream>
 
+void SystemInfoUtility::printClassInfo(QString className, InfoType type)
+{
+    const bool debug = false;
+    if (!debug)
+        return;
+    switch (type) {
+    case InfoType::DesBegin:
+        qDebug() << "Destruction begins for class:" << className;
+        break;
+    case InfoType::DesEnd:
+        qDebug() << "Destruction ends for class:" << className;
+        break;
+    case InfoType::CreBegin:
+        qDebug() << "Creation begins for class:" << className;
+        break;
+    case InfoType::CreEnd:
+        qDebug() << "Creation ends for class:" << className;
+        break;
+    }
+}
+
 QString SystemInfoUtility::getWifiStatus()
 {
     QProcess process;

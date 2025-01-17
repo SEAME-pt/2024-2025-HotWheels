@@ -10,7 +10,6 @@ SOURCES += \
     sources/main.cpp \
     sources/CarCluster.cpp \
     sources/DisplayManager.cpp \
-	sources/FakeSimulation.cpp \
 	sources/CircularMeterSetup.cpp \
 	sources/MCP2515.cpp \
 	sources/CanReceiverWorker.cpp \
@@ -25,7 +24,6 @@ RESOURCES += \
 HEADERS += \
     includes/CarCluster.h \
     includes/DisplayManager.hpp \
-	includes/FakeSimulation.hpp \
 	includes/CircularMeterSetup.hpp \
 	includes/CanReceiverWorker.hpp \
 	includes/MCP2515.hpp \

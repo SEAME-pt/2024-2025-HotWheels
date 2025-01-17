@@ -10,6 +10,7 @@ class CanReceiverWorker : public QObject
 
 public:
     explicit CanReceiverWorker(MCP2515 *canBusController, QObject *parent = nullptr);
+    ~CanReceiverWorker();
 
 public slots:
     void process(); // Slot to process CAN messages in a loop
