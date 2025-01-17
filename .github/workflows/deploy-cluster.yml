@@ -20,9 +20,9 @@ jobs:
 
       - name: Build arm64 executable
         run: |
+          cd app
           mkdir build
           cd build
-          ls
           ~/qtjetson/qt5.15/bin/qmake ../CarClusterRoot.pro
           make -j$(nproc)
 
