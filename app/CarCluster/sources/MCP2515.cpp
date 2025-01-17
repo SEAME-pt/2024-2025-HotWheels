@@ -1,6 +1,7 @@
 #include "MCP2515.hpp"
 #include <QDateTime>
 #include <QDebug>
+#include "SystemInfoUtility.hpp"
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
@@ -12,17 +13,25 @@
 
 MCP2515::MCP2515(const std::string &spi_device)
 {
+    SystemInfoUtility::printClassInfo("MCP2515", SystemInfoUtility::InfoType::CreBegin);
     spi_fd = open(spi_device.c_str(), O_RDWR);
     if (spi_fd < 0) {
         perror("Failed to open SPI device");
-        throw std::runtime_error("Unable to open SPI device.");
+        // throw std::runtime_error("Unable to open SPI device.");
+        this->disableSpi();
+    } else {
+        configureSPI();
     }
-    configureSPI();
+    SystemInfoUtility::printClassInfo("MCP2515", SystemInfoUtility::InfoType::CreEnd);
 }
 
 MCP2515::~MCP2515()
 {
-    close(spi_fd);
+    SystemInfoUtility::printClassInfo("MCP2515", SystemInfoUtility::InfoType::DesBegin);
+    if (!this->isDisabled()) {
+        close(spi_fd);
+    }
+    SystemInfoUtility::printClassInfo("MCP2515", SystemInfoUtility::InfoType::DesEnd);
 }
 
 void MCP2515::configureSPI()
@@ -30,6 +39,16 @@ void MCP2515::configureSPI()
     ioctl(spi_fd, SPI_IOC_WR_MODE, &SPI_MODE);
     ioctl(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &SPI_BITS_PER_WORD);
     ioctl(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &SPI_SPEED);
+}
+
+void MCP2515::disableSpi()
+{
+    this->disabled = true;
+}
+
+bool MCP2515::isDisabled()
+{
+    return this->disabled;
 }
 
 void MCP2515::reset()
@@ -102,6 +121,9 @@ void MCP2515::spiTransfer(const uint8_t *tx, uint8_t *rx, size_t length)
 
 bool MCP2515::init()
 {
+    if (this->isDisabled()) {
+        return false;
+    }
     std::cout << "Initializing CAN Controller..." << std::endl;
 
     reset();
@@ -127,13 +149,13 @@ void MCP2515::handleData(const std::vector<uint8_t> &CAN_RX_Buf)
         // Speed data (1-byte)
         int speedValue = static_cast<int>(CAN_RX_Buf[0]);
         emit speedUpdated(speedValue);
-        // qDebug() << "Received Speed:" << speedValue;
+        qDebug() << "Received Speed:" << speedValue;
     } else if (CAN_RX_Buf.size() == 2) {
         // RPM data (2-byte)
         uint16_t rpm = (static_cast<uint16_t>(CAN_RX_Buf[0]) << 8)
                        | static_cast<uint16_t>(CAN_RX_Buf[1]);
         emit rpmUpdated(rpm);
-        // qDebug() << "Received RPM:" << rpm;
+        qDebug() << "Received RPM:" << rpm;
     } else {
         qDebug() << "[WARNING] Received data with an unexpected size:" << CAN_RX_Buf.size();
     }
@@ -143,6 +165,10 @@ std::vector<uint8_t> MCP2515::receive()
 {
     std::vector<uint8_t> CAN_RX_Buf;
 
+    if (this->isDisabled()) {
+        return CAN_RX_Buf;
+    }
+
     while (true) {
         if (readByte(CANINTF) & 0x01) {      // Check if data is available in the RX buffer
             uint8_t len = readByte(RXB0DLC); // Read the data length code (DLC)
@@ -150,6 +176,8 @@ std::vector<uint8_t> MCP2515::receive()
                 CAN_RX_Buf.push_back(readByte(0x66 + i)); // RXB0D0 is 0x66
             }
             break;
+        } else {
+            // qDebug() << "No data found in buffer";
         }
     }
 

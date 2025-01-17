@@ -11,6 +11,10 @@ class MCP2515 : public QObject
     Q_OBJECT
 private:
     int spi_fd;
+    bool disabled = false;
+
+    void disableSpi();
+    bool isDisabled();
 
     // SPI Configuration Constants
     static constexpr uint32_t SPI_SPEED = 1000000; // 1 MHz

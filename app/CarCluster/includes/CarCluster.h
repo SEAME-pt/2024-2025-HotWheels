@@ -2,7 +2,6 @@
 #define CARCLUSTER_H
 
 #include <QMainWindow>
-#include "FakeSimulation.hpp"
 #include "MCP2515.hpp"
 
 class QQuickView;
@@ -30,17 +29,14 @@ private:
     MeterController *m_rpmMeterController;
     DisplayManager *m_clusterDisplayManager;
     MCP2515 *m_canBusController;
-    FakeSimulation *m_fakeSimulation;
 
     void initializeComponents();
     void configureCanConnection();
-    void attemptCanConnection();
-    void startFakeSimulation();
+    bool attemptCanConnection();
 
 private slots:
     void onSpeedUpdated(int newSpeed);
     void onRpmUpdated(int newRpm);
-    void onSimulationFinished();
 };
 
 #endif // CARCLUSTER_H
