@@ -36,8 +36,13 @@ FORMS += \
 
 INCLUDEPATH += \
     ../CircularMeterModule/includes \
-    includes
+    includes \
+    tests
 
 LIBS += $$OUT_PWD/../CircularMeterModule/libCircularMeterModule.a
 
+T_SOURCES += tests/rs485_can_test.cpp
 
+test {
+    SOURCES += $$T_SOURCES
+}
