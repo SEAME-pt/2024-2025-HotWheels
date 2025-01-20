@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CarManager</class>
+ <widget class="QMainWindow" name="CarManager">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1064</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CarManager</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QGroupBox" name="metricsEngineGroupBox">
+      <property name="title">
+       <string>Metrics and Engine Data</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_1">
+       <item>
+        <widget class="QLabel" name="speedLabel">
+         <property name="text">
+          <string>Speed: 0.00 km/h</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="rpmLabel">
+         <property name="text">
+          <string>RPM: 0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="directionLabel">
+         <property name="text">
+          <string>Direction: Stop</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="steeringLabel">
+         <property name="text">
+          <string>Steering: 0°</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="systemSettingsGroupBox">
+      <property name="title">
+       <string>System and Settings</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="timeLabel">
+         <property name="text">
+          <string>Time: --:--:--</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="wifiLabel">
+         <property name="text">
+          <string>WiFi: Disconnected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="temperatureLabel">
+         <property name="text">
+          <string>Temperature: N/A</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="batteryLabel">
+         <property name="text">
+          <string>Battery: --%</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="drivingModeLabel">
+         <property name="text">
+          <string>Driving Mode: Manual</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="clusterThemeLabel">
+         <property name="text">
+          <string>Theme: Dark</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="clusterMetricsLabel">
+         <property name="text">
+          <string>Metrics: Kilometers</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="toggleDrivingModeButton">
+         <property name="text">
+          <string>Toggle Driving Mode</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="toggleThemeButton">
+         <property name="text">
+          <string>Toggle Theme</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="toggleMetricsButton">
+         <property name="text">
+          <string>Toggle Metrics</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1064</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHotWheels">
+    <property name="title">
+     <string>HotWheels</string>
+    </property>
+   </widget>
+   <addaction name="menuHotWheels"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
