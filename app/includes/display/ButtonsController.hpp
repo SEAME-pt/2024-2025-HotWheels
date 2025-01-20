@@ -3,6 +3,7 @@
 
 #include <QObject>
 
+// Useless - Will be removed
 class ButtonsController : public QObject
 {
     Q_OBJECT
