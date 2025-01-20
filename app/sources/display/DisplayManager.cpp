@@ -5,7 +5,6 @@
 DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
     : QObject(parent)
     , m_ui(ui)
-    , m_buttonsController(new ButtonsController(this))
 {
     // Ensure the labels are initialized
     if (!m_ui->speedLabel || !m_ui->rpmLabel || !m_ui->directionLabel || !m_ui->steeringLabel
@@ -24,31 +23,17 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
     m_ui->temperatureLabel->setText("Temperature: N/A");
     m_ui->batteryLabel->setText("Battery: --%");
 
-    // Connect UI buttons to the ButtonsController slots
+    // Directly connect button clicks to signals
     connect(m_ui->toggleDrivingModeButton,
             &QPushButton::clicked,
-            m_buttonsController,
-            &ButtonsController::handleDrivingModeButton);
-    connect(m_ui->toggleThemeButton,
-            &QPushButton::clicked,
-            m_buttonsController,
-            &ButtonsController::handleThemeButton);
-    connect(m_ui->toggleMetricsButton,
-            &QPushButton::clicked,
-            m_buttonsController,
-            &ButtonsController::handleMetricsButton);
-
-    // Connect ButtonsController signals to emit signals for DataManager
-    connect(m_buttonsController,
-            &ButtonsController::drivingModeButtonClicked,
             this,
             &DisplayManager::drivingModeToggled);
-    connect(m_buttonsController,
-            &ButtonsController::themeButtonClicked,
+    connect(m_ui->toggleThemeButton,
+            &QPushButton::clicked,
             this,
             &DisplayManager::clusterThemeToggled);
-    connect(m_buttonsController,
-            &ButtonsController::metricsButtonClicked,
+    connect(m_ui->toggleMetricsButton,
+            &QPushButton::clicked,
             this,
             &DisplayManager::clusterMetricsToggled);
 }

@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QString>
-#include "ButtonsController.hpp"
 #include "enums.hpp"
 #include "ui_CarManager.h"
 
@@ -40,7 +39,6 @@ signals:
 
 private:
     Ui::CarManager *m_ui;
-    ButtonsController *m_buttonsController;
 };
 
 #endif // DISPLAYMANAGER_HPP

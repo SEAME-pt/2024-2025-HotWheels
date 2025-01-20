@@ -17,7 +17,6 @@ SOURCES += \
 	sources/controls/JoysticksController.cpp \
 	sources/controls/EngineController.cpp \
 	sources/display/DisplayManager.cpp \
-	sources/display/ButtonsController.cpp \
 	sources/system/SystemManager.cpp \
 	sources/system/BatteryController.cpp \
 	sources/utils/I2CController.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
 	includes/controls/JoysticksController.hpp \
 	includes/controls/EngineController.hpp \
 	includes/display/DisplayManager.hpp \
-	includes/display/ButtonsController.hpp \
 	includes/system/SystemManager.hpp \
 	includes/system/BatteryController.hpp \
 	includes/utils/I2CController.hpp \
