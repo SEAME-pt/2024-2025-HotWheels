@@ -19,8 +19,12 @@ SystemManager::SystemManager(QObject *parent)
 
 void SystemManager::updateTime()
 {
-    QString currentTime = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
-    emit timeUpdated(currentTime);
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString currentDate = currentDateTime.toString("yyyy-MM-dd");
+    QString currentTime = currentDateTime.toString("HH:mm:ss");
+    QString currentDay = currentDateTime.toString("dddd");
+
+    emit timeUpdated(currentDate, currentTime, currentDay);
 }
 
 void SystemManager::updateSystemStatus()
@@ -37,6 +41,10 @@ void SystemManager::updateSystemStatus()
     // Fetch and emit battery percentage
     float batteryPercentage = m_batteryController->getBatteryPercentage();
     emit batteryPercentageUpdated(batteryPercentage);
+
+    // Fetch and emit IP address
+    QString ipAddress = fetchIpAddress();
+    emit ipAddressUpdated(ipAddress);
 }
 
 QString SystemManager::fetchWifiStatus(QString &wifiName) const
@@ -84,4 +92,19 @@ QString SystemManager::fetchTemperature() const
         }
     }
     return "N/A";
+}
+
+QString SystemManager::fetchIpAddress() const
+{
+    QProcess process;
+    process.start("sh",
+                  {"-c", "ip addr show wlan0 | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1"});
+    process.waitForFinished();
+
+    QString output = process.readAllStandardOutput().trimmed();
+
+    if (!output.isEmpty()) {
+        return output; // Return the extracted IP address
+    }
+    return "No IP address"; // Fallback if no IP address is found
 }

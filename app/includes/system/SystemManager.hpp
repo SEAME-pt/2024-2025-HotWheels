@@ -18,10 +18,13 @@ public:
     explicit SystemManager(QObject *parent = nullptr);
 
 signals:
-    void timeUpdated(const QString &currentTime);
+    void timeUpdated(const QString &currentDate,
+                     const QString &currentTime,
+                     const QString &currentDay);
     void wifiStatusUpdated(const QString &status, const QString &wifiName);
     void temperatureUpdated(const QString &temperature);
     void batteryPercentageUpdated(float batteryPercentage);
+    void ipAddressUpdated(const QString &ipAddress);
 
 private slots:
     void updateTime();
@@ -30,6 +33,7 @@ private slots:
 private:
     QString fetchWifiStatus(QString &wifiName) const;
     QString fetchTemperature() const;
+    QString fetchIpAddress() const;
 
     QTimer *m_timeTimer;
     QTimer *m_statusTimer;
