@@ -1,9 +1,18 @@
 QT       += core gui
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
 CONFIG += c++17
 
+# Include Paths (explicit inheritance from root)
+INCLUDEPATH += \
+    $$PWD/includes/main \
+    $$PWD/includes/data \
+    $$PWD/includes/canbus \
+    $$PWD/includes/controls \
+    $$PWD/includes/display \
+    $$PWD/includes/system \
+    $$PWD/includes/utils
+
+# Application Sources
 SOURCES += \
     sources/main/main.cpp \
     sources/main/CarManager.cpp \
@@ -38,28 +47,13 @@ HEADERS += \
     includes/system/BatteryController.hpp \
     includes/utils/I2CController.hpp
 
-FORMS += \
-	forms/CarManager.ui
+FORMS += forms/CarManager.ui
 
-INCLUDEPATH += \
-	includes/main \
-	includes/data \
-	includes/canbus \
-	includes/controls \
-	includes/display \
-	includes/system \
-	includes/utils
+# Common Libraries
+LIBS += -lSDL2
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {
-	LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
-	INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
-} else {
-	LIBS += -lSDL2
+    LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
+    INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
 }
-
-
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
