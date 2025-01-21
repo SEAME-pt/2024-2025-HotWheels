@@ -23,9 +23,12 @@ public slots:
     void handleDirectionData(CarDirection rawDirection);
 
     // System Data
-    void handleTimeData(const QString &time);
+    void handleTimeData(const QString &currentDate,
+                        const QString &currentTime,
+                        const QString &currentDay);
     void handleWifiData(const QString &status, const QString &wifiName);
     void handleTemperatureData(const QString &temperature);
+    void handleIpAddressData(const QString &ipAddress);
 
     // Battery Data
     void handleBatteryPercentage(float batteryPercentage);
@@ -46,9 +49,12 @@ signals:
     void engineDataProcessed(CarDirection processedDirection, int processedAngle);
 
     // System Data
-    void systemTimeUpdated(const QString &currentTime);
+    void systemTimeUpdated(const QString &currentDate,
+                           const QString &currentTime,
+                           const QString &currentDay);
     void systemWifiUpdated(const QString &status, const QString &wifiName);
     void systemTemperatureUpdated(const QString &temperature);
+    void ipAddressUpdated(const QString &ipAddress);
 
     // Battery Data
     void batteryPercentageUpdated(float batteryPercentage);
@@ -72,6 +78,7 @@ private:
     QString m_wifiName = "";
     QString m_wifiStatus = "";
     QString m_temperature = "";
+    QString m_ipAddress = "";
 
     // Battery Data
     float m_batteryPercentage = -1.0f;

@@ -41,12 +41,11 @@ void DataManager::handleSteeringData(int rawAngle)
 }
 
 // System Data Handling
-void DataManager::handleTimeData(const QString &time)
+void DataManager::handleTimeData(const QString &currentDate,
+                                 const QString &currentTime,
+                                 const QString &currentDay)
 {
-    if (m_time != time) {
-        m_time = time;
-        emit systemTimeUpdated(time);
-    }
+    emit this->systemTimeUpdated(currentDate, currentTime, currentDay);
 }
 
 void DataManager::handleWifiData(const QString &status, const QString &wifiName)
@@ -63,6 +62,14 @@ void DataManager::handleTemperatureData(const QString &temperature)
     if (m_temperature != temperature) {
         m_temperature = temperature;
         emit systemTemperatureUpdated(temperature);
+    }
+}
+
+void DataManager::handleIpAddressData(const QString &ipAddress)
+{
+    if (m_ipAddress != ipAddress) {
+        m_ipAddress = ipAddress;
+        emit ipAddressUpdated(ipAddress);
     }
 }
 

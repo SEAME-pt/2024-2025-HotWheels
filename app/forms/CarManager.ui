@@ -58,6 +58,13 @@
        <string>System and Settings</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+        <widget class="QLabel" name="ipAddressLabel">
+         <property name="text">
+          <string>IP: Not detected</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QLabel" name="timeLabel">
          <property name="text">

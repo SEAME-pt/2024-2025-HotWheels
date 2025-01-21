@@ -65,9 +65,12 @@ void DisplayManager::updateEngineData(CarDirection direction, int steeringAngle)
     m_ui->steeringLabel->setText("Steering: " + QString::number(steeringAngle) + "°");
 }
 
-void DisplayManager::updateSystemTime(const QString &currentTime)
+void DisplayManager::updateSystemTime(const QString &currentDate,
+                                      const QString &currentTime,
+                                      const QString &currentDay)
 {
-    m_ui->timeLabel->setText("Time: " + currentTime);
+    m_ui->timeLabel->setText("Date: " + currentDate + " | Day: " + currentDay
+                             + " | Time: " + currentTime);
 }
 
 void DisplayManager::updateWifiStatus(const QString &status, const QString &wifiName)
@@ -87,6 +90,11 @@ void DisplayManager::updateTemperature(const QString &temperature)
 void DisplayManager::updateBatteryPercentage(float batteryPercentage)
 {
     m_ui->batteryLabel->setText("Battery: " + QString::number(batteryPercentage, 'f', 1) + "%");
+}
+
+void DisplayManager::updateIpAddress(const QString &ipAddress)
+{
+    m_ui->ipAddressLabel->setText("IP: " + ipAddress);
 }
 
 void DisplayManager::updateDrivingMode(DrivingMode newMode)

@@ -116,6 +116,11 @@ void CarManager::initializeDisplayManager()
                 &DisplayManager::updateBatteryPercentage);
 
         connect(m_dataManager,
+                &DataManager::ipAddressUpdated,
+                m_displayManager,
+                &DisplayManager::updateIpAddress);
+
+        connect(m_dataManager,
                 &DataManager::drivingModeUpdated,
                 m_displayManager,
                 &DisplayManager::updateDrivingMode);
@@ -172,6 +177,11 @@ void CarManager::initializeSystemManager()
                 &SystemManager::batteryPercentageUpdated,
                 m_dataManager,
                 &DataManager::handleBatteryPercentage);
+
+        connect(m_systemManager,
+                &SystemManager::ipAddressUpdated,
+                m_dataManager,
+                &DataManager::handleIpAddressData);
     }
 }
 
