@@ -7,42 +7,40 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
     , m_ui(ui)
 {
     // Ensure the labels are initialized
-    if (!m_ui->speedLabel || !m_ui->rpmLabel || !m_ui->directionLabel || !m_ui->steeringLabel
-        || !m_ui->timeLabel || !m_ui->wifiLabel || !m_ui->temperatureLabel || !m_ui->batteryLabel) {
+    if (!m_ui->speedLabel || !m_ui->rpmLabel || !m_ui->directionLabel || !m_ui->timeLabel
+        || !m_ui->wifiLabel || !m_ui->temperatureLabel || !m_ui->batteryLabel) {
         qDebug() << "Error: Labels not initialized in the UI form!";
         return;
     }
 
     // Set initial values for the labels
-    m_ui->speedLabel->setText("Speed: 0.00 km/h");
-    m_ui->rpmLabel->setText("RPM: 0");
-    m_ui->directionLabel->setText("Direction: Stop");
-    m_ui->steeringLabel->setText("Steering: 0°");
-    m_ui->timeLabel->setText("Time: --:--:--");
-    m_ui->wifiLabel->setText("WiFi: Disconnected");
-    m_ui->temperatureLabel->setText("Temperature: N/A");
-    m_ui->batteryLabel->setText("Battery: --%");
+    m_ui->speedLabel->setText("0");
+    m_ui->rpmLabel->setText("0.00");
+    m_ui->directionLabel->setText("D");
+    m_ui->timeLabel->setText("--:--:--");
+    m_ui->wifiLabel->setText("📶 Disconnected");
+    m_ui->temperatureLabel->setText("🌡️ N/A");
+    m_ui->batteryLabel->setText("--% 🔋");
+    m_ui->speedMetricsLabel->setText("KM/H");
+    m_ui->leftBlinkerLabel->setVisible(false);
+    m_ui->rightBlinkerLabel->setVisible(false);
+    m_ui->lowBatteryLabel->setVisible(false);
 
     // Directly connect button clicks to signals
     connect(m_ui->toggleDrivingModeButton,
             &QPushButton::clicked,
             this,
             &DisplayManager::drivingModeToggled);
-    connect(m_ui->toggleThemeButton,
-            &QPushButton::clicked,
-            this,
-            &DisplayManager::clusterThemeToggled);
     connect(m_ui->toggleMetricsButton,
             &QPushButton::clicked,
             this,
             &DisplayManager::clusterMetricsToggled);
 }
 
-void DisplayManager::updateCanBusData(float speed, int rpm, ClusterMetrics currentMetrics)
+void DisplayManager::updateCanBusData(float speed, int rpm)
 {
-    QString speedMetricsLabel = currentMetrics == ClusterMetrics::Kilometers ? " km/h" : "m/h";
-    m_ui->speedLabel->setText("Speed: " + QString::number(speed, 'f', 2) + " " + speedMetricsLabel);
-    m_ui->rpmLabel->setText("RPM: " + QString::number(rpm));
+    m_ui->speedLabel->setText(QString::number(static_cast<int>(speed)));
+    m_ui->rpmLabel->setText(QString::number(static_cast<double>(rpm) / 1000, 'f', 2));
 }
 
 void DisplayManager::updateEngineData(CarDirection direction, int steeringAngle)
@@ -50,27 +48,37 @@ void DisplayManager::updateEngineData(CarDirection direction, int steeringAngle)
     QString directionText;
     switch (direction) {
     case CarDirection::Drive:
-        directionText = "Drive";
+        directionText = "D";
         break;
     case CarDirection::Reverse:
-        directionText = "Reverse";
+        directionText = "R";
         break;
     case CarDirection::Stop:
     default:
-        directionText = "Stop";
+        directionText = "D";
         break;
     }
 
-    m_ui->directionLabel->setText("Direction: " + directionText);
-    m_ui->steeringLabel->setText("Steering: " + QString::number(steeringAngle) + "°");
+    m_ui->directionLabel->setText(directionText);
+    if (steeringAngle > 0) {
+        m_ui->leftBlinkerLabel->setVisible(false);
+        m_ui->rightBlinkerLabel->setVisible(true);
+    } else if (steeringAngle < 0) {
+        m_ui->rightBlinkerLabel->setVisible(false);
+        m_ui->leftBlinkerLabel->setVisible(true);
+    } else {
+        m_ui->leftBlinkerLabel->setVisible(false);
+        m_ui->rightBlinkerLabel->setVisible(false);
+    }
 }
 
 void DisplayManager::updateSystemTime(const QString &currentDate,
                                       const QString &currentTime,
                                       const QString &currentDay)
 {
-    m_ui->timeLabel->setText("Date: " + currentDate + " | Day: " + currentDay
-                             + " | Time: " + currentTime);
+    m_ui->dateLabel->setText(currentDate);
+    m_ui->timeLabel->setText(currentTime);
+    m_ui->weekDayLabel->setText(currentDay);
 }
 
 void DisplayManager::updateWifiStatus(const QString &status, const QString &wifiName)
@@ -79,22 +87,26 @@ void DisplayManager::updateWifiStatus(const QString &status, const QString &wifi
     if (!wifiName.isEmpty()) {
         wifiDisplay += " (" + wifiName + ")";
     }
-    m_ui->wifiLabel->setText("WiFi: " + wifiDisplay);
+    m_ui->wifiLabel->setText("📶 " + wifiName);
 }
 
 void DisplayManager::updateTemperature(const QString &temperature)
 {
-    m_ui->temperatureLabel->setText("Temperature: " + temperature);
+    m_ui->temperatureLabel->setText("🌡️ " + temperature);
 }
 
 void DisplayManager::updateBatteryPercentage(float batteryPercentage)
 {
-    m_ui->batteryLabel->setText("Battery: " + QString::number(batteryPercentage, 'f', 1) + "%");
+    if (batteryPercentage < 20.0) {
+        m_ui->lowBatteryLabel->setVisible(true);
+    }
+    m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) + "% "
+                                + (batteryPercentage > 20.0 ? "🔋" : "🪫"));
 }
 
 void DisplayManager::updateIpAddress(const QString &ipAddress)
 {
-    m_ui->ipAddressLabel->setText("IP: " + ipAddress);
+    m_ui->ipAddressLabel->setText("IP " + ipAddress);
 }
 
 void DisplayManager::updateDrivingMode(DrivingMode newMode)
@@ -102,13 +114,13 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode)
     QString modeText;
     switch (newMode) {
     case DrivingMode::Manual:
-        modeText = "Manual";
+        modeText = "manual";
         break;
     case DrivingMode::Automatic:
-        modeText = "Automatic";
+        modeText = "automatic";
         break;
     }
-    m_ui->drivingModeLabel->setText("Driving Mode: " + modeText);
+    m_ui->drivingModeLabel->setText("Mode: " + modeText);
 }
 
 void DisplayManager::updateClusterTheme(ClusterTheme newTheme)
@@ -130,11 +142,12 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics)
     QString metricsText;
     switch (newMetrics) {
     case ClusterMetrics::Kilometers:
-        metricsText = "Kilometers";
+        metricsText = "km/h";
         break;
     case ClusterMetrics::Miles:
-        metricsText = "Miles";
+        metricsText = "mph";
         break;
     }
     m_ui->clusterMetricsLabel->setText("Metrics: " + metricsText);
+    m_ui->speedMetricsLabel->setText(metricsText.toUpper());
 }

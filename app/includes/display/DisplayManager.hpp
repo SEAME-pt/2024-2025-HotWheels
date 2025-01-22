@@ -15,7 +15,7 @@ public:
 
 public slots:
     // CAN
-    void updateCanBusData(float speed, int rpm, ClusterMetrics currentMetrics);
+    void updateCanBusData(float speed, int rpm);
 
     // Engine
     void updateEngineData(CarDirection direction, int steeringAngle);
