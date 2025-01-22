@@ -4,7 +4,9 @@
 CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
     : QObject(parent)
 {
-    m_controller = new MCP2515Controller(spi_device);
+    m_spiController = new SPIController(); // Instantiate SPIController
+
+    m_controller = new MCP2515Controller(spi_device, *m_spiController); // Pass SPIController to MCP2515Controller
 
     connect(m_controller, &MCP2515Controller::speedUpdated, this, &CanBusManager::speedUpdated);
     connect(m_controller, &MCP2515Controller::rpmUpdated, this, &CanBusManager::rpmUpdated);
@@ -21,6 +23,8 @@ CanBusManager::~CanBusManager()
         m_thread->wait();
     }
 
+    delete m_controller;
+    delete m_spiController;
     delete m_thread;
 }
 
@@ -39,6 +43,5 @@ bool CanBusManager::initialize()
     connect(m_thread, &QThread::finished, m_thread, &QObject::deleteLater);
 
     m_thread->start();
-    // qDebug() << "CAN bus initialized and reading started.";
     return true;
 }
