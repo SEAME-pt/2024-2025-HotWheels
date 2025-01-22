@@ -23,6 +23,16 @@ void DataManager::handleSpeedData(float rawSpeed)
     emit canDataProcessed(processedSpeed, m_rpm);
 }
 
+// Mileage Data Handling
+void DataManager::handleMileageUpdate(double mileage)
+{
+    if (!qFuzzyCompare(m_mileage, mileage)) {
+        m_mileage = mileage;
+        qDebug() << "Mileage updated" << mileage;
+        emit mileageUpdated(m_mileage);
+    }
+}
+
 // Engine Data Handling
 void DataManager::handleDirectionData(CarDirection rawDirection)
 {

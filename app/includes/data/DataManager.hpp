@@ -33,6 +33,9 @@ public slots:
     // Battery Data
     void handleBatteryPercentage(float batteryPercentage);
 
+    // Mileage Data
+    void handleMileageUpdate(double mileage);
+
     // Settings Data
     void setDrivingMode(DrivingMode newMode);
     void setClusterTheme(ClusterTheme newTheme);
@@ -59,6 +62,9 @@ signals:
     // Battery Data
     void batteryPercentageUpdated(float batteryPercentage);
 
+    // Mileage Data
+    void mileageUpdated(double mileage);
+
     // Settings Data
     void drivingModeUpdated(DrivingMode newMode);
     void clusterThemeUpdated(ClusterTheme newTheme);
@@ -82,6 +88,9 @@ private:
 
     // Battery Data
     float m_batteryPercentage = -1.0f;
+
+    // Mileage Data
+    double m_mileage = 0.0;
 
     // Display Preferences
     DrivingMode m_drivingMode = DrivingMode::Manual;
