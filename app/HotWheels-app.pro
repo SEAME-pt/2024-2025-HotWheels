@@ -49,6 +49,9 @@ HEADERS += \
 
 FORMS += forms/CarManager.ui
 
+RESOURCES += \
+	forms/resources.qrc
+
 # Common Libraries
 LIBS += -lSDL2
 

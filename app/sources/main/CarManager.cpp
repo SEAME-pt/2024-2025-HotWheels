@@ -57,10 +57,6 @@ void CarManager::initializeCanBusManager()
 void CarManager::initializeControlsManager()
 {
     if (m_controlsManager) {
-        // Set ControlsManager to Manual Mode and Start
-        m_controlsManager->setMode(DrivingMode::Manual);
-        // m_controlsManager->start();
-
         // Connect ControlsManager signals to DataManager slots
         connect(m_controlsManager,
                 &ControlsManager::directionChanged,

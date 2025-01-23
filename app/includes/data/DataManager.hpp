@@ -45,7 +45,7 @@ public slots:
 
 signals:
     // CAN Data
-    void canDataProcessed(float processedSpeed, int processedRpm, ClusterMetrics currentMetrics);
+    void canDataProcessed(float processedSpeed, int processedRpm);
     void engineDataProcessed(CarDirection processedDirection, int processedAngle);
 
     // System Data
