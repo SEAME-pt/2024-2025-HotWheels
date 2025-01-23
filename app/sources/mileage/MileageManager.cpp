@@ -41,10 +41,12 @@ void MileageManager::onSpeedUpdated(float speed)
 void MileageManager::updateMileage()
 {
     // Calculate distance for the last interval
+    // qDebug() << "Updating mileage";
     double distance = calculator.calculateDistance();
     totalMileage += distance;
 
     // Emit updated mileage
+    // qDebug() << "Updating mileage" << totalMileage;
     emit mileageUpdated(totalMileage);
 }
 

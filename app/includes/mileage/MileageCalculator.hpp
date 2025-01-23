@@ -1,6 +1,7 @@
 #ifndef MILEAGECALCULATOR_HPP
 #define MILEAGECALCULATOR_HPP
 
+#include <QElapsedTimer>
 #include <QList>
 
 class MileageCalculator
@@ -13,8 +14,8 @@ public:
     double calculateDistance();
 
 private:
-    QList<float> speedValues;  // Stores speed values in km/h
-    const double timeInterval; // Time interval in seconds (10 ms)
+    QList<QPair<float, qint64>> m_speedValues;
+    QElapsedTimer m_intervalTimer;
 };
 
 #endif // MILEAGECALCULATOR_HPP

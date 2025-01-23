@@ -28,7 +28,7 @@ void DataManager::handleMileageUpdate(double mileage)
 {
     if (!qFuzzyCompare(m_mileage, mileage)) {
         m_mileage = mileage;
-        qDebug() << "Mileage updated" << mileage;
+        // qDebug() << "Mileage updated" << mileage;
         emit mileageUpdated(m_mileage);
     }
 }
