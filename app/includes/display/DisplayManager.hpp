@@ -29,6 +29,9 @@ public slots:
     void updateBatteryPercentage(float batteryPercentage);
     void updateIpAddress(const QString &ipAddress);
 
+    // Mileage
+    void updateMileage(double mileage);
+
     // Settings
     void updateDrivingMode(DrivingMode newMode);
     void updateClusterTheme(ClusterTheme newTheme);

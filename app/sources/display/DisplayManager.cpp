@@ -104,6 +104,11 @@ void DisplayManager::updateBatteryPercentage(float batteryPercentage)
                                 + (batteryPercentage > 20.0 ? "🔋" : "🪫"));
 }
 
+void DisplayManager::updateMileage(double mileage)
+{
+    m_ui->mileageLabel->setText(QString::number(static_cast<int>(mileage)) + " m");
+}
+
 void DisplayManager::updateIpAddress(const QString &ipAddress)
 {
     m_ui->ipAddressLabel->setText("IP " + ipAddress);
