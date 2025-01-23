@@ -6,6 +6,7 @@
 #include "ControlsManager.hpp"
 #include "DataManager.hpp"
 #include "DisplayManager.hpp"
+#include "MileageManager.hpp"
 #include "SystemManager.hpp"
 
 QT_BEGIN_NAMESPACE
@@ -29,6 +30,7 @@ private:
     ControlsManager *m_controlsManager;
     DisplayManager *m_displayManager;
     SystemManager *m_systemManager;
+    MileageManager *m_mileageManager;
 
     void initializeComponents();
     void initializeDataManager();
@@ -36,6 +38,7 @@ private:
     void initializeControlsManager();
     void initializeDisplayManager();
     void initializeSystemManager();
+    void initializeMileageManager();
 };
 
 #endif // CARMANAGER_H

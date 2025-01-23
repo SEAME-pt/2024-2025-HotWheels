@@ -20,8 +20,8 @@ SystemManager::SystemManager(QObject *parent)
 void SystemManager::updateTime()
 {
     QDateTime currentDateTime = QDateTime::currentDateTime();
-    QString currentDate = currentDateTime.toString("yyyy-MM-dd");
-    QString currentTime = currentDateTime.toString("HH:mm:ss");
+    QString currentDate = currentDateTime.toString("dd-MM-yy");
+    QString currentTime = currentDateTime.toString("HH:mm");
     QString currentDay = currentDateTime.toString("dddd");
 
     emit timeUpdated(currentDate, currentTime, currentDay);

@@ -10,6 +10,7 @@ INCLUDEPATH += \
     $$PWD/includes/controls \
     $$PWD/includes/display \
     $$PWD/includes/system \
+	$$PWD/includes/mileage \
     $$PWD/includes/utils
 
 # Application Sources
@@ -28,7 +29,10 @@ SOURCES += \
     sources/display/DisplayManager.cpp \
     sources/system/SystemManager.cpp \
     sources/system/BatteryController.cpp \
-    sources/utils/I2CController.cpp
+	sources/mileage/MileageCalculator.cpp \
+	sources/mileage/MileageManager.cpp \
+	sources/mileage/MileageFileHandler.cpp \
+	sources/utils/I2CController.cpp
 
 HEADERS += \
     includes/main/CarManager.hpp \
@@ -45,9 +49,15 @@ HEADERS += \
     includes/display/DisplayManager.hpp \
     includes/system/SystemManager.hpp \
     includes/system/BatteryController.hpp \
+	includes/mileage/MileageCalculator.hpp \
+	includes/mileage/MileageManager.hpp \
+	includes/mileage/MileageFileHandler.hpp \
     includes/utils/I2CController.hpp
 
 FORMS += forms/CarManager.ui
+
+RESOURCES += \
+	forms/resources.qrc
 
 # Common Libraries
 LIBS += -lSDL2

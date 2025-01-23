@@ -15,7 +15,7 @@ public:
 
 public slots:
     // CAN
-    void updateCanBusData(float speed, int rpm, ClusterMetrics currentMetrics);
+    void updateCanBusData(float speed, int rpm);
 
     // Engine
     void updateEngineData(CarDirection direction, int steeringAngle);
@@ -28,6 +28,9 @@ public slots:
     void updateTemperature(const QString &temperature);
     void updateBatteryPercentage(float batteryPercentage);
     void updateIpAddress(const QString &ipAddress);
+
+    // Mileage
+    void updateMileage(double mileage);
 
     // Settings
     void updateDrivingMode(DrivingMode newMode);

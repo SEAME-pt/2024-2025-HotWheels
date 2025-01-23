@@ -10,7 +10,7 @@ void DataManager::handleRpmData(int rawRpm)
 {
     int processedRpm = rawRpm;
     m_rpm = processedRpm;
-    emit canDataProcessed(m_speed, processedRpm, this->m_clusterMetrics);
+    emit canDataProcessed(m_speed, processedRpm);
 }
 
 void DataManager::handleSpeedData(float rawSpeed)
@@ -20,7 +20,17 @@ void DataManager::handleSpeedData(float rawSpeed)
         processedSpeed *= 0.621371f;
     }
     m_speed = processedSpeed;
-    emit canDataProcessed(processedSpeed, m_rpm, this->m_clusterMetrics);
+    emit canDataProcessed(processedSpeed, m_rpm);
+}
+
+// Mileage Data Handling
+void DataManager::handleMileageUpdate(double mileage)
+{
+    if (!qFuzzyCompare(m_mileage, mileage)) {
+        m_mileage = mileage;
+        // qDebug() << "Mileage updated" << mileage;
+        emit mileageUpdated(m_mileage);
+    }
 }
 
 // Engine Data Handling
@@ -45,6 +55,7 @@ void DataManager::handleTimeData(const QString &currentDate,
                                  const QString &currentTime,
                                  const QString &currentDay)
 {
+    this->m_time = currentTime;
     emit this->systemTimeUpdated(currentDate, currentTime, currentDay);
 }
 
