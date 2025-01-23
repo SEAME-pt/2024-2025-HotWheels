@@ -4,8 +4,11 @@
 #include <cstring>
 #include <QDebug>
 
-MCP2515Controller::MCP2515Controller(const std::string& spiDevice, ISPIController& spiController)
-    : spiController(spiController), configurator(spiController), messageProcessor() {
+MCP2515Controller::MCP2515Controller(const std::string &spiDevice, SPIController &spiController)
+    : spiController(spiController)
+    , configurator(spiController)
+    , messageProcessor()
+{
     if (!spiController.openDevice(spiDevice)) {
         throw std::runtime_error("Failed to open SPI device : " + spiDevice);
     }

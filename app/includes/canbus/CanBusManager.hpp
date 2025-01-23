@@ -20,7 +20,7 @@ signals:
     void rpmUpdated(int newRpm);
 
 private:
-    ISPIController *m_spiController = nullptr;
+    SPIController *m_spiController = nullptr;
     MCP2515Controller *m_controller = nullptr;
     QThread *m_thread = nullptr;
 };
