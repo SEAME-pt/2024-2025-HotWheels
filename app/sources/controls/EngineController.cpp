@@ -71,6 +71,8 @@ EngineController::EngineController(int servo_addr, int motor_addr, QObject *pare
     , m_current_speed(0)
     , m_current_angle(0)
 {
+    pcontrol = new PeripheralController();
+
     // Initialize I2C buses
     servo_bus_fd_ = open("/dev/i2c-1", O_RDWR);
     motor_bus_fd_ = open("/dev/i2c-1", O_RDWR);
@@ -89,8 +91,8 @@ EngineController::EngineController(int servo_addr, int motor_addr, QObject *pare
         return;
     }
 
-    init_servo();
-    init_motors();
+    pcontrol->init_servo(servo_bus_fd_, isDisabled());
+    pcontrol->init_motors(motor_bus_fd_, isDisabled());
 }
 
 EngineController::~EngineController()
@@ -100,6 +102,7 @@ EngineController::~EngineController()
         close(servo_bus_fd_);
         close(motor_bus_fd_);
     }
+    delete pcontrol;
 }
 
 void EngineController::start()
@@ -155,24 +158,24 @@ void EngineController::set_speed(int speed)
     int pwm_value = static_cast<int>(std::abs(speed) / 100.0 * 4096);
 
     if (speed > 0) { // Forward (but actually backward because joysticks are reversed)
-        set_motor_pwm(0, pwm_value);
-        set_motor_pwm(1, 0);
-        set_motor_pwm(2, pwm_value);
-        set_motor_pwm(5, pwm_value);
-        set_motor_pwm(6, 0);
-        set_motor_pwm(7, pwm_value);
+        pcontrol->set_motor_pwm(0, pwm_value, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(1, 0, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(2, pwm_value, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(5, pwm_value, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(6, 0, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(7, pwm_value, motor_bus_fd_, isDisabled());
         setDirection(CarDirection::Reverse);
     } else if (speed < 0) { // Backwards
-        set_motor_pwm(0, pwm_value);
-        set_motor_pwm(1, pwm_value);
-        set_motor_pwm(2, 0);
-        set_motor_pwm(5, 0);
-        set_motor_pwm(6, pwm_value);
-        set_motor_pwm(7, pwm_value);
+        pcontrol->set_motor_pwm(0, pwm_value, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(1, pwm_value, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(2, 0, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(5, 0, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(6, pwm_value, motor_bus_fd_, isDisabled());
+        pcontrol->set_motor_pwm(7, pwm_value, motor_bus_fd_, isDisabled());
         setDirection(CarDirection::Drive);
     } else { // Stop
         for (int channel = 0; channel < 9; ++channel)
-            set_motor_pwm(channel, 0);
+            pcontrol->set_motor_pwm(channel, 0, motor_bus_fd_, isDisabled());
         setDirection(CarDirection::Stop);
     }
     m_current_speed = speed;
@@ -199,12 +202,12 @@ void EngineController::set_steering(int angle)
         pwm = SERVO_CENTER_PWM;
     }
 
-    set_servo_pwm(STEERING_CHANNEL, 0, pwm);
+    pcontrol->set_servo_pwm(STEERING_CHANNEL, 0, pwm, servo_bus_fd_, isDisabled());
     m_current_angle = angle;
     emit this->steeringUpdated(angle);
 }
 
-void EngineController::init_servo()
+/* void EngineController::init_servo()
 {
     write_byte_data(servo_bus_fd_, 0x00, 0x06);
     usleep(100000);
@@ -220,45 +223,42 @@ void EngineController::init_servo()
 
     write_byte_data(servo_bus_fd_, 0x00, 0x20);
     usleep(100000);
-}
+} */
 
-void EngineController::init_motors()
+/* void EngineController::init_motors()
 {
-    write_byte_data(motor_bus_fd_, 0x00, 0x20);
+    pcontrol->write_byte_data(motor_bus_fd_, 0x00, 0x20);
 
     int prescale = static_cast<int>(std::floor(25000000.0 / 4096.0 / 100 - 1));
     int oldmode = read_byte_data(motor_bus_fd_, 0x00);
     int newmode = (oldmode & 0x7F) | 0x10;
 
-    write_byte_data(motor_bus_fd_, 0x00, newmode);
-    // usleep(100000);
-    write_byte_data(motor_bus_fd_, 0xFE, prescale);
-    // usleep(100000);
-    write_byte_data(motor_bus_fd_, 0x00, oldmode);
+    pcontrol->write_byte_data(motor_bus_fd_, 0x00, newmode);
+    pcontrol->write_byte_data(motor_bus_fd_, 0xFE, prescale);
+    pcontrol->write_byte_data(motor_bus_fd_, 0x00, oldmode);
     usleep(5000);
-    write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1);
-    // usleep(100000);
-}
+    pcontrol->write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1);
+} */
 
-void EngineController::set_servo_pwm(int channel, int on_value, int off_value)
+/* void EngineController::set_servo_pwm(int channel, int on_value, int off_value)
 {
     int base_reg = 0x06 + (channel * 4);
     write_byte_data(servo_bus_fd_, base_reg, on_value & 0xFF);
     write_byte_data(servo_bus_fd_, base_reg + 1, on_value >> 8);
     write_byte_data(servo_bus_fd_, base_reg + 2, off_value & 0xFF);
     write_byte_data(servo_bus_fd_, base_reg + 3, off_value >> 8);
-}
+} */
 
-void EngineController::set_motor_pwm(int channel, int value)
+/* void EngineController::set_motor_pwm(int channel, int value)
 {
     value = clamp(value, 0, 4096);
     int base_reg = 0x06 + (4 * channel);
     // qDebug() << "Set motor pwm to " << value << "in channel " << channel;
     write_byte_data(motor_bus_fd_, base_reg, value & 0xFF);
     write_byte_data(motor_bus_fd_, base_reg + 1, value >> 8);
-}
+} */
 
-void EngineController::write_byte_data(int fd, int reg, int value)
+/* void EngineController::write_byte_data(int fd, int reg, int value)
 {
     if (isDisabled()) {
         std::cerr << "EngineController is disabled. Cannot write byte data." << std::endl;
@@ -268,9 +268,9 @@ void EngineController::write_byte_data(int fd, int reg, int value)
     if (i2c_smbus_write_byte_data(fd, reg, value) < 0) {
         throw std::runtime_error("I2C write failed");
     }
-}
+} */
 
-int EngineController::read_byte_data(int fd, int reg)
+/* int EngineController::read_byte_data(int fd, int reg)
 {
     if (isDisabled()) {
         std::cerr << "EngineController is disabled. Cannot read byte data." << std::endl;
@@ -282,4 +282,4 @@ int EngineController::read_byte_data(int fd, int reg)
         throw std::runtime_error("I2C read failed");
     }
     return result;
-}
+} */

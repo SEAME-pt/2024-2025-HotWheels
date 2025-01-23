@@ -4,6 +4,7 @@
 #include <QObject>
 #include "enums.hpp"
 #include <atomic>
+#include "PeripheralController.hpp"
 
 class EngineController : public QObject
 {
@@ -27,19 +28,21 @@ private:
     CarDirection m_currentDirection = CarDirection::Stop;
     bool m_disabled = false;
 
-    virtual void write_byte_data(int fd, int reg, int value);
+    /* virtual void write_byte_data(int fd, int reg, int value);
     virtual int read_byte_data(int fd, int reg);
 
     void set_servo_pwm(int channel, int on_value, int off_value);
     void set_motor_pwm(int channel, int value);
 
     void init_servo();
-    void init_motors();
+    void init_motors(); */
 
     void disable();
     bool isDisabled() const;
 
     void setDirection(CarDirection newDirection);
+
+    PeripheralController *pcontrol;
 
 public:
     EngineController(int servo_addr, int motor_addr, QObject *parent = nullptr);
