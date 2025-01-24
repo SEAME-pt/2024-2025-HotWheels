@@ -231,13 +231,10 @@ void EngineController::init_motors()
     int newmode = (oldmode & 0x7F) | 0x10;
 
     write_byte_data(motor_bus_fd_, 0x00, newmode);
-    // usleep(100000);
     write_byte_data(motor_bus_fd_, 0xFE, prescale);
-    // usleep(100000);
     write_byte_data(motor_bus_fd_, 0x00, oldmode);
     usleep(5000);
     write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1);
-    // usleep(100000);
 }
 
 void EngineController::set_servo_pwm(int channel, int on_value, int off_value)
@@ -251,11 +248,11 @@ void EngineController::set_servo_pwm(int channel, int on_value, int off_value)
 
 void EngineController::set_motor_pwm(int channel, int value)
 {
-    value = clamp(value, 0, 4096);
-    int base_reg = 0x06 + (4 * channel);
-    // qDebug() << "Set motor pwm to " << value << "in channel " << channel;
-    write_byte_data(motor_bus_fd_, base_reg, value & 0xFF);
-    write_byte_data(motor_bus_fd_, base_reg + 1, value >> 8);
+    value = clamp(value, 0, 4095);
+    write_byte_data(motor_bus_fd_, 0x06 + (4 * channel), 0);
+    write_byte_data(motor_bus_fd_, 0x07 + (4 * channel), 0);
+    write_byte_data(motor_bus_fd_, 0x08 + (4 * channel), value & 0xFF);
+    write_byte_data(motor_bus_fd_, 0x09 + (4 * channel), value >> 8);
 }
 
 void EngineController::write_byte_data(int fd, int reg, int value)

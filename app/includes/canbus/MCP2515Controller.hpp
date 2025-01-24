@@ -7,10 +7,11 @@
 #include "SPIController.hpp"
 #include <string>
 
-class MCP2515Controller : public QObject {
+class MCP2515Controller : public QObject
+{
     Q_OBJECT
 public:
-    explicit MCP2515Controller(const std::string &spiDevice, SPIController &spiController);
+    explicit MCP2515Controller(const std::string &spiDevice);
     ~MCP2515Controller();
 
     bool init();
@@ -22,7 +23,7 @@ signals:
     void rpmUpdated(int newRpm);
 
 private:
-    SPIController &spiController;
+    SPIController spiController;
     MCP2515Configurator configurator;
     CANMessageProcessor messageProcessor;
     bool stopReadingFlag = false;

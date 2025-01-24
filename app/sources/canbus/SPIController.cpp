@@ -22,7 +22,7 @@ bool SPIController::openDevice(const std::string &device)
 {
     spi_fd = open(device.c_str(), O_RDWR);
     if (spi_fd < 0) {
-        perror("Failed to open SPI device");
+        throw std::runtime_error("Failed to open SPI device");
         return false;
     }
     return true;
@@ -79,7 +79,6 @@ void SPIController::spiTransfer(const uint8_t *tx, uint8_t *rx, size_t length)
     transfer.bits_per_word = bits;
 
     if (ioctl(spi_fd, SPI_IOC_MESSAGE(1), &transfer) < 0) {
-        perror("SPI transfer failed");
         throw std::runtime_error("SPI transfer error");
     }
 }
