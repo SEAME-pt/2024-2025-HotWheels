@@ -18,10 +18,13 @@ TESTS_PATH = app_tests
 
 SOURCES += \
     $$TESTS_PATH/unit/test_SPIController.cpp \
-    sources/canbus/SPIController.cpp
+    $$TESTS_PATH/integration/test_MCP2515Controller.cpp \
+    sources/canbus/SPIController.cpp \
+    sources/canbus/MCP2515Configurator.cpp  # Add this line
 
 HEADERS += \
     $$TESTS_PATH/mocks/MockSPI.hpp \
+    includes/canbus/MCP2515Configurator.hpp \
     includes/canbus/SPIController.hpp
 
 # Link GTest and GMock
