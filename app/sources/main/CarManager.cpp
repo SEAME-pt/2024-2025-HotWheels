@@ -10,6 +10,7 @@ CarManager::CarManager(QWidget *parent)
     , m_controlsManager(new ControlsManager())
     , m_displayManager(nullptr)
     , m_systemManager(new SystemManager(this))
+    , m_mileageManager(new MileageManager("/home/hotweels/app_data/mileage.json"))
 {
     ui->setupUi(this);
     initializeComponents();
@@ -21,6 +22,7 @@ CarManager::~CarManager()
     delete m_controlsManager;
     delete m_canBusManager;
     delete m_dataManager;
+    delete m_mileageManager;
     delete ui;
 }
 
@@ -31,6 +33,7 @@ void CarManager::initializeComponents()
     initializeControlsManager();
     initializeDisplayManager();
     initializeSystemManager();
+    initializeMileageManager();
     qDebug() << "[Main] HotWheels Cluster operational.";
 }
 
@@ -131,6 +134,11 @@ void CarManager::initializeDisplayManager()
                 m_displayManager,
                 &DisplayManager::updateClusterMetrics);
 
+        connect(m_dataManager,
+                &DataManager::mileageUpdated,
+                m_displayManager,
+                &DisplayManager::updateMileage);
+
         // Connect DisplayManager toggle signals to DataManager slots
         connect(m_displayManager,
                 &DisplayManager::drivingModeToggled,
@@ -181,3 +189,21 @@ void CarManager::initializeSystemManager()
     }
 }
 
+void CarManager::initializeMileageManager()
+{
+    if (m_mileageManager) {
+        m_mileageManager->initialize();
+
+        // Connect CanBusManager signals to MileageManager slots
+        connect(m_canBusManager,
+                &CanBusManager::speedUpdated,
+                m_mileageManager,
+                &MileageManager::onSpeedUpdated);
+
+        // Connect MileageManager signals to DataManager slots
+        connect(m_mileageManager,
+                &MileageManager::mileageUpdated,
+                m_dataManager,
+                &DataManager::handleMileageUpdate);
+    }
+}

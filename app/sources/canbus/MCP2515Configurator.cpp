@@ -1,10 +1,10 @@
 #include "MCP2515Configurator.hpp"
-#include <stdexcept>
 #include <thread>
 #include <chrono>
 
-MCP2515Configurator::MCP2515Configurator(ISPIController& spiController)
-    : spiController(spiController) {}
+MCP2515Configurator::MCP2515Configurator(SPIController &spiController)
+    : spiController(spiController)
+{}
 
 bool MCP2515Configurator::resetChip() {
     sendCommand(RESET_CMD);
