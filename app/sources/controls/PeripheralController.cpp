@@ -24,9 +24,32 @@ T clamp(T value, T min_val, T max_val)
     return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
 }
 
-PeripheralController::PeripheralController(QObject *parent) : QObject(parent) {}
+PeripheralController::PeripheralController(int servo_addr, int motor_addr)
+    : servo_addr_(servo_addr)
+    , motor_addr_(motor_addr)
+{
+    // Initialize I2C buses
+    servo_bus_fd_ = open("/dev/i2c-1", O_RDWR);
+    motor_bus_fd_ = open("/dev/i2c-1", O_RDWR);
 
-PeripheralController::~PeripheralController() {}
+    if (servo_bus_fd_ < 0 || motor_bus_fd_ < 0) {
+        throw std::runtime_error("Failed to open I2C device");
+        return;
+    }
+
+    // Set device addresses
+    if (ioctl(servo_bus_fd_, I2C_SLAVE, servo_addr_) < 0
+        || ioctl(motor_bus_fd_, I2C_SLAVE, motor_addr_) < 0) {
+        throw std::runtime_error("Failed to set I2C address");
+        return;
+    }
+}
+
+PeripheralController::~PeripheralController()
+{
+    close(servo_bus_fd_);
+    close(motor_bus_fd_);
+}
 
 int PeripheralController::i2c_smbus_write_byte_data(int file, uint8_t command, uint8_t value)
 {
@@ -58,25 +81,15 @@ int PeripheralController::i2c_smbus_read_byte_data(int file, uint8_t command)
     return data.byte;
 }
 
-void PeripheralController::write_byte_data(int fd, int reg, int value, bool disabled)
+void PeripheralController::write_byte_data(int fd, int reg, int value)
 {
-    if (disabled) {
-        std::cerr << "EngineController is disabled. Cannot write byte data." << std::endl;
-        return;
-    }
-
     if (i2c_smbus_write_byte_data(fd, reg, value) < 0) {
         throw std::runtime_error("I2C write failed");
     }
 }
 
-int PeripheralController::read_byte_data(int fd, int reg, bool disabled)
+int PeripheralController::read_byte_data(int fd, int reg)
 {
-    if (disabled) {
-        std::cerr << "EngineController is disabled. Cannot read byte data." << std::endl;
-        return 0;
-    }
-
     int result = i2c_smbus_read_byte_data(fd, reg);
     if (result < 0) {
         throw std::runtime_error("I2C read failed");
@@ -84,53 +97,53 @@ int PeripheralController::read_byte_data(int fd, int reg, bool disabled)
     return result;
 }
 
-void PeripheralController::set_servo_pwm(int channel, int on_value, int off_value, int servo_bus_fd_, bool disabled)
+void PeripheralController::set_servo_pwm(int channel, int on_value, int off_value)
 {
     int base_reg = 0x06 + (channel * 4);
-    write_byte_data(servo_bus_fd_, base_reg, on_value & 0xFF, disabled);
-    write_byte_data(servo_bus_fd_, base_reg + 1, on_value >> 8, disabled);
-    write_byte_data(servo_bus_fd_, base_reg + 2, off_value & 0xFF, disabled);
-    write_byte_data(servo_bus_fd_, base_reg + 3, off_value >> 8, disabled);
+    write_byte_data(servo_bus_fd_, base_reg, on_value & 0xFF);
+    write_byte_data(servo_bus_fd_, base_reg + 1, on_value >> 8);
+    write_byte_data(servo_bus_fd_, base_reg + 2, off_value & 0xFF);
+    write_byte_data(servo_bus_fd_, base_reg + 3, off_value >> 8);
 }
 
-void PeripheralController::set_motor_pwm(int channel, int value, int motor_bus_fd_, bool disabled)
+void PeripheralController::set_motor_pwm(int channel, int value)
 {
     value = clamp(value, 0, 4096);
     int base_reg = 0x06 + (4 * channel);
     // qDebug() << "Set motor pwm to " << value << "in channel " << channel;
-    write_byte_data(motor_bus_fd_, base_reg, value & 0xFF, disabled);
-    write_byte_data(motor_bus_fd_, base_reg + 1, value >> 8, disabled);
+    write_byte_data(motor_bus_fd_, base_reg, value & 0xFF);
+    write_byte_data(motor_bus_fd_, base_reg + 1, value >> 8);
 }
 
-void PeripheralController::init_servo(int servo_bus_fd_, bool disabled)
+void PeripheralController::init_servo()
 {
-    write_byte_data(servo_bus_fd_, 0x00, 0x06, disabled);
+    write_byte_data(servo_bus_fd_, 0x00, 0x06);
     usleep(100000);
 
-    write_byte_data(servo_bus_fd_, 0x00, 0x10, disabled);
+    write_byte_data(servo_bus_fd_, 0x00, 0x10);
     usleep(100000);
 
-    write_byte_data(servo_bus_fd_, 0xFE, 0x79, disabled);
+    write_byte_data(servo_bus_fd_, 0xFE, 0x79);
     usleep(100000);
 
-    write_byte_data(servo_bus_fd_, 0x01, 0x04, disabled);
+    write_byte_data(servo_bus_fd_, 0x01, 0x04);
     usleep(100000);
 
-    write_byte_data(servo_bus_fd_, 0x00, 0x20, disabled);
+    write_byte_data(servo_bus_fd_, 0x00, 0x20);
     usleep(100000);
 }
 
-void PeripheralController::init_motors(int motor_bus_fd_, bool disabled)
+void PeripheralController::init_motors()
 {
-    write_byte_data(motor_bus_fd_, 0x00, 0x20, disabled);
+    write_byte_data(motor_bus_fd_, 0x00, 0x20);
 
     int prescale = static_cast<int>(std::floor(25000000.0 / 4096.0 / 100 - 1));
-    int oldmode = read_byte_data(motor_bus_fd_, 0x00, disabled);
+    int oldmode = read_byte_data(motor_bus_fd_, 0x00);
     int newmode = (oldmode & 0x7F) | 0x10;
 
-    write_byte_data(motor_bus_fd_, 0x00, newmode, disabled);
-    write_byte_data(motor_bus_fd_, 0xFE, prescale, disabled);
-    write_byte_data(motor_bus_fd_, 0x00, oldmode, disabled);
+    write_byte_data(motor_bus_fd_, 0x00, newmode);
+    write_byte_data(motor_bus_fd_, 0xFE, prescale);
+    write_byte_data(motor_bus_fd_, 0x00, oldmode);
     usleep(5000);
-    write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1, disabled);
+    write_byte_data(motor_bus_fd_, 0x00, oldmode | 0xa1);
 }

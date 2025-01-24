@@ -44,6 +44,7 @@ HEADERS += \
     includes/controls/JoysticksController.hpp \
     includes/controls/EngineController.hpp \
     includes/controls/PeripheralController.hpp \
+    includes/controls/IPeripheralController.hpp \
     includes/display/DisplayManager.hpp \
     includes/system/SystemManager.hpp \
     includes/system/BatteryController.hpp \
