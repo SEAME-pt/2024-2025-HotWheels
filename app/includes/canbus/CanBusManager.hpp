@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QThread>
 #include "MCP2515Controller.hpp"
-#include "SPIController.hpp"
 
 class CanBusManager : public QObject
 {
@@ -20,7 +19,6 @@ signals:
     void rpmUpdated(int newRpm);
 
 private:
-    SPIController *m_spiController = nullptr;
     MCP2515Controller *m_controller = nullptr;
     QThread *m_thread = nullptr;
 };

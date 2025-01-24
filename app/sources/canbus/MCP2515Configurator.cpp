@@ -1,5 +1,4 @@
 #include "MCP2515Configurator.hpp"
-#include <stdexcept>
 #include <thread>
 #include <chrono>
 

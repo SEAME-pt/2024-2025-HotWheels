@@ -4,9 +4,7 @@
 CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
     : QObject(parent)
 {
-    m_spiController = new SPIController(); // Instantiate SPIController
-
-    m_controller = new MCP2515Controller(spi_device, *m_spiController); // Pass SPIController to MCP2515Controller
+    m_controller = new MCP2515Controller(spi_device);
 
     connect(m_controller, &MCP2515Controller::speedUpdated, this, &CanBusManager::speedUpdated);
     connect(m_controller, &MCP2515Controller::rpmUpdated, this, &CanBusManager::rpmUpdated);
@@ -24,7 +22,6 @@ CanBusManager::~CanBusManager()
     }
 
     delete m_controller;
-    delete m_spiController;
     delete m_thread;
 }
 
