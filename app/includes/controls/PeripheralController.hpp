@@ -24,6 +24,9 @@ class PeripheralController : public QObject
         PeripheralController(int servo_addr, int motor_addr, QObject *parent = nullptr);
         ~PeripheralController();
 
+        int i2c_smbus_write_byte_data(int file, uint8_t command, uint8_t value);
+        int i2c_smbus_read_byte_data(int file, uint8_t command);
+
         virtual void write_byte_data(int fd, int reg, int value, bool disabled);
         virtual int read_byte_data(int fd, int reg, bool disabled);
 

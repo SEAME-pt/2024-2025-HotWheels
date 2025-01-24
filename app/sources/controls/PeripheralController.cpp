@@ -18,7 +18,17 @@ union i2c_smbus_data {
 #define I2C_SMBUS_READ 1
 #define I2C_SMBUS_BYTE_DATA 2
 
-int i2c_smbus_write_byte_data(int file, uint8_t command, uint8_t value)
+template<typename T>
+T clamp(T value, T min_val, T max_val)
+{
+    return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
+}
+
+PeripheralController::PeripheralController(QObject *parent) : QObject(parent) {}
+
+PeripheralController::~PeripheralController() {}
+
+int PeripheralController::i2c_smbus_write_byte_data(int file, uint8_t command, uint8_t value)
 {
     union i2c_smbus_data data;
     data.byte = value;
@@ -32,7 +42,7 @@ int i2c_smbus_write_byte_data(int file, uint8_t command, uint8_t value)
     return ioctl(file, I2C_SMBUS, &args);
 }
 
-int i2c_smbus_read_byte_data(int file, uint8_t command)
+int PeripheralController::i2c_smbus_read_byte_data(int file, uint8_t command)
 {
     union i2c_smbus_data data;
 
@@ -47,16 +57,6 @@ int i2c_smbus_read_byte_data(int file, uint8_t command)
     }
     return data.byte;
 }
-
-template<typename T>
-T clamp(T value, T min_val, T max_val)
-{
-    return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
-}
-
-PeripheralController::PeripheralController(QObject *parent) : QObject(parent) {}
-
-PeripheralController::~PeripheralController() {}
 
 void PeripheralController::write_byte_data(int fd, int reg, int value, bool disabled)
 {

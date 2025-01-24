@@ -20,14 +20,15 @@ SOURCES += \
     $$TESTS_PATH/unit/test_SPIController.cpp \
     sources/canbus/SPIController.cpp \
     $$TESTS_PATH/unit/test_EngineController.cpp \
-    sources/controls/EngineController.cpp
+    sources/controls/EngineController.cpp \
+    sources/controls/PeripheralController.cpp \
+    $$OUT_PWD/moc_EngineController.cpp \
+    $$OUT_PWD/moc_PeripheralController.cpp
 
 
 HEADERS += \
     $$TESTS_PATH/mocks/MockSPI.hpp \
-    includes/canbus/SPIController.hpp \
     $$TESTS_PATH/mocks/MockEngine.hpp \
-    includes/controls/EngineController.hpp
 
 # Link GTest and GMock
 LIBS += -lgmock_main -lgtest_main -lpthread -lgmock -lgtest

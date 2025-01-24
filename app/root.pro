@@ -13,3 +13,4 @@ app_target.file = $$BASE_DIR/HotWheels-app.pro
 
 # Tests Subproject
 tests_target.file = $$BASE_DIR/HotWheels-tests.pro
+tests_target.depends = app_target

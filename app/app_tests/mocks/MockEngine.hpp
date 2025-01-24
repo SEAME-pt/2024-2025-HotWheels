@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <EngineController.hpp>
+#include "EngineController.hpp"
 
 // Mock for i2c functions
 class I2CMock {

@@ -63,6 +63,8 @@ T clamp(T value, T min_val, T max_val)
     return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
 }
 
+EngineController::EngineController() {}
+
 EngineController::EngineController(int servo_addr, int motor_addr, QObject *parent)
     : QObject(parent)
     , servo_addr_(servo_addr)

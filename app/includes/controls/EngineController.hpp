@@ -45,6 +45,7 @@ private:
     PeripheralController *pcontrol;
 
 public:
+    EngineController();
     EngineController(int servo_addr, int motor_addr, QObject *parent = nullptr);
     ~EngineController();
 
