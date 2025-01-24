@@ -1,4 +1,4 @@
-#include "MockSPI.hpp"
+#include "MockSPIController.hpp"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
@@ -8,7 +8,7 @@ using ::testing::Return;
 class SPIControllerTest : public ::testing::Test
 {
 protected:
-    MockSPI mockSPI;
+    MockSPIController mockSPI;
 };
 
 TEST_F(SPIControllerTest, OpenDeviceSuccess)
@@ -19,8 +19,8 @@ TEST_F(SPIControllerTest, OpenDeviceSuccess)
 
 TEST_F(SPIControllerTest, OpenDeviceFailure)
 {
-    EXPECT_CALL(mockSPI, openDevice("/nonexistent/spidev0.0")).WillOnce(Return(false));
-    ASSERT_FALSE(mockSPI.openDevice("/nonexistent/spidev0.0"));
+    EXPECT_CALL(mockSPI, openDevice("/nonexistent-device/spidev0.0")).WillOnce(Return(false));
+    ASSERT_FALSE(mockSPI.openDevice("/nonexistent-device/spidev0.0"));
 }
 
 TEST_F(SPIControllerTest, ConfigureSPIValidParameters)
