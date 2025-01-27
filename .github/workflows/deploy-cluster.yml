@@ -37,7 +37,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cd app/build
+          ls
           ./HotWheels-tests
 
       - name: Deploy executable to target
