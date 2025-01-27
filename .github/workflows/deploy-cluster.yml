@@ -32,7 +32,7 @@ jobs:
           cd app
           mkdir build
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
+          ~/qtjetson/qt5.15/bin/qmake ../root.pro
           make -j$(nproc)
 
       - name: Run tests
