@@ -1,24 +1,16 @@
 name: Cross-Compile Cluster to aarch64
 
-#on:
-#  push:
-#    branches:
-#      - main
-#    paths:
-#      - 'app/**'
-#  pull_request:
-#    branches:
-#      - main
-#    paths:
-#      - 'app/**'
-
 on:
   push:
     branches:
-      - fixing-actions
+      - main
+    paths:
+      - 'app/**'
   pull_request:
     branches:
-      - fixing-actions
+      - main
+    paths:
+      - 'app/**'
 
 jobs:
   run-on-self-hosted:
