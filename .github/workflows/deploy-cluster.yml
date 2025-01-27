@@ -1,16 +1,24 @@
 name: Cross-Compile Cluster to aarch64
 
+#on:
+#  push:
+#    branches:
+#      - main
+#    paths:
+#      - 'app/**'
+#  pull_request:
+#    branches:
+#      - main
+#    paths:
+#      - 'app/**'
+
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - fixing-actions
   pull_request:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - fixing-actions
 
 jobs:
   run-on-self-hosted:
@@ -26,6 +34,11 @@ jobs:
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
           make -j$(nproc)
+
+      - name: Run tests
+        run: |
+          cd app/build
+          ./HotWheels-tests
 
       - name: Deploy executable to target
         run: |
