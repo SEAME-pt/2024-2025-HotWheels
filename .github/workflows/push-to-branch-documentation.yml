@@ -31,8 +31,8 @@ jobs:
 
     - name: Move generated documentation files to docs directory
       run: |
-        ls
         cd docs
+        ls
         mv html/* .
         rm -r html
 
