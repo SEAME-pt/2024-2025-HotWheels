@@ -16,6 +16,16 @@ jobs:
     - name: Install Doxygen
       run: sudo apt-get install -y doxygen
 
+    - name: Update Doxyfile Paths
+      run: |
+        # Define paths for INPUT and OUTPUT_DIRECTORY
+        INPUT_PATH="app"                   # Replace 'src' with your source code directory
+        OUTPUT_DIR="docs"        # Directory to store Doxygen output
+
+        # Update INPUT and OUTPUT_DIRECTORY in the Doxyfile
+        sed -i "s|^INPUT .*|INPUT = $INPUT_PATH|" Doxyfile
+        sed -i "s|^OUTPUT_DIRECTORY .*|OUTPUT_DIRECTORY = $OUTPUT_DIR|" Doxyfile
+
     - name: Generate Documentation
       run: doxygen Doxyfile
 
