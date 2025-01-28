@@ -29,6 +29,11 @@ jobs:
     - name: Generate Documentation
       run: doxygen Doxyfile
 
+    - name: Move generated documentation files to docs/
+      run: |
+        mv docs/html/* docs/
+        rm -r docs/html
+
     - name: Configure Git User
       run: |
         git config --global user.email "tiagosodrepereira@gmail.com"
@@ -38,7 +43,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        DOC_BRANCH="docs"
+        DOC_BRANCH="test-action"
 
         # Configure remote with GITHUB_TOKEN for authentication
         git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
