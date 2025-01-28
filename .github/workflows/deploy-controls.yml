@@ -4,13 +4,9 @@ name: Cross-Compile Car Controls to aarch64
   push:
     branches:
       - solve-car-controls-problem
-    #paths:
-      #- 'car_controls/**'
   pull_request:
     branches:
       - solve-car-controls-problem
-    #paths:
-      #- 'car_controls/**'
 
 jobs:
   build:
