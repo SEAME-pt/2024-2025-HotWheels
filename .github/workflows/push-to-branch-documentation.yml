@@ -29,6 +29,11 @@ jobs:
     - name: Generate Documentation
       run: doxygen Doxyfile
 
+    - name: Configure Git User
+      run: |
+        git config --global user.email "tiagosodrepereira@gmail.com"
+        git config --global user.name "Tiago Pereira"
+
     - name: Push All Files to Docs Branch
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
