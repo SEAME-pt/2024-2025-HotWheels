@@ -29,8 +29,9 @@ jobs:
     - name: Generate Documentation
       run: doxygen Doxyfile
 
-    - name: Move generated documentation files to docs/
+    - name: Move generated documentation files to docs directory
       run: |
+        ls
         cd docs
         mv html/* .
         rm -r html
