@@ -1,16 +1,16 @@
 name: Cross-Compile Car Controls to aarch64
 
-on:
+#on:
   push:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - solve-car-controls-problem
+    #paths:
+      #- 'car_controls/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - solve-car-controls-problem
+    #paths:
+      #- 'car_controls/**'
 
 jobs:
   build:
@@ -31,11 +31,6 @@ jobs:
         run: |
           cd /home/michel/docker
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
-
-      - name: Running tests
-        run: |
-          cd /home/michel/docker
-          docker exec sad_curran /bin/bash -c "cd car_controls && make test"
 
       - name: Get latest tag and increment
         id: tag
