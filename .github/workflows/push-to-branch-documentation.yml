@@ -31,7 +31,7 @@ jobs:
 
     - name: Move generated documentation files to docs/
       run: |
-        mv docs/html/* docs/
+        mv docs/html/* docs
         rm -r docs/html
 
     - name: Configure Git User
