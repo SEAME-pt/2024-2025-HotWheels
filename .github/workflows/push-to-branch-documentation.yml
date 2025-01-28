@@ -36,19 +36,22 @@ jobs:
 
     - name: Push All Files to Docs Branch
       env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        # Define the branch name where the files will be synced
-        DOC_BRANCH="test-action"
+        DOC_BRANCH="docs"
 
-        # Fetch the latest version of the docs branch, or create it if it doesn't exist
+        # Configure remote with GITHUB_TOKEN for authentication
+        git remote set-url origin https://x-access-token:${ACCESS_TOKEN}@github.com/${{ github.repository }}
+
+        # Fetch or create the docs branch
         git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
         git checkout -B $DOC_BRANCH
 
-        # Copy all files from the current branch to the docs branch
+        # Sync all files, including the generated documentation
         rsync -av --delete --exclude '.git' . .
 
-        # Commit and push changes
         git add .
         git commit -m "Sync code and documentation from main branch"
+
+        # Push changes to the docs branch
         git push origin $DOC_BRANCH --force
