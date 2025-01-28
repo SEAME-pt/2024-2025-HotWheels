@@ -36,7 +36,7 @@ jobs:
 
     - name: Push All Files to Docs Branch
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         DOC_BRANCH="docs"
 
