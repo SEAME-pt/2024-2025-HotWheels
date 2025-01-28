@@ -1,6 +1,6 @@
 name: Cross-Compile Car Controls to aarch64
 
-#on:
+on:
   push:
     branches:
       - solve-car-controls-problem
