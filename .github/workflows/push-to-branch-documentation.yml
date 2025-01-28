@@ -36,12 +36,12 @@ jobs:
 
     - name: Push All Files to Docs Branch
       env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         DOC_BRANCH="docs"
 
         # Configure remote with GITHUB_TOKEN for authentication
-        git remote set-url origin https://x-access-token:${ACCESS_TOKEN}@github.com/${{ github.repository }}
+        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
 
         # Fetch or create the docs branch
         git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
