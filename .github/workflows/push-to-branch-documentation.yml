@@ -1,0 +1,39 @@
+name: Sync Code and Documentation
+
+on:
+  push:
+    branches:
+      - code-documentation
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Doxygen
+      run: sudo apt-get install -y doxygen
+
+    - name: Generate Documentation
+      run: doxygen Doxyfile
+
+    - name: Push All Files to Docs Branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      run: |
+        # Define the branch name where the files will be synced
+        DOC_BRANCH="test-action"
+
+        # Fetch the latest version of the docs branch, or create it if it doesn't exist
+        git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
+        git checkout -B $DOC_BRANCH
+
+        # Copy all files from the current branch to the docs branch
+        rsync -av --delete --exclude '.git' . .
+
+        # Commit and push changes
+        git add .
+        git commit -m "Sync code and documentation from main branch"
+        git push origin $DOC_BRANCH --force
