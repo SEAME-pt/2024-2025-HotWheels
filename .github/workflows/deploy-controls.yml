@@ -27,6 +27,7 @@ jobs:
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
           ls
+          pwd
 
       #- name: Deploy executable to target
         #run: |
