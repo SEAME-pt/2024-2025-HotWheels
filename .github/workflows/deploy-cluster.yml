@@ -3,14 +3,14 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - solve-car-controls-problem
-    #paths:
-      #- 'car_controls/**'
+      - main
+    paths:
+      - 'app/**'
   pull_request:
     branches:
-      - solve-car-controls-problem
-    #paths:
-      - 'car_controls/**'
+      - main
+    paths:
+      - 'app/**'
 
 jobs:
   run-on-self-hosted:
@@ -21,12 +21,17 @@ jobs:
 
       - name: Build arm64 executable
         run: |
-          cd car_controls
+          cd app
           mkdir build
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
+          ~/qtjetson/qt5.15/bin/qmake ../root.pro
           make -j$(nproc)
+
+      - name: Run tests
+        run: |
+          cd app/build
+          ./HotWheels-tests
 
       - name: Deploy executable to target
         run: |
-          rsync -avz --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt $JETSON:/home/hotweels/apps
+          rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app $JETSON:/home/hotweels/apps/
