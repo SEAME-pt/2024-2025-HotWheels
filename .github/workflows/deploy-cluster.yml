@@ -14,7 +14,7 @@ on:
 
 jobs:
   run-on-self-hosted:
-    runs-on: [self-hosted, seame-computer-1]
+    runs-on: [self-hosted, seame-computer-2]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -32,6 +32,6 @@ jobs:
           cd app/build
           ./HotWheels-tests
 
-      - name: Deploy executable to target
-        run: |
-          rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app $JETSON:/home/hotweels/apps/
+      #- name: Deploy executable to target
+        #run: |
+          #rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app $JETSON:/home/hotweels/apps/

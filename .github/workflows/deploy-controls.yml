@@ -26,3 +26,7 @@ jobs:
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
+
+      #- name: Deploy executable to target
+        #run: |
+          #rsync -avz --rsync-path="sudo rsync" --delete app/build/car-controls-qt $JETSON:/home/hotweels/apps/
