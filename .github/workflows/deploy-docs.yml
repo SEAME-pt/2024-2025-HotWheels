@@ -62,20 +62,16 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3  # Use actions/upload-artifact instead
-        with:
-          name: github-pages  # Name of the artifact
-          path: 'docs'        # Assuming the Doxygen output is in the 'docs' directory
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          token: ${{ secrets.GH_ACTIONS_PAGE }}  # Ensure this secret exists in your repository settings
+          token: ${{ secrets.GH_ACTIONS_PAGE }}
+          artifact_name: github-pages
