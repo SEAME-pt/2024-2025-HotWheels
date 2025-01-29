@@ -24,6 +24,9 @@ jobs:
       - name: List files in docs directory
         run: ls -la docs  # Ensure this is where your output is
 
+      - name: Remove symlinks
+        run: find docs -type l -exec rm -f {} \;
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -47,8 +50,11 @@ jobs:
         with:
           name: github-pages
 
-      - name: List files in docs directory
-        run: ls -la   # Ensure this is where your output is
+      - name: Verify artifact contents
+        run: |
+          mkdir -p artifact_contents
+          tar -xvf github-pages -C artifact_contents
+          ls -la artifact_contents
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -59,3 +65,6 @@ jobs:
         with:
           token: ${{ secrets.GH_ACTIONS_PAGE }}
           artifact_name: github-pages
+          timeout: 600000
+          error_count: 10
+          reporting_interval: 5000
