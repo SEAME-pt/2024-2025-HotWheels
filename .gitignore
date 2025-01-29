@@ -1,4 +1,4 @@
-build
+*build
 app/root.pro.user
-Doxyfile
-.vscode/
+*.vscode/
+*.qtcreator

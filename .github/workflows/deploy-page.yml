@@ -1,0 +1,53 @@
+name: Sync Code and Documentation
+
+on:
+  push:
+    branches:
+      - page
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Doxygen
+      run: sudo apt-get install -y doxygen
+
+    - name: Update Doxyfile Paths
+      run: |
+        # Define paths for INPUT and OUTPUT_DIRECTORY
+        INPUT_PATH="app"                   # Replace 'src' with your source code directory
+        OUTPUT_DIR="docs"        # Directory to store Doxygen output
+        # Update INPUT and OUTPUT_DIRECTORY in the Doxyfile
+        sed -i "s|^INPUT .*|INPUT = $INPUT_PATH|" Doxyfile
+        sed -i "s|^OUTPUT_DIRECTORY .*|OUTPUT_DIRECTORY = $OUTPUT_DIR|" Doxyfile
+    - name: Generate Documentation
+      run: doxygen Doxyfile
+
+    - name: Move generated documentation files to docs directory
+      run: |
+        cd docs
+        ls
+    - name: Configure Git User
+      run: |
+        git config --global user.email "tiagosodrepereira@gmail.com"
+        git config --global user.name "Tiago Pereira"
+    - name: Push All Files to Docs Branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        DOC_BRANCH="test-action"
+        # Configure remote with GITHUB_TOKEN for authentication
+        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+        # Fetch or create the docs branch
+        git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
+        git checkout -B $DOC_BRANCH
+        # Sync all files, including the generated documentation
+        rsync -av --delete --exclude '.git' . .
+        git add .
+        git commit -m "Sync code and documentation from main branch"
+        # Push changes to the docs branch
+        git push origin $DOC_BRANCH --force
