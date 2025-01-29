@@ -6,11 +6,14 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-SPIController::SPIController()
+SPIController::SPIController(IoctlFunc ioctlFunc, OpenFunc openFunc, CloseFunc closeFunc)
     : spi_fd(-1)
     , mode(DefaultMode)
     , bits(DefaultBitsPerWord)
     , speed(DefaultSpeedHz)
+    , m_ioctlFunc(ioctlFunc)
+    , m_openFunc(openFunc)
+    , m_closeFunc(closeFunc)
 {}
 
 SPIController::~SPIController()
@@ -20,10 +23,9 @@ SPIController::~SPIController()
 
 bool SPIController::openDevice(const std::string &device)
 {
-    spi_fd = open(device.c_str(), O_RDWR);
+    spi_fd = m_openFunc(device.c_str(), O_RDWR);
     if (spi_fd < 0) {
         throw std::runtime_error("Failed to open SPI device");
-        return false;
     }
     return true;
 }
@@ -38,15 +40,15 @@ void SPIController::configure(uint8_t mode, uint8_t bits, uint32_t speed)
     this->bits = bits;
     this->speed = speed;
 
-    if (ioctl(spi_fd, SPI_IOC_WR_MODE, &mode) < 0) {
+    if (m_ioctlFunc(spi_fd, SPI_IOC_WR_MODE, &mode) < 0) {
         throw std::runtime_error("Failed to set SPI mode");
     }
 
-    if (ioctl(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &bits) < 0) {
+    if (m_ioctlFunc(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &bits) < 0) {
         throw std::runtime_error("Failed to set SPI bits per word");
     }
 
-    if (ioctl(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed) < 0) {
+    if (m_ioctlFunc(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed) < 0) {
         throw std::runtime_error("Failed to set SPI speed");
     }
 }
@@ -78,7 +80,7 @@ void SPIController::spiTransfer(const uint8_t *tx, uint8_t *rx, size_t length)
     transfer.speed_hz = speed;
     transfer.bits_per_word = bits;
 
-    if (ioctl(spi_fd, SPI_IOC_MESSAGE(1), &transfer) < 0) {
+    if (m_ioctlFunc(spi_fd, SPI_IOC_MESSAGE(1), &transfer) < 0) {
         throw std::runtime_error("SPI transfer error");
     }
 }
@@ -86,7 +88,7 @@ void SPIController::spiTransfer(const uint8_t *tx, uint8_t *rx, size_t length)
 void SPIController::closeDevice()
 {
     if (spi_fd >= 0) {
-        close(spi_fd);
+        m_closeFunc(spi_fd);
         spi_fd = -1;
     }
 }
