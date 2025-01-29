@@ -1,67 +1,23 @@
-name: Deploy Documentation
+name: Build Documentation
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'app/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'app/**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  run-on-self-hosted:
+    runs-on: [self-hosted, seame-computer-1]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Go to the repository
+        run: cd ~/Documents/${{ github.repository }}
 
-      # - name: Install Doxygen
-      #   run: sudo apt-get install -y doxygen
-
-      # - name: Install Graphviz
-      #   run: sudo apt-get install -y graphviz
-
-      # - name: Run Doxygen
-      #   run: doxygen Doxyfile
-
-      - name: List files in docs directory
-        run: ls -la docs  # Ensure this is where your output is
-
-      - name: creating artifacts.tar
-        run: tar -cvf artifacts.tar docs
-
-      - name: Remove symlinks
-        run: find docs -type l -exec rm -f {} \;
-
-      - name: Upload artifact.tar
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: artifacts.tar
-        
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: github-pages
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GH_ACTIONS_PAGE }}
-          artifact_name: github-pages
-          timeout: 600000
-          error_count: 10
-          reporting_interval: 5000
+      - name: Run Doxygen
+        run: doxygen Doxyfile
