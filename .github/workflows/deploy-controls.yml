@@ -6,9 +6,9 @@ on:
       - solve-car-controls-problem
     #paths:
       #- 'car_controls/**'
-  #pull_request:
-    #branches:
-      #- solve-car-controls-problem
+  pull_request:
+    branches:
+      - solve-car-controls-problem
     #paths:
       #- 'car_controls/**'
 
@@ -27,11 +27,6 @@ jobs:
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
 
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
-
       - name: Deploy executable to target
         run: |
-          sshpass -p "${{ secrets.JETSON_PASSWORD }}" rsync -avz -e "ssh" \
-            --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt \
-            hotweels@10.21.221.78:/home/hotweels/apps
+          rsync -avz --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt $JETSON:/home/hotweels/apps
