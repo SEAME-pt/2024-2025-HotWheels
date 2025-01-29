@@ -16,6 +16,9 @@ jobs:
       - name: Install Doxygen
         run: sudo apt-get install -y doxygen
 
+      - name: Install Graphviz
+        run: sudo apt-get install -y graphviz
+
       - name: Run Doxygen
         run: doxygen Doxyfile
 
@@ -29,7 +32,7 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
           git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
           git checkout -B $DOC_BRANCH
-          rsync -av --delete --exclude '.git' docs/ .
+          rsync -av --delete --exclude '.git' --exclude '.github' . .
           git add .
           git commit -m "Update Doxygen documentation"
           git push origin $DOC_BRANCH --force
