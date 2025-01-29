@@ -29,6 +29,6 @@ jobs:
 
       - name: Deploy executable to target
         env:
-          SSH_PASS: ${{ secrets.JETSON_PASSWORD }}
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e rsync -avz --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/
