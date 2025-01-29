@@ -28,7 +28,8 @@ jobs:
           make -j$(nproc)
 
       - name: Debug JETSON variable
-        run: echo "JETSON is set to: $JETSON"
+        run: |
+          echo "JETSON is set to: $JETSON"
 
       - name: Deploy executable to target
         run: |
