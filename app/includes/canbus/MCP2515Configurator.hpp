@@ -1,7 +1,7 @@
 #ifndef MCP2515CONFIGURATOR_HPP
 #define MCP2515CONFIGURATOR_HPP
 
-#include "SPIController.hpp"
+#include "ISPIController.hpp"
 #include <cstdint>
 #include <vector>
 
@@ -18,7 +18,7 @@ public:
      * @param spiController A reference to the SPIController object that will be used for communication
      *                      with the MCP2515 controller.
      */
-    explicit MCP2515Configurator(SPIController &spiController);
+    explicit MCP2515Configurator(ISPIController &spiController);
     ~MCP2515Configurator() = default;
 
     /**
@@ -134,9 +134,22 @@ public:
      * @return A vector containing the received CAN message data.
      */
 	std::vector<uint8_t> readCANMessage(uint16_t& frameID);
-
+  
+    static constexpr uint8_t RESET_CMD = 0xC0;
+    static constexpr uint8_t CANCTRL = 0x0F;
+    static constexpr uint8_t CANSTAT = 0x0E;
+    static constexpr uint8_t CNF1 = 0x2A;
+    static constexpr uint8_t CNF2 = 0x29;
+    static constexpr uint8_t CNF3 = 0x28;
+    static constexpr uint8_t TXB0CTRL = 0x30;
+    static constexpr uint8_t RXB0CTRL = 0x60;
+    static constexpr uint8_t CANINTF = 0x2C;
+    static constexpr uint8_t CANINTE = 0x2B;
+    static constexpr uint8_t RXB0SIDH = 0x61;
+    static constexpr uint8_t RXB0SIDL = 0x62;
+  
 private:
-    SPIController &spiController;
+    ISPIController &spiController;
 
     /**
      * Writes a value to a specified register on the MCP2515 chip.
@@ -172,19 +185,6 @@ private:
      * @param command The command byte to send to the MCP2515 chip.
      */
     void sendCommand(uint8_t command);
-
-    static constexpr uint8_t RESET_CMD = 0xC0;
-    static constexpr uint8_t CANCTRL = 0x0F;
-    static constexpr uint8_t CANSTAT = 0x0E;
-    static constexpr uint8_t CNF1 = 0x2A;
-    static constexpr uint8_t CNF2 = 0x29;
-    static constexpr uint8_t CNF3 = 0x28;
-    static constexpr uint8_t TXB0CTRL = 0x30;
-    static constexpr uint8_t RXB0CTRL = 0x60;
-    static constexpr uint8_t CANINTF = 0x2C;
-    static constexpr uint8_t CANINTE = 0x2B;
-    static constexpr uint8_t RXB0SIDH = 0x61;
-    static constexpr uint8_t RXB0SIDL = 0x62;
 
 };
 

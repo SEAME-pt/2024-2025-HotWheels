@@ -1,10 +1,11 @@
 #ifndef SPICONTROLLER_HPP
 #define SPICONTROLLER_HPP
 
+#include "ISPIController.hpp"
 #include <cstdint>
 #include <string>
 
-class SPIController
+class SPIController : public ISPIController
 {
 public:
     enum class Opcode : uint8_t { Write = 0x02, Read = 0x03 };
@@ -25,7 +26,7 @@ public:
      * This destructor calls the `closeDevice` function to ensure that the SPI device is properly closed
      * and any resources associated with the SPI connection are released when the SPIController object is destroyed.
      */
-    ~SPIController();
+    ~SPIController() override;
 
     /**
      * Opens the specified SPI device for communication.
@@ -40,7 +41,7 @@ public:
      * @throws std::runtime_error If the device cannot be opened, indicating a failure in the SPI device
      *         initialization.
      */
-    bool openDevice(const std::string &device);
+    bool openDevice(const std::string &device) override;
 
     /**
      * Configures the SPI interface with the specified settings.
@@ -57,7 +58,7 @@ public:
      * @throws std::runtime_error If the device is not open or if any configuration step fails
      *         (setting the mode, bits per word, or speed).
      */
-    void configure(uint8_t mode, uint8_t bits, uint32_t speed);
+    void configure(uint8_t mode, uint8_t bits, uint32_t speed) override;
 
     /**
      * Writes a byte of data to the specified address on the SPI device.
@@ -69,7 +70,7 @@ public:
      * @param address The address to write the data to on the SPI device.
      * @param data The data byte to write to the specified address.
      */
-    void writeByte(uint8_t address, uint8_t data);
+    void writeByte(uint8_t address, uint8_t data) override;
 
     /**
      * Reads a byte of data from the specified address on the SPI device.
@@ -81,7 +82,7 @@ public:
      * @param address The address to read the data from on the SPI device.
      * @return The data byte read from the specified address.
      */
-    uint8_t readByte(uint8_t address);
+    uint8_t readByte(uint8_t address) override;
 
     /**
      * Performs an SPI transfer, sending and receiving data.
@@ -98,7 +99,7 @@ public:
      * @throws std::runtime_error If the SPI device is not open or if the transfer fails, indicating
      *         an error during the SPI communication.
      */
-    void spiTransfer(const uint8_t *tx, uint8_t *rx, size_t length);
+    void spiTransfer(const uint8_t *tx, uint8_t *rx, size_t length) override;
 
     /**
      * Closes the SPI device and releases the associated resources.
@@ -107,7 +108,7 @@ public:
      * (`spi_fd`). It sets `spi_fd` to -1 to indicate that the device has been closed. If the device is
      * already closed (i.e., `spi_fd` is negative), the function does nothing.
      */
-    void closeDevice();
+    void closeDevice() override;
 
 private:
     int spi_fd;

@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QThread>
-#include "MCP2515Controller.hpp"
+#include "IMCP2515Controller.hpp"
 
 class CanBusManager : public QObject
 {
@@ -23,6 +23,7 @@ public:
      * to handle updates related to speed and RPM.
      */
     explicit CanBusManager(const std::string &spi_device, QObject *parent = nullptr);
+    CanBusManager(IMCP2515Controller *controller, QObject *parent = nullptr);
 
     /**
      * Destructor for the CanBusManager object.
@@ -72,8 +73,11 @@ signals:
     void rpmUpdated(int newRpm);
 
 private:
-    MCP2515Controller *m_controller = nullptr;
+    IMCP2515Controller *m_controller = nullptr;
     QThread *m_thread = nullptr;
+    bool ownsMCP2515Controller = false;
+
+    void connectSignals();
 };
 
 #endif // CANBUSMANAGER_HPP

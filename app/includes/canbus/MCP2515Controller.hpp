@@ -3,11 +3,12 @@
 
 #include <QObject>
 #include "CANMessageProcessor.hpp"
+#include "IMCP2515Controller.hpp"
+#include "ISPIController.hpp"
 #include "MCP2515Configurator.hpp"
-#include "SPIController.hpp"
 #include <string>
 
-class MCP2515Controller : public QObject
+class MCP2515Controller : public IMCP2515Controller
 {
     Q_OBJECT
 public:
@@ -25,6 +26,8 @@ public:
      *         device initialization.
      */
     explicit MCP2515Controller(const std::string &spiDevice);
+    
+    MCP2515Controller(const std::string &spiDevice, ISPIController &spiController);
 
     /**
      * Destroys the MCP2515Controller object and cleans up resources.
@@ -32,7 +35,7 @@ public:
      * This destructor closes the SPI device to release the associated resources. It ensures
      * proper cleanup of the SPI connection when the MCP2515Controller object is destroyed.
      */
-    ~MCP2515Controller();
+    ~MCP2515Controller() override;
 
     /**
      * Initializes the MCP2515 chip and configures it for normal operation.
@@ -46,7 +49,7 @@ public:
      * @throws std::runtime_error If any initialization step fails, such as resetting the chip or setting it
      *         to normal mode, indicating a failure in the initialization process.
      */
-    bool init();
+    bool init() override;
 
     /**
      * Continuously reads CAN messages from the MCP2515 chip and processes them.
@@ -60,7 +63,7 @@ public:
      * @throws std::exception If an error occurs during message reading or processing,
      *         an exception will be caught and logged.
      */
-    void processReading();
+    void processReading() override;
 
     /**
      * Stops the CAN message reading loop.
@@ -68,17 +71,21 @@ public:
      * This function sets the `stopReadingFlag` to true, which causes the reading loop in
      * `processReading` to exit, stopping the continuous reading and processing of CAN messages.
      */
-    void stopReading();
+    void stopReading() override;
+    
+      CANMessageProcessor &getMessageProcessor() { return messageProcessor; }
+    bool isStopReadingFlagSet() const override;
 
 signals:
     void speedUpdated(float newSpeed);
     void rpmUpdated(int newRpm);
 
 private:
-    SPIController spiController;
+    ISPIController *spiController;
     MCP2515Configurator configurator;
     CANMessageProcessor messageProcessor;
     bool stopReadingFlag = false;
+    bool ownsSPIController = false;
 
     /**
      * Sets up message handlers for processing specific CAN frame IDs.
