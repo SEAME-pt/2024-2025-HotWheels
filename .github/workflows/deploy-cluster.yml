@@ -24,7 +24,7 @@ jobs:
           cd car_controls
           mkdir build
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../controls.pro
+          ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
 
       - name: Deploy executable to target
