@@ -6,9 +6,9 @@ on:
       - solve-car-controls-problem
     #paths:
       #- 'car_controls/**'
-  pull_request:
-    branches:
-      - solve-car-controls-problem
+  #pull_request:
+    #branches:
+      #- solve-car-controls-problem
     #paths:
       #- 'car_controls/**'
 
