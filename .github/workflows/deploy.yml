@@ -9,9 +9,14 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Ensure write permission to push docs to the repository
+      pages: write     # Grant permission to deploy to GitHub Pages
+      id-token: write  # This is needed for OIDC token-based authentication with Pages
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3  # Use the latest stable version (v3)
 
       - name: Install Doxygen
         run: sudo apt-get install -y doxygen
@@ -26,7 +31,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2  # Use the latest stable version (v2)
         with:
           path: 'docs'  # Assuming the Doxygen output is in the 'docs' directory
 
