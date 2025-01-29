@@ -1,13 +1,27 @@
 #include "MCP2515Controller.hpp"
 #include <QDebug>
 #include <QThread>
+#include "SPIController.hpp"
 #include <cstring>
 #include <stdexcept>
 
 MCP2515Controller::MCP2515Controller(const std::string &spiDevice)
-    : spiController()
+    : spiController(new SPIController())
+    , configurator(*spiController)
+    , messageProcessor()
+    , ownsSPIController(true)
+{
+    if (!spiController->openDevice(spiDevice)) {
+        throw std::runtime_error("Failed to open SPI device : " + spiDevice);
+    }
+    setupHandlers();
+}
+
+MCP2515Controller::MCP2515Controller(const std::string &spiDevice, ISPIController &spiController)
+    : spiController(&spiController)
     , configurator(spiController)
     , messageProcessor()
+    , ownsSPIController(false)
 {
     if (!spiController.openDevice(spiDevice)) {
         throw std::runtime_error("Failed to open SPI device : " + spiDevice);
@@ -17,7 +31,10 @@ MCP2515Controller::MCP2515Controller(const std::string &spiDevice)
 
 MCP2515Controller::~MCP2515Controller()
 {
-    spiController.closeDevice();
+    spiController->closeDevice();
+    if (this->ownsSPIController) {
+        delete this->spiController;
+    }
 }
 
 bool MCP2515Controller::init()
@@ -48,7 +65,7 @@ void MCP2515Controller::processReading()
         std::vector<uint8_t> data;
 
         try {
-            data = configurator.readCANMessage(frameID); // Use the new method
+            data = configurator.readCANMessage(frameID);
             if (!data.empty()) {
                 messageProcessor.processMessage(frameID, data);
             }
@@ -81,4 +98,9 @@ void MCP2515Controller::setupHandlers()
             emit rpmUpdated(rpm);
         }
     });
+}
+
+bool MCP2515Controller::isStopReadingFlagSet() const
+{
+    return this->stopReadingFlag;
 }

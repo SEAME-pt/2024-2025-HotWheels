@@ -4,6 +4,7 @@
 #include "MockSPIController.hpp"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
+#include <thread>
 
 using ::testing::_;
 using ::testing::Return;

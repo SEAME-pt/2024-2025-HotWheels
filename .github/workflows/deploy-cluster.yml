@@ -14,7 +14,7 @@ on:
 
 jobs:
   run-on-self-hosted:
-    runs-on: [self-hosted, seame-computer-1]
+    runs-on: [self-hosted, seame-computer-2]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -33,25 +33,7 @@ jobs:
           ./HotWheels-tests
 
       - name: Deploy executable to target
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app $JETSON:/home/hotweels/apps/
-
-  generate-doxygen-docs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Doxygen
-        run: sudo apt-get install -y doxygen
-
-      - name: Run Doxygen
-        run: doxygen Doxyfile
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add docs/
-          git commit -m 'Update Doxygen documentation'
-          git push
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/
