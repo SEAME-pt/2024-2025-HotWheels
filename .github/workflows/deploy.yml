@@ -34,6 +34,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2  # Use the latest stable version (v2)
         with:
           path: 'docs'  # Assuming the Doxygen output is in the 'docs' directory
+          name: 'github-pages'  # Ensure this matches the artifact name in deploy-pages
 
       - name: Deploy to GitHub Pages
         id: deployment
