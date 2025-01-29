@@ -7,5 +7,5 @@ digraph "CanBusManager::initialize"
   rankdir="LR";
   Node1 [id="Node000001",label="CanBusManager::initialize",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="MCP2515Controller::\lprocessReading",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Controller.html#a6e7359459d3adf7f9048862f50f9b74c",tooltip=" "];
+  Node2 [id="Node000002",label="IMCP2515Controller\l::processReading",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classIMCP2515Controller.html#ae2b472f612168c2cc53da81e0dd76a0d",tooltip=" "];
 }

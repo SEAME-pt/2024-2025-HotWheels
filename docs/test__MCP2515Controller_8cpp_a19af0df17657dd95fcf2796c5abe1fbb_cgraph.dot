@@ -7,5 +7,7 @@ digraph "TEST_F"
   rankdir="LR";
   Node1 [id="Node000001",label="TEST_F",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="MCP2515Controller::\lstopReading",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Controller.html#a47f0043ecd39e10d7563937113ed5ff4",tooltip=" "];
+  Node2 [id="Node000002",label="MCP2515Controller::\lisStopReadingFlagSet",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="MCP2515Controller::\lstopReading",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Controller.html#a91483fd5e7a246f44f8452f4789d6b11",tooltip=" "];
 }

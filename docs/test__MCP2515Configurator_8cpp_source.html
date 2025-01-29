@@ -127,7 +127,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">   16</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ResetChipSuccess)</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    EXPECT_CALL(mockSPI, spiTransfer(_, <span class="keyword">nullptr</span>, 1)).Times(1);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANSTAT)).WillOnce(Return(0x80));</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#af67d0d6ccc54479b3971984482cbe9de">MCP2515Configurator::CANSTAT</a>)).WillOnce(Return(0x80));</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    ASSERT_TRUE(configurator.resetChip());</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
 </div>
@@ -136,7 +136,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#ad320cca381c006e9551c8ef12a6ffd9b">   23</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ResetChipFailure)</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    EXPECT_CALL(mockSPI, spiTransfer(_, <span class="keyword">nullptr</span>, 1)).Times(1);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANSTAT)).WillOnce(Return(0x00));</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#af67d0d6ccc54479b3971984482cbe9de">MCP2515Configurator::CANSTAT</a>)).WillOnce(Return(0x00));</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    ASSERT_FALSE(configurator.resetChip());</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
 </div>
@@ -144,9 +144,9 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#ad6b6f3d0163dd7c1380fcabe04712bbd">   30</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ConfigureBaudRate)</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CNF1, 0x00)).Times(1);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CNF2, 0x90)).Times(1);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CNF3, 0x02)).Times(1);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a0d1554e881a9465667272643528898c1">MCP2515Configurator::CNF1</a>, 0x00)).Times(1);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a0a3beb14d463b4e107fc0b78b880d971">MCP2515Configurator::CNF2</a>, 0x90)).Times(1);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a32598bab7e12020f9859d0d0b3af2e87">MCP2515Configurator::CNF3</a>, 0x02)).Times(1);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    configurator.configureBaudRate();</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
 </div>
@@ -154,7 +154,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#ae9b147deef5e3374171cc710bee49639">   38</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ConfigureTXBuffer)</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0CTRL, 0x00)).Times(1);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a106fffe0fc73c3f02439b75aba706649">MCP2515Configurator::TXB0CTRL</a>, 0x00)).Times(1);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    configurator.configureTXBuffer();</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
 </div>
@@ -162,7 +162,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#ac325d7eb12d67337fa435357175c64d8">   44</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ConfigureRXBuffer)</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::RXB0CTRL, 0x60)).Times(1);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#af80f2030898db5152e67c34c2ff4293c">MCP2515Configurator::RXB0CTRL</a>, 0x60)).Times(1);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    configurator.configureRXBuffer();</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
@@ -179,7 +179,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#a7c265baa8d672c788fb3e75eee96bf75">   57</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ConfigureInterrupts)</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CANINTE, 0x01)).Times(1);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a801a01b6f64e6e82b6a036d123f5d262">MCP2515Configurator::CANINTE</a>, 0x01)).Times(1);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    configurator.configureInterrupts();</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
 </div>
@@ -187,7 +187,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#ae4054b95b75f31a55e15ccf478ca7b2f">   63</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, SetMode)</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>{</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CANCTRL, 0x02)).Times(1);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a35a365ada57c5e59d6d42869d80d9e13">MCP2515Configurator::CANCTRL</a>, 0x02)).Times(1);</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    configurator.setMode(0x02);</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
 </div>
@@ -195,7 +195,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#a4c8e0990097e62a1995d22e6e13ead3a">   69</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, VerifyModeSuccess)</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANSTAT)).WillOnce(Return(0x80));</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#af67d0d6ccc54479b3971984482cbe9de">MCP2515Configurator::CANSTAT</a>)).WillOnce(Return(0x80));</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    ASSERT_TRUE(configurator.verifyMode(0x80));</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
 </div>
@@ -203,7 +203,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#a5237ead5a14ac6bddca6e044b5fab41f">   75</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, VerifyModeFailure)</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANSTAT)).WillOnce(Return(0x00));</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#af67d0d6ccc54479b3971984482cbe9de">MCP2515Configurator::CANSTAT</a>)).WillOnce(Return(0x00));</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    ASSERT_FALSE(configurator.verifyMode(0x80));</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
 </div>
@@ -211,14 +211,14 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#a6f6312e128d9694c9d907d63208c432d">   81</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ReadCANMessageWithData)</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>{</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANINTF)).WillOnce(Return(0x01));</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::RXB0SIDH)).WillOnce(Return(0x10));</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::RXB0SIDL)).WillOnce(Return(0x20));</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a4fd1432bce6564d1fc463707c6763fd4">MCP2515Configurator::CANINTF</a>)).WillOnce(Return(0x01));</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a0335abeca080980b15e42e7ecd2aa7e5">MCP2515Configurator::RXB0SIDH</a>)).WillOnce(Return(0x10));</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#ad7f1743fc8bf5e05f5488eef6612c95e">MCP2515Configurator::RXB0SIDL</a>)).WillOnce(Return(0x20));</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    EXPECT_CALL(mockSPI, readByte(0x65)).WillOnce(Return(3));</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    EXPECT_CALL(mockSPI, readByte(0x66)).WillOnce(Return(0xA0));</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    EXPECT_CALL(mockSPI, readByte(0x67)).WillOnce(Return(0xB1));</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    EXPECT_CALL(mockSPI, readByte(0x68)).WillOnce(Return(0xC2));</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CANINTF, 0x00)).Times(1);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    EXPECT_CALL(mockSPI, writeByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a4fd1432bce6564d1fc463707c6763fd4">MCP2515Configurator::CANINTF</a>, 0x00)).Times(1);</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    uint16_t frameID;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">auto</span> data = configurator.readCANMessage(frameID);</div>
@@ -233,7 +233,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="test__MCP2515Configurator_8cpp.html#af2f980e55095251834c552790304a657">  101</a></span><a class="code hl_function" href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a>(<a class="code hl_class" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a>, ReadCANMessageNoData)</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>{</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANINTF)).WillOnce(Return(0x00));</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    EXPECT_CALL(mockSPI, readByte(<a class="code hl_variable" href="classMCP2515Configurator.html#a4fd1432bce6564d1fc463707c6763fd4">MCP2515Configurator::CANINTF</a>)).WillOnce(Return(0x00));</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    uint16_t frameID;</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">auto</span> data = configurator.readCANMessage(frameID);</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    ASSERT_TRUE(data.empty());</div>
@@ -245,6 +245,17 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp_source.html',''); initR
 <div class="ttc" id="aclassMCP2515ConfiguratorTest_html_a14ca85f619bcc6518c6ea15a024a7d97"><div class="ttname"><a href="classMCP2515ConfiguratorTest.html#a14ca85f619bcc6518c6ea15a024a7d97">MCP2515ConfiguratorTest::configurator</a></div><div class="ttdeci">MCP2515Configurator configurator</div><div class="ttdef"><b>Definition</b> <a href="#l00013">test_MCP2515Configurator.cpp:13</a></div></div>
 <div class="ttc" id="aclassMCP2515ConfiguratorTest_html_a8b57343c3d30f0d1a88e15e8ea566cc0"><div class="ttname"><a href="classMCP2515ConfiguratorTest.html#a8b57343c3d30f0d1a88e15e8ea566cc0">MCP2515ConfiguratorTest::mockSPI</a></div><div class="ttdeci">MockSPIController mockSPI</div><div class="ttdef"><b>Definition</b> <a href="#l00012">test_MCP2515Configurator.cpp:12</a></div></div>
 <div class="ttc" id="aclassMCP2515Configurator_html"><div class="ttname"><a href="classMCP2515Configurator.html">MCP2515Configurator</a></div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00008">MCP2515Configurator.hpp:8</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a0335abeca080980b15e42e7ecd2aa7e5"><div class="ttname"><a href="classMCP2515Configurator.html#a0335abeca080980b15e42e7ecd2aa7e5">MCP2515Configurator::RXB0SIDH</a></div><div class="ttdeci">static constexpr uint8_t RXB0SIDH</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00034">MCP2515Configurator.hpp:34</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a0a3beb14d463b4e107fc0b78b880d971"><div class="ttname"><a href="classMCP2515Configurator.html#a0a3beb14d463b4e107fc0b78b880d971">MCP2515Configurator::CNF2</a></div><div class="ttdeci">static constexpr uint8_t CNF2</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00028">MCP2515Configurator.hpp:28</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a0d1554e881a9465667272643528898c1"><div class="ttname"><a href="classMCP2515Configurator.html#a0d1554e881a9465667272643528898c1">MCP2515Configurator::CNF1</a></div><div class="ttdeci">static constexpr uint8_t CNF1</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00027">MCP2515Configurator.hpp:27</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a106fffe0fc73c3f02439b75aba706649"><div class="ttname"><a href="classMCP2515Configurator.html#a106fffe0fc73c3f02439b75aba706649">MCP2515Configurator::TXB0CTRL</a></div><div class="ttdeci">static constexpr uint8_t TXB0CTRL</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00030">MCP2515Configurator.hpp:30</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a32598bab7e12020f9859d0d0b3af2e87"><div class="ttname"><a href="classMCP2515Configurator.html#a32598bab7e12020f9859d0d0b3af2e87">MCP2515Configurator::CNF3</a></div><div class="ttdeci">static constexpr uint8_t CNF3</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00029">MCP2515Configurator.hpp:29</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a35a365ada57c5e59d6d42869d80d9e13"><div class="ttname"><a href="classMCP2515Configurator.html#a35a365ada57c5e59d6d42869d80d9e13">MCP2515Configurator::CANCTRL</a></div><div class="ttdeci">static constexpr uint8_t CANCTRL</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00025">MCP2515Configurator.hpp:25</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a4fd1432bce6564d1fc463707c6763fd4"><div class="ttname"><a href="classMCP2515Configurator.html#a4fd1432bce6564d1fc463707c6763fd4">MCP2515Configurator::CANINTF</a></div><div class="ttdeci">static constexpr uint8_t CANINTF</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00032">MCP2515Configurator.hpp:32</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_a801a01b6f64e6e82b6a036d123f5d262"><div class="ttname"><a href="classMCP2515Configurator.html#a801a01b6f64e6e82b6a036d123f5d262">MCP2515Configurator::CANINTE</a></div><div class="ttdeci">static constexpr uint8_t CANINTE</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00033">MCP2515Configurator.hpp:33</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_ad7f1743fc8bf5e05f5488eef6612c95e"><div class="ttname"><a href="classMCP2515Configurator.html#ad7f1743fc8bf5e05f5488eef6612c95e">MCP2515Configurator::RXB0SIDL</a></div><div class="ttdeci">static constexpr uint8_t RXB0SIDL</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00035">MCP2515Configurator.hpp:35</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_af67d0d6ccc54479b3971984482cbe9de"><div class="ttname"><a href="classMCP2515Configurator.html#af67d0d6ccc54479b3971984482cbe9de">MCP2515Configurator::CANSTAT</a></div><div class="ttdeci">static constexpr uint8_t CANSTAT</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00026">MCP2515Configurator.hpp:26</a></div></div>
+<div class="ttc" id="aclassMCP2515Configurator_html_af80f2030898db5152e67c34c2ff4293c"><div class="ttname"><a href="classMCP2515Configurator.html#af80f2030898db5152e67c34c2ff4293c">MCP2515Configurator::RXB0CTRL</a></div><div class="ttdeci">static constexpr uint8_t RXB0CTRL</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00031">MCP2515Configurator.hpp:31</a></div></div>
 <div class="ttc" id="aclassMockSPIController_html"><div class="ttname"><a href="classMockSPIController.html">MockSPIController</a></div><div class="ttdef"><b>Definition</b> <a href="MockSPIController_8hpp_source.html#l00007">MockSPIController.hpp:8</a></div></div>
 <div class="ttc" id="atest__MCP2515Configurator_8cpp_html_a2fe6ef869e127000284b4929fbeb04e0"><div class="ttname"><a href="test__MCP2515Configurator_8cpp.html#a2fe6ef869e127000284b4929fbeb04e0">TEST_F</a></div><div class="ttdeci">TEST_F(MCP2515ConfiguratorTest, ResetChipSuccess)</div><div class="ttdef"><b>Definition</b> <a href="#l00016">test_MCP2515Configurator.cpp:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

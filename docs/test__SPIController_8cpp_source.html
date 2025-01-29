@@ -106,85 +106,122 @@ $(function(){initNavTree('test__SPIController_8cpp_source.html',''); initResizab
   <div class="headertitle"><div class="title">test_SPIController.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="test__SPIController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="MockSPIController_8hpp.html">MockSPIController.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;gmock/gmock.h&gt;</span></div>
+<a href="test__SPIController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="MockSysCalls_8hpp.html">MockSysCalls.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="SPIController_8hpp.html">SPIController.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>::testing::_;</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>::testing::Return;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classSPIControllerTest.html">    8</a></span><span class="keyword">class </span><a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a> : <span class="keyword">public</span> ::testing::Test</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classSPIControllerTest.html#ab5e5492c1affc7b764bcbc6bbfd7c4b3">   11</a></span>    <a class="code hl_class" href="classMockSPIController.html">MockSPIController</a> <a class="code hl_variable" href="classSPIControllerTest.html#ab5e5492c1affc7b764bcbc6bbfd7c4b3">mockSPI</a>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>};</div>
-</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;linux/spi/spidev.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>::testing::_;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>::testing::Return;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classSPIControllerTest.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a> : <span class="keyword">public</span> ::testing::Test</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classSPIControllerTest.html#abb02da6f4540095404657fd4b9a24124">   12</a></span>    <a class="code hl_class" href="classSPIController.html">SPIController</a> *<a class="code hl_variable" href="classSPIControllerTest.html#abb02da6f4540095404657fd4b9a24124">spiController</a>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">   14</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, OpenDeviceSuccess)</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    ASSERT_TRUE(mockSPI.openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>));</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classSPIControllerTest.html#af9b10b8f0c9489410435d9661dbfe416">   14</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSPIControllerTest.html#af9b10b8f0c9489410435d9661dbfe416">SetUp</a>()<span class="keyword"> override </span>{ <a class="code hl_variable" href="classSPIControllerTest.html#abb02da6f4540095404657fd4b9a24124">spiController</a> = <span class="keyword">new</span> <a class="code hl_class" href="classSPIController.html">SPIController</a>(<a class="code hl_function" href="MockSysCalls_8hpp.html#a547cebdcdfafe9cdea6aa85812569739">mock_ioctl</a>, <a class="code hl_function" href="MockSysCalls_8hpp.html#aeb1b8a14acf38ef421993960b0f64ee8">mock_open</a>, <a class="code hl_function" href="MockSysCalls_8hpp.html#a6763dfbeac67eadf78345b6b8d8170ad">mock_close</a>); }</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classSPIControllerTest.html#a9ef2c19c91f05e97d567906b10a67ff2">   16</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSPIControllerTest.html#a9ef2c19c91f05e97d567906b10a67ff2">TearDown</a>()<span class="keyword"> override </span>{ <span class="keyword">delete</span> <a class="code hl_variable" href="classSPIControllerTest.html#abb02da6f4540095404657fd4b9a24124">spiController</a>; }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#ae59a9c92d1c4462ba45528bfcbf1b866">   20</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, OpenDeviceFailure)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/nonexistent-device/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">false</span>));</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ASSERT_FALSE(mockSPI.openDevice(<span class="stringliteral">&quot;/nonexistent-device/spidev0.0&quot;</span>));</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">   19</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, OpenDeviceSuccess)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), open(testing::StrEq(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>), O_RDWR))</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        .WillOnce(Return(3));</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    ASSERT_NO_THROW(spiController-&gt;openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#ae7b108e33e3ac9f4f4cf1de19a701d88">   26</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, ConfigureSPIValidParameters)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    EXPECT_CALL(mockSPI, configure(0, 8, 500000)).Times(1);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ASSERT_NO_THROW(mockSPI.configure(0, 8, 500000));</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
-</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#ae59a9c92d1c4462ba45528bfcbf1b866">   27</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, OpenDeviceFailure)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), open(testing::StrEq(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>), O_RDWR))</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        .WillOnce(Return(-1)); <span class="comment">// Simulate failure</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#a6d73eee99372cc6edf553bfb3b263ad5">   32</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, WriteByteSuccess)</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    EXPECT_CALL(mockSPI, writeByte(0x01, 0xFF)).Times(1);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    ASSERT_NO_THROW(mockSPI.writeByte(0x01, 0xFF));</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    ASSERT_THROW(spiController-&gt;openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>), std::runtime_error);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
 </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#aee0ca07256034463c67316679656f948">   38</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, ReadByteSuccess)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    EXPECT_CALL(mockSPI, readByte(0x01)).WillOnce(Return(0xFF));</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    uint8_t value = mockSPI.readByte(0x01);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    ASSERT_EQ(value, 0xFF);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#ae7b108e33e3ac9f4f4cf1de19a701d88">   35</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, ConfigureSPIValidParameters)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), open(_, _)).WillOnce(Return(3));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    spiController-&gt;openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), ioctl(_, SPI_IOC_WR_MODE)).WillOnce(Return(0));</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), ioctl(_, SPI_IOC_WR_BITS_PER_WORD)).WillOnce(Return(0));</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), ioctl(_, SPI_IOC_WR_MAX_SPEED_HZ)).WillOnce(Return(0));</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    ASSERT_NO_THROW(spiController-&gt;configure(0, 8, 500000));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#ac52991dcf51dffa102a470de654d2a6f">   45</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, SpiTransferSuccess)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t tx[] = {0x02, 0x01, 0xFF};</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint8_t rx[<span class="keyword">sizeof</span>(tx)] = {0};</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    EXPECT_CALL(mockSPI, spiTransfer(tx, rx, <span class="keyword">sizeof</span>(tx))).Times(1);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    ASSERT_NO_THROW(mockSPI.spiTransfer(tx, rx, <span class="keyword">sizeof</span>(tx)));</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
-</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#a6d73eee99372cc6edf553bfb3b263ad5">   47</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, WriteByteSuccess)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), open(_, _)).WillOnce(Return(3));</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    spiController-&gt;openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), ioctl(_, SPI_IOC_MESSAGE(1))).WillOnce(Return(0));</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#a2c8c790e089d69da495c0fa0ecba13b7">   54</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, CloseDeviceSuccess)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    ASSERT_NO_THROW(mockSPI.closeDevice());</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    ASSERT_NO_THROW(spiController-&gt;writeByte(0x01, 0xFF));</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
 </div>
-<div class="ttc" id="aMockSPIController_8hpp_html"><div class="ttname"><a href="MockSPIController_8hpp.html">MockSPIController.hpp</a></div></div>
-<div class="ttc" id="aclassMockSPIController_html"><div class="ttname"><a href="classMockSPIController.html">MockSPIController</a></div><div class="ttdef"><b>Definition</b> <a href="MockSPIController_8hpp_source.html#l00007">MockSPIController.hpp:8</a></div></div>
-<div class="ttc" id="aclassSPIControllerTest_html"><div class="ttname"><a href="classSPIControllerTest.html">SPIControllerTest</a></div><div class="ttdef"><b>Definition</b> <a href="#l00008">test_SPIController.cpp:9</a></div></div>
-<div class="ttc" id="aclassSPIControllerTest_html_ab5e5492c1affc7b764bcbc6bbfd7c4b3"><div class="ttname"><a href="classSPIControllerTest.html#ab5e5492c1affc7b764bcbc6bbfd7c4b3">SPIControllerTest::mockSPI</a></div><div class="ttdeci">MockSPIController mockSPI</div><div class="ttdef"><b>Definition</b> <a href="#l00011">test_SPIController.cpp:11</a></div></div>
-<div class="ttc" id="atest__SPIController_8cpp_html_a6acec60eff0d31561d6b1907b5c83389"><div class="ttname"><a href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a></div><div class="ttdeci">TEST_F(SPIControllerTest, OpenDeviceSuccess)</div><div class="ttdef"><b>Definition</b> <a href="#l00014">test_SPIController.cpp:14</a></div></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#aee0ca07256034463c67316679656f948">   57</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, ReadByteSuccess)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), open(_, _)).WillOnce(Return(3));</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    spiController-&gt;openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), ioctl(_, SPI_IOC_MESSAGE(1))).WillOnce(Return(0));</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    ASSERT_NO_THROW(spiController-&gt;readByte(0x01));</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#ac52991dcf51dffa102a470de654d2a6f">   67</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, SpiTransferSuccess)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), open(_, _)).WillOnce(Return(3));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    spiController-&gt;openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), ioctl(_, SPI_IOC_MESSAGE(1))).WillOnce(Return(0));</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    uint8_t tx[] = {0x02, 0x01, 0xFF};</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    uint8_t rx[<span class="keyword">sizeof</span>(tx)] = {0};</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    ASSERT_NO_THROW(spiController-&gt;spiTransfer(tx, rx, <span class="keyword">sizeof</span>(tx)));</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="test__SPIController_8cpp.html#a2c8c790e089d69da495c0fa0ecba13b7">   80</a></span><a class="code hl_function" href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a>(<a class="code hl_class" href="classSPIControllerTest.html">SPIControllerTest</a>, CloseDeviceSuccess)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), open(_, _)).WillOnce(Return(3));</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    spiController-&gt;openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    EXPECT_CALL(<a class="code hl_function" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a>(), close(3)).WillOnce(Return(0));</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    ASSERT_NO_THROW(spiController-&gt;closeDevice());</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
+</div>
+<div class="ttc" id="aMockSysCalls_8hpp_html"><div class="ttname"><a href="MockSysCalls_8hpp.html">MockSysCalls.hpp</a></div></div>
+<div class="ttc" id="aMockSysCalls_8hpp_html_a547cebdcdfafe9cdea6aa85812569739"><div class="ttname"><a href="MockSysCalls_8hpp.html#a547cebdcdfafe9cdea6aa85812569739">mock_ioctl</a></div><div class="ttdeci">int mock_ioctl(int fd, unsigned long request,...)</div><div class="ttdef"><b>Definition</b> <a href="MockSysCalls_8hpp_source.html#l00034">MockSysCalls.hpp:34</a></div></div>
+<div class="ttc" id="aMockSysCalls_8hpp_html_a6763dfbeac67eadf78345b6b8d8170ad"><div class="ttname"><a href="MockSysCalls_8hpp.html#a6763dfbeac67eadf78345b6b8d8170ad">mock_close</a></div><div class="ttdeci">int mock_close(int fd)</div><div class="ttdef"><b>Definition</b> <a href="MockSysCalls_8hpp_source.html#l00039">MockSysCalls.hpp:39</a></div></div>
+<div class="ttc" id="aMockSysCalls_8hpp_html_aeb1b8a14acf38ef421993960b0f64ee8"><div class="ttname"><a href="MockSysCalls_8hpp.html#aeb1b8a14acf38ef421993960b0f64ee8">mock_open</a></div><div class="ttdeci">int mock_open(const char *path, int flags,...)</div><div class="ttdef"><b>Definition</b> <a href="MockSysCalls_8hpp_source.html#l00029">MockSysCalls.hpp:29</a></div></div>
+<div class="ttc" id="aSPIController_8hpp_html"><div class="ttname"><a href="SPIController_8hpp.html">SPIController.hpp</a></div></div>
+<div class="ttc" id="aclassMockSysCalls_html_a8ac43bb616643db04ca635ae8fa3eb07"><div class="ttname"><a href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07">MockSysCalls::instance</a></div><div class="ttdeci">static MockSysCalls &amp; instance()</div><div class="ttdef"><b>Definition</b> <a href="MockSysCalls_8hpp_source.html#l00012">MockSysCalls.hpp:12</a></div></div>
+<div class="ttc" id="aclassSPIControllerTest_html"><div class="ttname"><a href="classSPIControllerTest.html">SPIControllerTest</a></div><div class="ttdef"><b>Definition</b> <a href="#l00009">test_SPIController.cpp:10</a></div></div>
+<div class="ttc" id="aclassSPIControllerTest_html_a9ef2c19c91f05e97d567906b10a67ff2"><div class="ttname"><a href="classSPIControllerTest.html#a9ef2c19c91f05e97d567906b10a67ff2">SPIControllerTest::TearDown</a></div><div class="ttdeci">void TearDown() override</div><div class="ttdef"><b>Definition</b> <a href="#l00016">test_SPIController.cpp:16</a></div></div>
+<div class="ttc" id="aclassSPIControllerTest_html_abb02da6f4540095404657fd4b9a24124"><div class="ttname"><a href="classSPIControllerTest.html#abb02da6f4540095404657fd4b9a24124">SPIControllerTest::spiController</a></div><div class="ttdeci">SPIController * spiController</div><div class="ttdef"><b>Definition</b> <a href="#l00012">test_SPIController.cpp:12</a></div></div>
+<div class="ttc" id="aclassSPIControllerTest_html_af9b10b8f0c9489410435d9661dbfe416"><div class="ttname"><a href="classSPIControllerTest.html#af9b10b8f0c9489410435d9661dbfe416">SPIControllerTest::SetUp</a></div><div class="ttdeci">void SetUp() override</div><div class="ttdef"><b>Definition</b> <a href="#l00014">test_SPIController.cpp:14</a></div></div>
+<div class="ttc" id="aclassSPIController_html"><div class="ttname"><a href="classSPIController.html">SPIController</a></div><div class="ttdef"><b>Definition</b> <a href="SPIController_8hpp_source.html#l00015">SPIController.hpp:16</a></div></div>
+<div class="ttc" id="atest__SPIController_8cpp_html_a6acec60eff0d31561d6b1907b5c83389"><div class="ttname"><a href="test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a></div><div class="ttdeci">TEST_F(SPIControllerTest, OpenDeviceSuccess)</div><div class="ttdef"><b>Definition</b> <a href="#l00019">test_SPIController.cpp:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
