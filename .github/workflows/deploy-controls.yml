@@ -14,7 +14,7 @@ on:
 
 jobs:
   run-on-self-hosted:
-    runs-on: [self-hosted, cross-compile]
+    runs-on: [self-hosted, seame-computer-2]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
