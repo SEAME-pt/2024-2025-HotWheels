@@ -1,13 +1,13 @@
 #ifndef MCP2515CONFIGURATOR_HPP
 #define MCP2515CONFIGURATOR_HPP
 
-#include "SPIController.hpp"
+#include "ISPIController.hpp"
 #include <cstdint>
 #include <vector>
 
 class MCP2515Configurator {
 public:
-    explicit MCP2515Configurator(SPIController &spiController);
+    explicit MCP2515Configurator(ISPIController &spiController);
     ~MCP2515Configurator() = default;
 
     bool resetChip();
@@ -19,13 +19,6 @@ public:
     void setMode(uint8_t mode);
     bool verifyMode(uint8_t expectedMode);
 	std::vector<uint8_t> readCANMessage(uint16_t& frameID);
-
-private:
-    SPIController &spiController;
-
-    void writeRegister(uint8_t address, uint8_t value);
-    uint8_t readRegister(uint8_t address);
-    void sendCommand(uint8_t command);
 
     static constexpr uint8_t RESET_CMD = 0xC0;
     static constexpr uint8_t CANCTRL = 0x0F;
@@ -39,6 +32,13 @@ private:
     static constexpr uint8_t CANINTE = 0x2B;
     static constexpr uint8_t RXB0SIDH = 0x61;
     static constexpr uint8_t RXB0SIDL = 0x62;
+
+private:
+    ISPIController &spiController;
+
+    void writeRegister(uint8_t address, uint8_t value);
+    uint8_t readRegister(uint8_t address);
+    void sendCommand(uint8_t command);
 
 };
 

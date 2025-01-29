@@ -2,7 +2,7 @@
 #include <thread>
 #include <chrono>
 
-MCP2515Configurator::MCP2515Configurator(SPIController &spiController)
+MCP2515Configurator::MCP2515Configurator(ISPIController &spiController)
     : spiController(spiController)
 {}
 

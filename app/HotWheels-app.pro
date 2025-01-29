@@ -39,6 +39,7 @@ HEADERS += \
     includes/data/DataManager.hpp \
     includes/data/enums.hpp \
     includes/canbus/MCP2515Controller.hpp \
+	includes/canbus/IMCP2515Controller.hpp \
     includes/canbus/CanBusManager.hpp \
     includes/canbus/SPIController.hpp \
     includes/canbus/MCP2515Configurator.hpp \
