@@ -24,15 +24,18 @@ jobs:
       - name: List files in docs directory
         run: ls -la docs  # Ensure this is where your output is
 
+      - name: creating artifacts.tar
+        run: tar -cvf artifacts.tar docs
+
       - name: Remove symlinks
         run: find docs -type l -exec rm -f {} \;
 
-      - name: Upload artifact
+      - name: Upload artifact.tar
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: 'docs'  # Ensure this path is correct
-
+          path: artifacts.tar
+        
   deploy:
     needs: build
     runs-on: ubuntu-latest
