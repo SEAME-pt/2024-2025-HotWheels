@@ -1,20 +1,9 @@
-name: Deploy Documentation to GitHub Pages
+name: Deploy Documentation
 
 on:
   push:
     branches:
       - page
-
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   build:
@@ -33,25 +22,12 @@ jobs:
       - name: Run Doxygen
         run: doxygen Doxyfile
 
-      # - name: Deploy to GitHub Pages
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_PAGE }}
-      #   run: |
-      #     DOC_BRANCH="gh-pages"
-      #     git config --global user.name 'github-actions[bot]'
-      #     git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-      #     git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
-      #     git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
-      #     git checkout -B $DOC_BRANCH
-      #     rsync -av --delete --exclude '.git' --exclude '.github' . .
-      #     git add .
-      #     if git diff-index --quiet HEAD; then
-      #       echo "No changes to commit"
-      #     else
-      #       git commit -m "Update Doxygen documentation"
-      #       git push origin $DOC_BRANCH --force
-      #     fi
-    
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: 'docs'  # Ensure this path matches the output directory of Doxygen
+
   deploy:
     needs: build
 
