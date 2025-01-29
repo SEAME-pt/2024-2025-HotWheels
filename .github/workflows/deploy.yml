@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: write  # Ensure write permission to push docs to the repository
       pages: write     # Grant permission to deploy to GitHub Pages
-      workflow: write  # Grant permission for workflow actions
+      id-token: write  # Grant permission for workflow actions
 
     steps:
       - name: Checkout code
