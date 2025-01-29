@@ -113,7 +113,6 @@ void PeripheralController::set_motor_pwm(int channel, int value)
     write_byte_data(motor_bus_fd_, 0x07 + (4 * channel), 0);
     write_byte_data(motor_bus_fd_, 0x08 + (4 * channel), value & 0xFF);
     write_byte_data(motor_bus_fd_, 0x09 + (4 * channel), value >> 8);
-
 }
 
 void PeripheralController::init_servo()
