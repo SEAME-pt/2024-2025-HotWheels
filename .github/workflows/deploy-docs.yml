@@ -48,6 +48,9 @@ jobs:
           name: github-pages
           path: 'docs'  # Ensure this path is correct
 
+      - name: List files in docs directory
+        run: ls -la docs  # Ensure this is where your output is
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
