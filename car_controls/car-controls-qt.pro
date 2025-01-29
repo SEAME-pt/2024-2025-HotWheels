@@ -1,6 +1,6 @@
-QT       += core gui
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-CONFIG += c++17
+QT = core
+
+CONFIG += c++17 cmdline
 
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
@@ -12,6 +12,7 @@ SOURCES += \
     sources/JoysticksController.cpp \
     sources/EngineController.cpp \
     sources/PeripheralController.cpp \
+    sources/main.cpp
 
 HEADERS += \
     includes/ControlsManager.hpp \
@@ -19,6 +20,7 @@ HEADERS += \
     includes/EngineController.hpp \
     includes/PeripheralController.hpp \
     includes/IPeripheralController.hpp \
+    includes/enums.hpp
 
 # Common Libraries
 LIBS += -lSDL2
