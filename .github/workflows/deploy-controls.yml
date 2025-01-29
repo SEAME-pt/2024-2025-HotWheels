@@ -27,19 +27,11 @@ jobs:
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
 
-      - name: Debug JETSON variable
-        run: |
-          echo "JETSON is set to: $JETSON"
-
-      - name: Setup SSH Key
-        run: |
-          mkdir -p ~/.ssh
-          echo "$JETSON_SSH_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 10.21.221.78 >> ~/.ssh/known_hosts
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
 
       - name: Deploy executable to target
         run: |
-          rsync -avz -e "ssh -i ~/.ssh/id_rsa" --rsync-path="sudo rsync" \
-            --delete car_controls/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps
-
+          sshpass -p "${{ secrets.JETSON_PASSWORD }}" rsync -avz -e "ssh" \
+            --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt \
+            hotweels@10.21.221.78:/home/hotweels/apps
