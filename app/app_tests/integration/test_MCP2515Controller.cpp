@@ -51,19 +51,6 @@ TEST_F(RS485CANTest, DataFrameTest) {
     uint16_t receivedID;
     std::vector<uint8_t> receivedData = canBusConfigurator->readCANMessage(receivedID);
 
-    // Debugging statements
-    std::cout << "Sent ID: " << dataFrame.id << ", Received ID: " << receivedID << std::endl;
-    std::cout << "Sent Data: ";
-    for (auto byte : dataFrame.data) {
-        std::cout << std::hex << static_cast<int>(byte) << " ";
-    }
-    std::cout << std::endl;
-    std::cout << "Received Data: ";
-    for (auto byte : receivedData) {
-        std::cout << std::hex << static_cast<int>(byte) << " ";
-    }
-    std::cout << std::endl;
-
     // Verify the received frame
     ASSERT_EQ(receivedID, dataFrame.id);
     ASSERT_EQ(receivedData, dataFrame.data);
@@ -103,7 +90,7 @@ TEST_F(RS485CANTest, RemoteFrameTest) {
 TEST_F(RS485CANTest, ErrorFrameTest) {
     // Simulate sending an error frame
     CANFrame errorFrame;
-    errorFrame.id = 0x0; // 11-bit identifier
+    errorFrame.id = 0x7FF; // 11-bit identifier
     errorFrame.rtr = 0; // Data frame
     errorFrame.data = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}; // Error flag (violates bit-stuffing rule)
     errorFrame.dlc = errorFrame.data.size(); // Data length code

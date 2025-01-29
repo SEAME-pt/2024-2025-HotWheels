@@ -51,9 +51,6 @@ private:
 	static constexpr uint8_t TXB0D0       = 0x36;
 	static constexpr uint8_t CAN_RTS_TXB0 = 0x81;
 
-	static constexpr uint8_t RXB0DLC       = 0x65;
-	static constexpr uint8_t RXB0D0        = 0x66;
-
 };
 
 #endif // MCP2515CONFIGURATOR_HPP
