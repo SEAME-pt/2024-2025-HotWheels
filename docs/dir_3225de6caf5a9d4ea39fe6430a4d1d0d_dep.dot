@@ -6,7 +6,9 @@ digraph "app/includes/controls"
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   compound=true
   subgraph clusterdir_1c5c03227cca0102ee47bee331c2b55d {
-    graph [ bgcolor="#edf0f7", pencolor="grey50", label="includes", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_1c5c03227cca0102ee47bee331c2b55d.html",tooltip=""]
-  dir_3225de6caf5a9d4ea39fe6430a4d1d0d [label="controls", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_3225de6caf5a9d4ea39fe6430a4d1d0d.html",tooltip=""];
+    graph [ bgcolor="#ecf0f7", pencolor="grey50", label="includes", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_1c5c03227cca0102ee47bee331c2b55d.html",tooltip=""]
+  dir_c86fb638e604e1fcad97e24482002e2e [label="data", fillcolor="#9fb2da", color="grey25", style="filled", URL="dir_c86fb638e604e1fcad97e24482002e2e.html",tooltip=""];
+  dir_3225de6caf5a9d4ea39fe6430a4d1d0d [label="controls", fillcolor="#ecf0f7", color="grey25", style="filled,bold", URL="dir_3225de6caf5a9d4ea39fe6430a4d1d0d.html",tooltip=""];
   }
+  dir_3225de6caf5a9d4ea39fe6430a4d1d0d->dir_c86fb638e604e1fcad97e24482002e2e [headlabel="1", labeldistance=1.5 headhref="dir_000006_000008.html" href="dir_000006_000008.html" color="steelblue1" fontcolor="steelblue1"];
 }

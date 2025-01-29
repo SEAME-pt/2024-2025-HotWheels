@@ -6,7 +6,7 @@ digraph "app/includes/mileage"
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   compound=true
   subgraph clusterdir_1c5c03227cca0102ee47bee331c2b55d {
-    graph [ bgcolor="#edf0f7", pencolor="grey50", label="includes", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_1c5c03227cca0102ee47bee331c2b55d.html",tooltip=""]
-  dir_8a132aab367ddcd63929717e57e1c516 [label="mileage", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_8a132aab367ddcd63929717e57e1c516.html",tooltip=""];
+    graph [ bgcolor="#ecf0f7", pencolor="grey50", label="includes", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_1c5c03227cca0102ee47bee331c2b55d.html",tooltip=""]
+  dir_8a132aab367ddcd63929717e57e1c516 [label="mileage", fillcolor="#ecf0f7", color="grey25", style="filled,bold", URL="dir_8a132aab367ddcd63929717e57e1c516.html",tooltip=""];
   }
 }

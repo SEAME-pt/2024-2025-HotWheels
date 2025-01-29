@@ -1,3 +1,15 @@
+/**
+ * @file CanBusManager.cpp
+ * @author Michel Batista (michel_fab@outlook.com)
+ * @author 
+ * @brief Implementation of the CanBusManager class.
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "CanBusManager.hpp"
 #include <QDebug>
 #include "MCP2515Controller.hpp"

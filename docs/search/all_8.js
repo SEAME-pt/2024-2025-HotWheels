@@ -1,13 +1,18 @@
 var searchData=
 [
-  ['i2c_5fsmbus_5fdata_0',['i2c_smbus_data',['../unioni2c__smbus__data.html',1,'']]],
-  ['i2c_5fsmbus_5fread_5fbyte_5fdata_1',['i2c_smbus_read_byte_data',['../classPeripheralController.html#a74944b38fa602d38df1d7d3fd5c3e8bf',1,'PeripheralController']]],
-  ['i2c_5fsmbus_5fwrite_5fbyte_5fdata_2',['i2c_smbus_write_byte_data',['../classPeripheralController.html#afdadc72629fcdcd55298e2d6925e1056',1,'PeripheralController']]],
-  ['i2ccontroller_3',['I2CController',['../classI2CController.html',1,'I2CController'],['../classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a',1,'I2CController::I2CController()']]],
-  ['init_4',['init',['../classMCP2515Controller.html#abec15f23b6d7d1435578ba019206914b',1,'MCP2515Controller::init()'],['../classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4',1,'JoysticksController::init()']]],
-  ['init_5fmotors_5',['init_motors',['../classPeripheralController.html#a02a6b4c52df60909f6109a411f6e6bd5',1,'PeripheralController']]],
-  ['init_5fservo_6',['init_servo',['../classPeripheralController.html#a049a6c18f04e14f991f49cd4df178613',1,'PeripheralController']]],
-  ['initialize_7',['initialize',['../classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1',1,'CanBusManager::initialize()'],['../classMileageManager.html#ad615b78584e6c337ae3417089e035d48',1,'MileageManager::initialize()']]],
-  ['ipaddressupdated_8',['ipAddressUpdated',['../classDataManager.html#a7914f411b3504726cedc754854019f66',1,'DataManager::ipAddressUpdated()'],['../classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193',1,'SystemManager::ipAddressUpdated()']]],
-  ['iperipheralcontroller_9',['IPeripheralController',['../classIPeripheralController.html',1,'']]]
+  ['dark_0',['Dark',['../enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cdaaa18366b217ebf811ad1886e4f4f865b2',1,'enums.hpp']]],
+  ['datamanager_1',['DataManager',['../classDataManager.html',1,'DataManager'],['../classDataManager.html#ac2eec7fa355109eda41308e1de76d2a8',1,'DataManager::DataManager()']]],
+  ['datamanager_2ecpp_2',['DataManager.cpp',['../DataManager_8cpp.html',1,'']]],
+  ['datamanager_2ehpp_3',['DataManager.hpp',['../DataManager_8hpp.html',1,'']]],
+  ['directionchanged_4',['directionChanged',['../classControlsManager.html#a8dc2e1cb0a9ddf10e37034404e7460b4',1,'ControlsManager']]],
+  ['directionupdated_5',['directionUpdated',['../classEngineController.html#afe7335b983ea3c6c36dc0eaa00918d82',1,'EngineController']]],
+  ['displaymanager_6',['DisplayManager',['../classDisplayManager.html',1,'DisplayManager'],['../classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a',1,'DisplayManager::DisplayManager()']]],
+  ['displaymanager_2ecpp_7',['DisplayManager.cpp',['../DisplayManager_8cpp.html',1,'']]],
+  ['displaymanager_2ehpp_8',['DisplayManager.hpp',['../DisplayManager_8hpp.html',1,'']]],
+  ['docs_20tt_9',['5. &lt;tt&gt;docs/&lt;/tt&gt;',['..//home/michel/Documents/HotWheels-Cluster/app/README.md#autotoc_md7',1,'']]],
+  ['down_10',['Down',['../enums_8hpp.html#a7742add5e28549b88107eeec57b2f835a08a38277b0309070706f6652eeae9a53',1,'enums.hpp']]],
+  ['drive_11',['Drive',['../enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5',1,'enums.hpp']]],
+  ['drivingmode_12',['DrivingMode',['../enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70',1,'enums.hpp']]],
+  ['drivingmodetoggled_13',['drivingModeToggled',['../classDisplayManager.html#a82ccd56efaf1a42e2e2823a4fbaec4a0',1,'DisplayManager']]],
+  ['drivingmodeupdated_14',['drivingModeUpdated',['../classControlsManager.html#ad3cd1fa6493f5e17cc1806d993266fac',1,'ControlsManager::drivingModeUpdated()'],['../classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26',1,'DataManager::drivingModeUpdated()']]]
 ];

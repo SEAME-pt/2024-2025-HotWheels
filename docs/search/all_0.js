@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['addspeed_0',['addSpeed',['../classMileageCalculator.html#a3d21d739a248a8609a7ee375f198fb7c',1,'MileageCalculator']]]
+  ['1_20tt_20src_20tt_0',['1. &lt;tt&gt;src/&lt;/tt&gt;',['..//home/michel/Documents/HotWheels-Cluster/app/README.md#autotoc_md3',1,'']]]
 ];
