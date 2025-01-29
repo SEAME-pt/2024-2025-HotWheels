@@ -26,30 +26,3 @@ jobs:
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
-
-      - name: Get latest tag and increment
-        id: tag
-        run: |
-          git fetch --tags --force
-          git fetch origin # Ensures the branch is up to date
-          latest_tag=$(git tag --sort=-v:refname | head -n 1)
-          if [ -z "$latest_tag" ]; then
-            latest_tag="v1.0.0"
-          fi
-          major=$(echo $latest_tag | cut -d. -f1 | tr -d 'v')
-          minor=$(echo $latest_tag | cut -d. -f2)
-          patch=$(echo $latest_tag | cut -d. -f3)
-          new_tag="v$major.$minor.$((patch + 1))"
-          echo "new_tag=$new_tag" >> $GITHUB_OUTPUT
-
-      - name: Create Release for aarch64
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.tag.outputs.new_tag }}
-          files: /home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/car_controls/build/car-controls-qt
-          name: Release ${{ steps.tag.outputs.new_tag }}
-          draft: false
-          prerelease: false
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
