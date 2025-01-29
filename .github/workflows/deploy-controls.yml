@@ -29,4 +29,4 @@ jobs:
 
       - name: Deploy executable to target
         run: |
-          rsync -avz --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt $JETSON:/home/hotweels/apps
+          rsync -avz --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps
