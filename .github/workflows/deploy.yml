@@ -12,11 +12,11 @@ jobs:
     permissions:
       contents: write  # Ensure write permission to push docs to the repository
       pages: write     # Grant permission to deploy to GitHub Pages
-      id-token: write  # This is needed for OIDC token-based authentication with Pages
+      workflow: write  # Grant permission for workflow actions
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Use the latest stable version (v3)
+        uses: actions/checkout@v3
 
       - name: Install Doxygen
         run: sudo apt-get install -y doxygen
@@ -31,14 +31,13 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2  # Use the latest stable version (v2)
+        uses: actions/upload-artifact@v3  # Use actions/upload-artifact instead
         with:
-          path: 'docs'  # Assuming the Doxygen output is in the 'docs' directory
-          name: 'github-pages'  # Ensure this matches the artifact name in deploy-pages
+          name: github-pages  # Name of the artifact
+          path: 'docs'        # Assuming the Doxygen output is in the 'docs' directory
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          token: ${{ secrets.GH_ACTIONS_PAGE }}
-          artifact_name: 'github-pages'  # Ensure this matches the artifact name in upload-pages-artifact
+          token: ${{ secrets.GH_ACTIONS_PAGE }}  # Ensure this secret exists in your repository settings
