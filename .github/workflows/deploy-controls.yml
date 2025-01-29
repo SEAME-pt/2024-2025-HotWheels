@@ -31,6 +31,15 @@ jobs:
         run: |
           echo "JETSON is set to: $JETSON"
 
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$JETSON_SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 10.21.221.78 >> ~/.ssh/known_hosts
+
       - name: Deploy executable to target
         run: |
-          rsync -avz --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt hotweels@hotweels-car.local:/home/hotweels/apps
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa" --rsync-path="sudo rsync" \
+            --delete car_controls/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps
+
