@@ -1,0 +1,35 @@
+name: Deploy Documentation to GitHub Pages
+
+on:
+  push:
+    branches:
+      - page
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Doxygen
+        run: sudo apt-get install -y doxygen
+
+      - name: Run Doxygen
+        run: doxygen Doxyfile
+
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DOC_BRANCH="gh-pages"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+          git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
+          git checkout -B $DOC_BRANCH
+          rsync -av --delete --exclude '.git' docs/ .
+          git add .
+          git commit -m "Update Doxygen documentation"
+          git push origin $DOC_BRANCH --force
