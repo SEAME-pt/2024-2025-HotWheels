@@ -1,0 +1,14 @@
+digraph "JoysticksController::finished"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="JoysticksController\l::finished",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="ControlsManager::Controls\lManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="JoysticksController\l::processInput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209",tooltip=" "];
+  Node3 -> Node2 [id="edge3_Node000003_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

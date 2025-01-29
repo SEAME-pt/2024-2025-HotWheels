@@ -26,6 +26,7 @@ SOURCES += \
     sources/controls/ControlsManager.cpp \
     sources/controls/JoysticksController.cpp \
     sources/controls/EngineController.cpp \
+    sources/controls/PeripheralController.cpp \
     sources/display/DisplayManager.cpp \
     sources/system/SystemManager.cpp \
     sources/system/BatteryController.cpp \
@@ -47,6 +48,8 @@ HEADERS += \
     includes/controls/ControlsManager.hpp \
     includes/controls/JoysticksController.hpp \
     includes/controls/EngineController.hpp \
+    includes/controls/PeripheralController.hpp \
+    includes/controls/IPeripheralController.hpp \
     includes/display/DisplayManager.hpp \
     includes/system/SystemManager.hpp \
     includes/system/BatteryController.hpp \

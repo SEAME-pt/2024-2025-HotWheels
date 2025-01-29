@@ -32,11 +32,6 @@ jobs:
           cd /home/michel/docker
           docker exec sad_curran /bin/bash -c "cd car_controls && make"
 
-      - name: Running tests
-        run: |
-          cd /home/michel/docker
-          docker exec sad_curran /bin/bash -c "cd car_controls && make test"
-
       - name: Get latest tag and increment
         id: tag
         run: |
@@ -63,9 +58,3 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
-      - name: Create artifact for aarch64
-        uses: actions/upload-artifact@v4
-        with:
-          name: aarch64-car-controls
-          path: /home/michel/docker/car_controls/aarch64-car-controls

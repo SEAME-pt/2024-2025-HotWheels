@@ -4,6 +4,7 @@
 #include <QObject>
 #include "enums.hpp"
 #include <atomic>
+#include "IPeripheralController.hpp"
 
 class EngineController : public QObject
 {
@@ -16,58 +17,80 @@ private:
     const int SERVO_RIGHT_PWM = 345 + 140;
     const int STEERING_CHANNEL = 0;
 
-    int servo_bus_fd_;
-    int motor_bus_fd_;
-    int servo_addr_;
-    int motor_addr_;
-
     std::atomic<bool> m_running;
     std::atomic<int> m_current_speed;
     std::atomic<int> m_current_angle;
     CarDirection m_currentDirection = CarDirection::Stop;
-    bool m_disabled = false;
 
-    virtual void write_byte_data(int fd, int reg, int value);
-    virtual int read_byte_data(int fd, int reg);
-
-    void set_servo_pwm(int channel, int on_value, int off_value);
-    void set_motor_pwm(int channel, int value);
-
-    void init_servo();
-    void init_motors();
-
-    void disable();
-    bool isDisabled() const;
-
+    /**
+     * Sets the direction of the car and emits the directionUpdated signal if the direction has changed.
+     *
+     * @param newDirection The new direction to set.
+     */
     void setDirection(CarDirection newDirection);
 
+    IPeripheralController *pcontrol;
+
 public:
+    /**
+     * Default constructor for the EngineController class.
+     */
+    EngineController();
+
+    /**
+     * Constructor for the EngineController class, initializing the motor and servo controllers.
+     *
+     * @param servo_addr The address of the servo controller.
+     * @param motor_addr The address of the motor controller.
+     * @param parent The parent QObject for this instance.
+     */
     EngineController(int servo_addr, int motor_addr, QObject *parent = nullptr);
+
+    /**
+     * Destructor for the EngineController class.
+     *
+     * Stops the engine and deletes the peripheral controller.
+     */
     ~EngineController();
 
+    /**
+     * Starts the engine controller, setting the m_running flag to true.
+     */
     void start();
+
+    /**
+     * Stops the engine controller, setting the m_running flag to false,
+     * and setting speed and steering to zero.
+     */
     void stop();
+
+    /**
+     * Sets the speed of the car, adjusting the motor PWM values based on the speed.
+     *
+     * @param speed The speed to set, within the range of -100 to 100.
+     */
     void set_speed(int speed);
+
+    /**
+     * Sets the steering angle of the car, adjusting the servo PWM based on the angle.
+     *
+     * @param angle The steering angle to set, within the range of -MAX_ANGLE to MAX_ANGLE.
+     */
     void set_steering(int angle);
 
-    bool get_is_running() const { return m_running; }
-    int get_speed() const { return m_current_speed; }
-    int get_angle() const { return m_current_angle; }
-    int get_servo_bus_fd() const { return servo_bus_fd_; }
-    int get_motor_bus_fd() const { return motor_bus_fd_; }
-    int get_servo_addr() const { return servo_addr_; }
-    int get_motor_addr() const { return motor_addr_; }
-    int get_servo_center_pwm() const { return SERVO_CENTER_PWM; }
-    int get_servo_left_pwm() const { return SERVO_LEFT_PWM; }
-    int get_servo_right_pwm() const { return SERVO_RIGHT_PWM; }
-    int get_steering_channel() const { return STEERING_CHANNEL; }
-    int get_max_angle() const { return MAX_ANGLE; }
-    int get_current_speed() const { return m_current_speed; }
-    int get_current_angle() const { return m_current_angle; }
-    bool isDisabledPublic() const { return isDisabled(); }
-
 signals:
+    /**
+     * Signal emitted when the direction of the car is updated.
+     *
+     * @param newDirection The new direction of the car.
+     */
     void directionUpdated(CarDirection newDirection);
+
+    /**
+     * Signal emitted when the steering angle of the car is updated.
+     *
+     * @param newAngle The new steering angle.
+     */
     void steeringUpdated(int newAngle);
 };
 
