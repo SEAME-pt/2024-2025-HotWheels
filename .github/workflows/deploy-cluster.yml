@@ -32,6 +32,7 @@ jobs:
           cd app/build
           ./HotWheels-tests
 
-      #- name: Deploy executable to target
-        #run: |
-          #rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app $JETSON:/home/hotweels/apps/
+      - name: Deploy executable to target
+        run: |
+          rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app $JETSON:/home/hotweels/apps/
+          sshpass -p 'jetson' scp -r car_controls/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/
