@@ -3,14 +3,14 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - solve-car-controls-problem
+    #paths:
+      #- 'app/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - solve-car-controls-problem
+    #paths:
+      #- 'app/**'
 
 jobs:
   run-on-self-hosted:
@@ -33,5 +33,7 @@ jobs:
           ./HotWheels-tests
 
       - name: Deploy executable to target
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -p 'jetson' rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/
