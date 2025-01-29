@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -23,17 +22,17 @@ jobs:
         run: doxygen Doxyfile
 
       - name: List files in docs directory
-        run: ls -la docs  # Adjust path if needed
+        run: ls -la docs  # Ensure this is where your output is
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: github-pages
-          path: 'docs'  # Ensure this path matches the output directory of Doxygen
+          path: 'docs'  # Ensure this path is correct
 
   deploy:
     needs: build
-
+    runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
@@ -42,9 +41,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
-
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
