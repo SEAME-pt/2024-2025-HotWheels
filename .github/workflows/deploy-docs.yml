@@ -3,7 +3,7 @@ name: Deploy Documentation to GitHub Pages
 on:
   push:
     branches:
-      - page  # or 'page' if that's your target branch
+      - page
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
           DOC_BRANCH="gh-pages"
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
           git fetch origin $DOC_BRANCH || echo "Branch does not exist yet"
           git checkout -B $DOC_BRANCH
           rsync -av --delete --exclude '.git' --exclude '.github' . .
