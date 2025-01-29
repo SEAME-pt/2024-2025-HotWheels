@@ -1,5 +1,4 @@
 *build
-*docs
 app/root.pro.user
 *.vscode/
 *.qtcreator
