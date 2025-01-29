@@ -1,0 +1,23 @@
+name: Build Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'app/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'app/**'
+
+jobs:
+  run-on-self-hosted:
+    runs-on: [self-hosted, seame-computer-1]
+    steps:
+      - name: Go to the repository
+        run: cd ~/Documents/${{ github.repository }}
+
+      - name: Run Doxygen
+        run: doxygen Doxyfile
