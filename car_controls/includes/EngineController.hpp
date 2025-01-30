@@ -13,7 +13,7 @@ class EngineController : public QObject
 private:
     const int MAX_ANGLE = 180;
     const int SERVO_CENTER_PWM = 340;
-    const int SERVO_LEFT_PWM = 340 - 110;
+    const int SERVO_LEFT_PWM = 340 - 100;
     const int SERVO_RIGHT_PWM = 340 + 130;
     const int STEERING_CHANNEL = 0;
 
