@@ -26,18 +26,13 @@
  */
 class MockMCP2515Controller : public IMCP2515Controller
 {
-    /** @class MockMCP2515Controller inherits from QObject. */
-    Q_OBJECT
+    Q_OBJECT /// @class MockMCP2515Controller inherits from QObject.
 
 public:
-    /** @brief Mocked method to initialize the MCP2515 controller. */
-    MOCK_METHOD(bool, init, (), (override)); 
-    /** @brief Mocked method to process the reading of the MCP2515 controller. */
-    MOCK_METHOD(void, processReading, (), (override));  
-    /** @brief Mocked method to stop the reading of the MCP2515 controller. */
-    MOCK_METHOD(void, stopReading, (), (override));  
-    /** @brief Mocked method to check if the stop reading flag is set. */
-    MOCK_METHOD(bool, isStopReadingFlagSet, (), (const, override));  
+    MOCK_METHOD(bool, init, (), (override)); /// Mocked method to initialize the MCP2515 controller.
+    MOCK_METHOD(void, processReading, (), (override)); /// Mocked method to process the reading of the MCP2515 controller.
+    MOCK_METHOD(void, stopReading, (), (override)); /// Mocked method to stop the reading of the MCP2515 controller.
+    MOCK_METHOD(bool, isStopReadingFlagSet, (), (const, override)); /// Mocked method to check if the stop reading flag is set.
 
 signals:
     /**

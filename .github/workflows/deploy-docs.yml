@@ -17,7 +17,8 @@ jobs:
     runs-on: [self-hosted, home-1]
     steps:
       - name: Go to the repository
-        run: cd ~/Documents/${{ github.repository }}
+        # run: cd ~/Documents/${{ github.repository }}
+        run: cd ~/Documents/${{ github.event.repository.name }}
 
       - name: Run Doxygen
         run: doxygen Doxyfile
