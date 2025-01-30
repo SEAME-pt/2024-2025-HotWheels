@@ -67,7 +67,6 @@ TEST_F(CANMessageProcessorTest, ProcessMessageWithRegisteredHandler) {
         ASSERT_EQ(data[0], 0xA0);
         ASSERT_EQ(data[1], 0xB1);
     });
-
  
     processor.processMessage(0x123, message);
     ASSERT_TRUE(handlerCalled);

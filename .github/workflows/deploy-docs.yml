@@ -21,7 +21,6 @@ jobs:
         run: cd ~/Documents/${{ github.event.repository.name }}
 
       - name: List the files in the repository
-        run: ls -la
-
+        run: pwd
       - name: Run Doxygen
         run: doxygen Doxyfile
