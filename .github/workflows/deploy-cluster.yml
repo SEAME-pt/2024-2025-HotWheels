@@ -3,14 +3,14 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - fix-car-controls
-    #paths:
-      #- 'app/**'
+      - main
+    paths:
+      - 'app/**'
   pull_request:
     branches:
-      - fix-car-controls
-    #paths:
-      #- 'app/**'
+      - main
+    paths:
+      - 'app/**'
 
 jobs:
   run-on-self-hosted:
