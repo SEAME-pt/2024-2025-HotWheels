@@ -1,0 +1,6 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,75,55"/>
+<area shape="rect" id="Node000002" href="$classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title=" " alt="" coords="123,29,297,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>

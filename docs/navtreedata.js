@@ -59,5 +59,5 @@ var NAVTREEINDEX =
 "classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';

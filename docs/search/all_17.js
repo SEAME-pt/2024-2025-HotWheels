@@ -8,7 +8,7 @@ var searchData=
   ['updatedrivingmode_5',['updateDrivingMode',['../classDisplayManager.html#a06d94f6ce20c23eaa1e25bc6e8c9496a',1,'DisplayManager']]],
   ['updateenginedata_6',['updateEngineData',['../classDisplayManager.html#aca4a27c20086ba98ae87490fb3d7867e',1,'DisplayManager']]],
   ['updateipaddress_7',['updateIpAddress',['../classDisplayManager.html#a2cc5f9b4a7359f71d4bd730e8d5e3c3b',1,'DisplayManager']]],
-  ['updatemileage_8',['updateMileage',['../classDisplayManager.html#aef67b2d47859a3a6ef96d622925c84c2',1,'DisplayManager::updateMileage()'],['../classMileageManager.html#a912c517158c90834792c3d00c0af101c',1,'MileageManager::updateMileage()']]],
+  ['updatemileage_8',['updatemileage',['../classDisplayManager.html#aef67b2d47859a3a6ef96d622925c84c2',1,'DisplayManager::updateMileage()'],['../classMileageManager.html#a912c517158c90834792c3d00c0af101c',1,'MileageManager::updateMileage()']]],
   ['updatesystemtime_9',['updateSystemTime',['../classDisplayManager.html#aa871409b067196dc448ce1cec4ad1437',1,'DisplayManager']]],
   ['updatetemperature_10',['updateTemperature',['../classDisplayManager.html#a002b346babdbbdf852f9121a32e80e9d',1,'DisplayManager']]],
   ['updatewifistatus_11',['updateWifiStatus',['../classDisplayManager.html#af6cc252c8fd7ca1836e5c38265489f2e',1,'DisplayManager']]]

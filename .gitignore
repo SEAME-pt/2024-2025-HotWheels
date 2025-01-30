@@ -1,5 +1,8 @@
-# Ignore all
+# Ignora tudo
 *
 
-# Except for these files
+# Exceto a pasta docs
+!/docs/
 
+# Exceto o conteúdo da pasta docs
+!/docs/**
