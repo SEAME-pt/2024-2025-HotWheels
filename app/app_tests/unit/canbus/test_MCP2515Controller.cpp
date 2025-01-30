@@ -1,3 +1,16 @@
+/**
+ * @file test_MCP2515Controller.cpp
+ * @brief Unit tests for the MCP2515Controller class.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Ricardo Melo (@reomelo)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Michel Batista (@MicchelFAB)
+ * @version 0.1
+ * @date 2025-01-30
+ * 
+ * @details This file contains unit tests for the MCP2515Controller class, using Google Test and Google Mock frameworks.
+ */
+
 #include <QObject>
 #include <QSignalSpy>
 #include "MCP2515Controller.hpp"
@@ -10,16 +23,30 @@ using ::testing::_;
 using ::testing::Return;
 using ::testing::Throw;
 
+/**
+ * @class MCP2515ControllerTest
+ * @brief Test fixture for testing the MCP2515Controller class.
+ * 
+ * @details This class sets up the necessary mock objects and provides setup and teardown methods for each test.
+ */
 class MCP2515ControllerTest : public ::testing::Test
 {
 protected:
-    MockSPIController mockSPI;
-    MCP2515Configurator configurator{mockSPI};
-    CANMessageProcessor messageProcessor;
+    MockSPIController mockSPI; ///< Mocked SPI controller.
+    MCP2515Configurator configurator{mockSPI}; ///< MCP2515Configurator object.
+    CANMessageProcessor messageProcessor; ///< CANMessageProcessor object.
 
     MCP2515ControllerTest() = default;
 };
 
+/**
+ * @test Tests if the initialization is successful.
+ * @brief Ensures that init() does not throw an exception.
+ * 
+ * @details This test verifies that init() does not throw an exception when the initialization is successful.
+ * 
+ * @see MCP2515Controller::init
+ */
 TEST_F(MCP2515ControllerTest, InitializationSuccess)
 {
     EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
@@ -34,12 +61,28 @@ TEST_F(MCP2515ControllerTest, InitializationSuccess)
     ASSERT_NO_THROW(controller.init());
 }
 
+/**
+ * @test Tests if the initialization fails.
+ * @brief Ensures that init() throws an exception when the initialization fails.
+ * 
+ * @details This test verifies that init() throws a runtime_error when the initialization fails.
+ * 
+ * @see MCP2515Controller::init
+ */
 TEST_F(MCP2515ControllerTest, InitializationFailure)
 {
     EXPECT_CALL(mockSPI, openDevice("/dev/nonexistent")).WillOnce(Return(false));
     ASSERT_THROW(MCP2515Controller("/dev/nonexistent", mockSPI), std::runtime_error);
 }
 
+/**
+ * @test Tests if handlers are set up correctly.
+ * @brief Ensures that registerHandler() does not throw an exception.
+ * 
+ * @details This test verifies that registerHandler() does not throw an exception when setting up handlers.
+ * 
+ * @see CANMessageProcessor::registerHandler
+ */
 TEST_F(MCP2515ControllerTest, SetupHandlersTest)
 {
     EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
@@ -51,6 +94,14 @@ TEST_F(MCP2515ControllerTest, SetupHandlersTest)
     ASSERT_NO_THROW(processor.registerHandler(0x200, [](const std::vector<uint8_t> &) {}));
 }
 
+/**
+ * @test Tests if the speedUpdated signal is emitted correctly.
+ * @brief Ensures that the speed signal is emitted with the correct value.
+ * 
+ * @details This test uses QSignalSpy to verify that speedUpdated emits the expected speed value.
+ * 
+ * @see MCP2515Controller::speedUpdated
+ */
 TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal)
 {
     EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
@@ -68,6 +119,14 @@ TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal)
     ASSERT_EQ(arguments.at(0).toFloat(), 1.0f); // Speed divided by 10
 }
 
+/**
+ * @test Tests if the rpmUpdated signal is emitted correctly.
+ * @brief Ensures that the RPM signal emits the correct value.
+ * 
+ * @details This test uses QSignalSpy to verify that rpmUpdated emits the expected RPM value.
+ * 
+ * @see MCP2515Controller::rpmUpdated
+ */
 TEST_F(MCP2515ControllerTest, RpmUpdatedSignal)
 {
     EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
@@ -85,6 +144,14 @@ TEST_F(MCP2515ControllerTest, RpmUpdatedSignal)
     ASSERT_EQ(arguments.at(0).toInt(), 1000);
 }
 
+/**
+ * @test Tests if processReading() calls handlers correctly.
+ * @brief Ensures that processReading() calls the registered handlers.
+ * 
+ * @details This test verifies that processReading() calls the registered handlers when data is available.
+ * 
+ * @see MCP2515Controller::processReading
+ */
 TEST_F(MCP2515ControllerTest, ProcessReadingCallsHandlers)
 {
     EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
@@ -113,6 +180,14 @@ TEST_F(MCP2515ControllerTest, ProcessReadingCallsHandlers)
     ASSERT_TRUE(controller.isStopReadingFlagSet());
 }
 
+/**
+ * @test Tests if stopReading() stops the processing.
+ * @brief Ensures that stopReading() sets the stop flag.
+ * 
+ * @details This test verifies that stopReading() sets the stop flag to true.
+ * 
+ * @see MCP2515Controller::stopReading
+ */
 TEST_F(MCP2515ControllerTest, StopReadingStopsProcessing)
 {
     EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));

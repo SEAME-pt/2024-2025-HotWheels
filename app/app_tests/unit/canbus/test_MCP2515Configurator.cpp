@@ -1,3 +1,16 @@
+/**
+ * @file test_MCP2515Configurator.cpp
+ * @brief Unit tests for the MCP2515Configurator class.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Ricardo Melo (@reomelo)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Michel Batista (@MicchelFAB)
+ * @version 0.1
+ * @date 2025-01-30
+ * 
+ * @details This file contains unit tests for the MCP2515Configurator class, using Google Test and Google Mock frameworks.
+ */
+
 #include "MCP2515Configurator.hpp"
 #include "MockSPIController.hpp"
 #include <gmock/gmock.h>
@@ -6,13 +19,27 @@
 using ::testing::_;
 using ::testing::Return;
 
+/**
+ * @class MCP2515ConfiguratorTest
+ * @brief Test fixture for testing the MCP2515Configurator class.
+ * 
+ * @details This class sets up the necessary mock objects and provides setup and teardown methods for each test.
+ */
 class MCP2515ConfiguratorTest : public ::testing::Test
 {
 protected:
-    MockSPIController mockSPI;
-    MCP2515Configurator configurator{mockSPI};
+    MockSPIController mockSPI; ///< Mocked SPI controller.
+    MCP2515Configurator configurator{mockSPI}; ///< MCP2515Configurator object.
 };
 
+/**
+ * @test Tests if the chip reset is successful.
+ * @brief Ensures that resetChip() returns true when the reset is successful.
+ * 
+ * @details This test verifies that resetChip() returns true when the chip reset is successful.
+ * 
+ * @see MCP2515Configurator::resetChip
+ */
 TEST_F(MCP2515ConfiguratorTest, ResetChipSuccess)
 {
     EXPECT_CALL(mockSPI, spiTransfer(_, nullptr, 1)).Times(1);
@@ -20,6 +47,14 @@ TEST_F(MCP2515ConfiguratorTest, ResetChipSuccess)
     ASSERT_TRUE(configurator.resetChip());
 }
 
+/**
+ * @test Tests if the chip reset fails.
+ * @brief Ensures that resetChip() returns false when the reset fails.
+ * 
+ * @details This test verifies that resetChip() returns false when the chip reset fails.
+ * 
+ * @see MCP2515Configurator::resetChip
+ */
 TEST_F(MCP2515ConfiguratorTest, ResetChipFailure)
 {
     EXPECT_CALL(mockSPI, spiTransfer(_, nullptr, 1)).Times(1);
@@ -27,6 +62,14 @@ TEST_F(MCP2515ConfiguratorTest, ResetChipFailure)
     ASSERT_FALSE(configurator.resetChip());
 }
 
+/**
+ * @test Tests if the baud rate is configured correctly.
+ * @brief Ensures that configureBaudRate() writes the correct values to the registers.
+ * 
+ * @details This test verifies that configureBaudRate() writes the correct values to the CNF1, CNF2, and CNF3 registers.
+ * 
+ * @see MCP2515Configurator::configureBaudRate
+ */
 TEST_F(MCP2515ConfiguratorTest, ConfigureBaudRate)
 {
     EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CNF1, 0x00)).Times(1);
@@ -35,18 +78,42 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureBaudRate)
     configurator.configureBaudRate();
 }
 
+/**
+ * @test Tests if the TX buffer is configured correctly.
+ * @brief Ensures that configureTXBuffer() writes the correct value to the TXB0CTRL register.
+ * 
+ * @details This test verifies that configureTXBuffer() writes the correct value to the TXB0CTRL register.
+ * 
+ * @see MCP2515Configurator::configureTXBuffer
+ */
 TEST_F(MCP2515ConfiguratorTest, ConfigureTXBuffer)
 {
     EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0CTRL, 0x00)).Times(1);
     configurator.configureTXBuffer();
 }
 
+/**
+ * @test Tests if the RX buffer is configured correctly.
+ * @brief Ensures that configureRXBuffer() writes the correct value to the RXB0CTRL register.
+ * 
+ * @details This test verifies that configureRXBuffer() writes the correct value to the RXB0CTRL register.
+ * 
+ * @see MCP2515Configurator::configureRXBuffer
+ */
 TEST_F(MCP2515ConfiguratorTest, ConfigureRXBuffer)
 {
     EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::RXB0CTRL, 0x60)).Times(1);
     configurator.configureRXBuffer();
 }
 
+/**
+ * @test Tests if the filters and masks are configured correctly.
+ * @brief Ensures that configureFiltersAndMasks() writes the correct values to the registers.
+ * 
+ * @details This test verifies that configureFiltersAndMasks() writes the correct values to the registers.
+ * 
+ * @see MCP2515Configurator::configureFiltersAndMasks
+ */
 TEST_F(MCP2515ConfiguratorTest, ConfigureFiltersAndMasks)
 {
     EXPECT_CALL(mockSPI, writeByte(0x00, 0xFF)).Times(1);
@@ -54,30 +121,70 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureFiltersAndMasks)
     configurator.configureFiltersAndMasks();
 }
 
+/**
+ * @test Tests if the interrupts are configured correctly.
+ * @brief Ensures that configureInterrupts() writes the correct value to the CANINTE register.
+ * 
+ * @details This test verifies that configureInterrupts() writes the correct value to the CANINTE register.
+ * 
+ * @see MCP2515Configurator::configureInterrupts
+ */
 TEST_F(MCP2515ConfiguratorTest, ConfigureInterrupts)
 {
     EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CANINTE, 0x01)).Times(1);
     configurator.configureInterrupts();
 }
 
+/**
+ * @test Tests if the mode is set correctly.
+ * @brief Ensures that setMode() writes the correct value to the CANCTRL register.
+ * 
+ * @details This test verifies that setMode() writes the correct value to the CANCTRL register.
+ * 
+ * @see MCP2515Configurator::setMode
+ */
 TEST_F(MCP2515ConfiguratorTest, SetMode)
 {
     EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::CANCTRL, 0x02)).Times(1);
     configurator.setMode(0x02);
 }
 
+/**
+ * @test Tests if the mode verification is successful.
+ * @brief Ensures that verifyMode() returns true when the mode is correct.
+ * 
+ * @details This test verifies that verifyMode() returns true when the mode is correct.
+ * 
+ * @see MCP2515Configurator::verifyMode
+ */
 TEST_F(MCP2515ConfiguratorTest, VerifyModeSuccess)
 {
     EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANSTAT)).WillOnce(Return(0x80));
     ASSERT_TRUE(configurator.verifyMode(0x80));
 }
 
+/**
+ * @test Tests if the mode verification fails.
+ * @brief Ensures that verifyMode() returns false when the mode is incorrect.
+ * 
+ * @details This test verifies that verifyMode() returns false when the mode is incorrect.
+ * 
+ * @see MCP2515Configurator::verifyMode
+ */
 TEST_F(MCP2515ConfiguratorTest, VerifyModeFailure)
 {
     EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANSTAT)).WillOnce(Return(0x00));
     ASSERT_FALSE(configurator.verifyMode(0x80));
 }
 
+/**
+ * @test Tests if a CAN message with data is read correctly.
+ * @brief Ensures that readCANMessage() reads the correct frame ID and data.
+ * 
+ * @details This test verifies that readCANMessage() reads the correct frame ID and data when a CAN message with data is available.
+ * 
+ * @see MCP2515Configurator::readCANMessage
+ */
 TEST_F(MCP2515ConfiguratorTest, ReadCANMessageWithData)
 {
     EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANINTF)).WillOnce(Return(0x01));
@@ -98,6 +205,14 @@ TEST_F(MCP2515ConfiguratorTest, ReadCANMessageWithData)
     ASSERT_EQ(data[2], 0xC2);
 }
 
+/**
+ * @test Tests if a CAN message with no data is read correctly.
+ * @brief Ensures that readCANMessage() returns an empty data vector when no CAN message is available.
+ * 
+ * @details This test verifies that readCANMessage() returns an empty data vector when no CAN message is available.
+ * 
+ * @see MCP2515Configurator::readCANMessage
+ */
 TEST_F(MCP2515ConfiguratorTest, ReadCANMessageNoData)
 {
     EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CANINTF)).WillOnce(Return(0x00));

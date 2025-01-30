@@ -1,3 +1,16 @@
+/**
+ * @file test_PeripheralController.cpp
+ * @brief Unit tests for the PeripheralController class.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Ricardo Melo (@reomelo)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Michel Batista (@MicchelFAB)
+ * @version 0.1
+ * @date 2025-01-30
+ * 
+ * @details This file contains unit tests for the PeripheralController class, using Google Test and Google Mock frameworks.
+ */
+
 #include "MockPeripheralController.hpp"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -6,6 +19,14 @@ using ::testing::_;
 using ::testing::Return;
 using ::testing::Throw;
 
+/**
+ * @test Tests if the servo PWM is set correctly.
+ * @brief Ensures that set_servo_pwm() is called with the correct parameters.
+ * 
+ * @details This test verifies that set_servo_pwm() is called with the correct parameters.
+ * 
+ * @see PeripheralController::set_servo_pwm
+ */
 TEST(PeripheralControllerTest, TestServoPWM)
 {
     MockPeripheralController mockController;
@@ -17,6 +38,14 @@ TEST(PeripheralControllerTest, TestServoPWM)
     mockController.set_servo_pwm(1, 0, 4096);
 }
 
+/**
+ * @test Tests if the motor PWM is set correctly.
+ * @brief Ensures that set_motor_pwm() is called with the correct parameters.
+ * 
+ * @details This test verifies that set_motor_pwm() is called with the correct parameters.
+ * 
+ * @see PeripheralController::set_motor_pwm
+ */
 TEST(PeripheralControllerTest, TestMotorPWM)
 {
     MockPeripheralController mockController;
@@ -28,6 +57,14 @@ TEST(PeripheralControllerTest, TestMotorPWM)
     mockController.set_motor_pwm(1, 3000);
 }
 
+/**
+ * @test Tests if the servo is initialized correctly.
+ * @brief Ensures that init_servo() is called.
+ * 
+ * @details This test verifies that init_servo() is called.
+ * 
+ * @see PeripheralController::init_servo
+ */
 TEST(PeripheralControllerTest, TestInitServo)
 {
     MockPeripheralController mockController;
@@ -37,6 +74,14 @@ TEST(PeripheralControllerTest, TestInitServo)
     mockController.init_servo();
 }
 
+/**
+ * @test Tests if the motors are initialized correctly.
+ * @brief Ensures that init_motors() is called.
+ * 
+ * @details This test verifies that init_motors() is called.
+ * 
+ * @see PeripheralController::init_motors
+ */
 TEST(PeripheralControllerTest, TestInitMotors)
 {
     MockPeripheralController mockController;
@@ -46,6 +91,14 @@ TEST(PeripheralControllerTest, TestInitMotors)
     mockController.init_motors();
 }
 
+/**
+ * @test Tests if I2C write byte data is called correctly.
+ * @brief Ensures that i2c_smbus_write_byte_data() is called with the correct parameters.
+ * 
+ * @details This test verifies that i2c_smbus_write_byte_data() is called with the correct parameters and returns the expected result.
+ * 
+ * @see PeripheralController::i2c_smbus_write_byte_data
+ */
 TEST(PeripheralControllerTest, TestI2CWriteByteData)
 {
     MockPeripheralController mockController;
@@ -57,6 +110,14 @@ TEST(PeripheralControllerTest, TestI2CWriteByteData)
     EXPECT_EQ(result, 0);
 }
 
+/**
+ * @test Tests if I2C read byte data is called correctly.
+ * @brief Ensures that i2c_smbus_read_byte_data() is called with the correct parameters.
+ * 
+ * @details This test verifies that i2c_smbus_read_byte_data() is called with the correct parameters and returns the expected result.
+ * 
+ * @see PeripheralController::i2c_smbus_read_byte_data
+ */
 TEST(PeripheralControllerTest, TestI2CReadByteData)
 {
     MockPeripheralController mockController;
@@ -68,6 +129,14 @@ TEST(PeripheralControllerTest, TestI2CReadByteData)
     EXPECT_EQ(result, 0x30);
 }
 
+/**
+ * @test Tests if write_byte_data() throws an exception on failure.
+ * @brief Ensures that write_byte_data() throws a runtime_error exception.
+ * 
+ * @details This test verifies that write_byte_data() throws a runtime_error exception when the I2C write fails.
+ * 
+ * @see PeripheralController::write_byte_data
+ */
 TEST(PeripheralControllerTest, TestWriteByteDataException)
 {
     MockPeripheralController mockController;
@@ -77,6 +146,14 @@ TEST(PeripheralControllerTest, TestWriteByteDataException)
     EXPECT_THROW(mockController.write_byte_data(1, 0x10, 0x20), std::runtime_error);
 }
 
+/**
+ * @test Tests if read_byte_data() throws an exception on failure.
+ * @brief Ensures that read_byte_data() throws a runtime_error exception.
+ * 
+ * @details This test verifies that read_byte_data() throws a runtime_error exception when the I2C read fails.
+ * 
+ * @see PeripheralController::read_byte_data
+ */
 TEST(PeripheralControllerTest, TestReadByteDataException)
 {
     MockPeripheralController mockController;
