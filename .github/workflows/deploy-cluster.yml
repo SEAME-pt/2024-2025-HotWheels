@@ -3,14 +3,14 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - fix-car-controls
+    #paths:
+      #- 'app/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - fix-car-controls
+    #paths:
+      #- 'app/**'
 
 jobs:
   run-on-self-hosted:
@@ -29,7 +29,11 @@ jobs:
 
       - name: Run tests
         run: |
-          cd app/build
+          cd app
+          mkdir build-x86
+          cd build-x86
+          qmake ../root.pro
+          make -j$(nproc)
           ./HotWheels-tests
 
       - name: Deploy executable to target
