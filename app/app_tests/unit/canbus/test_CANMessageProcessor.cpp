@@ -68,7 +68,7 @@ TEST_F(CANMessageProcessorTest, ProcessMessageWithRegisteredHandler) {
         ASSERT_EQ(data[1], 0xB1);
     });
 
-    std::vector<uint8_t> message = {0xA0, 0xB1};
+ 
     processor.processMessage(0x123, message);
     ASSERT_TRUE(handlerCalled);
 }
