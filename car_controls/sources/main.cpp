@@ -33,5 +33,5 @@ int main(int argc, char *argv[])
     }
     std::cout << "Service has stopped." << std::endl;
 
-    return a.exec();
+    //return a.exec();
 }
