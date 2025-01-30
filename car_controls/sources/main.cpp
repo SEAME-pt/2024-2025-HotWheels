@@ -10,7 +10,7 @@ volatile bool keepRunning = true;
 // Signal handler for SIGINT (CTRL+C)
 void handleSigint(int)
 {
-    qDebug() << "[Main] SIGINT received. Quitting application.";
+    qDebug() << "SIGINT received. Quitting application...";
     QCoreApplication::quit();
 }
 
@@ -21,17 +21,11 @@ int main(int argc, char *argv[])
 
     try {
         ControlsManager *m_controlsManager;
-
         m_controlsManager = new ControlsManager();
-        /* while (keepRunning) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-        } */
         return a.exec();
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
     std::cout << "Service has stopped." << std::endl;
-
-    //return a.exec();
 }
