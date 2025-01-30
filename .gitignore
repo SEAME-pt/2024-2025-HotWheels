@@ -1,4 +1,5 @@
-*build
-app/root.pro.user
-*.vscode/
-*.qtcreator
+# Ignore all
+*
+
+# Except for these files
+
