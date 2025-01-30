@@ -11,22 +11,22 @@ volatile bool keepRunning = true;
 void handleSigint(int)
 {
     qDebug() << "[Main] SIGINT received. Quitting application.";
-    keepRunning = false;
+    QCoreApplication::quit();
 }
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-
     std::signal(SIGINT, handleSigint);
 
     try {
         ControlsManager *m_controlsManager;
 
         m_controlsManager = new ControlsManager();
-        while (keepRunning) {
+        /* while (keepRunning) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
-        }
+        } */
+        return a.exec();
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
