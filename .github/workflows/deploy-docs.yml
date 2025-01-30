@@ -16,11 +16,14 @@ jobs:
   run-on-self-hosted:
     runs-on: [self-hosted, home-1]
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Go to the repository
-        # run: cd ~/Documents/${{ github.repository }}
         run: cd ~/Documents/${{ github.event.repository.name }}
 
       - name: List the files in the repository
-        run: pwd
+        run: ls -la
+
       - name: Run Doxygen
         run: doxygen Doxyfile

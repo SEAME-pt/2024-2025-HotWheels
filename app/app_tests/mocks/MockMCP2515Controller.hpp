@@ -34,6 +34,7 @@ public:
     MOCK_METHOD(void, stopReading, (), (override)); /// Mocked method to stop the reading of the MCP2515 controller.
     MOCK_METHOD(bool, isStopReadingFlagSet, (), (const, override)); /// Mocked method to check if the stop reading flag is set.
 
+
 signals:
     /**
      * @brief Speed updated signal.
