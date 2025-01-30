@@ -29,9 +29,10 @@ bool JoysticksController::init()
 
     m_joystick = SDL_JoystickOpen(0);
     if (!m_joystick) {
-        qDebug() << "Failed to open joystick.";
+        init();
+        /* qDebug() << "Failed to open joystick.";
         SDL_Quit();
-        return false;
+        return false; */
     }
 
     return true;
