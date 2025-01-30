@@ -37,6 +37,7 @@ jobs:
 
       - name: Run tests
         run: |
+          cd app/build-x86
           ./HotWheels-tests
 
       #- name: Deploy executable to target
