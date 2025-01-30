@@ -27,17 +27,20 @@ jobs:
           ~/qtjetson/qt5.15/bin/qmake ../root.pro
           make -j$(nproc)
 
-      - name: Run tests
+      - name: Build x86 executable for testing
         run: |
           cd app
           mkdir build-x86
           cd build-x86
           qmake ../root.pro
           make -j$(nproc)
+
+      - name: Run tests
+        run: |
           ./HotWheels-tests
 
-      - name: Deploy executable to target
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/
+      #- name: Deploy executable to target
+        #env:
+          #SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+        #run: |
+          #sshpass -e rsync -avz --rsync-path="sudo rsync" --delete app/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/
