@@ -40,7 +40,7 @@ CANMessageProcessor::CANMessageProcessor() {}
  * @details This method registers a handler for a specific frame ID.
  */
 void CANMessageProcessor::registerHandler(uint16_t frameID,
-                                          MessageHandler handler) {
+                                          MessageHandler &handler) {
   if (!handler) {
     throw std::invalid_argument("Handler cannot be null");
   }
