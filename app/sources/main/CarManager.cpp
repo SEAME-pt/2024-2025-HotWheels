@@ -9,7 +9,7 @@ CarManager::CarManager(QWidget *parent)
     , m_canBusManager(new CanBusManager("/dev/spidev0.0"))
     , m_controlsManager(new ControlsManager())
     , m_displayManager(nullptr)
-    , m_systemManager(new SystemManager(this))
+    , m_systemManager(new SystemManager())
     , m_mileageManager(new MileageManager("/home/hotweels/app_data/mileage.json"))
 {
     ui->setupUi(this);
@@ -23,6 +23,7 @@ CarManager::~CarManager()
     delete m_canBusManager;
     delete m_dataManager;
     delete m_mileageManager;
+    delete m_systemManager;
     delete ui;
 }
 
@@ -160,6 +161,7 @@ void CarManager::initializeDisplayManager()
 void CarManager::initializeSystemManager()
 {
     if (m_systemManager) {
+        m_systemManager->initialize();
         // Connect SystemManager signals to DataManager slots
         connect(m_systemManager,
                 &SystemManager::timeUpdated,

@@ -2,17 +2,21 @@
 #include <QDateTime>
 #include <QDebug>
 #include "BatteryController.hpp"
+#include "SystemCommandExecutor.hpp"
 #include "SystemInfoProvider.hpp"
 
 SystemManager::SystemManager(IBatteryController *batteryController,
                              ISystemInfoProvider *systemInfoProvider,
+                             ISystemCommandExecutor *systemCommandExecutor,
                              QObject *parent)
     : QObject(parent)
-    , m_batteryController(batteryController ? batteryController
-                                            : new BatteryController("/dev/i2c-1", 0x41, this))
+    , m_batteryController(batteryController ? batteryController : new BatteryController())
     , m_systemInfoProvider(systemInfoProvider ? systemInfoProvider : new SystemInfoProvider())
+    , m_systemCommandExecutor(systemCommandExecutor ? systemCommandExecutor
+                                                    : new SystemCommandExecutor())
     , m_ownBatteryController(batteryController == nullptr)
     , m_ownSystemInfoProvider(systemInfoProvider == nullptr)
+    , m_ownSystemCommandExecutor(systemCommandExecutor == nullptr)
 {}
 
 SystemManager::~SystemManager()
@@ -22,6 +26,8 @@ SystemManager::~SystemManager()
         delete m_batteryController;
     if (m_ownSystemInfoProvider)
         delete m_systemInfoProvider;
+    if (m_ownSystemCommandExecutor)
+        delete m_systemCommandExecutor;
 }
 
 void SystemManager::initialize()
@@ -37,6 +43,14 @@ void SystemManager::shutdown()
 {
     m_timeTimer.stop();
     m_statusTimer.stop();
+}
+
+void SystemManager::updateTime()
+{
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    emit timeUpdated(currentDateTime.toString("dd-MM-yy"),
+                     currentDateTime.toString("HH:mm"),
+                     currentDateTime.toString("dddd"));
 }
 
 void SystemManager::updateSystemStatus()

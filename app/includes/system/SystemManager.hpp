@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QTimer>
 #include "IBatteryController.hpp"
+#include "ISystemCommandExecutor.hpp"
 #include "ISystemInfoProvider.hpp"
 
 class SystemManager : public QObject
@@ -13,6 +14,7 @@ class SystemManager : public QObject
 public:
     explicit SystemManager(IBatteryController *batteryController = nullptr,
                            ISystemInfoProvider *systemInfoProvider = nullptr,
+                           ISystemCommandExecutor *systemCommandExecutor = nullptr,
                            QObject *parent = nullptr);
     ~SystemManager();
 
@@ -28,7 +30,7 @@ signals:
     void batteryPercentageUpdated(float batteryPercentage);
     void ipAddressUpdated(const QString &ipAddress);
 
-private slots:
+public slots:
     void updateTime();
     void updateSystemStatus();
 
@@ -37,8 +39,10 @@ private:
     QTimer m_statusTimer;
     IBatteryController *m_batteryController;
     ISystemInfoProvider *m_systemInfoProvider;
+    ISystemCommandExecutor *m_systemCommandExecutor;
     bool m_ownBatteryController;
     bool m_ownSystemInfoProvider;
+    bool m_ownSystemCommandExecutor;
 };
 
 #endif // SYSTEMMANAGER_HPP

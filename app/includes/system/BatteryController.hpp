@@ -2,16 +2,14 @@
 #define BATTERYCONTROLLER_HPP
 
 #include <QObject>
-#include "I2CController.hpp"
 #include "IBatteryController.hpp"
+#include "II2CController.hpp"
 
-class BatteryController : public QObject, public IBatteryController, private I2CController
+class BatteryController : public IBatteryController
 {
-    Q_OBJECT
-
 public:
-    explicit BatteryController(const char *i2c_device, int address, QObject *parent = nullptr);
-    ~BatteryController() override = default;
+    explicit BatteryController(II2CController *i2cController = nullptr);
+    ~BatteryController() override;
 
     float getBatteryPercentage() override;
 
@@ -19,6 +17,9 @@ private:
     void setCalibration32V2A();
     float getBusVoltage_V();
     float getShuntVoltage_V();
+
+    II2CController *m_i2cController;
+    bool m_ownI2CController;
 };
 
 #endif // BATTERYCONTROLLER_HPP

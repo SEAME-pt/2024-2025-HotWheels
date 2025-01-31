@@ -75,7 +75,7 @@ void DataManager::handleRpmData(int rawRpm)
 void DataManager::handleSpeedData(float rawSpeed)
 {
     m_vehicleDataManager->handleSpeedData(rawSpeed);
-    qDebug() << "Speed updated";
+    // qDebug() << "Speed updated";
 }
 void DataManager::handleSteeringData(int rawAngle)
 {

@@ -32,6 +32,8 @@ SOURCES += \
     sources/controls/PeripheralController.cpp \
     sources/display/DisplayManager.cpp \
     sources/system/SystemManager.cpp \
+	sources/system/SystemCommandExecutor.cpp \
+	sources/system/SystemInfoProvider.cpp \
     sources/system/BatteryController.cpp \
 	sources/mileage/MileageCalculator.cpp \
 	sources/mileage/MileageManager.cpp \
@@ -61,12 +63,17 @@ HEADERS += \
     includes/display/DisplayManager.hpp \
     includes/system/SystemManager.hpp \
     includes/system/BatteryController.hpp \
+	includes/system/IBatteryController.hpp \
+	includes/system/SystemCommandExecutor.hpp \
+	includes/system/SystemInfoProvider.hpp \
+	includes/system/ISystemCommandExecutor.hpp \
+	includes/system/ISystemInfoProvider.hpp \
 	includes/mileage/MileageCalculator.hpp \
 	includes/mileage/MileageManager.hpp \
 	includes/mileage/MileageFileHandler.hpp \
-	includes/mileage/IMileageManager.hpp \
 	includes/mileage/IMileageFileHandler.hpp \
 	includes/utils/I2CController.hpp \
+	includes/utils/II2CController.hpp \
 	includes/utils/FileController.hpp
 
 FORMS += forms/CarManager.ui

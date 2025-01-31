@@ -1,31 +1,39 @@
 #include "BatteryController.hpp"
+#include "I2CController.hpp"
 
 // INA219 Register Addresses
 #define REG_CALIBRATION 0x05
 #define REG_BUSVOLTAGE 0x02
 #define REG_SHUNTVOLTAGE 0x01
 
-BatteryController::BatteryController(const char *i2c_device, int address, QObject *parent)
-    : QObject(parent)
-    , I2CController(i2c_device, address)
+BatteryController::BatteryController(II2CController *i2cController)
+    : m_i2cController(i2cController ? i2cController : new I2CController("/dev/i2c-1", 0x41))
+    , m_ownI2CController(i2cController == nullptr)
 {
     setCalibration32V2A();
 }
 
+BatteryController::~BatteryController()
+{
+    if (m_ownI2CController) {
+        delete m_i2cController;
+    }
+}
+
 void BatteryController::setCalibration32V2A()
 {
-    writeRegister(REG_CALIBRATION, 4096);
+    m_i2cController->writeRegister(REG_CALIBRATION, 4096);
 }
 
 float BatteryController::getBusVoltage_V()
 {
-    uint16_t raw = readRegister(REG_BUSVOLTAGE);
+    uint16_t raw = m_i2cController->readRegister(REG_BUSVOLTAGE);
     return ((raw >> 3) * 0.004); // Convert to volts
 }
 
 float BatteryController::getShuntVoltage_V()
 {
-    int16_t raw = static_cast<int16_t>(readRegister(REG_SHUNTVOLTAGE));
+    int16_t raw = static_cast<int16_t>(m_i2cController->readRegister(REG_SHUNTVOLTAGE));
     return raw * 0.01; // Convert to volts
 }
 
