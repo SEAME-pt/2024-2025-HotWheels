@@ -58,7 +58,6 @@ protected:
     }
   }
 
-
   /** @brief Mocked MCP2515 controller. */
   IMCP2515Controller *mockMcpController;
   /** @brief CanBusManager object. */
