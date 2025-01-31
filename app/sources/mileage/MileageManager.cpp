@@ -3,7 +3,8 @@
  * @brief Implementation of the MileageManager class.
  * @version 0.1
  * @date 2025-01-31
- * @details This file contains the implementation of the MileageManager class, which is used to manage the mileage of the vehicle.
+ * @details This file contains the implementation of the MileageManager class,
+ * which is used to manage the mileage of the vehicle.
  * @note This class is used to manage the mileage of the vehicle.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
@@ -22,7 +23,8 @@
  *
  * @param filePath The path of the mileage file to manage.
  * @param parent The parent QObject.
- * @details This constructor initializes the MileageManager object with the specified file path.
+ * @details This constructor initializes the MileageManager object with the
+ * specified file path.
  */
 MileageManager::MileageManager(const QString &filePath, QObject *parent)
     : QObject(parent), fileHandler(filePath), totalMileage(0.0) {}
@@ -31,7 +33,8 @@ MileageManager::~MileageManager() { shutdown(); }
 
 /**
  * @brief Initialize the MileageManager.
- * @details This function initializes the MileageManager by loading the initial mileage from the file and starting the update and persistence timers.
+ * @details This function initializes the MileageManager by loading the initial
+ * mileage from the file and starting the update and persistence timers.
  */
 void MileageManager::initialize() {
   // Load initial mileage from file
@@ -49,7 +52,8 @@ void MileageManager::initialize() {
 
 /**
  * @brief Shutdown the MileageManager.
- * @details This function stops the update and persistence timers and saves the mileage to the file.
+ * @details This function stops the update and persistence timers and saves the
+ * mileage to the file.
  */
 void MileageManager::shutdown() {
   saveMileage(); // Ensure mileage is saved on shutdown
@@ -66,7 +70,8 @@ void MileageManager::onSpeedUpdated(float speed) { calculator.addSpeed(speed); }
 
 /**
  * @brief Update the mileage of the vehicle.
- * @details This function calculates the distance traveled by the vehicle and updates the total mileage.
+ * @details This function calculates the distance traveled by the vehicle and
+ * updates the total mileage.
  */
 void MileageManager::updateMileage() {
   // Calculate distance for the last interval

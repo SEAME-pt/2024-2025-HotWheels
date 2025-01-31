@@ -1,17 +1,18 @@
 /**
  * @file MockSysCalls.hpp
  * @brief File containing Mock classes to test the system calls.
- * 
- * This file provides a mock implementation of system calls for testing purposes.
- * It uses Google Mock to create mock methods for open, ioctl, and close system calls.
- * 
+ *
+ * This file provides a mock implementation of system calls for testing
+ * purposes. It uses Google Mock to create mock methods for open, ioctl, and
+ * close system calls.
+ *
  * @version 0.1
  * @date 2025-01-30
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
  * @author Michel Batista (@MicchelFAB)
- * 
+ *
  * @section License
  * @copyright Copyright (c) 2025
  *

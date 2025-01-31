@@ -46,7 +46,8 @@ protected:
 /**
  * @test Tests if the initialization is successful.
  * @brief Ensures that init() does not throw an exception.
- * @details Verifies that init() does not throw an exception when the initialization is successful.
+ * @details Verifies that init() does not throw an exception when the
+ * initialization is successful.
  * @see MCP2515Controller::init
  */
 TEST_F(MCP2515ControllerTest, InitializationSuccess) {
@@ -65,7 +66,8 @@ TEST_F(MCP2515ControllerTest, InitializationSuccess) {
 /**
  * @test Tests if the initialization fails.
  * @brief Ensures that init() throws an exception when the initialization fails.
- * @details Verifies that init() throws a runtime_error when the initialization fails.
+ * @details Verifies that init() throws a runtime_error when the initialization
+ * fails.
  * @see MCP2515Controller::init
  */
 TEST_F(MCP2515ControllerTest, InitializationFailure) {
@@ -77,7 +79,8 @@ TEST_F(MCP2515ControllerTest, InitializationFailure) {
 /**
  * @test Tests if handlers are set up correctly.
  * @brief Ensures that registerHandler() does not throw an exception.
- * @details Verifies that registerHandler() does not throw an exception when setting up handlers.
+ * @details Verifies that registerHandler() does not throw an exception when
+ * setting up handlers.
  * @see CANMessageProcessor::registerHandler
  */
 TEST_F(MCP2515ControllerTest, SetupHandlersTest) {
@@ -95,7 +98,8 @@ TEST_F(MCP2515ControllerTest, SetupHandlersTest) {
 /**
  * @test Tests if the speedUpdated signal is emitted correctly.
  * @brief Ensures that the speed signal is emitted with the correct value.
- * @details Uses QSignalSpy to verify that speedUpdated emits the expected speed value.
+ * @details Uses QSignalSpy to verify that speedUpdated emits the expected speed
+ * value.
  * @see MCP2515Controller::speedUpdated
  */
 TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
@@ -117,7 +121,8 @@ TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
 /**
  * @test Tests if the rpmUpdated signal is emitted correctly.
  * @brief Ensures that the RPM signal emits the correct value.
- * @details Uses QSignalSpy to verify that rpmUpdated emits the expected RPM value.
+ * @details Uses QSignalSpy to verify that rpmUpdated emits the expected RPM
+ * value.
  * @see MCP2515Controller::rpmUpdated
  */
 TEST_F(MCP2515ControllerTest, RpmUpdatedSignal) {
@@ -139,7 +144,8 @@ TEST_F(MCP2515ControllerTest, RpmUpdatedSignal) {
 /**
  * @test Tests if processReading() calls handlers correctly.
  * @brief Ensures that processReading() calls the registered handlers.
- * @details Verifies that processReading() calls the registered handlers when data is available.
+ * @details Verifies that processReading() calls the registered handlers when
+ * data is available.
  * @see MCP2515Controller::processReading
  */
 TEST_F(MCP2515ControllerTest, ProcessReadingCallsHandlers) {

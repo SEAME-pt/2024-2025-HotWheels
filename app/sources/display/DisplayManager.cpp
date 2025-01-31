@@ -1,15 +1,18 @@
 /**
  * @file DisplayManager.cpp
- * @brief Implementation of the DisplayManager class for handling the display of the cluster.
+ * @brief Implementation of the DisplayManager class for handling the display of
+ * the cluster.
  * @version 0.1
  * @date 2025-01-31
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * @details This file contains the implementation of the DisplayManager class, which is responsible for handling the display of the cluster.
+ * @details This file contains the implementation of the DisplayManager class,
+ * which is responsible for handling the display of the cluster.
  * @note This class is used to manage the display of the cluster.
- * @warning Ensure that the display labels are properly initialized in the UI form.
+ * @warning Ensure that the display labels are properly initialized in the UI
+ * form.
  * @see DisplayManager.hpp
  * @copyright Copyright (c) 2025
  */
@@ -22,7 +25,8 @@
  * @brief Construct a new DisplayManager object.
  * @param ui The UI form for the cluster.
  * @param parent The parent QObject.
- * @details This constructor initializes the DisplayManager object with the specified UI form.
+ * @details This constructor initializes the DisplayManager object with the
+ * specified UI form.
  */
 DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
     : QObject(parent), m_ui(ui) {
@@ -56,7 +60,8 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 
 /**
  * @brief Updates the CAN bus data on the display.
- * @details This function updates the speed and RPM labels based on the CAN bus data.
+ * @details This function updates the speed and RPM labels based on the CAN bus
+ * data.
  * @param speed The current speed of the car.
  * @param rpm The current RPM of the car.
  */
@@ -68,7 +73,8 @@ void DisplayManager::updateCanBusData(float speed, int rpm) {
 
 /**
  * @brief Updates the engine data on the display.
- * @details This function updates the direction label and blinker visibility based on the engine data.
+ * @details This function updates the direction label and blinker visibility
+ * based on the engine data.
  * @param direction The current direction of the car.
  * @param steeringAngle The current steering angle of the car.
  */
@@ -103,7 +109,8 @@ void DisplayManager::updateEngineData(CarDirection direction,
 
 /**
  * @brief Updates the system time on the display.
- * @details This function updates the date, time, and weekday labels based on the current system time.
+ * @details This function updates the date, time, and weekday labels based on
+ * the current system time.
  * @param currentDate The current date.
  * @param currentTime The current time.
  * @param currentDay The current day of the week.
@@ -118,7 +125,8 @@ void DisplayManager::updateSystemTime(const QString &currentDate,
 
 /**
  * @brief Updates the WiFi status on the display.
- * @details This function updates the WiFi status label based on the current WiFi status and name.
+ * @details This function updates the WiFi status label based on the current
+ * WiFi status and name.
  * @param status The current WiFi status.
  * @param wifiName The name of the connected WiFi network.
  */
@@ -133,7 +141,8 @@ void DisplayManager::updateWifiStatus(const QString &status,
 
 /**
  * @brief Updates the temperature on the display.
- * @details This function updates the temperature label based on the current temperature.
+ * @details This function updates the temperature label based on the current
+ * temperature.
  * @param temperature The current temperature.
  */
 void DisplayManager::updateTemperature(const QString &temperature) {
@@ -142,7 +151,8 @@ void DisplayManager::updateTemperature(const QString &temperature) {
 
 /**
  * @brief Updates the battery percentage on the display.
- * @details This function updates the battery percentage label and low battery warning based on the current battery percentage.
+ * @details This function updates the battery percentage label and low battery
+ * warning based on the current battery percentage.
  * @param batteryPercentage The current battery percentage.
  */
 void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
@@ -155,7 +165,8 @@ void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
 
 /**
  * @brief Updates the mileage on the display.
- * @details This function updates the mileage label based on the current mileage.
+ * @details This function updates the mileage label based on the current
+ * mileage.
  * @param mileage The current mileage.
  */
 void DisplayManager::updateMileage(double mileage) {
@@ -165,7 +176,8 @@ void DisplayManager::updateMileage(double mileage) {
 
 /**
  * @brief Updates the IP address on the display.
- * @details This function updates the IP address label based on the current IP address.
+ * @details This function updates the IP address label based on the current IP
+ * address.
  * @param ipAddress The current IP address.
  */
 void DisplayManager::updateIpAddress(const QString &ipAddress) {
@@ -174,7 +186,8 @@ void DisplayManager::updateIpAddress(const QString &ipAddress) {
 
 /**
  * @brief Updates the driving mode on the display.
- * @details This function updates the driving mode label based on the current driving mode.
+ * @details This function updates the driving mode label based on the current
+ * driving mode.
  * @param newMode The new driving mode.
  */
 void DisplayManager::updateDrivingMode(DrivingMode newMode) {
@@ -192,7 +205,8 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 
 /**
  * @brief Updates the cluster theme on the display.
- * @details This function updates the cluster theme label based on the current cluster theme.
+ * @details This function updates the cluster theme label based on the current
+ * cluster theme.
  * @param newTheme The new cluster theme.
  */
 void DisplayManager::updateClusterTheme(ClusterTheme newTheme) {
@@ -210,7 +224,8 @@ void DisplayManager::updateClusterTheme(ClusterTheme newTheme) {
 
 /**
  * @brief Updates the cluster metrics on the display.
- * @details This function updates the cluster metrics label and speed metrics label based on the current cluster metrics.
+ * @details This function updates the cluster metrics label and speed metrics
+ * label based on the current cluster metrics.
  * @param newMetrics The new cluster metrics.
  */
 void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {

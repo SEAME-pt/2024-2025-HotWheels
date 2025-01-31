@@ -8,7 +8,7 @@
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * 
+ *
  * @section License
  * @copyright Copyright (c) 2025
  *

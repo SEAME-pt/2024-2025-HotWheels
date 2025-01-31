@@ -3,13 +3,16 @@
  * @brief Implementation of the SystemManager class.
  * @version 0.1
  * @date 2025-01-31
- * @details This file contains the implementation of the SystemManager class, which is used to manage the system status.
- * @note This class is used to manage the system status, including the time, WiFi, temperature, battery, and IP address.
+ * @details This file contains the implementation of the SystemManager class,
+ * which is used to manage the system status.
+ * @note This class is used to manage the system status, including the time,
+ * WiFi, temperature, battery, and IP address.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * @warning Ensure that the WiFi interface is properly configured and the temperature sensor is connected.
+ * @warning Ensure that the WiFi interface is properly configured and the
+ * temperature sensor is connected.
  * @see SystemManager.hpp for the class definition.
  * @copyright Copyright (c) 2025
  */
@@ -19,7 +22,8 @@
 /**
  * @brief Construct a new SystemManager object.
  * @param parent The parent QObject.
- * @details This constructor initializes the SystemManager object with the specified parent.
+ * @details This constructor initializes the SystemManager object with the
+ * specified parent.
  */
 SystemManager::SystemManager(QObject *parent)
     : QObject(parent), m_timeTimer(new QTimer(this)),
@@ -52,7 +56,8 @@ void SystemManager::updateTime() {
 
 /**
  * @brief Update the system status.
- * @details This function updates the system status, including the WiFi, temperature, battery, and IP address.
+ * @details This function updates the system status, including the WiFi,
+ * temperature, battery, and IP address.
  */
 void SystemManager::updateSystemStatus() {
   // Fetch and emit WiFi status
@@ -77,7 +82,8 @@ void SystemManager::updateSystemStatus() {
  * @brief Fetch the WiFi status.
  * @param wifiName The name of the connected WiFi network.
  * @return QString The WiFi status.
- * @details This function fetches the WiFi status and the name of the connected WiFi network.
+ * @details This function fetches the WiFi status and the name of the connected
+ * WiFi network.
  */
 QString SystemManager::fetchWifiStatus(QString &wifiName) const {
   QProcess process;

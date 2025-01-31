@@ -3,8 +3,10 @@
  * @brief Implementation of the BatteryController class.
  * @version 0.1
  * @date 2025-01-31
- * @details This file contains the implementation of the BatteryController class, which is used to control the battery of the vehicle.
- * @note This class is used to control the battery of the vehicle, including monitoring the battery level and charging status.
+ * @details This file contains the implementation of the BatteryController
+ * class, which is used to control the battery of the vehicle.
+ * @note This class is used to control the battery of the vehicle, including
+ * monitoring the battery level and charging status.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -20,7 +22,8 @@
 #define REG_CALIBRATION 0x05
 /** @def REG_BUSVOLTAGE The register address for the bus voltage register. */
 #define REG_BUSVOLTAGE 0x02
-/** @def REG_SHUNTVOLTAGE The register address for the shunt voltage register. */
+/** @def REG_SHUNTVOLTAGE The register address for the shunt voltage register.
+ */
 #define REG_SHUNTVOLTAGE 0x01
 
 /**
@@ -28,7 +31,8 @@
  * @param i2c_device The I2C device to use for communication.
  * @param address The I2C address of the INA219.
  * @param parent The parent QObject.
- * @details This constructor initializes the BatteryController object with the specified I2C device and address.
+ * @details This constructor initializes the BatteryController object with the
+ * specified I2C device and address.
  */
 BatteryController::BatteryController(const char *i2c_device, int address,
                                      QObject *parent)
@@ -69,7 +73,8 @@ float BatteryController::getShuntVoltage_V() {
 /**
  * @brief Get the battery percentage.
  * @return float The battery percentage.
- * @details This function calculates the battery percentage based on the bus and shunt voltages.
+ * @details This function calculates the battery percentage based on the bus and
+ * shunt voltages.
  */
 float BatteryController::getBatteryPercentage() {
   float busVoltage = getBusVoltage_V();

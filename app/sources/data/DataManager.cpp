@@ -1,14 +1,16 @@
 /**
  * @file DataManager.cpp
- * @brief Implementation of the DataManager class for handling various data types.
+ * @brief Implementation of the DataManager class for handling various data
+ * types.
  * @version 0.1
  * @date 2025-01-31
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * @details This file contains the implementation of the DataManager class, which is responsible for handling
- *          different types of data such as CAN data, system data, battery data, and driving mode.
+ * @details This file contains the implementation of the DataManager class,
+ * which is responsible for handling different types of data such as CAN data,
+ * system data, battery data, and driving mode.
  * @note See DataManager.hpp for the class definition.
  * @warning Ensure proper data validation before processing.
  * @see DataManager.hpp
@@ -27,7 +29,8 @@ DataManager::~DataManager() {}
 /**
  * @brief Handles RPM data from the CAN bus.
  * @param rawRpm The raw RPM value.
- * @details This function processes the raw RPM value and emits the canDataProcessed signal.
+ * @details This function processes the raw RPM value and emits the
+ * canDataProcessed signal.
  */
 void DataManager::handleRpmData(int rawRpm) {
   int processedRpm = rawRpm;
@@ -38,7 +41,8 @@ void DataManager::handleRpmData(int rawRpm) {
 /**
  * @brief Handles speed data from the CAN bus.
  * @param rawSpeed The raw speed value.
- * @details This function processes the raw speed value, converts it to miles if necessary, and emits the canDataProcessed signal.
+ * @details This function processes the raw speed value, converts it to miles if
+ * necessary, and emits the canDataProcessed signal.
  */
 void DataManager::handleSpeedData(float rawSpeed) {
   float processedSpeed = rawSpeed;
@@ -54,7 +58,8 @@ void DataManager::handleSpeedData(float rawSpeed) {
 /**
  * @brief Updates the mileage data.
  * @param mileage The new mileage value.
- * @details This function updates the mileage value if it has changed and emits the mileageUpdated signal.
+ * @details This function updates the mileage value if it has changed and emits
+ * the mileageUpdated signal.
  */
 void DataManager::handleMileageUpdate(double mileage) {
   if (!qFuzzyCompare(m_mileage, mileage)) {
@@ -69,7 +74,8 @@ void DataManager::handleMileageUpdate(double mileage) {
 /**
  * @brief Handles car direction data.
  * @param rawDirection The raw direction value.
- * @details This function updates the car direction if it has changed and emits the engineDataProcessed signal.
+ * @details This function updates the car direction if it has changed and emits
+ * the engineDataProcessed signal.
  */
 void DataManager::handleDirectionData(CarDirection rawDirection) {
   if (m_carDirection != rawDirection) {
@@ -81,7 +87,8 @@ void DataManager::handleDirectionData(CarDirection rawDirection) {
 /**
  * @brief Handles steering angle data.
  * @param rawAngle The raw steering angle value.
- * @details This function updates the steering angle if it has changed and emits the engineDataProcessed signal.
+ * @details This function updates the steering angle if it has changed and emits
+ * the engineDataProcessed signal.
  */
 void DataManager::handleSteeringData(int rawAngle) {
   if (m_steeringDirection != rawAngle) {
@@ -97,7 +104,8 @@ void DataManager::handleSteeringData(int rawAngle) {
  * @param currentDate The current date.
  * @param currentTime The current time.
  * @param currentDay The current day.
- * @details This function updates the system time and emits the systemTimeUpdated signal.
+ * @details This function updates the system time and emits the
+ * systemTimeUpdated signal.
  */
 void DataManager::handleTimeData(const QString &currentDate,
                                  const QString &currentTime,
@@ -110,7 +118,8 @@ void DataManager::handleTimeData(const QString &currentDate,
  * @brief Handles WiFi status data.
  * @param status The WiFi status.
  * @param wifiName The WiFi name.
- * @details This function updates the WiFi status and name if they have changed and emits the systemWifiUpdated signal.
+ * @details This function updates the WiFi status and name if they have changed
+ * and emits the systemWifiUpdated signal.
  */
 void DataManager::handleWifiData(const QString &status,
                                  const QString &wifiName) {
@@ -124,7 +133,8 @@ void DataManager::handleWifiData(const QString &status,
 /**
  * @brief Handles temperature data.
  * @param temperature The temperature value.
- * @details This function updates the temperature value if it has changed and emits the systemTemperatureUpdated signal.
+ * @details This function updates the temperature value if it has changed and
+ * emits the systemTemperatureUpdated signal.
  */
 void DataManager::handleTemperatureData(const QString &temperature) {
   if (m_temperature != temperature) {
@@ -136,7 +146,8 @@ void DataManager::handleTemperatureData(const QString &temperature) {
 /**
  * @brief Handles IP address data.
  * @param ipAddress The IP address.
- * @details This function updates the IP address if it has changed and emits the ipAddressUpdated signal.
+ * @details This function updates the IP address if it has changed and emits the
+ * ipAddressUpdated signal.
  */
 void DataManager::handleIpAddressData(const QString &ipAddress) {
   if (m_ipAddress != ipAddress) {
@@ -150,7 +161,8 @@ void DataManager::handleIpAddressData(const QString &ipAddress) {
 /**
  * @brief Handles battery percentage data.
  * @param batteryPercentage The battery percentage value.
- * @details This function updates the battery percentage if it has changed and emits the batteryPercentageUpdated signal.
+ * @details This function updates the battery percentage if it has changed and
+ * emits the batteryPercentageUpdated signal.
  */
 void DataManager::handleBatteryPercentage(float batteryPercentage) {
   if (!qFuzzyCompare(batteryPercentage, m_batteryPercentage)) {
@@ -164,7 +176,8 @@ void DataManager::handleBatteryPercentage(float batteryPercentage) {
 /**
  * @brief Sets the driving mode.
  * @param newMode The new driving mode.
- * @details This function updates the driving mode if it has changed and emits the drivingModeUpdated signal.
+ * @details This function updates the driving mode if it has changed and emits
+ * the drivingModeUpdated signal.
  */
 void DataManager::setDrivingMode(DrivingMode newMode) {
   if (m_drivingMode != newMode) {
@@ -175,7 +188,8 @@ void DataManager::setDrivingMode(DrivingMode newMode) {
 
 /**
  * @brief Toggles the driving mode between Manual and Automatic.
- * @details This function toggles the driving mode and calls setDrivingMode with the new mode.
+ * @details This function toggles the driving mode and calls setDrivingMode with
+ * the new mode.
  */
 void DataManager::toggleDrivingMode() {
   if (m_drivingMode == DrivingMode::Manual) {
@@ -190,7 +204,8 @@ void DataManager::toggleDrivingMode() {
 /**
  * @brief Sets the cluster theme.
  * @param newTheme The new cluster theme.
- * @details This function updates the cluster theme if it has changed and emits the clusterThemeUpdated signal.
+ * @details This function updates the cluster theme if it has changed and emits
+ * the clusterThemeUpdated signal.
  */
 void DataManager::setClusterTheme(ClusterTheme newTheme) {
   if (m_clusterTheme != newTheme) {
@@ -201,7 +216,8 @@ void DataManager::setClusterTheme(ClusterTheme newTheme) {
 
 /**
  * @brief Toggles the cluster theme between Dark and Light.
- * @details This function toggles the cluster theme and calls setClusterTheme with the new theme.
+ * @details This function toggles the cluster theme and calls setClusterTheme
+ * with the new theme.
  */
 void DataManager::toggleClusterTheme() {
   if (m_clusterTheme == ClusterTheme::Dark) {
@@ -216,7 +232,8 @@ void DataManager::toggleClusterTheme() {
 /**
  * @brief Sets the cluster metrics.
  * @param newMetrics The new cluster metrics.
- * @details This function updates the cluster metrics if they have changed and emits the clusterMetricsUpdated signal.
+ * @details This function updates the cluster metrics if they have changed and
+ * emits the clusterMetricsUpdated signal.
  */
 void DataManager::setClusterMetrics(ClusterMetrics newMetrics) {
   if (m_clusterMetrics != newMetrics) {
@@ -227,7 +244,8 @@ void DataManager::setClusterMetrics(ClusterMetrics newMetrics) {
 
 /**
  * @brief Toggles the cluster metrics between Kilometers and Miles.
- * @details This function toggles the cluster metrics and calls setClusterMetrics with the new metrics.
+ * @details This function toggles the cluster metrics and calls
+ * setClusterMetrics with the new metrics.
  */
 void DataManager::toggleClusterMetrics() {
   if (m_clusterMetrics == ClusterMetrics::Kilometers) {
