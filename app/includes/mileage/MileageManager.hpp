@@ -50,14 +50,14 @@ signals:
 private:
   /** @brief The calculator that computes the distance based on speed and time
    * intervals. */
-  MileageCalculator calculator; 
+  MileageCalculator calculator;
   /** @brief The file handler to read and write mileage data. */
   MileageFileHandler fileHandler;
   /** @brief A timer that triggers mileage updates every 1 second. */
-  QTimer updateTimer; 
+  QTimer updateTimer;
   /** @brief A timer that triggers saving mileage every 10 seconds. */
   QTimer persistenceTimer;
-  /** @brief The current total mileage of the vehicle. */  
+  /** @brief The current total mileage of the vehicle. */
   double totalMileage;
 };
 
