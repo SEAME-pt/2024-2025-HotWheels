@@ -110,7 +110,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>Unit tests for the <a class="el" href="classMCP2515Configurator.html">MCP2515Configurator</a> class.  
+<p>Unit tests for the <a class="el" href="classMCP2515Configurator.html" title="Class that configures the MCP2515 CAN controller.">MCP2515Configurator</a> class.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MockSPIController_8hpp_source.html">MockSPIController.hpp</a>&quot;</code><br />
@@ -122,7 +122,7 @@ $(function(){initNavTree('test__MCP2515Configurator_8cpp.html',''); initResizabl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMCP2515ConfiguratorTest.html">MCP2515ConfiguratorTest</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classMCP2515Configurator.html">MCP2515Configurator</a> class.  <a href="classMCP2515ConfiguratorTest.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classMCP2515Configurator.html" title="Class that configures the MCP2515 CAN controller.">MCP2515Configurator</a> class.  <a href="classMCP2515ConfiguratorTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -165,17 +165,17 @@ Functions</h2></td></tr>
 <tr class="separator:af2f980e55095251834c552790304a657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Unit tests for the <a class="el" href="classMCP2515Configurator.html">MCP2515Configurator</a> class. </p>
+<div class="textblock"><p>Unit tests for the <a class="el" href="classMCP2515Configurator.html" title="Class that configures the MCP2515 CAN controller.">MCP2515Configurator</a> class. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-01-30 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
 <dd>
 Ricardo Melo (@reomelo) </dd>
 <dd>
 Tiago Pereira (@t-pereira06) </dd>
 <dd>
-Michel Batista (@MicchelFAB) </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025-01-30</dd></dl>
-<p>This file contains unit tests for the <a class="el" href="classMCP2515Configurator.html">MCP2515Configurator</a> class, using Google Test and Google Mock frameworks. </p>
+Michel Batista (@MicchelFAB)</dd></dl>
+<p>This file contains unit tests for the <a class="el" href="classMCP2515Configurator.html" title="Class that configures the MCP2515 CAN controller.">MCP2515Configurator</a> class, using Google Test and Google Mock frameworks. </p>
 
 <p class="definition">Definition in file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -200,8 +200,7 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that configureBaudRate() writes the correct values to the registers. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000013">Test</a></b></dt><dd>Tests if the baud rate is configured correctly. </dd></dl>
-<p>This test verifies that configureBaudRate() writes the correct values to the CNF1, CNF2, and CNF3 registers.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a726cd02381fff63eab7bfd289067d6cf">MCP2515Configurator::configureBaudRate</a> </dd></dl>
+<p>Verifies that configureBaudRate() writes the correct values to the CNF1, CNF2, and CNF3 registers. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a726cd02381fff63eab7bfd289067d6cf" title="Configure the baud rate for the MCP2515.">MCP2515Configurator::configureBaudRate</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00073">73</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
@@ -228,10 +227,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that configureFiltersAndMasks() writes the correct values to the registers. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000016">Test</a></b></dt><dd>Tests if the filters and masks are configured correctly. </dd></dl>
-<p>This test verifies that configureFiltersAndMasks() writes the correct values to the registers.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#ae5252bc8370e99e5ab0d9a12f7e92a54">MCP2515Configurator::configureFiltersAndMasks</a> </dd></dl>
+<p>Verifies that configureFiltersAndMasks() writes the correct values to the registers. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#ae5252bc8370e99e5ab0d9a12f7e92a54" title="Configure the filters and masks for the MCP2515.">MCP2515Configurator::configureFiltersAndMasks</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00117">117</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00114">114</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -256,10 +254,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that configureInterrupts() writes the correct value to the CANINTE register. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000017">Test</a></b></dt><dd>Tests if the interrupts are configured correctly. </dd></dl>
-<p>This test verifies that configureInterrupts() writes the correct value to the CANINTE register.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a992d30e78baa17aa952d17643b599d5d">MCP2515Configurator::configureInterrupts</a> </dd></dl>
+<p>Verifies that configureInterrupts() writes the correct value to the CANINTE register. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a992d30e78baa17aa952d17643b599d5d" title="Configure the interrupts for the MCP2515.">MCP2515Configurator::configureInterrupts</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00132">132</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00128">128</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -284,10 +281,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that configureRXBuffer() writes the correct value to the RXB0CTRL register. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000015">Test</a></b></dt><dd>Tests if the RX buffer is configured correctly. </dd></dl>
-<p>This test verifies that configureRXBuffer() writes the correct value to the RXB0CTRL register.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a3756a8b45bb55a349c37e76fe133b45f">MCP2515Configurator::configureRXBuffer</a> </dd></dl>
+<p>Verifies that configureRXBuffer() writes the correct value to the RXB0CTRL register. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a3756a8b45bb55a349c37e76fe133b45f" title="Configure the RX buffer for the MCP2515.">MCP2515Configurator::configureRXBuffer</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00103">103</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00101">101</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -312,10 +308,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that configureTXBuffer() writes the correct value to the TXB0CTRL register. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000014">Test</a></b></dt><dd>Tests if the TX buffer is configured correctly. </dd></dl>
-<p>This test verifies that configureTXBuffer() writes the correct value to the TXB0CTRL register.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#af3688800297022aee833d54ca88d9d99">MCP2515Configurator::configureTXBuffer</a> </dd></dl>
+<p>Verifies that configureTXBuffer() writes the correct value to the TXB0CTRL register. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#af3688800297022aee833d54ca88d9d99" title="Configure the TX buffer for the MCP2515.">MCP2515Configurator::configureTXBuffer</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00089">89</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00088">88</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -340,10 +335,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that readCANMessage() returns an empty data vector when no CAN message is available. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000022">Test</a></b></dt><dd>Tests if a CAN message with no data is read correctly. </dd></dl>
-<p>This test verifies that readCANMessage() returns an empty data vector when no CAN message is available.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb">MCP2515Configurator::readCANMessage</a> </dd></dl>
+<p>Verifies that readCANMessage() returns an empty data vector when no CAN message is available. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515.">MCP2515Configurator::readCANMessage</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00216">216</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00207">207</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -368,10 +362,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that readCANMessage() reads the correct frame ID and data. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000021">Test</a></b></dt><dd>Tests if a CAN message with data is read correctly. </dd></dl>
-<p>This test verifies that readCANMessage() reads the correct frame ID and data when a CAN message with data is available.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb">MCP2515Configurator::readCANMessage</a> </dd></dl>
+<p>Verifies that readCANMessage() reads the correct frame ID and data when a CAN message with data is available. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515.">MCP2515Configurator::readCANMessage</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00188">188</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00177">177</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -396,8 +389,7 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that resetChip() returns false when the reset fails. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000012">Test</a></b></dt><dd>Tests if the chip reset fails. </dd></dl>
-<p>This test verifies that resetChip() returns false when the chip reset fails.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6">MCP2515Configurator::resetChip</a> </dd></dl>
+<p>Verifies that resetChip() returns false when the chip reset fails. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator.">MCP2515Configurator::resetChip</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00058">58</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
@@ -424,10 +416,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that resetChip() returns true when the reset is successful. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000011">Test</a></b></dt><dd>Tests if the chip reset is successful. </dd></dl>
-<p>This test verifies that resetChip() returns true when the chip reset is successful.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6">MCP2515Configurator::resetChip</a> </dd></dl>
+<p>Verifies that resetChip() returns true when the chip reset is successful. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator.">MCP2515Configurator::resetChip</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00043">43</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00045">45</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,10 +443,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that setMode() writes the correct value to the CANCTRL register. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000018">Test</a></b></dt><dd>Tests if the mode is set correctly. </dd></dl>
-<p>This test verifies that setMode() writes the correct value to the CANCTRL register.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a522a619dc1668ac677ca9f422f8f302a">MCP2515Configurator::setMode</a> </dd></dl>
+<p>Verifies that setMode() writes the correct value to the CANCTRL register. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a522a619dc1668ac677ca9f422f8f302a" title="Set the mode for the MCP2515.">MCP2515Configurator::setMode</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00146">146</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00141">141</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,10 +470,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that verifyMode() returns false when the mode is incorrect. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000020">Test</a></b></dt><dd>Tests if the mode verification fails. </dd></dl>
-<p>This test verifies that verifyMode() returns false when the mode is incorrect.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c">MCP2515Configurator::verifyMode</a> </dd></dl>
+<p>Verifies that verifyMode() returns false when the mode is incorrect. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c" title="Verify the mode of the MCP2515.">MCP2515Configurator::verifyMode</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00174">174</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00164">164</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>
@@ -508,10 +497,9 @@ Michel Batista (@MicchelFAB) </dd></dl>
 
 <p>Ensures that verifyMode() returns true when the mode is correct. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000019">Test</a></b></dt><dd>Tests if the mode verification is successful. </dd></dl>
-<p>This test verifies that verifyMode() returns true when the mode is correct.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c">MCP2515Configurator::verifyMode</a> </dd></dl>
+<p>Verifies that verifyMode() returns true when the mode is correct. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c" title="Verify the mode of the MCP2515.">MCP2515Configurator::verifyMode</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00160">160</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__MCP2515Configurator_8cpp_source.html#l00152">152</a> of file <a class="el" href="test__MCP2515Configurator_8cpp_source.html">test_MCP2515Configurator.cpp</a>.</p>
 
 </div>
 </div>

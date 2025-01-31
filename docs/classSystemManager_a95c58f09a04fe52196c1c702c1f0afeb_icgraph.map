@@ -1,5 +1,5 @@
 <map id="SystemManager::temperatureUpdated" name="SystemManager::temperatureUpdated">
-<area shape="rect" id="Node000001" title=" " alt="" coords="815,54,1032,94"/>
+<area shape="rect" id="Node000001" title="Signal emitted when the temperature is updated." alt="" coords="815,54,1032,94"/>
 <area shape="rect" id="Node000002" href="$classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="544,22,759,62"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="801,62,758,57,759,52,801,57"/>
 <area shape="rect" id="Node000005" href="$classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="536,86,767,126"/>

@@ -1,9 +1,0 @@
-<map id="IMCP2515Controller::rpmUpdated" name="IMCP2515Controller::rpmUpdated">
-<area shape="rect" id="Node000001" title=" " alt="" coords="579,23,729,63"/>
-<area shape="rect" id="Node000002" href="$classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70" title="Method to connect signals." alt="" coords="296,31,531,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="565,46,531,46,531,41,565,41"/>
-<area shape="rect" id="Node000003" href="$classCanBusManager.html#ae99209d291de980c75c10f8c12231a30" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,5,248,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,34,248,31,249,26,282,29"/>
-<area shape="rect" id="Node000004" href="$classCanBusManager.html#a6fb7d4430dd1f3bf9ea2d19370978fbf" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,55,248,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="282,57,249,60,248,55,282,52"/>
-</map>

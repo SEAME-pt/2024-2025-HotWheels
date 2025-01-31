@@ -106,37 +106,63 @@ $(function(){initNavTree('classJoysticksController.html',''); initResizable(true
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#signals">Signals</a> &#124;
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">JoysticksController Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that controls the car's steering and speed using a joystick. QObject.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="JoysticksController_8hpp_source.html">JoysticksController.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:aaa71502b42d13353d35c9a6f35789209" id="r_aaa71502b42d13353d35c9a6f35789209"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa71502b42d13353d35c9a6f35789209">processInput</a> ()</td></tr>
+<tr class="memdesc:aaa71502b42d13353d35c9a6f35789209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the input from the joystick.  <br /></td></tr>
 <tr class="separator:aaa71502b42d13353d35c9a6f35789209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:ad065a02230d5d45dda7bb3b33a3dc6c3" id="r_ad065a02230d5d45dda7bb3b33a3dc6c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad065a02230d5d45dda7bb3b33a3dc6c3">finished</a> ()</td></tr>
+<tr class="memdesc:ad065a02230d5d45dda7bb3b33a3dc6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the controller is finished.  <br /></td></tr>
 <tr class="separator:ad065a02230d5d45dda7bb3b33a3dc6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a27efeae594a8a69b18b124ff98fcc305" id="r_a27efeae594a8a69b18b124ff98fcc305"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27efeae594a8a69b18b124ff98fcc305">JoysticksController</a> (std::function&lt; void(int)&gt; steeringCallback, std::function&lt; void(int)&gt; speedCallback, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:a27efeae594a8a69b18b124ff98fcc305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> object.  <br /></td></tr>
 <tr class="separator:a27efeae594a8a69b18b124ff98fcc305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefc241b71fcfefa8850ffe417f6b2363" id="r_aefc241b71fcfefa8850ffe417f6b2363"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefc241b71fcfefa8850ffe417f6b2363">~JoysticksController</a> ()</td></tr>
+<tr class="memdesc:aefc241b71fcfefa8850ffe417f6b2363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> object.  <br /></td></tr>
 <tr class="separator:aefc241b71fcfefa8850ffe417f6b2363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9bdc996780525e34b6ea1a6041170f4" id="r_aa9bdc996780525e34b6ea1a6041170f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9bdc996780525e34b6ea1a6041170f4">init</a> ()</td></tr>
+<tr class="memdesc:aa9bdc996780525e34b6ea1a6041170f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a>.  <br /></td></tr>
 <tr class="separator:aa9bdc996780525e34b6ea1a6041170f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b742c03decec5465e30a4d1cd4d7c47" id="r_a4b742c03decec5465e30a4d1cd4d7c47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b742c03decec5465e30a4d1cd4d7c47">requestStop</a> ()</td></tr>
+<tr class="memdesc:a4b742c03decec5465e30a4d1cd4d7c47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> to stop.  <br /></td></tr>
 <tr class="separator:a4b742c03decec5465e30a4d1cd4d7c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4588e2c5ad130ddfd2547e394cbd3ce5" id="r_a4588e2c5ad130ddfd2547e394cbd3ce5"><td class="memItemLeft" align="right" valign="top">SDL_Joystick *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4588e2c5ad130ddfd2547e394cbd3ce5">m_joystick</a></td></tr>
+<tr class="memdesc:a4588e2c5ad130ddfd2547e394cbd3ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the joystick device.  <br /></td></tr>
+<tr class="separator:a4588e2c5ad130ddfd2547e394cbd3ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2af8d8f52e65aba590bea81c95a640a" id="r_af2af8d8f52e65aba590bea81c95a640a"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2af8d8f52e65aba590bea81c95a640a">m_updateSteering</a></td></tr>
+<tr class="memdesc:af2af8d8f52e65aba590bea81c95a640a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to update the steering value.  <br /></td></tr>
+<tr class="separator:af2af8d8f52e65aba590bea81c95a640a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6061ad86100739fe8190b737baf2db16" id="r_a6061ad86100739fe8190b737baf2db16"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6061ad86100739fe8190b737baf2db16">m_updateSpeed</a></td></tr>
+<tr class="memdesc:a6061ad86100739fe8190b737baf2db16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to update the speed value.  <br /></td></tr>
+<tr class="separator:a6061ad86100739fe8190b737baf2db16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a717593cd8427b7093ebbd58c6c526b36" id="r_a717593cd8427b7093ebbd58c6c526b36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a717593cd8427b7093ebbd58c6c526b36">m_running</a></td></tr>
+<tr class="memdesc:a717593cd8427b7093ebbd58c6c526b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to indicate if the controller is running.  <br /></td></tr>
+<tr class="separator:a717593cd8427b7093ebbd58c6c526b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="JoysticksController_8hpp_source.html#l00008">8</a> of file <a class="el" href="JoysticksController_8hpp_source.html">JoysticksController.hpp</a>.</p>
+<div class="textblock"><p>Class that controls the car's steering and speed using a joystick. QObject. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8hpp_source.html#l00028">28</a> of file <a class="el" href="JoysticksController_8hpp_source.html">JoysticksController.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a27efeae594a8a69b18b124ff98fcc305" name="a27efeae594a8a69b18b124ff98fcc305"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27efeae594a8a69b18b124ff98fcc305">&#9670;&#160;</a></span>JoysticksController()</h2>
@@ -161,17 +187,19 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for the <a class="el" href="classJoysticksController.html">JoysticksController</a> class, initializing the joystick controller with the provided callbacks for steering and speed.</p>
+
+<p>Construct a new <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">steeringCallback</td><td>The callback function to update the steering value. </td></tr>
-    <tr><td class="paramname">speedCallback</td><td>The callback function to update the speed value. </td></tr>
-    <tr><td class="paramname">parent</td><td>The parent QObject for this instance. </td></tr>
+    <tr><td class="paramname">steeringCallback</td><td>The callback function to update the steering angle. </td></tr>
+    <tr><td class="paramname">speedCallback</td><td>The callback function to update the speed. </td></tr>
+    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
   </table>
   </dd>
 </dl>
+<p>This constructor initializes the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> object with the specified callback functions. </p>
 
-<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00005">5</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00034">34</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,9 +217,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Destructor for the <a class="el" href="classJoysticksController.html">JoysticksController</a> class, cleaning up the joystick resources. </p>
 
-<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00015">15</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
+<p>Destroy the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> object. </p>
+<p>This destructor closes the joystick and quits SDL. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00045">45</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
 
 </div>
 </div>
@@ -218,16 +248,17 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Emitted when the joystick input processing has finished. </p>
+
+<p>Signal emitted when the controller is finished. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classJoysticksController_ad065a02230d5d45dda7bb3b33a3dc6c3_icgraph.png" border="0" usemap="#aclassJoysticksController_ad065a02230d5d45dda7bb3b33a3dc6c3_icgraph" alt=""/></div>
 <map name="aclassJoysticksController_ad065a02230d5d45dda7bb3b33a3dc6c3_icgraph" id="aclassJoysticksController_ad065a02230d5d45dda7bb3b33a3dc6c3_icgraph">
-<area shape="rect" title=" " alt="" coords="440,5,584,45"/>
-<area shape="rect" href="classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title=" " alt="" coords="5,5,200,45"/>
+<area shape="rect" title="Signal emitted when the controller is finished." alt="" coords="440,5,584,45"/>
+<area shape="rect" href="classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title="Construct a new ControlsManager object." alt="" coords="5,5,200,45"/>
 <area shape="poly" title=" " alt="" coords="426,25,392,24,248,24,200,25,200,20,248,19,392,19,426,19"/>
-<area shape="rect" href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209" title=" " alt="" coords="248,33,392,73"/>
+<area shape="rect" href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209" title="Process the input from the joystick." alt="" coords="248,33,392,73"/>
 <area shape="poly" title=" " alt="" coords="427,40,393,45,392,40,426,35"/>
 <area shape="poly" title=" " alt="" coords="234,45,200,41,200,35,235,40"/>
 </map>
@@ -249,10 +280,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the joystick controller by setting up SDL and opening the joystick device.</p>
-<dl class="section return"><dt>Returns</dt><dd>True if the joystick was successfully initialized, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00023">23</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
+<p>Initialize the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>true If the initialization was successful. </dd>
+<dd>
+false If the initialization failed.</dd></dl>
+<p>This function initializes the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> by opening the joystick and initializing SDL. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00059">59</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
 
 </div>
 </div>
@@ -278,16 +313,18 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Processes joystick input in a loop, updating steering and speed based on joystick events. This method runs in a separate thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00045">45</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
+<p>Process the input from the joystick. </p>
+<p>This function processes the input from the joystick and updates the steering and speed accordingly. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00086">86</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classJoysticksController_aaa71502b42d13353d35c9a6f35789209_cgraph.png" border="0" usemap="#aclassJoysticksController_aaa71502b42d13353d35c9a6f35789209_cgraph" alt=""/></div>
 <map name="aclassJoysticksController_aaa71502b42d13353d35c9a6f35789209_cgraph" id="aclassJoysticksController_aaa71502b42d13353d35c9a6f35789209_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,149,45"/>
-<area shape="rect" href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3" title=" " alt="" coords="197,5,341,45"/>
+<area shape="rect" title="Process the input from the joystick." alt="" coords="5,5,149,45"/>
+<area shape="rect" href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3" title="Signal emitted when the controller is finished." alt="" coords="197,5,341,45"/>
 <area shape="poly" title=" " alt="" coords="150,23,184,23,184,28,150,28"/>
 </map>
 </div>
@@ -296,8 +333,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classJoysticksController_aaa71502b42d13353d35c9a6f35789209_icgraph.png" border="0" usemap="#aclassJoysticksController_aaa71502b42d13353d35c9a6f35789209_icgraph" alt=""/></div>
 <map name="aclassJoysticksController_aaa71502b42d13353d35c9a6f35789209_icgraph" id="aclassJoysticksController_aaa71502b42d13353d35c9a6f35789209_icgraph">
-<area shape="rect" title=" " alt="" coords="248,5,392,45"/>
-<area shape="rect" href="classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title=" " alt="" coords="5,5,200,45"/>
+<area shape="rect" title="Process the input from the joystick." alt="" coords="248,5,392,45"/>
+<area shape="rect" href="classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title="Construct a new ControlsManager object." alt="" coords="5,5,200,45"/>
 <area shape="poly" title=" " alt="" coords="234,28,200,28,200,23,234,23"/>
 </map>
 </div>
@@ -318,9 +355,116 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Requests the joystick controller to stop processing input. </p>
 
-<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00040">40</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
+<p>Request the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> to stop. </p>
+<p>This function requests the <a class="el" href="classJoysticksController.html" title="Class that controls the car&#39;s steering and speed using a joystick. QObject.">JoysticksController</a> to stop. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8cpp_source.html#l00079">79</a> of file <a class="el" href="JoysticksController_8cpp_source.html">JoysticksController.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a4588e2c5ad130ddfd2547e394cbd3ce5" name="a4588e2c5ad130ddfd2547e394cbd3ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4588e2c5ad130ddfd2547e394cbd3ce5">&#9670;&#160;</a></span>m_joystick</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Joystick* JoysticksController::m_joystick</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointer to the joystick device. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8hpp_source.html#l00033">33</a> of file <a class="el" href="JoysticksController_8hpp_source.html">JoysticksController.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a717593cd8427b7093ebbd58c6c526b36" name="a717593cd8427b7093ebbd58c6c526b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a717593cd8427b7093ebbd58c6c526b36">&#9670;&#160;</a></span>m_running</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool JoysticksController::m_running</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flag to indicate if the controller is running. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8hpp_source.html#l00039">39</a> of file <a class="el" href="JoysticksController_8hpp_source.html">JoysticksController.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6061ad86100739fe8190b737baf2db16" name="a6061ad86100739fe8190b737baf2db16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6061ad86100739fe8190b737baf2db16">&#9670;&#160;</a></span>m_updateSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void(int)&gt; JoysticksController::m_updateSpeed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback function to update the speed value. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8hpp_source.html#l00037">37</a> of file <a class="el" href="JoysticksController_8hpp_source.html">JoysticksController.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af2af8d8f52e65aba590bea81c95a640a" name="af2af8d8f52e65aba590bea81c95a640a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2af8d8f52e65aba590bea81c95a640a">&#9670;&#160;</a></span>m_updateSteering</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void(int)&gt; JoysticksController::m_updateSteering</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback function to update the steering value. </p>
+
+<p class="definition">Definition at line <a class="el" href="JoysticksController_8hpp_source.html#l00035">35</a> of file <a class="el" href="JoysticksController_8hpp_source.html">JoysticksController.hpp</a>.</p>
 
 </div>
 </div>

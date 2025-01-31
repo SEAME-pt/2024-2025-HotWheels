@@ -1,5 +1,5 @@
 <map id="DataManager::setDrivingMode" name="DataManager::setDrivingMode">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,227,38"/>
-<area shape="rect" id="Node000002" href="$classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26" title=" " alt="" coords="275,5,473,45"/>
+<area shape="rect" id="Node000001" title="Sets the driving mode." alt="" coords="5,13,227,38"/>
+<area shape="rect" id="Node000002" href="$classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26" title="Signal emitted when the driving mode is updated." alt="" coords="275,5,473,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,23,261,23,261,28,227,28"/>
 </map>

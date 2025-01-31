@@ -1,9 +1,0 @@
-<map id="MCP2515Configurator::readRegister" name="MCP2515Configurator::readRegister">
-<area shape="rect" id="Node000001" title="Read a value from a register." alt="" coords="216,69,379,109"/>
-<area shape="rect" id="Node000002" href="$classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,68,152,48,154,43,218,63"/>
-<area shape="rect" id="Node000003" href="$classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator." alt="" coords="5,69,168,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,92,168,92,168,87,202,87"/>
-<area shape="rect" id="Node000004" href="$classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c" title="Verify the mode of the MCP2515." alt="" coords="5,133,168,173"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="218,116,154,136,152,131,217,111"/>
-</map>

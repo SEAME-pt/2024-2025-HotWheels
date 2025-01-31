@@ -106,41 +106,71 @@ $(function(){initNavTree('classMileageManager.html',''); initResizable(true); })
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#signals">Signals</a> &#124;
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">MileageManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that manages the mileage of a vehicle. QObject.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:af314c5425f519dea34b5edcac8bce4d9" id="r_af314c5425f519dea34b5edcac8bce4d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af314c5425f519dea34b5edcac8bce4d9">onSpeedUpdated</a> (float speed)</td></tr>
+<tr class="memdesc:af314c5425f519dea34b5edcac8bce4d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot for handling speed updates.  <br /></td></tr>
 <tr class="separator:af314c5425f519dea34b5edcac8bce4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912c517158c90834792c3d00c0af101c" id="r_a912c517158c90834792c3d00c0af101c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a912c517158c90834792c3d00c0af101c">updateMileage</a> ()</td></tr>
+<tr class="memdesc:a912c517158c90834792c3d00c0af101c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the mileage of the vehicle.  <br /></td></tr>
 <tr class="separator:a912c517158c90834792c3d00c0af101c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad76e7b2285ef73cfb95854857cbfa18e" id="r_ad76e7b2285ef73cfb95854857cbfa18e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad76e7b2285ef73cfb95854857cbfa18e">saveMileage</a> ()</td></tr>
+<tr class="memdesc:ad76e7b2285ef73cfb95854857cbfa18e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the mileage to the file.  <br /></td></tr>
 <tr class="separator:ad76e7b2285ef73cfb95854857cbfa18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:abdfcf1b966a300db82a8347ef9454000" id="r_abdfcf1b966a300db82a8347ef9454000"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdfcf1b966a300db82a8347ef9454000">mileageUpdated</a> (double mileage)</td></tr>
+<tr class="memdesc:abdfcf1b966a300db82a8347ef9454000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the mileage is updated.  <br /></td></tr>
 <tr class="separator:abdfcf1b966a300db82a8347ef9454000"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad6565be6027726a3e4f92bc8b5f004e7" id="r_ad6565be6027726a3e4f92bc8b5f004e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6565be6027726a3e4f92bc8b5f004e7">MileageManager</a> (const QString &amp;filePath, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:ad6565be6027726a3e4f92bc8b5f004e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> object.  <br /></td></tr>
 <tr class="separator:ad6565be6027726a3e4f92bc8b5f004e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0a2d57c60de11f16a5654f7f8031cd4" id="r_ae0a2d57c60de11f16a5654f7f8031cd4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0a2d57c60de11f16a5654f7f8031cd4">~MileageManager</a> ()</td></tr>
 <tr class="separator:ae0a2d57c60de11f16a5654f7f8031cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad615b78584e6c337ae3417089e035d48" id="r_ad615b78584e6c337ae3417089e035d48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad615b78584e6c337ae3417089e035d48">initialize</a> ()</td></tr>
+<tr class="memdesc:ad615b78584e6c337ae3417089e035d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a>.  <br /></td></tr>
 <tr class="separator:ad615b78584e6c337ae3417089e035d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad56194c997ffbdd3692adb68c65a2d2e" id="r_ad56194c997ffbdd3692adb68c65a2d2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad56194c997ffbdd3692adb68c65a2d2e">shutdown</a> ()</td></tr>
+<tr class="memdesc:ad56194c997ffbdd3692adb68c65a2d2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shutdown the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a>.  <br /></td></tr>
 <tr class="separator:ad56194c997ffbdd3692adb68c65a2d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a04594721283068745fc06415a6d2ee75" id="r_a04594721283068745fc06415a6d2ee75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMileageCalculator.html">MileageCalculator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04594721283068745fc06415a6d2ee75">calculator</a></td></tr>
+<tr class="memdesc:a04594721283068745fc06415a6d2ee75"><td class="mdescLeft">&#160;</td><td class="mdescRight">The calculator that computes the distance based on speed and time intervals.  <br /></td></tr>
+<tr class="separator:a04594721283068745fc06415a6d2ee75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef3f90b2e83325ae2519ed370badfbe6" id="r_aef3f90b2e83325ae2519ed370badfbe6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMileageFileHandler.html">MileageFileHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef3f90b2e83325ae2519ed370badfbe6">fileHandler</a></td></tr>
+<tr class="memdesc:aef3f90b2e83325ae2519ed370badfbe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The file handler to read and write mileage data.  <br /></td></tr>
+<tr class="separator:aef3f90b2e83325ae2519ed370badfbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a348f4e5f13412ff74a98329a7494ddb7" id="r_a348f4e5f13412ff74a98329a7494ddb7"><td class="memItemLeft" align="right" valign="top">QTimer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a348f4e5f13412ff74a98329a7494ddb7">updateTimer</a></td></tr>
+<tr class="memdesc:a348f4e5f13412ff74a98329a7494ddb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A timer that triggers mileage updates every 1 second.  <br /></td></tr>
+<tr class="separator:a348f4e5f13412ff74a98329a7494ddb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51aade2d4911cfb4b0a7ee8b6977652e" id="r_a51aade2d4911cfb4b0a7ee8b6977652e"><td class="memItemLeft" align="right" valign="top">QTimer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51aade2d4911cfb4b0a7ee8b6977652e">persistenceTimer</a></td></tr>
+<tr class="memdesc:a51aade2d4911cfb4b0a7ee8b6977652e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A timer that triggers saving mileage every 10 seconds.  <br /></td></tr>
+<tr class="separator:a51aade2d4911cfb4b0a7ee8b6977652e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5bcf4b819317b3587fce5c3c5456046" id="r_ab5bcf4b819317b3587fce5c3c5456046"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5bcf4b819317b3587fce5c3c5456046">totalMileage</a></td></tr>
+<tr class="memdesc:ab5bcf4b819317b3587fce5c3c5456046"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current total mileage of the vehicle.  <br /></td></tr>
+<tr class="separator:ab5bcf4b819317b3587fce5c3c5456046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="MileageManager_8hpp_source.html#l00009">9</a> of file <a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>.</p>
+<div class="textblock"><p>Class that manages the mileage of a vehicle. QObject. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8hpp_source.html#l00028">28</a> of file <a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad6565be6027726a3e4f92bc8b5f004e7" name="ad6565be6027726a3e4f92bc8b5f004e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad6565be6027726a3e4f92bc8b5f004e7">&#9670;&#160;</a></span>MileageManager()</h2>
@@ -168,16 +198,18 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructor for the <a class="el" href="classMileageManager.html">MileageManager</a> class. Initializes the class with a file path for mileage data and sets up the file handler.</p>
+
+<p>Construct a new <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filePath</td><td>The path of the file to store and load mileage data. </td></tr>
-    <tr><td class="paramname">parent</td><td>The parent QObject. </td></tr>
+    <tr><td class="paramname">filePath</td><td>The path of the mileage file to manage. </td></tr>
+    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
   </table>
   </dd>
 </dl>
+<p>This constructor initializes the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> object with the specified file path. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00004">4</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00029">29</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -195,18 +227,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Destructor for the <a class="el" href="classMileageManager.html">MileageManager</a> class. Ensures that mileage is saved before shutdown. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00010">10</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00032">32</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_ae0a2d57c60de11f16a5654f7f8031cd4_cgraph.png" border="0" usemap="#aclassMileageManager_ae0a2d57c60de11f16a5654f7f8031cd4_cgraph" alt=""/></div>
 <map name="aclassMileageManager_ae0a2d57c60de11f16a5654f7f8031cd4_cgraph" id="aclassMileageManager_ae0a2d57c60de11f16a5654f7f8031cd4_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,208,45"/>
-<area shape="rect" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e" title=" " alt="" coords="256,13,459,38"/>
+<area shape="rect" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e" title="Shutdown the MileageManager." alt="" coords="256,13,459,38"/>
 <area shape="poly" title=" " alt="" coords="208,23,242,23,242,28,208,28"/>
-<area shape="rect" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title=" " alt="" coords="507,13,729,38"/>
+<area shape="rect" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title="Save the mileage to the file." alt="" coords="507,13,729,38"/>
 <area shape="poly" title=" " alt="" coords="459,23,493,23,493,28,459,28"/>
 </map>
 </div>
@@ -228,24 +259,22 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the <a class="el" href="classMileageManager.html">MileageManager</a>:</p><ul>
-<li>Loads the initial mileage from the file.</li>
-<li>Configures update timer (every 1 second).</li>
-<li>Configures persistence timer (every 10 seconds). </li>
-</ul>
 
-<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00015">15</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<p>Initialize the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a>. </p>
+<p>This function initializes the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> by loading the initial mileage from the file and starting the update and persistence timers. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00039">39</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_ad615b78584e6c337ae3417089e035d48_cgraph.png" border="0" usemap="#aclassMileageManager_ad615b78584e6c337ae3417089e035d48_cgraph" alt=""/></div>
 <map name="aclassMileageManager_ad615b78584e6c337ae3417089e035d48_cgraph" id="aclassMileageManager_ad615b78584e6c337ae3417089e035d48_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,200,56"/>
-<area shape="rect" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title=" " alt="" coords="255,5,477,31"/>
+<area shape="rect" title="Initialize the MileageManager." alt="" coords="5,31,200,56"/>
+<area shape="rect" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title="Save the mileage to the file." alt="" coords="255,5,477,31"/>
 <area shape="poly" title=" " alt="" coords="200,31,241,27,241,33,201,37"/>
-<area shape="rect" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c" title=" " alt="" coords="248,55,484,80"/>
+<area shape="rect" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c" title="Update the mileage of the vehicle." alt="" coords="248,55,484,80"/>
 <area shape="poly" title=" " alt="" coords="201,50,235,53,234,58,200,55"/>
-<area shape="rect" href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title=" " alt="" coords="532,55,779,80"/>
+<area shape="rect" href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title="Signal emitted when the mileage is updated." alt="" coords="532,55,779,80"/>
 <area shape="poly" title=" " alt="" coords="484,65,518,65,518,70,484,70"/>
 </map>
 </div>
@@ -274,10 +303,11 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Signal emitted when the mileage is updated.</p>
+
+<p>Signal emitted when the mileage is updated. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mileage</td><td>The current total mileage. </td></tr>
+    <tr><td class="paramname">mileage</td><td>The new mileage value. </td></tr>
   </table>
   </dd>
 </dl>
@@ -286,11 +316,18 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_abdfcf1b966a300db82a8347ef9454000_icgraph.png" border="0" usemap="#aclassMileageManager_abdfcf1b966a300db82a8347ef9454000_icgraph" alt=""/></div>
 <map name="aclassMileageManager_abdfcf1b966a300db82a8347ef9454000_icgraph" id="aclassMileageManager_abdfcf1b966a300db82a8347ef9454000_icgraph">
-<area shape="rect" title=" " alt="" coords="532,5,779,31"/>
-<area shape="rect" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c" title=" " alt="" coords="248,5,484,31"/>
-<area shape="poly" title=" " alt="" coords="518,21,484,21,484,15,518,15"/>
-<area shape="rect" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title=" " alt="" coords="5,5,200,31"/>
-<area shape="poly" title=" " alt="" coords="234,21,200,21,200,15,234,15"/>
+<area shape="rect" title="Signal emitted when the mileage is updated." alt="" coords="820,59,1067,84"/>
+<area shape="rect" href="classCarManager.html#a5bf066ce114aea750d5d71c7618a9ac1" title="Initialize the MileageManager." alt="" coords="545,22,763,62"/>
+<area shape="poly" title=" " alt="" coords="806,60,763,56,763,50,807,55"/>
+<area shape="rect" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c" title="Update the mileage of the vehicle." alt="" coords="536,87,772,112"/>
+<area shape="poly" title=" " alt="" coords="807,87,773,91,772,85,806,82"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="531,45,488,45,488,39,531,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+<area shape="rect" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initialize the MileageManager." alt="" coords="267,87,462,112"/>
+<area shape="poly" title=" " alt="" coords="522,102,462,102,462,97,522,97"/>
 </map>
 </div>
 
@@ -318,15 +355,32 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Slot to receive speed updates. It forwards the received speed data to the <a class="el" href="classMileageCalculator.html">MileageCalculator</a>.</p>
+
+<p>Slot for handling speed updates. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">speed</td><td>The current speed of the vehicle. </td></tr>
+    <tr><td class="paramname">speed</td><td>The current speed of the vehicle.</td></tr>
   </table>
   </dd>
 </dl>
+<p>This function is called when the speed of the vehicle is updated. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00036">36</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00069">69</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMileageManager_af314c5425f519dea34b5edcac8bce4d9_icgraph.png" border="0" usemap="#aclassMileageManager_af314c5425f519dea34b5edcac8bce4d9_icgraph" alt=""/></div>
+<map name="aclassMileageManager_af314c5425f519dea34b5edcac8bce4d9_icgraph" id="aclassMileageManager_af314c5425f519dea34b5edcac8bce4d9_icgraph">
+<area shape="rect" title="Slot for handling speed updates." alt="" coords="801,29,1052,55"/>
+<area shape="rect" href="classCarManager.html#a5bf066ce114aea750d5d71c7618a9ac1" title="Initialize the MileageManager." alt="" coords="536,22,753,62"/>
+<area shape="poly" title=" " alt="" coords="788,45,754,45,754,39,788,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -352,18 +406,20 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Slot to save the current mileage to the file. This is called periodically to ensure the data is persisted. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00053">53</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<p>Save the mileage to the file. </p>
+<p>This function saves the total mileage to the file. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00091">91</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_ad76e7b2285ef73cfb95854857cbfa18e_icgraph.png" border="0" usemap="#aclassMileageManager_ad76e7b2285ef73cfb95854857cbfa18e_icgraph" alt=""/></div>
 <map name="aclassMileageManager_ad76e7b2285ef73cfb95854857cbfa18e_icgraph" id="aclassMileageManager_ad76e7b2285ef73cfb95854857cbfa18e_icgraph">
-<area shape="rect" title=" " alt="" coords="507,31,729,56"/>
-<area shape="rect" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title=" " alt="" coords="260,5,455,31"/>
+<area shape="rect" title="Save the mileage to the file." alt="" coords="507,31,729,56"/>
+<area shape="rect" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initialize the MileageManager." alt="" coords="260,5,455,31"/>
 <area shape="poly" title=" " alt="" coords="493,34,455,30,455,25,493,29"/>
-<area shape="rect" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e" title=" " alt="" coords="256,55,459,80"/>
+<area shape="rect" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e" title="Shutdown the MileageManager." alt="" coords="256,55,459,80"/>
 <area shape="poly" title=" " alt="" coords="493,57,459,61,459,55,493,52"/>
 <area shape="rect" href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4" title=" " alt="" coords="5,47,208,87"/>
 <area shape="poly" title=" " alt="" coords="242,70,208,70,208,65,242,65"/>
@@ -386,19 +442,18 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shuts down the <a class="el" href="classMileageManager.html">MileageManager</a>:</p><ul>
-<li>Saves the current mileage to the file.</li>
-<li>Stops the update and persistence timers. </li>
-</ul>
 
-<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00029">29</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<p>Shutdown the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a>. </p>
+<p>This function stops the update and persistence timers and saves the mileage to the file. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00058">58</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_cgraph.png" border="0" usemap="#aclassMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_cgraph" alt=""/></div>
 <map name="aclassMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_cgraph" id="aclassMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,208,31"/>
-<area shape="rect" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title=" " alt="" coords="256,5,479,31"/>
+<area shape="rect" title="Shutdown the MileageManager." alt="" coords="5,5,208,31"/>
+<area shape="rect" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title="Save the mileage to the file." alt="" coords="256,5,479,31"/>
 <area shape="poly" title=" " alt="" coords="208,15,242,15,242,21,208,21"/>
 </map>
 </div>
@@ -407,7 +462,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_icgraph.png" border="0" usemap="#aclassMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_icgraph" alt=""/></div>
 <map name="aclassMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_icgraph" id="aclassMileageManager_ad56194c997ffbdd3692adb68c65a2d2e_icgraph">
-<area shape="rect" title=" " alt="" coords="256,13,459,38"/>
+<area shape="rect" title="Shutdown the MileageManager." alt="" coords="256,13,459,38"/>
 <area shape="rect" href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4" title=" " alt="" coords="5,5,208,45"/>
 <area shape="poly" title=" " alt="" coords="242,28,208,28,208,23,242,23"/>
 </map>
@@ -437,16 +492,18 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Slot to periodically update the mileage. It calculates the total distance for the last interval and adds it to the total mileage. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00041">41</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
+<p>Update the mileage of the vehicle. </p>
+<p>This function calculates the distance traveled by the vehicle and updates the total mileage. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8cpp_source.html#l00076">76</a> of file <a class="el" href="MileageManager_8cpp_source.html">MileageManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_a912c517158c90834792c3d00c0af101c_cgraph.png" border="0" usemap="#aclassMileageManager_a912c517158c90834792c3d00c0af101c_cgraph" alt=""/></div>
 <map name="aclassMileageManager_a912c517158c90834792c3d00c0af101c_cgraph" id="aclassMileageManager_a912c517158c90834792c3d00c0af101c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,241,31"/>
-<area shape="rect" href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title=" " alt="" coords="289,5,536,31"/>
+<area shape="rect" title="Update the mileage of the vehicle." alt="" coords="5,5,241,31"/>
+<area shape="rect" href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title="Signal emitted when the mileage is updated." alt="" coords="289,5,536,31"/>
 <area shape="poly" title=" " alt="" coords="242,15,275,15,275,21,242,21"/>
 </map>
 </div>
@@ -455,11 +512,142 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageManager_a912c517158c90834792c3d00c0af101c_icgraph.png" border="0" usemap="#aclassMileageManager_a912c517158c90834792c3d00c0af101c_icgraph" alt=""/></div>
 <map name="aclassMileageManager_a912c517158c90834792c3d00c0af101c_icgraph" id="aclassMileageManager_a912c517158c90834792c3d00c0af101c_icgraph">
-<area shape="rect" title=" " alt="" coords="248,5,484,31"/>
-<area shape="rect" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title=" " alt="" coords="5,5,200,31"/>
+<area shape="rect" title="Update the mileage of the vehicle." alt="" coords="248,5,484,31"/>
+<area shape="rect" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initialize the MileageManager." alt="" coords="5,5,200,31"/>
 <area shape="poly" title=" " alt="" coords="234,21,200,21,200,15,234,15"/>
 </map>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a04594721283068745fc06415a6d2ee75" name="a04594721283068745fc06415a6d2ee75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04594721283068745fc06415a6d2ee75">&#9670;&#160;</a></span>calculator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMileageCalculator.html">MileageCalculator</a> MileageManager::calculator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The calculator that computes the distance based on speed and time intervals. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8hpp_source.html#l00053">53</a> of file <a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aef3f90b2e83325ae2519ed370badfbe6" name="aef3f90b2e83325ae2519ed370badfbe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef3f90b2e83325ae2519ed370badfbe6">&#9670;&#160;</a></span>fileHandler</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMileageFileHandler.html">MileageFileHandler</a> MileageManager::fileHandler</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The file handler to read and write mileage data. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8hpp_source.html#l00055">55</a> of file <a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a51aade2d4911cfb4b0a7ee8b6977652e" name="a51aade2d4911cfb4b0a7ee8b6977652e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51aade2d4911cfb4b0a7ee8b6977652e">&#9670;&#160;</a></span>persistenceTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTimer MileageManager::persistenceTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A timer that triggers saving mileage every 10 seconds. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8hpp_source.html#l00059">59</a> of file <a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab5bcf4b819317b3587fce5c3c5456046" name="ab5bcf4b819317b3587fce5c3c5456046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5bcf4b819317b3587fce5c3c5456046">&#9670;&#160;</a></span>totalMileage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double MileageManager::totalMileage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The current total mileage of the vehicle. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8hpp_source.html#l00061">61</a> of file <a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a348f4e5f13412ff74a98329a7494ddb7" name="a348f4e5f13412ff74a98329a7494ddb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a348f4e5f13412ff74a98329a7494ddb7">&#9670;&#160;</a></span>updateTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTimer MileageManager::updateTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A timer that triggers mileage updates every 1 second. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageManager_8hpp_source.html#l00057">57</a> of file <a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>.</p>
 
 </div>
 </div>

@@ -110,11 +110,11 @@ $(function(){initNavTree('test__CanBusManager_8cpp.html',''); initResizable(true
 </div><!--header-->
 <div class="contents">
 
-<p>Unit tests for the <a class="el" href="classCanBusManager.html">CanBusManager</a> class.  
+<p>Unit tests for the <a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a> class.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;QSignalSpy&gt;</code><br />
-<code>#include &quot;<a class="el" href="CanBusManager_8hpp_source.html">CanBusManager.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="CanBusManager_8hpp_source.html">CanBusManager.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MockMCP2515Controller_8hpp_source.html">MockMCP2515Controller.hpp</a>&quot;</code><br />
+<code>#include &lt;QSignalSpy&gt;</code><br />
 <code>#include &lt;gmock/gmock.h&gt;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
 </div>
@@ -123,7 +123,7 @@ $(function(){initNavTree('test__CanBusManager_8cpp.html',''); initResizable(true
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanBusManagerTest.html">CanBusManagerTest</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classCanBusManager.html">CanBusManager</a> class.  <a href="classCanBusManagerTest.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a> class.  <a href="classCanBusManagerTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -145,17 +145,17 @@ Functions</h2></td></tr>
 <tr class="separator:a002746034e28802e8dca1476ccfe16e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Unit tests for the <a class="el" href="classCanBusManager.html">CanBusManager</a> class. </p>
+<div class="textblock"><p>Unit tests for the <a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a> class. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-01-30 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
 <dd>
 Ricardo Melo (@reomelo) </dd>
 <dd>
 Tiago Pereira (@t-pereira06) </dd>
 <dd>
-Michel Batista (@MicchelFAB) </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025-01-30</dd></dl>
-<p>This file contains unit tests for the <a class="el" href="classCanBusManager.html">CanBusManager</a> class, using Google Test and Google Mock frameworks.</p>
+Michel Batista (@MicchelFAB)</dd></dl>
+<p>This file contains unit tests for the <a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a> class, using Google Test and Google Mock frameworks.</p>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
@@ -180,12 +180,12 @@ Michel Batista (@MicchelFAB) </dd></dl>
 </div><div class="memdoc">
 
 <p>Verifies that <code>stopReading()</code> is triggered in the destructor. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000005">Test</a></b></dt><dd>Ensures that <code>stopReading()</code> is called when <code><a class="el" href="classCanBusManager.html">CanBusManager</a></code> is destroyed. </dd></dl>
-<p>This test initializes <code><a class="el" href="classCanBusManager.html">CanBusManager</a></code>, then deletes it and confirms that <code>stopReading()</code> was called exactly once.</p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000005">Test</a></b></dt><dd>Ensures that <code>stopReading()</code> is called when <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code> is destroyed. </dd></dl>
+<p>This test initializes <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code>, then deletes it and confirms that <code>stopReading()</code> was called exactly once.</p>
 <dl class="section note"><dt>Note</dt><dd>This test indirectly verifies proper cleanup behavior in the destructor.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ae2d9ac999a161b57b12867473f4ac710">CanBusManager::~CanBusManager</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ae2d9ac999a161b57b12867473f4ac710" title="Destroy the CanBusManager::CanBusManager object.">CanBusManager::~CanBusManager</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00155">155</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00152">152</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -209,11 +209,11 @@ Michel Batista (@MicchelFAB) </dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that <code>initialize()</code> fails when the controller fails to initialize. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000003">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1">CanBusManager::initialize()</a></code> when <code>init()</code> fails. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000003">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> fails. </dd></dl>
 <p>This test sets up a mock expectation that <code>init()</code> will return <code>false</code>, verifying that <code>initialize()</code> correctly fails in this case.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1">CanBusManager::initialize</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00119">119</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00115">115</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -237,11 +237,11 @@ Michel Batista (@MicchelFAB) </dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that <code>initialize()</code> succeeds when the controller initializes successfully. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000004">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1">CanBusManager::initialize()</a></code> when <code>init()</code> succeeds. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000004">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> succeeds. </dd></dl>
 <p>This test sets up a mock expectation that <code>init()</code> will return <code>true</code>, verifying that <code>initialize()</code> correctly returns <code>true</code>.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1">CanBusManager::initialize</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00136">136</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00132">132</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -267,16 +267,16 @@ Michel Batista (@MicchelFAB) </dd></dl>
 <p>Ensures that the RPM signal emits the correct value. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000002">Test</a></b></dt><dd>Tests if the <code>rpmUpdated</code> signal is emitted correctly. </dd></dl>
 <p>Similar to <code>SpeedSignalEmitsCorrectly</code>, this test verifies that <code>rpmUpdated</code> emits the expected RPM value.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a">CanBusManager::rpmUpdated</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a" title="Signal emitted when the RPM is updated.">CanBusManager::rpmUpdated</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00099">99</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00095">95</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="test__CanBusManager_8cpp_ad394e54b204e922e5266fce87de7390f_cgraph.png" border="0" usemap="#atest__CanBusManager_8cpp_ad394e54b204e922e5266fce87de7390f_cgraph" alt=""/></div>
 <map name="atest__CanBusManager_8cpp_ad394e54b204e922e5266fce87de7390f_cgraph" id="atest__CanBusManager_8cpp_ad394e54b204e922e5266fce87de7390f_cgraph">
 <area shape="rect" title="Ensures that the RPM signal emits the correct value." alt="" coords="5,5,75,31"/>
-<area shape="rect" href="classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a" title=" " alt="" coords="123,5,340,31"/>
+<area shape="rect" href="classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a" title="Signal emitted when the RPM is updated." alt="" coords="123,5,340,31"/>
 <area shape="poly" title=" " alt="" coords="75,15,109,15,109,21,75,21"/>
 </map>
 </div>
@@ -305,16 +305,16 @@ Here is the call graph for this function:</div>
 <p>Ensures that the speed signal is emitted with the correct value. </p>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000001">Test</a></b></dt><dd>Tests if the <code>speedUpdated</code> signal is emitted correctly. </dd></dl>
 <p>This test uses <code>QSignalSpy</code> to verify that <code>speedUpdated</code> emits the expected speed value when the mock controller triggers the signal.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991">CanBusManager::speedUpdated</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title="Signal emitted when the speed is updated.">CanBusManager::speedUpdated</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00079">79</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__CanBusManager_8cpp_source.html#l00076">76</a> of file <a class="el" href="test__CanBusManager_8cpp_source.html">test_CanBusManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="test__CanBusManager_8cpp_a70d830f942e7f0655d57fea1262bc424_cgraph.png" border="0" usemap="#atest__CanBusManager_8cpp_a70d830f942e7f0655d57fea1262bc424_cgraph" alt=""/></div>
 <map name="atest__CanBusManager_8cpp_a70d830f942e7f0655d57fea1262bc424_cgraph" id="atest__CanBusManager_8cpp_a70d830f942e7f0655d57fea1262bc424_cgraph">
 <area shape="rect" title="Ensures that the speed signal is emitted with the correct value." alt="" coords="5,5,75,31"/>
-<area shape="rect" href="classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title=" " alt="" coords="123,5,353,31"/>
+<area shape="rect" href="classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title="Signal emitted when the speed is updated." alt="" coords="123,5,353,31"/>
 <area shape="poly" title=" " alt="" coords="75,15,109,15,109,21,75,21"/>
 </map>
 </div>

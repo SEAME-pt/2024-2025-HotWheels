@@ -106,64 +106,69 @@ $(function(){initNavTree('BatteryController_8cpp_source.html',''); initResizable
   <div class="headertitle"><div class="title">BatteryController.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="BatteryController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="BatteryController_8hpp.html">BatteryController.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// INA219 Register Addresses</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="BatteryController_8cpp.html#a9b707a93013b08d191303ed584a140d7">    4</a></span><span class="preprocessor">#define REG_CALIBRATION 0x05</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="BatteryController_8cpp.html#acc5622055a5928e097211bc7832cfcad">    5</a></span><span class="preprocessor">#define REG_BUSVOLTAGE 0x02</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="BatteryController_8cpp.html#a17d77785b74613bd7c065aa654954090">    6</a></span><span class="preprocessor">#define REG_SHUNTVOLTAGE 0x01</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c">    8</a></span><a class="code hl_function" href="classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c">BatteryController::BatteryController</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *i2c_device, <span class="keywordtype">int</span> address, QObject *parent)</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    : QObject(parent)</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    , <a class="code hl_function" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController</a>(i2c_device, address)</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    setCalibration32V2A();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+<a href="BatteryController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="BatteryController_8hpp.html">BatteryController.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="BatteryController_8cpp.html#a9b707a93013b08d191303ed584a140d7">   22</a></span><span class="preprocessor">#define REG_CALIBRATION 0x05</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="BatteryController_8cpp.html#acc5622055a5928e097211bc7832cfcad">   24</a></span><span class="preprocessor">#define REG_BUSVOLTAGE 0x02</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="BatteryController_8cpp.html#a17d77785b74613bd7c065aa654954090">   27</a></span><span class="preprocessor">#define REG_SHUNTVOLTAGE 0x01</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c">   37</a></span><a class="code hl_function" href="classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c">BatteryController::BatteryController</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *i2c_device, <span class="keywordtype">int</span> address,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                                     QObject *parent)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    : QObject(parent), <a class="code hl_function" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController</a>(i2c_device, address) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <a class="code hl_function" href="classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b">setCalibration32V2A</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">void</span> BatteryController::setCalibration32V2A()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_function" href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">writeRegister</a>(<a class="code hl_define" href="BatteryController_8cpp.html#a9b707a93013b08d191303ed584a140d7">REG_CALIBRATION</a>, 4096);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">float</span> BatteryController::getBusVoltage_V()</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    uint16_t raw = <a class="code hl_function" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">readRegister</a>(<a class="code hl_define" href="BatteryController_8cpp.html#acc5622055a5928e097211bc7832cfcad">REG_BUSVOLTAGE</a>);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">return</span> ((raw &gt;&gt; 3) * 0.004); <span class="comment">// Convert to volts</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">float</span> BatteryController::getShuntVoltage_V()</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    int16_t raw = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(<a class="code hl_function" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">readRegister</a>(<a class="code hl_define" href="BatteryController_8cpp.html#a17d77785b74613bd7c065aa654954090">REG_SHUNTVOLTAGE</a>));</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">return</span> raw * 0.01; <span class="comment">// Convert to volts</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd">   32</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd">BatteryController::getBatteryPercentage</a>()</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">float</span> busVoltage = getBusVoltage_V();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">float</span> shuntVoltage = getShuntVoltage_V();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">float</span> loadVoltage = busVoltage + shuntVoltage;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Calculate percentage</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">float</span> percentage = (loadVoltage - 6.0f) / 2.4f * 100.0f;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> (percentage &gt; 100.0f)</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        percentage = 100.0f;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">if</span> (percentage &lt; 0.0f)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        percentage = 0.0f;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">return</span> percentage;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b">BatteryController::setCalibration32V2A</a>() {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <a class="code hl_function" href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">writeRegister</a>(<a class="code hl_define" href="BatteryController_8cpp.html#a9b707a93013b08d191303ed584a140d7">REG_CALIBRATION</a>, 4096);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 </div>
-<div class="ttc" id="aBatteryController_8cpp_html_a17d77785b74613bd7c065aa654954090"><div class="ttname"><a href="BatteryController_8cpp.html#a17d77785b74613bd7c065aa654954090">REG_SHUNTVOLTAGE</a></div><div class="ttdeci">#define REG_SHUNTVOLTAGE</div><div class="ttdef"><b>Definition</b> <a href="#l00006">BatteryController.cpp:6</a></div></div>
-<div class="ttc" id="aBatteryController_8cpp_html_a9b707a93013b08d191303ed584a140d7"><div class="ttname"><a href="BatteryController_8cpp.html#a9b707a93013b08d191303ed584a140d7">REG_CALIBRATION</a></div><div class="ttdeci">#define REG_CALIBRATION</div><div class="ttdef"><b>Definition</b> <a href="#l00004">BatteryController.cpp:4</a></div></div>
-<div class="ttc" id="aBatteryController_8cpp_html_acc5622055a5928e097211bc7832cfcad"><div class="ttname"><a href="BatteryController_8cpp.html#acc5622055a5928e097211bc7832cfcad">REG_BUSVOLTAGE</a></div><div class="ttdeci">#define REG_BUSVOLTAGE</div><div class="ttdef"><b>Definition</b> <a href="#l00005">BatteryController.cpp:5</a></div></div>
-<div class="ttc" id="aBatteryController_8hpp_html"><div class="ttname"><a href="BatteryController_8hpp.html">BatteryController.hpp</a></div></div>
-<div class="ttc" id="aclassBatteryController_html_aaccd35f242bd573a391aa10ed188d23c"><div class="ttname"><a href="classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c">BatteryController::BatteryController</a></div><div class="ttdeci">BatteryController(const char *i2c_device, int address, QObject *parent=nullptr)</div><div class="ttdef"><b>Definition</b> <a href="#l00008">BatteryController.cpp:8</a></div></div>
-<div class="ttc" id="aclassBatteryController_html_accd0ef9bbfb8b70c012ee2c65b4e74dd"><div class="ttname"><a href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd">BatteryController::getBatteryPercentage</a></div><div class="ttdeci">Q_INVOKABLE float getBatteryPercentage()</div><div class="ttdef"><b>Definition</b> <a href="#l00032">BatteryController.cpp:32</a></div></div>
-<div class="ttc" id="aclassI2CController_html_abc0aadcfe4073103553746f2011edf75"><div class="ttname"><a href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">I2CController::writeRegister</a></div><div class="ttdeci">void writeRegister(uint8_t reg, uint16_t value)</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00031">I2CController.cpp:31</a></div></div>
-<div class="ttc" id="aclassI2CController_html_ac08dc2b4529d59d0129f09791a4a5e00"><div class="ttname"><a href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">I2CController::readRegister</a></div><div class="ttdeci">uint16_t readRegister(uint8_t reg)</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00039">I2CController.cpp:39</a></div></div>
-<div class="ttc" id="aclassI2CController_html_acc26f9f8e1263b59dcd0ef7851d1a07a"><div class="ttname"><a href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController::I2CController</a></div><div class="ttdeci">I2CController(const char *i2c_device, int address)</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00008">I2CController.cpp:8</a></div></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classBatteryController.html#add316f29d2f9f264297eeec5249f42c3">   57</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="classBatteryController.html#add316f29d2f9f264297eeec5249f42c3">BatteryController::getBusVoltage_V</a>() {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  uint16_t raw = <a class="code hl_function" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">readRegister</a>(<a class="code hl_define" href="BatteryController_8cpp.html#acc5622055a5928e097211bc7832cfcad">REG_BUSVOLTAGE</a>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordflow">return</span> ((raw &gt;&gt; 3) * 0.004); <span class="comment">// Convert to volts</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901">   68</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901">BatteryController::getShuntVoltage_V</a>() {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  int16_t raw = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(<a class="code hl_function" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">readRegister</a>(<a class="code hl_define" href="BatteryController_8cpp.html#a17d77785b74613bd7c065aa654954090">REG_SHUNTVOLTAGE</a>));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keywordflow">return</span> raw * 0.01; <span class="comment">// Convert to volts</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span></div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd">   79</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd">BatteryController::getBatteryPercentage</a>() {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keywordtype">float</span> busVoltage = <a class="code hl_function" href="classBatteryController.html#add316f29d2f9f264297eeec5249f42c3">getBusVoltage_V</a>();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keywordtype">float</span> shuntVoltage = <a class="code hl_function" href="classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901">getShuntVoltage_V</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="keywordtype">float</span> loadVoltage = busVoltage + shuntVoltage;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="comment">// Calculate percentage</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keywordtype">float</span> percentage = (loadVoltage - 6.0f) / 2.4f * 100.0f;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="keywordflow">if</span> (percentage &gt; 100.0f)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    percentage = 100.0f;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="keywordflow">if</span> (percentage &lt; 0.0f)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    percentage = 0.0f;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordflow">return</span> percentage;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+</div>
+<div class="ttc" id="aBatteryController_8cpp_html_a17d77785b74613bd7c065aa654954090"><div class="ttname"><a href="BatteryController_8cpp.html#a17d77785b74613bd7c065aa654954090">REG_SHUNTVOLTAGE</a></div><div class="ttdeci">#define REG_SHUNTVOLTAGE</div><div class="ttdef"><b>Definition</b> <a href="#l00027">BatteryController.cpp:27</a></div></div>
+<div class="ttc" id="aBatteryController_8cpp_html_a9b707a93013b08d191303ed584a140d7"><div class="ttname"><a href="BatteryController_8cpp.html#a9b707a93013b08d191303ed584a140d7">REG_CALIBRATION</a></div><div class="ttdeci">#define REG_CALIBRATION</div><div class="ttdef"><b>Definition</b> <a href="#l00022">BatteryController.cpp:22</a></div></div>
+<div class="ttc" id="aBatteryController_8cpp_html_acc5622055a5928e097211bc7832cfcad"><div class="ttname"><a href="BatteryController_8cpp.html#acc5622055a5928e097211bc7832cfcad">REG_BUSVOLTAGE</a></div><div class="ttdeci">#define REG_BUSVOLTAGE</div><div class="ttdef"><b>Definition</b> <a href="#l00024">BatteryController.cpp:24</a></div></div>
+<div class="ttc" id="aBatteryController_8hpp_html"><div class="ttname"><a href="BatteryController_8hpp.html">BatteryController.hpp</a></div><div class="ttdoc">Definition of the BatteryController class.</div></div>
+<div class="ttc" id="aclassBatteryController_html_a2af3e0526f5bf22a6d13d79567afac6b"><div class="ttname"><a href="classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b">BatteryController::setCalibration32V2A</a></div><div class="ttdeci">void setCalibration32V2A()</div><div class="ttdoc">Set the calibration for the INA219.</div><div class="ttdef"><b>Definition</b> <a href="#l00047">BatteryController.cpp:47</a></div></div>
+<div class="ttc" id="aclassBatteryController_html_aaccd35f242bd573a391aa10ed188d23c"><div class="ttname"><a href="classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c">BatteryController::BatteryController</a></div><div class="ttdeci">BatteryController(const char *i2c_device, int address, QObject *parent=nullptr)</div><div class="ttdoc">Construct a new BatteryController object.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">BatteryController.cpp:37</a></div></div>
+<div class="ttc" id="aclassBatteryController_html_accd0ef9bbfb8b70c012ee2c65b4e74dd"><div class="ttname"><a href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd">BatteryController::getBatteryPercentage</a></div><div class="ttdeci">Q_INVOKABLE float getBatteryPercentage()</div><div class="ttdoc">Get the battery percentage.</div><div class="ttdef"><b>Definition</b> <a href="#l00079">BatteryController.cpp:79</a></div></div>
+<div class="ttc" id="aclassBatteryController_html_add316f29d2f9f264297eeec5249f42c3"><div class="ttname"><a href="classBatteryController.html#add316f29d2f9f264297eeec5249f42c3">BatteryController::getBusVoltage_V</a></div><div class="ttdeci">float getBusVoltage_V()</div><div class="ttdoc">Read a 16-bit register from the INA219.</div><div class="ttdef"><b>Definition</b> <a href="#l00057">BatteryController.cpp:57</a></div></div>
+<div class="ttc" id="aclassBatteryController_html_adf2ad0dcf1a0b71f94a9d3606010c901"><div class="ttname"><a href="classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901">BatteryController::getShuntVoltage_V</a></div><div class="ttdeci">float getShuntVoltage_V()</div><div class="ttdoc">Read a 16-bit register from the INA219.</div><div class="ttdef"><b>Definition</b> <a href="#l00068">BatteryController.cpp:68</a></div></div>
+<div class="ttc" id="aclassI2CController_html_abc0aadcfe4073103553746f2011edf75"><div class="ttname"><a href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">I2CController::writeRegister</a></div><div class="ttdeci">void writeRegister(uint8_t reg, uint16_t value)</div><div class="ttdoc">Write a 16-bit value to a register.</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00064">I2CController.cpp:64</a></div></div>
+<div class="ttc" id="aclassI2CController_html_ac08dc2b4529d59d0129f09791a4a5e00"><div class="ttname"><a href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">I2CController::readRegister</a></div><div class="ttdeci">uint16_t readRegister(uint8_t reg)</div><div class="ttdoc">Read a 16-bit value from a register.</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00079">I2CController.cpp:79</a></div></div>
+<div class="ttc" id="aclassI2CController_html_acc26f9f8e1263b59dcd0ef7851d1a07a"><div class="ttname"><a href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController::I2CController</a></div><div class="ttdeci">I2CController(const char *i2c_device, int address)</div><div class="ttdoc">Construct a new I2CController object.</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00034">I2CController.cpp:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

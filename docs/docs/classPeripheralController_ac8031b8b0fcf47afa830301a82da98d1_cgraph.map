@@ -1,5 +1,0 @@
-<map id="PeripheralController::read_byte_data" name="PeripheralController::read_byte_data">
-<area shape="rect" id="Node000001" title="Reads a byte of data from a specific register." alt="" coords="5,5,157,45"/>
-<area shape="rect" id="Node000002" href="$classPeripheralController.html#a74944b38fa602d38df1d7d3fd5c3e8bf" title="Reads a byte of data from a specific register on the I2C device." alt="" coords="205,5,412,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,23,192,23,192,28,157,28"/>
-</map>

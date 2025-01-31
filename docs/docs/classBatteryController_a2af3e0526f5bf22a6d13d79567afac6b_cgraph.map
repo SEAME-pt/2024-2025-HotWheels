@@ -1,5 +1,0 @@
-<map id="BatteryController::setCalibration32V2A" name="BatteryController::setCalibration32V2A">
-<area shape="rect" id="Node000001" title="Set the calibration for the INA219." alt="" coords="5,5,160,45"/>
-<area shape="rect" id="Node000002" href="$classI2CController.html#abc0aadcfe4073103553746f2011edf75" title="Write a 16&#45;bit value to a register." alt="" coords="208,13,411,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,23,194,23,194,28,160,28"/>
-</map>

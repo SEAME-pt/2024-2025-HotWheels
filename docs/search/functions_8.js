@@ -7,7 +7,14 @@ var searchData=
   ['init_5fmotors_4',['init_motors',['../classIPeripheralController.html#abf4e4f458fd2d9debddba31785923fec',1,'IPeripheralController::init_motors()'],['../classPeripheralController.html#a02a6b4c52df60909f6109a411f6e6bd5',1,'PeripheralController::init_motors()']]],
   ['init_5fservo_5',['init_servo',['../classIPeripheralController.html#a6425e49917d2bb8a99ba2cf0dcc036a2',1,'IPeripheralController::init_servo()'],['../classPeripheralController.html#a049a6c18f04e14f991f49cd4df178613',1,'PeripheralController::init_servo()']]],
   ['initialize_6',['initialize',['../classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1',1,'CanBusManager::initialize()'],['../classMileageManager.html#ad615b78584e6c337ae3417089e035d48',1,'MileageManager::initialize()']]],
-  ['instance_7',['instance',['../classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07',1,'MockSysCalls']]],
-  ['ipaddressupdated_8',['ipAddressUpdated',['../classDataManager.html#a7914f411b3504726cedc754854019f66',1,'DataManager::ipAddressUpdated()'],['../classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193',1,'SystemManager::ipAddressUpdated()']]],
-  ['isstopreadingflagset_9',['isStopReadingFlagSet',['../classIMCP2515Controller.html#ab1e13e225c3ca10a9fcb356cb4ca79b2',1,'IMCP2515Controller::isStopReadingFlagSet()'],['../classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30',1,'MCP2515Controller::isStopReadingFlagSet()']]]
+  ['initializecanbusmanager_7',['initializeCanBusManager',['../classCarManager.html#a33ab3dce383d94c8500b74ed21f56724',1,'CarManager']]],
+  ['initializecomponents_8',['initializeComponents',['../classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f',1,'CarManager']]],
+  ['initializecontrolsmanager_9',['initializeControlsManager',['../classCarManager.html#a7d8d0d9b58a5ecc33e06cae2ccbdf184',1,'CarManager']]],
+  ['initializedatamanager_10',['initializeDataManager',['../classCarManager.html#a769224555d7eec09ad4093819e3308d4',1,'CarManager']]],
+  ['initializedisplaymanager_11',['initializeDisplayManager',['../classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7',1,'CarManager']]],
+  ['initializemileagemanager_12',['initializeMileageManager',['../classCarManager.html#a5bf066ce114aea750d5d71c7618a9ac1',1,'CarManager']]],
+  ['initializesystemmanager_13',['initializeSystemManager',['../classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a',1,'CarManager']]],
+  ['instance_14',['instance',['../classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07',1,'MockSysCalls']]],
+  ['ipaddressupdated_15',['ipAddressUpdated',['../classDataManager.html#a7914f411b3504726cedc754854019f66',1,'DataManager::ipAddressUpdated()'],['../classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193',1,'SystemManager::ipAddressUpdated()']]],
+  ['isstopreadingflagset_16',['isStopReadingFlagSet',['../classIMCP2515Controller.html#ab1e13e225c3ca10a9fcb356cb4ca79b2',1,'IMCP2515Controller::isStopReadingFlagSet()'],['../classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30',1,'MCP2515Controller::isStopReadingFlagSet()']]]
 ];

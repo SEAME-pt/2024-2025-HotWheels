@@ -1,5 +1,5 @@
 <map id="SystemManager::timeUpdated" name="SystemManager::timeUpdated">
-<area shape="rect" id="Node000001" title=" " alt="" coords="799,59,1020,84"/>
+<area shape="rect" id="Node000001" title="Signal emitted when the system time is updated." alt="" coords="799,59,1020,84"/>
 <area shape="rect" id="Node000002" href="$classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="536,22,751,62"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="785,60,750,56,751,51,785,55"/>
 <area shape="rect" id="Node000005" href="$classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d" title="Destroy the SystemManager object." alt="" coords="536,87,751,112"/>

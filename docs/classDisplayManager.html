@@ -106,55 +106,81 @@ $(function(){initNavTree('classDisplayManager.html',''); initResizable(true); })
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#signals">Signals</a> &#124;
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">DisplayManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that manages the display of the car manager. QObject.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="DisplayManager_8hpp_source.html">DisplayManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:abebd3e93be5761533885e1fdf03c34cb" id="r_abebd3e93be5761533885e1fdf03c34cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abebd3e93be5761533885e1fdf03c34cb">updateCanBusData</a> (float speed, int rpm)</td></tr>
+<tr class="memdesc:abebd3e93be5761533885e1fdf03c34cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the CAN bus data on the display.  <br /></td></tr>
 <tr class="separator:abebd3e93be5761533885e1fdf03c34cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca4a27c20086ba98ae87490fb3d7867e" id="r_aca4a27c20086ba98ae87490fb3d7867e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca4a27c20086ba98ae87490fb3d7867e">updateEngineData</a> (<a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> direction, int steeringAngle)</td></tr>
+<tr class="memdesc:aca4a27c20086ba98ae87490fb3d7867e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the engine data on the display.  <br /></td></tr>
 <tr class="separator:aca4a27c20086ba98ae87490fb3d7867e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa871409b067196dc448ce1cec4ad1437" id="r_aa871409b067196dc448ce1cec4ad1437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa871409b067196dc448ce1cec4ad1437">updateSystemTime</a> (const QString &amp;currentDate, const QString &amp;currentTime, const QString &amp;currentDay)</td></tr>
+<tr class="memdesc:aa871409b067196dc448ce1cec4ad1437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the system time on the display.  <br /></td></tr>
 <tr class="separator:aa871409b067196dc448ce1cec4ad1437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6cc252c8fd7ca1836e5c38265489f2e" id="r_af6cc252c8fd7ca1836e5c38265489f2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6cc252c8fd7ca1836e5c38265489f2e">updateWifiStatus</a> (const QString &amp;status, const QString &amp;wifiName)</td></tr>
+<tr class="memdesc:af6cc252c8fd7ca1836e5c38265489f2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the WiFi status on the display.  <br /></td></tr>
 <tr class="separator:af6cc252c8fd7ca1836e5c38265489f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a002b346babdbbdf852f9121a32e80e9d" id="r_a002b346babdbbdf852f9121a32e80e9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a002b346babdbbdf852f9121a32e80e9d">updateTemperature</a> (const QString &amp;temperature)</td></tr>
+<tr class="memdesc:a002b346babdbbdf852f9121a32e80e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the temperature on the display.  <br /></td></tr>
 <tr class="separator:a002b346babdbbdf852f9121a32e80e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd05bbcd46db02809b4f69043b0f5bde" id="r_abd05bbcd46db02809b4f69043b0f5bde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd05bbcd46db02809b4f69043b0f5bde">updateBatteryPercentage</a> (float batteryPercentage)</td></tr>
+<tr class="memdesc:abd05bbcd46db02809b4f69043b0f5bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the battery percentage on the display.  <br /></td></tr>
 <tr class="separator:abd05bbcd46db02809b4f69043b0f5bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cc5f9b4a7359f71d4bd730e8d5e3c3b" id="r_a2cc5f9b4a7359f71d4bd730e8d5e3c3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cc5f9b4a7359f71d4bd730e8d5e3c3b">updateIpAddress</a> (const QString &amp;ipAddress)</td></tr>
+<tr class="memdesc:a2cc5f9b4a7359f71d4bd730e8d5e3c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the IP address on the display.  <br /></td></tr>
 <tr class="separator:a2cc5f9b4a7359f71d4bd730e8d5e3c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef67b2d47859a3a6ef96d622925c84c2" id="r_aef67b2d47859a3a6ef96d622925c84c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef67b2d47859a3a6ef96d622925c84c2">updateMileage</a> (double mileage)</td></tr>
+<tr class="memdesc:aef67b2d47859a3a6ef96d622925c84c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the mileage on the display.  <br /></td></tr>
 <tr class="separator:aef67b2d47859a3a6ef96d622925c84c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06d94f6ce20c23eaa1e25bc6e8c9496a" id="r_a06d94f6ce20c23eaa1e25bc6e8c9496a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06d94f6ce20c23eaa1e25bc6e8c9496a">updateDrivingMode</a> (<a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a> newMode)</td></tr>
+<tr class="memdesc:a06d94f6ce20c23eaa1e25bc6e8c9496a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the driving mode on the display.  <br /></td></tr>
 <tr class="separator:a06d94f6ce20c23eaa1e25bc6e8c9496a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c970606c6077d168cf6f4ad63dc4fcc" id="r_a0c970606c6077d168cf6f4ad63dc4fcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c970606c6077d168cf6f4ad63dc4fcc">updateClusterTheme</a> (<a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a> newTheme)</td></tr>
+<tr class="memdesc:a0c970606c6077d168cf6f4ad63dc4fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cluster theme on the display.  <br /></td></tr>
 <tr class="separator:a0c970606c6077d168cf6f4ad63dc4fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac098d036b85f24328a11731da7b2196f" id="r_ac098d036b85f24328a11731da7b2196f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac098d036b85f24328a11731da7b2196f">updateClusterMetrics</a> (<a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> newMetrics)</td></tr>
+<tr class="memdesc:ac098d036b85f24328a11731da7b2196f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cluster metrics on the display.  <br /></td></tr>
 <tr class="separator:ac098d036b85f24328a11731da7b2196f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a82ccd56efaf1a42e2e2823a4fbaec4a0" id="r_a82ccd56efaf1a42e2e2823a4fbaec4a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82ccd56efaf1a42e2e2823a4fbaec4a0">drivingModeToggled</a> ()</td></tr>
+<tr class="memdesc:a82ccd56efaf1a42e2e2823a4fbaec4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the driving mode is toggled.  <br /></td></tr>
 <tr class="separator:a82ccd56efaf1a42e2e2823a4fbaec4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50e1e94a5955249b3ade32dff937c3ae" id="r_a50e1e94a5955249b3ade32dff937c3ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50e1e94a5955249b3ade32dff937c3ae">clusterThemeToggled</a> ()</td></tr>
+<tr class="memdesc:a50e1e94a5955249b3ade32dff937c3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the cluster theme is toggled.  <br /></td></tr>
 <tr class="separator:a50e1e94a5955249b3ade32dff937c3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3392adf2d8bef0ab47c7902e0856885e" id="r_a3392adf2d8bef0ab47c7902e0856885e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3392adf2d8bef0ab47c7902e0856885e">clusterMetricsToggled</a> ()</td></tr>
+<tr class="memdesc:a3392adf2d8bef0ab47c7902e0856885e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the cluster metrics are toggled.  <br /></td></tr>
 <tr class="separator:a3392adf2d8bef0ab47c7902e0856885e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae9f9ff9490927152279cbb64a05b775a" id="r_ae9f9ff9490927152279cbb64a05b775a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9f9ff9490927152279cbb64a05b775a">DisplayManager</a> (Ui::CarManager *ui, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:ae9f9ff9490927152279cbb64a05b775a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classDisplayManager.html" title="Class that manages the display of the car manager. QObject.">DisplayManager</a> object.  <br /></td></tr>
 <tr class="separator:ae9f9ff9490927152279cbb64a05b775a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8949f4acaeeb3aa2006a3235412f896c" id="r_a8949f4acaeeb3aa2006a3235412f896c"><td class="memItemLeft" align="right" valign="top">Ui::CarManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8949f4acaeeb3aa2006a3235412f896c">m_ui</a></td></tr>
+<tr class="memdesc:a8949f4acaeeb3aa2006a3235412f896c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the UI object.  <br /></td></tr>
+<tr class="separator:a8949f4acaeeb3aa2006a3235412f896c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8hpp_source.html#l00009">9</a> of file <a class="el" href="DisplayManager_8hpp_source.html">DisplayManager.hpp</a>.</p>
+<div class="textblock"><p>Class that manages the display of the car manager. QObject. </p>
+
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8hpp_source.html#l00028">28</a> of file <a class="el" href="DisplayManager_8hpp_source.html">DisplayManager.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae9f9ff9490927152279cbb64a05b775a" name="ae9f9ff9490927152279cbb64a05b775a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9f9ff9490927152279cbb64a05b775a">&#9670;&#160;</a></span>DisplayManager()</h2>
@@ -182,25 +208,27 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructor for the <a class="el" href="classDisplayManager.html">DisplayManager</a> class. Initializes the display manager and sets up connections.</p>
+
+<p>Construct a new <a class="el" href="classDisplayManager.html" title="Class that manages the display of the car manager. QObject.">DisplayManager</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ui</td><td>Pointer to the user interface for the car manager. </td></tr>
-    <tr><td class="paramname">parent</td><td>Optional parent object (default is nullptr). </td></tr>
+    <tr><td class="paramname">ui</td><td>The UI form for the cluster. </td></tr>
+    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
   </table>
   </dd>
 </dl>
+<p>This constructor initializes the <a class="el" href="classDisplayManager.html" title="Class that manages the display of the car manager. QObject.">DisplayManager</a> object with the specified UI form. </p>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00005">5</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00031">31</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDisplayManager_ae9f9ff9490927152279cbb64a05b775a_cgraph.png" border="0" usemap="#aclassDisplayManager_ae9f9ff9490927152279cbb64a05b775a_cgraph" alt=""/></div>
 <map name="aclassDisplayManager_ae9f9ff9490927152279cbb64a05b775a_cgraph" id="aclassDisplayManager_ae9f9ff9490927152279cbb64a05b775a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,45,248,70"/>
-<area shape="rect" href="classDisplayManager.html#a3392adf2d8bef0ab47c7902e0856885e" title=" " alt="" coords="296,5,524,45"/>
+<area shape="rect" title="Construct a new DisplayManager object." alt="" coords="5,45,248,70"/>
+<area shape="rect" href="classDisplayManager.html#a3392adf2d8bef0ab47c7902e0856885e" title="Signal emitted when the cluster metrics are toggled." alt="" coords="296,5,524,45"/>
 <area shape="poly" title=" " alt="" coords="239,42,282,37,282,42,240,47"/>
-<area shape="rect" href="classDisplayManager.html#a82ccd56efaf1a42e2e2823a4fbaec4a0" title=" " alt="" coords="301,69,519,109"/>
+<area shape="rect" href="classDisplayManager.html#a82ccd56efaf1a42e2e2823a4fbaec4a0" title="Signal emitted when the driving mode is toggled." alt="" coords="301,69,519,109"/>
 <area shape="poly" title=" " alt="" coords="240,67,288,73,287,78,239,73"/>
 </map>
 </div>
@@ -230,15 +258,23 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Signal emitted when the cluster metrics are toggled (Kilometers/Miles). </p>
+
+<p>Signal emitted when the cluster metrics are toggled. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDisplayManager_a3392adf2d8bef0ab47c7902e0856885e_icgraph.png" border="0" usemap="#aclassDisplayManager_a3392adf2d8bef0ab47c7902e0856885e_icgraph" alt=""/></div>
 <map name="aclassDisplayManager_a3392adf2d8bef0ab47c7902e0856885e_icgraph" id="aclassDisplayManager_a3392adf2d8bef0ab47c7902e0856885e_icgraph">
-<area shape="rect" title=" " alt="" coords="296,5,524,45"/>
-<area shape="rect" href="classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a" title=" " alt="" coords="5,13,248,38"/>
-<area shape="poly" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
+<area shape="rect" title="Signal emitted when the cluster metrics are toggled." alt="" coords="827,27,1055,67"/>
+<area shape="rect" href="classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a" title="Construct a new DisplayManager object." alt="" coords="536,5,779,31"/>
+<area shape="poly" title=" " alt="" coords="813,37,778,33,779,28,813,31"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="550,55,765,95"/>
+<area shape="poly" title=" " alt="" coords="813,63,765,67,765,62,813,57"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,63,488,88"/>
+<area shape="poly" title=" " alt="" coords="536,78,488,78,488,73,536,73"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,63,193,88"/>
+<area shape="poly" title=" " alt="" coords="228,78,193,78,193,73,228,73"/>
+<area shape="poly" title=" " alt="" coords="147,54,144,49,136,45,99,41,71,43,56,48,53,54,61,61,57,64,47,54,52,44,70,38,99,36,137,40,148,45,151,51"/>
 </map>
 </div>
 
@@ -266,7 +302,23 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Signal emitted when the cluster theme is toggled (Dark/Light). </p>
+
+<p>Signal emitted when the cluster theme is toggled. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_a50e1e94a5955249b3ade32dff937c3ae_icgraph.png" border="0" usemap="#aclassDisplayManager_a50e1e94a5955249b3ade32dff937c3ae_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_a50e1e94a5955249b3ade32dff937c3ae_icgraph" id="aclassDisplayManager_a50e1e94a5955249b3ade32dff937c3ae_icgraph">
+<area shape="rect" title="Signal emitted when the cluster theme is toggled." alt="" coords="799,22,1024,62"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -292,15 +344,23 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Signal emitted when the driving mode is toggled (Manual/Automatic). </p>
+
+<p>Signal emitted when the driving mode is toggled. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDisplayManager_a82ccd56efaf1a42e2e2823a4fbaec4a0_icgraph.png" border="0" usemap="#aclassDisplayManager_a82ccd56efaf1a42e2e2823a4fbaec4a0_icgraph" alt=""/></div>
 <map name="aclassDisplayManager_a82ccd56efaf1a42e2e2823a4fbaec4a0_icgraph" id="aclassDisplayManager_a82ccd56efaf1a42e2e2823a4fbaec4a0_icgraph">
-<area shape="rect" title=" " alt="" coords="296,5,513,45"/>
-<area shape="rect" href="classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a" title=" " alt="" coords="5,13,248,38"/>
-<area shape="poly" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
+<area shape="rect" title="Signal emitted when the driving mode is toggled." alt="" coords="827,27,1044,67"/>
+<area shape="rect" href="classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a" title="Construct a new DisplayManager object." alt="" coords="536,5,779,31"/>
+<area shape="poly" title=" " alt="" coords="812,37,777,33,778,28,813,32"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="550,55,765,95"/>
+<area shape="poly" title=" " alt="" coords="813,62,765,67,765,62,813,57"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,63,488,88"/>
+<area shape="poly" title=" " alt="" coords="536,78,488,78,488,73,536,73"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,63,193,88"/>
+<area shape="poly" title=" " alt="" coords="228,78,193,78,193,73,228,73"/>
+<area shape="poly" title=" " alt="" coords="147,54,144,49,136,45,99,41,71,43,56,48,53,54,61,61,57,64,47,54,52,44,70,38,99,36,137,40,148,45,151,51"/>
 </map>
 </div>
 
@@ -328,15 +388,31 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the battery percentage on the UI with the current battery level.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the battery percentage on the display. </p>
+<p>This function updates the battery percentage label and low battery warning based on the current battery percentage. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">batteryPercentage</td><td>The current battery percentage. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00098">98</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00158">158</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_abd05bbcd46db02809b4f69043b0f5bde_icgraph.png" border="0" usemap="#aclassDisplayManager_abd05bbcd46db02809b4f69043b0f5bde_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_abd05bbcd46db02809b4f69043b0f5bde_icgraph" id="aclassDisplayManager_abd05bbcd46db02809b4f69043b0f5bde_icgraph">
+<area shape="rect" title="Updates the battery percentage on the display." alt="" coords="799,22,1028,62"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -366,8 +442,9 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the CAN bus data on the UI with the current speed and RPM.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the CAN bus data on the display. </p>
+<p>This function updates the speed and RPM labels based on the CAN bus data. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">speed</td><td>The current speed of the car. </td></tr>
     <tr><td class="paramname">rpm</td><td>The current RPM of the car. </td></tr>
@@ -375,7 +452,22 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00040">40</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00068">68</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_abebd3e93be5761533885e1fdf03c34cb_icgraph.png" border="0" usemap="#aclassDisplayManager_abebd3e93be5761533885e1fdf03c34cb_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_abebd3e93be5761533885e1fdf03c34cb_icgraph" id="aclassDisplayManager_abebd3e93be5761533885e1fdf03c34cb_icgraph">
+<area shape="rect" title="Updates the CAN bus data on the display." alt="" coords="799,22,1005,62"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -401,15 +493,31 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the cluster metrics on the UI (Kilometers or Miles).</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the cluster metrics on the display. </p>
+<p>This function updates the cluster metrics label and speed metrics label based on the current cluster metrics. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newMetrics</td><td>The current cluster metrics. </td></tr>
+    <tr><td class="paramname">newMetrics</td><td>The new cluster metrics. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00145">145</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00231">231</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_ac098d036b85f24328a11731da7b2196f_icgraph.png" border="0" usemap="#aclassDisplayManager_ac098d036b85f24328a11731da7b2196f_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_ac098d036b85f24328a11731da7b2196f_icgraph" id="aclassDisplayManager_ac098d036b85f24328a11731da7b2196f_icgraph">
+<area shape="rect" title="Updates the cluster metrics on the display." alt="" coords="799,22,1025,62"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -435,15 +543,31 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the cluster theme on the UI (Dark or Light).</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the cluster theme on the display. </p>
+<p>This function updates the cluster theme label based on the current cluster theme. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newTheme</td><td>The current cluster theme. </td></tr>
+    <tr><td class="paramname">newTheme</td><td>The new cluster theme. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00131">131</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00212">212</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_a0c970606c6077d168cf6f4ad63dc4fcc_icgraph.png" border="0" usemap="#aclassDisplayManager_a0c970606c6077d168cf6f4ad63dc4fcc_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_a0c970606c6077d168cf6f4ad63dc4fcc_icgraph" id="aclassDisplayManager_a0c970606c6077d168cf6f4ad63dc4fcc_icgraph">
+<area shape="rect" title="Updates the cluster theme on the display." alt="" coords="799,22,1025,62"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -469,15 +593,31 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the driving mode on the UI (manual or automatic).</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the driving mode on the display. </p>
+<p>This function updates the driving mode label based on the current driving mode. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newMode</td><td>The current driving mode (Manual or Automatic). </td></tr>
+    <tr><td class="paramname">newMode</td><td>The new driving mode. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00117">117</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00193">193</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_a06d94f6ce20c23eaa1e25bc6e8c9496a_icgraph.png" border="0" usemap="#aclassDisplayManager_a06d94f6ce20c23eaa1e25bc6e8c9496a_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_a06d94f6ce20c23eaa1e25bc6e8c9496a_icgraph" id="aclassDisplayManager_a06d94f6ce20c23eaa1e25bc6e8c9496a_icgraph">
+<area shape="rect" title="Updates the driving mode on the display." alt="" coords="799,29,1063,55"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -507,16 +647,32 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the engine data on the UI with the current direction and steering angle.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the engine data on the display. </p>
+<p>This function updates the direction label and blinker visibility based on the engine data. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">direction</td><td>The current car direction (Drive, Reverse, Stop). </td></tr>
+    <tr><td class="paramname">direction</td><td>The current direction of the car. </td></tr>
     <tr><td class="paramname">steeringAngle</td><td>The current steering angle of the car. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00046">46</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00081">81</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_aca4a27c20086ba98ae87490fb3d7867e_icgraph.png" border="0" usemap="#aclassDisplayManager_aca4a27c20086ba98ae87490fb3d7867e_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_aca4a27c20086ba98ae87490fb3d7867e_icgraph" id="aclassDisplayManager_aca4a27c20086ba98ae87490fb3d7867e_icgraph">
+<area shape="rect" title="Updates the engine data on the display." alt="" coords="799,29,1055,55"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -542,15 +698,31 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the IP address on the UI with the current IP address.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the IP address on the display. </p>
+<p>This function updates the IP address label based on the current IP address. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ipAddress</td><td>The current IP address of the system. </td></tr>
+    <tr><td class="paramname">ipAddress</td><td>The current IP address. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00112">112</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00183">183</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_a2cc5f9b4a7359f71d4bd730e8d5e3c3b_icgraph.png" border="0" usemap="#aclassDisplayManager_a2cc5f9b4a7359f71d4bd730e8d5e3c3b_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_a2cc5f9b4a7359f71d4bd730e8d5e3c3b_icgraph" id="aclassDisplayManager_a2cc5f9b4a7359f71d4bd730e8d5e3c3b_icgraph">
+<area shape="rect" title="Updates the IP address on the display." alt="" coords="799,22,992,62"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -576,15 +748,31 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the mileage on the UI with the current mileage.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the mileage on the display. </p>
+<p>This function updates the mileage label based on the current mileage. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mileage</td><td>The current mileage of the car. </td></tr>
+    <tr><td class="paramname">mileage</td><td>The current mileage. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00107">107</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00172">172</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_aef67b2d47859a3a6ef96d622925c84c2_icgraph.png" border="0" usemap="#aclassDisplayManager_aef67b2d47859a3a6ef96d622925c84c2_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_aef67b2d47859a3a6ef96d622925c84c2_icgraph" id="aclassDisplayManager_aef67b2d47859a3a6ef96d622925c84c2_icgraph">
+<area shape="rect" title="Updates the mileage on the display." alt="" coords="799,29,1032,55"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -619,8 +807,9 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the system time on the UI with the current date, time, and day of the week.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the system time on the display. </p>
+<p>This function updates the date, time, and weekday labels based on the current system time. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">currentDate</td><td>The current date. </td></tr>
     <tr><td class="paramname">currentTime</td><td>The current time. </td></tr>
@@ -629,7 +818,22 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00075">75</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00118">118</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_aa871409b067196dc448ce1cec4ad1437_icgraph.png" border="0" usemap="#aclassDisplayManager_aa871409b067196dc448ce1cec4ad1437_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_aa871409b067196dc448ce1cec4ad1437_icgraph" id="aclassDisplayManager_aa871409b067196dc448ce1cec4ad1437_icgraph">
+<area shape="rect" title="Updates the system time on the display." alt="" coords="799,29,1061,55"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -655,15 +859,31 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the temperature on the UI with the current temperature value.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the temperature on the display. </p>
+<p>This function updates the temperature label based on the current temperature. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">temperature</td><td>The current temperature. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00093">93</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00148">148</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_a002b346babdbbdf852f9121a32e80e9d_icgraph.png" border="0" usemap="#aclassDisplayManager_a002b346babdbbdf852f9121a32e80e9d_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_a002b346babdbbdf852f9121a32e80e9d_icgraph" id="aclassDisplayManager_a002b346babdbbdf852f9121a32e80e9d_icgraph">
+<area shape="rect" title="Updates the temperature on the display." alt="" coords="799,29,1061,55"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -693,16 +913,59 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates the Wi-Fi status on the UI with the current connection status and Wi-Fi name.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Updates the WiFi status on the display. </p>
+<p>This function updates the WiFi status label based on the current WiFi status and name. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">status</td><td>The current Wi-Fi status (e.g., connected, disconnected). </td></tr>
-    <tr><td class="paramname">wifiName</td><td>The name of the connected Wi-Fi network. </td></tr>
+    <tr><td class="paramname">status</td><td>The current WiFi status. </td></tr>
+    <tr><td class="paramname">wifiName</td><td>The name of the connected WiFi network. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00084">84</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8cpp_source.html#l00133">133</a> of file <a class="el" href="DisplayManager_8cpp_source.html">DisplayManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDisplayManager_af6cc252c8fd7ca1836e5c38265489f2e_icgraph.png" border="0" usemap="#aclassDisplayManager_af6cc252c8fd7ca1836e5c38265489f2e_icgraph" alt=""/></div>
+<map name="aclassDisplayManager_af6cc252c8fd7ca1836e5c38265489f2e_icgraph" id="aclassDisplayManager_af6cc252c8fd7ca1836e5c38265489f2e_icgraph">
+<area shape="rect" title="Updates the WiFi status on the display." alt="" coords="799,22,1005,62"/>
+<area shape="rect" href="classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
+<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a8949f4acaeeb3aa2006a3235412f896c" name="a8949f4acaeeb3aa2006a3235412f896c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8949f4acaeeb3aa2006a3235412f896c">&#9670;&#160;</a></span>m_ui</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Ui::CarManager* DisplayManager::m_ui</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pointer to the UI object. </p>
+
+<p class="definition">Definition at line <a class="el" href="DisplayManager_8hpp_source.html#l00058">58</a> of file <a class="el" href="DisplayManager_8hpp_source.html">DisplayManager.hpp</a>.</p>
 
 </div>
 </div>

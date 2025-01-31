@@ -1,7 +1,0 @@
-<map id="SystemManager::fetchTemperature" name="SystemManager::fetchTemperature">
-<area shape="rect" id="Node000001" title="Fetch the temperature." alt="" coords="575,13,825,38"/>
-<area shape="rect" id="Node000002" href="$classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="296,5,527,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="561,28,527,28,527,23,561,23"/>
-<area shape="rect" id="Node000003" href="$classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="5,13,248,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
-</map>

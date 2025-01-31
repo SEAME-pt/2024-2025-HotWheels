@@ -1,9 +1,0 @@
-<map id="BatteryController::BatteryController" name="BatteryController::BatteryController">
-<area shape="rect" id="Node000001" title="Construct a new BatteryController object." alt="" coords="5,27,148,67"/>
-<area shape="rect" id="Node000002" href="$classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a" title="Construct a new I2CController object." alt="" coords="196,5,396,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,35,187,30,188,35,149,40"/>
-<area shape="rect" id="Node000003" href="$classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b" title="Set the calibration for the INA219." alt="" coords="219,55,373,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,54,205,61,204,66,148,59"/>
-<area shape="rect" id="Node000004" href="$classI2CController.html#abc0aadcfe4073103553746f2011edf75" title="Write a 16&#45;bit value to a register." alt="" coords="444,63,647,88"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="373,73,430,73,430,78,373,78"/>
-</map>

@@ -1,6 +1,6 @@
 <map id="SystemManager::updateSystemStatus" name="SystemManager::updateSystemStatus">
 <area shape="rect" id="Node000001" title="Update the system status." alt="" coords="5,169,236,209"/>
-<area shape="rect" id="Node000002" href="$classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3" title=" " alt="" coords="284,5,540,45"/>
+<area shape="rect" id="Node000002" href="$classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3" title="Signal emitted when the battery percentage is updated." alt="" coords="284,5,540,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,167,199,111,240,81,283,55,299,48,302,52,285,60,243,85,203,115,143,171"/>
 <area shape="rect" id="Node000003" href="$classSystemManager.html#af0c6c9d33fc10d511606fdfecb200d60" title="Fetch the IP address." alt="" coords="295,70,529,95"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="154,167,213,134,283,104,311,96,313,101,285,109,215,139,156,171"/>
@@ -8,10 +8,10 @@
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="222,167,333,145,334,150,223,172"/>
 <area shape="rect" id="Node000005" href="$classSystemManager.html#a7aadaaa64a7b5a6bfe73922cce27fb0d" title="Fetch the WiFi status." alt="" coords="315,169,509,209"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="236,187,301,187,301,192,236,192"/>
-<area shape="rect" id="Node000006" href="$classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193" title=" " alt="" coords="312,233,512,273"/>
+<area shape="rect" id="Node000006" href="$classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193" title="Signal emitted when the IP address is updated." alt="" coords="312,233,512,273"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="213,207,308,228,307,233,212,212"/>
-<area shape="rect" id="Node000007" href="$classSystemManager.html#a95c58f09a04fe52196c1c702c1f0afeb" title=" " alt="" coords="303,297,521,337"/>
+<area shape="rect" id="Node000007" href="$classSystemManager.html#a95c58f09a04fe52196c1c702c1f0afeb" title="Signal emitted when the temperature is updated." alt="" coords="303,297,521,337"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="152,207,212,246,285,283,306,291,304,296,283,288,209,250,149,212"/>
-<area shape="rect" id="Node000008" href="$classSystemManager.html#a1f612cad69e98840b1e0cff8039273fa" title=" " alt="" coords="312,361,512,401"/>
+<area shape="rect" id="Node000008" href="$classSystemManager.html#a1f612cad69e98840b1e0cff8039273fa" title="Signal emitted when the wifi status is updated." alt="" coords="312,361,512,401"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="139,208,198,277,239,315,285,347,300,355,298,359,283,352,236,319,194,280,134,211"/>
 </map>

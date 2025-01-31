@@ -1,5 +1,5 @@
 <map id="SystemManager::wifiStatusUpdated" name="SystemManager::wifiStatusUpdated">
-<area shape="rect" id="Node000001" title=" " alt="" coords="815,54,1015,94"/>
+<area shape="rect" id="Node000001" title="Signal emitted when the wifi status is updated." alt="" coords="815,54,1015,94"/>
 <area shape="rect" id="Node000002" href="$classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="544,22,759,62"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="801,63,759,58,759,52,801,58"/>
 <area shape="rect" id="Node000005" href="$classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="536,86,767,126"/>

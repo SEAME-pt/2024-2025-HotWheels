@@ -19,11 +19,12 @@ var searchData=
   ['toggleclustermetrics_16',['toggleClusterMetrics',['../classDataManager.html#a08ec424331443675ba3c31b1a50da50c',1,'DataManager']]],
   ['toggleclustertheme_17',['toggleClusterTheme',['../classDataManager.html#a8ba9ea7dd957fadef8c562f0865ff55e',1,'DataManager']]],
   ['toggledrivingmode_18',['toggleDrivingMode',['../classDataManager.html#a820db17b9b1aa9a70cbdc8ef05a46584',1,'DataManager']]],
-  ['tt_19',['tt',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md3',1,'1. &lt;tt&gt;src/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md4',1,'2. &lt;tt&gt;config/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md5',1,'3. &lt;tt&gt;assets/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md6',1,'4. &lt;tt&gt;tests/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md7',1,'5. &lt;tt&gt;docs/&lt;/tt&gt;']]],
-  ['tt_20assets_20tt_20',['3. &lt;tt&gt;assets/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md5',1,'']]],
-  ['tt_20config_20tt_21',['2. &lt;tt&gt;config/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md4',1,'']]],
-  ['tt_20docs_20tt_22',['5. &lt;tt&gt;docs/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md7',1,'']]],
-  ['tt_20src_20tt_23',['1. &lt;tt&gt;src/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md3',1,'']]],
-  ['tt_20tests_20tt_24',['4. &lt;tt&gt;tests/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md6',1,'']]],
-  ['txb0ctrl_25',['TXB0CTRL',['../classMCP2515Configurator.html#a106fffe0fc73c3f02439b75aba706649',1,'MCP2515Configurator']]]
+  ['totalmileage_19',['totalMileage',['../classMileageManager.html#ab5bcf4b819317b3587fce5c3c5456046',1,'MileageManager']]],
+  ['tt_20',['tt',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md3',1,'1. &lt;tt&gt;src/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md4',1,'2. &lt;tt&gt;config/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md5',1,'3. &lt;tt&gt;assets/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md6',1,'4. &lt;tt&gt;tests/&lt;/tt&gt;'],['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md7',1,'5. &lt;tt&gt;docs/&lt;/tt&gt;']]],
+  ['tt_20assets_20tt_21',['3. &lt;tt&gt;assets/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md5',1,'']]],
+  ['tt_20config_20tt_22',['2. &lt;tt&gt;config/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md4',1,'']]],
+  ['tt_20docs_20tt_23',['5. &lt;tt&gt;docs/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md7',1,'']]],
+  ['tt_20src_20tt_24',['1. &lt;tt&gt;src/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md3',1,'']]],
+  ['tt_20tests_20tt_25',['4. &lt;tt&gt;tests/&lt;/tt&gt;',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md6',1,'']]],
+  ['txb0ctrl_26',['TXB0CTRL',['../classMCP2515Configurator.html#a106fffe0fc73c3f02439b75aba706649',1,'MCP2515Configurator']]]
 ];

@@ -1,5 +1,0 @@
-<map id="MockPeripheralController::MOCK_METHOD" name="MockPeripheralController::MOCK_METHOD">
-<area shape="rect" id="Node000001" title="Mocked method to write a byte of data to a specific register." alt="" coords="5,5,192,45"/>
-<area shape="rect" id="Node000002" href="$classIPeripheralController.html#a3da03878435a865d4edc2dbd947d4674" title=" " alt="" coords="240,5,396,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,23,226,23,226,28,193,28"/>
-</map>

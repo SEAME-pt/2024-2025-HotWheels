@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,161,192,108,230,79,271,55,287,48,289,53,273,60,233,84,195,112,137,165"/>
 <area shape="rect" id="Node000003" href="$classControlsManager.html#ad3cd1fa6493f5e17cc1806d993266fac" title="Update the driving mode of the vehicle." alt="" coords="305,69,491,109"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="162,160,271,119,299,110,301,115,273,124,163,165"/>
-<area shape="rect" id="Node000005" href="$classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26" title=" " alt="" coords="299,133,497,173"/>
+<area shape="rect" id="Node000005" href="$classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26" title="Signal emitted when the driving mode is updated." alt="" coords="299,133,497,173"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="224,169,284,162,285,168,224,174"/>
 <area shape="rect" id="Node000006" href="$classDataManager.html#afcadf5c275fd6fd89c4199abebc8b03d" title="Handles car direction data." alt="" coords="272,198,524,223"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="224,191,259,194,258,200,224,196"/>
@@ -14,7 +14,7 @@
 <area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="143,201,200,242,273,283,292,291,290,295,271,288,197,247,139,205"/>
 <area shape="rect" id="Node000004" href="$classControlsManager.html#aa925f92fc442ed25200f3bcd0df3d08a" title="Set the driving mode." alt="" coords="603,77,800,102"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="492,87,589,87,589,92,492,92"/>
-<area shape="rect" id="Node000007" href="$classDataManager.html#a23da75da1d1fa2d90c7f885b850b515d" title=" " alt="" coords="572,222,831,247"/>
+<area shape="rect" id="Node000007" href="$classDataManager.html#a23da75da1d1fa2d90c7f885b850b515d" title="Signal emitted when the processed steering angle is updated." alt="" coords="572,222,831,247"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="524,218,559,221,558,226,524,223"/>
 <area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="521,247,558,244,559,249,522,252"/>
 </map>

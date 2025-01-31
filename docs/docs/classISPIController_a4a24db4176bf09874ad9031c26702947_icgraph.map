@@ -1,5 +1,0 @@
-<map id="ISPIController::writeByte" name="ISPIController::writeByte">
-<area shape="rect" id="Node000001" title=" " alt="" coords="203,13,384,38"/>
-<area shape="rect" id="Node000002" href="$classMockSPIController.html#a7a34bf09a0a0bcd950d6a4e8a613198a" title="Mocked method to write a byte of data to the SPI device." alt="" coords="5,5,155,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
-</map>

@@ -28,5 +28,19 @@ var classDataManager =
     [ "systemWifiUpdated", "classDataManager.html#af2e9914a800be00c40d17a60ace49e61", null ],
     [ "toggleClusterMetrics", "classDataManager.html#a08ec424331443675ba3c31b1a50da50c", null ],
     [ "toggleClusterTheme", "classDataManager.html#a8ba9ea7dd957fadef8c562f0865ff55e", null ],
-    [ "toggleDrivingMode", "classDataManager.html#a820db17b9b1aa9a70cbdc8ef05a46584", null ]
+    [ "toggleDrivingMode", "classDataManager.html#a820db17b9b1aa9a70cbdc8ef05a46584", null ],
+    [ "m_batteryPercentage", "classDataManager.html#a25dff98ba6a33e171782e4fdc869e067", null ],
+    [ "m_carDirection", "classDataManager.html#a55b1933869b4f3d6c64fa83a0c533d31", null ],
+    [ "m_clusterMetrics", "classDataManager.html#adf39a28f9a995d24c80d82b0a5b47f68", null ],
+    [ "m_clusterTheme", "classDataManager.html#a31bdefbf5647634eb9c72eabec346619", null ],
+    [ "m_drivingMode", "classDataManager.html#a6f1fe9aef3d83e3760e7de8be19309ec", null ],
+    [ "m_ipAddress", "classDataManager.html#af628dcd7151daad73c2d6f78ae27c153", null ],
+    [ "m_mileage", "classDataManager.html#ae955f072579603b3363c02a22b1dea6f", null ],
+    [ "m_rpm", "classDataManager.html#aae37ae1941da370a0185d9fdbc0211c8", null ],
+    [ "m_speed", "classDataManager.html#a604653c040f82fb891fc5f1c8d35e608", null ],
+    [ "m_steeringDirection", "classDataManager.html#ad8aed8a1a8399041f8b04205e8e63c4b", null ],
+    [ "m_temperature", "classDataManager.html#a97f3463ac57adb8b849af294417cd027", null ],
+    [ "m_time", "classDataManager.html#a912183b8a5ae3919f5e358c4c41d0a84", null ],
+    [ "m_wifiName", "classDataManager.html#a4aaa3f1f21aa344e99741cefdbff0289", null ],
+    [ "m_wifiStatus", "classDataManager.html#ac2d964eed54e0693989765e25818289f", null ]
 ];

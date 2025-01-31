@@ -1,7 +1,0 @@
-<map id="IPeripheralController::i2c_smbus_read_byte_data" name="IPeripheralController::i2c_smbus_read_byte_data">
-<area shape="rect" id="Node000001" title=" " alt="" coords="240,35,447,75"/>
-<area shape="rect" id="Node000002" href="$classMockPeripheralController.html#a5b5b4c0076e3cfa2a4d98e7a2db95520" title="Mocked method to read a byte of data from the I2C bus." alt="" coords="5,5,192,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,43,192,39,193,34,227,38"/>
-<area shape="rect" id="Node000003" href="$test__PeripheralController_8cpp.html#afe55fabbd8a27b12c4f1ea5ae2f5bfd9" title="Ensures that i2c_smbus_read_byte_data() is called with the correct parameters." alt="" coords="71,70,126,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,71,127,82,126,77,226,65"/>
-</map>

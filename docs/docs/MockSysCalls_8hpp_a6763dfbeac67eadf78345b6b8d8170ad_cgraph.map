@@ -1,8 +1,0 @@
-<map id="mock_close" name="mock_close">
-<area shape="rect" id="Node000001" title="Mocked close function." alt="" coords="5,29,104,55"/>
-<area shape="rect" id="Node000002" href="$classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="152,29,327,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,39,138,39,138,45,104,45"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="209,31,202,21,206,11,218,5,239,3,265,6,275,15,272,19,263,11,239,8,220,10,210,15,208,20,213,28"/>
-<area shape="rect" id="Node000003" href="$classMockSysCalls.html#aa085840a71538a1b1bde3bce1bfdf55d" title="Constructor of the class set as default." alt="" coords="375,29,585,55"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="327,39,361,39,361,45,327,45"/>
-</map>

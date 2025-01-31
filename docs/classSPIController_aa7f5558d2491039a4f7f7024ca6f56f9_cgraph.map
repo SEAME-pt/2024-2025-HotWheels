@@ -1,5 +1,5 @@
 <map id="SPIController::writeByte" name="SPIController::writeByte">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,183,31"/>
-<area shape="rect" id="Node000002" href="$classSPIController.html#a7df5d1dda46e021d5d8b7c2e6510e157" title=" " alt="" coords="231,5,416,31"/>
+<area shape="rect" id="Node000001" title="Write a byte to the SPI device." alt="" coords="5,5,183,31"/>
+<area shape="rect" id="Node000002" href="$classSPIController.html#a7df5d1dda46e021d5d8b7c2e6510e157" title="Transfer data over SPI." alt="" coords="231,5,416,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,15,217,15,217,21,183,21"/>
 </map>

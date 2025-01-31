@@ -1,5 +1,5 @@
 <map id="DisplayManager::clusterThemeToggled" name="DisplayManager::clusterThemeToggled">
-<area shape="rect" id="Node000001" title=" " alt="" coords="799,22,1024,62"/>
+<area shape="rect" id="Node000001" title="Signal emitted when the cluster theme is toggled." alt="" coords="799,22,1024,62"/>
 <area shape="rect" id="Node000002" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="785,45,751,45,751,39,785,39"/>
 <area shape="rect" id="Node000003" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
