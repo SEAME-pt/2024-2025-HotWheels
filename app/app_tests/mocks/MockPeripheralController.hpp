@@ -26,17 +26,25 @@
 class MockPeripheralController : public IPeripheralController
 {
 public:
-    MOCK_METHOD(int, i2c_smbus_write_byte_data, (int file, uint8_t command, uint8_t value), (override)); /// Mocked method to write a byte of data to the I2C bus.
-    MOCK_METHOD(int, i2c_smbus_read_byte_data, (int file, uint8_t command), (override)); /// Mocked method to read a byte of data from the I2C bus.
+    /** @brief Mocked method to write a byte of data to the I2C bus. */
+    MOCK_METHOD(int, i2c_smbus_write_byte_data, (int file, uint8_t command, uint8_t value), (override)); 
+    /** @brief Mocked method to read a byte of data from the I2C bus. */
+    MOCK_METHOD(int, i2c_smbus_read_byte_data, (int file, uint8_t command), (override)); 
 
-    MOCK_METHOD(void, write_byte_data, (int fd, int reg, int value), (override)); /// Mocked method to write a byte of data to a specific register.
-    MOCK_METHOD(int, read_byte_data, (int fd, int reg), (override)); /// Mocked method to read a byte of data from a specific register.
+    /** @brief Mocked method to write a byte of data to a specific register. */
+    MOCK_METHOD(void, write_byte_data, (int fd, int reg, int value), (override)); 
+    /** @brief Mocked method to read a byte of data from a specific register. */
+    MOCK_METHOD(int, read_byte_data, (int fd, int reg), (override)); 
 
-    MOCK_METHOD(void, set_servo_pwm, (int channel, int on_value, int off_value), (override)); /// Mocked method to set the PWM of a servo motor.
-    MOCK_METHOD(void, set_motor_pwm, (int channel, int value), (override)); /// Mocked method to set the PWM of a motor.
+    /** @brief Mocked method to set the PWM of a servo motor. */
+    MOCK_METHOD(void, set_servo_pwm, (int channel, int on_value, int off_value), (override)); 
+    /** @brief Mocked method to set the PWM of a motor. */
+    MOCK_METHOD(void, set_motor_pwm, (int channel, int value), (override)); 
 
-    MOCK_METHOD(void, init_servo, (), (override)); /// Mocked method to initialize the servo motors.
-    MOCK_METHOD(void, init_motors, (), (override)); /// Mocked method to initialize the motors.
+    /** @brief Mocked method to initialize the servo motors. */
+    MOCK_METHOD(void, init_servo, (), (override)); 
+    /** @brief Mocked method to initialize the motors. */
+    MOCK_METHOD(void, init_motors, (), (override)); 
 };
 
 #endif // MOCKPERIPHERALCONTROLLER_HPP

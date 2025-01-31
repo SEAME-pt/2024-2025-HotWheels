@@ -1,19 +1,29 @@
 /**
  * @file CanBusManager.cpp
  * @author Michel Batista (michel_fab@outlook.com)
- * @author 
  * @brief Implementation of the CanBusManager class.
  * @version 0.1
  * @date 2025-01-29
  * 
- * @copyright Copyright (c) 2025
+ * @details This file contains the implementation of the CanBusManager class, which manages the CAN bus communication.
  * 
+ * @note This class uses the MCP2515Controller for CAN bus communication.
+ * 
+ * @copyright Copyright (c) 2025
  */
 
 #include "CanBusManager.hpp"
 #include <QDebug>
 #include "MCP2515Controller.hpp"
 
+/**
+ * @brief Construct a new CanBusManager::CanBusManager object
+ * 
+ * @param spi_device The SPI device to use for communication.
+ * @param parent The parent QObject.
+ * 
+ * @details This constructor initializes the CanBusManager with a specified SPI device and sets up the MCP2515 controller.
+ */
 CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
     : QObject(parent)
 {
@@ -22,6 +32,14 @@ CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
     connectSignals();
 }
 
+/**
+ * @brief Construct a new CanBusManager::CanBusManager object
+ * 
+ * @param controller The MCP2515 controller to use.
+ * @param parent The parent QObject.
+ * 
+ * @details This constructor initializes the CanBusManager with an existing MCP2515 controller.
+ */
 CanBusManager::CanBusManager(IMCP2515Controller *controller, QObject *parent)
     : QObject(parent)
     , m_controller(controller)
@@ -30,6 +48,11 @@ CanBusManager::CanBusManager(IMCP2515Controller *controller, QObject *parent)
     connectSignals();
 }
 
+/**
+ * @brief Destroy the CanBusManager::CanBusManager object
+ * 
+ * @details Cleans up the resources used by the CanBusManager, including stopping the reading thread and deleting the controller if owned.
+ */
 CanBusManager::~CanBusManager()
 {
     if (m_thread) {
@@ -46,12 +69,24 @@ CanBusManager::~CanBusManager()
     }
 }
 
+/**
+ * @brief Connects the signals from the MCP2515 controller to the CanBusManager slots.
+ * 
+ * @details This method sets up the connections between the signals emitted by the MCP2515 controller and the corresponding slots in the CanBusManager.
+ */
 void CanBusManager::connectSignals()
 {
     connect(m_controller, &IMCP2515Controller::speedUpdated, this, &CanBusManager::speedUpdated);
     connect(m_controller, &IMCP2515Controller::rpmUpdated, this, &CanBusManager::rpmUpdated);
 }
 
+/**
+ * @brief Initializes the CanBusManager.
+ * 
+ * @details Initializes the MCP2515 controller and starts the reading thread.
+ * 
+ * @returns true if initialization is successful, false otherwise.
+ */
 bool CanBusManager::initialize()
 {
     if (!m_controller->init()) {

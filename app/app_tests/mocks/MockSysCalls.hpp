@@ -15,10 +15,10 @@
 #ifndef MOCKSYSCALLS_HPP
 #define MOCKSYSCALLS_HPP
 
-#include <fcntl.h>
-#include <gmock/gmock.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
+# include <fcntl.h>
+# include <gmock/gmock.h>
+# include <sys/ioctl.h>
+# include <unistd.h>
 
 /**
  * @class MockSysCalls
@@ -37,15 +37,22 @@ public:
         return instance;
     }
 
-    MOCK_METHOD(int, open, (const char *path, int flags), ()); /// Mocked method to open a file.
-    MOCK_METHOD(int, ioctl, (int fd, unsigned long request), ()); /// Mocked method to perform an I/O control operation.
-    MOCK_METHOD(int, close, (int fd), ()); /// Mocked method to close a file.
+    /** @brief Mocked method to open a file. */
+    MOCK_METHOD(int, open, (const char *path, int flags), ()); 
+    /** @brief Mocked method to perform an I/O control operation. */
+    MOCK_METHOD(int, ioctl, (int fd, unsigned long request), ()); 
+    /** @brief Mocked method to close a file. */
+    MOCK_METHOD(int, close, (int fd), ()); 
 
 private:
-    MockSysCalls() = default; /// Constructor of the class set as default.
-    ~MockSysCalls() = default; /// Destructor of the class set as default.
-    MockSysCalls(const MockSysCalls &) = delete; /// Copy constructor of the class set as delete.
-    MockSysCalls &operator=(const MockSysCalls &) = delete; /// Operator of the class set as delete.
+    /** @brief Constructor of the class set as default. */
+    MockSysCalls() = default; 
+    /** @brief Destructor of the class set as default. */
+    ~MockSysCalls() = default; 
+    /** @brief Copy constructor of the class set as delete. */
+    MockSysCalls(const MockSysCalls &) = delete; 
+    /** @brief Operator of the class set as delete. */
+    MockSysCalls &operator=(const MockSysCalls &) = delete; 
 };
 
 /**

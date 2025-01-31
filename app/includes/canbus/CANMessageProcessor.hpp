@@ -1,3 +1,14 @@
+/**
+ * @file CANMessageProcessor.hpp
+ * @author Michel Batista (michel_fab@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-31
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef CANMESSAGEPROCESSOR_HPP
 #define CANMESSAGEPROCESSOR_HPP
 

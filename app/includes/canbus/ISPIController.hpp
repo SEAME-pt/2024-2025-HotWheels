@@ -1,7 +1,19 @@
+/**
+ * @file ISPIController.hpp
+ * @author Michel Batista (michel_fab@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-31
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef ISPICONTROLLER_HPP
-#define ISPICONTROLLER_HPP
-#include <cstdint>
-#include <string>
+# define ISPICONTROLLER_HPP
+
+# include <cstdint>
+# include <string>
 class ISPIController {
 public:
     virtual ~ISPIController() = default;

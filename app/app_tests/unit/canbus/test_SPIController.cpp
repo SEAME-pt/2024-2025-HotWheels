@@ -28,7 +28,8 @@ using ::testing::Return;
 class SPIControllerTest : public ::testing::Test
 {
 protected:
-    SPIController *spiController; ///< SPIController object.
+    /** @brief SPIController object. */
+    SPIController *spiController; 
 
     /**
      * @brief Set up the test environment.

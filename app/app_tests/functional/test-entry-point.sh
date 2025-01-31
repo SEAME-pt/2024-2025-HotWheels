@@ -26,6 +26,7 @@ APP="./app/build/x86_Qt5_15_2-Debug/HotWheels-app"
 ## Capture both stdout and stderr
 OUTPUT=$($APP --test 2>&1)
 
+## The expected output of the application
 EXPECTED_OUTPUT="[Main] HotWheels Cluster starting...
 [Main] Test mode activated. Exiting..."
 

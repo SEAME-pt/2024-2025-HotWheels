@@ -32,10 +32,13 @@ using ::testing::Throw;
 class MCP2515ControllerTest : public ::testing::Test
 {
 protected:
-    MockSPIController mockSPI; ///< Mocked SPI controller.
-    MCP2515Configurator configurator{mockSPI}; ///< MCP2515Configurator object.
-    CANMessageProcessor messageProcessor; ///< CANMessageProcessor object.
-
+    /** @brief Mocked SPI controller. */
+    MockSPIController mockSPI; 
+    /** @brief MCP2515Configurator object. */
+    MCP2515Configurator configurator{mockSPI}; 
+    /** @brief CANMessageProcessor object. */
+    CANMessageProcessor messageProcessor; 
+    /** @brief MCP2515Controller object set as default. */
     MCP2515ControllerTest() = default;
 };
 

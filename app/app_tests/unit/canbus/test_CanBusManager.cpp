@@ -19,8 +19,8 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-using ::testing::_; /// Using the _ matcher from the Google Mock framework.
-using ::testing::Return; /// Using the Return method from the Google Mock framework.
+using ::testing::_; 
+using ::testing::Return;
 
 /**
  * @class CanBusManagerTest
@@ -39,8 +39,8 @@ class CanBusManagerTest : public ::testing::Test
          */
         void SetUp() override
         {
-            mockMcpController = new MockMCP2515Controller(); /// Creating a new MockMCP2515Controller object.
-            manager = new CanBusManager(mockMcpController); /// Creating a new CanBusManager object.
+            mockMcpController = new MockMCP2515Controller(); 
+            manager = new CanBusManager(mockMcpController); 
         }
 
         /**
@@ -51,10 +51,10 @@ class CanBusManagerTest : public ::testing::Test
         void TearDown() override
         {
             if (manager) {
-                delete manager; /// Deleting the CanBusManager object if it exists.
+                delete manager;
             }
             if (mockMcpController) {
-                delete mockMcpController; /// Deleting the MockMCP2515Controller object if it exists.
+                delete mockMcpController;
             }
         }
 

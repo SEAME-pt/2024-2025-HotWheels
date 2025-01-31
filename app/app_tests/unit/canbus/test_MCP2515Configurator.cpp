@@ -28,8 +28,10 @@ using ::testing::Return;
 class MCP2515ConfiguratorTest : public ::testing::Test
 {
 protected:
-    MockSPIController mockSPI; ///< Mocked SPI controller.
-    MCP2515Configurator configurator{mockSPI}; ///< MCP2515Configurator object.
+    /** @brief Mocked SPI controller. */
+    MockSPIController mockSPI; 
+    /** @brief MCP2515Configurator object. */
+    MCP2515Configurator configurator{mockSPI}; 
 };
 
 /**

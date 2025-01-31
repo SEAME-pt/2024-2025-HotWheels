@@ -1,3 +1,14 @@
+/**
+ * @file MCP2515Configurator.hpp
+ * @author Michel Batista (michel_fab@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-31
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef MCP2515CONFIGURATOR_HPP
 #define MCP2515CONFIGURATOR_HPP
 
