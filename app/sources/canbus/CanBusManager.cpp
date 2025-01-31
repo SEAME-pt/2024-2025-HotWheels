@@ -14,9 +14,9 @@
  * @note This class uses the MCP2515Controller for CAN bus communication.
  *
  * @warning Ensure that the MCP2515 controller is properly implemented.
- * 
+ *
  * @see CanBusManager.hpp for the class definition.
- * 
+ *
  * @copyright Copyright (c) 2025
  */
 

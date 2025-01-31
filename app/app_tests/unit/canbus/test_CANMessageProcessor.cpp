@@ -32,7 +32,8 @@ protected:
 /**
  * @test Tests if a handler can be registered successfully.
  * @brief Ensures that registerHandler() does not throw an exception.
- * @details Verifies that registerHandler() does not throw an exception when a valid handler is registered.
+ * @details Verifies that registerHandler() does not throw an exception when a
+ * valid handler is registered.
  * @see CANMessageProcessor::registerHandler
  */
 TEST_F(CANMessageProcessorTest, RegisterHandlerSuccess) {
@@ -43,7 +44,8 @@ TEST_F(CANMessageProcessorTest, RegisterHandlerSuccess) {
 /**
  * @test Tests if registering a null handler throws an exception.
  * @brief Ensures that registerHandler() throws an invalid_argument exception.
- * @details Verifies that registerHandler() throws an invalid_argument exception when a null handler is registered.
+ * @details Verifies that registerHandler() throws an invalid_argument exception
+ * when a null handler is registered.
  * @see CANMessageProcessor::registerHandler
  */
 TEST_F(CANMessageProcessorTest, RegisterHandlerNullThrowsException) {
@@ -54,7 +56,8 @@ TEST_F(CANMessageProcessorTest, RegisterHandlerNullThrowsException) {
 /**
  * @test Tests if a message is processed with a registered handler.
  * @brief Ensures that the registered handler is called with the correct data.
- * @details Verifies that processMessage() calls the registered handler with the correct data.
+ * @details Verifies that processMessage() calls the registered handler with the
+ * correct data.
  * @see CANMessageProcessor::processMessage
  */
 TEST_F(CANMessageProcessorTest, ProcessMessageWithRegisteredHandler) {
@@ -75,7 +78,8 @@ TEST_F(CANMessageProcessorTest, ProcessMessageWithRegisteredHandler) {
  * @test Tests if processing a message with an unregistered handler throws an
  * exception.
  * @brief Ensures that processMessage() throws a runtime_error exception.
- * @details Verifies that processMessage() throws a runtime_error exception when no handler is registered for the given frame ID.
+ * @details Verifies that processMessage() throws a runtime_error exception when
+ * no handler is registered for the given frame ID.
  * @see CANMessageProcessor::processMessage
  */
 TEST_F(CANMessageProcessorTest,

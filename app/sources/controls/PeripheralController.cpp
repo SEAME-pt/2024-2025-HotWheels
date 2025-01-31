@@ -1,19 +1,22 @@
 /**
  * @file PeripheralController.cpp
- * @brief Implementation of the PeripheralController class for I2C communication.
+ * @brief Implementation of the PeripheralController class for I2C
+ * communication.
  * @version 0.1
  * @date 2025-01-31
- * @details This class is responsible for handling I2C communication with the servo and motor controllers.
+ * @details This class is responsible for handling I2C communication with the
+ * servo and motor controllers.
  * @note  This class uses the Linux I2C SMBus interface for communication.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
  *
- * @warning Ensure that the I2C devices are properly connected and configured on your system.
- * 
+ * @warning Ensure that the I2C devices are properly connected and configured on
+ * your system.
+ *
  * @see PeripheralController.hpp for the class definition.
- * 
+ *
  * @copyright Copyright (c) 2025
  */
 
@@ -39,12 +42,12 @@ union i2c_smbus_data {
 
 /**
  * @brief Clamp a value to a specified range.
- * 
- * @tparam T 
- * @param value 
- * @param min_val 
- * @param max_val 
- * @return T 
+ *
+ * @tparam T
+ * @param value
+ * @param min_val
+ * @param max_val
+ * @return T
  */
 template <typename T> T clamp(T value, T min_val, T max_val) {
   return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
@@ -54,8 +57,10 @@ template <typename T> T clamp(T value, T min_val, T max_val) {
  * @brief Constructor for the PeripheralController class.
  * @param servo_addr I2C address of the servo controller.
  * @param motor_addr I2C address of the motor controller.
- * @throws std::runtime_error if the I2C device cannot be opened or the address cannot be set.
- * @details Initializes the I2C buses and sets the device addresses for the servo and motor controllers.
+ * @throws std::runtime_error if the I2C device cannot be opened or the address
+ * cannot be set.
+ * @details Initializes the I2C buses and sets the device addresses for the
+ * servo and motor controllers.
  */
 PeripheralController::PeripheralController(int servo_addr, int motor_addr)
     : servo_addr_(servo_addr), motor_addr_(motor_addr) {
@@ -160,7 +165,8 @@ int PeripheralController::read_byte_data(int fd, int reg) {
  * @param channel Servo channel number.
  * @param on_value PWM on value.
  * @param off_value PWM off value.
- * @details Writes the on and off values to the appropriate registers for the specified servo channel.
+ * @details Writes the on and off values to the appropriate registers for the
+ * specified servo channel.
  */
 void PeripheralController::set_servo_pwm(int channel, int on_value,
                                          int off_value) {
@@ -175,7 +181,8 @@ void PeripheralController::set_servo_pwm(int channel, int on_value,
  * @brief Sets the PWM value for a specific motor channel.
  * @param channel Motor channel number.
  * @param value PWM value (0-4095).
- * @details Clamps the value to the range [0, 4095] and writes it to the appropriate registers for the specified motor channel.
+ * @details Clamps the value to the range [0, 4095] and writes it to the
+ * appropriate registers for the specified motor channel.
  */
 void PeripheralController::set_motor_pwm(int channel, int value) {
   value = clamp(value, 0, 4095);
@@ -187,7 +194,8 @@ void PeripheralController::set_motor_pwm(int channel, int value) {
 
 /**
  * @brief Initializes the servo controller.
- * @details Configures the servo controller with the necessary settings and delays.
+ * @details Configures the servo controller with the necessary settings and
+ * delays.
  */
 void PeripheralController::init_servo() {
   write_byte_data(servo_bus_fd_, 0x00, 0x06);
@@ -208,7 +216,8 @@ void PeripheralController::init_servo() {
 
 /**
  * @brief Initializes the motor controller.
- * @details Configures the motor controller with the necessary settings and delays.
+ * @details Configures the motor controller with the necessary settings and
+ * delays.
  */
 void PeripheralController::init_motors() {
   write_byte_data(motor_bus_fd_, 0x00, 0x20);

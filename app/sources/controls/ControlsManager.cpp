@@ -5,16 +5,17 @@
  *          which is used to manage the controls of the vehicle.
  * @version 0.1
  * @date 2025-01-31
- * 
+ *
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * 
+ *
  * @note This class is used to manage the controls of the vehicle.
- * 
- * @warning Ensure that the EngineController and JoysticksController classes are properly implemented.
- * 
+ *
+ * @warning Ensure that the EngineController and JoysticksController classes are
+ * properly implemented.
+ *
  * @see ControlsManager.hpp for the class definition.
  * @copyright Copyright (c) 2025
  */
@@ -69,8 +70,8 @@ ControlsManager::ControlsManager(QObject *parent)
 
 /**
  * @brief Destroy the ControlsManager object.
- * @details This destructor stops the joystick controller and waits for the thread
- *          to finish.
+ * @details This destructor stops the joystick controller and waits for the
+ * thread to finish.
  */
 ControlsManager::~ControlsManager() {
   if (m_manualControllerThread) {
@@ -86,8 +87,8 @@ ControlsManager::~ControlsManager() {
  * @brief Set the driving mode.
  * @param mode The new driving mode.
  * @details This slot is called when the driving mode is changed. It updates the
- *          current driving mode and stops the joystick controller if the new mode is
- *          Automatic.
+ *          current driving mode and stops the joystick controller if the new
+ * mode is Automatic.
  */
 void ControlsManager::setMode(DrivingMode mode) {
   if (m_currentMode == mode)

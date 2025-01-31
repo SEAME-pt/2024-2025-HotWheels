@@ -6,11 +6,11 @@
  * @details This file contains the implementation of the JoysticksController
  *          class, which is used to control the vehicle using a joystick.
  * @note This class uses SDL for joystick input handling.
- * 
+ *
  * @warning Ensure that SDL is properly installed and configured on your system.
- * 
+ *
  * @see JoysticksController.hpp for the class definition.
- * 
+ *
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)

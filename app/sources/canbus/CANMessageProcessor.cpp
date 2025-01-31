@@ -13,9 +13,9 @@
  *
  * @note This class is used to process CAN messages and call the appropriate
  * handler for each message.
- * 
+ *
  * @warning Ensure that the MessageHandler type is properly defined.
- * 
+ *
  * @see CANMessageProcessor.hpp for the class definition.
  *
  * @copyright Copyright (c) 2025

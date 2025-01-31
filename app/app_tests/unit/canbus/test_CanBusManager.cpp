@@ -50,15 +50,14 @@ protected:
    * created in SetUp().
    */
   void TearDown() override {
-    if (manager) {
+    if (manager != nullptr) {
       delete manager;
     }
-    if (mockMcpController) {
+    if (mockMcpController != nullptr) {
       delete mockMcpController;
     }
   }
 
-protected:
   /** @brief Mocked MCP2515 controller. */
   IMCP2515Controller *mockMcpController;
   /** @brief CanBusManager object. */

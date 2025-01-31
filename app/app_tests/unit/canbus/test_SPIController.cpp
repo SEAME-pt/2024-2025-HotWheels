@@ -54,7 +54,8 @@ protected:
 /**
  * @test Tests if the device opens successfully.
  * @brief Ensures that the device opens without throwing an exception.
- * @details Verifies that openDevice() does not throw an exception when the device opens successfully.
+ * @details Verifies that openDevice() does not throw an exception when the
+ * device opens successfully.
  * @see SPIController::openDevice
  */
 TEST_F(SPIControllerTest, OpenDeviceSuccess) {

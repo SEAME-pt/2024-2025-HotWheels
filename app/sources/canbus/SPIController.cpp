@@ -16,9 +16,9 @@
  *
  * @warning Ensure that the SPI device is properly connected and configured on
  * your system.
- * 
+ *
  * @see SPIController.hpp for the class definition.
- * 
+ *
  * @copyright Copyright (c) 2025
  *
  */

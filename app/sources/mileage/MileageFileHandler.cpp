@@ -3,8 +3,8 @@
  * @brief Implementation of the MileageFileHandler class.
  * @version 0.1
  * @date 2025-01-31
- * @details This file contains the implementation of the MileageFileHandler class,
- * which is used to read and write the mileage to a file.
+ * @details This file contains the implementation of the MileageFileHandler
+ * class, which is used to read and write the mileage to a file.
  * @note This class is used to read and write the mileage to a file.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)

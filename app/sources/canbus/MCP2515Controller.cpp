@@ -13,9 +13,9 @@
  *
  * @note This class is used to control the MCP2515 CAN controller for
  * communication.
- * 
+ *
  * @warning Ensure that the SPI controller is properly implemented.
- * 
+ *
  * @see MCP2515Controller.hpp for the class definition.
  *
  * @copyright Copyright (c) 2025
@@ -147,13 +147,13 @@ void MCP2515Controller::setupHandlers() {
         }
       });
 
-  messageProcessor.registerHandler(
-      0x200, [this](const std::vector<uint8_t> &data) {
-        if (data.size() == 2) {
-          uint16_t rpm = (data[0] << 8) | data[1];
-          emit rpmUpdated(rpm);
-        }
-      });
+  messageProcessor.registerHandler(0x200,
+                                   [this](const std::vector<uint8_t> &data) {
+                                     if (data.size() == 2) {
+                                       uint16_t rpm = (data[0] << 8) | data[1];
+                                       emit rpmUpdated(rpm);
+                                     }
+                                   });
 }
 
 /**

@@ -13,9 +13,9 @@
  *
  * @note This class is used to configure the MCP2515 CAN controller for
  * communication.
- * 
+ *
  * @warning Ensure that the SPI controller is properly implemented.
- * 
+ *
  * @see MCP2515Configurator.hpp for the class definition.
  *
  * @copyright Copyright (c) 2025
