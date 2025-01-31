@@ -60,7 +60,7 @@ private:
   /** @brief Flag to indicate if the SPI controller is owned by the
    * MCP2515Controller. */
   bool ownsSPIController = false;
-  
+
   void setupHandlers();
 };
 

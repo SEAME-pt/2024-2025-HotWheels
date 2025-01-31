@@ -34,9 +34,10 @@ public:
 
 private:
   /** @brief List of speed and interval pairs to store measurements. */
-  QList<QPair<float, qint64>> m_speedValues; 
-  /** @brief Timer used to track the time intervals between speed measurements. */
-  QElapsedTimer m_intervalTimer; 
+  QList<QPair<float, qint64>> m_speedValues;
+  /** @brief Timer used to track the time intervals between speed measurements.
+   */
+  QElapsedTimer m_intervalTimer;
 };
 
 #endif // MILEAGECALCULATOR_HPP

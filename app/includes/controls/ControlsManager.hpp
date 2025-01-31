@@ -3,8 +3,8 @@
  * @brief Definition of the ControlsManager class.
  * @version 0.1
  * @date 2025-01-31
- * @details This file contains the definition of the ControlsManager class, which
- * is responsible for managing the car's controls.
+ * @details This file contains the definition of the ControlsManager class,
+ * which is responsible for managing the car's controls.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)

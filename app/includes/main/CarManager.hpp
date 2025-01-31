@@ -42,20 +42,20 @@ public:
   ~CarManager();
 
 private:
-  /** @brief Pointer to the user interface for the car manager. */   
+  /** @brief Pointer to the user interface for the car manager. */
   Ui::CarManager *ui;
   /** @brief Pointer to the DataManager instance. */
   DataManager *m_dataManager;
   /** @brief Pointer to the CanBusManager instance. */
-  CanBusManager *m_canBusManager; 
+  CanBusManager *m_canBusManager;
   /** @brief Pointer to the ControlsManager instance. */
-  ControlsManager *m_controlsManager; 
+  ControlsManager *m_controlsManager;
   /** @brief Pointer to the DisplayManager instance. */
-  DisplayManager *m_displayManager; 
+  DisplayManager *m_displayManager;
   /** @brief Pointer to the SystemManager instance. */
-  SystemManager *m_systemManager; 
+  SystemManager *m_systemManager;
   /** @brief Pointer to the MileageManager instance. */
-  MileageManager *m_mileageManager; 
+  MileageManager *m_mileageManager;
 
   void initializeComponents();
   void initializeDataManager();

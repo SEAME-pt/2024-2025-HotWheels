@@ -28,7 +28,8 @@
 class CanBusManager : public QObject {
   Q_OBJECT
 public:
-  explicit CanBusManager(const std::string &spi_device, QObject *parent = nullptr);
+  explicit CanBusManager(const std::string &spi_device,
+                         QObject *parent = nullptr);
   CanBusManager(IMCP2515Controller *controller, QObject *parent = nullptr);
   ~CanBusManager();
   bool initialize();

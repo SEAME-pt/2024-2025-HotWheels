@@ -77,7 +77,7 @@ private:
   /** @brief Timer to update the system time every second. */
   QTimer *m_timeTimer;
   /** @brief Timer to update the system status every 5 seconds. */
-  QTimer *m_statusTimer; 
+  QTimer *m_statusTimer;
   /** @brief BatteryController to fetch battery percentage. */
   BatteryController *m_batteryController;
 };
