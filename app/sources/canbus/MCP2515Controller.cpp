@@ -4,19 +4,21 @@
  * @brief Implementation of the MCP2515Controller class.
  * @version 0.1
  * @date 2025-01-31
- * 
- * @details This file contains the implementation of the MCP2515Controller class, which controls the MCP2515 CAN controller.
- * 
- * @note This class is used to control the MCP2515 CAN controller for communication.
- * 
+ *
+ * @details This file contains the implementation of the MCP2515Controller
+ * class, which controls the MCP2515 CAN controller.
+ *
+ * @note This class is used to control the MCP2515 CAN controller for
+ * communication.
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #include "MCP2515Controller.hpp"
+#include "SPIController.hpp"
 #include <QDebug>
 #include <QThread>
-#include "SPIController.hpp"
 #include <cstring>
 #include <stdexcept>
 
@@ -24,18 +26,16 @@
  * @brief Construct a new MCP2515Controller::MCP2515Controller object
  * @param spiDevice The SPI device to use for communication.
  * @throw std::runtime_error if the SPI device cannot be opened.
- * @details This constructor initializes the MCP2515Controller object with the specified SPI device.
+ * @details This constructor initializes the MCP2515Controller object with the
+ * specified SPI device.
  */
 MCP2515Controller::MCP2515Controller(const std::string &spiDevice)
-    : spiController(new SPIController())
-    , configurator(*spiController)
-    , messageProcessor()
-    , ownsSPIController(true)
-{
-    if (!spiController->openDevice(spiDevice)) {
-        throw std::runtime_error("Failed to open SPI device : " + spiDevice);
-    }
-    setupHandlers();
+    : spiController(new SPIController()), configurator(*spiController),
+      messageProcessor(), ownsSPIController(true) {
+  if (!spiController->openDevice(spiDevice)) {
+    throw std::runtime_error("Failed to open SPI device : " + spiDevice);
+  }
+  setupHandlers();
 }
 
 /**
@@ -43,113 +43,110 @@ MCP2515Controller::MCP2515Controller(const std::string &spiDevice)
  * @param spiDevice The SPI device to use for communication.
  * @param spiController The SPI controller to use for communication.
  * @throw std::runtime_error if the SPI device cannot be opened.
- * @details This constructor initializes the MCP2515Controller object with the specified SPI device and SPI controller.
+ * @details This constructor initializes the MCP2515Controller object with the
+ * specified SPI device and SPI controller.
  */
-MCP2515Controller::MCP2515Controller(const std::string &spiDevice, ISPIController &spiController)
-    : spiController(&spiController)
-    , configurator(spiController)
-    , messageProcessor()
-    , ownsSPIController(false)
-{
-    if (!spiController.openDevice(spiDevice)) {
-        throw std::runtime_error("Failed to open SPI device : " + spiDevice);
-    }
-    setupHandlers();
+MCP2515Controller::MCP2515Controller(const std::string &spiDevice,
+                                     ISPIController &spiController)
+    : spiController(&spiController), configurator(spiController),
+      messageProcessor(), ownsSPIController(false) {
+  if (!spiController.openDevice(spiDevice)) {
+    throw std::runtime_error("Failed to open SPI device : " + spiDevice);
+  }
+  setupHandlers();
 }
 
 /**
  * @brief Destroy the MCP2515Controller::MCP2515Controller object
- * @details This destructor closes the SPI device and deletes the SPI controller if it was created by the MCP2515Controller.
+ * @details This destructor closes the SPI device and deletes the SPI controller
+ * if it was created by the MCP2515Controller.
  */
-MCP2515Controller::~MCP2515Controller()
-{
-    spiController->closeDevice();
-    if (this->ownsSPIController) {
-        delete this->spiController;
-    }
+MCP2515Controller::~MCP2515Controller() {
+  spiController->closeDevice();
+  if (this->ownsSPIController) {
+    delete this->spiController;
+  }
 }
 
 /**
  * @brief Initialize the MCP2515 controller.
  * @throw std::runtime_error if the MCP2515 cannot be reset.
  * @returns True if the MCP2515 is successfully initialized
- * @details This function initializes the MCP2515 controller by resetting the chip and configuring it.
+ * @details This function initializes the MCP2515 controller by resetting the
+ * chip and configuring it.
  */
-bool MCP2515Controller::init()
-{
-    if (!configurator.resetChip()) {
-        throw std::runtime_error("Failed to reset MCP2515");
-    }
+bool MCP2515Controller::init() {
+  if (!configurator.resetChip()) {
+    throw std::runtime_error("Failed to reset MCP2515");
+  }
 
-    configurator.configureBaudRate();
-    configurator.configureTXBuffer();
-    configurator.configureRXBuffer();
-    configurator.configureFiltersAndMasks();
-    configurator.configureInterrupts();
-    configurator.setMode(0x00);
+  configurator.configureBaudRate();
+  configurator.configureTXBuffer();
+  configurator.configureRXBuffer();
+  configurator.configureFiltersAndMasks();
+  configurator.configureInterrupts();
+  configurator.setMode(0x00);
 
-    if (!configurator.verifyMode(0x00)) {
-        throw std::runtime_error("Failed to set MCP2515 to normal mode");
-    }
+  if (!configurator.verifyMode(0x00)) {
+    throw std::runtime_error("Failed to set MCP2515 to normal mode");
+  }
 
-    return true;
+  return true;
 }
 
 /**
  * @brief Start reading CAN messages.
  * @details This function starts reading CAN messages from the MCP2515.
  */
-void MCP2515Controller::processReading()
-{
-    stopReadingFlag = false;
-    while (!stopReadingFlag) {
-        uint16_t frameID;
-        std::vector<uint8_t> data;
+void MCP2515Controller::processReading() {
+  stopReadingFlag = false;
+  while (!stopReadingFlag) {
+    uint16_t frameID;
+    std::vector<uint8_t> data;
 
-        try {
-            data = configurator.readCANMessage(frameID);
-            if (!data.empty()) {
-                messageProcessor.processMessage(frameID, data);
-            }
-        } catch (const std::exception &e) {
-            qDebug() << "Error while processing CAN message:" << e.what();
-        }
-
-        QThread::msleep(10);
+    try {
+      data = configurator.readCANMessage(frameID);
+      if (!data.empty()) {
+        messageProcessor.processMessage(frameID, data);
+      }
+    } catch (const std::exception &e) {
+      qDebug() << "Error while processing CAN message:" << e.what();
     }
+
+    QThread::msleep(10);
+  }
 }
 
 /**
  * @brief Stop reading CAN messages.
  * @details This function stops reading CAN messages from the MCP2515.
  */
-void MCP2515Controller::stopReading()
-{
-    stopReadingFlag = true;
-}
+void MCP2515Controller::stopReading() { stopReadingFlag = true; }
 
 /**
  * @brief Send a CAN message.
  * @param frameID The frame ID of the message.
  * @param data The data of the message.
- * @details This function sends a CAN message with the specified frame ID and data.
+ * @details This function sends a CAN message with the specified frame ID and
+ * data.
  */
-void MCP2515Controller::setupHandlers()
-{
-    messageProcessor.registerHandler(0x100, [this](const std::vector<uint8_t> &data) {
+void MCP2515Controller::setupHandlers() {
+  messageProcessor.registerHandler(
+      0x100, [this](const std::vector<uint8_t> &data) {
         if (data.size() == sizeof(float)) {
-            float speed;
-            memcpy(&speed, data.data(), sizeof(float));
-            emit speedUpdated(speed / 10.0f);
+          float speed;
+          memcpy(&speed, data.data(), sizeof(float));
+          emit speedUpdated(speed / 10.0f);
         }
-    });
+      });
 
-    messageProcessor.registerHandler(0x200, [this](const std::vector<uint8_t> &data) {
-        if (data.size() == 2) {
-            uint16_t rpm = (data[0] << 8) | data[1];
-            emit rpmUpdated(rpm);
-        }
-    });
+  messageProcessor.registerHandler(0x200,
+                                   [this](const std::vector<uint8_t> &data) {
+                                     if (data.size() == 2) {
+                                       uint16_t rpm = (data[0] << 8) | data[1];
+                                       emit rpmUpdated(rpm);
+                                     }
+                                   });
 }
 
 /**
@@ -157,7 +154,6 @@ void MCP2515Controller::setupHandlers()
  * @returns True if the stop reading flag is set, false otherwise.
  * @details This function checks if the stop reading flag is set.
  */
-bool MCP2515Controller::isStopReadingFlagSet() const
-{
-    return this->stopReadingFlag;
+bool MCP2515Controller::isStopReadingFlagSet() const {
+  return this->stopReadingFlag;
 }
