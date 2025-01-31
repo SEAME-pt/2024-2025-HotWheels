@@ -10,11 +10,11 @@ class EngineController : public QObject {
   Q_OBJECT
 
 private:
-    const int MAX_ANGLE = 180;
-    const int SERVO_CENTER_PWM = 340;
-    const int SERVO_LEFT_PWM = 340 - 100;
-    const int SERVO_RIGHT_PWM = 340 + 130;
-    const int STEERING_CHANNEL = 0;
+  const int MAX_ANGLE = 180;
+  const int SERVO_CENTER_PWM = 340;
+  const int SERVO_LEFT_PWM = 340 - 100;
+  const int SERVO_RIGHT_PWM = 340 + 130;
+  const int STEERING_CHANNEL = 0;
 
   std::atomic<bool> m_running;
   std::atomic<int> m_current_speed;
