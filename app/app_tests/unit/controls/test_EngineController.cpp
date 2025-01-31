@@ -15,16 +15,19 @@
 
 // 		// Set default expectations for I2C operations
 // 		EXPECT_CALL(i2c_mock, open(testing::_, testing::_))
-// 			.WillRepeatedly(testing::Return(1));  // Return valid file descriptor
+// 			.WillRepeatedly(testing::Return(1));  // Return valid
+// file descriptor
 
 // 		EXPECT_CALL(i2c_mock, ioctl(testing::_, testing::_, testing::_))
 // 			.WillRepeatedly(testing::Return(0));  // Return success
 
-// 		EXPECT_CALL(i2c_mock, i2c_smbus_write_byte_data(testing::_, testing::_, testing::_))
-// 			.WillRepeatedly(testing::Return(0));  // Return success
+// 		EXPECT_CALL(i2c_mock, i2c_smbus_write_byte_data(testing::_,
+// testing::_, testing::_))
+// .WillRepeatedly(testing::Return(0));  // Return success
 
-// 		EXPECT_CALL(i2c_mock, i2c_smbus_read_byte_data(testing::_, testing::_))
-// 			.WillRepeatedly(testing::Return(0));  // Return success
+// 		EXPECT_CALL(i2c_mock, i2c_smbus_read_byte_data(testing::_,
+// testing::_)) 			.WillRepeatedly(testing::Return(0));  //
+// Return success
 // 	}
 
 // 	void TearDown() override {
@@ -95,11 +98,11 @@
 // 	mockJetcar->write_byte_data(fd, 0x00, 0x06);
 // }
 
-
 // // Test read_byte_data method
 // TEST_F(JetcarTest, ReadByteData) {
 // 	int fd = 0;  // Dummy FD
-// 	EXPECT_CALL(*mockJetcar, read_byte_data(fd, 0x00)).Times(1).WillOnce(testing::Return(42)); // Example mocked return value
+// 	EXPECT_CALL(*mockJetcar, read_byte_data(fd,
+// 0x00)).Times(1).WillOnce(testing::Return(42)); // Example mocked return value
 // 	int value = mockJetcar->read_byte_data(fd, 0x00);
 // 	EXPECT_EQ(value, 42);
 // }
