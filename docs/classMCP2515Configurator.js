@@ -1,6 +1,6 @@
 var classMCP2515Configurator =
 [
-    [ "MCP2515Configurator", "classMCP2515Configurator.html#a7a34a61617c7a684b68dfbf848591c70", null ],
+    [ "MCP2515Configurator", "classMCP2515Configurator.html#a007b7a41579fd1b7bd3896651b82951e", null ],
     [ "~MCP2515Configurator", "classMCP2515Configurator.html#a71268bfd1522a5aef3f73d788cd7df5e", null ],
     [ "configureBaudRate", "classMCP2515Configurator.html#a726cd02381fff63eab7bfd289067d6cf", null ],
     [ "configureFiltersAndMasks", "classMCP2515Configurator.html#ae5252bc8370e99e5ab0d9a12f7e92a54", null ],

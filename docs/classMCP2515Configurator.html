@@ -104,7 +104,8 @@ $(function(){initNavTree('classMCP2515Configurator.html',''); initResizable(true
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a>  </div>
   <div class="headertitle"><div class="title">MCP2515Configurator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -113,8 +114,8 @@ $(function(){initNavTree('classMCP2515Configurator.html',''); initResizable(true
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7a34a61617c7a684b68dfbf848591c70" id="r_a7a34a61617c7a684b68dfbf848591c70"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a34a61617c7a684b68dfbf848591c70">MCP2515Configurator</a> (<a class="el" href="classSPIController.html">SPIController</a> &amp;spiController)</td></tr>
-<tr class="separator:a7a34a61617c7a684b68dfbf848591c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007b7a41579fd1b7bd3896651b82951e" id="r_a007b7a41579fd1b7bd3896651b82951e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a007b7a41579fd1b7bd3896651b82951e">MCP2515Configurator</a> (<a class="el" href="classISPIController.html">ISPIController</a> &amp;spiController)</td></tr>
+<tr class="separator:a007b7a41579fd1b7bd3896651b82951e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71268bfd1522a5aef3f73d788cd7df5e" id="r_a71268bfd1522a5aef3f73d788cd7df5e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71268bfd1522a5aef3f73d788cd7df5e">~MCP2515Configurator</a> ()=default</td></tr>
 <tr class="separator:a71268bfd1522a5aef3f73d788cd7df5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a598f082ddb6096553ba2d1657953ebe6" id="r_a598f082ddb6096553ba2d1657953ebe6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a598f082ddb6096553ba2d1657953ebe6">resetChip</a> ()</td></tr>
@@ -135,13 +136,40 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0e133b539872c674a29cd81db4185d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab14424f50fc8e6367c586f26f8dedbfb" id="r_ab14424f50fc8e6367c586f26f8dedbfb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab14424f50fc8e6367c586f26f8dedbfb">readCANMessage</a> (uint16_t &amp;frameID)</td></tr>
 <tr class="separator:ab14424f50fc8e6367c586f26f8dedbfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a5982538909b2f7df5370706570a68684" id="r_a5982538909b2f7df5370706570a68684"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5982538909b2f7df5370706570a68684">RESET_CMD</a> = 0xC0</td></tr>
+<tr class="separator:a5982538909b2f7df5370706570a68684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a365ada57c5e59d6d42869d80d9e13" id="r_a35a365ada57c5e59d6d42869d80d9e13"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35a365ada57c5e59d6d42869d80d9e13">CANCTRL</a> = 0x0F</td></tr>
+<tr class="separator:a35a365ada57c5e59d6d42869d80d9e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af67d0d6ccc54479b3971984482cbe9de" id="r_af67d0d6ccc54479b3971984482cbe9de"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af67d0d6ccc54479b3971984482cbe9de">CANSTAT</a> = 0x0E</td></tr>
+<tr class="separator:af67d0d6ccc54479b3971984482cbe9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1554e881a9465667272643528898c1" id="r_a0d1554e881a9465667272643528898c1"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d1554e881a9465667272643528898c1">CNF1</a> = 0x2A</td></tr>
+<tr class="separator:a0d1554e881a9465667272643528898c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a3beb14d463b4e107fc0b78b880d971" id="r_a0a3beb14d463b4e107fc0b78b880d971"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a3beb14d463b4e107fc0b78b880d971">CNF2</a> = 0x29</td></tr>
+<tr class="separator:a0a3beb14d463b4e107fc0b78b880d971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32598bab7e12020f9859d0d0b3af2e87" id="r_a32598bab7e12020f9859d0d0b3af2e87"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32598bab7e12020f9859d0d0b3af2e87">CNF3</a> = 0x28</td></tr>
+<tr class="separator:a32598bab7e12020f9859d0d0b3af2e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a106fffe0fc73c3f02439b75aba706649" id="r_a106fffe0fc73c3f02439b75aba706649"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a106fffe0fc73c3f02439b75aba706649">TXB0CTRL</a> = 0x30</td></tr>
+<tr class="separator:a106fffe0fc73c3f02439b75aba706649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af80f2030898db5152e67c34c2ff4293c" id="r_af80f2030898db5152e67c34c2ff4293c"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af80f2030898db5152e67c34c2ff4293c">RXB0CTRL</a> = 0x60</td></tr>
+<tr class="separator:af80f2030898db5152e67c34c2ff4293c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd1432bce6564d1fc463707c6763fd4" id="r_a4fd1432bce6564d1fc463707c6763fd4"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fd1432bce6564d1fc463707c6763fd4">CANINTF</a> = 0x2C</td></tr>
+<tr class="separator:a4fd1432bce6564d1fc463707c6763fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a801a01b6f64e6e82b6a036d123f5d262" id="r_a801a01b6f64e6e82b6a036d123f5d262"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a801a01b6f64e6e82b6a036d123f5d262">CANINTE</a> = 0x2B</td></tr>
+<tr class="separator:a801a01b6f64e6e82b6a036d123f5d262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0335abeca080980b15e42e7ecd2aa7e5" id="r_a0335abeca080980b15e42e7ecd2aa7e5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0335abeca080980b15e42e7ecd2aa7e5">RXB0SIDH</a> = 0x61</td></tr>
+<tr class="separator:a0335abeca080980b15e42e7ecd2aa7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f1743fc8bf5e05f5488eef6612c95e" id="r_ad7f1743fc8bf5e05f5488eef6612c95e"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7f1743fc8bf5e05f5488eef6612c95e">RXB0SIDL</a> = 0x62</td></tr>
+<tr class="separator:ad7f1743fc8bf5e05f5488eef6612c95e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00008">8</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7a34a61617c7a684b68dfbf848591c70" name="a7a34a61617c7a684b68dfbf848591c70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a34a61617c7a684b68dfbf848591c70">&#9670;&#160;</a></span>MCP2515Configurator()</h2>
+<a id="a007b7a41579fd1b7bd3896651b82951e" name="a007b7a41579fd1b7bd3896651b82951e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a007b7a41579fd1b7bd3896651b82951e">&#9670;&#160;</a></span>MCP2515Configurator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -152,7 +180,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">MCP2515Configurator::MCP2515Configurator </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classSPIController.html">SPIController</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>spiController</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classISPIController.html">ISPIController</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>spiController</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -162,14 +190,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs an <a class="el" href="classMCP2515Configurator.html">MCP2515Configurator</a> object and initializes it with the provided SPI controller.</p>
-<p>This constructor takes an <a class="el" href="classSPIController.html">SPIController</a> reference and associates it with the <a class="el" href="classMCP2515Configurator.html">MCP2515Configurator</a>, enabling the configurator to interact with the SPI hardware for configuring the MCP2515 controller. The <a class="el" href="classSPIController.html">SPIController</a> is passed by reference, ensuring that the same controller is used throughout the configurator’s lifetime.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">spiController</td><td>A reference to the <a class="el" href="classSPIController.html">SPIController</a> object that will be used for communication with the MCP2515 controller. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00005">5</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -215,8 +235,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configures the baud rate settings for the MCP2515 chip.</p>
-<p>This function sets the appropriate values for the baud rate prescaler and phase segments in the MCP2515 configuration registers (CNF1, CNF2, CNF3). These settings define the baud rate and timing characteristics for CAN communication. The values written to the registers are specific to a desired baud rate configuration. </p>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00016">16</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -236,12 +254,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configures the filters and masks for the MCP2515 chip.</p>
-<p>This function sets the values for the first filter and mask registers to allow the MCP2515 to filter incoming CAN messages based on specific criteria. The filter and mask settings determine which messages are passed to the RX buffer for processing.</p>
-<ul>
-<li>Filter 0: The filter register is set to 0xFF, configuring the chip to accept specific messages based on the filter settings.</li>
-<li>Mask 0: The mask register is set to 0xFF, defining the acceptance criteria for the messages. </li>
-</ul>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00030">30</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -261,11 +273,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configures the interrupt settings for the MCP2515 chip.</p>
-<p>This function enables the receive interrupt by setting the appropriate bit in the CANINTE register. With this configuration, the MCP2515 will generate an interrupt whenever a message is received, allowing the system to handle incoming messages efficiently.</p>
-<ul>
-<li>CANINTE: Interrupt Enable Register, where the receive interrupt bit is set to enable interrupts for received messages. </li>
-</ul>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00035">35</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -285,11 +292,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configures the receive (RX) buffer of the MCP2515 chip.</p>
-<p>This function sets the RX buffer control register (RXB0CTRL) to enable rollover and configures the buffer to receive all CAN messages. By setting these bits, the MCP2515 will continuously store received messages, allowing for easier message processing.</p>
-<ul>
-<li>RXB0CTRL: Receive Buffer Control Register, which is configured to enable rollover and set the RX mode to receive all messages. </li>
-</ul>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00026">26</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -309,11 +311,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configures the transmit (TX) buffer of the MCP2515 chip.</p>
-<p>This function clears the control register for the TX buffer (TXB0CTRL), effectively resetting the buffer's configuration to its default state. This step is part of setting up the MCP2515 for CAN message transmission.</p>
-<ul>
-<li>TXB0CTRL: Transmit Buffer Control Register, which is cleared to ensure the TX buffer is properly initialized before use. </li>
-</ul>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00022">22</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -333,15 +330,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reads a CAN message from the MCP2515 chip.</p>
-<p>This function checks if a CAN message is available in the RX buffer. If data is available, it reads the frame ID and the message length, followed by the message data itself. The received data is stored in a vector and returned. After reading the message, the interrupt flag is cleared to allow further message processing.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frameID</td><td>A reference to a variable where the frame ID of the received message will be stored. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector containing the received CAN message data. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00061">61</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -361,9 +349,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resets the MCP2515 chip and verifies that it has entered configuration mode.</p>
-<p>This function sends a reset command to the MCP2515 chip, then waits for a brief period to allow the reset process to complete. Afterward, it reads the chip's status register to ensure that the chip has entered the configuration mode, which is indicated by a specific value in the status register.</p>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the chip has been successfully reset and is in configuration mode, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00009">9</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -383,17 +368,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the operation mode of the MCP2515 chip.</p>
-<p>This function writes the specified mode to the CANCTRL register, configuring the MCP2515 to operate in the desired mode. The mode can be used to select different operation modes such as Normal, Sleep, or Configuration mode, based on the value provided.</p>
-<ul>
-<li>CANCTRL: Control Register, where the mode is written to configure the chip's operation. <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mode</td><td>The mode to set for the MCP2515, passed as a byte value corresponding to the desired operation mode. </td></tr>
-  </table>
-  </dd>
-</dl>
-</li>
-</ul>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00039">39</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 
@@ -413,20 +387,297 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Verifies if the MCP2515 is operating in the expected mode.</p>
-<p>This function reads the CANSTAT register and checks the mode bits to ensure that the MCP2515 is in the expected operation mode. The mode is verified by comparing the current mode with the provided expected mode.</p>
-<ul>
-<li>CANSTAT: Status Register, where the current operation mode is read.</li>
-</ul>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">expectedMode</td><td>The expected mode value to compare against the current mode. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the current mode matches the expected mode, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00043">43</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a35a365ada57c5e59d6d42869d80d9e13" name="a35a365ada57c5e59d6d42869d80d9e13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a365ada57c5e59d6d42869d80d9e13">&#9670;&#160;</a></span>CANCTRL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CANCTRL = 0x0F</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00025">25</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a801a01b6f64e6e82b6a036d123f5d262" name="a801a01b6f64e6e82b6a036d123f5d262"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a801a01b6f64e6e82b6a036d123f5d262">&#9670;&#160;</a></span>CANINTE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CANINTE = 0x2B</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00033">33</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4fd1432bce6564d1fc463707c6763fd4" name="a4fd1432bce6564d1fc463707c6763fd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd1432bce6564d1fc463707c6763fd4">&#9670;&#160;</a></span>CANINTF</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CANINTF = 0x2C</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00032">32</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af67d0d6ccc54479b3971984482cbe9de" name="af67d0d6ccc54479b3971984482cbe9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af67d0d6ccc54479b3971984482cbe9de">&#9670;&#160;</a></span>CANSTAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CANSTAT = 0x0E</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00026">26</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0d1554e881a9465667272643528898c1" name="a0d1554e881a9465667272643528898c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d1554e881a9465667272643528898c1">&#9670;&#160;</a></span>CNF1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CNF1 = 0x2A</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00027">27</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0a3beb14d463b4e107fc0b78b880d971" name="a0a3beb14d463b4e107fc0b78b880d971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a3beb14d463b4e107fc0b78b880d971">&#9670;&#160;</a></span>CNF2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CNF2 = 0x29</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00028">28</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a32598bab7e12020f9859d0d0b3af2e87" name="a32598bab7e12020f9859d0d0b3af2e87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32598bab7e12020f9859d0d0b3af2e87">&#9670;&#160;</a></span>CNF3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CNF3 = 0x28</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00029">29</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5982538909b2f7df5370706570a68684" name="a5982538909b2f7df5370706570a68684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5982538909b2f7df5370706570a68684">&#9670;&#160;</a></span>RESET_CMD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::RESET_CMD = 0xC0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00024">24</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af80f2030898db5152e67c34c2ff4293c" name="af80f2030898db5152e67c34c2ff4293c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af80f2030898db5152e67c34c2ff4293c">&#9670;&#160;</a></span>RXB0CTRL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::RXB0CTRL = 0x60</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00031">31</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0335abeca080980b15e42e7ecd2aa7e5" name="a0335abeca080980b15e42e7ecd2aa7e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0335abeca080980b15e42e7ecd2aa7e5">&#9670;&#160;</a></span>RXB0SIDH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::RXB0SIDH = 0x61</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00034">34</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad7f1743fc8bf5e05f5488eef6612c95e" name="ad7f1743fc8bf5e05f5488eef6612c95e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f1743fc8bf5e05f5488eef6612c95e">&#9670;&#160;</a></span>RXB0SIDL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::RXB0SIDL = 0x62</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00035">35</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a106fffe0fc73c3f02439b75aba706649" name="a106fffe0fc73c3f02439b75aba706649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a106fffe0fc73c3f02439b75aba706649">&#9670;&#160;</a></span>TXB0CTRL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::TXB0CTRL = 0x30</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00030">30</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>

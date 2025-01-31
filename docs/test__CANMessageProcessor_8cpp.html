@@ -109,6 +109,9 @@ $(function(){initNavTree('test__CANMessageProcessor_8cpp.html',''); initResizabl
   <div class="headertitle"><div class="title">test_CANMessageProcessor.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Unit tests for the <a class="el" href="classCANMessageProcessor.html">CANMessageProcessor</a> class.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="CANMessageProcessor_8hpp_source.html">CANMessageProcessor.hpp</a>&quot;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -119,22 +122,42 @@ $(function(){initNavTree('test__CANMessageProcessor_8cpp.html',''); initResizabl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCANMessageProcessorTest.html">CANMessageProcessorTest</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classCANMessageProcessor.html">CANMessageProcessor</a> class.  <a href="classCANMessageProcessorTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a16a1d7606fd10ffbd922c7bc9d52adab" id="r_a16a1d7606fd10ffbd922c7bc9d52adab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16a1d7606fd10ffbd922c7bc9d52adab">TEST_F</a> (<a class="el" href="classCANMessageProcessorTest.html">CANMessageProcessorTest</a>, RegisterHandlerSuccess)</td></tr>
+<tr class="memdesc:a16a1d7606fd10ffbd922c7bc9d52adab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that registerHandler() does not throw an exception.  <br /></td></tr>
 <tr class="separator:a16a1d7606fd10ffbd922c7bc9d52adab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0691e4ac8614ebcc13d7fdc75a4ebe68" id="r_a0691e4ac8614ebcc13d7fdc75a4ebe68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0691e4ac8614ebcc13d7fdc75a4ebe68">TEST_F</a> (<a class="el" href="classCANMessageProcessorTest.html">CANMessageProcessorTest</a>, RegisterHandlerNullThrowsException)</td></tr>
+<tr class="memdesc:a0691e4ac8614ebcc13d7fdc75a4ebe68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that registerHandler() throws an invalid_argument exception.  <br /></td></tr>
 <tr class="separator:a0691e4ac8614ebcc13d7fdc75a4ebe68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4b41ad10845c9b3d0235ee0db9e4090" id="r_aa4b41ad10845c9b3d0235ee0db9e4090"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4b41ad10845c9b3d0235ee0db9e4090">TEST_F</a> (<a class="el" href="classCANMessageProcessorTest.html">CANMessageProcessorTest</a>, ProcessMessageWithRegisteredHandler)</td></tr>
+<tr class="memdesc:aa4b41ad10845c9b3d0235ee0db9e4090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the registered handler is called with the correct data.  <br /></td></tr>
 <tr class="separator:aa4b41ad10845c9b3d0235ee0db9e4090"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4c952c9535a664a83517030f6111e13" id="r_ae4c952c9535a664a83517030f6111e13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4c952c9535a664a83517030f6111e13">TEST_F</a> (<a class="el" href="classCANMessageProcessorTest.html">CANMessageProcessorTest</a>, ProcessMessageWithUnregisteredHandlerThrowsException)</td></tr>
+<tr class="memdesc:ae4c952c9535a664a83517030f6111e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that processMessage() throws a runtime_error exception.  <br /></td></tr>
 <tr class="separator:ae4c952c9535a664a83517030f6111e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54f98fc72844b5425858f78f5cb42b74" id="r_a54f98fc72844b5425858f78f5cb42b74"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54f98fc72844b5425858f78f5cb42b74">TEST_F</a> (<a class="el" href="classCANMessageProcessorTest.html">CANMessageProcessorTest</a>, OverwriteHandlerForSameFrameID)</td></tr>
+<tr class="memdesc:a54f98fc72844b5425858f78f5cb42b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the new handler is called instead of the old handler.  <br /></td></tr>
 <tr class="separator:a54f98fc72844b5425858f78f5cb42b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Unit tests for the <a class="el" href="classCANMessageProcessor.html">CANMessageProcessor</a> class. </p>
+<dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
+<dd>
+Ricardo Melo (@reomelo) </dd>
+<dd>
+Tiago Pereira (@t-pereira06) </dd>
+<dd>
+Michel Batista (@MicchelFAB) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-01-30</dd></dl>
+<p>This file contains unit tests for the <a class="el" href="classCANMessageProcessor.html">CANMessageProcessor</a> class, using Google Test framework. </p>
+
+<p class="definition">Definition in file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a54f98fc72844b5425858f78f5cb42b74" name="a54f98fc72844b5425858f78f5cb42b74"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54f98fc72844b5425858f78f5cb42b74">&#9670;&#160;</a></span>TEST_F() <span class="overload">[1/5]</span></h2>
 
@@ -154,7 +177,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00038">38</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
+<p>Ensures that the new handler is called instead of the old handler. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000010">Test</a></b></dt><dd>Tests if a handler can be overwritten for the same frame ID. </dd></dl>
+<p>This test verifies that registering a new handler for the same frame ID overwrites the old handler.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2">CANMessageProcessor::registerHandler</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00096">96</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -177,7 +205,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00019">19</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
+<p>Ensures that the registered handler is called with the correct data. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000008">Test</a></b></dt><dd>Tests if a message is processed with a registered handler. </dd></dl>
+<p>This test verifies that processMessage() calls the registered handler with the correct data.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102">CANMessageProcessor::processMessage</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00062">62</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -200,7 +233,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00033">33</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
+<p>Ensures that processMessage() throws a runtime_error exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000009">Test</a></b></dt><dd>Tests if processing a message with an unregistered handler throws an exception. </dd></dl>
+<p>This test verifies that processMessage() throws a runtime_error exception when no handler is registered for the given frame ID.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102">CANMessageProcessor::processMessage</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00083">83</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -223,7 +261,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00015">15</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
+<p>Ensures that registerHandler() throws an invalid_argument exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000007">Test</a></b></dt><dd>Tests if registering a null handler throws an exception. </dd></dl>
+<p>This test verifies that registerHandler() throws an invalid_argument exception when a null handler is registered.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2">CANMessageProcessor::registerHandler</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00050">50</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -246,7 +289,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00011">11</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
+<p>Ensures that registerHandler() does not throw an exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000006">Test</a></b></dt><dd>Tests if a handler can be registered successfully. </dd></dl>
+<p>This test verifies that registerHandler() does not throw an exception when a valid handler is registered.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2">CANMessageProcessor::registerHandler</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00038">38</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
 
 </div>
 </div>

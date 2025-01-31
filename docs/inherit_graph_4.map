@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classISPIController.html" title=" " alt="" coords="5,31,116,56"/>
+<area shape="rect" id="Node000001" href="$classMockSPIController.html" title="Class to emulate the behavior of the SPI controller. (Overrided the Can0)" alt="" coords="164,5,305,31"/>
+<area shape="poly" id="edge16_Node000000_Node000001" title=" " alt="" coords="129,31,163,26,164,31,130,36"/>
+<area shape="rect" id="Node000002" href="$classSPIController.html" title=" " alt="" coords="181,55,288,80"/>
+<area shape="poly" id="edge17_Node000000_Node000002" title=" " alt="" coords="130,50,182,57,181,63,129,55"/>
+</map>

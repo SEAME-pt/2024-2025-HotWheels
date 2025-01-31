@@ -1,0 +1,8 @@
+<map id="JoysticksController::finished" name="JoysticksController::finished">
+<area shape="rect" id="Node000001" title=" " alt="" coords="440,5,584,45"/>
+<area shape="rect" id="Node000002" href="$classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title=" " alt="" coords="5,5,200,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="426,25,392,24,248,24,200,25,200,20,248,19,392,19,426,19"/>
+<area shape="rect" id="Node000003" href="$classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209" title=" " alt="" coords="248,33,392,73"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="427,40,393,45,392,40,426,35"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="234,45,200,41,200,35,235,40"/>
+</map>

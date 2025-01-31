@@ -1,0 +1,7 @@
+<map id="MCP2515Configurator::configureInterrupts" name="MCP2515Configurator::configureInterrupts">
+<area shape="rect" id="Node000001" title=" " alt="" coords="347,5,509,45"/>
+<area shape="rect" id="Node000002" href="$classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0" title=" " alt="" coords="123,13,299,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,28,299,28,299,23,333,23"/>
+<area shape="rect" id="Node000003" href="$test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e" title=" " alt="" coords="5,13,75,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
+</map>

@@ -212,23 +212,20 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Processes a message by invoking the appropriate handler for the given frame ID.</p>
-<p>This function searches for a registered handler associated with the provided frame ID. If a handler is found, it is invoked with the provided message data. If no handler is registered for the frame ID, a runtime error is thrown, indicating that the message cannot be processed.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frameID</td><td>The ID of the message frame to be processed. </td></tr>
-    <tr><td class="paramname">data</td><td>A vector containing the message data to be passed to the handler.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If no handler is registered for the given frame ID, preventing the message from being processed. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00013">13</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph.png" border="0" usemap="#aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph" alt=""/></div>
+<map name="aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph" id="aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph">
+<area shape="rect" title=" " alt="" coords="123,23,293,63"/>
+<area shape="rect" href="test__MCP2515Controller_8cpp.html#a7379d3bb55019313ec7dd8a03c4802b2" title="Ensures that the RPM signal emits the correct value." alt="" coords="5,5,75,31"/>
+<area shape="poly" title=" " alt="" coords="109,31,74,26,75,21,110,26"/>
+<area shape="rect" href="test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c" title="Ensures that the speed signal is emitted with the correct value." alt="" coords="5,55,75,80"/>
+<area shape="poly" title=" " alt="" coords="110,60,75,65,75,60,109,55"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -250,21 +247,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Registers a message handler for a specific frame ID.</p>
-<p>This function associates a given frame ID with a message handler. If the provided handler is null, an exception is thrown to ensure that only valid handlers are registered. Otherwise, the handler is stored in the <code>handlers</code> map, allowing the system to process messages associated with the specified frame ID using the registered handler.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frameID</td><td>The ID of the message frame for which the handler is being registered. </td></tr>
-    <tr><td class="paramname">handler</td><td>A function or callable object that will handle messages with the specified frame ID.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>If the handler is null, indicating an invalid registration attempt. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00006">6</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
 

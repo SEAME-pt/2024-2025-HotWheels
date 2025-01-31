@@ -106,162 +106,168 @@ $(function(){initNavTree('test__MCP2515Controller_8cpp_source.html',''); initRes
   <div class="headertitle"><div class="title">test_MCP2515Controller.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="test__MCP2515Controller_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;QObject&gt;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;QSignalSpy&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MCP2515Controller_8hpp.html">MCP2515Controller.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MockSPIController_8hpp.html">MockSPIController.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;gmock/gmock.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>::testing::_;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using </span>::testing::Return;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">using </span>::testing::Throw;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html">   12</a></span><span class="keyword">class </span><a class="code hl_function" href="classMCP2515ControllerTest.html#af61291bfea8bb9591d7d5e408860938d">MCP2515ControllerTest</a> : <span class="keyword">public</span> ::testing::Test</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">   15</a></span>    <a class="code hl_class" href="classMockSPIController.html">MockSPIController</a> <a class="code hl_variable" href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">mockSPI</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#a21111797963949a5b502f05237221e23">   16</a></span>    <a class="code hl_class" href="classMCP2515Configurator.html">MCP2515Configurator</a> <a class="code hl_variable" href="classMCP2515ControllerTest.html#a21111797963949a5b502f05237221e23">configurator</a>{<a class="code hl_variable" href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">mockSPI</a>};</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#a404de41d9566825145fcb49ced326436">   17</a></span>    <a class="code hl_class" href="classCANMessageProcessor.html">CANMessageProcessor</a> <a class="code hl_variable" href="classMCP2515ControllerTest.html#a404de41d9566825145fcb49ced326436">messageProcessor</a>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#af61291bfea8bb9591d7d5e408860938d">   19</a></span>    <a class="code hl_function" href="classMCP2515ControllerTest.html#af61291bfea8bb9591d7d5e408860938d">MCP2515ControllerTest</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>};</div>
-</div>
+<a href="test__MCP2515Controller_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;QSignalSpy&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="MCP2515Controller_8hpp.html">MCP2515Controller.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="MockSPIController_8hpp.html">MockSPIController.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;gmock/gmock.h&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">   22</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, InitializationSuccess)</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    EXPECT_CALL(mockSPI, spiTransfer(_, <span class="keyword">nullptr</span>, 1)).WillOnce(Return());</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    EXPECT_CALL(mockSPI, readByte(_))</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        .WillOnce(Return(0x80))        <span class="comment">// For resetChip</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        .WillRepeatedly(Return(0x00)); <span class="comment">// For verifyMode</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    EXPECT_CALL(mockSPI, writeByte(_, _)).Times(::testing::AtLeast(1));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    ASSERT_NO_THROW(controller.<a class="code hl_function" href="classMCP2515Controller.html#abec15f23b6d7d1435578ba019206914b">init</a>());</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">using </span>::testing::_;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">using </span>::testing::Return;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">using </span>::testing::Throw;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html">   32</a></span><span class="keyword">class </span><a class="code hl_function" href="classMCP2515ControllerTest.html#af61291bfea8bb9591d7d5e408860938d">MCP2515ControllerTest</a> : <span class="keyword">public</span> ::testing::Test</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">   35</a></span>    <a class="code hl_class" href="classMockSPIController.html">MockSPIController</a> <a class="code hl_variable" href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">mockSPI</a>; </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#a21111797963949a5b502f05237221e23">   36</a></span>    <a class="code hl_class" href="classMCP2515Configurator.html">MCP2515Configurator</a> <a class="code hl_variable" href="classMCP2515ControllerTest.html#a21111797963949a5b502f05237221e23">configurator</a>{<a class="code hl_variable" href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">mockSPI</a>}; </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#a404de41d9566825145fcb49ced326436">   37</a></span>    <a class="code hl_class" href="classCANMessageProcessor.html">CANMessageProcessor</a> <a class="code hl_variable" href="classMCP2515ControllerTest.html#a404de41d9566825145fcb49ced326436">messageProcessor</a>; </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classMCP2515ControllerTest.html#af61291bfea8bb9591d7d5e408860938d">   39</a></span>    <a class="code hl_function" href="classMCP2515ControllerTest.html#af61291bfea8bb9591d7d5e408860938d">MCP2515ControllerTest</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a4a1962f137b69111fb9bf8b8c980f468">   36</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, InitializationFailure)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/nonexistent&quot;</span>)).WillOnce(Return(<span class="keyword">false</span>));</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    ASSERT_THROW(<a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a>(<span class="stringliteral">&quot;/dev/nonexistent&quot;</span>, mockSPI), std::runtime_error);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">   50</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, InitializationSuccess)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    EXPECT_CALL(mockSPI, spiTransfer(_, <span class="keyword">nullptr</span>, 1)).WillOnce(Return());</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    EXPECT_CALL(mockSPI, readByte(_))</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        .WillOnce(Return(0x80))        <span class="comment">// For resetChip</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        .WillRepeatedly(Return(0x00)); <span class="comment">// For verifyMode</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    EXPECT_CALL(mockSPI, writeByte(_, _)).Times(::testing::AtLeast(1));</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    ASSERT_NO_THROW(controller.<a class="code hl_function" href="classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0">init</a>());</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
 </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a90b63cd5dfc018f5b2c689faf8e66737">   42</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, SetupHandlersTest)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">auto</span> &amp;processor = controller.getMessageProcessor();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    ASSERT_NO_THROW(processor.registerHandler(0x100, [](<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;) {}));</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    ASSERT_NO_THROW(processor.registerHandler(0x200, [](<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;) {}));</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a4a1962f137b69111fb9bf8b8c980f468">   72</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, InitializationFailure)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>{</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/nonexistent&quot;</span>)).WillOnce(Return(<span class="keyword">false</span>));</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    ASSERT_THROW(<a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a>(<span class="stringliteral">&quot;/dev/nonexistent&quot;</span>, mockSPI), std::runtime_error);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c">   53</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, SpeedUpdatedSignal)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    QSignalSpy speedSpy(&amp;controller, &amp;<a class="code hl_signal" href="classMCP2515Controller.html#a25cc8dda05ec2b8b33c805359e4dfbe6">MCP2515Controller::speedUpdated</a>);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">auto</span> &amp;processor = controller.getMessageProcessor();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::vector&lt;uint8_t&gt; data = {0x00, 0x00, 0x20, 0x41}; <span class="comment">// Float value: 10.0</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    processor.processMessage(0x100, data);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    ASSERT_EQ(speedSpy.count(), 1);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    QList&lt;QVariant&gt; arguments = speedSpy.takeFirst();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    ASSERT_EQ(arguments.at(0).toFloat(), 1.0f); <span class="comment">// Speed divided by 10</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a90b63cd5dfc018f5b2c689faf8e66737">   86</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, SetupHandlersTest)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keyword">auto</span> &amp;processor = controller.<a class="code hl_function" href="classMCP2515Controller.html#aad7d694dacc31d44a3ed225d597f25dd">getMessageProcessor</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    ASSERT_NO_THROW(processor.registerHandler(0x100, [](<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;) {}));</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    ASSERT_NO_THROW(processor.registerHandler(0x200, [](<span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;) {}));</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a7379d3bb55019313ec7dd8a03c4802b2">   70</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, RpmUpdatedSignal)</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>{</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    QSignalSpy rpmSpy(&amp;controller, &amp;<a class="code hl_signal" href="classMCP2515Controller.html#a253b26fd7dfda688692c054b7fe2cd00">MCP2515Controller::rpmUpdated</a>);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">auto</span> &amp;processor = controller.getMessageProcessor();</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    std::vector&lt;uint8_t&gt; data = {0x03, 0xE8}; <span class="comment">// Integer value: 1000 RPM</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    processor.processMessage(0x200, data);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    ASSERT_EQ(rpmSpy.count(), 1);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    QList&lt;QVariant&gt; arguments = rpmSpy.takeFirst();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    ASSERT_EQ(arguments.at(0).toInt(), 1000);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span></div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c">  105</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, SpeedUpdatedSignal)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    QSignalSpy speedSpy(&amp;controller, &amp;<a class="code hl_signal" href="classMCP2515Controller.html#a25cc8dda05ec2b8b33c805359e4dfbe6">MCP2515Controller::speedUpdated</a>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">auto</span> &amp;processor = controller.<a class="code hl_function" href="classMCP2515Controller.html#aad7d694dacc31d44a3ed225d597f25dd">getMessageProcessor</a>();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::vector&lt;uint8_t&gt; data = {0x00, 0x00, 0x20, 0x41}; <span class="comment">// Float value: 10.0</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    processor.<a class="code hl_function" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102">processMessage</a>(0x100, data);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    ASSERT_EQ(speedSpy.count(), 1);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    QList&lt;QVariant&gt; arguments = speedSpy.takeFirst();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    ASSERT_EQ(arguments.at(0).toFloat(), 1.0f); <span class="comment">// Speed divided by 10</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d">   87</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, ProcessReadingCallsHandlers)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>{</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    EXPECT_CALL(mockSPI, readByte(_))</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        .WillOnce(Return(0x01))        <span class="comment">// Indicate data available</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        .WillRepeatedly(Return(0x00)); <span class="comment">// No more data</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    EXPECT_CALL(mockSPI, spiTransfer(_, _, _))</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        .WillRepeatedly([](<span class="keyword">const</span> uint8_t *tx, uint8_t *rx, <span class="keywordtype">size_t</span> length) {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keywordflow">if</span> (length == 3 &amp;&amp; tx[0] == 0x03) { <span class="comment">// Read command</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                rx[1] = 0x12;                   <span class="comment">// Frame ID part 1</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                rx[2] = 0x34;                   <span class="comment">// Frame ID part 2</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            }</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        });</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    EXPECT_CALL(mockSPI, writeByte(_, _)).Times(::testing::AtLeast(1));</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    std::thread readerThread([&amp;controller]() { controller.<a class="code hl_function" href="classMCP2515Controller.html#a6e7359459d3adf7f9048862f50f9b74c">processReading</a>(); });</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    std::this_thread::sleep_for(std::chrono::milliseconds(50));</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    controller.<a class="code hl_function" href="classMCP2515Controller.html#a47f0043ecd39e10d7563937113ed5ff4">stopReading</a>();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    readerThread.join();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    ASSERT_TRUE(controller.isStopReadingFlagSet());</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span></div>
+<div class="foldopen" id="foldopen00130" data-start="{" data-end="}">
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a7379d3bb55019313ec7dd8a03c4802b2">  130</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, RpmUpdatedSignal)</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>{</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    QSignalSpy rpmSpy(&amp;controller, &amp;<a class="code hl_signal" href="classMCP2515Controller.html#a253b26fd7dfda688692c054b7fe2cd00">MCP2515Controller::rpmUpdated</a>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keyword">auto</span> &amp;processor = controller.<a class="code hl_function" href="classMCP2515Controller.html#aad7d694dacc31d44a3ed225d597f25dd">getMessageProcessor</a>();</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    std::vector&lt;uint8_t&gt; data = {0x03, 0xE8}; <span class="comment">// Integer value: 1000 RPM</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    processor.<a class="code hl_function" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102">processMessage</a>(0x200, data);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    ASSERT_EQ(rpmSpy.count(), 1);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    QList&lt;QVariant&gt; arguments = rpmSpy.takeFirst();</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    ASSERT_EQ(arguments.at(0).toInt(), 1000);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
 </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a19af0df17657dd95fcf2796c5abe1fbb">  115</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, StopReadingStopsProcessing)</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>{</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    controller.<a class="code hl_function" href="classMCP2515Controller.html#a47f0043ecd39e10d7563937113ed5ff4">stopReading</a>();</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    ASSERT_TRUE(controller.isStopReadingFlagSet());</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span></div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="}">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d">  155</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, ProcessReadingCallsHandlers)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>{</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    EXPECT_CALL(mockSPI, readByte(_))</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        .WillOnce(Return(0x01))        <span class="comment">// Indicate data available</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        .WillRepeatedly(Return(0x00)); <span class="comment">// No more data</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    EXPECT_CALL(mockSPI, spiTransfer(_, _, _))</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        .WillRepeatedly([](<span class="keyword">const</span> uint8_t *tx, uint8_t *rx, <span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="keywordflow">if</span> (length == 3 &amp;&amp; tx[0] == 0x03) { <span class="comment">// Read command</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                rx[1] = 0x12;                   <span class="comment">// Frame ID part 1</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                rx[2] = 0x34;                   <span class="comment">// Frame ID part 2</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            }</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        });</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    EXPECT_CALL(mockSPI, writeByte(_, _)).Times(::testing::AtLeast(1));</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    std::thread readerThread([&amp;controller]() { controller.<a class="code hl_function" href="classMCP2515Controller.html#a4e62b0e8e1544fe6569dad2c6a20909a">processReading</a>(); });</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    std::this_thread::sleep_for(std::chrono::milliseconds(50));</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    controller.<a class="code hl_function" href="classMCP2515Controller.html#a91483fd5e7a246f44f8452f4789d6b11">stopReading</a>();</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    readerThread.join();</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    ASSERT_TRUE(controller.<a class="code hl_function" href="classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30">isStopReadingFlagSet</a>());</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>}</div>
+</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span></div>
+<div class="foldopen" id="foldopen00191" data-start="{" data-end="}">
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="test__MCP2515Controller_8cpp.html#a19af0df17657dd95fcf2796c5abe1fbb">  191</a></span><a class="code hl_function" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a>(<a class="code hl_class" href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a>, StopReadingStopsProcessing)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>{</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    EXPECT_CALL(mockSPI, openDevice(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>)).WillOnce(Return(<span class="keyword">true</span>));</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    EXPECT_CALL(mockSPI, closeDevice()).Times(1);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <a class="code hl_class" href="classMCP2515Controller.html">MCP2515Controller</a> controller(<span class="stringliteral">&quot;/dev/spidev0.0&quot;</span>, mockSPI);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    controller.<a class="code hl_function" href="classMCP2515Controller.html#a91483fd5e7a246f44f8452f4789d6b11">stopReading</a>();</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    ASSERT_TRUE(controller.<a class="code hl_function" href="classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30">isStopReadingFlagSet</a>());</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
 </div>
 <div class="ttc" id="aMCP2515Controller_8hpp_html"><div class="ttname"><a href="MCP2515Controller_8hpp.html">MCP2515Controller.hpp</a></div></div>
-<div class="ttc" id="aMockSPIController_8hpp_html"><div class="ttname"><a href="MockSPIController_8hpp.html">MockSPIController.hpp</a></div></div>
+<div class="ttc" id="aMockSPIController_8hpp_html"><div class="ttname"><a href="MockSPIController_8hpp.html">MockSPIController.hpp</a></div><div class="ttdoc">File containing Mock classes to test the SPI controller.</div></div>
 <div class="ttc" id="aclassCANMessageProcessor_html"><div class="ttname"><a href="classCANMessageProcessor.html">CANMessageProcessor</a></div><div class="ttdef"><b>Definition</b> <a href="CANMessageProcessor_8hpp_source.html#l00009">CANMessageProcessor.hpp:9</a></div></div>
+<div class="ttc" id="aclassCANMessageProcessor_html_aa539cf227ee7367ba1f498288b8bc102"><div class="ttname"><a href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102">CANMessageProcessor::processMessage</a></div><div class="ttdeci">void processMessage(uint16_t frameID, const std::vector&lt; uint8_t &gt; &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="CANMessageProcessor_8cpp_source.html#l00013">CANMessageProcessor.cpp:13</a></div></div>
 <div class="ttc" id="aclassMCP2515Configurator_html"><div class="ttname"><a href="classMCP2515Configurator.html">MCP2515Configurator</a></div><div class="ttdef"><b>Definition</b> <a href="MCP2515Configurator_8hpp_source.html#l00008">MCP2515Configurator.hpp:8</a></div></div>
-<div class="ttc" id="aclassMCP2515ControllerTest_html"><div class="ttname"><a href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a></div><div class="ttdef"><b>Definition</b> <a href="#l00012">test_MCP2515Controller.cpp:13</a></div></div>
-<div class="ttc" id="aclassMCP2515ControllerTest_html_a21111797963949a5b502f05237221e23"><div class="ttname"><a href="classMCP2515ControllerTest.html#a21111797963949a5b502f05237221e23">MCP2515ControllerTest::configurator</a></div><div class="ttdeci">MCP2515Configurator configurator</div><div class="ttdef"><b>Definition</b> <a href="#l00016">test_MCP2515Controller.cpp:16</a></div></div>
-<div class="ttc" id="aclassMCP2515ControllerTest_html_a2f5d876c51c57b58b9824aca7c6e3c64"><div class="ttname"><a href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">MCP2515ControllerTest::mockSPI</a></div><div class="ttdeci">MockSPIController mockSPI</div><div class="ttdef"><b>Definition</b> <a href="#l00015">test_MCP2515Controller.cpp:15</a></div></div>
-<div class="ttc" id="aclassMCP2515ControllerTest_html_a404de41d9566825145fcb49ced326436"><div class="ttname"><a href="classMCP2515ControllerTest.html#a404de41d9566825145fcb49ced326436">MCP2515ControllerTest::messageProcessor</a></div><div class="ttdeci">CANMessageProcessor messageProcessor</div><div class="ttdef"><b>Definition</b> <a href="#l00017">test_MCP2515Controller.cpp:17</a></div></div>
+<div class="ttc" id="aclassMCP2515ControllerTest_html"><div class="ttname"><a href="classMCP2515ControllerTest.html">MCP2515ControllerTest</a></div><div class="ttdoc">Test fixture for testing the MCP2515Controller class.</div><div class="ttdef"><b>Definition</b> <a href="#l00032">test_MCP2515Controller.cpp:33</a></div></div>
+<div class="ttc" id="aclassMCP2515ControllerTest_html_a21111797963949a5b502f05237221e23"><div class="ttname"><a href="classMCP2515ControllerTest.html#a21111797963949a5b502f05237221e23">MCP2515ControllerTest::configurator</a></div><div class="ttdeci">MCP2515Configurator configurator</div><div class="ttdoc">MCP2515Configurator object.</div><div class="ttdef"><b>Definition</b> <a href="#l00036">test_MCP2515Controller.cpp:36</a></div></div>
+<div class="ttc" id="aclassMCP2515ControllerTest_html_a2f5d876c51c57b58b9824aca7c6e3c64"><div class="ttname"><a href="classMCP2515ControllerTest.html#a2f5d876c51c57b58b9824aca7c6e3c64">MCP2515ControllerTest::mockSPI</a></div><div class="ttdeci">MockSPIController mockSPI</div><div class="ttdoc">Mocked SPI controller.</div><div class="ttdef"><b>Definition</b> <a href="#l00035">test_MCP2515Controller.cpp:35</a></div></div>
+<div class="ttc" id="aclassMCP2515ControllerTest_html_a404de41d9566825145fcb49ced326436"><div class="ttname"><a href="classMCP2515ControllerTest.html#a404de41d9566825145fcb49ced326436">MCP2515ControllerTest::messageProcessor</a></div><div class="ttdeci">CANMessageProcessor messageProcessor</div><div class="ttdoc">CANMessageProcessor object.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">test_MCP2515Controller.cpp:37</a></div></div>
 <div class="ttc" id="aclassMCP2515ControllerTest_html_af61291bfea8bb9591d7d5e408860938d"><div class="ttname"><a href="classMCP2515ControllerTest.html#af61291bfea8bb9591d7d5e408860938d">MCP2515ControllerTest::MCP2515ControllerTest</a></div><div class="ttdeci">MCP2515ControllerTest()=default</div></div>
-<div class="ttc" id="aclassMCP2515Controller_html"><div class="ttname"><a href="classMCP2515Controller.html">MCP2515Controller</a></div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8hpp_source.html#l00010">MCP2515Controller.hpp:11</a></div></div>
+<div class="ttc" id="aclassMCP2515Controller_html"><div class="ttname"><a href="classMCP2515Controller.html">MCP2515Controller</a></div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8hpp_source.html#l00011">MCP2515Controller.hpp:12</a></div></div>
 <div class="ttc" id="aclassMCP2515Controller_html_a253b26fd7dfda688692c054b7fe2cd00"><div class="ttname"><a href="classMCP2515Controller.html#a253b26fd7dfda688692c054b7fe2cd00">MCP2515Controller::rpmUpdated</a></div><div class="ttdeci">void rpmUpdated(int newRpm)</div></div>
 <div class="ttc" id="aclassMCP2515Controller_html_a25cc8dda05ec2b8b33c805359e4dfbe6"><div class="ttname"><a href="classMCP2515Controller.html#a25cc8dda05ec2b8b33c805359e4dfbe6">MCP2515Controller::speedUpdated</a></div><div class="ttdeci">void speedUpdated(float newSpeed)</div></div>
-<div class="ttc" id="aclassMCP2515Controller_html_a47f0043ecd39e10d7563937113ed5ff4"><div class="ttname"><a href="classMCP2515Controller.html#a47f0043ecd39e10d7563937113ed5ff4">MCP2515Controller::stopReading</a></div><div class="ttdeci">void stopReading()</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8cpp_source.html#l00063">MCP2515Controller.cpp:63</a></div></div>
-<div class="ttc" id="aclassMCP2515Controller_html_a6e7359459d3adf7f9048862f50f9b74c"><div class="ttname"><a href="classMCP2515Controller.html#a6e7359459d3adf7f9048862f50f9b74c">MCP2515Controller::processReading</a></div><div class="ttdeci">void processReading()</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8cpp_source.html#l00043">MCP2515Controller.cpp:43</a></div></div>
-<div class="ttc" id="aclassMCP2515Controller_html_abec15f23b6d7d1435578ba019206914b"><div class="ttname"><a href="classMCP2515Controller.html#abec15f23b6d7d1435578ba019206914b">MCP2515Controller::init</a></div><div class="ttdeci">bool init()</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8cpp_source.html#l00023">MCP2515Controller.cpp:23</a></div></div>
-<div class="ttc" id="aclassMockSPIController_html"><div class="ttname"><a href="classMockSPIController.html">MockSPIController</a></div><div class="ttdef"><b>Definition</b> <a href="MockSPIController_8hpp_source.html#l00007">MockSPIController.hpp:8</a></div></div>
-<div class="ttc" id="atest__MCP2515Controller_8cpp_html_a75a371af6e9dcb3dc45c7507f829098e"><div class="ttname"><a href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a></div><div class="ttdeci">TEST_F(MCP2515ControllerTest, InitializationSuccess)</div><div class="ttdef"><b>Definition</b> <a href="#l00022">test_MCP2515Controller.cpp:22</a></div></div>
+<div class="ttc" id="aclassMCP2515Controller_html_a2c694c529b9468d000d435b700facb30"><div class="ttname"><a href="classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30">MCP2515Controller::isStopReadingFlagSet</a></div><div class="ttdeci">bool isStopReadingFlagSet() const override</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8cpp_source.html#l00103">MCP2515Controller.cpp:103</a></div></div>
+<div class="ttc" id="aclassMCP2515Controller_html_a4e62b0e8e1544fe6569dad2c6a20909a"><div class="ttname"><a href="classMCP2515Controller.html#a4e62b0e8e1544fe6569dad2c6a20909a">MCP2515Controller::processReading</a></div><div class="ttdeci">void processReading() override</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8cpp_source.html#l00060">MCP2515Controller.cpp:60</a></div></div>
+<div class="ttc" id="aclassMCP2515Controller_html_a808e9b9acfe7fb7ac2ae32f3a72cd8b0"><div class="ttname"><a href="classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0">MCP2515Controller::init</a></div><div class="ttdeci">bool init() override</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8cpp_source.html#l00040">MCP2515Controller.cpp:40</a></div></div>
+<div class="ttc" id="aclassMCP2515Controller_html_a91483fd5e7a246f44f8452f4789d6b11"><div class="ttname"><a href="classMCP2515Controller.html#a91483fd5e7a246f44f8452f4789d6b11">MCP2515Controller::stopReading</a></div><div class="ttdeci">void stopReading() override</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8cpp_source.html#l00080">MCP2515Controller.cpp:80</a></div></div>
+<div class="ttc" id="aclassMCP2515Controller_html_aad7d694dacc31d44a3ed225d597f25dd"><div class="ttname"><a href="classMCP2515Controller.html#aad7d694dacc31d44a3ed225d597f25dd">MCP2515Controller::getMessageProcessor</a></div><div class="ttdeci">CANMessageProcessor &amp; getMessageProcessor()</div><div class="ttdef"><b>Definition</b> <a href="MCP2515Controller_8hpp_source.html#l00024">MCP2515Controller.hpp:24</a></div></div>
+<div class="ttc" id="aclassMockSPIController_html"><div class="ttname"><a href="classMockSPIController.html">MockSPIController</a></div><div class="ttdoc">Class to emulate the behavior of the SPI controller. (Overrided the Can0)</div><div class="ttdef"><b>Definition</b> <a href="MockSPIController_8hpp_source.html#l00025">MockSPIController.hpp:26</a></div></div>
+<div class="ttc" id="atest__MCP2515Controller_8cpp_html_a75a371af6e9dcb3dc45c7507f829098e"><div class="ttname"><a href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e">TEST_F</a></div><div class="ttdeci">TEST_F(MCP2515ControllerTest, InitializationSuccess)</div><div class="ttdoc">Ensures that init() does not throw an exception.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">test_MCP2515Controller.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

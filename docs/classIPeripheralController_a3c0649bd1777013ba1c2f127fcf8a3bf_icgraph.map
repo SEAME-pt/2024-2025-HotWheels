@@ -1,0 +1,7 @@
+<map id="IPeripheralController::set_servo_pwm" name="IPeripheralController::set_servo_pwm">
+<area shape="rect" id="Node000001" title=" " alt="" coords="240,35,396,75"/>
+<area shape="rect" id="Node000002" href="$classMockPeripheralController.html#a11ececa3bc4134f7d7c72ec3632ef678" title="Mocked method to set the PWM of a servo motor." alt="" coords="5,5,192,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,45,192,40,193,35,227,40"/>
+<area shape="rect" id="Node000003" href="$test__PeripheralController_8cpp.html#a6d81afc8475af0a2983460feee49593d" title="Ensures that set_servo_pwm() is called with the correct parameters." alt="" coords="71,70,126,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,69,127,82,126,77,226,64"/>
+</map>
