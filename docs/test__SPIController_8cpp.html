@@ -109,35 +109,61 @@ $(function(){initNavTree('test__SPIController_8cpp.html',''); initResizable(true
   <div class="headertitle"><div class="title">test_SPIController.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="MockSPIController_8hpp_source.html">MockSPIController.hpp</a>&quot;</code><br />
-<code>#include &lt;gmock/gmock.h&gt;</code><br />
+
+<p>Unit tests for the <a class="el" href="classSPIController.html">SPIController</a> class.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="MockSysCalls_8hpp_source.html">MockSysCalls.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SPIController_8hpp_source.html">SPIController.hpp</a>&quot;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
+<code>#include &lt;linux/spi/spidev.h&gt;</code><br />
 </div>
 <p><a href="test__SPIController_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSPIControllerTest.html">SPIControllerTest</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classSPIController.html">SPIController</a> class.  <a href="classSPIControllerTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a6acec60eff0d31561d6b1907b5c83389" id="r_a6acec60eff0d31561d6b1907b5c83389"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6acec60eff0d31561d6b1907b5c83389">TEST_F</a> (<a class="el" href="classSPIControllerTest.html">SPIControllerTest</a>, OpenDeviceSuccess)</td></tr>
+<tr class="memdesc:a6acec60eff0d31561d6b1907b5c83389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the device opens without throwing an exception.  <br /></td></tr>
 <tr class="separator:a6acec60eff0d31561d6b1907b5c83389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae59a9c92d1c4462ba45528bfcbf1b866" id="r_ae59a9c92d1c4462ba45528bfcbf1b866"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae59a9c92d1c4462ba45528bfcbf1b866">TEST_F</a> (<a class="el" href="classSPIControllerTest.html">SPIControllerTest</a>, OpenDeviceFailure)</td></tr>
+<tr class="memdesc:ae59a9c92d1c4462ba45528bfcbf1b866"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that openDevice() throws an exception when the device fails to open.  <br /></td></tr>
 <tr class="separator:ae59a9c92d1c4462ba45528bfcbf1b866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7b108e33e3ac9f4f4cf1de19a701d88" id="r_ae7b108e33e3ac9f4f4cf1de19a701d88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7b108e33e3ac9f4f4cf1de19a701d88">TEST_F</a> (<a class="el" href="classSPIControllerTest.html">SPIControllerTest</a>, ConfigureSPIValidParameters)</td></tr>
+<tr class="memdesc:ae7b108e33e3ac9f4f4cf1de19a701d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that configure() does not throw an exception with valid parameters.  <br /></td></tr>
 <tr class="separator:ae7b108e33e3ac9f4f4cf1de19a701d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d73eee99372cc6edf553bfb3b263ad5" id="r_a6d73eee99372cc6edf553bfb3b263ad5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d73eee99372cc6edf553bfb3b263ad5">TEST_F</a> (<a class="el" href="classSPIControllerTest.html">SPIControllerTest</a>, WriteByteSuccess)</td></tr>
+<tr class="memdesc:a6d73eee99372cc6edf553bfb3b263ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that writeByte() does not throw an exception.  <br /></td></tr>
 <tr class="separator:a6d73eee99372cc6edf553bfb3b263ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee0ca07256034463c67316679656f948" id="r_aee0ca07256034463c67316679656f948"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee0ca07256034463c67316679656f948">TEST_F</a> (<a class="el" href="classSPIControllerTest.html">SPIControllerTest</a>, ReadByteSuccess)</td></tr>
+<tr class="memdesc:aee0ca07256034463c67316679656f948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that readByte() does not throw an exception.  <br /></td></tr>
 <tr class="separator:aee0ca07256034463c67316679656f948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac52991dcf51dffa102a470de654d2a6f" id="r_ac52991dcf51dffa102a470de654d2a6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac52991dcf51dffa102a470de654d2a6f">TEST_F</a> (<a class="el" href="classSPIControllerTest.html">SPIControllerTest</a>, SpiTransferSuccess)</td></tr>
+<tr class="memdesc:ac52991dcf51dffa102a470de654d2a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that spiTransfer() does not throw an exception.  <br /></td></tr>
 <tr class="separator:ac52991dcf51dffa102a470de654d2a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c8c790e089d69da495c0fa0ecba13b7" id="r_a2c8c790e089d69da495c0fa0ecba13b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c8c790e089d69da495c0fa0ecba13b7">TEST_F</a> (<a class="el" href="classSPIControllerTest.html">SPIControllerTest</a>, CloseDeviceSuccess)</td></tr>
+<tr class="memdesc:a2c8c790e089d69da495c0fa0ecba13b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that closeDevice() does not throw an exception.  <br /></td></tr>
 <tr class="separator:a2c8c790e089d69da495c0fa0ecba13b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Unit tests for the <a class="el" href="classSPIController.html">SPIController</a> class. </p>
+<dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
+<dd>
+Ricardo Melo (@reomelo) </dd>
+<dd>
+Tiago Pereira (@t-pereira06) </dd>
+<dd>
+Michel Batista (@MicchelFAB) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-01-30</dd></dl>
+<p>This file contains unit tests for the <a class="el" href="classSPIController.html">SPIController</a> class, using Google Test and Google Mock frameworks. </p>
+
+<p class="definition">Definition in file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a2c8c790e089d69da495c0fa0ecba13b7" name="a2c8c790e089d69da495c0fa0ecba13b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c8c790e089d69da495c0fa0ecba13b7">&#9670;&#160;</a></span>TEST_F() <span class="overload">[1/7]</span></h2>
 
@@ -157,7 +183,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00054">54</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<p>Ensures that closeDevice() does not throw an exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000036">Test</a></b></dt><dd>Tests if the device closes successfully. </dd></dl>
+<p>This test verifies that closeDevice() does not throw an exception when the device closes successfully.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSPIController.html#a771f650139ea560735cdd99542744da8">SPIController::closeDevice</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00165">165</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__SPIController_8cpp_a2c8c790e089d69da495c0fa0ecba13b7_cgraph.png" border="0" usemap="#atest__SPIController_8cpp_a2c8c790e089d69da495c0fa0ecba13b7_cgraph" alt=""/></div>
+<map name="atest__SPIController_8cpp_a2c8c790e089d69da495c0fa0ecba13b7_cgraph" id="atest__SPIController_8cpp_a2c8c790e089d69da495c0fa0ecba13b7_cgraph">
+<area shape="rect" title="Ensures that closeDevice() does not throw an exception." alt="" coords="5,29,75,55"/>
+<area shape="rect" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="123,29,297,55"/>
+<area shape="poly" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -180,7 +222,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00026">26</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<p>Ensures that configure() does not throw an exception with valid parameters. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000032">Test</a></b></dt><dd>Tests if the SPI configuration is successful with valid parameters. </dd></dl>
+<p>This test verifies that configure() does not throw an exception when called with valid parameters.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSPIController.html#a3b11e55fb29adc0eaa4381e6f5de15d8">SPIController::configure</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00088">88</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__SPIController_8cpp_ae7b108e33e3ac9f4f4cf1de19a701d88_cgraph.png" border="0" usemap="#atest__SPIController_8cpp_ae7b108e33e3ac9f4f4cf1de19a701d88_cgraph" alt=""/></div>
+<map name="atest__SPIController_8cpp_ae7b108e33e3ac9f4f4cf1de19a701d88_cgraph" id="atest__SPIController_8cpp_ae7b108e33e3ac9f4f4cf1de19a701d88_cgraph">
+<area shape="rect" title="Ensures that configure() does not throw an exception with valid parameters." alt="" coords="5,29,75,55"/>
+<area shape="rect" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="123,29,297,55"/>
+<area shape="poly" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -203,7 +261,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00020">20</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<p>Ensures that openDevice() throws an exception when the device fails to open. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000031">Test</a></b></dt><dd>Tests if the device fails to open. </dd></dl>
+<p>This test verifies that openDevice() throws a runtime_error when the device fails to open.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSPIController.html#aad09c12ef162826e6ddbe042c43f3a99">SPIController::openDevice</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00072">72</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__SPIController_8cpp_ae59a9c92d1c4462ba45528bfcbf1b866_cgraph.png" border="0" usemap="#atest__SPIController_8cpp_ae59a9c92d1c4462ba45528bfcbf1b866_cgraph" alt=""/></div>
+<map name="atest__SPIController_8cpp_ae59a9c92d1c4462ba45528bfcbf1b866_cgraph" id="atest__SPIController_8cpp_ae59a9c92d1c4462ba45528bfcbf1b866_cgraph">
+<area shape="rect" title="Ensures that openDevice() throws an exception when the device fails to open." alt="" coords="5,29,75,55"/>
+<area shape="rect" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="123,29,297,55"/>
+<area shape="poly" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -226,7 +300,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00014">14</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<p>Ensures that the device opens without throwing an exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000030">Test</a></b></dt><dd>Tests if the device opens successfully. </dd></dl>
+<p>This test verifies that openDevice() does not throw an exception when the device opens successfully.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSPIController.html#aad09c12ef162826e6ddbe042c43f3a99">SPIController::openDevice</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00056">56</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__SPIController_8cpp_a6acec60eff0d31561d6b1907b5c83389_cgraph.png" border="0" usemap="#atest__SPIController_8cpp_a6acec60eff0d31561d6b1907b5c83389_cgraph" alt=""/></div>
+<map name="atest__SPIController_8cpp_a6acec60eff0d31561d6b1907b5c83389_cgraph" id="atest__SPIController_8cpp_a6acec60eff0d31561d6b1907b5c83389_cgraph">
+<area shape="rect" title="Ensures that the device opens without throwing an exception." alt="" coords="5,29,75,55"/>
+<area shape="rect" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="123,29,297,55"/>
+<area shape="poly" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -249,7 +339,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00038">38</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<p>Ensures that readByte() does not throw an exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000034">Test</a></b></dt><dd>Tests if reading a byte is successful. </dd></dl>
+<p>This test verifies that readByte() does not throw an exception when reading a byte.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSPIController.html#a70f7265dd25bee96bec83b8523783af4">SPIController::readByte</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00126">126</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__SPIController_8cpp_aee0ca07256034463c67316679656f948_cgraph.png" border="0" usemap="#atest__SPIController_8cpp_aee0ca07256034463c67316679656f948_cgraph" alt=""/></div>
+<map name="atest__SPIController_8cpp_aee0ca07256034463c67316679656f948_cgraph" id="atest__SPIController_8cpp_aee0ca07256034463c67316679656f948_cgraph">
+<area shape="rect" title="Ensures that readByte() does not throw an exception." alt="" coords="5,29,75,55"/>
+<area shape="rect" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="123,29,297,55"/>
+<area shape="poly" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -272,7 +378,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00045">45</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<p>Ensures that spiTransfer() does not throw an exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000035">Test</a></b></dt><dd>Tests if SPI transfer is successful. </dd></dl>
+<p>This test verifies that spiTransfer() does not throw an exception when performing an SPI transfer.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSPIController.html#a7df5d1dda46e021d5d8b7c2e6510e157">SPIController::spiTransfer</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00144">144</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__SPIController_8cpp_ac52991dcf51dffa102a470de654d2a6f_cgraph.png" border="0" usemap="#atest__SPIController_8cpp_ac52991dcf51dffa102a470de654d2a6f_cgraph" alt=""/></div>
+<map name="atest__SPIController_8cpp_ac52991dcf51dffa102a470de654d2a6f_cgraph" id="atest__SPIController_8cpp_ac52991dcf51dffa102a470de654d2a6f_cgraph">
+<area shape="rect" title="Ensures that spiTransfer() does not throw an exception." alt="" coords="5,29,75,55"/>
+<area shape="rect" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="123,29,297,55"/>
+<area shape="poly" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -295,7 +417,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00032">32</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<p>Ensures that writeByte() does not throw an exception. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000033">Test</a></b></dt><dd>Tests if writing a byte is successful. </dd></dl>
+<p>This test verifies that writeByte() does not throw an exception when writing a byte.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSPIController.html#aa7f5558d2491039a4f7f7024ca6f56f9">SPIController::writeByte</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SPIController_8cpp_source.html#l00108">108</a> of file <a class="el" href="test__SPIController_8cpp_source.html">test_SPIController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__SPIController_8cpp_a6d73eee99372cc6edf553bfb3b263ad5_cgraph.png" border="0" usemap="#atest__SPIController_8cpp_a6d73eee99372cc6edf553bfb3b263ad5_cgraph" alt=""/></div>
+<map name="atest__SPIController_8cpp_a6d73eee99372cc6edf553bfb3b263ad5_cgraph" id="atest__SPIController_8cpp_a6d73eee99372cc6edf553bfb3b263ad5_cgraph">
+<area shape="rect" title="Ensures that writeByte() does not throw an exception." alt="" coords="5,29,75,55"/>
+<area shape="rect" href="classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="123,29,297,55"/>
+<area shape="poly" title=" " alt="" coords="75,39,109,39,109,45,75,45"/>
+<area shape="poly" title=" " alt="" coords="182,31,176,21,179,11,191,5,210,3,233,6,243,15,239,19,231,11,210,8,192,10,183,15,181,20,186,28"/>
+</map>
+</div>
 
 </div>
 </div>

@@ -1,0 +1,5 @@
+<map id="ISPIController::openDevice" name="ISPIController::openDevice">
+<area shape="rect" id="Node000001" title=" " alt="" coords="203,13,397,38"/>
+<area shape="rect" id="Node000002" href="$classMockSPIController.html#ad3aec7cd37dfe193f939a9d18b0d37e3" title="Mocked method to open the SPI device." alt="" coords="5,5,155,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
+</map>

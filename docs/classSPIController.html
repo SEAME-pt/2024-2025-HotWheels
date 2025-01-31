@@ -121,26 +121,29 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa1235711f339b7c54742d665c3e9e2be" id="r_aa1235711f339b7c54742d665c3e9e2be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1235711f339b7c54742d665c3e9e2be">SPIController</a> ()</td></tr>
-<tr class="separator:aa1235711f339b7c54742d665c3e9e2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a721b109bea139e66f25b5dcea958c599" id="r_a721b109bea139e66f25b5dcea958c599"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a721b109bea139e66f25b5dcea958c599">~SPIController</a> ()</td></tr>
-<tr class="separator:a721b109bea139e66f25b5dcea958c599"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5752a8e3f84a0779588c863fda6d236d" id="r_a5752a8e3f84a0779588c863fda6d236d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5752a8e3f84a0779588c863fda6d236d">openDevice</a> (const std::string &amp;device)</td></tr>
-<tr class="separator:a5752a8e3f84a0779588c863fda6d236d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ba5432538a70b6ae24a7724051e2502" id="r_a0ba5432538a70b6ae24a7724051e2502"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ba5432538a70b6ae24a7724051e2502">configure</a> (uint8_t mode, uint8_t bits, uint32_t speed)</td></tr>
-<tr class="separator:a0ba5432538a70b6ae24a7724051e2502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe05791829cefa1e7695f6cb77764bb0" id="r_afe05791829cefa1e7695f6cb77764bb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe05791829cefa1e7695f6cb77764bb0">writeByte</a> (uint8_t address, uint8_t data)</td></tr>
-<tr class="separator:afe05791829cefa1e7695f6cb77764bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9b70b9048a10642daff1eaa54467020" id="r_ae9b70b9048a10642daff1eaa54467020"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9b70b9048a10642daff1eaa54467020">readByte</a> (uint8_t address)</td></tr>
-<tr class="separator:ae9b70b9048a10642daff1eaa54467020"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2258681363f5c4b77314c1c5aa8fe4e1" id="r_a2258681363f5c4b77314c1c5aa8fe4e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2258681363f5c4b77314c1c5aa8fe4e1">spiTransfer</a> (const uint8_t *tx, uint8_t *rx, size_t length)</td></tr>
-<tr class="separator:a2258681363f5c4b77314c1c5aa8fe4e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe8e3ca87b2872b2a04c9ea9df3b1a6c" id="r_abe8e3ca87b2872b2a04c9ea9df3b1a6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe8e3ca87b2872b2a04c9ea9df3b1a6c">closeDevice</a> ()</td></tr>
-<tr class="separator:abe8e3ca87b2872b2a04c9ea9df3b1a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44205ccdddc7c71972bdf0f4a762c2c0" id="r_a44205ccdddc7c71972bdf0f4a762c2c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44205ccdddc7c71972bdf0f4a762c2c0">SPIController</a> (<a class="el" href="SPIController_8hpp.html#a86b09249847f2c9a69ea4a8719a7ac3d">IoctlFunc</a> ioctlFunc=::ioctl, <a class="el" href="SPIController_8hpp.html#a40c14e0a7403b4e9867de2296b0ca22c">OpenFunc</a> openFunc=::open, <a class="el" href="SPIController_8hpp.html#a12fa92288b94ce9b6922496574c53591">CloseFunc</a> closeFunc=::close)</td></tr>
+<tr class="separator:a44205ccdddc7c71972bdf0f4a762c2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7e0207785deb89c9e7c7d74d20ba876" id="r_af7e0207785deb89c9e7c7d74d20ba876"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7e0207785deb89c9e7c7d74d20ba876">~SPIController</a> () override</td></tr>
+<tr class="separator:af7e0207785deb89c9e7c7d74d20ba876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad09c12ef162826e6ddbe042c43f3a99" id="r_aad09c12ef162826e6ddbe042c43f3a99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad09c12ef162826e6ddbe042c43f3a99">openDevice</a> (const std::string &amp;device) override</td></tr>
+<tr class="separator:aad09c12ef162826e6ddbe042c43f3a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b11e55fb29adc0eaa4381e6f5de15d8" id="r_a3b11e55fb29adc0eaa4381e6f5de15d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b11e55fb29adc0eaa4381e6f5de15d8">configure</a> (uint8_t mode, uint8_t bits, uint32_t speed) override</td></tr>
+<tr class="separator:a3b11e55fb29adc0eaa4381e6f5de15d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7f5558d2491039a4f7f7024ca6f56f9" id="r_aa7f5558d2491039a4f7f7024ca6f56f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7f5558d2491039a4f7f7024ca6f56f9">writeByte</a> (uint8_t address, uint8_t data) override</td></tr>
+<tr class="separator:aa7f5558d2491039a4f7f7024ca6f56f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70f7265dd25bee96bec83b8523783af4" id="r_a70f7265dd25bee96bec83b8523783af4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70f7265dd25bee96bec83b8523783af4">readByte</a> (uint8_t address) override</td></tr>
+<tr class="separator:a70f7265dd25bee96bec83b8523783af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7df5d1dda46e021d5d8b7c2e6510e157" id="r_a7df5d1dda46e021d5d8b7c2e6510e157"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7df5d1dda46e021d5d8b7c2e6510e157">spiTransfer</a> (const uint8_t *tx, uint8_t *rx, size_t length) override</td></tr>
+<tr class="separator:a7df5d1dda46e021d5d8b7c2e6510e157"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771f650139ea560735cdd99542744da8" id="r_a771f650139ea560735cdd99542744da8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a771f650139ea560735cdd99542744da8">closeDevice</a> () override</td></tr>
+<tr class="separator:a771f650139ea560735cdd99542744da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classISPIController"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classISPIController')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classISPIController.html">ISPIController</a></td></tr>
+<tr class="memitem:a06e0163b5d3e8451ba9d24980ff33b69 inherit pub_methods_classISPIController" id="r_a06e0163b5d3e8451ba9d24980ff33b69"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISPIController.html#a06e0163b5d3e8451ba9d24980ff33b69">~ISPIController</a> ()=default</td></tr>
+<tr class="separator:a06e0163b5d3e8451ba9d24980ff33b69 inherit pub_methods_classISPIController"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="SPIController_8hpp_source.html#l00007">7</a> of file <a class="el" href="SPIController_8hpp_source.html">SPIController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SPIController_8hpp_source.html#l00015">15</a> of file <a class="el" href="SPIController_8hpp_source.html">SPIController.hpp</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="ac1d6cf9475b5cf1ac88c233be36669e6" name="ac1d6cf9475b5cf1ac88c233be36669e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1d6cf9475b5cf1ac88c233be36669e6">&#9670;&#160;</a></span>Opcode</h2>
@@ -166,13 +169,13 @@ Public Member Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ac1d6cf9475b5cf1ac88c233be36669e6a7a1a5f3e79fdc91edf2f5ead9d66abb4" name="ac1d6cf9475b5cf1ac88c233be36669e6a7a1a5f3e79fdc91edf2f5ead9d66abb4"></a>Read&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8hpp_source.html#l00010">10</a> of file <a class="el" href="SPIController_8hpp_source.html">SPIController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SPIController_8hpp_source.html#l00018">18</a> of file <a class="el" href="SPIController_8hpp_source.html">SPIController.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa1235711f339b7c54742d665c3e9e2be" name="aa1235711f339b7c54742d665c3e9e2be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1235711f339b7c54742d665c3e9e2be">&#9670;&#160;</a></span>SPIController()</h2>
+<a id="a44205ccdddc7c71972bdf0f4a762c2c0" name="a44205ccdddc7c71972bdf0f4a762c2c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44205ccdddc7c71972bdf0f4a762c2c0">&#9670;&#160;</a></span>SPIController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -180,23 +183,33 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">SPIController::SPIController </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="SPIController_8hpp.html#a86b09249847f2c9a69ea4a8719a7ac3d">IoctlFunc</a></td>          <td class="paramname"><span class="paramname"><em>ioctlFunc</em></span><span class="paramdefsep"> = </span><span class="paramdefval">::ioctl</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="SPIController_8hpp.html#a40c14e0a7403b4e9867de2296b0ca22c">OpenFunc</a></td>          <td class="paramname"><span class="paramname"><em>openFunc</em></span><span class="paramdefsep"> = </span><span class="paramdefval">::open</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="SPIController_8hpp.html#a12fa92288b94ce9b6922496574c53591">CloseFunc</a></td>          <td class="paramname"><span class="paramname"><em>closeFunc</em></span><span class="paramdefsep"> = </span><span class="paramdefval">::close</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructs an <a class="el" href="classSPIController.html">SPIController</a> object and initializes default settings.</p>
-<p>This constructor initializes the <a class="el" href="classSPIController.html">SPIController</a> with default values for the SPI file descriptor, mode, bits per word, and speed. The <code>spi_fd</code> is set to -1 to indicate that the device is not yet opened. Default settings are used for the mode, bits per word, and speed until they are explicitly configured. </p>
 
 <p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00009">9</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a721b109bea139e66f25b5dcea958c599" name="a721b109bea139e66f25b5dcea958c599"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a721b109bea139e66f25b5dcea958c599">&#9670;&#160;</a></span>~SPIController()</h2>
+<a id="af7e0207785deb89c9e7c7d74d20ba876" name="af7e0207785deb89c9e7c7d74d20ba876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7e0207785deb89c9e7c7d74d20ba876">&#9670;&#160;</a></span>~SPIController()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">SPIController::~SPIController </td>
@@ -205,25 +218,36 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Destroys the <a class="el" href="classSPIController.html">SPIController</a> object and cleans up resources.</p>
-<p>This destructor calls the <code>closeDevice</code> function to ensure that the SPI device is properly closed and any resources associated with the SPI connection are released when the <a class="el" href="classSPIController.html">SPIController</a> object is destroyed. </p>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00016">16</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00019">19</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSPIController_a721b109bea139e66f25b5dcea958c599_cgraph.png" border="0" usemap="#aclassSPIController_a721b109bea139e66f25b5dcea958c599_cgraph" alt=""/></div>
+<div class="center"><img src="classSPIController_af7e0207785deb89c9e7c7d74d20ba876_cgraph.png" border="0" usemap="#aclassSPIController_af7e0207785deb89c9e7c7d74d20ba876_cgraph" alt=""/></div>
+<map name="aclassSPIController_af7e0207785deb89c9e7c7d74d20ba876_cgraph" id="aclassSPIController_af7e0207785deb89c9e7c7d74d20ba876_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,215,31"/>
+<area shape="rect" href="classSPIController.html#a771f650139ea560735cdd99542744da8" title=" " alt="" coords="263,5,456,31"/>
+<area shape="poly" title=" " alt="" coords="215,15,249,15,249,21,215,21"/>
+</map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abe8e3ca87b2872b2a04c9ea9df3b1a6c" name="abe8e3ca87b2872b2a04c9ea9df3b1a6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe8e3ca87b2872b2a04c9ea9df3b1a6c">&#9670;&#160;</a></span>closeDevice()</h2>
+<a id="a771f650139ea560735cdd99542744da8" name="a771f650139ea560735cdd99542744da8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771f650139ea560735cdd99542744da8">&#9670;&#160;</a></span>closeDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void SPIController::closeDevice </td>
@@ -232,24 +256,37 @@ Here is the call graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Closes the SPI device and releases the associated resources.</p>
-<p>This function closes the SPI device by calling the <code>close</code> system call on the SPI file descriptor (<code>spi_fd</code>). It sets <code>spi_fd</code> to -1 to indicate that the device has been closed. If the device is already closed (i.e., <code>spi_fd</code> is negative), the function does nothing. </p>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00086">86</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
+<p>Implements <a class="el" href="classISPIController.html#ab5becea6833053ee597b653f806b2ec8">ISPIController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00088">88</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSPIController_abe8e3ca87b2872b2a04c9ea9df3b1a6c_icgraph.png" border="0" usemap="#aclassSPIController_abe8e3ca87b2872b2a04c9ea9df3b1a6c_icgraph" alt=""/></div>
+<div class="center"><img src="classSPIController_a771f650139ea560735cdd99542744da8_icgraph.png" border="0" usemap="#aclassSPIController_a771f650139ea560735cdd99542744da8_icgraph" alt=""/></div>
+<map name="aclassSPIController_a771f650139ea560735cdd99542744da8_icgraph" id="aclassSPIController_a771f650139ea560735cdd99542744da8_icgraph">
+<area shape="rect" title=" " alt="" coords="263,5,456,31"/>
+<area shape="rect" href="classSPIController.html#af7e0207785deb89c9e7c7d74d20ba876" title=" " alt="" coords="5,5,215,31"/>
+<area shape="poly" title=" " alt="" coords="249,21,215,21,215,15,249,15"/>
+</map>
 </div>
 
 </div>
 </div>
-<a id="a0ba5432538a70b6ae24a7724051e2502" name="a0ba5432538a70b6ae24a7724051e2502"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ba5432538a70b6ae24a7724051e2502">&#9670;&#160;</a></span>configure()</h2>
+<a id="a3b11e55fb29adc0eaa4381e6f5de15d8" name="a3b11e55fb29adc0eaa4381e6f5de15d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b11e55fb29adc0eaa4381e6f5de15d8">&#9670;&#160;</a></span>configure()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void SPIController::configure </td>
@@ -267,33 +304,27 @@ Here is the caller graph for this function:</div>
           <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>speed</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Configures the SPI interface with the specified settings.</p>
-<p>This function configures the SPI device with the provided mode, bits per word, and speed. It checks if the device is open and throws an exception if the device is not open. The function then applies the configuration settings using the appropriate <code>ioctl</code> system calls. If any configuration step fails, an exception is thrown with an error message.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mode</td><td>The SPI mode to set for the communication. </td></tr>
-    <tr><td class="paramname">bits</td><td>The number of bits per word for SPI communication. </td></tr>
-    <tr><td class="paramname">speed</td><td>The SPI clock speed (in Hz).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If the device is not open or if any configuration step fails (setting the mode, bits per word, or speed). </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00031">31</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
+<p>Implements <a class="el" href="classISPIController.html#a217edfca2e904e0cb55d2b94ff7e99e3">ISPIController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00033">33</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a5752a8e3f84a0779588c863fda6d236d" name="a5752a8e3f84a0779588c863fda6d236d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5752a8e3f84a0779588c863fda6d236d">&#9670;&#160;</a></span>openDevice()</h2>
+<a id="aad09c12ef162826e6ddbe042c43f3a99" name="aad09c12ef162826e6ddbe042c43f3a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad09c12ef162826e6ddbe042c43f3a99">&#9670;&#160;</a></span>openDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool SPIController::openDevice </td>
@@ -302,32 +333,27 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Opens the specified SPI device for communication.</p>
-<p>This function attempts to open the SPI device specified by the <code>device</code> string. If the device cannot be opened, it throws an exception with an error message. If the device is successfully opened, it returns true. The <code>spi_fd</code> file descriptor is set to the opened device's file descriptor.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">device</td><td>The path to the SPI device to open. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if the device is successfully opened.</dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If the device cannot be opened, indicating a failure in the SPI device initialization. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00021">21</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
+<p>Implements <a class="el" href="classISPIController.html#afaa405cd677e773051353f60b6cf8eb5">ISPIController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00024">24</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ae9b70b9048a10642daff1eaa54467020" name="ae9b70b9048a10642daff1eaa54467020"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9b70b9048a10642daff1eaa54467020">&#9670;&#160;</a></span>readByte()</h2>
+<a id="a70f7265dd25bee96bec83b8523783af4" name="a70f7265dd25bee96bec83b8523783af4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70f7265dd25bee96bec83b8523783af4">&#9670;&#160;</a></span>readByte()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint8_t SPIController::readByte </td>
@@ -336,31 +362,37 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Reads a byte of data from the specified address on the SPI device.</p>
-<p>This function sends a read command to the SPI device, using the specified address. The function performs a SPI transfer, where the read command is sent along with the address. The data byte returned from the SPI device is stored in the response buffer and returned by the function.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">address</td><td>The address to read the data from on the SPI device. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The data byte read from the specified address. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00060">60</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
+<p>Implements <a class="el" href="classISPIController.html#a0155550573fcd6937aeb133e56991c9a">ISPIController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00062">62</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSPIController_ae9b70b9048a10642daff1eaa54467020_cgraph.png" border="0" usemap="#aclassSPIController_ae9b70b9048a10642daff1eaa54467020_cgraph" alt=""/></div>
+<div class="center"><img src="classSPIController_a70f7265dd25bee96bec83b8523783af4_cgraph.png" border="0" usemap="#aclassSPIController_a70f7265dd25bee96bec83b8523783af4_cgraph" alt=""/></div>
+<map name="aclassSPIController_a70f7265dd25bee96bec83b8523783af4_cgraph" id="aclassSPIController_a70f7265dd25bee96bec83b8523783af4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,179,31"/>
+<area shape="rect" href="classSPIController.html#a7df5d1dda46e021d5d8b7c2e6510e157" title=" " alt="" coords="227,5,412,31"/>
+<area shape="poly" title=" " alt="" coords="179,15,213,15,213,21,179,21"/>
+</map>
 </div>
 
 </div>
 </div>
-<a id="a2258681363f5c4b77314c1c5aa8fe4e1" name="a2258681363f5c4b77314c1c5aa8fe4e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2258681363f5c4b77314c1c5aa8fe4e1">&#9670;&#160;</a></span>spiTransfer()</h2>
+<a id="a7df5d1dda46e021d5d8b7c2e6510e157" name="a7df5d1dda46e021d5d8b7c2e6510e157"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7df5d1dda46e021d5d8b7c2e6510e157">&#9670;&#160;</a></span>spiTransfer()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void SPIController::spiTransfer </td>
@@ -378,38 +410,39 @@ Here is the call graph for this function:</div>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Performs an SPI transfer, sending and receiving data.</p>
-<p>This function transfers data to and from the SPI device. It sends the specified <code>tx</code> (transmit) buffer and receives data into the <code>rx</code> (receive) buffer. The function uses the <code>ioctl</code> system call with the <code>SPI_IOC_MESSAGE</code> command to initiate the transfer. If the device is not open or the transfer fails, an exception is thrown.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tx</td><td>A pointer to the transmit buffer containing the data to send to the SPI device. </td></tr>
-    <tr><td class="paramname">rx</td><td>A pointer to the receive buffer where data read from the SPI device will be stored. </td></tr>
-    <tr><td class="paramname">length</td><td>The length of the data to transfer (in bytes).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>If the SPI device is not open or if the transfer fails, indicating an error during the SPI communication. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00068">68</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
+<p>Implements <a class="el" href="classISPIController.html#ab6c879e0e91bd69afc58a40a68701e02">ISPIController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00070">70</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSPIController_a2258681363f5c4b77314c1c5aa8fe4e1_icgraph.png" border="0" usemap="#aclassSPIController_a2258681363f5c4b77314c1c5aa8fe4e1_icgraph" alt=""/></div>
+<div class="center"><img src="classSPIController_a7df5d1dda46e021d5d8b7c2e6510e157_icgraph.png" border="0" usemap="#aclassSPIController_a7df5d1dda46e021d5d8b7c2e6510e157_icgraph" alt=""/></div>
+<map name="aclassSPIController_a7df5d1dda46e021d5d8b7c2e6510e157_icgraph" id="aclassSPIController_a7df5d1dda46e021d5d8b7c2e6510e157_icgraph">
+<area shape="rect" title=" " alt="" coords="231,31,416,56"/>
+<area shape="rect" href="classSPIController.html#a70f7265dd25bee96bec83b8523783af4" title=" " alt="" coords="7,5,181,31"/>
+<area shape="poly" title=" " alt="" coords="217,34,181,30,181,25,217,29"/>
+<area shape="rect" href="classSPIController.html#aa7f5558d2491039a4f7f7024ca6f56f9" title=" " alt="" coords="5,55,183,80"/>
+<area shape="poly" title=" " alt="" coords="217,57,183,61,183,55,217,52"/>
+</map>
 </div>
 
 </div>
 </div>
-<a id="afe05791829cefa1e7695f6cb77764bb0" name="afe05791829cefa1e7695f6cb77764bb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe05791829cefa1e7695f6cb77764bb0">&#9670;&#160;</a></span>writeByte()</h2>
+<a id="aa7f5558d2491039a4f7f7024ca6f56f9" name="aa7f5558d2491039a4f7f7024ca6f56f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7f5558d2491039a4f7f7024ca6f56f9">&#9670;&#160;</a></span>writeByte()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void SPIController::writeByte </td>
@@ -422,22 +455,25 @@ Here is the caller graph for this function:</div>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Writes a byte of data to the specified address on the SPI device.</p>
-<p>This function sends a write command to the SPI device, using the specified address and data byte. The command is formed by combining the write opcode, the address, and the data byte. The SPI transfer is then performed using the <code>spiTransfer</code> function to send the data to the device.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">address</td><td>The address to write the data to on the SPI device. </td></tr>
-    <tr><td class="paramname">data</td><td>The data byte to write to the specified address. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00054">54</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
+<p>Implements <a class="el" href="classISPIController.html#a4a24db4176bf09874ad9031c26702947">ISPIController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SPIController_8cpp_source.html#l00056">56</a> of file <a class="el" href="SPIController_8cpp_source.html">SPIController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSPIController_afe05791829cefa1e7695f6cb77764bb0_cgraph.png" border="0" usemap="#aclassSPIController_afe05791829cefa1e7695f6cb77764bb0_cgraph" alt=""/></div>
+<div class="center"><img src="classSPIController_aa7f5558d2491039a4f7f7024ca6f56f9_cgraph.png" border="0" usemap="#aclassSPIController_aa7f5558d2491039a4f7f7024ca6f56f9_cgraph" alt=""/></div>
+<map name="aclassSPIController_aa7f5558d2491039a4f7f7024ca6f56f9_cgraph" id="aclassSPIController_aa7f5558d2491039a4f7f7024ca6f56f9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,183,31"/>
+<area shape="rect" href="classSPIController.html#a7df5d1dda46e021d5d8b7c2e6510e157" title=" " alt="" coords="231,5,416,31"/>
+<area shape="poly" title=" " alt="" coords="183,15,217,15,217,21,183,21"/>
+</map>
 </div>
 
 </div>

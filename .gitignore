@@ -1,4 +1,8 @@
-*build
-app/root.pro.user
-*.vscode/
-*.qtcreator
+# Ignora tudo
+*
+
+# Exceto a pasta docs
+!/docs/
+
+# Exceto o conteúdo da pasta docs
+!/docs/**
