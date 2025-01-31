@@ -22,10 +22,10 @@ bool JoysticksController::init() {
     return false;
   }
 
-    m_joystick = SDL_JoystickOpen(0);
-    if (!m_joystick) {
-        init();
-    }
+  m_joystick = SDL_JoystickOpen(0);
+  if (!m_joystick) {
+    init();
+  }
 
   return true;
 }
