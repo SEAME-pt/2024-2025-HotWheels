@@ -1,12 +1,12 @@
 /**
  * @file test_PeripheralController.cpp
  * @brief Unit tests for the PeripheralController class.
+ * @version 0.1
+ * @date 2025-01-30
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
  * @author Michel Batista (@MicchelFAB)
- * @version 0.1
- * @date 2025-01-30
  *
  * @details This file contains unit tests for the PeripheralController class,
  * using Google Test and Google Mock frameworks.

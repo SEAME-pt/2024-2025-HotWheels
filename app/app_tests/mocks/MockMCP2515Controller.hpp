@@ -1,14 +1,15 @@
 /**
  * @file MockMCP2515Controller.hpp
- * @author Félix LE BIHAN (@Fle-bihh)
- * @author Ricardo Melo (@reomelo)
- * @author Tiago Pereira (@t-pereira06)
- * @author Michel Batista (@MicchelFAB)
  * @brief File containing Mock classes to test the controller of the MCP2515
  * module.
  * @version 0.1
  * @date 2025-01-30
- *
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * 
+ * @section License
  * @copyright Copyright (c) 2025
  *
  */
@@ -23,10 +24,8 @@
 /**
  * @class MockMCP2515Controller
  * @brief Class to emulate the behavior of the MCP2515 controller.
- *
  */
 class MockMCP2515Controller : public IMCP2515Controller {
-  /** @class MockMCP2515Controller inherits from QObject. */
   Q_OBJECT
 
 public:
@@ -42,12 +41,12 @@ public:
 signals:
   /**
    * @brief Speed updated signal.
-   * @param newSpeed
+   * @param newSpeed The new speed value.
    */
   void speedUpdated(float newSpeed);
   /**
    * @brief Rotation per minute updated signal.
-   * @param newRpm
+   * @param newRpm The new RPM value.
    */
   void rpmUpdated(int newRpm);
 };

@@ -1,7 +1,28 @@
+/**
+ * @file CarManager.cpp
+ * @brief Implementation of the CarManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the implementation of the CarManager class, which is used to manage the entire system.
+ * @note This class is used to manage the entire system, including the data, CAN bus, controls, display, system, and mileage.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * @warning Ensure that all components are properly initialized and connected.
+ * @see CarManager.hpp
+ * @copyright Copyright (c) 2025
+ */
+
 #include "CarManager.hpp"
 #include "ui_CarManager.h"
 #include <QDebug>
 
+/**
+ * @brief Construct a new CarManager object.
+ * @param parent The parent QWidget.
+ * @details This constructor initializes the CarManager object with the specified parent.
+ */
 CarManager::CarManager(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::CarManager),
       m_dataManager(new DataManager()),
@@ -14,6 +35,10 @@ CarManager::CarManager(QWidget *parent)
   initializeComponents();
 }
 
+/**
+ * @brief Destroy the CarManager object.
+ * @details This destructor cleans up the resources used by the CarManager.
+ */
 CarManager::~CarManager() {
   delete m_displayManager;
   delete m_controlsManager;
@@ -23,6 +48,10 @@ CarManager::~CarManager() {
   delete ui;
 }
 
+/**
+ * @brief Initialize the components of the CarManager.
+ * @details This function initializes the DataManager, CanBusManager, ControlsManager, DisplayManager, SystemManager, and MileageManager.
+ */
 void CarManager::initializeComponents() {
   initializeDataManager();
   initializeCanBusManager();
@@ -33,10 +62,18 @@ void CarManager::initializeComponents() {
   qDebug() << "[Main] HotWheels Cluster operational.";
 }
 
+/**
+ * @brief Initialize the DataManager.
+ * @details !No additional logic for now; ready for future extensions.
+ */
 void CarManager::initializeDataManager() {
   // No additional logic for now; ready for future extensions
 }
 
+/**
+ * @brief Initialize the CanBusManager.
+ * @details This function initializes the CanBusManager and connects its signals to the DataManager slots.
+ */
 void CarManager::initializeCanBusManager() {
   if (m_canBusManager->initialize()) {
     connect(m_canBusManager, &CanBusManager::speedUpdated, m_dataManager,
@@ -47,6 +84,10 @@ void CarManager::initializeCanBusManager() {
   }
 }
 
+/**
+ * @brief Initialize the ControlsManager.
+ * @details This function initializes the ControlsManager and connects its signals to the DataManager slots.
+ */
 void CarManager::initializeControlsManager() {
   if (m_controlsManager) {
     // Connect ControlsManager signals to DataManager slots
@@ -61,6 +102,10 @@ void CarManager::initializeControlsManager() {
   }
 }
 
+/**
+ * @brief Initialize the DisplayManager.
+ * @details This function initializes the DisplayManager and connects its signals to the DataManager slots.
+ */
 void CarManager::initializeDisplayManager() {
   if (ui) {
     m_displayManager = new DisplayManager(ui, this);
@@ -111,6 +156,10 @@ void CarManager::initializeDisplayManager() {
   }
 }
 
+/**
+ * @brief Initialize the SystemManager.
+ * @details This function initializes the SystemManager and connects its signals to the DataManager slots.
+ */
 void CarManager::initializeSystemManager() {
   if (m_systemManager) {
     // Connect SystemManager signals to DataManager slots
@@ -132,6 +181,10 @@ void CarManager::initializeSystemManager() {
   }
 }
 
+/**
+ * @brief Initialize the MileageManager.
+ * @details This function initializes the MileageManager and connects its signals to the DataManager slots.
+ */
 void CarManager::initializeMileageManager() {
   if (m_mileageManager) {
     m_mileageManager->initialize();

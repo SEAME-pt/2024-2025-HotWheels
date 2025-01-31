@@ -1,7 +1,36 @@
+/**
+ * @file JoysticksController.cpp
+ * @brief Implementation of the JoysticksController class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the implementation of the JoysticksController
+ *          class, which is used to control the vehicle using a joystick.
+ * @note This class uses SDL for joystick input handling.
+ * 
+ * @warning Ensure that SDL is properly installed and configured on your system.
+ * 
+ * @see JoysticksController.hpp for the class definition.
+ * 
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #include "JoysticksController.hpp"
 #include <QDebug>
 #include <QThread>
 
+/**
+ * @brief Construct a new JoysticksController object.
+ * @param steeringCallback The callback function to update the steering angle.
+ * @param speedCallback The callback function to update the speed.
+ * @param parent The parent QObject.
+ * @details This constructor initializes the JoysticksController object with the
+ *          specified callback functions.
+ */
 JoysticksController::JoysticksController(
     std::function<void(int)> steeringCallback,
     std::function<void(int)> speedCallback, QObject *parent)
@@ -9,6 +38,10 @@ JoysticksController::JoysticksController(
       m_updateSteering(std::move(steeringCallback)),
       m_updateSpeed(std::move(speedCallback)), m_running(false) {}
 
+/**
+ * @brief Destroy the JoysticksController object.
+ * @details This destructor closes the joystick and quits SDL.
+ */
 JoysticksController::~JoysticksController() {
   if (m_joystick) {
     SDL_JoystickClose(m_joystick);
@@ -16,6 +49,13 @@ JoysticksController::~JoysticksController() {
   SDL_Quit();
 }
 
+/**
+ * @brief Initialize the JoysticksController.
+ * @return true If the initialization was successful.
+ * @return false If the initialization failed.
+ * @details This function initializes the JoysticksController by opening the
+ *          joystick and initializing SDL.
+ */
 bool JoysticksController::init() {
   if (SDL_Init(SDL_INIT_JOYSTICK) < 0) {
     qDebug() << "Failed to initialize SDL:" << SDL_GetError();
@@ -32,8 +72,17 @@ bool JoysticksController::init() {
   return true;
 }
 
+/**
+ * @brief Request the JoysticksController to stop.
+ * @details This function requests the JoysticksController to stop.
+ */
 void JoysticksController::requestStop() { m_running = false; }
 
+/**
+ * @brief Process the input from the joystick.
+ * @details This function processes the input from the joystick and updates the
+ *          steering and speed accordingly.
+ */
 void JoysticksController::processInput() {
   m_running = true;
 

@@ -1,6 +1,9 @@
 /**
  * @file CanBusManager.hpp
- * @author Michel Batista (michel_fab@outlook.com)
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
  * @brief
  * @version 0.1
  * @date 2025-01-31
@@ -21,25 +24,16 @@
  * @class CanBusManager inherits from QObject
  */
 class CanBusManager : public QObject {
-  /** @brief Macro required for Qt's meta-object system. */
   Q_OBJECT
 public:
-  /** @brief Constructor for the CanBusManager class that takes a SPI device
-   * path. */
   explicit CanBusManager(const std::string &spi_device,
                          QObject *parent = nullptr);
-  /** @brief Constructor for the CanBusManager class that takes a MCP2515
-   * controller. */
   CanBusManager(IMCP2515Controller *controller, QObject *parent = nullptr);
-  /** @brief Destructor for the CanBusManager class. */
   ~CanBusManager();
-  /** @brief Method to initialize the CanBusManager. */
   bool initialize();
 
 signals:
-  /** @brief Signal emitted when the speed is updated. */
   void speedUpdated(float newSpeed);
-  /** @brief Signal emitted when the RPM is updated. */
   void rpmUpdated(int newRpm);
 
 private:

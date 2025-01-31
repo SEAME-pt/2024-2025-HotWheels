@@ -1,6 +1,9 @@
 /**
  * @file ISPIController.hpp
- * @author Michel Batista (michel_fab@outlook.com)
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
  * @brief
  * @version 0.1
  * @date 2025-01-31

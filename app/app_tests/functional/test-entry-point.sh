@@ -3,13 +3,14 @@
 #
 ## @file test-entry-point.sh
 ## @brief Test the entry point of the application.
-## @author @Fle-bihh (original author)
-## @author @HotWheels (adapted)
-## @date 2025-01-30
-## @version 1.0
-## @copyright MIT License
 ## @details This script tests the application's entry point by running it in test mode
 ## and comparing the output with the expected result.
+## @version 1.0
+## @date 2025-01-30
+## @section License
+## MIT License
+## @author @Fle-bihh (original author)
+## @author @HotWheels (adapted)
 ##
 ## @section Usage
 ## Run this script in a terminal:

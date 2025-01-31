@@ -1,15 +1,22 @@
 /**
  * @file CANMessageProcessor.cpp
- * @author Michel Batista (michel_fab@outlook.com)
  * @brief Implementation of the CANMessageProcessor class.
  * @version 0.1
  * @date 2025-01-31
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
  *
  * @details This file contains the implementation of the CANMessageProcessor
  * class, which processes CAN messages.
  *
  * @note This class is used to process CAN messages and call the appropriate
  * handler for each message.
+ * 
+ * @warning Ensure that the MessageHandler type is properly defined.
+ * 
+ * @see CANMessageProcessor.hpp for the class definition.
  *
  * @copyright Copyright (c) 2025
  */

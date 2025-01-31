@@ -1,6 +1,32 @@
+/**
+ * @file ControlsManager.cpp
+ * @brief Implementation of the ControlsManager class.
+ * @details This file contains the implementation of the ControlsManager class,
+ *          which is used to manage the controls of the vehicle.
+ * @version 0.1
+ * @date 2025-01-31
+ * 
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * 
+ * @note This class is used to manage the controls of the vehicle.
+ * 
+ * @warning Ensure that the EngineController and JoysticksController classes are properly implemented.
+ * 
+ * @see ControlsManager.hpp for the class definition.
+ * @copyright Copyright (c) 2025
+ */
+
 #include "ControlsManager.hpp"
 #include <QDebug>
 
+/**
+ * @brief Construct a new ControlsManager object.
+ * @param parent The parent QObject.
+ * @details This constructor initializes the ControlsManager object.
+ */
 ControlsManager::ControlsManager(QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
       m_manualController(nullptr), m_manualControllerThread(nullptr),
@@ -41,6 +67,11 @@ ControlsManager::ControlsManager(QObject *parent)
   m_manualControllerThread->start();
 }
 
+/**
+ * @brief Destroy the ControlsManager object.
+ * @details This destructor stops the joystick controller and waits for the thread
+ *          to finish.
+ */
 ControlsManager::~ControlsManager() {
   if (m_manualControllerThread) {
     m_manualController->requestStop();
@@ -51,6 +82,13 @@ ControlsManager::~ControlsManager() {
   delete m_manualController;
 }
 
+/**
+ * @brief Set the driving mode.
+ * @param mode The new driving mode.
+ * @details This slot is called when the driving mode is changed. It updates the
+ *          current driving mode and stops the joystick controller if the new mode is
+ *          Automatic.
+ */
 void ControlsManager::setMode(DrivingMode mode) {
   if (m_currentMode == mode)
     return;
@@ -64,6 +102,12 @@ void ControlsManager::setMode(DrivingMode mode) {
   // }
 }
 
+/**
+ * @brief Update the driving mode of the vehicle.
+ * @param newMode The new driving mode of the vehicle.
+ * @details This slot is called when the driving mode of the vehicle is changed.
+ *          It updates the current driving mode by calling the setMode() method.
+ */
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
   setMode(newMode);
 }

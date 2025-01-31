@@ -1,12 +1,12 @@
 /**
  * @file MockPeripheralController.hpp
+ * @brief File containing Mock classes to test the peripheral controller.
+ * @version 0.1
+ * @date 2025-01-30
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
  * @author Michel Batista (@MicchelFAB)
- * @brief File containing Mock classes to test the peripheral controller.
- * @version 0.1
- * @date 2025-01-30
  *
  * @copyright Copyright (c) 2025
  *

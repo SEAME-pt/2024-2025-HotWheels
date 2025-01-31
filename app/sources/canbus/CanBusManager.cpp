@@ -1,15 +1,22 @@
 /**
  * @file CanBusManager.cpp
- * @author Michel Batista (michel_fab@outlook.com)
  * @brief Implementation of the CanBusManager class.
  * @version 0.1
  * @date 2025-01-29
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
  *
  * @details This file contains the implementation of the CanBusManager class,
  * which manages the CAN bus communication.
  *
  * @note This class uses the MCP2515Controller for CAN bus communication.
  *
+ * @warning Ensure that the MCP2515 controller is properly implemented.
+ * 
+ * @see CanBusManager.hpp for the class definition.
+ * 
  * @copyright Copyright (c) 2025
  */
 

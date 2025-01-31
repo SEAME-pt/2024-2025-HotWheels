@@ -1,15 +1,22 @@
 /**
  * @file MCP2515Configurator.cpp
- * @author Michel Batista (michel_fab@outlook.com)
  * @brief Implementation of the MCP2515Configurator class.
  * @version 0.1
  * @date 2025-01-31
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
  *
  * @details This file contains the implementation of the MCP2515Configurator
  * class, which configures the MCP2515 CAN controller.
  *
  * @note This class is used to configure the MCP2515 CAN controller for
  * communication.
+ * 
+ * @warning Ensure that the SPI controller is properly implemented.
+ * 
+ * @see MCP2515Configurator.hpp for the class definition.
  *
  * @copyright Copyright (c) 2025
  *
@@ -129,7 +136,7 @@ uint8_t MCP2515Configurator::readRegister(uint8_t address) {
  * @brief Send a command to the MCP2515.
  * @param command The command to send.
  * @returns The response from the MCP2515.
- * @details This function sends a command to the MCP2515.
+ * @details This function sends a command to the MCP2515
  */
 void MCP2515Configurator::sendCommand(uint8_t command) {
   uint8_t tx[] = {command};

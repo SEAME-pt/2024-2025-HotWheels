@@ -1,12 +1,12 @@
 /**
  * @file test_MCP2515Configurator.cpp
  * @brief Unit tests for the MCP2515Configurator class.
+ * @version 0.1
+ * @date 2025-01-30
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
  * @author Michel Batista (@MicchelFAB)
- * @version 0.1
- * @date 2025-01-30
  *
  * @details This file contains unit tests for the MCP2515Configurator class,
  * using Google Test and Google Mock frameworks.
@@ -38,10 +38,7 @@ protected:
 /**
  * @test Tests if the chip reset is successful.
  * @brief Ensures that resetChip() returns true when the reset is successful.
- *
- * @details This test verifies that resetChip() returns true when the chip reset
- * is successful.
- *
+ * @details Verifies that resetChip() returns true when the chip reset is successful.
  * @see MCP2515Configurator::resetChip
  */
 TEST_F(MCP2515ConfiguratorTest, ResetChipSuccess) {
@@ -54,10 +51,7 @@ TEST_F(MCP2515ConfiguratorTest, ResetChipSuccess) {
 /**
  * @test Tests if the chip reset fails.
  * @brief Ensures that resetChip() returns false when the reset fails.
- *
- * @details This test verifies that resetChip() returns false when the chip
- * reset fails.
- *
+ * @details Verifies that resetChip() returns false when the chip reset fails.
  * @see MCP2515Configurator::resetChip
  */
 TEST_F(MCP2515ConfiguratorTest, ResetChipFailure) {
@@ -69,12 +63,8 @@ TEST_F(MCP2515ConfiguratorTest, ResetChipFailure) {
 
 /**
  * @test Tests if the baud rate is configured correctly.
- * @brief Ensures that configureBaudRate() writes the correct values to the
- * registers.
- *
- * @details This test verifies that configureBaudRate() writes the correct
- * values to the CNF1, CNF2, and CNF3 registers.
- *
+ * @brief Ensures that configureBaudRate() writes the correct values to the registers.
+ * @details Verifies that configureBaudRate() writes the correct values to the CNF1, CNF2, and CNF3 registers.
  * @see MCP2515Configurator::configureBaudRate
  */
 TEST_F(MCP2515ConfiguratorTest, ConfigureBaudRate) {
@@ -86,12 +76,8 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureBaudRate) {
 
 /**
  * @test Tests if the TX buffer is configured correctly.
- * @brief Ensures that configureTXBuffer() writes the correct value to the
- * TXB0CTRL register.
- *
- * @details This test verifies that configureTXBuffer() writes the correct value
- * to the TXB0CTRL register.
- *
+ * @brief Ensures that configureTXBuffer() writes the correct value to the TXB0CTRL register.
+ * @details Verifies that configureTXBuffer() writes the correct value to the TXB0CTRL register.
  * @see MCP2515Configurator::configureTXBuffer
  */
 TEST_F(MCP2515ConfiguratorTest, ConfigureTXBuffer) {
@@ -101,12 +87,8 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureTXBuffer) {
 
 /**
  * @test Tests if the RX buffer is configured correctly.
- * @brief Ensures that configureRXBuffer() writes the correct value to the
- * RXB0CTRL register.
- *
- * @details This test verifies that configureRXBuffer() writes the correct value
- * to the RXB0CTRL register.
- *
+ * @brief Ensures that configureRXBuffer() writes the correct value to the RXB0CTRL register.
+ * @details Verifies that configureRXBuffer() writes the correct value to the RXB0CTRL register.
  * @see MCP2515Configurator::configureRXBuffer
  */
 TEST_F(MCP2515ConfiguratorTest, ConfigureRXBuffer) {
@@ -116,12 +98,8 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureRXBuffer) {
 
 /**
  * @test Tests if the filters and masks are configured correctly.
- * @brief Ensures that configureFiltersAndMasks() writes the correct values to
- * the registers.
- *
- * @details This test verifies that configureFiltersAndMasks() writes the
- * correct values to the registers.
- *
+ * @brief Ensures that configureFiltersAndMasks() writes the correct values to the registers.
+ * @details Verifies that configureFiltersAndMasks() writes the correct values to the registers.
  * @see MCP2515Configurator::configureFiltersAndMasks
  */
 TEST_F(MCP2515ConfiguratorTest, ConfigureFiltersAndMasks) {
@@ -132,12 +110,8 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureFiltersAndMasks) {
 
 /**
  * @test Tests if the interrupts are configured correctly.
- * @brief Ensures that configureInterrupts() writes the correct value to the
- * CANINTE register.
- *
- * @details This test verifies that configureInterrupts() writes the correct
- * value to the CANINTE register.
- *
+ * @brief Ensures that configureInterrupts() writes the correct value to the CANINTE register.
+ * @details Verifies that configureInterrupts() writes the correct value to the CANINTE register.
  * @see MCP2515Configurator::configureInterrupts
  */
 TEST_F(MCP2515ConfiguratorTest, ConfigureInterrupts) {
@@ -147,12 +121,8 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureInterrupts) {
 
 /**
  * @test Tests if the mode is set correctly.
- * @brief Ensures that setMode() writes the correct value to the CANCTRL
- * register.
- *
- * @details This test verifies that setMode() writes the correct value to the
- * CANCTRL register.
- *
+ * @brief Ensures that setMode() writes the correct value to the CANCTRL register.
+ * @details Verifies that setMode() writes the correct value to the CANCTRL register.
  * @see MCP2515Configurator::setMode
  */
 TEST_F(MCP2515ConfiguratorTest, SetMode) {
@@ -163,10 +133,7 @@ TEST_F(MCP2515ConfiguratorTest, SetMode) {
 /**
  * @test Tests if the mode verification is successful.
  * @brief Ensures that verifyMode() returns true when the mode is correct.
- *
- * @details This test verifies that verifyMode() returns true when the mode is
- * correct.
- *
+ * @details Verifies that verifyMode() returns true when the mode is correct.
  * @see MCP2515Configurator::verifyMode
  */
 TEST_F(MCP2515ConfiguratorTest, VerifyModeSuccess) {
@@ -178,10 +145,7 @@ TEST_F(MCP2515ConfiguratorTest, VerifyModeSuccess) {
 /**
  * @test Tests if the mode verification fails.
  * @brief Ensures that verifyMode() returns false when the mode is incorrect.
- *
- * @details This test verifies that verifyMode() returns false when the mode is
- * incorrect.
- *
+ * @details Verifies that verifyMode() returns false when the mode is incorrect.
  * @see MCP2515Configurator::verifyMode
  */
 TEST_F(MCP2515ConfiguratorTest, VerifyModeFailure) {
@@ -193,10 +157,7 @@ TEST_F(MCP2515ConfiguratorTest, VerifyModeFailure) {
 /**
  * @test Tests if a CAN message with data is read correctly.
  * @brief Ensures that readCANMessage() reads the correct frame ID and data.
- *
- * @details This test verifies that readCANMessage() reads the correct frame ID
- * and data when a CAN message with data is available.
- *
+ * @details Verifies that readCANMessage() reads the correct frame ID and data when a CAN message with data is available.
  * @see MCP2515Configurator::readCANMessage
  */
 TEST_F(MCP2515ConfiguratorTest, ReadCANMessageWithData) {
@@ -223,12 +184,8 @@ TEST_F(MCP2515ConfiguratorTest, ReadCANMessageWithData) {
 
 /**
  * @test Tests if a CAN message with no data is read correctly.
- * @brief Ensures that readCANMessage() returns an empty data vector when no CAN
- * message is available.
- *
- * @details This test verifies that readCANMessage() returns an empty data
- * vector when no CAN message is available.
- *
+ * @brief Ensures that readCANMessage() returns an empty data vector when no CAN message is available.
+ * @details Verifies that readCANMessage() returns an empty data vector when no CAN message is available.
  * @see MCP2515Configurator::readCANMessage
  */
 TEST_F(MCP2515ConfiguratorTest, ReadCANMessageNoData) {

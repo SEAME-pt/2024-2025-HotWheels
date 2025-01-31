@@ -1,12 +1,12 @@
 /**
  * @file test_SPIController.cpp
  * @brief Unit tests for the SPIController class.
+ * @version 0.1
+ * @date 2025-01-30
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
  * @author Michel Batista (@MicchelFAB)
- * @version 0.1
- * @date 2025-01-30
  *
  * @details This file contains unit tests for the SPIController class, using
  * Google Test and Google Mock frameworks.
@@ -54,10 +54,7 @@ protected:
 /**
  * @test Tests if the device opens successfully.
  * @brief Ensures that the device opens without throwing an exception.
- *
- * @details This test verifies that openDevice() does not throw an exception
- * when the device opens successfully.
- *
+ * @details Verifies that openDevice() does not throw an exception when the device opens successfully.
  * @see SPIController::openDevice
  */
 TEST_F(SPIControllerTest, OpenDeviceSuccess) {

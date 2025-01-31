@@ -1,14 +1,24 @@
 /**
  * @file SPIController.cpp
- * @author Michel Batista (michel_fab@outlook.com)
- * @brief
+ * @brief Implementation of the SPIController class.
  * @version 0.1
  * @date 2025-01-31
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
  *
- * @details
+ * @details This file contains the implementation of the SPIController class,
+ * which controls the SPI communication.
  *
- * @note
+ * @note This class is used to control the SPI communication for the MCP2515 CAN
+ * controller.
  *
+ * @warning Ensure that the SPI device is properly connected and configured on
+ * your system.
+ * 
+ * @see SPIController.hpp for the class definition.
+ * 
  * @copyright Copyright (c) 2025
  *
  */

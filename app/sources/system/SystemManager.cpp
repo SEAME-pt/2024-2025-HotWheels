@@ -1,5 +1,26 @@
+/**
+ * @file SystemManager.cpp
+ * @brief Implementation of the SystemManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the implementation of the SystemManager class, which is used to manage the system status.
+ * @note This class is used to manage the system status, including the time, WiFi, temperature, battery, and IP address.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * @warning Ensure that the WiFi interface is properly configured and the temperature sensor is connected.
+ * @see SystemManager.hpp for the class definition.
+ * @copyright Copyright (c) 2025
+ */
+
 #include "SystemManager.hpp"
 
+/**
+ * @brief Construct a new SystemManager object.
+ * @param parent The parent QObject.
+ * @details This constructor initializes the SystemManager object with the specified parent.
+ */
 SystemManager::SystemManager(QObject *parent)
     : QObject(parent), m_timeTimer(new QTimer(this)),
       m_statusTimer(new QTimer(this)),
@@ -16,6 +37,10 @@ SystemManager::SystemManager(QObject *parent)
   m_statusTimer->start(5000);
 }
 
+/**
+ * @brief Destroy the SystemManager object.
+ * @details This destructor cleans up the resources used by the SystemManager.
+ */
 void SystemManager::updateTime() {
   QDateTime currentDateTime = QDateTime::currentDateTime();
   QString currentDate = currentDateTime.toString("dd-MM-yy");
@@ -25,6 +50,10 @@ void SystemManager::updateTime() {
   emit timeUpdated(currentDate, currentTime, currentDay);
 }
 
+/**
+ * @brief Update the system status.
+ * @details This function updates the system status, including the WiFi, temperature, battery, and IP address.
+ */
 void SystemManager::updateSystemStatus() {
   // Fetch and emit WiFi status
   QString wifiName;
@@ -44,6 +73,12 @@ void SystemManager::updateSystemStatus() {
   emit ipAddressUpdated(ipAddress);
 }
 
+/**
+ * @brief Fetch the WiFi status.
+ * @param wifiName The name of the connected WiFi network.
+ * @return QString The WiFi status.
+ * @details This function fetches the WiFi status and the name of the connected WiFi network.
+ */
 QString SystemManager::fetchWifiStatus(QString &wifiName) const {
   QProcess process;
   process.start("nmcli", {"-t", "-f", "DEVICE,STATE,CONNECTION", "dev"});
@@ -72,6 +107,11 @@ QString SystemManager::fetchWifiStatus(QString &wifiName) const {
   return "No interface detected";
 }
 
+/**
+ * @brief Fetch the temperature.
+ * @return QString The temperature.
+ * @details This function fetches the temperature from the temperature sensor.
+ */
 QString SystemManager::fetchTemperature() const {
   QString tempFile = "/sys/class/hwmon/hwmon0/temp1_input";
   QFile tempInput(tempFile);
@@ -89,6 +129,11 @@ QString SystemManager::fetchTemperature() const {
   return "N/A";
 }
 
+/**
+ * @brief Fetch the IP address.
+ * @return QString The IP address.
+ * @details This function fetches the IP address of the device.
+ */
 QString SystemManager::fetchIpAddress() const {
   QProcess process;
   process.start(

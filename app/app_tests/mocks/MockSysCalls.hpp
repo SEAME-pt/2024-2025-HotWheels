@@ -1,13 +1,18 @@
 /**
  * @file MockSysCalls.hpp
+ * @brief File containing Mock classes to test the system calls.
+ * 
+ * This file provides a mock implementation of system calls for testing purposes.
+ * It uses Google Mock to create mock methods for open, ioctl, and close system calls.
+ * 
+ * @version 0.1
+ * @date 2025-01-30
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
  * @author Michel Batista (@MicchelFAB)
- * @brief File containing Mock classes to test the system calls.
- * @version 0.1
- * @date 2025-01-30
- *
+ * 
+ * @section License
  * @copyright Copyright (c) 2025
  *
  */
@@ -55,8 +60,8 @@ private:
 
 /**
  * @brief Mocked open function.
- * @param path
- * @param flags
+ * @param path The path to the file to open.
+ * @param flags The flags for opening the file.
  * @return a mocked file descriptor.
  * @retval int
  */
@@ -66,8 +71,8 @@ inline int mock_open(const char *path, int flags, ...) {
 
 /**
  * @brief Mocked ioctl function.
- * @param fd
- * @param request
+ * @param fd The file descriptor.
+ * @param request The request code.
  * @return a mocked ioctl return value.
  * @retval int
  */
@@ -77,7 +82,7 @@ inline int mock_ioctl(int fd, unsigned long request, ...) {
 
 /**
  * @brief Mocked close function.
- * @param fd
+ * @param fd The file descriptor.
  * @return a mocked close return value.
  * @retval int
  */
