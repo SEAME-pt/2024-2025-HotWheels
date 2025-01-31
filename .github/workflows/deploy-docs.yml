@@ -14,7 +14,7 @@ on:
 
 jobs:
   run-on-self-hosted:
-    runs-on: [self-hosted, home-1]
+    runs-on: [self-hosted, seame-computer-2]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
