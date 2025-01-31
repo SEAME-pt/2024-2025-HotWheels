@@ -24,10 +24,6 @@ public:
     CANMessageProcessor &getMessageProcessor() { return messageProcessor; }
     bool isStopReadingFlagSet() const override;
 
-signals:
-    void speedUpdated(float newSpeed);
-    void rpmUpdated(int newRpm);
-
 private:
     ISPIController *spiController;
     MCP2515Configurator configurator;

@@ -1,49 +1,39 @@
 #ifndef MILEAGEFILEHANDLER_HPP
 #define MILEAGEFILEHANDLER_HPP
 
+#include <QFile>
 #include <QString>
+#include "FileController.hpp"
+#include "IMileageFileHandler.hpp"
+#include <functional>
 
-class MileageFileHandler
+using FileOpenFunc = std::function<bool(QFile &, QIODevice::OpenMode)>;
+using FileReadFunc = std::function<QString(QFile &)>;
+using FileWriteFunc = std::function<bool(QFile &, const QString &)>;
+using FileExistsFunc = std::function<bool(const QString &)>;
+
+class MileageFileHandler : public IMileageFileHandler
 {
 public:
-    /**
-     * Constructor for the MileageFileHandler class.
-     * It initializes the class with the specified file path and ensures that the file exists.
-     *
-     * @param filePath The path of the mileage file to be managed.
-     */
-    explicit MileageFileHandler(const QString &filePath);
+    explicit MileageFileHandler(const QString &filePath,
+                                FileOpenFunc openFunc = FileController::open,
+                                FileReadFunc readFunc = FileController::read,
+                                FileWriteFunc writeFunc = FileController::write,
+                                FileExistsFunc existsFunc = FileController::exists);
 
-    /**
-     * Destructor for the MileageFileHandler class.
-     * The destructor is implicitly defaulted as no manual resource management is required.
-     */
     ~MileageFileHandler() = default;
 
-    /**
-     * Reads the mileage value from the file.
-     * If the file cannot be opened or contains an invalid value, a default mileage of 0.0 is returned.
-     *
-     * @return The mileage read from the file, or 0.0 if there was an issue.
-     */
-    double readMileage() const;
-
-    /**
-     * Writes the provided mileage value to the file.
-     * The value is saved with two decimal precision.
-     *
-     * @param mileage The mileage value to be written to the file.
-     */
-    void writeMileage(double mileage) const;
-
-    /**
-     * Ensures that the mileage file exists.
-     * If the file does not exist, it creates the file and initializes it with a mileage of 0.0.
-     */
-    void ensureFileExists() const;
+    double readMileage() const override;
+    void writeMileage(double mileage) const override;
 
 private:
-    QString filePath; /**< The path to the mileage file to be managed. */
+    QString filePath;
+    FileOpenFunc openFunc;
+    FileReadFunc readFunc;
+    FileWriteFunc writeFunc;
+    FileExistsFunc existsFunc;
+
+    void ensureFileExists() const;
 };
 
 #endif // MILEAGEFILEHANDLER_HPP

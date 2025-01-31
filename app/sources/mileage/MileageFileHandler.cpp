@@ -1,21 +1,28 @@
 #include "MileageFileHandler.hpp"
 #include <QDebug>
-#include <QFile>
-#include <QTextStream>
 
-MileageFileHandler::MileageFileHandler(const QString &filePath)
+MileageFileHandler::MileageFileHandler(const QString &filePath,
+                                       FileOpenFunc openFunc,
+                                       FileReadFunc readFunc,
+                                       FileWriteFunc writeFunc,
+                                       FileExistsFunc existsFunc)
     : filePath(filePath)
+    , openFunc(openFunc)
+    , readFunc(readFunc)
+    , writeFunc(writeFunc)
+    , existsFunc(existsFunc)
 {
     ensureFileExists();
 }
 
 void MileageFileHandler::ensureFileExists() const
 {
-    QFile file(filePath);
-    if (!file.exists()) {
-        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            QTextStream out(&file);
-            out << "0.0\n"; // Initialize with a mileage of 0.0
+    if (!existsFunc(filePath)) {
+        QFile file(filePath);
+        if (openFunc(file, QIODevice::WriteOnly | QIODevice::Text)) {
+            if (!writeFunc(file, "0.0")) {
+                qWarning() << "Failed to initialize mileage file with default value.";
+            }
             file.close();
             qDebug() << "Mileage file created at:" << filePath;
         } else {
@@ -27,36 +34,35 @@ void MileageFileHandler::ensureFileExists() const
 double MileageFileHandler::readMileage() const
 {
     QFile file(filePath);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    if (!openFunc(file, QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning() << "Failed to open mileage file for reading:" << filePath;
-        return 0.0; // Default mileage
+        return 0.0;
     }
 
-    QTextStream in(&file);
-    double mileage = 0.0;
-    if (!in.atEnd()) {
-        QString line = in.readLine();
-        bool ok = false;
-        mileage = line.toDouble(&ok);
-        if (!ok) {
-            qWarning() << "Invalid mileage value in file. Defaulting to 0.";
-            mileage = 0.0;
-        }
-    }
-
+    QString content = readFunc(file);
     file.close();
+
+    bool ok = false;
+    double mileage = content.toDouble(&ok);
+    if (!ok) {
+        qWarning() << "Invalid mileage value in file. Defaulting to 0.";
+        return 0.0;
+    }
+
     return mileage;
 }
 
 void MileageFileHandler::writeMileage(double mileage) const
 {
     QFile file(filePath);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    if (!openFunc(file, QIODevice::WriteOnly | QIODevice::Text)) {
         qWarning() << "Failed to open mileage file for writing:" << filePath;
         return;
     }
 
-    QTextStream out(&file);
-    out << QString::number(mileage, 'f', 2) << Qt::endl;
+    bool success = writeFunc(file, QString::number(mileage, 'f', 2));
+    if (!success) {
+        qWarning() << "Failed to write mileage data.";
+    }
     file.close();
 }

@@ -17,7 +17,7 @@
 CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
     : QObject(parent)
 {
-    m_controller = new MCP2515Controller(spi_device);
+    m_controller = (new MCP2515Controller(spi_device));
     ownsMCP2515Controller = true;
     connectSignals();
 }

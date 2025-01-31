@@ -18,6 +18,9 @@ SOURCES += \
     sources/main/main.cpp \
     sources/main/CarManager.cpp \
     sources/data/DataManager.cpp \
+	sources/data/SystemDataManager.cpp \
+	sources/data/VehicleDataManager.cpp \
+	sources/data/ClusterSettingsManager.cpp \
     sources/canbus/MCP2515Controller.cpp \
     sources/canbus/CanBusManager.cpp \
     sources/canbus/SPIController.cpp \
@@ -33,16 +36,21 @@ SOURCES += \
 	sources/mileage/MileageCalculator.cpp \
 	sources/mileage/MileageManager.cpp \
 	sources/mileage/MileageFileHandler.cpp \
-	sources/utils/I2CController.cpp
+	sources/utils/I2CController.cpp \
+	sources/utils/FileController.cpp
 
 HEADERS += \
     includes/main/CarManager.hpp \
     includes/data/DataManager.hpp \
+	includes/data/SystemDataManager.hpp \
+	includes/data/VehicleDataManager.hpp \
+	includes/data/ClusterSettingsManager.hpp \
     includes/data/enums.hpp \
     includes/canbus/MCP2515Controller.hpp \
 	includes/canbus/IMCP2515Controller.hpp \
     includes/canbus/CanBusManager.hpp \
     includes/canbus/SPIController.hpp \
+	includes/canbus/ISPIController.hpp \
     includes/canbus/MCP2515Configurator.hpp \
     includes/canbus/CANMessageProcessor.hpp \
     includes/controls/ControlsManager.hpp \
@@ -56,7 +64,10 @@ HEADERS += \
 	includes/mileage/MileageCalculator.hpp \
 	includes/mileage/MileageManager.hpp \
 	includes/mileage/MileageFileHandler.hpp \
-    includes/utils/I2CController.hpp
+	includes/mileage/IMileageManager.hpp \
+	includes/mileage/IMileageFileHandler.hpp \
+	includes/utils/I2CController.hpp \
+	includes/utils/FileController.hpp
 
 FORMS += forms/CarManager.ui
 

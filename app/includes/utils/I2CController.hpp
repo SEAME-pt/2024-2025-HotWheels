@@ -2,7 +2,6 @@
 #define I2CCONTROLLER_HPP
 
 #include <cstdint>
-#include <stdexcept>
 
 class I2CController
 {

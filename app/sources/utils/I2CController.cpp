@@ -1,4 +1,5 @@
 #include "I2CController.hpp"
+#include <cstdio>
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
 #include <sys/ioctl.h>
