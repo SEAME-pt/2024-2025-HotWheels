@@ -1,0 +1,15 @@
+<map id="DataManager::mileageUpdated" name="DataManager::mileageUpdated">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1064,46,1291,71"/>
+<area shape="rect" id="Node000002" href="$classDataManager.html#aa15248dd048e25abe66a9120056c5eb9" title="Updates the mileage data." alt="" coords="801,8,1016,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1052,47,1016,43,1016,38,1053,42"/>
+<area shape="rect" id="Node000006" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="537,69,752,109"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="1050,69,753,86,752,81,1050,63"/>
+<area shape="rect" id="Node000003" href="$classCarManager.html#a5bf066ce114aea750d5d71c7618a9ac1" title="Initialize the MileageManager." alt="" coords="536,5,753,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="787,29,753,29,753,24,787,24"/>
+<area shape="rect" id="Node000004" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,45,488,70"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="523,42,476,47,476,42,522,37"/>
+<area shape="rect" id="Node000005" href="$classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,45,193,70"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="228,60,193,60,193,55,228,55"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="147,36,144,31,136,27,99,23,71,25,56,30,53,36,61,43,57,46,47,36,52,26,70,20,99,18,137,22,148,27,151,33"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="524,78,476,73,476,67,524,73"/>
+</map>

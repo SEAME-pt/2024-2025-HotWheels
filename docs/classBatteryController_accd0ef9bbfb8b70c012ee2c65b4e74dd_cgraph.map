@@ -1,0 +1,10 @@
+<map id="BatteryController::getBatteryPercentage" name="BatteryController::getBatteryPercentage">
+<area shape="rect" id="Node000001" title="Get the battery percentage." alt="" coords="5,37,169,77"/>
+<area shape="rect" id="Node000002" href="$classBatteryController.html#add316f29d2f9f264297eeec5249f42c3" title="Read a 16&#45;bit register from the INA219." alt="" coords="219,5,361,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,42,205,36,206,41,170,47"/>
+<area shape="rect" id="Node000004" href="$classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901" title="Read a 16&#45;bit register from the INA219." alt="" coords="217,69,363,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,68,204,73,204,78,169,73"/>
+<area shape="rect" id="Node000003" href="$classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00" title="Read a 16&#45;bit value from a register." alt="" coords="411,45,609,70"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="362,33,410,40,409,45,362,38"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="363,76,409,69,409,75,363,81"/>
+</map>

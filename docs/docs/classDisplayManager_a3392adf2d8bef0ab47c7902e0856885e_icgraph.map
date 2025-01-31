@@ -1,0 +1,12 @@
+<map id="DisplayManager::clusterMetricsToggled" name="DisplayManager::clusterMetricsToggled">
+<area shape="rect" id="Node000001" title=" " alt="" coords="827,27,1055,67"/>
+<area shape="rect" id="Node000002" href="$classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a" title="Construct a new DisplayManager object." alt="" coords="536,5,779,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="813,37,778,33,779,28,813,31"/>
+<area shape="rect" id="Node000003" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="550,55,765,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="813,63,765,67,765,62,813,57"/>
+<area shape="rect" id="Node000004" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,63,488,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="536,78,488,78,488,73,536,73"/>
+<area shape="rect" id="Node000005" href="$classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,63,193,88"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="228,78,193,78,193,73,228,73"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="147,54,144,49,136,45,99,41,71,43,56,48,53,54,61,61,57,64,47,54,52,44,70,38,99,36,137,40,148,45,151,51"/>
+</map>

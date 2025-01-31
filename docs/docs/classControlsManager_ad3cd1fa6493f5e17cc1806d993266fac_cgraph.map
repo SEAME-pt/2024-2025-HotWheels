@@ -1,0 +1,5 @@
+<map id="ControlsManager::drivingModeUpdated" name="ControlsManager::drivingModeUpdated">
+<area shape="rect" id="Node000001" title="Update the driving mode of the vehicle." alt="" coords="5,5,192,45"/>
+<area shape="rect" id="Node000002" href="$classControlsManager.html#aa925f92fc442ed25200f3bcd0df3d08a" title="Set the driving mode." alt="" coords="240,13,437,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,23,226,23,226,28,192,28"/>
+</map>

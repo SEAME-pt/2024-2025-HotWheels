@@ -1,0 +1,7 @@
+<map id="DataManager::toggleClusterTheme" name="DataManager::toggleClusterTheme">
+<area shape="rect" id="Node000001" title="Toggles the cluster theme between Dark and Light." alt="" coords="5,5,211,45"/>
+<area shape="rect" id="Node000002" href="$classDataManager.html#a374e1bebab27e4230bc39c008b9d3c7d" title="Sets the cluster theme." alt="" coords="259,13,488,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,23,245,23,245,28,211,28"/>
+<area shape="rect" id="Node000003" href="$classDataManager.html#ac740653a483138547160f4ae47dde1ec" title=" " alt="" coords="536,5,743,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="488,23,522,23,522,28,488,28"/>
+</map>

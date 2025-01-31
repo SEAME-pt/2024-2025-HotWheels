@@ -1,0 +1,5 @@
+<map id="MCP2515Configurator::sendCommand" name="MCP2515Configurator::sendCommand">
+<area shape="rect" id="Node000001" title="Send a command to the MCP2515." alt="" coords="216,5,379,45"/>
+<area shape="rect" id="Node000002" href="$classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator." alt="" coords="5,5,168,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,28,168,28,168,23,202,23"/>
+</map>

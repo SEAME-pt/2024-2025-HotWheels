@@ -1,0 +1,7 @@
+<map id="MCP2515Configurator::readCANMessage" name="MCP2515Configurator::readCANMessage">
+<area shape="rect" id="Node000001" title="Read a CAN message from the MCP2515." alt="" coords="5,37,168,77"/>
+<area shape="rect" id="Node000002" href="$classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="216,5,379,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,42,202,37,203,42,169,48"/>
+<area shape="rect" id="Node000003" href="$classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,69,379,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,67,203,72,202,78,168,72"/>
+</map>

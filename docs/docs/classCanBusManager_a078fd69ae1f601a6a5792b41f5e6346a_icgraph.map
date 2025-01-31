@@ -1,0 +1,18 @@
+<map id="CanBusManager::rpmUpdated" name="CanBusManager::rpmUpdated">
+<area shape="rect" id="Node000001" title=" " alt="" coords="819,108,1036,133"/>
+<area shape="rect" id="Node000002" href="$classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70" title="Method to connect signals." alt="" coords="536,51,771,76"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="852,108,714,79,715,73,853,103"/>
+<area shape="rect" id="Node000005" href="$classCarManager.html#a33ab3dce383d94c8500b74ed21f56724" title="Initialize the CanBusManager." alt="" coords="558,101,749,141"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="805,123,749,123,749,118,805,118"/>
+<area shape="rect" id="Node000008" href="$test__CanBusManager_8cpp.html#ad394e54b204e922e5266fce87de7390f" title="Ensures that the RPM signal emits the correct value." alt="" coords="619,165,688,191"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="853,139,689,174,688,168,852,134"/>
+<area shape="rect" id="Node000003" href="$classCanBusManager.html#ae99209d291de980c75c10f8c12231a30" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="243,5,486,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="558,51,446,33,446,28,559,46"/>
+<area shape="rect" id="Node000004" href="$classCanBusManager.html#a6fb7d4430dd1f3bf9ea2d19370978fbf" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="243,55,486,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="522,68,486,68,486,63,522,62"/>
+<area shape="rect" id="Node000006" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,108,488,133"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="544,123,488,123,488,118,544,118"/>
+<area shape="rect" id="Node000007" href="$classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,108,193,133"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="228,123,193,123,193,118,228,118"/>
+<area shape="poly" id="edge7_Node000007_Node000007" title=" " alt="" coords="147,99,144,94,136,91,99,87,71,89,56,94,53,99,61,106,57,110,47,100,52,90,70,83,99,81,137,85,148,90,151,96"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="SystemManager::SystemManager" name="SystemManager::SystemManager">
+<area shape="rect" id="Node000001" title="Construct a new SystemManager object." alt="" coords="5,302,248,327"/>
+<area shape="rect" id="Node000002" href="$classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="296,201,527,241"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,299,336,243,337,248,167,304"/>
+<area shape="rect" id="Node000010" href="$classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d" title="Destroy the SystemManager object." alt="" coords="304,330,519,355"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="248,324,291,328,290,333,248,329"/>
+<area shape="rect" id="Node000003" href="$classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3" title=" " alt="" coords="575,5,831,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="425,200,484,128,526,89,573,55,587,48,589,53,576,60,529,93,487,132,429,203"/>
+<area shape="rect" id="Node000004" href="$classSystemManager.html#af0c6c9d33fc10d511606fdfecb200d60" title="Fetch the IP address." alt="" coords="586,70,819,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="433,199,493,151,532,125,574,104,595,97,597,102,576,109,535,130,496,155,436,203"/>
+<area shape="rect" id="Node000005" href="$classSystemManager.html#a14929e75b32cf81d8d7090a4321193ce" title="Fetch the temperature." alt="" coords="577,119,828,145"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="456,199,512,176,574,155,612,145,614,150,575,160,514,181,458,204"/>
+<area shape="rect" id="Node000006" href="$classSystemManager.html#a7aadaaa64a7b5a6bfe73922cce27fb0d" title="Fetch the WiFi status." alt="" coords="605,169,800,209"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="526,206,591,199,592,204,527,211"/>
+<area shape="rect" id="Node000007" href="$classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193" title=" " alt="" coords="603,233,803,273"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="527,231,590,238,589,244,526,237"/>
+<area shape="rect" id="Node000008" href="$classSystemManager.html#a95c58f09a04fe52196c1c702c1f0afeb" title=" " alt="" coords="594,297,811,337"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="460,239,576,283,604,291,602,296,574,288,458,244"/>
+<area shape="rect" id="Node000009" href="$classSystemManager.html#a1f612cad69e98840b1e0cff8039273fa" title=" " alt="" coords="603,361,803,401"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="437,239,510,300,576,347,592,354,590,359,573,352,506,304,434,244"/>
+<area shape="rect" id="Node000011" href="$classSystemManager.html#a294f03536732c243e439f29a4bd75bc8" title=" " alt="" coords="592,426,813,451"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="438,353,500,382,575,411,611,420,610,426,574,416,498,387,436,358"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="PeripheralController::write_byte_data" name="PeripheralController::write_byte_data">
+<area shape="rect" id="Node000001" title="Writes a byte of data to a specific register." alt="" coords="5,5,157,45"/>
+<area shape="rect" id="Node000002" href="$classPeripheralController.html#afdadc72629fcdcd55298e2d6925e1056" title="Writes a byte of data to a specific register on the I2C device." alt="" coords="205,5,416,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,23,191,23,191,28,158,28"/>
+</map>

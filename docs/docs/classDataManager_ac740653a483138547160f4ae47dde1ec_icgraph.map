@@ -1,0 +1,15 @@
+<map id="DataManager::clusterThemeUpdated" name="DataManager::clusterThemeUpdated">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1329,21,1536,61"/>
+<area shape="rect" id="Node000002" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,22,751,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1315,42,1077,40,799,41,751,42,751,36,799,35,1077,34,1315,36"/>
+<area shape="rect" id="Node000005" href="$classDataManager.html#a374e1bebab27e4230bc39c008b9d3c7d" title="Sets the cluster theme." alt="" coords="1052,53,1281,79"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="1316,54,1282,58,1281,52,1316,49"/>
+<area shape="rect" id="Node000003" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
+<area shape="rect" id="Node000004" href="$classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+<area shape="rect" id="Node000006" href="$classDataManager.html#a8ba9ea7dd957fadef8c562f0865ff55e" title="Toggles the cluster theme between Dark and Light." alt="" coords="799,50,1004,90"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="1038,71,1004,71,1004,66,1038,65"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="784,60,751,56,751,51,785,55"/>
+</map>

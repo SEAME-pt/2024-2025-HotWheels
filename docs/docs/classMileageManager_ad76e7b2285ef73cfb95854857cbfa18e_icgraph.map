@@ -1,0 +1,9 @@
+<map id="MileageManager::saveMileage" name="MileageManager::saveMileage">
+<area shape="rect" id="Node000001" title="Save the mileage to the file." alt="" coords="507,31,729,56"/>
+<area shape="rect" id="Node000002" href="$classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initialize the MileageManager." alt="" coords="260,5,455,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="493,34,455,30,455,25,493,29"/>
+<area shape="rect" id="Node000003" href="$classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e" title="Shutdown the MileageManager." alt="" coords="256,55,459,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="493,57,459,61,459,55,493,52"/>
+<area shape="rect" id="Node000004" href="$classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4" title=" " alt="" coords="5,47,208,87"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="242,70,208,70,208,65,242,65"/>
+</map>

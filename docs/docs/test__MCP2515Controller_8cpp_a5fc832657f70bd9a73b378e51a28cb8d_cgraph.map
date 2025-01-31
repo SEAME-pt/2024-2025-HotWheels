@@ -1,0 +1,9 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,77,75,102"/>
+<area shape="rect" id="Node000002" href="$classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30" title="Check if the stop reading flag is set." alt="" coords="123,5,287,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,74,139,48,140,53,75,79"/>
+<area shape="rect" id="Node000003" href="$classMCP2515Controller.html#a4e62b0e8e1544fe6569dad2c6a20909a" title="Start reading CAN messages." alt="" coords="127,69,282,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,87,113,87,113,92,75,92"/>
+<area shape="rect" id="Node000004" href="$classMCP2515Controller.html#a91483fd5e7a246f44f8452f4789d6b11" title="Stop reading CAN messages." alt="" coords="127,133,282,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="75,100,140,126,139,131,73,105"/>
+</map>

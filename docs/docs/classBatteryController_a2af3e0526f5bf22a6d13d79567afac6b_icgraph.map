@@ -1,0 +1,5 @@
+<map id="BatteryController::setCalibration32V2A" name="BatteryController::setCalibration32V2A">
+<area shape="rect" id="Node000001" title="Set the calibration for the INA219." alt="" coords="196,5,351,45"/>
+<area shape="rect" id="Node000002" href="$classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c" title="Construct a new BatteryController object." alt="" coords="5,5,148,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,28,148,28,148,23,182,23"/>
+</map>

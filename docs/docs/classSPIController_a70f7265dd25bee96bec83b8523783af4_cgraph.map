@@ -1,0 +1,5 @@
+<map id="SPIController::readByte" name="SPIController::readByte">
+<area shape="rect" id="Node000001" title="Read a byte from the SPI device." alt="" coords="5,5,179,31"/>
+<area shape="rect" id="Node000002" href="$classSPIController.html#a7df5d1dda46e021d5d8b7c2e6510e157" title="Transfer data over SPI." alt="" coords="227,5,412,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,15,213,15,213,21,179,21"/>
+</map>

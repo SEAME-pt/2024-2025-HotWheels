@@ -1,0 +1,12 @@
+<map id="ControlsManager::directionChanged" name="ControlsManager::directionChanged">
+<area shape="rect" id="Node000001" title=" " alt="" coords="803,37,1001,77"/>
+<area shape="rect" id="Node000002" href="$classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title="Construct a new ControlsManager object." alt="" coords="548,5,743,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="789,46,743,40,743,35,789,41"/>
+<area shape="rect" id="Node000003" href="$classCarManager.html#a7d8d0d9b58a5ecc33e06cae2ccbdf184" title="Initialize the ControlsManager." alt="" coords="536,69,755,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="789,74,755,78,754,73,789,69"/>
+<area shape="rect" id="Node000004" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,77,488,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="522,92,488,92,488,87,522,87"/>
+<area shape="rect" id="Node000005" href="$classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,77,193,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="228,92,193,92,193,87,228,87"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="147,68,144,63,136,59,99,55,71,57,56,62,53,68,61,75,57,78,47,68,52,58,70,52,99,50,137,54,148,59,151,65"/>
+</map>

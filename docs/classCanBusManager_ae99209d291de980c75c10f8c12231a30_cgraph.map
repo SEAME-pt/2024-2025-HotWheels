@@ -1,0 +1,13 @@
+<map id="CanBusManager::CanBusManager" name="CanBusManager::CanBusManager">
+<area shape="rect" id="Node000001" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,92,248,117"/>
+<area shape="rect" id="Node000002" href="$classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70" title="Method to connect signals." alt="" coords="296,92,531,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,102,282,102,282,107,248,107"/>
+<area shape="rect" id="Node000003" href="$classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a" title=" " alt="" coords="585,5,803,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="444,89,505,65,578,41,614,31,615,36,579,46,507,70,446,94"/>
+<area shape="rect" id="Node000004" href="$classIMCP2515Controller.html#a7f546ecbb7d88b41f23b1852c82d4f8d" title=" " alt="" coords="619,55,769,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="531,90,605,82,605,87,531,95"/>
+<area shape="rect" id="Node000005" href="$classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title=" " alt="" coords="579,120,809,145"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="531,114,566,117,565,122,531,119"/>
+<area shape="rect" id="Node000006" href="$classIMCP2515Controller.html#ae8ffa002fcf87f1a8dbdf6ff4347d1fd" title=" " alt="" coords="619,170,769,210"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="455,115,579,154,611,164,610,169,578,159,454,120"/>
+</map>

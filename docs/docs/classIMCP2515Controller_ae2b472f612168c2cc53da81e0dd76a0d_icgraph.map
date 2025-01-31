@@ -1,0 +1,7 @@
+<map id="IMCP2515Controller::processReading" name="IMCP2515Controller::processReading">
+<area shape="rect" id="Node000001" title=" " alt="" coords="245,27,396,67"/>
+<area shape="rect" id="Node000002" href="$classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager." alt="" coords="5,5,197,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,38,196,33,197,28,232,33"/>
+<area shape="rect" id="Node000003" href="$classMockMCP2515Controller.html#a32b9cf53cacbed8b1fff38e9f10a5508" title="Mocked method to process the reading of the MCP2515 controller." alt="" coords="10,55,193,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,61,193,66,192,61,231,56"/>
+</map>
