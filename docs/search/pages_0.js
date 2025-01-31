@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cluster_0',['Hotwheels-Cluster',['../index.html',1,'']]]
+  ['list_0',['Test List',['../test.html',1,'']]]
 ];

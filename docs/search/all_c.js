@@ -10,6 +10,5 @@ var searchData=
   ['handlesteeringdata_7',['handleSteeringData',['../classDataManager.html#a8d76e60050120ecb940f90726e03cbf8',1,'DataManager']]],
   ['handletemperaturedata_8',['handleTemperatureData',['../classDataManager.html#a866f45795ff896aecf89d853f4f1ac48',1,'DataManager']]],
   ['handletimedata_9',['handleTimeData',['../classDataManager.html#a0198245d11fb32c03ebeb4169b223001',1,'DataManager']]],
-  ['handlewifidata_10',['handleWifiData',['../classDataManager.html#aafaa2c92f70e5a3296caeab490c29de9',1,'DataManager']]],
-  ['hotwheels_20cluster_11',['Hotwheels-Cluster',['../index.html',1,'']]]
+  ['handlewifidata_10',['handleWifiData',['../classDataManager.html#aafaa2c92f70e5a3296caeab490c29de9',1,'DataManager']]]
 ];

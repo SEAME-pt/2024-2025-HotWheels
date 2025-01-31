@@ -1,15 +1,9 @@
 <map id="MileageManager::initialize" name="MileageManager::initialize">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,200,95"/>
-<area shape="rect" id="Node000002" href="$classMileageFileHandler.html#a8dd5ab8bb8bff7be165ecaa6c35c2df6" title=" " alt="" coords="292,5,440,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,67,278,42,279,47,162,73"/>
-<area shape="rect" id="Node000003" href="$classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title=" " alt="" coords="255,70,477,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,80,241,80,241,85,200,85"/>
-<area shape="rect" id="Node000005" href="$classMileageManager.html#a912c517158c90834792c3d00c0af101c" title=" " alt="" coords="248,126,484,151"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="164,93,292,120,291,126,163,98"/>
-<area shape="rect" id="Node000004" href="$classMileageFileHandler.html#a518c1fdab28768863d4852b3c78c990d" title=" " alt="" coords="581,55,729,95"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="477,77,567,74,568,80,477,82"/>
-<area shape="rect" id="Node000006" href="$classMileageCalculator.html#ae432a0be0d9e5622b21517b0ddbd68c1" title=" " alt="" coords="581,119,729,159"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="484,136,568,136,568,141,484,141"/>
-<area shape="rect" id="Node000007" href="$classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title=" " alt="" coords="532,183,779,209"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="431,149,578,178,577,183,430,154"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,200,56"/>
+<area shape="rect" id="Node000002" href="$classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title=" " alt="" coords="255,5,477,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,31,241,27,241,33,201,37"/>
+<area shape="rect" id="Node000003" href="$classMileageManager.html#a912c517158c90834792c3d00c0af101c" title=" " alt="" coords="248,55,484,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,50,235,53,234,58,200,55"/>
+<area shape="rect" id="Node000004" href="$classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title=" " alt="" coords="532,55,779,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="484,65,518,65,518,70,484,70"/>
 </map>

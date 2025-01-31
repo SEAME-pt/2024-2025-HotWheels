@@ -1,18 +1,14 @@
 <map id="EngineController::~EngineController" name="EngineController::~EngineController">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,88,147,128"/>
-<area shape="rect" id="Node000002" href="$classEngineController.html#a074d7c44fc23053b0bc8aee6650971bf" title=" " alt="" coords="195,95,361,121"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,105,181,105,181,111,147,111"/>
-<area shape="rect" id="Node000003" href="$classEngineController.html#ad865d656c4d1dd4a86b9206a2a9bd926" title=" " alt="" coords="409,56,568,96"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="361,93,395,87,396,93,362,98"/>
-<area shape="rect" id="Node000006" href="$classEngineController.html#afb4f398c794e6d6bb99b2e5426ce4567" title=" " alt="" coords="409,120,568,160"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="362,118,396,123,395,129,361,123"/>
-<area shape="rect" id="Node000004" href="$EngineController_8cpp.html#a83100694a686c920777a21081dc0db93" title=" " alt="" coords="680,70,743,95"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="568,76,666,79,666,84,568,81"/>
-<area shape="rect" id="Node000005" href="$classIPeripheralController.html#a659e9348051957ed9c0f9fcea780bc98" title=" " alt="" coords="633,5,789,45"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="568,55,620,43,621,49,569,61"/>
-<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="566,117,666,91,667,97,568,123"/>
-<area shape="rect" id="Node000007" href="$classIPeripheralController.html#a3c0649bd1777013ba1c2f127fcf8a3bf" title=" " alt="" coords="633,120,789,160"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="568,137,620,137,620,143,568,143"/>
-<area shape="rect" id="Node000008" href="$classEngineController.html#ac2a03e1ff8759c458d7cc34ccae7f22c" title=" " alt="" coords="616,184,807,224"/>
-<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="560,158,629,178,627,183,558,163"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,147,77"/>
+<area shape="rect" id="Node000002" href="$classEngineController.html#a074d7c44fc23053b0bc8aee6650971bf" title=" " alt="" coords="195,45,361,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,55,181,55,181,60,147,60"/>
+<area shape="rect" id="Node000003" href="$classEngineController.html#ad865d656c4d1dd4a86b9206a2a9bd926" title=" " alt="" coords="409,5,568,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="361,42,395,37,396,42,362,47"/>
+<area shape="rect" id="Node000005" href="$classEngineController.html#afb4f398c794e6d6bb99b2e5426ce4567" title=" " alt="" coords="409,69,568,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="362,67,396,73,395,78,361,73"/>
+<area shape="rect" id="Node000004" href="$EngineController_8cpp.html#a83100694a686c920777a21081dc0db93" title=" " alt="" coords="680,17,743,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="568,24,666,26,666,31,568,29"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="563,67,666,39,667,44,565,72"/>
+<area shape="rect" id="Node000006" href="$classEngineController.html#ac2a03e1ff8759c458d7cc34ccae7f22c" title=" " alt="" coords="616,69,807,109"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="568,87,602,87,602,92,568,92"/>
 </map>

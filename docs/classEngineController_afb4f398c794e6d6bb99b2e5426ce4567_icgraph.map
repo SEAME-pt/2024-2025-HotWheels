@@ -1,9 +1,7 @@
 <map id="EngineController::set_steering" name="EngineController::set_steering">
-<area shape="rect" id="Node000001" title=" " alt="" coords="437,35,596,75"/>
-<area shape="rect" id="Node000002" href="$classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title=" " alt="" coords="195,5,389,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="423,45,389,41,390,35,424,40"/>
-<area shape="rect" id="Node000003" href="$classEngineController.html#a074d7c44fc23053b0bc8aee6650971bf" title=" " alt="" coords="209,70,375,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="424,69,376,75,375,70,423,64"/>
-<area shape="rect" id="Node000004" href="$classEngineController.html#af49b8503ec1964013a1a232de4d5ec39" title=" " alt="" coords="5,63,147,103"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="195,85,147,85,147,80,195,80"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="409,5,568,45"/>
+<area shape="rect" id="Node000002" href="$classEngineController.html#a074d7c44fc23053b0bc8aee6650971bf" title=" " alt="" coords="195,13,361,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="396,28,362,28,362,23,396,23"/>
+<area shape="rect" id="Node000003" href="$classEngineController.html#af49b8503ec1964013a1a232de4d5ec39" title=" " alt="" coords="5,5,147,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="181,28,147,28,147,23,181,23"/>
 </map>

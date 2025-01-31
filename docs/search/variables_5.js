@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spicontroller_0',['spiController',['../classSPIControllerTest.html#abb02da6f4540095404657fd4b9a24124',1,'SPIControllerTest']]]
+  ['output_0',['OUTPUT',['../namespacetest-entry-point.html#ab367dd6cdb31edeb71473c7c58bf0933',1,'test-entry-point']]]
 ];

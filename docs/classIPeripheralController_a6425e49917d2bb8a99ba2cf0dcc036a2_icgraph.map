@@ -1,7 +1,7 @@
 <map id="IPeripheralController::init_servo" name="IPeripheralController::init_servo">
-<area shape="rect" id="Node000001" title=" " alt="" coords="236,35,392,75"/>
-<area shape="rect" id="Node000002" href="$classEngineController.html#a36923247340945dd1c6edb1a073361a6" title=" " alt="" coords="5,5,188,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,45,188,40,189,35,223,40"/>
-<area shape="rect" id="Node000003" href="$test__PeripheralController_8cpp.html#a16e05fa200ebbd82a3f90d8a93e3f9d8" title=" " alt="" coords="69,70,124,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,69,125,82,124,77,222,64"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="240,35,396,75"/>
+<area shape="rect" id="Node000002" href="$classMockPeripheralController.html#abc29244a69059e27963c9fb37bbba8cf" title="Mocked method to initialize the servo motors." alt="" coords="5,5,192,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,45,192,40,193,35,227,40"/>
+<area shape="rect" id="Node000003" href="$test__PeripheralController_8cpp.html#a16e05fa200ebbd82a3f90d8a93e3f9d8" title="Ensures that init_servo() is called." alt="" coords="71,70,126,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,69,127,82,126,77,226,64"/>
 </map>

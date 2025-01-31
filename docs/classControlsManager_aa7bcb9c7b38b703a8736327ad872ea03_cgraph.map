@@ -1,30 +1,16 @@
 <map id="ControlsManager::ControlsManager" name="ControlsManager::ControlsManager">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,248,200,288"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,156,200,196"/>
 <area shape="rect" id="Node000002" href="$classControlsManager.html#a8dc2e1cb0a9ddf10e37034404e7460b4" title=" " alt="" coords="248,5,447,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,247,129,207,159,155,198,102,246,55,254,50,257,54,250,59,202,105,163,158,134,209,115,249"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,154,175,105,210,78,247,55,260,48,263,53,249,60,213,83,179,109,125,158"/>
 <area shape="rect" id="Node000003" href="$classEngineController.html#afe7335b983ea3c6c36dc0eaa00918d82" title=" " alt="" coords="250,69,445,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,246,172,188,207,155,247,126,271,113,273,117,249,130,211,159,175,191,122,250"/>
-<area shape="rect" id="Node000004" href="$classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3" title=" " alt="" coords="518,161,662,201"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="124,246,177,204,211,184,247,169,313,156,381,152,447,155,504,162,504,167,446,160,381,157,314,161,249,175,213,189,180,209,127,250"/>
-<area shape="rect" id="Node000005" href="$classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4" title=" " alt="" coords="275,184,419,224"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="179,245,262,224,263,229,181,251"/>
-<area shape="rect" id="Node000006" href="$classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209" title=" " alt="" coords="275,248,419,288"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="200,265,262,265,262,271,200,271"/>
-<area shape="rect" id="Node000007" href="$classEngineController.html#ad865d656c4d1dd4a86b9206a2a9bd926" title=" " alt="" coords="268,312,427,352"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="181,285,258,306,257,311,179,291"/>
-<area shape="rect" id="Node000010" href="$classEngineController.html#afb4f398c794e6d6bb99b2e5426ce4567" title=" " alt="" coords="268,376,427,416"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="131,286,184,324,249,362,265,369,263,373,247,366,181,328,128,291"/>
-<area shape="rect" id="Node000012" href="$classEngineController.html#ac2a03e1ff8759c458d7cc34ccae7f22c" title=" " alt="" coords="495,436,685,476"/>
-<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="117,287,138,319,167,358,205,396,249,426,306,447,366,459,425,464,481,464,481,470,425,470,365,464,304,452,247,430,202,400,163,361,133,322,113,290"/>
-<area shape="rect" id="Node000013" href="$classControlsManager.html#af4a0e934840d2b38f783e6b52fedab38" title=" " alt="" coords="250,491,445,531"/>
-<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="116,287,136,325,165,374,204,425,250,470,268,482,266,487,246,474,200,429,161,377,131,328,111,290"/>
-<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="411,245,446,233,525,204,527,209,448,239,412,251"/>
-<area shape="rect" id="Node000008" href="$EngineController_8cpp.html#a83100694a686c920777a21081dc0db93" title=" " alt="" coords="559,322,621,347"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="427,330,545,332,545,337,427,336"/>
-<area shape="rect" id="Node000009" href="$classIPeripheralController.html#a659e9348051957ed9c0f9fcea780bc98" title=" " alt="" coords="512,257,668,297"/>
-<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="427,312,498,295,499,300,428,317"/>
-<area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="427,373,545,343,546,348,428,379"/>
-<area shape="rect" id="Node000011" href="$classIPeripheralController.html#a3c0649bd1777013ba1c2f127fcf8a3bf" title=" " alt="" coords="512,372,668,412"/>
-<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="427,392,498,391,498,396,427,397"/>
-<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="428,413,496,430,495,435,427,418"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,153,276,112,278,117,161,158"/>
+<area shape="rect" id="Node000004" href="$classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3" title=" " alt="" coords="495,156,639,196"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="200,170,248,169,447,169,481,170,481,175,447,175,248,175,200,176"/>
+<area shape="rect" id="Node000005" href="$classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209" title=" " alt="" coords="275,184,419,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="201,184,262,192,261,197,200,190"/>
+<area shape="rect" id="Node000006" href="$classControlsManager.html#af4a0e934840d2b38f783e6b52fedab38" title=" " alt="" coords="250,248,445,288"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="151,194,249,234,270,241,268,246,247,238,149,199"/>
+<area shape="rect" id="Node000007" href="$classEngineController.html#ac2a03e1ff8759c458d7cc34ccae7f22c" title=" " alt="" coords="252,312,443,352"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="124,194,178,246,212,273,249,298,262,304,260,309,247,302,209,278,174,250,121,198"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="419,192,480,184,481,190,420,197"/>
 </map>
