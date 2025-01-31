@@ -17,6 +17,7 @@ var searchData=
   ['_7emileagecalculator_14',['~MileageCalculator',['../classMileageCalculator.html#ad252dc84b4a3074b1b376759ab2ed7b0',1,'MileageCalculator']]],
   ['_7emileagefilehandler_15',['~MileageFileHandler',['../classMileageFileHandler.html#aa685592fce3cb7992e89cf6a6b65c7d7',1,'MileageFileHandler']]],
   ['_7emileagemanager_16',['~MileageManager',['../classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4',1,'MileageManager']]],
-  ['_7eperipheralcontroller_17',['~PeripheralController',['../classPeripheralController.html#a5f4b0999172eb541ab5066139c9129de',1,'PeripheralController']]],
-  ['_7espicontroller_18',['~SPIController',['../classSPIController.html#af7e0207785deb89c9e7c7d74d20ba876',1,'SPIController']]]
+  ['_7emocksyscalls_17',['~MockSysCalls',['../classMockSysCalls.html#a4e1bce1416b03d259780dfef9923131d',1,'MockSysCalls']]],
+  ['_7eperipheralcontroller_18',['~PeripheralController',['../classPeripheralController.html#a5f4b0999172eb541ab5066139c9129de',1,'PeripheralController']]],
+  ['_7espicontroller_19',['~SPIController',['../classSPIController.html#af7e0207785deb89c9e7c7d74d20ba876',1,'SPIController']]]
 ];

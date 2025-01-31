@@ -104,27 +104,44 @@ $(function(){initNavTree('classMileageCalculator.html',''); initResizable(true);
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">MileageCalculator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that calculates the total distance traveled based on speed measurements.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="MileageCalculator_8hpp_source.html">MileageCalculator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae089dd0499bccbc71c2b01010d2342b7" id="r_ae089dd0499bccbc71c2b01010d2342b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae089dd0499bccbc71c2b01010d2342b7">MileageCalculator</a> ()</td></tr>
+<tr class="memdesc:ae089dd0499bccbc71c2b01010d2342b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classMileageCalculator.html" title="Class that calculates the total distance traveled based on speed measurements.">MileageCalculator</a> object.  <br /></td></tr>
 <tr class="separator:ae089dd0499bccbc71c2b01010d2342b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad252dc84b4a3074b1b376759ab2ed7b0" id="r_ad252dc84b4a3074b1b376759ab2ed7b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad252dc84b4a3074b1b376759ab2ed7b0">~MileageCalculator</a> ()=default</td></tr>
 <tr class="separator:ad252dc84b4a3074b1b376759ab2ed7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d21d739a248a8609a7ee375f198fb7c" id="r_a3d21d739a248a8609a7ee375f198fb7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d21d739a248a8609a7ee375f198fb7c">addSpeed</a> (float speed)</td></tr>
+<tr class="memdesc:a3d21d739a248a8609a7ee375f198fb7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a speed value to the calculator.  <br /></td></tr>
 <tr class="separator:a3d21d739a248a8609a7ee375f198fb7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae432a0be0d9e5622b21517b0ddbd68c1" id="r_ae432a0be0d9e5622b21517b0ddbd68c1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae432a0be0d9e5622b21517b0ddbd68c1">calculateDistance</a> ()</td></tr>
+<tr class="memdesc:ae432a0be0d9e5622b21517b0ddbd68c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the distance traveled by the vehicle.  <br /></td></tr>
 <tr class="separator:ae432a0be0d9e5622b21517b0ddbd68c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a42959668c7f201c18b7a838d389dd7fb" id="r_a42959668c7f201c18b7a838d389dd7fb"><td class="memItemLeft" align="right" valign="top">QList&lt; QPair&lt; float, qint64 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42959668c7f201c18b7a838d389dd7fb">m_speedValues</a></td></tr>
+<tr class="memdesc:a42959668c7f201c18b7a838d389dd7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of speed and interval pairs to store measurements.  <br /></td></tr>
+<tr class="separator:a42959668c7f201c18b7a838d389dd7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30a0d4d7603d4ab626775976b92d8e38" id="r_a30a0d4d7603d4ab626775976b92d8e38"><td class="memItemLeft" align="right" valign="top">QElapsedTimer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30a0d4d7603d4ab626775976b92d8e38">m_intervalTimer</a></td></tr>
+<tr class="memdesc:a30a0d4d7603d4ab626775976b92d8e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer used to track the time intervals between speed measurements.  <br /></td></tr>
+<tr class="separator:a30a0d4d7603d4ab626775976b92d8e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="MileageCalculator_8hpp_source.html#l00007">7</a> of file <a class="el" href="MileageCalculator_8hpp_source.html">MileageCalculator.hpp</a>.</p>
+<div class="textblock"><p>Class that calculates the total distance traveled based on speed measurements. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageCalculator_8hpp_source.html#l00028">28</a> of file <a class="el" href="MileageCalculator_8hpp_source.html">MileageCalculator.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae089dd0499bccbc71c2b01010d2342b7" name="ae089dd0499bccbc71c2b01010d2342b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae089dd0499bccbc71c2b01010d2342b7">&#9670;&#160;</a></span>MileageCalculator()</h2>
@@ -140,9 +157,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for the <a class="el" href="classMileageCalculator.html">MileageCalculator</a> class. Initializes the interval timer to track the time between speed measurements. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageCalculator_8cpp_source.html#l00004">4</a> of file <a class="el" href="MileageCalculator_8cpp_source.html">MileageCalculator.cpp</a>.</p>
+<p>Construct a new <a class="el" href="classMileageCalculator.html" title="Class that calculates the total distance traveled based on speed measurements.">MileageCalculator</a> object. </p>
+<p>This constructor initializes the <a class="el" href="classMileageCalculator.html" title="Class that calculates the total distance traveled based on speed measurements.">MileageCalculator</a> object with a started interval timer. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageCalculator_8cpp_source.html#l00027">27</a> of file <a class="el" href="MileageCalculator_8cpp_source.html">MileageCalculator.cpp</a>.</p>
 
 </div>
 </div>
@@ -168,7 +187,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Destructor for the <a class="el" href="classMileageCalculator.html">MileageCalculator</a> class. The destructor is implicitly defaulted as no resources need explicit cleanup. </p>
 
 </div>
 </div>
@@ -187,15 +205,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Adds a new speed measurement along with the time interval. The speed and interval are stored for later calculation of total distance.</p>
+
+<p>Add a speed value to the calculator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">speed</td><td>The speed measurement in kilometers per hour. </td></tr>
+    <tr><td class="paramname">speed</td><td>The speed value to add.</td></tr>
   </table>
   </dd>
 </dl>
+<p>This function adds a speed value to the calculator with the current interval time. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageCalculator_8cpp_source.html#l00009">9</a> of file <a class="el" href="MileageCalculator_8cpp_source.html">MileageCalculator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MileageCalculator_8cpp_source.html#l00035">35</a> of file <a class="el" href="MileageCalculator_8cpp_source.html">MileageCalculator.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,10 +233,65 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the total distance traveled based on the stored speed values and their corresponding intervals.</p>
-<dl class="section return"><dt>Returns</dt><dd>The total distance traveled in meters. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="MileageCalculator_8cpp_source.html#l00023">23</a> of file <a class="el" href="MileageCalculator_8cpp_source.html">MileageCalculator.cpp</a>.</p>
+<p>Calculate the distance traveled by the vehicle. </p>
+<dl class="section return"><dt>Returns</dt><dd>double The distance traveled by the vehicle.</dd></dl>
+<p>This function calculates the distance traveled by the vehicle based on the speed values received. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageCalculator_8cpp_source.html#l00054">54</a> of file <a class="el" href="MileageCalculator_8cpp_source.html">MileageCalculator.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a30a0d4d7603d4ab626775976b92d8e38" name="a30a0d4d7603d4ab626775976b92d8e38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30a0d4d7603d4ab626775976b92d8e38">&#9670;&#160;</a></span>m_intervalTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QElapsedTimer MileageCalculator::m_intervalTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer used to track the time intervals between speed measurements. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageCalculator_8hpp_source.html#l00039">39</a> of file <a class="el" href="MileageCalculator_8hpp_source.html">MileageCalculator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a42959668c7f201c18b7a838d389dd7fb" name="a42959668c7f201c18b7a838d389dd7fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42959668c7f201c18b7a838d389dd7fb">&#9670;&#160;</a></span>m_speedValues</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt;QPair&lt;float, qint64&gt; &gt; MileageCalculator::m_speedValues</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>List of speed and interval pairs to store measurements. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageCalculator_8hpp_source.html#l00037">37</a> of file <a class="el" href="MileageCalculator_8hpp_source.html">MileageCalculator.hpp</a>.</p>
 
 </div>
 </div>

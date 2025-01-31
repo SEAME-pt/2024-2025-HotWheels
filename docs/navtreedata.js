@@ -39,7 +39,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
@@ -61,7 +61,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BatteryController_8cpp.html",
-"classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0"
+"classIMCP2515Controller.html",
+"functions_func_e.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

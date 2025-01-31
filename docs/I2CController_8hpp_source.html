@@ -106,35 +106,36 @@ $(function(){initNavTree('I2CController_8hpp_source.html',''); initResizable(tru
   <div class="headertitle"><div class="title">I2CController.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="I2CController_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef I2CCONTROLLER_HPP</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define I2CCONTROLLER_HPP</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classI2CController.html">    7</a></span><span class="keyword">class </span><a class="code hl_function" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController</a></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">int</span> i2c_fd_;     <span class="comment">// File descriptor for the I2C device</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">int</span> i2c_addr_;   <span class="comment">// I2C device address</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_function" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *i2c_device, <span class="keywordtype">int</span> address);</div>
+<a href="I2CController_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifndef I2CCONTROLLER_HPP</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define I2CCONTROLLER_HPP</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classI2CController.html#a6b0b813e9c5b9ac827bc2c0374b21ff0">~I2CController</a>();</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">writeRegister</a>(uint8_t reg, uint16_t value);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    uint16_t <a class="code hl_function" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">readRegister</a>(uint8_t reg);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classI2CController.html">   26</a></span><span class="keyword">class </span><a class="code hl_function" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController</a> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">   29</a></span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>;   </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">   31</a></span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">i2c_addr_</a>; </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <a class="code hl_function" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *i2c_device, <span class="keywordtype">int</span> address);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keyword">virtual</span> <a class="code hl_function" href="classI2CController.html#a6b0b813e9c5b9ac827bc2c0374b21ff0">~I2CController</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">writeRegister</a>(uint8_t reg, uint16_t value);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  uint16_t <a class="code hl_function" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">readRegister</a>(uint8_t reg);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">// I2CCONTROLLER_HPP</span></div>
-<div class="ttc" id="aclassI2CController_html_a6b0b813e9c5b9ac827bc2c0374b21ff0"><div class="ttname"><a href="classI2CController.html#a6b0b813e9c5b9ac827bc2c0374b21ff0">I2CController::~I2CController</a></div><div class="ttdeci">virtual ~I2CController()</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00024">I2CController.cpp:24</a></div></div>
-<div class="ttc" id="aclassI2CController_html_abc0aadcfe4073103553746f2011edf75"><div class="ttname"><a href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">I2CController::writeRegister</a></div><div class="ttdeci">void writeRegister(uint8_t reg, uint16_t value)</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00031">I2CController.cpp:31</a></div></div>
-<div class="ttc" id="aclassI2CController_html_ac08dc2b4529d59d0129f09791a4a5e00"><div class="ttname"><a href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">I2CController::readRegister</a></div><div class="ttdeci">uint16_t readRegister(uint8_t reg)</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00039">I2CController.cpp:39</a></div></div>
-<div class="ttc" id="aclassI2CController_html_acc26f9f8e1263b59dcd0ef7851d1a07a"><div class="ttname"><a href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController::I2CController</a></div><div class="ttdeci">I2CController(const char *i2c_device, int address)</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00008">I2CController.cpp:8</a></div></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">// I2CCONTROLLER_HPP</span></div>
+<div class="ttc" id="aclassI2CController_html_a6b0b813e9c5b9ac827bc2c0374b21ff0"><div class="ttname"><a href="classI2CController.html#a6b0b813e9c5b9ac827bc2c0374b21ff0">I2CController::~I2CController</a></div><div class="ttdeci">virtual ~I2CController()</div><div class="ttdoc">Destroy the I2CController object.</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00052">I2CController.cpp:52</a></div></div>
+<div class="ttc" id="aclassI2CController_html_abc0aadcfe4073103553746f2011edf75"><div class="ttname"><a href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">I2CController::writeRegister</a></div><div class="ttdeci">void writeRegister(uint8_t reg, uint16_t value)</div><div class="ttdoc">Write a 16-bit value to a register.</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00064">I2CController.cpp:64</a></div></div>
+<div class="ttc" id="aclassI2CController_html_ac08dc2b4529d59d0129f09791a4a5e00"><div class="ttname"><a href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">I2CController::readRegister</a></div><div class="ttdeci">uint16_t readRegister(uint8_t reg)</div><div class="ttdoc">Read a 16-bit value from a register.</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00079">I2CController.cpp:79</a></div></div>
+<div class="ttc" id="aclassI2CController_html_acc26f9f8e1263b59dcd0ef7851d1a07a"><div class="ttname"><a href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController::I2CController</a></div><div class="ttdeci">I2CController(const char *i2c_device, int address)</div><div class="ttdoc">Construct a new I2CController object.</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8cpp_source.html#l00034">I2CController.cpp:34</a></div></div>
+<div class="ttc" id="aclassI2CController_html_ad83582d34723f9a5de073fbae04c5f43"><div class="ttname"><a href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">I2CController::i2c_fd_</a></div><div class="ttdeci">int i2c_fd_</div><div class="ttdoc">File descriptor for the I2C device.</div><div class="ttdef"><b>Definition</b> <a href="#l00029">I2CController.hpp:29</a></div></div>
+<div class="ttc" id="aclassI2CController_html_affdd88dfc9472d548d10ebf37c79ef2a"><div class="ttname"><a href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">I2CController::i2c_addr_</a></div><div class="ttdeci">int i2c_addr_</div><div class="ttdoc">I2C device address.</div><div class="ttdef"><b>Definition</b> <a href="#l00031">I2CController.hpp:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

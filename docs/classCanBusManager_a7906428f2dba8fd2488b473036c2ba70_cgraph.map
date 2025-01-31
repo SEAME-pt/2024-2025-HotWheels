@@ -1,0 +1,11 @@
+<map id="CanBusManager::connectSignals" name="CanBusManager::connectSignals">
+<area shape="rect" id="Node000001" title="Method to connect signals." alt="" coords="5,92,240,117"/>
+<area shape="rect" id="Node000002" href="$classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a" title="Signal emitted when the RPM is updated." alt="" coords="295,5,512,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,89,215,65,287,41,323,31,325,36,289,46,217,70,155,94"/>
+<area shape="rect" id="Node000003" href="$classIMCP2515Controller.html#a7f546ecbb7d88b41f23b1852c82d4f8d" title="Signal emitted when the RPM is updated." alt="" coords="328,55,479,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,90,314,82,315,87,241,95"/>
+<area shape="rect" id="Node000004" href="$classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title="Signal emitted when the speed is updated." alt="" coords="288,120,519,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,114,275,117,274,122,240,119"/>
+<area shape="rect" id="Node000005" href="$classIMCP2515Controller.html#ae8ffa002fcf87f1a8dbdf6ff4347d1fd" title="Signal emitted when the speed is updated." alt="" coords="328,170,479,210"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="164,115,289,154,320,164,319,169,287,159,163,120"/>
+</map>

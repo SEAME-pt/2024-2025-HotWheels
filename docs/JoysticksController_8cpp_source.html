@@ -106,94 +106,89 @@ $(function(){initNavTree('JoysticksController_8cpp_source.html',''); initResizab
   <div class="headertitle"><div class="title">JoysticksController.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="JoysticksController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="JoysticksController_8hpp.html">JoysticksController.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;QThread&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classJoysticksController.html#a27efeae594a8a69b18b124ff98fcc305">    5</a></span><a class="code hl_function" href="classJoysticksController.html#a27efeae594a8a69b18b124ff98fcc305">JoysticksController::JoysticksController</a>(std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">int</span>)&gt; steeringCallback,</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>                                         std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">int</span>)&gt; speedCallback,</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>                                         QObject *parent)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    : QObject(parent)</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    , m_joystick(nullptr)</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    , m_updateSteering(std::move(steeringCallback))</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    , m_updateSpeed(std::move(speedCallback))</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    , m_running(false)</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{}</div>
+<a href="JoysticksController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="JoysticksController_8hpp.html">JoysticksController.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;QThread&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classJoysticksController.html#a27efeae594a8a69b18b124ff98fcc305">   34</a></span><a class="code hl_function" href="classJoysticksController.html#a27efeae594a8a69b18b124ff98fcc305">JoysticksController::JoysticksController</a>(</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">int</span>)&gt; steeringCallback,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">int</span>)&gt; speedCallback, QObject *parent)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    : QObject(parent), <a class="code hl_variable" href="classJoysticksController.html#a4588e2c5ad130ddfd2547e394cbd3ce5">m_joystick</a>(nullptr),</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      <a class="code hl_variable" href="classJoysticksController.html#af2af8d8f52e65aba590bea81c95a640a">m_updateSteering</a>(std::move(steeringCallback)),</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      <a class="code hl_variable" href="classJoysticksController.html#a6061ad86100739fe8190b737baf2db16">m_updateSpeed</a>(std::move(speedCallback)), <a class="code hl_variable" href="classJoysticksController.html#a717593cd8427b7093ebbd58c6c526b36">m_running</a>(false) {}</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classJoysticksController.html#aefc241b71fcfefa8850ffe417f6b2363">   15</a></span><a class="code hl_function" href="classJoysticksController.html#aefc241b71fcfefa8850ffe417f6b2363">JoysticksController::~JoysticksController</a>()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">if</span> (m_joystick) {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        SDL_JoystickClose(m_joystick);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    SDL_Quit();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
-</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4">   23</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4">JoysticksController::init</a>()</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (SDL_Init(SDL_INIT_JOYSTICK) &lt; 0) {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;Failed to initialize SDL:&quot;</span> &lt;&lt; SDL_GetError();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    m_joystick = SDL_JoystickOpen(0);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (!m_joystick) {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;Failed to open joystick.&quot;</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        SDL_Quit();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
-</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classJoysticksController.html#a4b742c03decec5465e30a4d1cd4d7c47">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classJoysticksController.html#a4b742c03decec5465e30a4d1cd4d7c47">JoysticksController::requestStop</a>()</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    m_running = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
-</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
 <div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209">   45</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209">JoysticksController::processInput</a>()</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    m_running = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">if</span> (!m_joystick) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        qDebug() &lt;&lt; <span class="stringliteral">&quot;Joystick not initialized.&quot;</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        emit <a class="code hl_signal" href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3">finished</a>();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">while</span> (m_running &amp;&amp; !QThread::currentThread()-&gt;isInterruptionRequested()) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        SDL_Event e;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">while</span> (SDL_PollEvent(&amp;e)) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">if</span> (e.type == SDL_JOYAXISMOTION) {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="keywordflow">if</span> (e.jaxis.axis == 0) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                    m_updateSteering(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(e.jaxis.value / 32767.0 * 180));</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (e.jaxis.axis == 3) {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                    m_updateSpeed(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(e.jaxis.value / 32767.0 * 100));</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        QThread::msleep(10);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// qDebug() &lt;&lt; &quot;Joystick controller loop finished.&quot;;</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    emit <a class="code hl_signal" href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3">finished</a>();</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classJoysticksController.html#aefc241b71fcfefa8850ffe417f6b2363">   45</a></span><a class="code hl_function" href="classJoysticksController.html#aefc241b71fcfefa8850ffe417f6b2363">JoysticksController::~JoysticksController</a>() {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classJoysticksController.html#a4588e2c5ad130ddfd2547e394cbd3ce5">m_joystick</a>) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    SDL_JoystickClose(<a class="code hl_variable" href="classJoysticksController.html#a4588e2c5ad130ddfd2547e394cbd3ce5">m_joystick</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  SDL_Quit();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
 </div>
-<div class="ttc" id="aJoysticksController_8hpp_html"><div class="ttname"><a href="JoysticksController_8hpp.html">JoysticksController.hpp</a></div></div>
-<div class="ttc" id="aclassJoysticksController_html_a27efeae594a8a69b18b124ff98fcc305"><div class="ttname"><a href="classJoysticksController.html#a27efeae594a8a69b18b124ff98fcc305">JoysticksController::JoysticksController</a></div><div class="ttdeci">JoysticksController(std::function&lt; void(int)&gt; steeringCallback, std::function&lt; void(int)&gt; speedCallback, QObject *parent=nullptr)</div><div class="ttdef"><b>Definition</b> <a href="#l00005">JoysticksController.cpp:5</a></div></div>
-<div class="ttc" id="aclassJoysticksController_html_a4b742c03decec5465e30a4d1cd4d7c47"><div class="ttname"><a href="classJoysticksController.html#a4b742c03decec5465e30a4d1cd4d7c47">JoysticksController::requestStop</a></div><div class="ttdeci">void requestStop()</div><div class="ttdef"><b>Definition</b> <a href="#l00040">JoysticksController.cpp:40</a></div></div>
-<div class="ttc" id="aclassJoysticksController_html_aa9bdc996780525e34b6ea1a6041170f4"><div class="ttname"><a href="classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4">JoysticksController::init</a></div><div class="ttdeci">bool init()</div><div class="ttdef"><b>Definition</b> <a href="#l00023">JoysticksController.cpp:23</a></div></div>
-<div class="ttc" id="aclassJoysticksController_html_aaa71502b42d13353d35c9a6f35789209"><div class="ttname"><a href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209">JoysticksController::processInput</a></div><div class="ttdeci">void processInput()</div><div class="ttdef"><b>Definition</b> <a href="#l00045">JoysticksController.cpp:45</a></div></div>
-<div class="ttc" id="aclassJoysticksController_html_ad065a02230d5d45dda7bb3b33a3dc6c3"><div class="ttname"><a href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3">JoysticksController::finished</a></div><div class="ttdeci">void finished()</div></div>
-<div class="ttc" id="aclassJoysticksController_html_aefc241b71fcfefa8850ffe417f6b2363"><div class="ttname"><a href="classJoysticksController.html#aefc241b71fcfefa8850ffe417f6b2363">JoysticksController::~JoysticksController</a></div><div class="ttdeci">~JoysticksController()</div><div class="ttdef"><b>Definition</b> <a href="#l00015">JoysticksController.cpp:15</a></div></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4">   59</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4">JoysticksController::init</a>() {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordflow">if</span> (SDL_Init(SDL_INIT_JOYSTICK) &lt; 0) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;Failed to initialize SDL:&quot;</span> &lt;&lt; SDL_GetError();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <a class="code hl_variable" href="classJoysticksController.html#a4588e2c5ad130ddfd2547e394cbd3ce5">m_joystick</a> = SDL_JoystickOpen(0);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classJoysticksController.html#a4588e2c5ad130ddfd2547e394cbd3ce5">m_joystick</a>) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;Failed to open joystick.&quot;</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    SDL_Quit();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classJoysticksController.html#a4b742c03decec5465e30a4d1cd4d7c47">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classJoysticksController.html#a4b742c03decec5465e30a4d1cd4d7c47">JoysticksController::requestStop</a>() { <a class="code hl_variable" href="classJoysticksController.html#a717593cd8427b7093ebbd58c6c526b36">m_running</a> = <span class="keyword">false</span>; }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209">   86</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209">JoysticksController::processInput</a>() {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  <a class="code hl_variable" href="classJoysticksController.html#a717593cd8427b7093ebbd58c6c526b36">m_running</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classJoysticksController.html#a4588e2c5ad130ddfd2547e394cbd3ce5">m_joystick</a>) {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    qDebug() &lt;&lt; <span class="stringliteral">&quot;Joystick not initialized.&quot;</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    emit <a class="code hl_signal" href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3">finished</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="keywordflow">while</span> (<a class="code hl_variable" href="classJoysticksController.html#a717593cd8427b7093ebbd58c6c526b36">m_running</a> &amp;&amp; !QThread::currentThread()-&gt;isInterruptionRequested()) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    SDL_Event e;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">while</span> (SDL_PollEvent(&amp;e)) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>      <span class="keywordflow">if</span> (e.type == SDL_JOYAXISMOTION) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">if</span> (e.jaxis.axis == 0) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>          <a class="code hl_variable" href="classJoysticksController.html#af2af8d8f52e65aba590bea81c95a640a">m_updateSteering</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(e.jaxis.value / 32767.0 * 180));</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (e.jaxis.axis == 3) {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>          <a class="code hl_variable" href="classJoysticksController.html#a6061ad86100739fe8190b737baf2db16">m_updateSpeed</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(e.jaxis.value / 32767.0 * 100));</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    QThread::msleep(10);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="comment">// qDebug() &lt;&lt; &quot;Joystick controller loop finished.&quot;;</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  emit <a class="code hl_signal" href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3">finished</a>();</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
+</div>
+<div class="ttc" id="aJoysticksController_8hpp_html"><div class="ttname"><a href="JoysticksController_8hpp.html">JoysticksController.hpp</a></div><div class="ttdoc">Definition of the JoysticksController class.</div></div>
+<div class="ttc" id="aclassJoysticksController_html_a27efeae594a8a69b18b124ff98fcc305"><div class="ttname"><a href="classJoysticksController.html#a27efeae594a8a69b18b124ff98fcc305">JoysticksController::JoysticksController</a></div><div class="ttdeci">JoysticksController(std::function&lt; void(int)&gt; steeringCallback, std::function&lt; void(int)&gt; speedCallback, QObject *parent=nullptr)</div><div class="ttdoc">Construct a new JoysticksController object.</div><div class="ttdef"><b>Definition</b> <a href="#l00034">JoysticksController.cpp:34</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_a4588e2c5ad130ddfd2547e394cbd3ce5"><div class="ttname"><a href="classJoysticksController.html#a4588e2c5ad130ddfd2547e394cbd3ce5">JoysticksController::m_joystick</a></div><div class="ttdeci">SDL_Joystick * m_joystick</div><div class="ttdoc">Pointer to the joystick device.</div><div class="ttdef"><b>Definition</b> <a href="JoysticksController_8hpp_source.html#l00033">JoysticksController.hpp:33</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_a4b742c03decec5465e30a4d1cd4d7c47"><div class="ttname"><a href="classJoysticksController.html#a4b742c03decec5465e30a4d1cd4d7c47">JoysticksController::requestStop</a></div><div class="ttdeci">void requestStop()</div><div class="ttdoc">Request the JoysticksController to stop.</div><div class="ttdef"><b>Definition</b> <a href="#l00079">JoysticksController.cpp:79</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_a6061ad86100739fe8190b737baf2db16"><div class="ttname"><a href="classJoysticksController.html#a6061ad86100739fe8190b737baf2db16">JoysticksController::m_updateSpeed</a></div><div class="ttdeci">std::function&lt; void(int)&gt; m_updateSpeed</div><div class="ttdoc">Callback function to update the speed value.</div><div class="ttdef"><b>Definition</b> <a href="JoysticksController_8hpp_source.html#l00037">JoysticksController.hpp:37</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_a717593cd8427b7093ebbd58c6c526b36"><div class="ttname"><a href="classJoysticksController.html#a717593cd8427b7093ebbd58c6c526b36">JoysticksController::m_running</a></div><div class="ttdeci">bool m_running</div><div class="ttdoc">Flag to indicate if the controller is running.</div><div class="ttdef"><b>Definition</b> <a href="JoysticksController_8hpp_source.html#l00039">JoysticksController.hpp:39</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_aa9bdc996780525e34b6ea1a6041170f4"><div class="ttname"><a href="classJoysticksController.html#aa9bdc996780525e34b6ea1a6041170f4">JoysticksController::init</a></div><div class="ttdeci">bool init()</div><div class="ttdoc">Initialize the JoysticksController.</div><div class="ttdef"><b>Definition</b> <a href="#l00059">JoysticksController.cpp:59</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_aaa71502b42d13353d35c9a6f35789209"><div class="ttname"><a href="classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209">JoysticksController::processInput</a></div><div class="ttdeci">void processInput()</div><div class="ttdoc">Process the input from the joystick.</div><div class="ttdef"><b>Definition</b> <a href="#l00086">JoysticksController.cpp:86</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_ad065a02230d5d45dda7bb3b33a3dc6c3"><div class="ttname"><a href="classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3">JoysticksController::finished</a></div><div class="ttdeci">void finished()</div><div class="ttdoc">Signal emitted when the controller is finished.</div></div>
+<div class="ttc" id="aclassJoysticksController_html_aefc241b71fcfefa8850ffe417f6b2363"><div class="ttname"><a href="classJoysticksController.html#aefc241b71fcfefa8850ffe417f6b2363">JoysticksController::~JoysticksController</a></div><div class="ttdeci">~JoysticksController()</div><div class="ttdoc">Destroy the JoysticksController object.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">JoysticksController.cpp:45</a></div></div>
+<div class="ttc" id="aclassJoysticksController_html_af2af8d8f52e65aba590bea81c95a640a"><div class="ttname"><a href="classJoysticksController.html#af2af8d8f52e65aba590bea81c95a640a">JoysticksController::m_updateSteering</a></div><div class="ttdeci">std::function&lt; void(int)&gt; m_updateSteering</div><div class="ttdoc">Callback function to update the steering value.</div><div class="ttdef"><b>Definition</b> <a href="JoysticksController_8hpp_source.html#l00035">JoysticksController.hpp:35</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

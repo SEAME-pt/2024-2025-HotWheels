@@ -105,46 +105,60 @@ $(function(){initNavTree('classCANMessageProcessor.html',''); initResizable(true
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">CANMessageProcessor Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that processes CAN messages.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="CANMessageProcessor_8hpp_source.html">CANMessageProcessor.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a22e1e92bf88828760cdf375460d16f3a" id="r_a22e1e92bf88828760cdf375460d16f3a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22e1e92bf88828760cdf375460d16f3a">MessageHandler</a> = std::function&lt;void(const std::vector&lt;uint8_t&gt;&amp;)&gt;</td></tr>
-<tr class="separator:a22e1e92bf88828760cdf375460d16f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c0176001e48cd4ecbdf506f96e1fd2" id="r_a76c0176001e48cd4ecbdf506f96e1fd2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> = std::function&lt;void(const std::vector&lt;uint8_t&gt; &amp;)&gt;</td></tr>
+<tr class="separator:a76c0176001e48cd4ecbdf506f96e1fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5a553fd79ced878925a6436d62b5da7c" id="r_a5a553fd79ced878925a6436d62b5da7c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a553fd79ced878925a6436d62b5da7c">CANMessageProcessor</a> ()</td></tr>
+<tr class="memdesc:a5a553fd79ced878925a6436d62b5da7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="#a5a553fd79ced878925a6436d62b5da7c" title="Construct a new CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::CANMessageProcessor</a> object.  <br /></td></tr>
 <tr class="separator:a5a553fd79ced878925a6436d62b5da7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adde54365847f68f33c8c4c85e3f5fc3b" id="r_adde54365847f68f33c8c4c85e3f5fc3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adde54365847f68f33c8c4c85e3f5fc3b">~CANMessageProcessor</a> ()=default</td></tr>
 <tr class="separator:adde54365847f68f33c8c4c85e3f5fc3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a341f7667f2f9972ef580726fe49f28d2" id="r_a341f7667f2f9972ef580726fe49f28d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a341f7667f2f9972ef580726fe49f28d2">registerHandler</a> (uint16_t frameID, <a class="el" href="#a22e1e92bf88828760cdf375460d16f3a">MessageHandler</a> handler)</td></tr>
-<tr class="separator:a341f7667f2f9972ef580726fe49f28d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a071e6612cf3890b12d7d78a0a37875ff" id="r_a071e6612cf3890b12d7d78a0a37875ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a071e6612cf3890b12d7d78a0a37875ff">registerHandler</a> (uint16_t frameID, <a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> &amp;handler)</td></tr>
+<tr class="memdesc:a071e6612cf3890b12d7d78a0a37875ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="#a5a553fd79ced878925a6436d62b5da7c" title="Construct a new CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::CANMessageProcessor</a> object.  <br /></td></tr>
+<tr class="separator:a071e6612cf3890b12d7d78a0a37875ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa539cf227ee7367ba1f498288b8bc102" id="r_aa539cf227ee7367ba1f498288b8bc102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa539cf227ee7367ba1f498288b8bc102">processMessage</a> (uint16_t frameID, const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="memdesc:aa539cf227ee7367ba1f498288b8bc102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a CAN message.  <br /></td></tr>
 <tr class="separator:aa539cf227ee7367ba1f498288b8bc102"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a407c506564f54f6ad4cefe1e6b9f829d" id="r_a407c506564f54f6ad4cefe1e6b9f829d"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; uint16_t, <a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a407c506564f54f6ad4cefe1e6b9f829d">handlers</a></td></tr>
+<tr class="memdesc:a407c506564f54f6ad4cefe1e6b9f829d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of frame IDs to message handlers.  <br /></td></tr>
+<tr class="separator:a407c506564f54f6ad4cefe1e6b9f829d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8hpp_source.html#l00009">9</a> of file <a class="el" href="CANMessageProcessor_8hpp_source.html">CANMessageProcessor.hpp</a>.</p>
+<div class="textblock"><p>Class that processes CAN messages. </p>
+
+<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8hpp_source.html#l00029">29</a> of file <a class="el" href="CANMessageProcessor_8hpp_source.html">CANMessageProcessor.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a22e1e92bf88828760cdf375460d16f3a" name="a22e1e92bf88828760cdf375460d16f3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22e1e92bf88828760cdf375460d16f3a">&#9670;&#160;</a></span>MessageHandler</h2>
+<a id="a76c0176001e48cd4ecbdf506f96e1fd2" name="a76c0176001e48cd4ecbdf506f96e1fd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c0176001e48cd4ecbdf506f96e1fd2">&#9670;&#160;</a></span>MessageHandler</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a22e1e92bf88828760cdf375460d16f3a">CANMessageProcessor::MessageHandler</a> = std::function&lt;void(const std::vector&lt;uint8_t&gt;&amp;)&gt;</td>
+          <td class="memname">using <a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">CANMessageProcessor::MessageHandler</a> = std::function&lt;void(const std::vector&lt;uint8_t&gt; &amp;)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8hpp_source.html#l00011">11</a> of file <a class="el" href="CANMessageProcessor_8hpp_source.html">CANMessageProcessor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8hpp_source.html#l00031">31</a> of file <a class="el" href="CANMessageProcessor_8hpp_source.html">CANMessageProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -164,7 +178,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00004">4</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
+<p>Construct a new <a class="el" href="#a5a553fd79ced878925a6436d62b5da7c" title="Construct a new CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::CANMessageProcessor</a> object. </p>
+<p>This constructor initializes the <a class="el" href="classCANMessageProcessor.html" title="Class that processes CAN messages.">CANMessageProcessor</a> object. </p>
+
+<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00032">32</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,13 +230,29 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00013">13</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
+<p>Process a CAN message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frameID</td><td>The frame ID of the message. </td></tr>
+    <tr><td class="paramname">data</td><td>The data of the message. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if no handler is registered for the frame ID.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This method processes a CAN message by calling the appropriate handler for the frame ID. </p>
+
+<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00059">59</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph.png" border="0" usemap="#aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph" alt=""/></div>
 <map name="aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph" id="aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph">
-<area shape="rect" title=" " alt="" coords="123,23,293,63"/>
+<area shape="rect" title="Process a CAN message." alt="" coords="123,23,293,63"/>
 <area shape="rect" href="test__MCP2515Controller_8cpp.html#a7379d3bb55019313ec7dd8a03c4802b2" title="Ensures that the RPM signal emits the correct value." alt="" coords="5,5,75,31"/>
 <area shape="poly" title=" " alt="" coords="109,31,74,26,75,21,110,26"/>
 <area shape="rect" href="test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c" title="Ensures that the speed signal is emitted with the correct value." alt="" coords="5,55,75,80"/>
@@ -229,8 +262,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a341f7667f2f9972ef580726fe49f28d2" name="a341f7667f2f9972ef580726fe49f28d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a341f7667f2f9972ef580726fe49f28d2">&#9670;&#160;</a></span>registerHandler()</h2>
+<a id="a071e6612cf3890b12d7d78a0a37875ff" name="a071e6612cf3890b12d7d78a0a37875ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a071e6612cf3890b12d7d78a0a37875ff">&#9670;&#160;</a></span>registerHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -243,12 +276,55 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#a22e1e92bf88828760cdf375460d16f3a">MessageHandler</a></td>          <td class="paramname"><span class="paramname"><em>handler</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>handler</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00006">6</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
+<p>Destroy the <a class="el" href="#a5a553fd79ced878925a6436d62b5da7c" title="Construct a new CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::CANMessageProcessor</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frameID</td><td></td></tr>
+    <tr><td class="paramname">handler</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if the handler is null</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This method registers a handler for a specific frame ID. </p>
+
+<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8cpp_source.html#l00042">42</a> of file <a class="el" href="CANMessageProcessor_8cpp_source.html">CANMessageProcessor.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a407c506564f54f6ad4cefe1e6b9f829d" name="a407c506564f54f6ad4cefe1e6b9f829d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407c506564f54f6ad4cefe1e6b9f829d">&#9670;&#160;</a></span>handlers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;uint16_t, <a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a>&gt; CANMessageProcessor::handlers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Map of frame IDs to message handlers. </p>
+
+<p class="definition">Definition at line <a class="el" href="CANMessageProcessor_8hpp_source.html#l00040">40</a> of file <a class="el" href="CANMessageProcessor_8hpp_source.html">CANMessageProcessor.hpp</a>.</p>
 
 </div>
 </div>

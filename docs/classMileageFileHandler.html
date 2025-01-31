@@ -104,29 +104,44 @@ $(function(){initNavTree('classMileageFileHandler.html',''); initResizable(true)
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">MileageFileHandler Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that manages the mileage file.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="MileageFileHandler_8hpp_source.html">MileageFileHandler.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a66a5f8df93751c0d918f5b18a869f3e5" id="r_a66a5f8df93751c0d918f5b18a869f3e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66a5f8df93751c0d918f5b18a869f3e5">MileageFileHandler</a> (const QString &amp;filePath)</td></tr>
+<tr class="memitem:a66a5f8df93751c0d918f5b18a869f3e5" id="r_a66a5f8df93751c0d918f5b18a869f3e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66a5f8df93751c0d918f5b18a869f3e5">MileageFileHandler</a> (const QString &amp;<a class="el" href="#a6c6a01e6a67269a3e4860e4a79f4361b">filePath</a>)</td></tr>
+<tr class="memdesc:a66a5f8df93751c0d918f5b18a869f3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a> object.  <br /></td></tr>
 <tr class="separator:a66a5f8df93751c0d918f5b18a869f3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa685592fce3cb7992e89cf6a6b65c7d7" id="r_aa685592fce3cb7992e89cf6a6b65c7d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa685592fce3cb7992e89cf6a6b65c7d7">~MileageFileHandler</a> ()=default</td></tr>
 <tr class="separator:aa685592fce3cb7992e89cf6a6b65c7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dd5ab8bb8bff7be165ecaa6c35c2df6" id="r_a8dd5ab8bb8bff7be165ecaa6c35c2df6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dd5ab8bb8bff7be165ecaa6c35c2df6">readMileage</a> () const</td></tr>
+<tr class="memdesc:a8dd5ab8bb8bff7be165ecaa6c35c2df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads the mileage value from the file and returns it.  <br /></td></tr>
 <tr class="separator:a8dd5ab8bb8bff7be165ecaa6c35c2df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a518c1fdab28768863d4852b3c78c990d" id="r_a518c1fdab28768863d4852b3c78c990d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a518c1fdab28768863d4852b3c78c990d">writeMileage</a> (double mileage) const</td></tr>
+<tr class="memdesc:a518c1fdab28768863d4852b3c78c990d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function writes the provided mileage value to the file.  <br /></td></tr>
 <tr class="separator:a518c1fdab28768863d4852b3c78c990d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a769ecb10fa485be519e91c3960231662" id="r_a769ecb10fa485be519e91c3960231662"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a769ecb10fa485be519e91c3960231662">ensureFileExists</a> () const</td></tr>
+<tr class="memdesc:a769ecb10fa485be519e91c3960231662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage file exists. If the file does not exist, it creates the file and initializes it with a mileage of 0.0.  <br /></td></tr>
 <tr class="separator:a769ecb10fa485be519e91c3960231662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a6c6a01e6a67269a3e4860e4a79f4361b" id="r_a6c6a01e6a67269a3e4860e4a79f4361b"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c6a01e6a67269a3e4860e4a79f4361b">filePath</a></td></tr>
+<tr class="memdesc:a6c6a01e6a67269a3e4860e4a79f4361b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The path to the mileage file to be managed.  <br /></td></tr>
+<tr class="separator:a6c6a01e6a67269a3e4860e4a79f4361b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8hpp_source.html#l00006">6</a> of file <a class="el" href="MileageFileHandler_8hpp_source.html">MileageFileHandler.hpp</a>.</p>
+<div class="textblock"><p>Class that manages the mileage file. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8hpp_source.html#l00025">25</a> of file <a class="el" href="MileageFileHandler_8hpp_source.html">MileageFileHandler.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a66a5f8df93751c0d918f5b18a869f3e5" name="a66a5f8df93751c0d918f5b18a869f3e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66a5f8df93751c0d918f5b18a869f3e5">&#9670;&#160;</a></span>MileageFileHandler()</h2>
@@ -150,22 +165,24 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructor for the <a class="el" href="classMileageFileHandler.html">MileageFileHandler</a> class. It initializes the class with the specified file path and ensures that the file exists.</p>
+
+<p>Construct a new <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filePath</td><td>The path of the mileage file to be managed. </td></tr>
+    <tr><td class="paramname">filePath</td><td>The path of the mileage file to manage.</td></tr>
   </table>
   </dd>
 </dl>
+<p>This constructor initializes the <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a> object with the specified file path and ensures that the file exists. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00006">6</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00030">30</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageFileHandler_a66a5f8df93751c0d918f5b18a869f3e5_cgraph.png" border="0" usemap="#aclassMileageFileHandler_a66a5f8df93751c0d918f5b18a869f3e5_cgraph" alt=""/></div>
 <map name="aclassMileageFileHandler_a66a5f8df93751c0d918f5b18a869f3e5_cgraph" id="aclassMileageFileHandler_a66a5f8df93751c0d918f5b18a869f3e5_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,161,45"/>
-<area shape="rect" href="classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662" title=" " alt="" coords="209,5,357,45"/>
+<area shape="rect" title="Construct a new MileageFileHandler object." alt="" coords="5,5,161,45"/>
+<area shape="rect" href="classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662" title="Ensures that the mileage file exists. If the file does not exist, it creates the file and initializes..." alt="" coords="209,5,357,45"/>
 <area shape="poly" title=" " alt="" coords="162,23,195,23,195,28,162,28"/>
 </map>
 </div>
@@ -194,7 +211,6 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Destructor for the <a class="el" href="classMileageFileHandler.html">MileageFileHandler</a> class. The destructor is implicitly defaulted as no manual resource management is required. </p>
 
 </div>
 </div>
@@ -213,16 +229,18 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ensures that the mileage file exists. If the file does not exist, it creates the file and initializes it with a mileage of 0.0. </p>
 
-<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00012">12</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
+<p>Ensures that the mileage file exists. If the file does not exist, it creates the file and initializes it with a mileage of 0.0. </p>
+<p>This function checks if the mileage file exists and creates it if it does not exist. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00042">42</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMileageFileHandler_a769ecb10fa485be519e91c3960231662_icgraph.png" border="0" usemap="#aclassMileageFileHandler_a769ecb10fa485be519e91c3960231662_icgraph" alt=""/></div>
 <map name="aclassMileageFileHandler_a769ecb10fa485be519e91c3960231662_icgraph" id="aclassMileageFileHandler_a769ecb10fa485be519e91c3960231662_icgraph">
-<area shape="rect" title=" " alt="" coords="209,5,357,45"/>
-<area shape="rect" href="classMileageFileHandler.html#a66a5f8df93751c0d918f5b18a869f3e5" title=" " alt="" coords="5,5,161,45"/>
+<area shape="rect" title="Ensures that the mileage file exists. If the file does not exist, it creates the file and initializes..." alt="" coords="209,5,357,45"/>
+<area shape="rect" href="classMileageFileHandler.html#a66a5f8df93751c0d918f5b18a869f3e5" title="Construct a new MileageFileHandler object." alt="" coords="5,5,161,45"/>
 <area shape="poly" title=" " alt="" coords="196,28,162,28,162,23,196,23"/>
 </map>
 </div>
@@ -243,10 +261,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function reads the mileage value from the file and returns it. </p>
 <p>Reads the mileage value from the file. If the file cannot be opened or contains an invalid value, a default mileage of 0.0 is returned.</p>
 <dl class="section return"><dt>Returns</dt><dd>The mileage read from the file, or 0.0 if there was an issue. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00027">27</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00064">64</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
 
 </div>
 </div>
@@ -264,6 +284,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function writes the provided mileage value to the file. </p>
 <p>Writes the provided mileage value to the file. The value is saved with two decimal precision.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -272,7 +294,34 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00051">51</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8cpp_source.html#l00094">94</a> of file <a class="el" href="MileageFileHandler_8cpp_source.html">MileageFileHandler.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a6c6a01e6a67269a3e4860e4a79f4361b" name="a6c6a01e6a67269a3e4860e4a79f4361b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c6a01e6a67269a3e4860e4a79f4361b">&#9670;&#160;</a></span>filePath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString MileageFileHandler::filePath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The path to the mileage file to be managed. </p>
+
+<p class="definition">Definition at line <a class="el" href="MileageFileHandler_8hpp_source.html#l00035">35</a> of file <a class="el" href="MileageFileHandler_8hpp_source.html">MileageFileHandler.hpp</a>.</p>
 
 </div>
 </div>

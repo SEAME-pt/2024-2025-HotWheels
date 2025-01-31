@@ -110,13 +110,18 @@ $(function(){initNavTree('classIMCP2515Controller.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 
+<p>Interface for the MCP2515 CAN controller. QObject.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="IMCP2515Controller_8hpp_source.html">IMCP2515Controller.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:ae8ffa002fcf87f1a8dbdf6ff4347d1fd" id="r_ae8ffa002fcf87f1a8dbdf6ff4347d1fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8ffa002fcf87f1a8dbdf6ff4347d1fd">speedUpdated</a> (float newSpeed)</td></tr>
+<tr class="memdesc:ae8ffa002fcf87f1a8dbdf6ff4347d1fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the speed is updated.  <br /></td></tr>
 <tr class="separator:ae8ffa002fcf87f1a8dbdf6ff4347d1fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f546ecbb7d88b41f23b1852c82d4f8d" id="r_a7f546ecbb7d88b41f23b1852c82d4f8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f546ecbb7d88b41f23b1852c82d4f8d">rpmUpdated</a> (int newRpm)</td></tr>
+<tr class="memdesc:a7f546ecbb7d88b41f23b1852c82d4f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the RPM is updated.  <br /></td></tr>
 <tr class="separator:a7f546ecbb7d88b41f23b1852c82d4f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -133,8 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab1e13e225c3ca10a9fcb356cb4ca79b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="IMCP2515Controller_8hpp_source.html#l00006">6</a> of file <a class="el" href="IMCP2515Controller_8hpp_source.html">IMCP2515Controller.hpp</a>.</p>
+<div class="textblock"><p>Interface for the MCP2515 CAN controller. QObject. </p>
+
+<p class="definition">Definition at line <a class="el" href="IMCP2515Controller_8hpp_source.html#l00026">26</a> of file <a class="el" href="IMCP2515Controller_8hpp_source.html">IMCP2515Controller.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab328663d85d01e4259b5c83e5d92727a" name="ab328663d85d01e4259b5c83e5d92727a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab328663d85d01e4259b5c83e5d92727a">&#9670;&#160;</a></span>~IMCP2515Controller()</h2>
@@ -266,7 +272,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classIMCP2515Controller_ae2b472f612168c2cc53da81e0dd76a0d_icgraph.png" border="0" usemap="#aclassIMCP2515Controller_ae2b472f612168c2cc53da81e0dd76a0d_icgraph" alt=""/></div>
 <map name="aclassIMCP2515Controller_ae2b472f612168c2cc53da81e0dd76a0d_icgraph" id="aclassIMCP2515Controller_ae2b472f612168c2cc53da81e0dd76a0d_icgraph">
 <area shape="rect" title=" " alt="" coords="245,27,396,67"/>
-<area shape="rect" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title=" " alt="" coords="5,5,197,31"/>
+<area shape="rect" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager." alt="" coords="5,5,197,31"/>
 <area shape="poly" title=" " alt="" coords="231,38,196,33,197,28,232,33"/>
 <area shape="rect" href="classMockMCP2515Controller.html#a32b9cf53cacbed8b1fff38e9f10a5508" title="Mocked method to process the reading of the MCP2515 controller." alt="" coords="10,55,193,95"/>
 <area shape="poly" title=" " alt="" coords="232,61,193,66,192,61,231,56"/>
@@ -298,6 +304,28 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Signal emitted when the RPM is updated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newRpm</td><td>The new RPM value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classIMCP2515Controller_a7f546ecbb7d88b41f23b1852c82d4f8d_icgraph.png" border="0" usemap="#aclassIMCP2515Controller_a7f546ecbb7d88b41f23b1852c82d4f8d_icgraph" alt=""/></div>
+<map name="aclassIMCP2515Controller_a7f546ecbb7d88b41f23b1852c82d4f8d_icgraph" id="aclassIMCP2515Controller_a7f546ecbb7d88b41f23b1852c82d4f8d_icgraph">
+<area shape="rect" title="Signal emitted when the RPM is updated." alt="" coords="579,23,729,63"/>
+<area shape="rect" href="classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70" title="Method to connect signals." alt="" coords="296,31,531,56"/>
+<area shape="poly" title=" " alt="" coords="565,46,531,46,531,41,565,41"/>
+<area shape="rect" href="classCanBusManager.html#ae99209d291de980c75c10f8c12231a30" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,5,248,31"/>
+<area shape="poly" title=" " alt="" coords="282,34,248,31,249,26,282,29"/>
+<area shape="rect" href="classCanBusManager.html#a6fb7d4430dd1f3bf9ea2d19370978fbf" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,55,248,80"/>
+<area shape="poly" title=" " alt="" coords="282,57,249,60,248,55,282,52"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="ae8ffa002fcf87f1a8dbdf6ff4347d1fd" name="ae8ffa002fcf87f1a8dbdf6ff4347d1fd"></a>
@@ -322,6 +350,28 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Signal emitted when the speed is updated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newSpeed</td><td>The new speed value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classIMCP2515Controller_ae8ffa002fcf87f1a8dbdf6ff4347d1fd_icgraph.png" border="0" usemap="#aclassIMCP2515Controller_ae8ffa002fcf87f1a8dbdf6ff4347d1fd_icgraph" alt=""/></div>
+<map name="aclassIMCP2515Controller_ae8ffa002fcf87f1a8dbdf6ff4347d1fd_icgraph" id="aclassIMCP2515Controller_ae8ffa002fcf87f1a8dbdf6ff4347d1fd_icgraph">
+<area shape="rect" title="Signal emitted when the speed is updated." alt="" coords="579,23,729,63"/>
+<area shape="rect" href="classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70" title="Method to connect signals." alt="" coords="296,31,531,56"/>
+<area shape="poly" title=" " alt="" coords="565,46,531,46,531,41,565,41"/>
+<area shape="rect" href="classCanBusManager.html#ae99209d291de980c75c10f8c12231a30" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,5,248,31"/>
+<area shape="poly" title=" " alt="" coords="282,34,248,31,249,26,282,29"/>
+<area shape="rect" href="classCanBusManager.html#a6fb7d4430dd1f3bf9ea2d19370978fbf" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,55,248,80"/>
+<area shape="poly" title=" " alt="" coords="282,57,249,60,248,55,282,52"/>
+</map>
+</div>
 
 </div>
 </div>

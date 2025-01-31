@@ -106,85 +106,72 @@ $(function(){initNavTree('MileageManager_8cpp_source.html',''); initResizable(tr
   <div class="headertitle"><div class="title">MileageManager.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="MileageManager_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="MileageManager_8hpp.html">MileageManager.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="foldopen" id="foldopen00004" data-start="{" data-end="}">
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad6565be6027726a3e4f92bc8b5f004e7">    4</a></span><a class="code hl_function" href="classMileageManager.html#ad6565be6027726a3e4f92bc8b5f004e7">MileageManager::MileageManager</a>(<span class="keyword">const</span> QString &amp;filePath, QObject *parent)</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    : QObject(parent)</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    , fileHandler(filePath)</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    , totalMileage(0.0)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{}</div>
-</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4">   10</a></span><a class="code hl_function" href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4">MileageManager::~MileageManager</a>()</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_function" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">shutdown</a>();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
-</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48">MileageManager::initialize</a>()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// Load initial mileage from file</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    totalMileage = fileHandler.readMileage();</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// Configure update timer (every 5 seconds)</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    connect(&amp;updateTimer, &amp;QTimer::timeout, <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">MileageManager::updateMileage</a>);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    updateTimer.start(1000);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// Configure persistence timer (every 10 seconds)</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    connect(&amp;persistenceTimer, &amp;QTimer::timeout, <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">MileageManager::saveMileage</a>);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    persistenceTimer.start(10000);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
-</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<a href="MileageManager_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="MileageManager_8hpp.html">MileageManager.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
 <div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">   29</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">MileageManager::shutdown</a>()</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_slot" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">saveMileage</a>(); <span class="comment">// Ensure mileage is saved on shutdown</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    updateTimer.stop();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    persistenceTimer.stop();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad6565be6027726a3e4f92bc8b5f004e7">   29</a></span><a class="code hl_function" href="classMileageManager.html#ad6565be6027726a3e4f92bc8b5f004e7">MileageManager::MileageManager</a>(<span class="keyword">const</span> QString &amp;filePath, QObject *parent)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    : QObject(parent), <a class="code hl_variable" href="classMileageManager.html#aef3f90b2e83325ae2519ed370badfbe6">fileHandler</a>(filePath), <a class="code hl_variable" href="classMileageManager.html#ab5bcf4b819317b3587fce5c3c5456046">totalMileage</a>(0.0) {}</div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9">   36</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9">MileageManager::onSpeedUpdated</a>(<span class="keywordtype">float</span> speed)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    calculator.addSpeed(speed);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
-</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">   41</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">MileageManager::updateMileage</a>()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// Calculate distance for the last interval</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// qDebug() &lt;&lt; &quot;Updating mileage&quot;;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">double</span> distance = calculator.calculateDistance();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    totalMileage += distance;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// Emit updated mileage</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// qDebug() &lt;&lt; &quot;Updating mileage&quot; &lt;&lt; totalMileage;</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    emit <a class="code hl_signal" href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000">mileageUpdated</a>(totalMileage);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4">   32</a></span><a class="code hl_function" href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4">MileageManager::~MileageManager</a>() { <a class="code hl_function" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">shutdown</a>(); }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48">   39</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48">MileageManager::initialize</a>() {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="comment">// Load initial mileage from file</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <a class="code hl_variable" href="classMileageManager.html#ab5bcf4b819317b3587fce5c3c5456046">totalMileage</a> = <a class="code hl_variable" href="classMileageManager.html#aef3f90b2e83325ae2519ed370badfbe6">fileHandler</a>.readMileage();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="comment">// Configure update timer (every 5 seconds)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  connect(&amp;<a class="code hl_variable" href="classMileageManager.html#a348f4e5f13412ff74a98329a7494ddb7">updateTimer</a>, &amp;QTimer::timeout, <span class="keyword">this</span>, &amp;<a class="code hl_slot" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">MileageManager::updateMileage</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <a class="code hl_variable" href="classMileageManager.html#a348f4e5f13412ff74a98329a7494ddb7">updateTimer</a>.start(1000);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="comment">// Configure persistence timer (every 10 seconds)</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  connect(&amp;<a class="code hl_variable" href="classMileageManager.html#a51aade2d4911cfb4b0a7ee8b6977652e">persistenceTimer</a>, &amp;QTimer::timeout, <span class="keyword">this</span>,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>          &amp;<a class="code hl_slot" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">MileageManager::saveMileage</a>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <a class="code hl_variable" href="classMileageManager.html#a51aade2d4911cfb4b0a7ee8b6977652e">persistenceTimer</a>.start(10000);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">   53</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">MileageManager::saveMileage</a>()</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    fileHandler.writeMileage(totalMileage);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">MileageManager::shutdown</a>() {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <a class="code hl_slot" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">saveMileage</a>(); <span class="comment">// Ensure mileage is saved on shutdown</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <a class="code hl_variable" href="classMileageManager.html#a348f4e5f13412ff74a98329a7494ddb7">updateTimer</a>.stop();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <a class="code hl_variable" href="classMileageManager.html#a51aade2d4911cfb4b0a7ee8b6977652e">persistenceTimer</a>.stop();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
 </div>
-<div class="ttc" id="aMileageManager_8hpp_html"><div class="ttname"><a href="MileageManager_8hpp.html">MileageManager.hpp</a></div></div>
-<div class="ttc" id="aclassMileageManager_html_a912c517158c90834792c3d00c0af101c"><div class="ttname"><a href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">MileageManager::updateMileage</a></div><div class="ttdeci">void updateMileage()</div><div class="ttdef"><b>Definition</b> <a href="#l00041">MileageManager.cpp:41</a></div></div>
-<div class="ttc" id="aclassMileageManager_html_abdfcf1b966a300db82a8347ef9454000"><div class="ttname"><a href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000">MileageManager::mileageUpdated</a></div><div class="ttdeci">void mileageUpdated(double mileage)</div></div>
-<div class="ttc" id="aclassMileageManager_html_ad56194c997ffbdd3692adb68c65a2d2e"><div class="ttname"><a href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">MileageManager::shutdown</a></div><div class="ttdeci">void shutdown()</div><div class="ttdef"><b>Definition</b> <a href="#l00029">MileageManager.cpp:29</a></div></div>
-<div class="ttc" id="aclassMileageManager_html_ad615b78584e6c337ae3417089e035d48"><div class="ttname"><a href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48">MileageManager::initialize</a></div><div class="ttdeci">void initialize()</div><div class="ttdef"><b>Definition</b> <a href="#l00015">MileageManager.cpp:15</a></div></div>
-<div class="ttc" id="aclassMileageManager_html_ad6565be6027726a3e4f92bc8b5f004e7"><div class="ttname"><a href="classMileageManager.html#ad6565be6027726a3e4f92bc8b5f004e7">MileageManager::MileageManager</a></div><div class="ttdeci">MileageManager(const QString &amp;filePath, QObject *parent=nullptr)</div><div class="ttdef"><b>Definition</b> <a href="#l00004">MileageManager.cpp:4</a></div></div>
-<div class="ttc" id="aclassMileageManager_html_ad76e7b2285ef73cfb95854857cbfa18e"><div class="ttname"><a href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">MileageManager::saveMileage</a></div><div class="ttdeci">void saveMileage()</div><div class="ttdef"><b>Definition</b> <a href="#l00053">MileageManager.cpp:53</a></div></div>
-<div class="ttc" id="aclassMileageManager_html_ae0a2d57c60de11f16a5654f7f8031cd4"><div class="ttname"><a href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4">MileageManager::~MileageManager</a></div><div class="ttdeci">~MileageManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00010">MileageManager.cpp:10</a></div></div>
-<div class="ttc" id="aclassMileageManager_html_af314c5425f519dea34b5edcac8bce4d9"><div class="ttname"><a href="classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9">MileageManager::onSpeedUpdated</a></div><div class="ttdeci">void onSpeedUpdated(float speed)</div><div class="ttdef"><b>Definition</b> <a href="#l00036">MileageManager.cpp:36</a></div></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9">   69</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9">MileageManager::onSpeedUpdated</a>(<span class="keywordtype">float</span> speed) { <a class="code hl_variable" href="classMileageManager.html#a04594721283068745fc06415a6d2ee75">calculator</a>.addSpeed(speed); }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span></div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">   76</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">MileageManager::updateMileage</a>() {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="comment">// Calculate distance for the last interval</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="comment">// qDebug() &lt;&lt; &quot;Updating mileage&quot;;</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keywordtype">double</span> distance = <a class="code hl_variable" href="classMileageManager.html#a04594721283068745fc06415a6d2ee75">calculator</a>.calculateDistance();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <a class="code hl_variable" href="classMileageManager.html#ab5bcf4b819317b3587fce5c3c5456046">totalMileage</a> += distance;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="comment">// Emit updated mileage</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="comment">// qDebug() &lt;&lt; &quot;Updating mileage&quot; &lt;&lt; totalMileage;</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  emit <a class="code hl_signal" href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000">mileageUpdated</a>(<a class="code hl_variable" href="classMileageManager.html#ab5bcf4b819317b3587fce5c3c5456046">totalMileage</a>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">   91</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">MileageManager::saveMileage</a>() { <a class="code hl_variable" href="classMileageManager.html#aef3f90b2e83325ae2519ed370badfbe6">fileHandler</a>.writeMileage(<a class="code hl_variable" href="classMileageManager.html#ab5bcf4b819317b3587fce5c3c5456046">totalMileage</a>); }</div>
+<div class="ttc" id="aMileageManager_8hpp_html"><div class="ttname"><a href="MileageManager_8hpp.html">MileageManager.hpp</a></div><div class="ttdoc">Definition of the MileageManager class.</div></div>
+<div class="ttc" id="aclassMileageManager_html_a04594721283068745fc06415a6d2ee75"><div class="ttname"><a href="classMileageManager.html#a04594721283068745fc06415a6d2ee75">MileageManager::calculator</a></div><div class="ttdeci">MileageCalculator calculator</div><div class="ttdoc">The calculator that computes the distance based on speed and time intervals.</div><div class="ttdef"><b>Definition</b> <a href="MileageManager_8hpp_source.html#l00053">MileageManager.hpp:53</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_a348f4e5f13412ff74a98329a7494ddb7"><div class="ttname"><a href="classMileageManager.html#a348f4e5f13412ff74a98329a7494ddb7">MileageManager::updateTimer</a></div><div class="ttdeci">QTimer updateTimer</div><div class="ttdoc">A timer that triggers mileage updates every 1 second.</div><div class="ttdef"><b>Definition</b> <a href="MileageManager_8hpp_source.html#l00057">MileageManager.hpp:57</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_a51aade2d4911cfb4b0a7ee8b6977652e"><div class="ttname"><a href="classMileageManager.html#a51aade2d4911cfb4b0a7ee8b6977652e">MileageManager::persistenceTimer</a></div><div class="ttdeci">QTimer persistenceTimer</div><div class="ttdoc">A timer that triggers saving mileage every 10 seconds.</div><div class="ttdef"><b>Definition</b> <a href="MileageManager_8hpp_source.html#l00059">MileageManager.hpp:59</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_a912c517158c90834792c3d00c0af101c"><div class="ttname"><a href="classMileageManager.html#a912c517158c90834792c3d00c0af101c">MileageManager::updateMileage</a></div><div class="ttdeci">void updateMileage()</div><div class="ttdoc">Update the mileage of the vehicle.</div><div class="ttdef"><b>Definition</b> <a href="#l00076">MileageManager.cpp:76</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_ab5bcf4b819317b3587fce5c3c5456046"><div class="ttname"><a href="classMileageManager.html#ab5bcf4b819317b3587fce5c3c5456046">MileageManager::totalMileage</a></div><div class="ttdeci">double totalMileage</div><div class="ttdoc">The current total mileage of the vehicle.</div><div class="ttdef"><b>Definition</b> <a href="MileageManager_8hpp_source.html#l00061">MileageManager.hpp:61</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_abdfcf1b966a300db82a8347ef9454000"><div class="ttname"><a href="classMileageManager.html#abdfcf1b966a300db82a8347ef9454000">MileageManager::mileageUpdated</a></div><div class="ttdeci">void mileageUpdated(double mileage)</div><div class="ttdoc">Signal emitted when the mileage is updated.</div></div>
+<div class="ttc" id="aclassMileageManager_html_ad56194c997ffbdd3692adb68c65a2d2e"><div class="ttname"><a href="classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e">MileageManager::shutdown</a></div><div class="ttdeci">void shutdown()</div><div class="ttdoc">Shutdown the MileageManager.</div><div class="ttdef"><b>Definition</b> <a href="#l00058">MileageManager.cpp:58</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_ad615b78584e6c337ae3417089e035d48"><div class="ttname"><a href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48">MileageManager::initialize</a></div><div class="ttdeci">void initialize()</div><div class="ttdoc">Initialize the MileageManager.</div><div class="ttdef"><b>Definition</b> <a href="#l00039">MileageManager.cpp:39</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_ad6565be6027726a3e4f92bc8b5f004e7"><div class="ttname"><a href="classMileageManager.html#ad6565be6027726a3e4f92bc8b5f004e7">MileageManager::MileageManager</a></div><div class="ttdeci">MileageManager(const QString &amp;filePath, QObject *parent=nullptr)</div><div class="ttdoc">Construct a new MileageManager object.</div><div class="ttdef"><b>Definition</b> <a href="#l00029">MileageManager.cpp:29</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_ad76e7b2285ef73cfb95854857cbfa18e"><div class="ttname"><a href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e">MileageManager::saveMileage</a></div><div class="ttdeci">void saveMileage()</div><div class="ttdoc">Save the mileage to the file.</div><div class="ttdef"><b>Definition</b> <a href="#l00091">MileageManager.cpp:91</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_ae0a2d57c60de11f16a5654f7f8031cd4"><div class="ttname"><a href="classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4">MileageManager::~MileageManager</a></div><div class="ttdeci">~MileageManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00032">MileageManager.cpp:32</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_aef3f90b2e83325ae2519ed370badfbe6"><div class="ttname"><a href="classMileageManager.html#aef3f90b2e83325ae2519ed370badfbe6">MileageManager::fileHandler</a></div><div class="ttdeci">MileageFileHandler fileHandler</div><div class="ttdoc">The file handler to read and write mileage data.</div><div class="ttdef"><b>Definition</b> <a href="MileageManager_8hpp_source.html#l00055">MileageManager.hpp:55</a></div></div>
+<div class="ttc" id="aclassMileageManager_html_af314c5425f519dea34b5edcac8bce4d9"><div class="ttname"><a href="classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9">MileageManager::onSpeedUpdated</a></div><div class="ttdeci">void onSpeedUpdated(float speed)</div><div class="ttdoc">Slot for handling speed updates.</div><div class="ttdef"><b>Definition</b> <a href="#l00069">MileageManager.cpp:69</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

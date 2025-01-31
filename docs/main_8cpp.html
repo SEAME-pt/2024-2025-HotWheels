@@ -108,10 +108,13 @@ $(function(){initNavTree('main_8cpp.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;QApplication&gt;</code><br />
-<code>#include &lt;QDebug&gt;</code><br />
-<code>#include &quot;<a class="el" href="CarManager_8hpp_source.html">CarManager.hpp</a>&quot;</code><br />
+
+<p>Main file of the HotWheels Cluster application.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="CarManager_8hpp_source.html">CarManager.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="enums_8hpp_source.html">enums.hpp</a>&quot;</code><br />
+<code>#include &lt;QApplication&gt;</code><br />
+<code>#include &lt;QDebug&gt;</code><br />
 <code>#include &lt;csignal&gt;</code><br />
 </div>
 <p><a href="main_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -119,11 +122,29 @@ $(function(){initNavTree('main_8cpp.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0951f538a6bbe4f93045410ed3fed406" id="r_a0951f538a6bbe4f93045410ed3fed406"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0951f538a6bbe4f93045410ed3fed406">handleSigint</a> (int)</td></tr>
+<tr class="memdesc:a0951f538a6bbe4f93045410ed3fed406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal handler for SIGINT.  <br /></td></tr>
 <tr class="separator:a0951f538a6bbe4f93045410ed3fed406"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function of the HotWheels Cluster application.  <br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main file of the HotWheels Cluster application. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-01-31</dd></dl>
+<p>This file contains the main function of the HotWheels Cluster application. </p><dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
+<dd>
+Tiago Pereira (@t-pereira06) </dd>
+<dd>
+Ricardo Melo (@reomelo) </dd>
+<dd>
+Michel Batista (@MicchelFAB) </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Ensure that the <a class="el" href="classCarManager.html" title="Class that manages the car manager application. QMainWindow.">CarManager</a> class is properly implemented. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="CarManager_8hpp.html" title="Definition of the CarManager class.">CarManager.hpp</a>, <a class="el" href="enums_8hpp.html" title="Definition of the enums used in the application.">enums.hpp</a> </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0951f538a6bbe4f93045410ed3fed406" name="a0951f538a6bbe4f93045410ed3fed406"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0951f538a6bbe4f93045410ed3fed406">&#9670;&#160;</a></span>handleSigint()</h2>
 
@@ -139,14 +160,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00008">8</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p>Signal handler for SIGINT. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal</td><td>The signal number.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function is called when a SIGINT signal is received. </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00028">28</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp_a0951f538a6bbe4f93045410ed3fed406_icgraph.png" border="0" usemap="#amain_8cpp_a0951f538a6bbe4f93045410ed3fed406_icgraph" alt=""/></div>
 <map name="amain_8cpp_a0951f538a6bbe4f93045410ed3fed406_icgraph" id="amain_8cpp_a0951f538a6bbe4f93045410ed3fed406_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,211,31"/>
-<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+<area shape="rect" title="Signal handler for SIGINT." alt="" coords="108,5,211,31"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of the HotWheels Cluster application." alt="" coords="5,5,60,31"/>
 <area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
 </map>
 </div>
@@ -172,14 +202,25 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00014">14</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p>Main function of the HotWheels Cluster application. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The number of command-line arguments. </td></tr>
+    <tr><td class="paramname">argv</td><td>The command-line arguments. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int The exit code of the application.</dd></dl>
+<p>This function initializes the application and starts the <a class="el" href="classCarManager.html" title="Class that manages the car manager application. QMainWindow.">CarManager</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00040">40</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
 <map name="amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,60,31"/>
-<area shape="rect" href="main_8cpp.html#a0951f538a6bbe4f93045410ed3fed406" title=" " alt="" coords="108,5,211,31"/>
+<area shape="rect" title="Main function of the HotWheels Cluster application." alt="" coords="5,5,60,31"/>
+<area shape="rect" href="main_8cpp.html#a0951f538a6bbe4f93045410ed3fed406" title="Signal handler for SIGINT." alt="" coords="108,5,211,31"/>
 <area shape="poly" title=" " alt="" coords="60,15,94,15,94,21,60,21"/>
 </map>
 </div>

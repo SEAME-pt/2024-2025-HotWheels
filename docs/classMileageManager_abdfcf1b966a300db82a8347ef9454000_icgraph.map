@@ -1,7 +1,14 @@
 <map id="MileageManager::mileageUpdated" name="MileageManager::mileageUpdated">
-<area shape="rect" id="Node000001" title=" " alt="" coords="532,5,779,31"/>
-<area shape="rect" id="Node000002" href="$classMileageManager.html#a912c517158c90834792c3d00c0af101c" title=" " alt="" coords="248,5,484,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="518,21,484,21,484,15,518,15"/>
-<area shape="rect" id="Node000003" href="$classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title=" " alt="" coords="5,5,200,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="234,21,200,21,200,15,234,15"/>
+<area shape="rect" id="Node000001" title="Signal emitted when the mileage is updated." alt="" coords="820,59,1067,84"/>
+<area shape="rect" id="Node000002" href="$classCarManager.html#a5bf066ce114aea750d5d71c7618a9ac1" title="Initialize the MileageManager." alt="" coords="545,22,763,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="806,60,763,56,763,50,807,55"/>
+<area shape="rect" id="Node000005" href="$classMileageManager.html#a912c517158c90834792c3d00c0af101c" title="Update the mileage of the vehicle." alt="" coords="536,87,772,112"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="807,87,773,91,772,85,806,82"/>
+<area shape="rect" id="Node000003" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="531,45,488,45,488,39,531,39"/>
+<area shape="rect" id="Node000004" href="$classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
+<area shape="rect" id="Node000006" href="$classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initialize the MileageManager." alt="" coords="267,87,462,112"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="522,102,462,102,462,97,522,97"/>
 </map>

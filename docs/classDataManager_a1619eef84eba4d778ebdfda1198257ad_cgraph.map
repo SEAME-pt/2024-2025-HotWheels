@@ -1,5 +1,5 @@
 <map id="DataManager::handleIpAddressData" name="DataManager::handleIpAddressData">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,263,31"/>
-<area shape="rect" id="Node000002" href="$classDataManager.html#a7914f411b3504726cedc754854019f66" title=" " alt="" coords="311,5,548,31"/>
+<area shape="rect" id="Node000001" title="Handles IP address data." alt="" coords="5,5,263,31"/>
+<area shape="rect" id="Node000002" href="$classDataManager.html#a7914f411b3504726cedc754854019f66" title="Signal emitted when the IP address is updated." alt="" coords="311,5,548,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,15,297,15,297,21,263,21"/>
 </map>

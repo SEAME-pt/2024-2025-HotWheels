@@ -1,0 +1,13 @@
+<map id="CarManager::initializeMileageManager" name="CarManager::initializeMileageManager">
+<area shape="rect" id="Node000001" title="Initialize the MileageManager." alt="" coords="5,88,223,128"/>
+<area shape="rect" id="Node000002" href="$classDataManager.html#aa15248dd048e25abe66a9120056c5eb9" title="Updates the mileage data." alt="" coords="289,5,503,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,85,270,55,300,46,302,51,271,60,175,90"/>
+<area shape="rect" id="Node000004" href="$classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title="Signal emitted when the mileage is updated." alt="" coords="273,70,519,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="223,96,258,92,259,98,223,101"/>
+<area shape="rect" id="Node000005" href="$classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9" title="Slot for handling speed updates." alt="" coords="271,119,521,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="223,115,257,118,257,123,223,120"/>
+<area shape="rect" id="Node000006" href="$classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title="Signal emitted when the speed is updated." alt="" coords="281,169,511,194"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="176,126,271,153,313,163,312,168,270,159,175,131"/>
+<area shape="rect" id="Node000003" href="$classDataManager.html#a2c9bf3e56e1df0820ad431a96b27686d" title="Signal emitted when the driving mode is updated." alt="" coords="569,13,796,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="503,23,555,23,555,28,503,28"/>
+</map>

@@ -14,5 +14,6 @@ var classDisplayManager =
     [ "updateMileage", "classDisplayManager.html#aef67b2d47859a3a6ef96d622925c84c2", null ],
     [ "updateSystemTime", "classDisplayManager.html#aa871409b067196dc448ce1cec4ad1437", null ],
     [ "updateTemperature", "classDisplayManager.html#a002b346babdbbdf852f9121a32e80e9d", null ],
-    [ "updateWifiStatus", "classDisplayManager.html#af6cc252c8fd7ca1836e5c38265489f2e", null ]
+    [ "updateWifiStatus", "classDisplayManager.html#af6cc252c8fd7ca1836e5c38265489f2e", null ],
+    [ "m_ui", "classDisplayManager.html#a8949f4acaeeb3aa2006a3235412f896c", null ]
 ];

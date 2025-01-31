@@ -125,8 +125,10 @@ Signals</h2></td></tr>
 <tr class="separator:a2dcafe9f87fc6872b6e89b11e7fbec96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header signals_classIMCP2515Controller"><td colspan="2" onclick="javascript:dynsection.toggleInherit('signals_classIMCP2515Controller')"><img src="closed.png" alt="-"/>&#160;Signals inherited from <a class="el" href="classIMCP2515Controller.html">IMCP2515Controller</a></td></tr>
 <tr class="memitem:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller" id="r_ae8ffa002fcf87f1a8dbdf6ff4347d1fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMCP2515Controller.html#ae8ffa002fcf87f1a8dbdf6ff4347d1fd">speedUpdated</a> (float newSpeed)</td></tr>
+<tr class="memdesc:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the speed is updated.  <br /></td></tr>
 <tr class="separator:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller" id="r_a7f546ecbb7d88b41f23b1852c82d4f8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMCP2515Controller.html#a7f546ecbb7d88b41f23b1852c82d4f8d">rpmUpdated</a> (int newRpm)</td></tr>
+<tr class="memdesc:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the RPM is updated.  <br /></td></tr>
 <tr class="separator:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -157,9 +159,8 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class to emulate the behavior of the MCP2515 controller. </p>
-<p>QObject. </p>
 
-<p class="definition">Definition at line <a class="el" href="MockMCP2515Controller_8hpp_source.html#l00027">27</a> of file <a class="el" href="MockMCP2515Controller_8hpp_source.html">MockMCP2515Controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MockMCP2515Controller_8hpp_source.html#l00028">28</a> of file <a class="el" href="MockMCP2515Controller_8hpp_source.html">MockMCP2515Controller.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a707e1507335ae9d6fba2bd84f95306ef" name="a707e1507335ae9d6fba2bd84f95306ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a707e1507335ae9d6fba2bd84f95306ef">&#9670;&#160;</a></span>MOCK_METHOD() <span class="overload">[1/4]</span></h2>
@@ -359,7 +360,7 @@ Here is the call graph for this function:</div>
 <p>Rotation per minute updated signal. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newRpm</td><td></td></tr>
+    <tr><td class="paramname">newRpm</td><td>The new RPM value. </td></tr>
   </table>
   </dd>
 </dl>
@@ -392,7 +393,7 @@ Here is the call graph for this function:</div>
 <p>Speed updated signal. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newSpeed</td><td></td></tr>
+    <tr><td class="paramname">newSpeed</td><td>The new speed value. </td></tr>
   </table>
   </dd>
 </dl>

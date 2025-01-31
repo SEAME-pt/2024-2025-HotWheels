@@ -17,5 +17,6 @@ var searchData=
   ['configureinterrupts_14',['configureInterrupts',['../classMCP2515Configurator.html#a992d30e78baa17aa952d17643b599d5d',1,'MCP2515Configurator']]],
   ['configurerxbuffer_15',['configureRXBuffer',['../classMCP2515Configurator.html#a3756a8b45bb55a349c37e76fe133b45f',1,'MCP2515Configurator']]],
   ['configuretxbuffer_16',['configureTXBuffer',['../classMCP2515Configurator.html#af3688800297022aee833d54ca88d9d99',1,'MCP2515Configurator']]],
-  ['controlsmanager_17',['ControlsManager',['../classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03',1,'ControlsManager']]]
+  ['connectsignals_17',['connectSignals',['../classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70',1,'CanBusManager']]],
+  ['controlsmanager_18',['ControlsManager',['../classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03',1,'ControlsManager']]]
 ];

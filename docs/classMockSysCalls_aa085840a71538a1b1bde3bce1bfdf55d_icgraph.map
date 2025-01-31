@@ -1,0 +1,34 @@
+<map id="MockSysCalls::MockSysCalls" name="MockSysCalls::MockSysCalls">
+<area shape="rect" id="Node000001" title="Constructor of the class set as default." alt="" coords="599,277,809,303"/>
+<area shape="rect" id="Node000002" href="$classMockSysCalls.html#a8ac43bb616643db04ca635ae8fa3eb07" title="Get the instance object." alt="" coords="358,228,533,253"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="623,277,512,256,513,251,624,272"/>
+<area shape="rect" id="Node000014" href="$classMockSysCalls.html#a29a2af9d79cd6a6630981b6177ad21d5" title="Copy constructor of the class set as delete." alt="" coords="340,277,551,303"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="585,293,551,293,551,287,585,287"/>
+<area shape="rect" id="Node000015" href="$classMockSysCalls.html#a5991d4b114f9bc2bcd94f0a17db75567" title="Operator of the class set as delete." alt="" coords="352,327,539,352"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="624,308,513,329,512,324,623,303"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="481,218,471,210,445,207,424,209,412,213,410,219,416,226,412,230,405,220,409,210,422,204,445,201,474,205,485,214"/>
+<area shape="rect" id="Node000003" href="$MockSysCalls_8hpp.html#a6763dfbeac67eadf78345b6b8d8170ad" title="Mocked close function." alt="" coords="193,5,292,31"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="428,218,374,135,335,87,290,44,273,33,276,29,294,40,339,84,378,132,433,215"/>
+<area shape="rect" id="Node000005" href="$MockSysCalls_8hpp.html#a547cebdcdfafe9cdea6aa85812569739" title="Mocked ioctl function." alt="" coords="196,55,289,80"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="422,219,366,159,330,125,290,94,272,82,275,78,294,89,333,121,370,155,426,215"/>
+<area shape="rect" id="Node000006" href="$MockSysCalls_8hpp.html#aeb1b8a14acf38ef421993960b0f64ee8" title="Mocked open function." alt="" coords="194,104,291,129"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="414,223,291,143,270,132,272,127,293,138,417,218"/>
+<area shape="rect" id="Node000007" href="$test__SPIController_8cpp.html#a2c8c790e089d69da495c0fa0ecba13b7" title="Ensures that closeDevice() does not throw an exception." alt="" coords="208,153,277,179"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="396,226,277,181,279,176,398,221"/>
+<area shape="rect" id="Node000008" href="$test__SPIController_8cpp.html#ae7b108e33e3ac9f4f4cf1de19a701d88" title="Ensures that configure() does not throw an exception with valid parameters." alt="" coords="208,203,277,228"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="344,231,277,222,278,217,344,225"/>
+<area shape="rect" id="Node000009" href="$test__SPIController_8cpp.html#ae59a9c92d1c4462ba45528bfcbf1b866" title="Ensures that openDevice() throws an exception when the device fails to open." alt="" coords="208,252,277,277"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="344,255,278,263,277,258,344,250"/>
+<area shape="rect" id="Node000010" href="$test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389" title="Ensures that the device opens without throwing an exception." alt="" coords="208,301,277,327"/>
+<area shape="poly" id="edge12_Node000002_Node000010" title=" " alt="" coords="365,259,341,267,269,304,267,299,339,262,364,254"/>
+<area shape="rect" id="Node000011" href="$test__SPIController_8cpp.html#aee0ca07256034463c67316679656f948" title="Ensures that readByte() does not throw an exception." alt="" coords="208,351,277,376"/>
+<area shape="poly" id="edge13_Node000002_Node000011" title=" " alt="" coords="350,261,342,267,325,283,317,301,309,320,294,340,275,353,272,348,290,336,305,317,312,299,321,280,338,263,348,257"/>
+<area shape="rect" id="Node000012" href="$test__SPIController_8cpp.html#ac52991dcf51dffa102a470de654d2a6f" title="Ensures that spiTransfer() does not throw an exception." alt="" coords="208,400,277,425"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="347,262,342,267,329,281,322,295,317,324,312,356,306,372,294,389,278,402,275,398,290,385,301,370,307,354,311,324,317,293,325,278,338,263,344,258"/>
+<area shape="rect" id="Node000013" href="$test__SPIController_8cpp.html#a6d73eee99372cc6edf553bfb3b263ad5" title="Ensures that writeByte() does not throw an exception." alt="" coords="208,449,277,475"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="348,261,342,267,326,287,318,307,316,348,315,392,308,415,294,438,279,451,275,447,290,435,304,413,310,391,311,348,313,305,321,284,338,263,344,257"/>
+<area shape="rect" id="Node000004" href="$classSPIControllerTest.html#af9b10b8f0c9489410435d9661dbfe416" title="Set up the test environment." alt="" coords="5,47,145,87"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="187,37,145,50,143,45,185,32"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="182,70,145,70,145,65,182,65"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="185,103,143,90,145,85,187,97"/>
+</map>

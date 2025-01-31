@@ -9,5 +9,9 @@ var classPeripheralController =
     [ "read_byte_data", "classPeripheralController.html#ac8031b8b0fcf47afa830301a82da98d1", null ],
     [ "set_motor_pwm", "classPeripheralController.html#a812ccf8cae6f9d5e89cb02949d4839b7", null ],
     [ "set_servo_pwm", "classPeripheralController.html#a7329bd3e4ede77e0f4ef77bb605aca2e", null ],
-    [ "write_byte_data", "classPeripheralController.html#a90f289229af99c3efc8c835c2da39c85", null ]
+    [ "write_byte_data", "classPeripheralController.html#a90f289229af99c3efc8c835c2da39c85", null ],
+    [ "motor_addr_", "classPeripheralController.html#a9c79e5db0be3b43e791da2532e269fe4", null ],
+    [ "motor_bus_fd_", "classPeripheralController.html#ab14001df9dd78beb9db259953b0fe3a7", null ],
+    [ "servo_addr_", "classPeripheralController.html#a009e001442df5a575263bc417c422c50", null ],
+    [ "servo_bus_fd_", "classPeripheralController.html#a27f51b9b0e7c3606496782c180da63b1", null ]
 ];
