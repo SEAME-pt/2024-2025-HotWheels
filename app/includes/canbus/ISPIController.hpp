@@ -4,7 +4,9 @@
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * @brief
+ * @brief Definition of the ISPIController interface.
+ * @details This file contains the definition of the ISPIController interface,
+ * which is responsible for controlling the SPI communication.
  * @version 0.1
  * @date 2025-01-31
  *
@@ -17,6 +19,11 @@
 
 #include <cstdint>
 #include <string>
+
+/**
+ * @brief Interface for the SPI controller.
+ * @class ISPIController
+ */
 class ISPIController {
 public:
   virtual ~ISPIController() = default;

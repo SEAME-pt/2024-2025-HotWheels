@@ -4,7 +4,9 @@
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * @brief
+ * @brief Definition of the CanBusManager class.
+ * @details This file contains the definition of the CanBusManager class, which
+ * is responsible for managing the CAN bus communication.
  * @version 0.1
  * @date 2025-01-31
  *
@@ -26,14 +28,21 @@
 class CanBusManager : public QObject {
   Q_OBJECT
 public:
-  explicit CanBusManager(const std::string &spi_device,
-                         QObject *parent = nullptr);
+  explicit CanBusManager(const std::string &spi_device, QObject *parent = nullptr);
   CanBusManager(IMCP2515Controller *controller, QObject *parent = nullptr);
   ~CanBusManager();
   bool initialize();
 
 signals:
+  /**
+   * @brief Signal emitted when the speed is updated.
+   * @param newSpeed The new speed value.
+   */
   void speedUpdated(float newSpeed);
+  /**
+   * @brief Signal emitted when the RPM is updated.
+   * @param newRpm The new RPM value.
+   */
   void rpmUpdated(int newRpm);
 
 private:

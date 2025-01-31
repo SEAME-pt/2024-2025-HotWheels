@@ -1,10 +1,10 @@
 /**
  * @file I2CController.hpp
- * @brief
+ * @brief Definition of the I2CController class.
  * @version 0.1
  * @date 2025-01-31
- * @details
- * @note
+ * @details This file contains the definition of the I2CController class, which
+ * is used to control I2C devices.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -19,40 +19,22 @@
 #include <cstdint>
 #include <stdexcept>
 
+/**
+ * @brief Class that controls I2C devices.
+ * @class I2CController
+ */
 class I2CController {
 private:
-  int i2c_fd_;   // File descriptor for the I2C device
-  int i2c_addr_; // I2C device address
+  /** @brief File descriptor for the I2C device. */
+  int i2c_fd_;   
+  /** @brief I2C device address. */
+  int i2c_addr_; 
 
 public:
-  /**
-   * Constructor to initialize the I2C communication with the specified device.
-   *
-   * @param i2c_device The path to the I2C device (e.g., "/dev/i2c-1").
-   * @param address The I2C address of the target device.
-   */
+
   I2CController(const char *i2c_device, int address);
-
-  /**
-   * Destructor to close the I2C device file descriptor when the object is
-   * destroyed.
-   */
   virtual ~I2CController();
-
-  /**
-   * Write a 16-bit value to a specific register of the I2C device.
-   *
-   * @param reg The register address on the I2C device.
-   * @param value The 16-bit value to be written to the register.
-   */
   void writeRegister(uint8_t reg, uint16_t value);
-
-  /**
-   * Read a 16-bit value from a specific register of the I2C device.
-   *
-   * @param reg The register address on the I2C device.
-   * @return The 16-bit value read from the register.
-   */
   uint16_t readRegister(uint8_t reg);
 };
 

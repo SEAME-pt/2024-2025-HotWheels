@@ -1,10 +1,11 @@
 /**
  * @file JoysticksController.hpp
- * @brief
+ * @brief Definition of the JoysticksController class.
  * @version 0.1
  * @date 2025-01-31
- * @details
- * @note
+ * @details This file contains the definition of the JoysticksController class,
+ * which is responsible for controlling the car's steering and speed using a
+ * joystick.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -20,58 +21,36 @@
 #include <SDL2/SDL.h>
 #include <functional>
 
+/**
+ * @brief Class that controls the car's steering and speed using a joystick.
+ * @class JoysticksController inherits from QObject
+ */
 class JoysticksController : public QObject {
   Q_OBJECT
 
 private:
+  /** @brief Pointer to the joystick device. */
   SDL_Joystick *m_joystick;
+  /** @brief Callback function to update the steering value. */
   std::function<void(int)> m_updateSteering;
+  /** @brief Callback function to update the speed value. */
   std::function<void(int)> m_updateSpeed;
+  /** @brief Flag to indicate if the controller is running. */
   bool m_running;
 
 public:
-  /**
-   * Constructor for the JoysticksController class, initializing the joystick
-   * controller with the provided callbacks for steering and speed.
-   *
-   * @param steeringCallback The callback function to update the steering value.
-   * @param speedCallback The callback function to update the speed value.
-   * @param parent The parent QObject for this instance.
-   */
   JoysticksController(std::function<void(int)> steeringCallback,
                       std::function<void(int)> speedCallback,
                       QObject *parent = nullptr);
-
-  /**
-   * Destructor for the JoysticksController class, cleaning up the joystick
-   * resources.
-   */
   ~JoysticksController();
-
-  /**
-   * Initializes the joystick controller by setting up SDL and opening the
-   * joystick device.
-   *
-   * @return True if the joystick was successfully initialized, false otherwise.
-   */
   bool init();
-
-  /**
-   * Requests the joystick controller to stop processing input.
-   */
   void requestStop();
 
 public slots:
-  /**
-   * Processes joystick input in a loop, updating steering and speed based on
-   * joystick events. This method runs in a separate thread.
-   */
   void processInput();
 
 signals:
-  /**
-   * Emitted when the joystick input processing has finished.
-   */
+  /** @brief Signal emitted when the controller is finished. */
   void finished();
 };
 

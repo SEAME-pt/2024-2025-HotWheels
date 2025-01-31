@@ -4,7 +4,9 @@
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * @brief
+ * @brief Definition of the MCP2515Controller class.
+ * @details This file contains the definition of the MCP2515Controller class,
+ * which is responsible for controlling the MCP2515 CAN controller.
  * @version 0.1
  * @date 2025-01-31
  *
@@ -22,6 +24,10 @@
 #include <QObject>
 #include <string>
 
+/**
+ * @brief Class that controls the MCP2515 CAN controller.
+ * @class MCP2515Controller inherits from IMCP2515Controller
+ */
 class MCP2515Controller : public IMCP2515Controller {
   Q_OBJECT
 public:
@@ -43,12 +49,18 @@ signals:
   void rpmUpdated(int newRpm);
 
 private:
+  /** @brief Pointer to the ISPIController object. */
   ISPIController *spiController;
+  /** @brief MCP2515Configurator object. */
   MCP2515Configurator configurator;
+  /** @brief CANMessageProcessor object. */
   CANMessageProcessor messageProcessor;
+  /** @brief Flag to indicate if the reading process should stop. */
   bool stopReadingFlag = false;
+  /** @brief Flag to indicate if the SPI controller is owned by the
+   * MCP2515Controller. */
   bool ownsSPIController = false;
-
+  
   void setupHandlers();
 };
 

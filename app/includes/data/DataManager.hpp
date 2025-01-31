@@ -1,10 +1,10 @@
 /**
  * @file DataManager.hpp
- * @brief
+ * @brief Definition of the DataManager class.
  * @version 0.1
  * @date 2025-01-31
- * @details
- * @note
+ * @details This file contains the definition of the DataManager class, which is
+ * responsible for managing the data received from the car's systems.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -20,241 +20,127 @@
 #include <QObject>
 #include <QString>
 
+/**
+ * @brief Class that manages the data received from the car's systems.
+ * @class DataManager inherits from QObject
+ */
 class DataManager : public QObject {
   Q_OBJECT
 
 public:
-  /**
-   * Constructor for the DataManager class. Initializes the data manager.
-   */
   DataManager();
-
-  /**
-   * Destructor for the DataManager class. Cleans up any resources.
-   */
   ~DataManager();
 
 public slots:
-  // CAN Data
-  /**
-   * Handles raw RPM data, processes it, and emits a signal with the processed
-   * data.
-   *
-   * @param rawRpm The raw RPM data from the CAN bus.
-   */
   void handleRpmData(int rawRpm);
-
-  /**
-   * Handles raw speed data, processes it based on cluster metrics, and emits a
-   * signal with the processed data.
-   *
-   * @param rawSpeed The raw speed data from the CAN bus.
-   */
   void handleSpeedData(float rawSpeed);
-
-  // Engine Data
-  /**
-   * Handles the steering angle data, updates the steering direction, and emits
-   * the processed data.
-   *
-   * @param rawAngle The raw steering angle data.
-   */
   void handleSteeringData(int rawAngle);
-
-  /**
-   * Handles the direction data for the car, updates the direction, and emits
-   * the processed data.
-   *
-   * @param rawDirection The raw direction data (e.g., forward, reverse).
-   */
   void handleDirectionData(CarDirection rawDirection);
-
-  // System Data
-  /**
-   * Handles the time data and emits a signal with the updated date, time, and
-   * day.
-   *
-   * @param currentDate The current date as a string.
-   * @param currentTime The current time as a string.
-   * @param currentDay The current day of the week as a string.
-   */
   void handleTimeData(const QString &currentDate, const QString &currentTime,
                       const QString &currentDay);
-
-  /**
-   * Handles the Wi-Fi status and name, and emits a signal with the updated
-   * information.
-   *
-   * @param status The current Wi-Fi status (e.g., connected, disconnected).
-   * @param wifiName The name of the current Wi-Fi network.
-   */
   void handleWifiData(const QString &status, const QString &wifiName);
-
-  /**
-   * Handles the temperature data and emits a signal with the updated
-   * temperature.
-   *
-   * @param temperature The current temperature as a string.
-   */
   void handleTemperatureData(const QString &temperature);
-
-  /**
-   * Handles the IP address data and emits a signal with the updated IP address.
-   *
-   * @param ipAddress The current IP address as a string.
-   */
   void handleIpAddressData(const QString &ipAddress);
-
-  // Battery Data
-  /**
-   * Handles the battery percentage data, checks if it has changed, and emits a
-   * signal with the updated value.
-   *
-   * @param batteryPercentage The current battery percentage.
-   */
   void handleBatteryPercentage(float batteryPercentage);
-
-  // Mileage Data
-  /**
-   * Handles the mileage data and emits a signal with the updated mileage.
-   *
-   * @param mileage The current mileage value.
-   */
   void handleMileageUpdate(double mileage);
-
-  // Settings Data
-  /**
-   * Sets the driving mode to the specified mode and emits a signal with the
-   * updated mode.
-   *
-   * @param newMode The new driving mode (Manual or Automatic).
-   */
   void setDrivingMode(DrivingMode newMode);
-
-  /**
-   * Sets the cluster theme (Dark or Light) and emits a signal with the updated
-   * theme.
-   *
-   * @param newTheme The new cluster theme.
-   */
   void setClusterTheme(ClusterTheme newTheme);
-
-  /**
-   * Sets the cluster metrics (Kilometers or Miles) and emits a signal with the
-   * updated metrics.
-   *
-   * @param newMetrics The new cluster metrics.
-   */
   void setClusterMetrics(ClusterMetrics newMetrics);
-
-  // Slots to handle toggled settings
-  /**
-   * Toggles between Manual and Automatic driving modes and emits a signal with
-   * the updated mode.
-   */
   void toggleDrivingMode();
-
-  /**
-   * Toggles between Dark and Light cluster themes and emits a signal with the
-   * updated theme.
-   */
   void toggleClusterTheme();
-
-  /**
-   * Toggles between Kilometers and Miles for the cluster metrics and emits a
-   * signal with the updated metrics.
-   */
   void toggleClusterMetrics();
 
 signals:
-  // CAN Data
   /**
-   * Signal emitted when CAN data is processed, with the processed speed and
-   * RPM.
+   * @brief Signal emitted when the processed speed and RPM are updated.
+   * @param processedSpeed The processed speed value.
+   * @param processedRpm The processed RPM value.
    */
   void canDataProcessed(float processedSpeed, int processedRpm);
-
   /**
-   * Signal emitted when engine data is processed, with the processed direction
-   * and angle.
+   * @brief Signal emitted when the processed steering angle is updated.
+   * @param processedDirection The processed direction value.
+   * @param processedAngle The processed angle value.
    */
   void engineDataProcessed(CarDirection processedDirection, int processedAngle);
-
-  // System Data
   /**
-   * Signal emitted when the system time is updated.
+   * @brief Signal emitted when the system time is updated.
+   * @param currentDate The current date.
+   * @param currentTime The current time.
+   * @param currentDay The current day.
    */
   void systemTimeUpdated(const QString &currentDate, const QString &currentTime,
                          const QString &currentDay);
-
   /**
-   * Signal emitted when the Wi-Fi status or name is updated.
+   * @brief Signal emitted when the WiFi status is updated.
+   * @param status The WiFi status.
+   * @param wifiName The WiFi name.
    */
   void systemWifiUpdated(const QString &status, const QString &wifiName);
-
   /**
-   * Signal emitted when the system temperature is updated.
+   * @brief Signal emitted when the system temperature is updated.
+   * @param temperature The temperature value.
    */
   void systemTemperatureUpdated(const QString &temperature);
-
   /**
-   * Signal emitted when the IP address is updated.
+   * @brief Signal emitted when the IP address is updated.
+   * @param ipAddress The IP address.
    */
   void ipAddressUpdated(const QString &ipAddress);
-
-  // Battery Data
   /**
-   * Signal emitted when the battery percentage is updated.
+   * @brief Signal emitted when the battery percentage is updated.
+   * @param batteryPercentage The battery percentage value.
    */
   void batteryPercentageUpdated(float batteryPercentage);
-
-  // Mileage Data
   /**
-   * Signal emitted when the mileage is updated.
+   * @brief Signal emitted when the driving mode is updated.
+   * @param newMode The new driving mode.
    */
   void mileageUpdated(double mileage);
-
-  // Settings Data
   /**
-   * Signal emitted when the driving mode is updated.
+   * @brief Signal emitted when the driving mode is updated.
+   * @param newMode The new driving mode.
    */
   void drivingModeUpdated(DrivingMode newMode);
-
   /**
-   * Signal emitted when the cluster theme is updated.
+   * @brief Signal emitted when the cluster theme is updated.
+   * @param newTheme The new cluster theme.
    */
   void clusterThemeUpdated(ClusterTheme newTheme);
-
   /**
-   * Signal emitted when the cluster metrics are updated.
+   * @brief Signal emitted when the cluster metrics are updated.
+   * @param newMetrics The new cluster metrics.
    */
   void clusterMetricsUpdated(ClusterMetrics newMetrics);
 
 private:
-  // CAN Data
+  /** @brief Processed speed value. */
   float m_speed = 0.0f;
+  /** @brief Processed RPM value. */
   int m_rpm = 0;
-
-  // Engine Data
+  /** @brief Processed direction value. */
   CarDirection m_carDirection = CarDirection::Stop;
+  /** @brief Processed steering angle value. */
   int m_steeringDirection = 0;
-
-  // System Data
+  /** @brief Processed date value. */
   QString m_time = "";
+  /** @brief Processed WiFi name value. */
   QString m_wifiName = "";
+  /** @brief Processed WiFi status value. */
   QString m_wifiStatus = "";
+  /** @brief Processed temperature value. */
   QString m_temperature = "";
+  /** @brief Processed IP address value. */
   QString m_ipAddress = "";
-
-  // Battery Data
+  /** @brief Processed battery percentage value. */
   float m_batteryPercentage = -1.0f;
-
-  // Mileage Data
+  /** @brief Processed mileage value. */
   double m_mileage = 0.0;
-
-  // Display Preferences
+  /** @brief Processed driving mode value. */
   DrivingMode m_drivingMode = DrivingMode::Manual;
+  /** @brief Processed cluster theme value. */
   ClusterTheme m_clusterTheme = ClusterTheme::Dark;
+  /** @brief Processed cluster metrics value. */
   ClusterMetrics m_clusterMetrics = ClusterMetrics::Kilometers;
 };
 

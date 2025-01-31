@@ -1,10 +1,9 @@
 /**
  * @file IPeripheralController.hpp
- * @brief
+ * @brief File containing the IPeripheralController interface.
  * @version 0.1
  * @date 2025-01-31
- * @details
- * @note
+ * @details Definition of the IPeripheralController interface.
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -24,6 +23,10 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
+/**
+ * @brief Interface for the peripheral controller.
+ * @class IPeripheralController
+ */
 class IPeripheralController {
 public:
   virtual ~IPeripheralController() = default;

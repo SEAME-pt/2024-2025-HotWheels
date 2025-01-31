@@ -4,7 +4,9 @@
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
  * @author Michel Batista (@MicchelFAB)
- * @brief
+ * @brief Definition of the MCP2515Configurator class.
+ * @details This file contains the definition of the MCP2515Configurator class,
+ * which is responsible for configuring the MCP2515 CAN controller.
  * @version 0.1
  * @date 2025-01-31
  *
@@ -19,6 +21,10 @@
 #include <cstdint>
 #include <vector>
 
+/**
+ * @brief Class that configures the MCP2515 CAN controller.
+ * @class MCP2515Configurator
+ */
 class MCP2515Configurator {
 public:
   explicit MCP2515Configurator(ISPIController &spiController);
@@ -49,6 +55,7 @@ public:
   static constexpr uint8_t RXB0SIDL = 0x62;
 
 private:
+  /** @brief Reference to the SPI controller. */
   ISPIController &spiController;
 
   void writeRegister(uint8_t address, uint8_t value);
