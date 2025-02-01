@@ -35,8 +35,8 @@
  * specified I2C device and address.
  */
 BatteryController::BatteryController(const char *i2c_device, int address,
-									 QObject *parent)
-	: QObject(parent), I2CController(i2c_device, address) {
+                                     QObject *parent)
+    : QObject(parent), I2CController(i2c_device, address) {
   setCalibration32V2A();
 }
 
@@ -84,8 +84,8 @@ float BatteryController::getBatteryPercentage() {
   // Calculate percentage
   float percentage = (loadVoltage - 6.0F) / 2.4f * 100.0F;
   if (percentage > 100.0F)
-	percentage = 100.0F;
+    percentage = 100.0F;
   if (percentage < 0.0F)
-	percentage = 0.0F;
+    percentage = 0.0F;
   return percentage;
 }

@@ -32,16 +32,16 @@
  * specified I2C device and address.
  */
 I2CController::I2CController(const char *i2c_device, int address)
-	: i2c_fd_(-1), i2c_addr_(address) {
+    : i2c_fd_(-1), i2c_addr_(address) {
   // Open I2C device
   i2c_fd_ = open(i2c_device, O_RDWR);
   if (i2c_fd_ < 0) {
-	perror("Failed to open I2C device");
+    perror("Failed to open I2C device");
   }
 
   // Set I2C address
   if (ioctl(i2c_fd_, I2C_SLAVE, i2c_addr_) < 0) {
-	perror("Failed to set I2C address");
+    perror("Failed to set I2C address");
   }
 }
 
@@ -51,7 +51,7 @@ I2CController::I2CController(const char *i2c_device, int address)
  */
 I2CController::~I2CController() {
   if (i2c_fd_ >= 0) {
-	close(i2c_fd_);
+    close(i2c_fd_);
   }
 }
 
@@ -63,9 +63,9 @@ I2CController::~I2CController() {
  */
 void I2CController::writeRegister(uint8_t reg, uint16_t value) {
   std::array<uint8_t, 3> buffer = {reg, static_cast<uint8_t>(value >> 8),
-								   static_cast<uint8_t>(value & 0xFF)};
+                                   static_cast<uint8_t>(value & 0xFF)};
   if (write(i2c_fd_, buffer.data(), buffer.size()) != 3) {
-	perror("I2C write failed");
+    perror("I2C write failed");
   }
 }
 
@@ -78,11 +78,11 @@ void I2CController::writeRegister(uint8_t reg, uint16_t value) {
  */
 uint16_t I2CController::readRegister(uint8_t reg) {
   if (write(i2c_fd_, &reg, 1) != 1) {
-	perror("I2C write failed");
+    perror("I2C write failed");
   }
   std::array<uint8_t, 2> buffer;
   if (read(i2c_fd_, buffer.data(), buffer.size()) != 2) {
-	perror("I2C read failed");
+    perror("I2C read failed");
   }
   return (buffer[0] << 8) | buffer[1];
 }

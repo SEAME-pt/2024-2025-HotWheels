@@ -40,8 +40,8 @@ private:
 
 public:
   JoysticksController(std::function<void(int)> steeringCallback,
-					  std::function<void(int)> speedCallback,
-					  QObject *parent = nullptr);
+                      std::function<void(int)> speedCallback,
+                      QObject *parent = nullptr);
   ~JoysticksController();
   bool init();
   void requestStop();
