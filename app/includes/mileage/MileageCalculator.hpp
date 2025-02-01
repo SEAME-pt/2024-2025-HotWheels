@@ -27,17 +27,17 @@
  */
 class MileageCalculator {
 public:
-  MileageCalculator();
-  ~MileageCalculator() = default;
-  void addSpeed(float speed);
-  double calculateDistance();
+	MileageCalculator();
+	~MileageCalculator() = default;
+	void addSpeed(float speed);
+	double calculateDistance();
 
 private:
-  /** @brief List of speed and interval pairs to store measurements. */
-  QList<QPair<float, qint64>> m_speedValues;
-  /** @brief Timer used to track the time intervals between speed measurements.
-   */
-  QElapsedTimer m_intervalTimer;
+	/** @brief List of speed and interval pairs to store measurements. */
+	QList<QPair<float, qint64>> m_speedValues;
+	/** @brief Timer used to track the time intervals between speed measurements.
+	 */
+	QElapsedTimer m_intervalTimer;
 };
 
 #endif // MILEAGECALCULATOR_HPP

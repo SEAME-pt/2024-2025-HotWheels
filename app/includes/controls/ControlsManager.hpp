@@ -26,29 +26,29 @@
  * @class ControlsManager inherits from QObject
  */
 class ControlsManager : public QObject {
-  Q_OBJECT
+	Q_OBJECT
 
 private:
-  /** @brief EngineController object. */
-  EngineController m_engineController;
-  /** @brief JoysticksController object. */
-  JoysticksController *m_manualController;
-  /** @brief Thread for the manual controller. */
-  QThread *m_manualControllerThread;
-  /** @brief Current driving mode. */
-  DrivingMode m_currentMode;
+	/** @brief EngineController object. */
+	EngineController m_engineController;
+	/** @brief JoysticksController object. */
+	JoysticksController *m_manualController;
+	/** @brief Thread for the manual controller. */
+	QThread *m_manualControllerThread;
+	/** @brief Current driving mode. */
+	DrivingMode m_currentMode;
 
 public:
-  explicit ControlsManager(QObject *parent = nullptr);
-  ~ControlsManager();
-  void setMode(DrivingMode mode);
+	explicit ControlsManager(QObject *parent = nullptr);
+	~ControlsManager();
+	void setMode(DrivingMode mode);
 
 public slots:
-  void drivingModeUpdated(DrivingMode newMode);
+	void drivingModeUpdated(DrivingMode newMode);
 
 signals:
-  void directionChanged(CarDirection newDirection);
-  void steeringChanged(int newAngle);
+	void directionChanged(CarDirection newDirection);
+	void steeringChanged(int newAngle);
 };
 
 #endif // CONTROLSMANAGER_HPP

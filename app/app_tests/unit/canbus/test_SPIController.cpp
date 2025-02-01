@@ -29,26 +29,26 @@ using ::testing::Return;
  */
 class SPIControllerTest : public ::testing::Test {
 protected:
-  /** @brief SPIController object. */
-  SPIController *spiController;
+	/** @brief SPIController object. */
+	SPIController *spiController;
 
-  /**
-   * @brief Set up the test environment.
-   *
-   * @details This method is called before each test to set up the necessary
-   * objects.
-   */
-  void SetUp() override {
-    spiController = new SPIController(mock_ioctl, mock_open, mock_close);
-  }
+	/**
+	 * @brief Set up the test environment.
+	 *
+	 * @details This method is called before each test to set up the necessary
+	 * objects.
+	 */
+	void SetUp() override {
+		spiController = new SPIController(mock_ioctl, mock_open, mock_close);
+	}
 
-  /**
-   * @brief Tear down the test environment.
-   *
-   * @details This method is called after each test to clean up the objects
-   * created in SetUp().
-   */
-  void TearDown() override { delete spiController; }
+	/**
+	 * @brief Tear down the test environment.
+	 *
+	 * @details This method is called after each test to clean up the objects
+	 * created in SetUp().
+	 */
+	void TearDown() override { delete spiController; }
 };
 
 /**
@@ -59,11 +59,11 @@ protected:
  * @see SPIController::openDevice
  */
 TEST_F(SPIControllerTest, OpenDeviceSuccess) {
-  EXPECT_CALL(MockSysCalls::instance(),
-              open(testing::StrEq("/dev/spidev0.0"), O_RDWR))
-      .WillOnce(Return(3));
+	EXPECT_CALL(MockSysCalls::instance(),
+							open(testing::StrEq("/dev/spidev0.0"), O_RDWR))
+			.WillOnce(Return(3));
 
-  ASSERT_NO_THROW(spiController->openDevice("/dev/spidev0.0"));
+	ASSERT_NO_THROW(spiController->openDevice("/dev/spidev0.0"));
 }
 
 /**
@@ -77,11 +77,11 @@ TEST_F(SPIControllerTest, OpenDeviceSuccess) {
  * @see SPIController::openDevice
  */
 TEST_F(SPIControllerTest, OpenDeviceFailure) {
-  EXPECT_CALL(MockSysCalls::instance(),
-              open(testing::StrEq("/dev/spidev0.0"), O_RDWR))
-      .WillOnce(Return(-1)); // Simulate failure
+	EXPECT_CALL(MockSysCalls::instance(),
+							open(testing::StrEq("/dev/spidev0.0"), O_RDWR))
+			.WillOnce(Return(-1)); // Simulate failure
 
-  ASSERT_THROW(spiController->openDevice("/dev/spidev0.0"), std::runtime_error);
+	ASSERT_THROW(spiController->openDevice("/dev/spidev0.0"), std::runtime_error);
 }
 
 /**
@@ -95,17 +95,17 @@ TEST_F(SPIControllerTest, OpenDeviceFailure) {
  * @see SPIController::configure
  */
 TEST_F(SPIControllerTest, ConfigureSPIValidParameters) {
-  EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
-  spiController->openDevice("/dev/spidev0.0");
+	EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
+	spiController->openDevice("/dev/spidev0.0");
 
-  EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_WR_MODE))
-      .WillOnce(Return(0));
-  EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_WR_BITS_PER_WORD))
-      .WillOnce(Return(0));
-  EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_WR_MAX_SPEED_HZ))
-      .WillOnce(Return(0));
+	EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_WR_MODE))
+			.WillOnce(Return(0));
+	EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_WR_BITS_PER_WORD))
+			.WillOnce(Return(0));
+	EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_WR_MAX_SPEED_HZ))
+			.WillOnce(Return(0));
 
-  ASSERT_NO_THROW(spiController->configure(0, 8, 500000));
+	ASSERT_NO_THROW(spiController->configure(0, 8, 500000));
 }
 
 /**
@@ -118,13 +118,13 @@ TEST_F(SPIControllerTest, ConfigureSPIValidParameters) {
  * @see SPIController::writeByte
  */
 TEST_F(SPIControllerTest, WriteByteSuccess) {
-  EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
-  spiController->openDevice("/dev/spidev0.0");
+	EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
+	spiController->openDevice("/dev/spidev0.0");
 
-  EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_MESSAGE(1)))
-      .WillOnce(Return(0));
+	EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_MESSAGE(1)))
+			.WillOnce(Return(0));
 
-  ASSERT_NO_THROW(spiController->writeByte(0x01, 0xFF));
+	ASSERT_NO_THROW(spiController->writeByte(0x01, 0xFF));
 }
 
 /**
@@ -137,13 +137,13 @@ TEST_F(SPIControllerTest, WriteByteSuccess) {
  * @see SPIController::readByte
  */
 TEST_F(SPIControllerTest, ReadByteSuccess) {
-  EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
-  spiController->openDevice("/dev/spidev0.0");
+	EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
+	spiController->openDevice("/dev/spidev0.0");
 
-  EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_MESSAGE(1)))
-      .WillOnce(Return(0));
+	EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_MESSAGE(1)))
+			.WillOnce(Return(0));
 
-  ASSERT_NO_THROW(spiController->readByte(0x01));
+	ASSERT_NO_THROW(spiController->readByte(0x01));
 }
 
 /**
@@ -156,16 +156,16 @@ TEST_F(SPIControllerTest, ReadByteSuccess) {
  * @see SPIController::spiTransfer
  */
 TEST_F(SPIControllerTest, SpiTransferSuccess) {
-  EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
-  spiController->openDevice("/dev/spidev0.0");
+	EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
+	spiController->openDevice("/dev/spidev0.0");
 
-  EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_MESSAGE(1)))
-      .WillOnce(Return(0));
+	EXPECT_CALL(MockSysCalls::instance(), ioctl(_, SPI_IOC_MESSAGE(1)))
+			.WillOnce(Return(0));
 
-  uint8_t tx[] = {0x02, 0x01, 0xFF};
-  uint8_t rx[sizeof(tx)] = {0};
+	uint8_t tx[] = {0x02, 0x01, 0xFF};
+	uint8_t rx[sizeof(tx)] = {0};
 
-  ASSERT_NO_THROW(spiController->spiTransfer(tx, rx, sizeof(tx)));
+	ASSERT_NO_THROW(spiController->spiTransfer(tx, rx, sizeof(tx)));
 }
 
 /**
@@ -178,10 +178,10 @@ TEST_F(SPIControllerTest, SpiTransferSuccess) {
  * @see SPIController::closeDevice
  */
 TEST_F(SPIControllerTest, CloseDeviceSuccess) {
-  EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
-  spiController->openDevice("/dev/spidev0.0");
+	EXPECT_CALL(MockSysCalls::instance(), open(_, _)).WillOnce(Return(3));
+	spiController->openDevice("/dev/spidev0.0");
 
-  EXPECT_CALL(MockSysCalls::instance(), close(3)).WillOnce(Return(0));
+	EXPECT_CALL(MockSysCalls::instance(), close(3)).WillOnce(Return(0));
 
-  ASSERT_NO_THROW(spiController->closeDevice());
+	ASSERT_NO_THROW(spiController->closeDevice());
 }

@@ -26,36 +26,36 @@
  * @class CanBusManager inherits from QObject
  */
 class CanBusManager : public QObject {
-  Q_OBJECT
+	Q_OBJECT
 public:
-  explicit CanBusManager(const std::string &spi_device,
-                         QObject *parent = nullptr);
-  CanBusManager(IMCP2515Controller *controller, QObject *parent = nullptr);
-  ~CanBusManager();
-  bool initialize();
+	explicit CanBusManager(const std::string &spi_device,
+												 QObject *parent = nullptr);
+	CanBusManager(IMCP2515Controller *controller, QObject *parent = nullptr);
+	~CanBusManager();
+	bool initialize();
 
 signals:
-  /**
-   * @brief Signal emitted when the speed is updated.
-   * @param newSpeed The new speed value.
-   */
-  void speedUpdated(float newSpeed);
-  /**
-   * @brief Signal emitted when the RPM is updated.
-   * @param newRpm The new RPM value.
-   */
-  void rpmUpdated(int newRpm);
+	/**
+	 * @brief Signal emitted when the speed is updated.
+	 * @param newSpeed The new speed value.
+	 */
+	void speedUpdated(float newSpeed);
+	/**
+	 * @brief Signal emitted when the RPM is updated.
+	 * @param newRpm The new RPM value.
+	 */
+	void rpmUpdated(int newRpm);
 
 private:
-  /** @brief Pointer to the IMCP2515Controller object. */
-  IMCP2515Controller *m_controller = nullptr;
-  /** @brief Pointer to the QThread object. */
-  QThread *m_thread = nullptr;
-  /** @brief Flag to indicate if the MCP2515 controller is owned by the
-   * CanBusManager. */
-  bool ownsMCP2515Controller = false;
-  /** @brief Method to connect signals. */
-  void connectSignals();
+	/** @brief Pointer to the IMCP2515Controller object. */
+	IMCP2515Controller *m_controller = nullptr;
+	/** @brief Pointer to the QThread object. */
+	QThread *m_thread = nullptr;
+	/** @brief Flag to indicate if the MCP2515 controller is owned by the
+	 * CanBusManager. */
+	bool ownsMCP2515Controller = false;
+	/** @brief Method to connect signals. */
+	void connectSignals();
 };
 
 #endif // CANBUSMANAGER_HPP

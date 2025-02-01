@@ -24,15 +24,15 @@
  */
 class MileageFileHandler {
 public:
-  explicit MileageFileHandler(const QString &filePath);
-  ~MileageFileHandler() = default;
-  double readMileage() const;
-  void writeMileage(double mileage) const;
-  void ensureFileExists() const;
+	explicit MileageFileHandler(const QString &filePath);
+	~MileageFileHandler() = default;
+	double readMileage() const;
+	void writeMileage(double mileage) const;
+	void ensureFileExists() const;
 
 private:
-  /** @brief The path to the mileage file to be managed. */
-  QString filePath;
+	/** @brief The path to the mileage file to be managed. */
+	QString filePath;
 };
 
 #endif // MILEAGEFILEHANDLER_HPP

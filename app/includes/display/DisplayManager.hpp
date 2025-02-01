@@ -26,36 +26,36 @@
  * @class DisplayManager inherits from QObject
  */
 class DisplayManager : public QObject {
-  Q_OBJECT
+	Q_OBJECT
 
 public:
-  explicit DisplayManager(Ui::CarManager *ui, QObject *parent = nullptr);
+	explicit DisplayManager(Ui::CarManager *ui, QObject *parent = nullptr);
 
 public slots:
-  void updateCanBusData(float speed, int rpm);
-  void updateEngineData(CarDirection direction, int steeringAngle);
-  void updateSystemTime(const QString &currentDate, const QString &currentTime,
-                        const QString &currentDay);
-  void updateWifiStatus(const QString &status, const QString &wifiName);
-  void updateTemperature(const QString &temperature);
-  void updateBatteryPercentage(float batteryPercentage);
-  void updateIpAddress(const QString &ipAddress);
-  void updateMileage(double mileage);
-  void updateDrivingMode(DrivingMode newMode);
-  void updateClusterTheme(ClusterTheme newTheme);
-  void updateClusterMetrics(ClusterMetrics newMetrics);
+	void updateCanBusData(float speed, int rpm);
+	void updateEngineData(CarDirection direction, int steeringAngle);
+	void updateSystemTime(const QString &currentDate, const QString &currentTime,
+												const QString &currentDay);
+	void updateWifiStatus(const QString &status, const QString &wifiName);
+	void updateTemperature(const QString &temperature);
+	void updateBatteryPercentage(float batteryPercentage);
+	void updateIpAddress(const QString &ipAddress);
+	void updateMileage(double mileage);
+	void updateDrivingMode(DrivingMode newMode);
+	void updateClusterTheme(ClusterTheme newTheme);
+	void updateClusterMetrics(ClusterMetrics newMetrics);
 
 signals:
-  /** @brief Signal emitted when the driving mode is toggled. */
-  void drivingModeToggled();
-  /** @brief Signal emitted when the cluster theme is toggled. */
-  void clusterThemeToggled();
-  /** @brief Signal emitted when the cluster metrics are toggled. */
-  void clusterMetricsToggled();
+	/** @brief Signal emitted when the driving mode is toggled. */
+	void drivingModeToggled();
+	/** @brief Signal emitted when the cluster theme is toggled. */
+	void clusterThemeToggled();
+	/** @brief Signal emitted when the cluster metrics are toggled. */
+	void clusterMetricsToggled();
 
 private:
-  /** @brief Pointer to the UI object. */
-  Ui::CarManager *m_ui;
+	/** @brief Pointer to the UI object. */
+	Ui::CarManager *m_ui;
 };
 
 #endif // DISPLAYMANAGER_HPP

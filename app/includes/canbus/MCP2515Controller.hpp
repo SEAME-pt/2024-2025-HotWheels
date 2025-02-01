@@ -29,39 +29,39 @@
  * @class MCP2515Controller inherits from IMCP2515Controller
  */
 class MCP2515Controller : public IMCP2515Controller {
-  Q_OBJECT
+	Q_OBJECT
 public:
-  explicit MCP2515Controller(const std::string &spiDevice);
-  MCP2515Controller(const std::string &spiDevice,
-                    ISPIController &spiController);
+	explicit MCP2515Controller(const std::string &spiDevice);
+	MCP2515Controller(const std::string &spiDevice,
+										ISPIController &spiController);
 
-  ~MCP2515Controller() override;
+	~MCP2515Controller() override;
 
-  bool init() override;
-  void processReading() override;
-  void stopReading() override;
+	bool init() override;
+	void processReading() override;
+	void stopReading() override;
 
-  CANMessageProcessor &getMessageProcessor() { return messageProcessor; }
-  bool isStopReadingFlagSet() const override;
+	CANMessageProcessor &getMessageProcessor() { return messageProcessor; }
+	bool isStopReadingFlagSet() const override;
 
 signals:
-  void speedUpdated(float newSpeed);
-  void rpmUpdated(int newRpm);
+	void speedUpdated(float newSpeed);
+	void rpmUpdated(int newRpm);
 
 private:
-  /** @brief Pointer to the ISPIController object. */
-  ISPIController *spiController;
-  /** @brief MCP2515Configurator object. */
-  MCP2515Configurator configurator;
-  /** @brief CANMessageProcessor object. */
-  CANMessageProcessor messageProcessor;
-  /** @brief Flag to indicate if the reading process should stop. */
-  bool stopReadingFlag = false;
-  /** @brief Flag to indicate if the SPI controller is owned by the
-   * MCP2515Controller. */
-  bool ownsSPIController = false;
+	/** @brief Pointer to the ISPIController object. */
+	ISPIController *spiController;
+	/** @brief MCP2515Configurator object. */
+	MCP2515Configurator configurator;
+	/** @brief CANMessageProcessor object. */
+	CANMessageProcessor messageProcessor;
+	/** @brief Flag to indicate if the reading process should stop. */
+	bool stopReadingFlag = false;
+	/** @brief Flag to indicate if the SPI controller is owned by the
+	 * MCP2515Controller. */
+	bool ownsSPIController = false;
 
-  void setupHandlers();
+	void setupHandlers();
 };
 
 #endif // MCP2515CONTROLLER_HPP

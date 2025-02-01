@@ -26,48 +26,48 @@
  * @class EngineController inherits from QObject
  */
 class EngineController : public QObject {
-  Q_OBJECT
+	Q_OBJECT
 
 private:
-  /** @brief Maximum angle for the steering servo. */
-  const int MAX_ANGLE = 180;
-  /** @brief Center point for the steering servo. */
-  const int SERVO_CENTER_PWM = 345;
-  /** @brief PWM value for the leftmost steering position. */
-  const int SERVO_LEFT_PWM = 345 - 140;
-  /** @brief PWM value for the rightmost steering position. */
-  const int SERVO_RIGHT_PWM = 345 + 140;
-  /** @brief PWM value for the neutral position. */
-  const int STEERING_CHANNEL = 0;
+	/** @brief Maximum angle for the steering servo. */
+	const int MAX_ANGLE = 180;
+	/** @brief Center point for the steering servo. */
+	const int SERVO_CENTER_PWM = 345;
+	/** @brief PWM value for the leftmost steering position. */
+	const int SERVO_LEFT_PWM = 345 - 140;
+	/** @brief PWM value for the rightmost steering position. */
+	const int SERVO_RIGHT_PWM = 345 + 140;
+	/** @brief PWM value for the neutral position. */
+	const int STEERING_CHANNEL = 0;
 
-  /** @brief Bool to indicate if the engine is running. */
-  std::atomic<bool> m_running;
-  /** @brief Current speed of the car. */
-  std::atomic<int> m_current_speed;
-  /** @brief Current angle of the steering servo. */
-  std::atomic<int> m_current_angle;
-  /** @brief Current direction of the car. */
-  CarDirection m_currentDirection = CarDirection::Stop;
+	/** @brief Bool to indicate if the engine is running. */
+	std::atomic<bool> m_running;
+	/** @brief Current speed of the car. */
+	std::atomic<int> m_current_speed;
+	/** @brief Current angle of the steering servo. */
+	std::atomic<int> m_current_angle;
+	/** @brief Current direction of the car. */
+	CarDirection m_currentDirection = CarDirection::Stop;
 
-  void setDirection(CarDirection newDirection);
+	void setDirection(CarDirection newDirection);
 
-  /** @brief Pointer to the peripheral controller. */
-  IPeripheralController *pcontrol;
+	/** @brief Pointer to the peripheral controller. */
+	IPeripheralController *pcontrol;
 
 public:
-  EngineController();
-  EngineController(int servo_addr, int motor_addr, QObject *parent = nullptr);
-  ~EngineController();
-  void start();
-  void stop();
-  void set_speed(int speed);
-  void set_steering(int angle);
+	EngineController();
+	EngineController(int servo_addr, int motor_addr, QObject *parent = nullptr);
+	~EngineController();
+	void start();
+	void stop();
+	void set_speed(int speed);
+	void set_steering(int angle);
 
 signals:
-  /** @brief Signal emitted when the speed is updated. */
-  void directionUpdated(CarDirection newDirection);
-  /** @brief Signal emitted when the speed is updated. */
-  void steeringUpdated(int newAngle);
+	/** @brief Signal emitted when the speed is updated. */
+	void directionUpdated(CarDirection newDirection);
+	/** @brief Signal emitted when the speed is updated. */
+	void steeringUpdated(int newAngle);
 };
 
 #endif // ENGINECONTROLLER_HPP
