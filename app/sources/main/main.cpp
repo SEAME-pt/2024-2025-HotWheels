@@ -40,10 +40,10 @@ void handleSigint(int) {
 int main(int argc, char *argv[]) {
   qDebug() << "[Main] HotWheels Cluster starting...";
 
-	if (std::signal(SIGINT, handleSigint) == SIG_ERR) {
-		qDebug() << "[Main] Error setting up signal handler.";
-		return 1;
-	}
+  if (std::signal(SIGINT, handleSigint) == SIG_ERR) {
+    qDebug() << "[Main] Error setting up signal handler.";
+    return 1;
+  }
 
   // Register enums
   qRegisterMetaType<ComponentStatus>("ComponentStatus");

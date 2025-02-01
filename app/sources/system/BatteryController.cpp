@@ -81,11 +81,11 @@ float BatteryController::getBatteryPercentage() {
   float shuntVoltage = getShuntVoltage_V();
   float loadVoltage = busVoltage + shuntVoltage;
 
-	// Calculate percentage
-	float percentage = (loadVoltage - 6.0F) / 2.4f * 100.0F;
-	if (percentage > 100.0F)
-		percentage = 100.0F;
-	if (percentage < 0.0F)
-		percentage = 0.0F;
-	return percentage;
+  // Calculate percentage
+  float percentage = (loadVoltage - 6.0F) / 2.4f * 100.0F;
+  if (percentage > 100.0F)
+    percentage = 100.0F;
+  if (percentage < 0.0F)
+    percentage = 0.0F;
+  return percentage;
 }
