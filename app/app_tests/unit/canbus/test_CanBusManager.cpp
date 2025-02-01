@@ -76,8 +76,8 @@ protected:
 TEST_F(CanBusManagerTest, SpeedSignalEmitsCorrectly) {
   QSignalSpy speedSpy(manager, &CanBusManager::speedUpdated);
 
-  float expectedSpeed = 150.0f;
-  emit mockMcpController->speedUpdated(expectedSpeed);
+	float expectedSpeed = 150.0F;
+	emit mockMcpController->speedUpdated(expectedSpeed);
 
   ASSERT_EQ(speedSpy.count(), 1);
   ASSERT_EQ(speedSpy.takeFirst().at(0).toFloat(), expectedSpeed);

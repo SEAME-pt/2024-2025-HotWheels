@@ -114,34 +114,34 @@ signals:
   void clusterMetricsUpdated(ClusterMetrics newMetrics);
 
 private:
-  /** @brief Processed speed value. */
-  float m_speed = 0.0f;
-  /** @brief Processed RPM value. */
-  int m_rpm = 0;
-  /** @brief Processed direction value. */
-  CarDirection m_carDirection = CarDirection::Stop;
-  /** @brief Processed steering angle value. */
-  int m_steeringDirection = 0;
-  /** @brief Processed date value. */
-  QString m_time = "";
-  /** @brief Processed WiFi name value. */
-  QString m_wifiName = "";
-  /** @brief Processed WiFi status value. */
-  QString m_wifiStatus = "";
-  /** @brief Processed temperature value. */
-  QString m_temperature = "";
-  /** @brief Processed IP address value. */
-  QString m_ipAddress = "";
-  /** @brief Processed battery percentage value. */
-  float m_batteryPercentage = -1.0f;
-  /** @brief Processed mileage value. */
-  double m_mileage = 0.0;
-  /** @brief Processed driving mode value. */
-  DrivingMode m_drivingMode = DrivingMode::Manual;
-  /** @brief Processed cluster theme value. */
-  ClusterTheme m_clusterTheme = ClusterTheme::Dark;
-  /** @brief Processed cluster metrics value. */
-  ClusterMetrics m_clusterMetrics = ClusterMetrics::Kilometers;
+	/** @brief Processed speed value. */
+	float m_speed = 0.0F;
+	/** @brief Processed RPM value. */
+	int m_rpm = 0;
+	/** @brief Processed direction value. */
+	CarDirection m_carDirection = CarDirection::Stop;
+	/** @brief Processed steering angle value. */
+	int m_steeringDirection = 0;
+	/** @brief Processed date value. */
+	QString m_time = "";
+	/** @brief Processed WiFi name value. */
+	QString m_wifiName = "";
+	/** @brief Processed WiFi status value. */
+	QString m_wifiStatus = "";
+	/** @brief Processed temperature value. */
+	QString m_temperature = "";
+	/** @brief Processed IP address value. */
+	QString m_ipAddress = "";
+	/** @brief Processed battery percentage value. */
+	float m_batteryPercentage = -1.0F;
+	/** @brief Processed mileage value. */
+	double m_mileage = 0.0;
+	/** @brief Processed driving mode value. */
+	DrivingMode m_drivingMode = DrivingMode::Manual;
+	/** @brief Processed cluster theme value. */
+	ClusterTheme m_clusterTheme = ClusterTheme::Dark;
+	/** @brief Processed cluster metrics value. */
+	ClusterMetrics m_clusterMetrics = ClusterMetrics::Kilometers;
 };
 
 #endif // DATAMANAGER_HPP

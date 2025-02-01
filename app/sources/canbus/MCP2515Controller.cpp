@@ -138,14 +138,14 @@ void MCP2515Controller::stopReading() { stopReadingFlag = true; }
  * data.
  */
 void MCP2515Controller::setupHandlers() {
-  messageProcessor.registerHandler(
-      0x100, [this](const std::vector<uint8_t> &data) {
-        if (data.size() == sizeof(float)) {
-          float speed;
-          memcpy(&speed, data.data(), sizeof(float));
-          emit speedUpdated(speed / 10.0f);
-        }
-      });
+	messageProcessor.registerHandler(
+			0x100, [this](const std::vector<uint8_t> &data) {
+				if (data.size() == sizeof(float)) {
+					float speed;
+					memcpy(&speed, data.data(), sizeof(float));
+					emit speedUpdated(speed / 10.0F);
+				}
+			});
 
   messageProcessor.registerHandler(0x200,
                                    [this](const std::vector<uint8_t> &data) {

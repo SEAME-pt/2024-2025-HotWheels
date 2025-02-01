@@ -113,9 +113,9 @@ TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
   std::vector<uint8_t> data = {0x00, 0x00, 0x20, 0x41}; // Float value: 10.0
   processor.processMessage(0x100, data);
 
-  ASSERT_EQ(speedSpy.count(), 1);
-  QList<QVariant> arguments = speedSpy.takeFirst();
-  ASSERT_EQ(arguments.at(0).toFloat(), 1.0f); // Speed divided by 10
+	ASSERT_EQ(speedSpy.count(), 1);
+	QList<QVariant> arguments = speedSpy.takeFirst();
+	ASSERT_EQ(arguments.at(0).toFloat(), 1.0F); // Speed divided by 10
 }
 
 /**
