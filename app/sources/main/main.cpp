@@ -26,8 +26,8 @@
  * @details This function is called when a SIGINT signal is received.
  */
 void handleSigint(int) {
-	// qDebug() << "[Main] SIGINT received. Quitting application.";
-	QCoreApplication::quit();
+  // qDebug() << "[Main] SIGINT received. Quitting application.";
+  QCoreApplication::quit();
 }
 
 /**
@@ -38,27 +38,27 @@ void handleSigint(int) {
  * @details This function initializes the application and starts the CarManager.
  */
 int main(int argc, char *argv[]) {
-	qDebug() << "[Main] HotWheels Cluster starting...";
+  qDebug() << "[Main] HotWheels Cluster starting...";
 
-	if (std::signal(SIGINT, handleSigint) == SIG_ERR) {
-		qDebug() << "[Main] Error setting up signal handler.";
-		return 1;
-	}
+  if (std::signal(SIGINT, handleSigint) == SIG_ERR) {
+    qDebug() << "[Main] Error setting up signal handler.";
+    return 1;
+  }
 
-	// Register enums
-	qRegisterMetaType<ComponentStatus>("ComponentStatus");
-	qRegisterMetaType<DrivingMode>("DrivingMode");
-	qRegisterMetaType<ClusterTheme>("ClusterTheme");
-	qRegisterMetaType<ClusterMetrics>("ClusterMetrics");
-	qRegisterMetaType<CarDirection>("CarDirection");
+  // Register enums
+  qRegisterMetaType<ComponentStatus>("ComponentStatus");
+  qRegisterMetaType<DrivingMode>("DrivingMode");
+  qRegisterMetaType<ClusterTheme>("ClusterTheme");
+  qRegisterMetaType<ClusterMetrics>("ClusterMetrics");
+  qRegisterMetaType<CarDirection>("CarDirection");
 
-	QApplication a(argc, argv);
+  QApplication a(argc, argv);
 
-	CarManager w;
+  CarManager w;
 
-	w.showFullScreen();
+  w.showFullScreen();
 
-	int exitCode = a.exec();
-	qDebug() << "[Main] HotWheels Cluster shutting down...";
-	return exitCode;
+  int exitCode = a.exec();
+  qDebug() << "[Main] HotWheels Cluster shutting down...";
+  return exitCode;
 }

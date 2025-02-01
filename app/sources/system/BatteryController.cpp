@@ -35,9 +35,9 @@
  * specified I2C device and address.
  */
 BatteryController::BatteryController(const char *i2c_device, int address,
-																		 QObject *parent)
-		: QObject(parent), I2CController(i2c_device, address) {
-	setCalibration32V2A();
+                                     QObject *parent)
+    : QObject(parent), I2CController(i2c_device, address) {
+  setCalibration32V2A();
 }
 
 /**
@@ -45,7 +45,7 @@ BatteryController::BatteryController(const char *i2c_device, int address,
  * @details This function sets the calibration for the INA219 to 32V and 2A.
  */
 void BatteryController::setCalibration32V2A() {
-	writeRegister(REG_CALIBRATION, 4096);
+  writeRegister(REG_CALIBRATION, 4096);
 }
 
 /**
@@ -55,8 +55,8 @@ void BatteryController::setCalibration32V2A() {
  * @details This function reads a 16-bit register from the INA219.
  */
 float BatteryController::getBusVoltage_V() {
-	uint16_t raw = readRegister(REG_BUSVOLTAGE);
-	return ((raw >> 3) * 0.004); // Convert to volts
+  uint16_t raw = readRegister(REG_BUSVOLTAGE);
+  return ((raw >> 3) * 0.004); // Convert to volts
 }
 
 /**
@@ -66,8 +66,8 @@ float BatteryController::getBusVoltage_V() {
  * @details This function reads a 16-bit register from the INA219.
  */
 float BatteryController::getShuntVoltage_V() {
-	int16_t raw = static_cast<int16_t>(readRegister(REG_SHUNTVOLTAGE));
-	return raw * 0.01; // Convert to volts
+  int16_t raw = static_cast<int16_t>(readRegister(REG_SHUNTVOLTAGE));
+  return raw * 0.01; // Convert to volts
 }
 
 /**
@@ -77,15 +77,15 @@ float BatteryController::getShuntVoltage_V() {
  * shunt voltages.
  */
 float BatteryController::getBatteryPercentage() {
-	float busVoltage = getBusVoltage_V();
-	float shuntVoltage = getShuntVoltage_V();
-	float loadVoltage = busVoltage + shuntVoltage;
+  float busVoltage = getBusVoltage_V();
+  float shuntVoltage = getShuntVoltage_V();
+  float loadVoltage = busVoltage + shuntVoltage;
 
-	// Calculate percentage
-	float percentage = (loadVoltage - 6.0F) / 2.4f * 100.0F;
-	if (percentage > 100.0F)
-		percentage = 100.0F;
-	if (percentage < 0.0F)
-		percentage = 0.0F;
-	return percentage;
+  // Calculate percentage
+  float percentage = (loadVoltage - 6.0F) / 2.4f * 100.0F;
+  if (percentage > 100.0F)
+    percentage = 100.0F;
+  if (percentage < 0.0F)
+    percentage = 0.0F;
+  return percentage;
 }
