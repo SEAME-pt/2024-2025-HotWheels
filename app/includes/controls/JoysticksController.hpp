@@ -28,30 +28,30 @@
 class JoysticksController : public QObject {
 	Q_OBJECT
 
-private:
-	/** @brief Pointer to the joystick device. */
-	SDL_Joystick *m_joystick;
-	/** @brief Callback function to update the steering value. */
-	std::function<void(int)> m_updateSteering;
-	/** @brief Callback function to update the speed value. */
-	std::function<void(int)> m_updateSpeed;
-	/** @brief Flag to indicate if the controller is running. */
-	bool m_running;
+	private:
+		/** @brief Pointer to the joystick device. */
+		SDL_Joystick *m_joystick;
+		/** @brief Callback function to update the steering value. */
+		std::function<void(int)> m_updateSteering;
+		/** @brief Callback function to update the speed value. */
+		std::function<void(int)> m_updateSpeed;
+		/** @brief Flag to indicate if the controller is running. */
+		bool m_running;
 
-public:
-	JoysticksController(std::function<void(int)> steeringCallback,
-											std::function<void(int)> speedCallback,
-											QObject *parent = nullptr);
-	~JoysticksController();
-	bool init();
-	void requestStop();
+	public:
+		JoysticksController(std::function<void(int)> steeringCallback,
+												std::function<void(int)> speedCallback,
+												QObject *parent = nullptr);
+		~JoysticksController();
+		bool init();
+		void requestStop();
 
-public slots:
-	void processInput();
+		slots:
+			void processInput();
 
-signals:
-	/** @brief Signal emitted when the controller is finished. */
-	void finished();
+		signals:
+			/** @brief Signal emitted when the controller is finished. */
+		void finished();
 };
 
 #endif // JOYSTICKS_CONTROLLER_HPP

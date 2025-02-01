@@ -62,9 +62,9 @@ I2CController::~I2CController() {
  * @details This function writes a 16-bit value to a register on the I2C device.
  */
 void I2CController::writeRegister(uint8_t reg, uint16_t value) {
-	uint8_t buffer[3] = {reg, static_cast<uint8_t>(value >> 8),
+	std::array<uint8_t, 3> buffer = {reg, static_cast<uint8_t>(value >> 8),
 											 static_cast<uint8_t>(value & 0xFF)};
-	if (write(i2c_fd_, buffer, 3) != 3) {
+	if (write(i2c_fd_, buffer.data(), buffer.size()) != 3) {
 		perror("I2C write failed");
 	}
 }
@@ -80,8 +80,8 @@ uint16_t I2CController::readRegister(uint8_t reg) {
 	if (write(i2c_fd_, &reg, 1) != 1) {
 		perror("I2C write failed");
 	}
-	uint8_t buffer[2];
-	if (read(i2c_fd_, buffer, 2) != 2) {
+	std::array<uint8_t, 2> buffer;
+	if (read(i2c_fd_, buffer.data(), buffer.size()) != 2) {
 		perror("I2C read failed");
 	}
 	return (buffer[0] << 8) | buffer[1];

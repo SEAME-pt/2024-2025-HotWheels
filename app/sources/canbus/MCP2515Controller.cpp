@@ -143,7 +143,7 @@ void MCP2515Controller::setupHandlers() {
 				if (data.size() == sizeof(float)) {
 					float speed;
 					memcpy(&speed, data.data(), sizeof(float));
-					emit speedUpdated(speed / 10.0f);
+					emit speedUpdated(speed / 10.0F);
 				}
 			});
 

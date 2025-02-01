@@ -115,7 +115,7 @@ TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
 
 	ASSERT_EQ(speedSpy.count(), 1);
 	QList<QVariant> arguments = speedSpy.takeFirst();
-	ASSERT_EQ(arguments.at(0).toFloat(), 1.0f); // Speed divided by 10
+	ASSERT_EQ(arguments.at(0).toFloat(), 1.0F); // Speed divided by 10
 }
 
 /**

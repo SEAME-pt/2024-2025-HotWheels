@@ -115,7 +115,7 @@ signals:
 
 private:
 	/** @brief Processed speed value. */
-	float m_speed = 0.0f;
+	float m_speed = 0.0F;
 	/** @brief Processed RPM value. */
 	int m_rpm = 0;
 	/** @brief Processed direction value. */
@@ -133,7 +133,7 @@ private:
 	/** @brief Processed IP address value. */
 	QString m_ipAddress = "";
 	/** @brief Processed battery percentage value. */
-	float m_batteryPercentage = -1.0f;
+	float m_batteryPercentage = -1.0F;
 	/** @brief Processed mileage value. */
 	double m_mileage = 0.0;
 	/** @brief Processed driving mode value. */
