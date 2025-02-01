@@ -32,36 +32,36 @@ using ::testing::Return;
  */
 class CanBusManagerTest : public ::testing::Test {
 protected:
-	/**
-	 * @brief Set up the test environment.
-	 *
-	 * @details This method is called before each test to set up the necessary
-	 * objects.
-	 */
-	void SetUp() override {
-		mockMcpController = new MockMCP2515Controller();
-		manager = new CanBusManager(mockMcpController);
-	}
+  /**
+   * @brief Set up the test environment.
+   *
+   * @details This method is called before each test to set up the necessary
+   * objects.
+   */
+  void SetUp() override {
+    mockMcpController = new MockMCP2515Controller();
+    manager = new CanBusManager(mockMcpController);
+  }
 
-	/**
-	 * @brief Tear down the test environment.
-	 *
-	 * @details This method is called after each test to clean up the objects
-	 * created in SetUp().
-	 */
-	void TearDown() override {
-		if (manager != nullptr) {
-			delete manager;
-		}
-		if (mockMcpController != nullptr) {
-			delete mockMcpController;
-		}
-	}
+  /**
+   * @brief Tear down the test environment.
+   *
+   * @details This method is called after each test to clean up the objects
+   * created in SetUp().
+   */
+  void TearDown() override {
+    if (manager != nullptr) {
+      delete manager;
+    }
+    if (mockMcpController != nullptr) {
+      delete mockMcpController;
+    }
+  }
 
-	/** @brief Mocked MCP2515 controller. */
-	IMCP2515Controller *mockMcpController;
-	/** @brief CanBusManager object. */
-	CanBusManager *manager;
+  /** @brief Mocked MCP2515 controller. */
+  IMCP2515Controller *mockMcpController;
+  /** @brief CanBusManager object. */
+  CanBusManager *manager;
 };
 
 /**
@@ -74,13 +74,13 @@ protected:
  * @see CanBusManager::speedUpdated
  */
 TEST_F(CanBusManagerTest, SpeedSignalEmitsCorrectly) {
-	QSignalSpy speedSpy(manager, &CanBusManager::speedUpdated);
+  QSignalSpy speedSpy(manager, &CanBusManager::speedUpdated);
 
-	float expectedSpeed = 150.0f;
-	emit mockMcpController->speedUpdated(expectedSpeed);
+  float expectedSpeed = 150.0f;
+  emit mockMcpController->speedUpdated(expectedSpeed);
 
-	ASSERT_EQ(speedSpy.count(), 1);
-	ASSERT_EQ(speedSpy.takeFirst().at(0).toFloat(), expectedSpeed);
+  ASSERT_EQ(speedSpy.count(), 1);
+  ASSERT_EQ(speedSpy.takeFirst().at(0).toFloat(), expectedSpeed);
 }
 
 /**
@@ -93,13 +93,13 @@ TEST_F(CanBusManagerTest, SpeedSignalEmitsCorrectly) {
  * @see CanBusManager::rpmUpdated
  */
 TEST_F(CanBusManagerTest, RpmSignalEmitsCorrectly) {
-	QSignalSpy rpmSpy(manager, &CanBusManager::rpmUpdated);
+  QSignalSpy rpmSpy(manager, &CanBusManager::rpmUpdated);
 
-	int expectedRpm = 2500;
-	emit mockMcpController->rpmUpdated(expectedRpm);
+  int expectedRpm = 2500;
+  emit mockMcpController->rpmUpdated(expectedRpm);
 
-	ASSERT_EQ(rpmSpy.count(), 1);
-	ASSERT_EQ(rpmSpy.takeFirst().at(0).toInt(), expectedRpm);
+  ASSERT_EQ(rpmSpy.count(), 1);
+  ASSERT_EQ(rpmSpy.takeFirst().at(0).toInt(), expectedRpm);
 }
 
 /**
@@ -113,10 +113,10 @@ TEST_F(CanBusManagerTest, RpmSignalEmitsCorrectly) {
  * @see CanBusManager::initialize
  */
 TEST_F(CanBusManagerTest, InitializeFailsWhenControllerFails) {
-	EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController), init())
-			.WillOnce(Return(false));
+  EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController), init())
+      .WillOnce(Return(false));
 
-	ASSERT_FALSE(manager->initialize());
+  ASSERT_FALSE(manager->initialize());
 }
 
 /**
@@ -130,10 +130,10 @@ TEST_F(CanBusManagerTest, InitializeFailsWhenControllerFails) {
  * @see CanBusManager::initialize
  */
 TEST_F(CanBusManagerTest, InitializeSucceedsWhenControllerSucceeds) {
-	EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController), init())
-			.WillOnce(Return(true));
+  EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController), init())
+      .WillOnce(Return(true));
 
-	ASSERT_TRUE(manager->initialize());
+  ASSERT_TRUE(manager->initialize());
 }
 
 /**
@@ -150,16 +150,16 @@ TEST_F(CanBusManagerTest, InitializeSucceedsWhenControllerSucceeds) {
  * @see CanBusManager::~CanBusManager
  */
 TEST_F(CanBusManagerTest, DestructorCallsStopReading) {
-	EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController), init())
-			.WillOnce(Return(true));
-	EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController),
-							stopReading())
-			.Times(1);
+  EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController), init())
+      .WillOnce(Return(true));
+  EXPECT_CALL(*static_cast<MockMCP2515Controller *>(mockMcpController),
+              stopReading())
+      .Times(1);
 
-	ASSERT_TRUE(manager->initialize());
+  ASSERT_TRUE(manager->initialize());
 
-	delete manager;
-	manager = nullptr;
+  delete manager;
+  manager = nullptr;
 
-	SUCCEED();
+  SUCCEED();
 }

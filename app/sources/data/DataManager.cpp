@@ -33,9 +33,9 @@ DataManager::~DataManager() {}
  * canDataProcessed signal.
  */
 void DataManager::handleRpmData(int rawRpm) {
-	int processedRpm = rawRpm;
-	m_rpm = processedRpm;
-	emit canDataProcessed(m_speed, processedRpm);
+  int processedRpm = rawRpm;
+  m_rpm = processedRpm;
+  emit canDataProcessed(m_speed, processedRpm);
 }
 
 /**
@@ -45,12 +45,12 @@ void DataManager::handleRpmData(int rawRpm) {
  * necessary, and emits the canDataProcessed signal.
  */
 void DataManager::handleSpeedData(float rawSpeed) {
-	float processedSpeed = rawSpeed;
-	if (m_clusterMetrics == ClusterMetrics::Miles) {
-		processedSpeed *= 0.621371f;
-	}
-	m_speed = processedSpeed;
-	emit canDataProcessed(processedSpeed, m_rpm);
+  float processedSpeed = rawSpeed;
+  if (m_clusterMetrics == ClusterMetrics::Miles) {
+    processedSpeed *= 0.621371f;
+  }
+  m_speed = processedSpeed;
+  emit canDataProcessed(processedSpeed, m_rpm);
 }
 
 // Mileage Data Handling
@@ -62,11 +62,11 @@ void DataManager::handleSpeedData(float rawSpeed) {
  * the mileageUpdated signal.
  */
 void DataManager::handleMileageUpdate(double mileage) {
-	if (!qFuzzyCompare(m_mileage, mileage)) {
-		m_mileage = mileage;
-		// qDebug() << "Mileage updated" << mileage;
-		emit mileageUpdated(m_mileage);
-	}
+  if (!qFuzzyCompare(m_mileage, mileage)) {
+    m_mileage = mileage;
+    // qDebug() << "Mileage updated" << mileage;
+    emit mileageUpdated(m_mileage);
+  }
 }
 
 // Engine Data Handling
@@ -78,10 +78,10 @@ void DataManager::handleMileageUpdate(double mileage) {
  * the engineDataProcessed signal.
  */
 void DataManager::handleDirectionData(CarDirection rawDirection) {
-	if (m_carDirection != rawDirection) {
-		m_carDirection = rawDirection;
-		emit engineDataProcessed(rawDirection, m_steeringDirection);
-	}
+  if (m_carDirection != rawDirection) {
+    m_carDirection = rawDirection;
+    emit engineDataProcessed(rawDirection, m_steeringDirection);
+  }
 }
 
 /**
@@ -91,10 +91,10 @@ void DataManager::handleDirectionData(CarDirection rawDirection) {
  * the engineDataProcessed signal.
  */
 void DataManager::handleSteeringData(int rawAngle) {
-	if (m_steeringDirection != rawAngle) {
-		m_steeringDirection = rawAngle;
-		emit engineDataProcessed(m_carDirection, rawAngle);
-	}
+  if (m_steeringDirection != rawAngle) {
+    m_steeringDirection = rawAngle;
+    emit engineDataProcessed(m_carDirection, rawAngle);
+  }
 }
 
 // System Data Handling
@@ -108,10 +108,10 @@ void DataManager::handleSteeringData(int rawAngle) {
  * systemTimeUpdated signal.
  */
 void DataManager::handleTimeData(const QString &currentDate,
-																 const QString &currentTime,
-																 const QString &currentDay) {
-	this->m_time = currentTime;
-	emit this->systemTimeUpdated(currentDate, currentTime, currentDay);
+                                 const QString &currentTime,
+                                 const QString &currentDay) {
+  this->m_time = currentTime;
+  emit this->systemTimeUpdated(currentDate, currentTime, currentDay);
 }
 
 /**
@@ -122,12 +122,12 @@ void DataManager::handleTimeData(const QString &currentDate,
  * and emits the systemWifiUpdated signal.
  */
 void DataManager::handleWifiData(const QString &status,
-																 const QString &wifiName) {
-	if (m_wifiStatus != status || m_wifiName != wifiName) {
-		m_wifiStatus = status;
-		m_wifiName = wifiName;
-		emit systemWifiUpdated(status, wifiName);
-	}
+                                 const QString &wifiName) {
+  if (m_wifiStatus != status || m_wifiName != wifiName) {
+    m_wifiStatus = status;
+    m_wifiName = wifiName;
+    emit systemWifiUpdated(status, wifiName);
+  }
 }
 
 /**
@@ -137,10 +137,10 @@ void DataManager::handleWifiData(const QString &status,
  * emits the systemTemperatureUpdated signal.
  */
 void DataManager::handleTemperatureData(const QString &temperature) {
-	if (m_temperature != temperature) {
-		m_temperature = temperature;
-		emit systemTemperatureUpdated(temperature);
-	}
+  if (m_temperature != temperature) {
+    m_temperature = temperature;
+    emit systemTemperatureUpdated(temperature);
+  }
 }
 
 /**
@@ -150,10 +150,10 @@ void DataManager::handleTemperatureData(const QString &temperature) {
  * ipAddressUpdated signal.
  */
 void DataManager::handleIpAddressData(const QString &ipAddress) {
-	if (m_ipAddress != ipAddress) {
-		m_ipAddress = ipAddress;
-		emit ipAddressUpdated(ipAddress);
-	}
+  if (m_ipAddress != ipAddress) {
+    m_ipAddress = ipAddress;
+    emit ipAddressUpdated(ipAddress);
+  }
 }
 
 // Battery Data Handling
@@ -165,10 +165,10 @@ void DataManager::handleIpAddressData(const QString &ipAddress) {
  * emits the batteryPercentageUpdated signal.
  */
 void DataManager::handleBatteryPercentage(float batteryPercentage) {
-	if (!qFuzzyCompare(batteryPercentage, m_batteryPercentage)) {
-		m_batteryPercentage = batteryPercentage;
-		emit batteryPercentageUpdated(batteryPercentage);
-	}
+  if (!qFuzzyCompare(batteryPercentage, m_batteryPercentage)) {
+    m_batteryPercentage = batteryPercentage;
+    emit batteryPercentageUpdated(batteryPercentage);
+  }
 }
 
 // Driving Mode Handling
@@ -180,10 +180,10 @@ void DataManager::handleBatteryPercentage(float batteryPercentage) {
  * the drivingModeUpdated signal.
  */
 void DataManager::setDrivingMode(DrivingMode newMode) {
-	if (m_drivingMode != newMode) {
-		m_drivingMode = newMode;
-		emit drivingModeUpdated(newMode);
-	}
+  if (m_drivingMode != newMode) {
+    m_drivingMode = newMode;
+    emit drivingModeUpdated(newMode);
+  }
 }
 
 /**
@@ -192,11 +192,11 @@ void DataManager::setDrivingMode(DrivingMode newMode) {
  * the new mode.
  */
 void DataManager::toggleDrivingMode() {
-	if (m_drivingMode == DrivingMode::Manual) {
-		setDrivingMode(DrivingMode::Automatic);
-	} else {
-		setDrivingMode(DrivingMode::Manual);
-	}
+  if (m_drivingMode == DrivingMode::Manual) {
+    setDrivingMode(DrivingMode::Automatic);
+  } else {
+    setDrivingMode(DrivingMode::Manual);
+  }
 }
 
 // Cluster Theme Handling
@@ -208,10 +208,10 @@ void DataManager::toggleDrivingMode() {
  * the clusterThemeUpdated signal.
  */
 void DataManager::setClusterTheme(ClusterTheme newTheme) {
-	if (m_clusterTheme != newTheme) {
-		m_clusterTheme = newTheme;
-		emit clusterThemeUpdated(newTheme);
-	}
+  if (m_clusterTheme != newTheme) {
+    m_clusterTheme = newTheme;
+    emit clusterThemeUpdated(newTheme);
+  }
 }
 
 /**
@@ -220,11 +220,11 @@ void DataManager::setClusterTheme(ClusterTheme newTheme) {
  * with the new theme.
  */
 void DataManager::toggleClusterTheme() {
-	if (m_clusterTheme == ClusterTheme::Dark) {
-		setClusterTheme(ClusterTheme::Light);
-	} else {
-		setClusterTheme(ClusterTheme::Dark);
-	}
+  if (m_clusterTheme == ClusterTheme::Dark) {
+    setClusterTheme(ClusterTheme::Light);
+  } else {
+    setClusterTheme(ClusterTheme::Dark);
+  }
 }
 
 // Cluster Metrics Handling
@@ -236,10 +236,10 @@ void DataManager::toggleClusterTheme() {
  * emits the clusterMetricsUpdated signal.
  */
 void DataManager::setClusterMetrics(ClusterMetrics newMetrics) {
-	if (m_clusterMetrics != newMetrics) {
-		m_clusterMetrics = newMetrics;
-		emit clusterMetricsUpdated(newMetrics);
-	}
+  if (m_clusterMetrics != newMetrics) {
+    m_clusterMetrics = newMetrics;
+    emit clusterMetricsUpdated(newMetrics);
+  }
 }
 
 /**
@@ -248,9 +248,9 @@ void DataManager::setClusterMetrics(ClusterMetrics newMetrics) {
  * setClusterMetrics with the new metrics.
  */
 void DataManager::toggleClusterMetrics() {
-	if (m_clusterMetrics == ClusterMetrics::Kilometers) {
-		setClusterMetrics(ClusterMetrics::Miles);
-	} else {
-		setClusterMetrics(ClusterMetrics::Kilometers);
-	}
+  if (m_clusterMetrics == ClusterMetrics::Kilometers) {
+    setClusterMetrics(ClusterMetrics::Miles);
+  } else {
+    setClusterMetrics(ClusterMetrics::Kilometers);
+  }
 }
