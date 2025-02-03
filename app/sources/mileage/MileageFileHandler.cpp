@@ -46,7 +46,6 @@ void MileageFileHandler::ensureFileExists() const
             qWarning() << "Failed to create mileage file at:" << filePath;
         }
     }
-  }
 }
 
 double MileageFileHandler::readMileage() const
