@@ -14,6 +14,8 @@ private:
   JoysticksController *m_manualController;
   QThread *m_manualControllerThread;
   DrivingMode m_currentMode;
+  QThread* m_sharedMemoryThread;
+  std::atomic<bool> m_threadRunning;
 
 public:
   /*!
@@ -48,6 +50,8 @@ public:
    * @param mode The new driving mode to set.
    */
   void setMode(DrivingMode mode);
+
+  void  readSharedMemory();
 
 signals:
   /*!

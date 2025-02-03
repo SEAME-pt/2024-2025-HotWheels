@@ -8,7 +8,7 @@
 ControlsManager::ControlsManager(QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
       m_manualController(nullptr), m_manualControllerThread(nullptr),
-      m_currentMode(DrivingMode::Manual) {
+      m_currentMode(DrivingMode::Manual), m_sharedMemoryThread(nullptr), m_threadRunning(true) {
   // Connect EngineController signals to ControlsManager signals
   connect(&m_engineController, &EngineController::directionUpdated, this,
           &ControlsManager::directionChanged);
@@ -44,29 +44,26 @@ ControlsManager::ControlsManager(QObject *parent)
 
   m_manualControllerThread->start();
 
+  m_sharedMemoryThread = QThread::create([this]() {
+    while (m_threadRunning) {
+      readSharedMemory();
+      QThread::msleep(500);  // Adjust delay as needed
+    }
+  });
 
-  //starts here
-  int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
-  if (shm_fd == -1) {
-      std::cerr << "Failed to open shared memory\n";
-  }
-
-  // Map shared memory
-  void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-  if (ptr == MAP_FAILED) {
-      std::cerr << "Failed to map memoryy\n";
-  }
-
-  // Read the bool value
-  bool* flag = static_cast<bool*>(ptr);
-  std::cout << "Read value from shared memory on car_controls: " << std::boolalpha << *flag << "\n";
-
-  // Cleanup
-  munmap(ptr, sizeof(bool));
-  close(shm_fd);
+  m_sharedMemoryThread->start();
 }
 
 ControlsManager::~ControlsManager() {
+
+  // Stop the shared memory thread safely
+  if (m_sharedMemoryThread) {
+    m_threadRunning = false;
+    m_sharedMemoryThread->quit();
+    m_sharedMemoryThread->wait();
+    delete m_sharedMemoryThread;
+  }
+
   if (m_manualControllerThread) {
     m_manualController->requestStop();
     m_manualControllerThread->quit();
@@ -74,6 +71,31 @@ ControlsManager::~ControlsManager() {
   }
 
   delete m_manualController;
+}
+
+void ControlsManager::readSharedMemory() {
+  int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
+  if (shm_fd == -1) {
+      std::cerr << "Failed to open shared memory\n";
+  }
+  else {
+    // Map shared memory
+    void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    if (ptr == MAP_FAILED) {
+        std::cerr << "Failed to map memory\n";
+    }
+    else {
+      // Read the bool value
+      bool* flag = static_cast<bool*>(ptr);
+      std::cout << "Read value from shared memory on car_controls: " << std::boolalpha << *flag << "\n";
+
+      setMode(*flag ? DrivingMode::Manual : DrivingMode::Automatic);
+
+      // Cleanup
+      munmap(ptr, sizeof(bool));
+    }
+    close(shm_fd);
+  }
 }
 
 void ControlsManager::setMode(DrivingMode mode) {
