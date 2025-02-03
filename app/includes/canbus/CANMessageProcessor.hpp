@@ -32,7 +32,7 @@ public:
 
   CANMessageProcessor();
   ~CANMessageProcessor() = default;
-  void registerHandler(uint16_t frameID, MessageHandler &handler);
+  void registerHandler(uint16_t frameID, MessageHandler handler);
   void processMessage(uint16_t frameID, const std::vector<uint8_t> &data);
 
 private:

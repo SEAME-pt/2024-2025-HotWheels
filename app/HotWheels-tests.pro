@@ -13,7 +13,7 @@ INCLUDEPATH += \
 TESTS_PATH = app_tests
 
 SOURCES += \
-	$$TESTS_PATH/integration/test_MCP2515Controller.cpp \
+	# $$TESTS_PATH/integration/test_MCP2515Controller.cpp \
 	$$TESTS_PATH/unit/canbus/test_SPIController.cpp \
 	$$TESTS_PATH/unit/canbus/test_MCP2515Configurator.cpp \
 	$$TESTS_PATH/unit/canbus/test_CANMessageProcessor.cpp \

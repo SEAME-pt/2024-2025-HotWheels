@@ -46,7 +46,7 @@ public:
   bool init();
   void requestStop();
 
-  slots:
+public  slots:
   void processInput();
 
 signals:
