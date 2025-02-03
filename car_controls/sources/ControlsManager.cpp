@@ -50,7 +50,7 @@ ControlsManager::ControlsManager(QObject *parent)
   // Map shared memory
   void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
   if (ptr == MAP_FAILED) {
-      std::cerr << "Failed to map memory\n";
+      std::cerr << "Failed to map memoryy\n";
   }
 
   // Read the bool value
