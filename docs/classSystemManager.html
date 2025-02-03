@@ -104,10 +104,9 @@ $(function(){initNavTree('classSystemManager.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#pub-slots">Public Slots</a> &#124;
 <a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-slots">Private Slots</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">SystemManager Class Reference</div></div>
 </div><!--header-->
@@ -118,70 +117,63 @@ $(function(){initNavTree('classSystemManager.html',''); initResizable(true); });
 
 <p><code>#include &lt;<a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
+Public Slots</h2></td></tr>
+<tr class="memitem:ad78bc11d81e641f8e6a8c24ca5061b9d" id="r_ad78bc11d81e641f8e6a8c24ca5061b9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78bc11d81e641f8e6a8c24ca5061b9d">updateTime</a> ()</td></tr>
+<tr class="separator:ad78bc11d81e641f8e6a8c24ca5061b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bdbe09715355ebf61d36063fb857e78" id="r_a6bdbe09715355ebf61d36063fb857e78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bdbe09715355ebf61d36063fb857e78">updateSystemStatus</a> ()</td></tr>
+<tr class="separator:a6bdbe09715355ebf61d36063fb857e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a294f03536732c243e439f29a4bd75bc8" id="r_a294f03536732c243e439f29a4bd75bc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a294f03536732c243e439f29a4bd75bc8">timeUpdated</a> (const QString &amp;currentDate, const QString &amp;currentTime, const QString &amp;currentDay)</td></tr>
-<tr class="memdesc:a294f03536732c243e439f29a4bd75bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the system time is updated.  <br /></td></tr>
 <tr class="separator:a294f03536732c243e439f29a4bd75bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f612cad69e98840b1e0cff8039273fa" id="r_a1f612cad69e98840b1e0cff8039273fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f612cad69e98840b1e0cff8039273fa">wifiStatusUpdated</a> (const QString &amp;status, const QString &amp;wifiName)</td></tr>
-<tr class="memdesc:a1f612cad69e98840b1e0cff8039273fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the wifi status is updated.  <br /></td></tr>
 <tr class="separator:a1f612cad69e98840b1e0cff8039273fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95c58f09a04fe52196c1c702c1f0afeb" id="r_a95c58f09a04fe52196c1c702c1f0afeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95c58f09a04fe52196c1c702c1f0afeb">temperatureUpdated</a> (const QString &amp;temperature)</td></tr>
-<tr class="memdesc:a95c58f09a04fe52196c1c702c1f0afeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the temperature is updated.  <br /></td></tr>
 <tr class="separator:a95c58f09a04fe52196c1c702c1f0afeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d37beeb680ddc03026295dcdf7e4bc3" id="r_a1d37beeb680ddc03026295dcdf7e4bc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d37beeb680ddc03026295dcdf7e4bc3">batteryPercentageUpdated</a> (float batteryPercentage)</td></tr>
-<tr class="memdesc:a1d37beeb680ddc03026295dcdf7e4bc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the battery percentage is updated.  <br /></td></tr>
 <tr class="separator:a1d37beeb680ddc03026295dcdf7e4bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05263f02e8e2e9a2ba441d7f55355193" id="r_a05263f02e8e2e9a2ba441d7f55355193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05263f02e8e2e9a2ba441d7f55355193">ipAddressUpdated</a> (const QString &amp;ipAddress)</td></tr>
-<tr class="memdesc:a05263f02e8e2e9a2ba441d7f55355193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the IP address is updated.  <br /></td></tr>
 <tr class="separator:a05263f02e8e2e9a2ba441d7f55355193"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a10bb8a855e36325de0329142ad60cf42" id="r_a10bb8a855e36325de0329142ad60cf42"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10bb8a855e36325de0329142ad60cf42">SystemManager</a> (QObject *parent=nullptr)</td></tr>
-<tr class="memdesc:a10bb8a855e36325de0329142ad60cf42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classSystemManager.html" title="Class that manages the system time, status, and battery. QObject.">SystemManager</a> object.  <br /></td></tr>
-<tr class="separator:a10bb8a855e36325de0329142ad60cf42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-slots" name="pri-slots"></a>
-Private Slots</h2></td></tr>
-<tr class="memitem:ad78bc11d81e641f8e6a8c24ca5061b9d" id="r_ad78bc11d81e641f8e6a8c24ca5061b9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78bc11d81e641f8e6a8c24ca5061b9d">updateTime</a> ()</td></tr>
-<tr class="memdesc:ad78bc11d81e641f8e6a8c24ca5061b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classSystemManager.html" title="Class that manages the system time, status, and battery. QObject.">SystemManager</a> object.  <br /></td></tr>
-<tr class="separator:ad78bc11d81e641f8e6a8c24ca5061b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bdbe09715355ebf61d36063fb857e78" id="r_a6bdbe09715355ebf61d36063fb857e78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bdbe09715355ebf61d36063fb857e78">updateSystemStatus</a> ()</td></tr>
-<tr class="memdesc:a6bdbe09715355ebf61d36063fb857e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the system status.  <br /></td></tr>
-<tr class="separator:a6bdbe09715355ebf61d36063fb857e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a7aadaaa64a7b5a6bfe73922cce27fb0d" id="r_a7aadaaa64a7b5a6bfe73922cce27fb0d"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7aadaaa64a7b5a6bfe73922cce27fb0d">fetchWifiStatus</a> (QString &amp;wifiName) const</td></tr>
-<tr class="memdesc:a7aadaaa64a7b5a6bfe73922cce27fb0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch the WiFi status.  <br /></td></tr>
-<tr class="separator:a7aadaaa64a7b5a6bfe73922cce27fb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14929e75b32cf81d8d7090a4321193ce" id="r_a14929e75b32cf81d8d7090a4321193ce"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14929e75b32cf81d8d7090a4321193ce">fetchTemperature</a> () const</td></tr>
-<tr class="memdesc:a14929e75b32cf81d8d7090a4321193ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch the temperature.  <br /></td></tr>
-<tr class="separator:a14929e75b32cf81d8d7090a4321193ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0c6c9d33fc10d511606fdfecb200d60" id="r_af0c6c9d33fc10d511606fdfecb200d60"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0c6c9d33fc10d511606fdfecb200d60">fetchIpAddress</a> () const</td></tr>
-<tr class="memdesc:af0c6c9d33fc10d511606fdfecb200d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch the IP address.  <br /></td></tr>
-<tr class="separator:af0c6c9d33fc10d511606fdfecb200d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7891dcf51d9a2ae9d7bc968f16b8eec3" id="r_a7891dcf51d9a2ae9d7bc968f16b8eec3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7891dcf51d9a2ae9d7bc968f16b8eec3">SystemManager</a> (<a class="el" href="classIBatteryController.html">IBatteryController</a> *batteryController=nullptr, <a class="el" href="classISystemInfoProvider.html">ISystemInfoProvider</a> *systemInfoProvider=nullptr, <a class="el" href="classISystemCommandExecutor.html">ISystemCommandExecutor</a> *systemCommandExecutor=nullptr, QObject *parent=nullptr)</td></tr>
+<tr class="separator:a7891dcf51d9a2ae9d7bc968f16b8eec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fa2e3c0906401494f6bf4e482aecc0d" id="r_a0fa2e3c0906401494f6bf4e482aecc0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fa2e3c0906401494f6bf4e482aecc0d">~SystemManager</a> ()</td></tr>
+<tr class="separator:a0fa2e3c0906401494f6bf4e482aecc0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40b45c958865de2ff03d0a8a7eafafa" id="r_af40b45c958865de2ff03d0a8a7eafafa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af40b45c958865de2ff03d0a8a7eafafa">initialize</a> ()</td></tr>
+<tr class="separator:af40b45c958865de2ff03d0a8a7eafafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79dccf0fa71b88589c122c4be79bdcfe" id="r_a79dccf0fa71b88589c122c4be79bdcfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79dccf0fa71b88589c122c4be79bdcfe">shutdown</a> ()</td></tr>
+<tr class="separator:a79dccf0fa71b88589c122c4be79bdcfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ab65e9e69f59af34379ff9d5a9bd30370" id="r_ab65e9e69f59af34379ff9d5a9bd30370"><td class="memItemLeft" align="right" valign="top">QTimer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab65e9e69f59af34379ff9d5a9bd30370">m_timeTimer</a></td></tr>
-<tr class="memdesc:ab65e9e69f59af34379ff9d5a9bd30370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer to update the system time every second.  <br /></td></tr>
-<tr class="separator:ab65e9e69f59af34379ff9d5a9bd30370"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b28b59cbdf420695eb2b3766a1e35a1" id="r_a8b28b59cbdf420695eb2b3766a1e35a1"><td class="memItemLeft" align="right" valign="top">QTimer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b28b59cbdf420695eb2b3766a1e35a1">m_statusTimer</a></td></tr>
-<tr class="memdesc:a8b28b59cbdf420695eb2b3766a1e35a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer to update the system status every 5 seconds.  <br /></td></tr>
-<tr class="separator:a8b28b59cbdf420695eb2b3766a1e35a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02d66abf416d6c237275490802c25deb" id="r_a02d66abf416d6c237275490802c25deb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBatteryController.html">BatteryController</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d66abf416d6c237275490802c25deb">m_batteryController</a></td></tr>
-<tr class="memdesc:a02d66abf416d6c237275490802c25deb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classBatteryController.html" title="Class that manages the battery of a vehicle. QObject and I2CController.">BatteryController</a> to fetch battery percentage.  <br /></td></tr>
-<tr class="separator:a02d66abf416d6c237275490802c25deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5a880173a7cf80c021ccba92b7f01b" id="r_abc5a880173a7cf80c021ccba92b7f01b"><td class="memItemLeft" align="right" valign="top">QTimer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc5a880173a7cf80c021ccba92b7f01b">m_timeTimer</a></td></tr>
+<tr class="separator:abc5a880173a7cf80c021ccba92b7f01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e1c4aa556901b650f7c2f71fea46cd" id="r_ab6e1c4aa556901b650f7c2f71fea46cd"><td class="memItemLeft" align="right" valign="top">QTimer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6e1c4aa556901b650f7c2f71fea46cd">m_statusTimer</a></td></tr>
+<tr class="separator:ab6e1c4aa556901b650f7c2f71fea46cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a740cb20b082776e784adfe8ea3f732a2" id="r_a740cb20b082776e784adfe8ea3f732a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIBatteryController.html">IBatteryController</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a740cb20b082776e784adfe8ea3f732a2">m_batteryController</a></td></tr>
+<tr class="separator:a740cb20b082776e784adfe8ea3f732a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81de34f74601d103b64e05f69062865e" id="r_a81de34f74601d103b64e05f69062865e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classISystemInfoProvider.html">ISystemInfoProvider</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81de34f74601d103b64e05f69062865e">m_systemInfoProvider</a></td></tr>
+<tr class="separator:a81de34f74601d103b64e05f69062865e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2038150e6a927dccd67dd5d4cb6b23a2" id="r_a2038150e6a927dccd67dd5d4cb6b23a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classISystemCommandExecutor.html">ISystemCommandExecutor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2038150e6a927dccd67dd5d4cb6b23a2">m_systemCommandExecutor</a></td></tr>
+<tr class="separator:a2038150e6a927dccd67dd5d4cb6b23a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae726082d55ae22534e487bb71f3e903a" id="r_ae726082d55ae22534e487bb71f3e903a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae726082d55ae22534e487bb71f3e903a">m_ownBatteryController</a></td></tr>
+<tr class="separator:ae726082d55ae22534e487bb71f3e903a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a519ed3d4f592359d31578f87d7717a37" id="r_a519ed3d4f592359d31578f87d7717a37"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a519ed3d4f592359d31578f87d7717a37">m_ownSystemInfoProvider</a></td></tr>
+<tr class="separator:a519ed3d4f592359d31578f87d7717a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4197a7457f94b7250bc062ef989a027c" id="r_a4197a7457f94b7250bc062ef989a027c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4197a7457f94b7250bc062ef989a027c">m_ownSystemCommandExecutor</a></td></tr>
+<tr class="separator:a4197a7457f94b7250bc062ef989a027c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that manages the system time, status, and battery. QObject. </p>
 
-<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00032">32</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00030">30</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a10bb8a855e36325de0329142ad60cf42" name="a10bb8a855e36325de0329142ad60cf42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10bb8a855e36325de0329142ad60cf42">&#9670;&#160;</a></span>SystemManager()</h2>
+<a id="a7891dcf51d9a2ae9d7bc968f16b8eec3" name="a7891dcf51d9a2ae9d7bc968f16b8eec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7891dcf51d9a2ae9d7bc968f16b8eec3">&#9670;&#160;</a></span>SystemManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,8 +184,22 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">SystemManager::SystemManager </td>
           <td>(</td>
-          <td class="paramtype">QObject *</td>          <td class="paramname"><span class="paramname"><em>parent</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classIBatteryController.html">IBatteryController</a> *</td>          <td class="paramname"><span class="paramname"><em>batteryController</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classISystemInfoProvider.html">ISystemInfoProvider</a> *</td>          <td class="paramname"><span class="paramname"><em>systemInfoProvider</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classISystemCommandExecutor.html">ISystemCommandExecutor</a> *</td>          <td class="paramname"><span class="paramname"><em>systemCommandExecutor</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QObject *</td>          <td class="paramname"><span class="paramname"><em>parent</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -203,43 +209,30 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classSystemManager.html" title="Class that manages the system time, status, and battery. QObject.">SystemManager</a> object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This constructor initializes the <a class="el" href="classSystemManager.html" title="Class that manages the system time, status, and battery. QObject.">SystemManager</a> object with the specified parent. </p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00027">27</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00028">28</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
+</div>
+</div>
+<a id="a0fa2e3c0906401494f6bf4e482aecc0d" name="a0fa2e3c0906401494f6bf4e482aecc0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fa2e3c0906401494f6bf4e482aecc0d">&#9670;&#160;</a></span>~SystemManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SystemManager::~SystemManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00041">41</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSystemManager_a10bb8a855e36325de0329142ad60cf42_cgraph.png" border="0" usemap="#aclassSystemManager_a10bb8a855e36325de0329142ad60cf42_cgraph" alt=""/></div>
-<map name="aclassSystemManager_a10bb8a855e36325de0329142ad60cf42_cgraph" id="aclassSystemManager_a10bb8a855e36325de0329142ad60cf42_cgraph">
-<area shape="rect" title="Construct a new SystemManager object." alt="" coords="5,302,248,327"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="296,201,527,241"/>
-<area shape="poly" title=" " alt="" coords="166,299,336,243,337,248,167,304"/>
-<area shape="rect" href="classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d" title="Destroy the SystemManager object." alt="" coords="304,330,519,355"/>
-<area shape="poly" title=" " alt="" coords="248,324,291,328,290,333,248,329"/>
-<area shape="rect" href="classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3" title="Signal emitted when the battery percentage is updated." alt="" coords="575,5,831,45"/>
-<area shape="poly" title=" " alt="" coords="425,200,484,128,526,89,573,55,587,48,589,53,576,60,529,93,487,132,429,203"/>
-<area shape="rect" href="classSystemManager.html#af0c6c9d33fc10d511606fdfecb200d60" title="Fetch the IP address." alt="" coords="586,70,819,95"/>
-<area shape="poly" title=" " alt="" coords="433,199,493,151,532,125,574,104,595,97,597,102,576,109,535,130,496,155,436,203"/>
-<area shape="rect" href="classSystemManager.html#a14929e75b32cf81d8d7090a4321193ce" title="Fetch the temperature." alt="" coords="577,119,828,145"/>
-<area shape="poly" title=" " alt="" coords="456,199,512,176,574,155,612,145,614,150,575,160,514,181,458,204"/>
-<area shape="rect" href="classSystemManager.html#a7aadaaa64a7b5a6bfe73922cce27fb0d" title="Fetch the WiFi status." alt="" coords="605,169,800,209"/>
-<area shape="poly" title=" " alt="" coords="526,206,591,199,592,204,527,211"/>
-<area shape="rect" href="classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193" title="Signal emitted when the IP address is updated." alt="" coords="603,233,803,273"/>
-<area shape="poly" title=" " alt="" coords="527,231,590,238,589,244,526,237"/>
-<area shape="rect" href="classSystemManager.html#a95c58f09a04fe52196c1c702c1f0afeb" title="Signal emitted when the temperature is updated." alt="" coords="594,297,811,337"/>
-<area shape="poly" title=" " alt="" coords="460,239,576,283,604,291,602,296,574,288,458,244"/>
-<area shape="rect" href="classSystemManager.html#a1f612cad69e98840b1e0cff8039273fa" title="Signal emitted when the wifi status is updated." alt="" coords="603,361,803,401"/>
-<area shape="poly" title=" " alt="" coords="437,239,510,300,576,347,592,354,590,359,573,352,506,304,434,244"/>
-<area shape="rect" href="classSystemManager.html#a294f03536732c243e439f29a4bd75bc8" title="Signal emitted when the system time is updated." alt="" coords="592,426,813,451"/>
-<area shape="poly" title=" " alt="" coords="438,353,500,382,575,411,611,420,610,426,574,416,498,387,436,358"/>
-</map>
+<div class="center"><img src="classSystemManager_a0fa2e3c0906401494f6bf4e482aecc0d_cgraph.png" border="0" usemap="#aclassSystemManager_a0fa2e3c0906401494f6bf4e482aecc0d_cgraph" alt=""/></div>
 </div>
 
 </div>
@@ -268,166 +261,35 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Signal emitted when the battery percentage is updated. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">batteryPercentage</td><td>The new battery percentage. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html#l00218">218</a> of file <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html">moc_SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_a1d37beeb680ddc03026295dcdf7e4bc3_icgraph.png" border="0" usemap="#aclassSystemManager_a1d37beeb680ddc03026295dcdf7e4bc3_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a1d37beeb680ddc03026295dcdf7e4bc3_icgraph" id="aclassSystemManager_a1d37beeb680ddc03026295dcdf7e4bc3_icgraph">
-<area shape="rect" title="Signal emitted when the battery percentage is updated." alt="" coords="815,54,1071,94"/>
-<area shape="rect" href="classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="544,22,759,62"/>
-<area shape="poly" title=" " alt="" coords="801,61,759,56,759,51,801,56"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="536,86,767,126"/>
-<area shape="poly" title=" " alt="" coords="801,92,767,96,767,91,801,87"/>
-<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
-<area shape="poly" title=" " alt="" coords="530,45,488,45,488,39,530,39"/>
-<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
-<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
-<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="243,93,486,119"/>
-<area shape="poly" title=" " alt="" coords="522,109,486,109,486,103,522,103"/>
-</map>
 </div>
 
 </div>
 </div>
-<a id="af0c6c9d33fc10d511606fdfecb200d60" name="af0c6c9d33fc10d511606fdfecb200d60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0c6c9d33fc10d511606fdfecb200d60">&#9670;&#160;</a></span>fetchIpAddress()</h2>
+<a id="af40b45c958865de2ff03d0a8a7eafafa" name="af40b45c958865de2ff03d0a8a7eafafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40b45c958865de2ff03d0a8a7eafafa">&#9670;&#160;</a></span>initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QString SystemManager::fetchIpAddress </td>
+          <td class="memname">void SystemManager::initialize </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Fetch the IP address. </p>
-<dl class="section return"><dt>Returns</dt><dd>QString The IP address.</dd></dl>
-<p>This function fetches the IP address of the device. </p>
-
-<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00143">143</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00052">52</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
 <div class="dynheader">
-Here is the caller graph for this function:</div>
+Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSystemManager_af0c6c9d33fc10d511606fdfecb200d60_icgraph.png" border="0" usemap="#aclassSystemManager_af0c6c9d33fc10d511606fdfecb200d60_icgraph" alt=""/></div>
-<map name="aclassSystemManager_af0c6c9d33fc10d511606fdfecb200d60_icgraph" id="aclassSystemManager_af0c6c9d33fc10d511606fdfecb200d60_icgraph">
-<area shape="rect" title="Fetch the IP address." alt="" coords="575,13,808,38"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="296,5,527,45"/>
-<area shape="poly" title=" " alt="" coords="561,28,527,28,527,23,561,23"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="5,13,248,38"/>
-<area shape="poly" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a14929e75b32cf81d8d7090a4321193ce" name="a14929e75b32cf81d8d7090a4321193ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14929e75b32cf81d8d7090a4321193ce">&#9670;&#160;</a></span>fetchTemperature()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString SystemManager::fetchTemperature </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Fetch the temperature. </p>
-<dl class="section return"><dt>Returns</dt><dd>QString The temperature.</dd></dl>
-<p>This function fetches the temperature from the temperature sensor. </p>
-
-<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00121">121</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSystemManager_a14929e75b32cf81d8d7090a4321193ce_icgraph.png" border="0" usemap="#aclassSystemManager_a14929e75b32cf81d8d7090a4321193ce_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a14929e75b32cf81d8d7090a4321193ce_icgraph" id="aclassSystemManager_a14929e75b32cf81d8d7090a4321193ce_icgraph">
-<area shape="rect" title="Fetch the temperature." alt="" coords="575,13,825,38"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="296,5,527,45"/>
-<area shape="poly" title=" " alt="" coords="561,28,527,28,527,23,561,23"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="5,13,248,38"/>
-<area shape="poly" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a7aadaaa64a7b5a6bfe73922cce27fb0d" name="a7aadaaa64a7b5a6bfe73922cce27fb0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7aadaaa64a7b5a6bfe73922cce27fb0d">&#9670;&#160;</a></span>fetchWifiStatus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString SystemManager::fetchWifiStatus </td>
-          <td>(</td>
-          <td class="paramtype">QString &amp;</td>          <td class="paramname"><span class="paramname"><em>wifiName</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Fetch the WiFi status. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">wifiName</td><td>The name of the connected WiFi network. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>QString The WiFi status.</dd></dl>
-<p>This function fetches the WiFi status and the name of the connected WiFi network. </p>
-
-<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00088">88</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSystemManager_a7aadaaa64a7b5a6bfe73922cce27fb0d_icgraph.png" border="0" usemap="#aclassSystemManager_a7aadaaa64a7b5a6bfe73922cce27fb0d_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a7aadaaa64a7b5a6bfe73922cce27fb0d_icgraph" id="aclassSystemManager_a7aadaaa64a7b5a6bfe73922cce27fb0d_icgraph">
-<area shape="rect" title="Fetch the WiFi status." alt="" coords="575,5,769,45"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="296,5,527,45"/>
-<area shape="poly" title=" " alt="" coords="561,28,527,28,527,23,561,23"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="5,13,248,38"/>
-<area shape="poly" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
-</map>
+<div class="center"><img src="classSystemManager_af40b45c958865de2ff03d0a8a7eafafa_cgraph.png" border="0" usemap="#aclassSystemManager_af40b45c958865de2ff03d0a8a7eafafa_cgraph" alt=""/></div>
 </div>
 
 </div>
@@ -455,31 +317,35 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Signal emitted when the IP address is updated. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ipAddress</td><td>The new IP address. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html#l00225">225</a> of file <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html">moc_SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_a05263f02e8e2e9a2ba441d7f55355193_icgraph.png" border="0" usemap="#aclassSystemManager_a05263f02e8e2e9a2ba441d7f55355193_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a05263f02e8e2e9a2ba441d7f55355193_icgraph" id="aclassSystemManager_a05263f02e8e2e9a2ba441d7f55355193_icgraph">
-<area shape="rect" title="Signal emitted when the IP address is updated." alt="" coords="815,54,1015,94"/>
-<area shape="rect" href="classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="544,22,759,62"/>
-<area shape="poly" title=" " alt="" coords="801,63,759,58,759,52,801,58"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="536,86,767,126"/>
-<area shape="poly" title=" " alt="" coords="801,90,767,95,766,89,801,85"/>
-<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
-<area shape="poly" title=" " alt="" coords="530,45,488,45,488,39,530,39"/>
-<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
-<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
-<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="243,93,486,119"/>
-<area shape="poly" title=" " alt="" coords="522,109,486,109,486,103,522,103"/>
-</map>
+</div>
+
+</div>
+</div>
+<a id="a79dccf0fa71b88589c122c4be79bdcfe" name="a79dccf0fa71b88589c122c4be79bdcfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79dccf0fa71b88589c122c4be79bdcfe">&#9670;&#160;</a></span>shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemManager::shutdown </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00061">61</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSystemManager_a79dccf0fa71b88589c122c4be79bdcfe_icgraph.png" border="0" usemap="#aclassSystemManager_a79dccf0fa71b88589c122c4be79bdcfe_icgraph" alt=""/></div>
 </div>
 
 </div>
@@ -507,31 +373,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Signal emitted when the temperature is updated. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">temperature</td><td>The new temperature. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html#l00211">211</a> of file <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html">moc_SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_a95c58f09a04fe52196c1c702c1f0afeb_icgraph.png" border="0" usemap="#aclassSystemManager_a95c58f09a04fe52196c1c702c1f0afeb_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a95c58f09a04fe52196c1c702c1f0afeb_icgraph" id="aclassSystemManager_a95c58f09a04fe52196c1c702c1f0afeb_icgraph">
-<area shape="rect" title="Signal emitted when the temperature is updated." alt="" coords="815,54,1032,94"/>
-<area shape="rect" href="classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="544,22,759,62"/>
-<area shape="poly" title=" " alt="" coords="801,62,758,57,759,52,801,57"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="536,86,767,126"/>
-<area shape="poly" title=" " alt="" coords="801,91,767,95,766,90,801,86"/>
-<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
-<area shape="poly" title=" " alt="" coords="530,45,488,45,488,39,530,39"/>
-<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
-<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
-<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="243,93,486,119"/>
-<area shape="poly" title=" " alt="" coords="522,109,486,109,486,103,522,103"/>
-</map>
 </div>
 
 </div>
@@ -568,33 +414,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Signal emitted when the system time is updated. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">currentDate</td><td>The current date. </td></tr>
-    <tr><td class="paramname">currentTime</td><td>The current time. </td></tr>
-    <tr><td class="paramname">currentDay</td><td>The current day. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html#l00197">197</a> of file <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html">moc_SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_a294f03536732c243e439f29a4bd75bc8_icgraph.png" border="0" usemap="#aclassSystemManager_a294f03536732c243e439f29a4bd75bc8_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a294f03536732c243e439f29a4bd75bc8_icgraph" id="aclassSystemManager_a294f03536732c243e439f29a4bd75bc8_icgraph">
-<area shape="rect" title="Signal emitted when the system time is updated." alt="" coords="799,59,1020,84"/>
-<area shape="rect" href="classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="536,22,751,62"/>
-<area shape="poly" title=" " alt="" coords="785,60,750,56,751,51,785,55"/>
-<area shape="rect" href="classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d" title="Destroy the SystemManager object." alt="" coords="536,87,751,112"/>
-<area shape="poly" title=" " alt="" coords="785,87,751,91,750,85,785,82"/>
-<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
-<area shape="poly" title=" " alt="" coords="522,45,488,45,488,39,522,39"/>
-<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
-<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
-<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="243,87,486,112"/>
-<area shape="poly" title=" " alt="" coords="522,102,486,102,486,97,522,97"/>
-</map>
 </div>
 
 </div>
@@ -617,46 +441,21 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel slot">slot</span></span>  </td>
+<span class="mlabels"><span class="mlabel slot">slot</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Update the system status. </p>
-<p>This function updates the system status, including the WiFi, temperature, battery, and IP address. </p>
-
-<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00062">62</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00075">75</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_a6bdbe09715355ebf61d36063fb857e78_cgraph.png" border="0" usemap="#aclassSystemManager_a6bdbe09715355ebf61d36063fb857e78_cgraph" alt=""/></div>
-<map name="aclassSystemManager_a6bdbe09715355ebf61d36063fb857e78_cgraph" id="aclassSystemManager_a6bdbe09715355ebf61d36063fb857e78_cgraph">
-<area shape="rect" title="Update the system status." alt="" coords="5,169,236,209"/>
-<area shape="rect" href="classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3" title="Signal emitted when the battery percentage is updated." alt="" coords="284,5,540,45"/>
-<area shape="poly" title=" " alt="" coords="139,167,199,111,240,81,283,55,299,48,302,52,285,60,243,85,203,115,143,171"/>
-<area shape="rect" href="classSystemManager.html#af0c6c9d33fc10d511606fdfecb200d60" title="Fetch the IP address." alt="" coords="295,70,529,95"/>
-<area shape="poly" title=" " alt="" coords="154,167,213,134,283,104,311,96,313,101,285,109,215,139,156,171"/>
-<area shape="rect" href="classSystemManager.html#a14929e75b32cf81d8d7090a4321193ce" title="Fetch the temperature." alt="" coords="287,119,537,145"/>
-<area shape="poly" title=" " alt="" coords="222,167,333,145,334,150,223,172"/>
-<area shape="rect" href="classSystemManager.html#a7aadaaa64a7b5a6bfe73922cce27fb0d" title="Fetch the WiFi status." alt="" coords="315,169,509,209"/>
-<area shape="poly" title=" " alt="" coords="236,187,301,187,301,192,236,192"/>
-<area shape="rect" href="classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193" title="Signal emitted when the IP address is updated." alt="" coords="312,233,512,273"/>
-<area shape="poly" title=" " alt="" coords="213,207,308,228,307,233,212,212"/>
-<area shape="rect" href="classSystemManager.html#a95c58f09a04fe52196c1c702c1f0afeb" title="Signal emitted when the temperature is updated." alt="" coords="303,297,521,337"/>
-<area shape="poly" title=" " alt="" coords="152,207,212,246,285,283,306,291,304,296,283,288,209,250,149,212"/>
-<area shape="rect" href="classSystemManager.html#a1f612cad69e98840b1e0cff8039273fa" title="Signal emitted when the wifi status is updated." alt="" coords="312,361,512,401"/>
-<area shape="poly" title=" " alt="" coords="139,208,198,277,239,315,285,347,300,355,298,359,283,352,236,319,194,280,134,211"/>
-</map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_a6bdbe09715355ebf61d36063fb857e78_icgraph.png" border="0" usemap="#aclassSystemManager_a6bdbe09715355ebf61d36063fb857e78_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a6bdbe09715355ebf61d36063fb857e78_icgraph" id="aclassSystemManager_a6bdbe09715355ebf61d36063fb857e78_icgraph">
-<area shape="rect" title="Update the system status." alt="" coords="296,5,527,45"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="5,13,248,38"/>
-<area shape="poly" title=" " alt="" coords="282,28,248,28,248,23,282,23"/>
-</map>
 </div>
 
 </div>
@@ -679,34 +478,21 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel slot">slot</span></span>  </td>
+<span class="mlabels"><span class="mlabel slot">slot</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Destroy the <a class="el" href="classSystemManager.html" title="Class that manages the system time, status, and battery. QObject.">SystemManager</a> object. </p>
-<p>This destructor cleans up the resources used by the <a class="el" href="classSystemManager.html" title="Class that manages the system time, status, and battery. QObject.">SystemManager</a>. </p>
-
-<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00048">48</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8cpp_source.html#l00067">67</a> of file <a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_cgraph.png" border="0" usemap="#aclassSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_cgraph" alt=""/></div>
-<map name="aclassSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_cgraph" id="aclassSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_cgraph">
-<area shape="rect" title="Destroy the SystemManager object." alt="" coords="5,5,220,31"/>
-<area shape="rect" href="classSystemManager.html#a294f03536732c243e439f29a4bd75bc8" title="Signal emitted when the system time is updated." alt="" coords="268,5,489,31"/>
-<area shape="poly" title=" " alt="" coords="220,15,254,15,254,21,220,21"/>
-</map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_icgraph.png" border="0" usemap="#aclassSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_icgraph" alt=""/></div>
-<map name="aclassSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_icgraph" id="aclassSystemManager_ad78bc11d81e641f8e6a8c24ca5061b9d_icgraph">
-<area shape="rect" title="Destroy the SystemManager object." alt="" coords="296,5,511,31"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="5,5,248,31"/>
-<area shape="poly" title=" " alt="" coords="282,21,248,21,248,15,282,15"/>
-</map>
 </div>
 
 </div>
@@ -738,39 +524,18 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Signal emitted when the wifi status is updated. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">status</td><td>The new wifi status. </td></tr>
-    <tr><td class="paramname">wifiName</td><td>The name of the wifi network. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html#l00204">204</a> of file <a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html">moc_SystemManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemManager_a1f612cad69e98840b1e0cff8039273fa_icgraph.png" border="0" usemap="#aclassSystemManager_a1f612cad69e98840b1e0cff8039273fa_icgraph" alt=""/></div>
-<map name="aclassSystemManager_a1f612cad69e98840b1e0cff8039273fa_icgraph" id="aclassSystemManager_a1f612cad69e98840b1e0cff8039273fa_icgraph">
-<area shape="rect" title="Signal emitted when the wifi status is updated." alt="" coords="815,54,1015,94"/>
-<area shape="rect" href="classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a" title="Initialize the SystemManager." alt="" coords="544,22,759,62"/>
-<area shape="poly" title=" " alt="" coords="801,63,759,58,759,52,801,58"/>
-<area shape="rect" href="classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Update the system status." alt="" coords="536,86,767,126"/>
-<area shape="poly" title=" " alt="" coords="801,90,767,95,766,89,801,85"/>
-<area shape="rect" href="classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,29,488,55"/>
-<area shape="poly" title=" " alt="" coords="530,45,488,45,488,39,530,39"/>
-<area shape="rect" href="classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67" title="Construct a new CarManager object." alt="" coords="5,29,193,55"/>
-<area shape="poly" title=" " alt="" coords="228,45,193,45,193,39,228,39"/>
-<area shape="poly" title=" " alt="" coords="147,20,144,16,136,12,99,8,71,10,56,15,53,20,61,27,57,31,47,21,52,11,70,5,99,3,137,7,148,12,151,18"/>
-<area shape="rect" href="classSystemManager.html#a10bb8a855e36325de0329142ad60cf42" title="Construct a new SystemManager object." alt="" coords="243,93,486,119"/>
-<area shape="poly" title=" " alt="" coords="522,109,486,109,486,103,522,103"/>
-</map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
-<a id="a02d66abf416d6c237275490802c25deb" name="a02d66abf416d6c237275490802c25deb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02d66abf416d6c237275490802c25deb">&#9670;&#160;</a></span>m_batteryController</h2>
+<a id="a740cb20b082776e784adfe8ea3f732a2" name="a740cb20b082776e784adfe8ea3f732a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a740cb20b082776e784adfe8ea3f732a2">&#9670;&#160;</a></span>m_batteryController</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -779,7 +544,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classBatteryController.html">BatteryController</a>* SystemManager::m_batteryController</td>
+          <td class="memname"><a class="el" href="classIBatteryController.html">IBatteryController</a>* SystemManager::m_batteryController</td>
         </tr>
       </table>
   </td>
@@ -789,14 +554,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classBatteryController.html" title="Class that manages the battery of a vehicle. QObject and I2CController.">BatteryController</a> to fetch battery percentage. </p>
-
-<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00082">82</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00059">59</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a8b28b59cbdf420695eb2b3766a1e35a1" name="a8b28b59cbdf420695eb2b3766a1e35a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b28b59cbdf420695eb2b3766a1e35a1">&#9670;&#160;</a></span>m_statusTimer</h2>
+<a id="ae726082d55ae22534e487bb71f3e903a" name="ae726082d55ae22534e487bb71f3e903a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae726082d55ae22534e487bb71f3e903a">&#9670;&#160;</a></span>m_ownBatteryController</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -805,7 +568,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QTimer* SystemManager::m_statusTimer</td>
+          <td class="memname">bool SystemManager::m_ownBatteryController</td>
         </tr>
       </table>
   </td>
@@ -815,14 +578,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Timer to update the system status every 5 seconds. </p>
-
-<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00080">80</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00062">62</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab65e9e69f59af34379ff9d5a9bd30370" name="ab65e9e69f59af34379ff9d5a9bd30370"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab65e9e69f59af34379ff9d5a9bd30370">&#9670;&#160;</a></span>m_timeTimer</h2>
+<a id="a4197a7457f94b7250bc062ef989a027c" name="a4197a7457f94b7250bc062ef989a027c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4197a7457f94b7250bc062ef989a027c">&#9670;&#160;</a></span>m_ownSystemCommandExecutor</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -831,7 +592,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QTimer* SystemManager::m_timeTimer</td>
+          <td class="memname">bool SystemManager::m_ownSystemCommandExecutor</td>
         </tr>
       </table>
   </td>
@@ -841,14 +602,134 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Timer to update the system time every second. </p>
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00064">64</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00078">78</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+</div>
+</div>
+<a id="a519ed3d4f592359d31578f87d7717a37" name="a519ed3d4f592359d31578f87d7717a37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a519ed3d4f592359d31578f87d7717a37">&#9670;&#160;</a></span>m_ownSystemInfoProvider</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SystemManager::m_ownSystemInfoProvider</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00063">63</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab6e1c4aa556901b650f7c2f71fea46cd" name="ab6e1c4aa556901b650f7c2f71fea46cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e1c4aa556901b650f7c2f71fea46cd">&#9670;&#160;</a></span>m_statusTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTimer SystemManager::m_statusTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00058">58</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2038150e6a927dccd67dd5d4cb6b23a2" name="a2038150e6a927dccd67dd5d4cb6b23a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2038150e6a927dccd67dd5d4cb6b23a2">&#9670;&#160;</a></span>m_systemCommandExecutor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classISystemCommandExecutor.html">ISystemCommandExecutor</a>* SystemManager::m_systemCommandExecutor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00061">61</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a81de34f74601d103b64e05f69062865e" name="a81de34f74601d103b64e05f69062865e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81de34f74601d103b64e05f69062865e">&#9670;&#160;</a></span>m_systemInfoProvider</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classISystemInfoProvider.html">ISystemInfoProvider</a>* SystemManager::m_systemInfoProvider</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00060">60</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="abc5a880173a7cf80c021ccba92b7f01b" name="abc5a880173a7cf80c021ccba92b7f01b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc5a880173a7cf80c021ccba92b7f01b">&#9670;&#160;</a></span>m_timeTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTimer SystemManager::m_timeTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SystemManager_8hpp_source.html#l00057">57</a> of file <a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>app/includes/system/<a class="el" href="SystemManager_8hpp_source.html">SystemManager.hpp</a></li>
+<li>app/build-x86/<a class="el" href="build-x86_2moc__SystemManager_8cpp_source.html">moc_SystemManager.cpp</a></li>
+<li>app/build/<a class="el" href="build_2moc__SystemManager_8cpp_source.html">moc_SystemManager.cpp</a></li>
 <li>app/sources/system/<a class="el" href="SystemManager_8cpp_source.html">SystemManager.cpp</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,15 +1,11 @@
 var searchData=
 [
-  ['handlebatterypercentage_0',['handleBatteryPercentage',['../classDataManager.html#ac5bb6cd13af677b42ff0ce32c05b4337',1,'DataManager']]],
-  ['handledirectiondata_1',['handleDirectionData',['../classDataManager.html#afcadf5c275fd6fd89c4199abebc8b03d',1,'DataManager']]],
-  ['handleipaddressdata_2',['handleIpAddressData',['../classDataManager.html#a1619eef84eba4d778ebdfda1198257ad',1,'DataManager']]],
-  ['handlemileageupdate_3',['handleMileageUpdate',['../classDataManager.html#aa15248dd048e25abe66a9120056c5eb9',1,'DataManager']]],
-  ['handlerpmdata_4',['handleRpmData',['../classDataManager.html#a90ce082fe6b78b39835dfb6826a3b8f3',1,'DataManager']]],
-  ['handlers_5',['handlers',['../classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d',1,'CANMessageProcessor']]],
-  ['handlesigint_6',['handleSigint',['../main_8cpp.html#a0951f538a6bbe4f93045410ed3fed406',1,'main.cpp']]],
-  ['handlespeeddata_7',['handleSpeedData',['../classDataManager.html#a9634f128fb690a5facc62a57efe9bcbc',1,'DataManager']]],
-  ['handlesteeringdata_8',['handleSteeringData',['../classDataManager.html#a8d76e60050120ecb940f90726e03cbf8',1,'DataManager']]],
-  ['handletemperaturedata_9',['handleTemperatureData',['../classDataManager.html#a866f45795ff896aecf89d853f4f1ac48',1,'DataManager']]],
-  ['handletimedata_10',['handleTimeData',['../classDataManager.html#a0198245d11fb32c03ebeb4169b223001',1,'DataManager']]],
-  ['handlewifidata_11',['handleWifiData',['../classDataManager.html#aafaa2c92f70e5a3296caeab490c29de9',1,'DataManager']]]
+  ['getbatterypercentage_0',['getBatteryPercentage',['../classBatteryController.html#ae0f3d011563baf767f5c5d6853795a40',1,'BatteryController::getBatteryPercentage()'],['../classIBatteryController.html#aa20b28b939b1d3224233e9a5bc574ee8',1,'IBatteryController::getBatteryPercentage()']]],
+  ['getbusvoltage_5fv_1',['getBusVoltage_V',['../classBatteryController.html#add316f29d2f9f264297eeec5249f42c3',1,'BatteryController']]],
+  ['getipaddress_2',['getIpAddress',['../classISystemInfoProvider.html#ade879d62021e856577bdf4737dda85e4',1,'ISystemInfoProvider::getIpAddress()'],['../classSystemInfoProvider.html#a87f3f227d8c5894a09b823c64537c0be',1,'SystemInfoProvider::getIpAddress()']]],
+  ['getmessageprocessor_3',['getMessageProcessor',['../classMCP2515Controller.html#aad7d694dacc31d44a3ed225d597f25dd',1,'MCP2515Controller']]],
+  ['getshuntvoltage_5fv_4',['getShuntVoltage_V',['../classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901',1,'BatteryController']]],
+  ['gettemperature_5',['getTemperature',['../classISystemInfoProvider.html#a5da52499bfc71b3ab410c514fd4c933c',1,'ISystemInfoProvider::getTemperature()'],['../classSystemInfoProvider.html#a9afa991ae3553a9cbcc9c9b2d070769e',1,'SystemInfoProvider::getTemperature()']]],
+  ['getting_20started_6',['Getting Started',['..//home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/app/README.md#autotoc_md8',1,'']]],
+  ['getwifistatus_7',['getWifiStatus',['../classISystemInfoProvider.html#a1ebc4c5f88dade63c28f5051b2178344',1,'ISystemInfoProvider::getWifiStatus()'],['../classSystemInfoProvider.html#a149f0effbf4179a057544ba6fe8cece8',1,'SystemInfoProvider::getWifiStatus()']]]
 ];

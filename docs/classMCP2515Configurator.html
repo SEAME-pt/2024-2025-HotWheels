@@ -151,6 +151,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab14424f50fc8e6367c586f26f8dedbfb" id="r_ab14424f50fc8e6367c586f26f8dedbfb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab14424f50fc8e6367c586f26f8dedbfb">readCANMessage</a> (uint16_t &amp;frameID)</td></tr>
 <tr class="memdesc:ab14424f50fc8e6367c586f26f8dedbfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a CAN message from the MCP2515.  <br /></td></tr>
 <tr class="separator:ab14424f50fc8e6367c586f26f8dedbfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af76ba874fc502fdbfe7b020ded2e1403" id="r_af76ba874fc502fdbfe7b020ded2e1403"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af76ba874fc502fdbfe7b020ded2e1403">sendCANMessage</a> (uint16_t frameID, uint8_t *CAN_TX_Buf, uint8_t length1)</td></tr>
+<tr class="separator:af76ba874fc502fdbfe7b020ded2e1403"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -178,6 +180,22 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a0335abeca080980b15e42e7ecd2aa7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7f1743fc8bf5e05f5488eef6612c95e" id="r_ad7f1743fc8bf5e05f5488eef6612c95e"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7f1743fc8bf5e05f5488eef6612c95e">RXB0SIDL</a> = 0x62</td></tr>
 <tr class="separator:ad7f1743fc8bf5e05f5488eef6612c95e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4046995f5ea5f9bd1127edf48ce8ae0" id="r_aa4046995f5ea5f9bd1127edf48ce8ae0"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4046995f5ea5f9bd1127edf48ce8ae0">CAN_RD_STATUS</a> = 0xA0</td></tr>
+<tr class="separator:aa4046995f5ea5f9bd1127edf48ce8ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae11e8ac73fca3c0c5bd35463f66bad99" id="r_ae11e8ac73fca3c0c5bd35463f66bad99"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae11e8ac73fca3c0c5bd35463f66bad99">TXB0SIDH</a> = 0x31</td></tr>
+<tr class="separator:ae11e8ac73fca3c0c5bd35463f66bad99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59376dc58a91d1ac625de4e7aab3e730" id="r_a59376dc58a91d1ac625de4e7aab3e730"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59376dc58a91d1ac625de4e7aab3e730">TXB0SIDL</a> = 0x32</td></tr>
+<tr class="separator:a59376dc58a91d1ac625de4e7aab3e730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a131151222e575611e86c2593ea348774" id="r_a131151222e575611e86c2593ea348774"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a131151222e575611e86c2593ea348774">TXB0EID8</a> = 0x33</td></tr>
+<tr class="separator:a131151222e575611e86c2593ea348774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac17f65472f5ed167b7726fa06aac36dc" id="r_ac17f65472f5ed167b7726fa06aac36dc"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac17f65472f5ed167b7726fa06aac36dc">TXB0EID0</a> = 0x34</td></tr>
+<tr class="separator:ac17f65472f5ed167b7726fa06aac36dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af04a124601b5f620b284d2711fb32ee7" id="r_af04a124601b5f620b284d2711fb32ee7"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af04a124601b5f620b284d2711fb32ee7">TXB0DLC</a> = 0x35</td></tr>
+<tr class="separator:af04a124601b5f620b284d2711fb32ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38429c75b677bbe8fbe4e5992c149843" id="r_a38429c75b677bbe8fbe4e5992c149843"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38429c75b677bbe8fbe4e5992c149843">TXB0D0</a> = 0x36</td></tr>
+<tr class="separator:a38429c75b677bbe8fbe4e5992c149843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae701cd016d6148ab9c29dc1c40e927a8" id="r_ae701cd016d6148ab9c29dc1c40e927a8"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae701cd016d6148ab9c29dc1c40e927a8">CAN_RTS_TXB0</a> = 0x81</td></tr>
+<tr class="separator:ae701cd016d6148ab9c29dc1c40e927a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -287,11 +305,6 @@ Private Attributes</h2></td></tr>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a726cd02381fff63eab7bfd289067d6cf_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_a726cd02381fff63eab7bfd289067d6cf_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a726cd02381fff63eab7bfd289067d6cf_cgraph" id="aclassMCP2515Configurator_a726cd02381fff63eab7bfd289067d6cf_cgraph">
-<area shape="rect" title="Configure the baud rate for the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,23,202,23,202,28,168,28"/>
-</map>
 </div>
 
 </div>
@@ -319,11 +332,6 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_ae5252bc8370e99e5ab0d9a12f7e92a54_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_ae5252bc8370e99e5ab0d9a12f7e92a54_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_ae5252bc8370e99e5ab0d9a12f7e92a54_cgraph" id="aclassMCP2515Configurator_ae5252bc8370e99e5ab0d9a12f7e92a54_cgraph">
-<area shape="rect" title="Configure the filters and masks for the MCP2515." alt="" coords="5,5,203,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="251,5,413,45"/>
-<area shape="poly" title=" " alt="" coords="203,23,237,23,237,28,203,28"/>
-</map>
 </div>
 
 </div>
@@ -351,11 +359,6 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a992d30e78baa17aa952d17643b599d5d_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_a992d30e78baa17aa952d17643b599d5d_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a992d30e78baa17aa952d17643b599d5d_cgraph" id="aclassMCP2515Configurator_a992d30e78baa17aa952d17643b599d5d_cgraph">
-<area shape="rect" title="Configure the interrupts for the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,23,202,23,202,28,168,28"/>
-</map>
 </div>
 
 </div>
@@ -383,11 +386,6 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a3756a8b45bb55a349c37e76fe133b45f_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_a3756a8b45bb55a349c37e76fe133b45f_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a3756a8b45bb55a349c37e76fe133b45f_cgraph" id="aclassMCP2515Configurator_a3756a8b45bb55a349c37e76fe133b45f_cgraph">
-<area shape="rect" title="Configure the RX buffer for the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,23,202,23,202,28,168,28"/>
-</map>
 </div>
 
 </div>
@@ -415,11 +413,6 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_af3688800297022aee833d54ca88d9d99_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_af3688800297022aee833d54ca88d9d99_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_af3688800297022aee833d54ca88d9d99_cgraph" id="aclassMCP2515Configurator_af3688800297022aee833d54ca88d9d99_cgraph">
-<area shape="rect" title="Configure the TX buffer for the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,23,202,23,202,28,168,28"/>
-</map>
 </div>
 
 </div>
@@ -454,13 +447,6 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_ab14424f50fc8e6367c586f26f8dedbfb_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_ab14424f50fc8e6367c586f26f8dedbfb_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_ab14424f50fc8e6367c586f26f8dedbfb_cgraph" id="aclassMCP2515Configurator_ab14424f50fc8e6367c586f26f8dedbfb_cgraph">
-<area shape="rect" title="Read a CAN message from the MCP2515." alt="" coords="5,37,168,77"/>
-<area shape="rect" href="classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,42,202,37,203,42,169,48"/>
-<area shape="rect" href="classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,69,379,109"/>
-<area shape="poly" title=" " alt="" coords="169,67,203,72,202,78,168,72"/>
-</map>
 </div>
 
 </div>
@@ -503,15 +489,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a88d6297ea7c98724de837f650ac05553_icgraph.png" border="0" usemap="#aclassMCP2515Configurator_a88d6297ea7c98724de837f650ac05553_icgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a88d6297ea7c98724de837f650ac05553_icgraph" id="aclassMCP2515Configurator_a88d6297ea7c98724de837f650ac05553_icgraph">
-<area shape="rect" title="Read a value from a register." alt="" coords="216,69,379,109"/>
-<area shape="rect" href="classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="poly" title=" " alt="" coords="217,68,152,48,154,43,218,63"/>
-<area shape="rect" href="classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator." alt="" coords="5,69,168,109"/>
-<area shape="poly" title=" " alt="" coords="202,92,168,92,168,87,202,87"/>
-<area shape="rect" href="classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c" title="Verify the mode of the MCP2515." alt="" coords="5,133,168,173"/>
-<area shape="poly" title=" " alt="" coords="218,116,154,136,152,131,217,111"/>
-</map>
 </div>
 
 </div>
@@ -540,13 +517,39 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a598f082ddb6096553ba2d1657953ebe6_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_a598f082ddb6096553ba2d1657953ebe6_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a598f082ddb6096553ba2d1657953ebe6_cgraph" id="aclassMCP2515Configurator_a598f082ddb6096553ba2d1657953ebe6_cgraph">
-<area shape="rect" title="clean up the resources used by the MCP2515Configurator." alt="" coords="5,37,168,77"/>
-<area shape="rect" href="classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,42,202,37,203,42,169,48"/>
-<area shape="rect" href="classMCP2515Configurator.html#aa6630dccbad67624dc8a4cdd95a7a684" title="Send a command to the MCP2515." alt="" coords="216,69,379,109"/>
-<area shape="poly" title=" " alt="" coords="169,67,203,72,202,78,168,72"/>
-</map>
+</div>
+
+</div>
+</div>
+<a id="af76ba874fc502fdbfe7b020ded2e1403" name="af76ba874fc502fdbfe7b020ded2e1403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af76ba874fc502fdbfe7b020ded2e1403">&#9670;&#160;</a></span>sendCANMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MCP2515Configurator::sendCANMessage </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>frameID</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>CAN_TX_Buf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>length1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00171">171</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMCP2515Configurator_af76ba874fc502fdbfe7b020ded2e1403_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_af76ba874fc502fdbfe7b020ded2e1403_cgraph" alt=""/></div>
 </div>
 
 </div>
@@ -589,11 +592,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_aa6630dccbad67624dc8a4cdd95a7a684_icgraph.png" border="0" usemap="#aclassMCP2515Configurator_aa6630dccbad67624dc8a4cdd95a7a684_icgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_aa6630dccbad67624dc8a4cdd95a7a684_icgraph" id="aclassMCP2515Configurator_aa6630dccbad67624dc8a4cdd95a7a684_icgraph">
-<area shape="rect" title="Send a command to the MCP2515." alt="" coords="216,5,379,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator." alt="" coords="5,5,168,45"/>
-<area shape="poly" title=" " alt="" coords="202,28,168,28,168,23,202,23"/>
-</map>
 </div>
 
 </div>
@@ -627,11 +625,6 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a522a619dc1668ac677ca9f422f8f302a_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_a522a619dc1668ac677ca9f422f8f302a_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a522a619dc1668ac677ca9f422f8f302a_cgraph" id="aclassMCP2515Configurator_a522a619dc1668ac677ca9f422f8f302a_cgraph">
-<area shape="rect" title="Set the mode for the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,23,202,23,202,28,168,28"/>
-</map>
 </div>
 
 </div>
@@ -666,11 +659,6 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a0e133b539872c674a29cd81db4185d6c_cgraph.png" border="0" usemap="#aclassMCP2515Configurator_a0e133b539872c674a29cd81db4185d6c_cgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a0e133b539872c674a29cd81db4185d6c_cgraph" id="aclassMCP2515Configurator_a0e133b539872c674a29cd81db4185d6c_cgraph">
-<area shape="rect" title="Verify the mode of the MCP2515." alt="" coords="5,5,168,45"/>
-<area shape="rect" href="classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="216,5,379,45"/>
-<area shape="poly" title=" " alt="" coords="168,23,202,23,202,28,168,28"/>
-</map>
 </div>
 
 </div>
@@ -717,28 +705,59 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Configurator_a89cb67d607b050252677428c7ef61e4a_icgraph.png" border="0" usemap="#aclassMCP2515Configurator_a89cb67d607b050252677428c7ef61e4a_icgraph" alt=""/></div>
-<map name="aclassMCP2515Configurator_a89cb67d607b050252677428c7ef61e4a_icgraph" id="aclassMCP2515Configurator_a89cb67d607b050252677428c7ef61e4a_icgraph">
-<area shape="rect" title="Write a value to a register." alt="" coords="251,197,413,237"/>
-<area shape="rect" href="classMCP2515Configurator.html#a726cd02381fff63eab7bfd289067d6cf" title="Configure the baud rate for the MCP2515." alt="" coords="23,5,185,45"/>
-<area shape="poly" title=" " alt="" coords="311,187,266,122,236,88,201,60,180,48,183,43,204,55,239,85,270,119,315,184"/>
-<area shape="rect" href="classMCP2515Configurator.html#ae5252bc8370e99e5ab0d9a12f7e92a54" title="Configure the filters and masks for the MCP2515." alt="" coords="5,69,203,109"/>
-<area shape="poly" title=" " alt="" coords="297,191,253,156,201,124,175,112,177,107,204,119,256,152,300,186"/>
-<area shape="rect" href="classMCP2515Configurator.html#a992d30e78baa17aa952d17643b599d5d" title="Configure the interrupts for the MCP2515." alt="" coords="23,133,185,173"/>
-<area shape="poly" title=" " alt="" coords="246,196,175,176,176,171,248,191"/>
-<area shape="rect" href="classMCP2515Configurator.html#a3756a8b45bb55a349c37e76fe133b45f" title="Configure the RX buffer for the MCP2515." alt="" coords="23,197,185,237"/>
-<area shape="poly" title=" " alt="" coords="237,220,186,220,186,215,237,215"/>
-<area shape="rect" href="classMCP2515Configurator.html#af3688800297022aee833d54ca88d9d99" title="Configure the TX buffer for the MCP2515." alt="" coords="23,261,185,301"/>
-<area shape="poly" title=" " alt="" coords="248,244,176,264,175,259,246,238"/>
-<area shape="rect" href="classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515." alt="" coords="23,325,185,365"/>
-<area shape="poly" title=" " alt="" coords="300,248,256,283,204,316,177,328,175,323,201,311,253,279,297,244"/>
-<area shape="rect" href="classMCP2515Configurator.html#a522a619dc1668ac677ca9f422f8f302a" title="Set the mode for the MCP2515." alt="" coords="23,389,185,429"/>
-<area shape="poly" title=" " alt="" coords="315,251,270,316,239,350,204,380,183,392,180,387,201,375,236,346,266,313,311,248"/>
-</map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
+<a id="aa4046995f5ea5f9bd1127edf48ce8ae0" name="aa4046995f5ea5f9bd1127edf48ce8ae0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4046995f5ea5f9bd1127edf48ce8ae0">&#9670;&#160;</a></span>CAN_RD_STATUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CAN_RD_STATUS = 0xA0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00058">58</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae701cd016d6148ab9c29dc1c40e927a8" name="ae701cd016d6148ab9c29dc1c40e927a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae701cd016d6148ab9c29dc1c40e927a8">&#9670;&#160;</a></span>CAN_RTS_TXB0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::CAN_RTS_TXB0 = 0x81</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00065">65</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a35a365ada57c5e59d6d42869d80d9e13" name="a35a365ada57c5e59d6d42869d80d9e13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35a365ada57c5e59d6d42869d80d9e13">&#9670;&#160;</a></span>CANCTRL</h2>
 
@@ -759,7 +778,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00045">45</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00046">46</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -783,7 +802,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00053">53</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00054">54</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -807,7 +826,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00052">52</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00053">53</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -831,7 +850,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00046">46</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00047">47</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -855,7 +874,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00047">47</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00048">48</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -879,7 +898,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00048">48</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00049">49</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -903,7 +922,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00049">49</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00050">50</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -927,7 +946,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00044">44</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00045">45</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -951,7 +970,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00051">51</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00052">52</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -975,7 +994,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00054">54</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00055">55</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -999,7 +1018,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00055">55</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00056">56</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +1044,7 @@ Here is the caller graph for this function:</div>
 
 <p>Reference to the SPI controller. </p>
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00059">59</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00069">69</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1068,151 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00050">50</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00051">51</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a38429c75b677bbe8fbe4e5992c149843" name="a38429c75b677bbe8fbe4e5992c149843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38429c75b677bbe8fbe4e5992c149843">&#9670;&#160;</a></span>TXB0D0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::TXB0D0 = 0x36</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00064">64</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af04a124601b5f620b284d2711fb32ee7" name="af04a124601b5f620b284d2711fb32ee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af04a124601b5f620b284d2711fb32ee7">&#9670;&#160;</a></span>TXB0DLC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::TXB0DLC = 0x35</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00063">63</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac17f65472f5ed167b7726fa06aac36dc" name="ac17f65472f5ed167b7726fa06aac36dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac17f65472f5ed167b7726fa06aac36dc">&#9670;&#160;</a></span>TXB0EID0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::TXB0EID0 = 0x34</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00062">62</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a131151222e575611e86c2593ea348774" name="a131151222e575611e86c2593ea348774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131151222e575611e86c2593ea348774">&#9670;&#160;</a></span>TXB0EID8</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::TXB0EID8 = 0x33</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00061">61</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae11e8ac73fca3c0c5bd35463f66bad99" name="ae11e8ac73fca3c0c5bd35463f66bad99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae11e8ac73fca3c0c5bd35463f66bad99">&#9670;&#160;</a></span>TXB0SIDH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::TXB0SIDH = 0x31</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00059">59</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a59376dc58a91d1ac625de4e7aab3e730" name="a59376dc58a91d1ac625de4e7aab3e730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59376dc58a91d1ac625de4e7aab3e730">&#9670;&#160;</a></span>TXB0SIDL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MCP2515Configurator::TXB0SIDL = 0x32</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8hpp_source.html#l00060">60</a> of file <a class="el" href="MCP2515Configurator_8hpp_source.html">MCP2515Configurator.hpp</a>.</p>
 
 </div>
 </div>

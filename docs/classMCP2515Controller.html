@@ -104,7 +104,6 @@ $(function(){initNavTree('classMCP2515Controller.html',''); initResizable(true);
 
 <div class="header">
   <div class="summary">
-<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
@@ -117,20 +116,6 @@ $(function(){initNavTree('classMCP2515Controller.html',''); initResizable(true);
 
 <p><code>#include &lt;<a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
-Signals</h2></td></tr>
-<tr class="memitem:a25cc8dda05ec2b8b33c805359e4dfbe6" id="r_a25cc8dda05ec2b8b33c805359e4dfbe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25cc8dda05ec2b8b33c805359e4dfbe6">speedUpdated</a> (float newSpeed)</td></tr>
-<tr class="separator:a25cc8dda05ec2b8b33c805359e4dfbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a253b26fd7dfda688692c054b7fe2cd00" id="r_a253b26fd7dfda688692c054b7fe2cd00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a253b26fd7dfda688692c054b7fe2cd00">rpmUpdated</a> (int newRpm)</td></tr>
-<tr class="separator:a253b26fd7dfda688692c054b7fe2cd00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header signals_classIMCP2515Controller"><td colspan="2" onclick="javascript:dynsection.toggleInherit('signals_classIMCP2515Controller')"><img src="closed.png" alt="-"/>&#160;Signals inherited from <a class="el" href="classIMCP2515Controller.html">IMCP2515Controller</a></td></tr>
-<tr class="memitem:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller" id="r_ae8ffa002fcf87f1a8dbdf6ff4347d1fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMCP2515Controller.html#ae8ffa002fcf87f1a8dbdf6ff4347d1fd">speedUpdated</a> (float newSpeed)</td></tr>
-<tr class="memdesc:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the speed is updated.  <br /></td></tr>
-<tr class="separator:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller" id="r_a7f546ecbb7d88b41f23b1852c82d4f8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMCP2515Controller.html#a7f546ecbb7d88b41f23b1852c82d4f8d">rpmUpdated</a> (int newRpm)</td></tr>
-<tr class="memdesc:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the RPM is updated.  <br /></td></tr>
-<tr class="separator:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af4bec99219f1dd795c2909844ed75537" id="r_af4bec99219f1dd795c2909844ed75537"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4bec99219f1dd795c2909844ed75537">MCP2515Controller</a> (const std::string &amp;spiDevice)</td></tr>
@@ -183,6 +168,16 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a848879ce58d05a56d156fcf2cba48de8" id="r_a848879ce58d05a56d156fcf2cba48de8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a848879ce58d05a56d156fcf2cba48de8">ownsSPIController</a> = false</td></tr>
 <tr class="memdesc:a848879ce58d05a56d156fcf2cba48de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to indicate if the SPI controller is owned by the <a class="el" href="classMCP2515Controller.html" title="Class that controls the MCP2515 CAN controller. IMCP2515Controller.">MCP2515Controller</a>.  <br /></td></tr>
 <tr class="separator:a848879ce58d05a56d156fcf2cba48de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header signals_classIMCP2515Controller"><td colspan="2" onclick="javascript:dynsection.toggleInherit('signals_classIMCP2515Controller')"><img src="closed.png" alt="-"/>&#160;Signals inherited from <a class="el" href="classIMCP2515Controller.html">IMCP2515Controller</a></td></tr>
+<tr class="memitem:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller" id="r_ae8ffa002fcf87f1a8dbdf6ff4347d1fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMCP2515Controller.html#ae8ffa002fcf87f1a8dbdf6ff4347d1fd">speedUpdated</a> (float newSpeed)</td></tr>
+<tr class="memdesc:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the speed is updated.  <br /></td></tr>
+<tr class="separator:ae8ffa002fcf87f1a8dbdf6ff4347d1fd inherit signals_classIMCP2515Controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller" id="r_a7f546ecbb7d88b41f23b1852c82d4f8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIMCP2515Controller.html#a7f546ecbb7d88b41f23b1852c82d4f8d">rpmUpdated</a> (int newRpm)</td></tr>
+<tr class="memdesc:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the RPM is updated.  <br /></td></tr>
+<tr class="separator:a7f546ecbb7d88b41f23b1852c82d4f8d inherit signals_classIMCP2515Controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that controls the MCP2515 CAN controller. <a class="el" href="classIMCP2515Controller.html" title="Interface for the MCP2515 CAN controller. QObject.">IMCP2515Controller</a>. </p>
@@ -232,15 +227,6 @@ Private Attributes</h2></td></tr>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_af4bec99219f1dd795c2909844ed75537_cgraph.png" border="0" usemap="#aclassMCP2515Controller_af4bec99219f1dd795c2909844ed75537_cgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_af4bec99219f1dd795c2909844ed75537_cgraph" id="aclassMCP2515Controller_af4bec99219f1dd795c2909844ed75537_cgraph">
-<area shape="rect" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,37,160,77"/>
-<area shape="rect" href="classMCP2515Controller.html#af33937a6ecfeae8a44a2f42c9b36d4e3" title="Send a CAN message." alt="" coords="208,37,363,77"/>
-<area shape="poly" title=" " alt="" coords="160,55,194,55,194,60,160,60"/>
-<area shape="rect" href="classMCP2515Controller.html#a253b26fd7dfda688692c054b7fe2cd00" title=" " alt="" coords="411,5,565,45"/>
-<area shape="poly" title=" " alt="" coords="362,43,396,37,397,42,363,48"/>
-<area shape="rect" href="classMCP2515Controller.html#a25cc8dda05ec2b8b33c805359e4dfbe6" title=" " alt="" coords="411,69,565,109"/>
-<area shape="poly" title=" " alt="" coords="363,67,397,72,396,78,362,72"/>
-</map>
 </div>
 
 </div>
@@ -285,15 +271,6 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_ac2faf2b46ee91ad68b0b1d57c0261e53_cgraph.png" border="0" usemap="#aclassMCP2515Controller_ac2faf2b46ee91ad68b0b1d57c0261e53_cgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_ac2faf2b46ee91ad68b0b1d57c0261e53_cgraph" id="aclassMCP2515Controller_ac2faf2b46ee91ad68b0b1d57c0261e53_cgraph">
-<area shape="rect" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,37,160,77"/>
-<area shape="rect" href="classMCP2515Controller.html#af33937a6ecfeae8a44a2f42c9b36d4e3" title="Send a CAN message." alt="" coords="208,37,363,77"/>
-<area shape="poly" title=" " alt="" coords="160,55,194,55,194,60,160,60"/>
-<area shape="rect" href="classMCP2515Controller.html#a253b26fd7dfda688692c054b7fe2cd00" title=" " alt="" coords="411,5,565,45"/>
-<area shape="poly" title=" " alt="" coords="362,43,396,37,397,42,363,48"/>
-<area shape="rect" href="classMCP2515Controller.html#a25cc8dda05ec2b8b33c805359e4dfbe6" title=" " alt="" coords="411,69,565,109"/>
-<area shape="poly" title=" " alt="" coords="363,67,397,72,396,78,362,72"/>
-</map>
 </div>
 
 </div>
@@ -357,15 +334,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_aad7d694dacc31d44a3ed225d597f25dd_icgraph.png" border="0" usemap="#aclassMCP2515Controller_aad7d694dacc31d44a3ed225d597f25dd_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_aad7d694dacc31d44a3ed225d597f25dd_icgraph" id="aclassMCP2515Controller_aad7d694dacc31d44a3ed225d597f25dd_icgraph">
-<area shape="rect" title=" " alt="" coords="123,47,287,87"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a7379d3bb55019313ec7dd8a03c4802b2" title="Ensures that the RPM signal emits the correct value." alt="" coords="5,5,75,31"/>
-<area shape="poly" title=" " alt="" coords="123,46,74,31,76,26,125,41"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a90b63cd5dfc018f5b2c689faf8e66737" title="Ensures that registerHandler() does not throw an exception." alt="" coords="5,55,75,80"/>
-<area shape="poly" title=" " alt="" coords="109,70,75,70,75,65,109,65"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c" title="Ensures that the speed signal is emitted with the correct value." alt="" coords="5,104,75,129"/>
-<area shape="poly" title=" " alt="" coords="125,94,76,109,74,104,123,89"/>
-</map>
 </div>
 
 </div>
@@ -410,11 +378,6 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_a808e9b9acfe7fb7ac2ae32f3a72cd8b0_icgraph.png" border="0" usemap="#aclassMCP2515Controller_a808e9b9acfe7fb7ac2ae32f3a72cd8b0_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_a808e9b9acfe7fb7ac2ae32f3a72cd8b0_icgraph" id="aclassMCP2515Controller_a808e9b9acfe7fb7ac2ae32f3a72cd8b0_icgraph">
-<area shape="rect" title="Initialize the MCP2515 controller." alt="" coords="123,5,299,31"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e" title="Ensures that init() does not throw an exception." alt="" coords="5,5,75,31"/>
-<area shape="poly" title=" " alt="" coords="109,21,75,21,75,15,109,15"/>
-</map>
 </div>
 
 </div>
@@ -453,13 +416,6 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_a2c694c529b9468d000d435b700facb30_icgraph.png" border="0" usemap="#aclassMCP2515Controller_a2c694c529b9468d000d435b700facb30_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_a2c694c529b9468d000d435b700facb30_icgraph" id="aclassMCP2515Controller_a2c694c529b9468d000d435b700facb30_icgraph">
-<area shape="rect" title="Check if the stop reading flag is set." alt="" coords="123,23,287,63"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,5,75,31"/>
-<area shape="poly" title=" " alt="" coords="109,31,74,26,75,21,109,26"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a19af0df17657dd95fcf2796c5abe1fbb" title="Ensures that stopReading() sets the stop flag." alt="" coords="5,55,75,80"/>
-<area shape="poly" title=" " alt="" coords="109,60,75,65,75,60,109,55"/>
-</map>
 </div>
 
 </div>
@@ -497,52 +453,6 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_a4e62b0e8e1544fe6569dad2c6a20909a_icgraph.png" border="0" usemap="#aclassMCP2515Controller_a4e62b0e8e1544fe6569dad2c6a20909a_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_a4e62b0e8e1544fe6569dad2c6a20909a_icgraph" id="aclassMCP2515Controller_a4e62b0e8e1544fe6569dad2c6a20909a_icgraph">
-<area shape="rect" title="Start reading CAN messages." alt="" coords="123,5,277,45"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,13,75,38"/>
-<area shape="poly" title=" " alt="" coords="109,28,75,28,75,23,109,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a253b26fd7dfda688692c054b7fe2cd00" name="a253b26fd7dfda688692c054b7fe2cd00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a253b26fd7dfda688692c054b7fe2cd00">&#9670;&#160;</a></span>rpmUpdated</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MCP2515Controller::rpmUpdated </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newRpm</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel signal">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMCP2515Controller_a253b26fd7dfda688692c054b7fe2cd00_icgraph.png" border="0" usemap="#aclassMCP2515Controller_a253b26fd7dfda688692c054b7fe2cd00_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_a253b26fd7dfda688692c054b7fe2cd00_icgraph" id="aclassMCP2515Controller_a253b26fd7dfda688692c054b7fe2cd00_icgraph">
-<area shape="rect" title=" " alt="" coords="411,67,565,107"/>
-<area shape="rect" href="classMCP2515Controller.html#af33937a6ecfeae8a44a2f42c9b36d4e3" title="Send a CAN message." alt="" coords="208,37,363,77"/>
-<area shape="poly" title=" " alt="" coords="397,76,363,71,364,66,398,71"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a7379d3bb55019313ec7dd8a03c4802b2" title="Ensures that the RPM signal emits the correct value." alt="" coords="251,102,320,127"/>
-<area shape="poly" title=" " alt="" coords="398,102,321,113,320,107,397,97"/>
-<area shape="rect" href="classMCP2515Controller.html#af4bec99219f1dd795c2909844ed75537" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,5,160,45"/>
-<area shape="poly" title=" " alt="" coords="194,46,160,40,161,35,195,40"/>
-<area shape="rect" href="classMCP2515Controller.html#ac2faf2b46ee91ad68b0b1d57c0261e53" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,69,160,109"/>
-<area shape="poly" title=" " alt="" coords="195,74,161,80,160,74,194,69"/>
-</map>
 </div>
 
 </div>
@@ -585,66 +495,11 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_cgraph.png" border="0" usemap="#aclassMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_cgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_cgraph" id="aclassMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_cgraph">
-<area shape="rect" title="Send a CAN message." alt="" coords="5,37,160,77"/>
-<area shape="rect" href="classMCP2515Controller.html#a253b26fd7dfda688692c054b7fe2cd00" title=" " alt="" coords="208,5,363,45"/>
-<area shape="poly" title=" " alt="" coords="160,43,194,37,195,42,161,48"/>
-<area shape="rect" href="classMCP2515Controller.html#a25cc8dda05ec2b8b33c805359e4dfbe6" title=" " alt="" coords="208,69,363,109"/>
-<area shape="poly" title=" " alt="" coords="161,67,195,72,194,78,160,72"/>
-</map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_icgraph.png" border="0" usemap="#aclassMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_icgraph" id="aclassMCP2515Controller_af33937a6ecfeae8a44a2f42c9b36d4e3_icgraph">
-<area shape="rect" title="Send a CAN message." alt="" coords="208,37,363,77"/>
-<area shape="rect" href="classMCP2515Controller.html#af4bec99219f1dd795c2909844ed75537" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,5,160,45"/>
-<area shape="poly" title=" " alt="" coords="194,46,160,40,161,35,195,40"/>
-<area shape="rect" href="classMCP2515Controller.html#ac2faf2b46ee91ad68b0b1d57c0261e53" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,69,160,109"/>
-<area shape="poly" title=" " alt="" coords="195,74,161,80,160,74,194,69"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a25cc8dda05ec2b8b33c805359e4dfbe6" name="a25cc8dda05ec2b8b33c805359e4dfbe6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25cc8dda05ec2b8b33c805359e4dfbe6">&#9670;&#160;</a></span>speedUpdated</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MCP2515Controller::speedUpdated </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>newSpeed</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel signal">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMCP2515Controller_a25cc8dda05ec2b8b33c805359e4dfbe6_icgraph.png" border="0" usemap="#aclassMCP2515Controller_a25cc8dda05ec2b8b33c805359e4dfbe6_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_a25cc8dda05ec2b8b33c805359e4dfbe6_icgraph" id="aclassMCP2515Controller_a25cc8dda05ec2b8b33c805359e4dfbe6_icgraph">
-<area shape="rect" title=" " alt="" coords="411,67,565,107"/>
-<area shape="rect" href="classMCP2515Controller.html#af33937a6ecfeae8a44a2f42c9b36d4e3" title="Send a CAN message." alt="" coords="208,37,363,77"/>
-<area shape="poly" title=" " alt="" coords="397,76,363,71,364,66,398,71"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c" title="Ensures that the speed signal is emitted with the correct value." alt="" coords="251,102,320,127"/>
-<area shape="poly" title=" " alt="" coords="398,102,321,113,320,107,397,97"/>
-<area shape="rect" href="classMCP2515Controller.html#af4bec99219f1dd795c2909844ed75537" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,5,160,45"/>
-<area shape="poly" title=" " alt="" coords="194,46,160,40,161,35,195,40"/>
-<area shape="rect" href="classMCP2515Controller.html#ac2faf2b46ee91ad68b0b1d57c0261e53" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,69,160,109"/>
-<area shape="poly" title=" " alt="" coords="195,74,161,80,160,74,194,69"/>
-</map>
 </div>
 
 </div>
@@ -682,13 +537,6 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMCP2515Controller_a91483fd5e7a246f44f8452f4789d6b11_icgraph.png" border="0" usemap="#aclassMCP2515Controller_a91483fd5e7a246f44f8452f4789d6b11_icgraph" alt=""/></div>
-<map name="aclassMCP2515Controller_a91483fd5e7a246f44f8452f4789d6b11_icgraph" id="aclassMCP2515Controller_a91483fd5e7a246f44f8452f4789d6b11_icgraph">
-<area shape="rect" title="Stop reading CAN messages." alt="" coords="123,23,277,63"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,5,75,31"/>
-<area shape="poly" title=" " alt="" coords="109,32,75,26,75,21,110,26"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a19af0df17657dd95fcf2796c5abe1fbb" title="Ensures that stopReading() sets the stop flag." alt="" coords="5,55,75,80"/>
-<area shape="poly" title=" " alt="" coords="110,60,75,65,75,60,109,54"/>
-</map>
 </div>
 
 </div>
@@ -716,7 +564,7 @@ Here is the caller graph for this function:</div>
 
 <p><a class="el" href="classMCP2515Configurator.html" title="Class that configures the MCP2515 CAN controller.">MCP2515Configurator</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00055">55</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00051">51</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -742,7 +590,7 @@ Here is the caller graph for this function:</div>
 
 <p><a class="el" href="classCANMessageProcessor.html" title="Class that processes CAN messages.">CANMessageProcessor</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00057">57</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00053">53</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -768,7 +616,7 @@ Here is the caller graph for this function:</div>
 
 <p>Flag to indicate if the SPI controller is owned by the <a class="el" href="classMCP2515Controller.html" title="Class that controls the MCP2515 CAN controller. IMCP2515Controller.">MCP2515Controller</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00062">62</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00058">58</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -794,7 +642,7 @@ Here is the caller graph for this function:</div>
 
 <p>Pointer to the <a class="el" href="classISPIController.html" title="Interface for the SPI controller.">ISPIController</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00053">53</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00049">49</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -820,7 +668,7 @@ Here is the caller graph for this function:</div>
 
 <p>Flag to indicate if the reading process should stop. </p>
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00059">59</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MCP2515Controller_8hpp_source.html#l00055">55</a> of file <a class="el" href="MCP2515Controller_8hpp_source.html">MCP2515Controller.hpp</a>.</p>
 
 </div>
 </div>

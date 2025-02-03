@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['batterycontroller_0',['BatteryController',['../classBatteryController.html',1,'BatteryController'],['../classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c',1,'BatteryController::BatteryController()']]],
-  ['batterycontroller_2ecpp_1',['BatteryController.cpp',['../BatteryController_8cpp.html',1,'']]],
-  ['batterycontroller_2ehpp_2',['BatteryController.hpp',['../BatteryController_8hpp.html',1,'']]],
-  ['batterypercentageupdated_3',['batteryPercentageUpdated',['../classDataManager.html#a03f614a2259b6a7070150d90ecfa987f',1,'DataManager::batteryPercentageUpdated()'],['../classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3',1,'SystemManager::batteryPercentageUpdated()']]],
-  ['bits_4',['bits',['../classSPIController.html#ab215fe00d0693bd5aa4b4711abf99ca2',1,'SPIController']]],
-  ['block_5',['block',['../unioni2c__smbus__data.html#ae3dc6ce058d6ab3672bf68dc460e007d',1,'i2c_smbus_data']]],
-  ['byte_6',['byte',['../unioni2c__smbus__data.html#a7145699abf962d118aa1c78ff864e892',1,'i2c_smbus_data']]]
+  ['ackreceived_0',['ackReceived',['../structCANFrame.html#acf965134bf0e6566b91dcf392a1f34ff',1,'CANFrame']]],
+  ['addspeed_1',['addSpeed',['../classIMileageCalculator.html#a4b581f7ea90804517dbfda8338b96bfe',1,'IMileageCalculator::addSpeed()'],['../classMileageCalculator.html#abada6f682ea4a24a10314421ccf84d6e',1,'MileageCalculator::addSpeed()']]],
+  ['app_2',['APP',['../namespacetest-entry-point.html#aad59e08b568b9ce8d5e97dfef6ab87f8',1,'test-entry-point']]],
+  ['assets_20tt_3',['3. &lt;tt&gt;assets/&lt;/tt&gt;',['..//home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/app/README.md#autotoc_md5',1,'']]],
+  ['automatic_4',['Automatic',['../enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70a086247a9b57fde6eefee2a0c4752242d',1,'enums.hpp']]]
 ];

@@ -1,10 +1,26 @@
 var searchData=
 [
-  ['enginecontroller_0',['EngineController',['../classEngineController.html',1,'EngineController'],['../classEngineController.html#a046ba741e7683358a38778a92d083947',1,'EngineController::EngineController()'],['../classEngineController.html#a36923247340945dd1c6edb1a073361a6',1,'EngineController::EngineController(int servo_addr, int motor_addr, QObject *parent=nullptr)']]],
-  ['enginecontroller_2ecpp_1',['EngineController.cpp',['../EngineController_8cpp.html',1,'']]],
-  ['enginecontroller_2ehpp_2',['EngineController.hpp',['../EngineController_8hpp.html',1,'']]],
-  ['enginedataprocessed_3',['engineDataProcessed',['../classDataManager.html#a23da75da1d1fa2d90c7f885b850b515d',1,'DataManager']]],
-  ['ensurefileexists_4',['ensureFileExists',['../classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662',1,'MileageFileHandler']]],
-  ['enums_2ehpp_5',['enums.hpp',['../enums_8hpp.html',1,'']]],
-  ['expected_5foutput_6',['EXPECTED_OUTPUT',['../namespacetest-entry-point.html#ac6c7311c2ad71ca502701b2128bc14b9',1,'test-entry-point']]]
+  ['dark_0',['Dark',['../enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cdaaa18366b217ebf811ad1886e4f4f865b2',1,'enums.hpp']]],
+  ['data_1',['data',['../structCANFrame.html#a8d85431dd443412a6c29ee4414b293fa',1,'CANFrame::data'],['../structqt__meta__stringdata__CanBusManager__t.html#ae7acd567348147433fe5c940fa001b3e',1,'qt_meta_stringdata_CanBusManager_t::data'],['../structqt__meta__stringdata__CarManager__t.html#aa36a66524e264e098af996cd119bbe0d',1,'qt_meta_stringdata_CarManager_t::data'],['../structqt__meta__stringdata__ClusterSettingsManager__t.html#a73de018820c0a2de93c66bbf080a0b67',1,'qt_meta_stringdata_ClusterSettingsManager_t::data'],['../structqt__meta__stringdata__ControlsManager__t.html#a6f9e4885a38c8b567727567852690d38',1,'qt_meta_stringdata_ControlsManager_t::data'],['../structqt__meta__stringdata__DataManager__t.html#a0dec92721614c6d7b20381e7f7650de9',1,'qt_meta_stringdata_DataManager_t::data'],['../structqt__meta__stringdata__DisplayManager__t.html#a5cb35fa1f1a1873e24fc9583c7aa2247',1,'qt_meta_stringdata_DisplayManager_t::data'],['../structqt__meta__stringdata__EngineController__t.html#afda698df70cfb6823091caaa1eecf6ce',1,'qt_meta_stringdata_EngineController_t::data'],['../structqt__meta__stringdata__IMCP2515Controller__t.html#a2631a4bd37c327c18c19581c572848a6',1,'qt_meta_stringdata_IMCP2515Controller_t::data'],['../structqt__meta__stringdata__JoysticksController__t.html#a878b2c4bf0072761681c8e312813697f',1,'qt_meta_stringdata_JoysticksController_t::data'],['../structqt__meta__stringdata__MCP2515Controller__t.html#a432258bedf6b7d4bde2892b5737ef183',1,'qt_meta_stringdata_MCP2515Controller_t::data'],['../structqt__meta__stringdata__MileageManager__t.html#a99b3cbacef6553a92e47a4087da31258',1,'qt_meta_stringdata_MileageManager_t::data'],['../structqt__meta__stringdata__MockMCP2515Controller__t.html#a0b7bab71750720cdd052007564fd4808',1,'qt_meta_stringdata_MockMCP2515Controller_t::data'],['../structqt__meta__stringdata__SystemDataManager__t.html#a6c2e6b73fda5bfada5942e945006337b',1,'qt_meta_stringdata_SystemDataManager_t::data'],['../structqt__meta__stringdata__SystemManager__t.html#aa295c3f8efdb1252d06337325573d463',1,'qt_meta_stringdata_SystemManager_t::data'],['../structqt__meta__stringdata__VehicleDataManager__t.html#a1c947ce7bc1b473c51b3abaa6b658d17',1,'qt_meta_stringdata_VehicleDataManager_t::data']]],
+  ['datamanager_2',['DataManager',['../classDataManager.html',1,'DataManager'],['../classDataManager.html#affb37dc13db06ecf6853c9fa25e5ed7a',1,'DataManager::DataManager()']]],
+  ['datamanager_2ecpp_3',['DataManager.cpp',['../DataManager_8cpp.html',1,'']]],
+  ['datamanager_2ehpp_4',['DataManager.hpp',['../DataManager_8hpp.html',1,'']]],
+  ['datelabel_5',['dateLabel',['../classUi__CarManager.html#ab1f3ed18a6d667d14cfd958a3b4519df',1,'Ui_CarManager']]],
+  ['defaultbitsperword_6',['DefaultBitsPerWord',['../classSPIController.html#acaf343bc6454225c06d3972f9715fa52',1,'SPIController']]],
+  ['defaultmode_7',['DefaultMode',['../classSPIController.html#a5b4ca853af7170f0eb5fca2eae1834ec',1,'SPIController']]],
+  ['defaultspeedhz_8',['DefaultSpeedHz',['../classSPIController.html#a32720dd654d5fcbcf08dcd5bb2dae274',1,'SPIController']]],
+  ['directionchanged_9',['directionChanged',['../classControlsManager.html#a8dc2e1cb0a9ddf10e37034404e7460b4',1,'ControlsManager']]],
+  ['directionlabel_10',['directionLabel',['../classUi__CarManager.html#a2708b3b729d13df9a4431205a9241beb',1,'Ui_CarManager']]],
+  ['directionupdated_11',['directionUpdated',['../classEngineController.html#afe7335b983ea3c6c36dc0eaa00918d82',1,'EngineController']]],
+  ['displaymanager_12',['DisplayManager',['../classDisplayManager.html',1,'DisplayManager'],['../classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a',1,'DisplayManager::DisplayManager()']]],
+  ['displaymanager_2ecpp_13',['DisplayManager.cpp',['../DisplayManager_8cpp.html',1,'']]],
+  ['displaymanager_2ehpp_14',['DisplayManager.hpp',['../DisplayManager_8hpp.html',1,'']]],
+  ['dlc_15',['dlc',['../structCANFrame.html#ae2343b49bc07fda8079ef25a89ad1987',1,'CANFrame']]],
+  ['docs_20tt_16',['5. &lt;tt&gt;docs/&lt;/tt&gt;',['..//home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/app/README.md#autotoc_md7',1,'']]],
+  ['down_17',['Down',['../enums_8hpp.html#a7742add5e28549b88107eeec57b2f835a08a38277b0309070706f6652eeae9a53',1,'enums.hpp']]],
+  ['drive_18',['Drive',['../enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5',1,'enums.hpp']]],
+  ['drivingmode_19',['DrivingMode',['../enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70',1,'enums.hpp']]],
+  ['drivingmodelabel_20',['drivingModeLabel',['../classUi__CarManager.html#ad7c09552d99fe45197cba16779f365ca',1,'Ui_CarManager']]],
+  ['drivingmodetoggled_21',['drivingModeToggled',['../classDisplayManager.html#a82ccd56efaf1a42e2e2823a4fbaec4a0',1,'DisplayManager']]],
+  ['drivingmodeupdated_22',['drivingModeUpdated',['../classControlsManager.html#ad3cd1fa6493f5e17cc1806d993266fac',1,'ControlsManager::drivingModeUpdated()'],['../classClusterSettingsManager.html#ae7b90b3f91043042f48ceb3d687de35a',1,'ClusterSettingsManager::drivingModeUpdated()'],['../classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26',1,'DataManager::drivingModeUpdated()']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['readme_2emd_0',['README.md',['../app__tests_2README_8md.html',1,'(Global Namespace)'],['../README_8md.html',1,'(Global Namespace)']]]
+  ['peripheralcontroller_2ecpp_0',['PeripheralController.cpp',['../PeripheralController_8cpp.html',1,'']]],
+  ['peripheralcontroller_2ehpp_1',['PeripheralController.hpp',['../PeripheralController_8hpp.html',1,'']]]
 ];

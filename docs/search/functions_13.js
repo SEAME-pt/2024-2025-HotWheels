@@ -1,23 +1,9 @@
 var searchData=
 [
-  ['_7ebatterycontroller_0',['~BatteryController',['../classBatteryController.html#a80018b8d8c530b2573213e9cb0a9e2e3',1,'BatteryController']]],
-  ['_7ecanbusmanager_1',['~CanBusManager',['../classCanBusManager.html#ae2d9ac999a161b57b12867473f4ac710',1,'CanBusManager']]],
-  ['_7ecanmessageprocessor_2',['~CANMessageProcessor',['../classCANMessageProcessor.html#adde54365847f68f33c8c4c85e3f5fc3b',1,'CANMessageProcessor']]],
-  ['_7ecarmanager_3',['~CarManager',['../classCarManager.html#a85d97ce75d7c95f5adf95eaf9c5b263c',1,'CarManager']]],
-  ['_7econtrolsmanager_4',['~ControlsManager',['../classControlsManager.html#aae2c059f833ce815b96cf6a7895114a2',1,'ControlsManager']]],
-  ['_7edatamanager_5',['~DataManager',['../classDataManager.html#a291f3b4df4392598b2d7064da062705f',1,'DataManager']]],
-  ['_7eenginecontroller_6',['~EngineController',['../classEngineController.html#af49b8503ec1964013a1a232de4d5ec39',1,'EngineController']]],
-  ['_7ei2ccontroller_7',['~I2CController',['../classI2CController.html#a6b0b813e9c5b9ac827bc2c0374b21ff0',1,'I2CController']]],
-  ['_7eimcp2515controller_8',['~IMCP2515Controller',['../classIMCP2515Controller.html#ab328663d85d01e4259b5c83e5d92727a',1,'IMCP2515Controller']]],
-  ['_7eiperipheralcontroller_9',['~IPeripheralController',['../classIPeripheralController.html#a595d0fd8c25b4f1ec9e3445a49d226f5',1,'IPeripheralController']]],
-  ['_7eispicontroller_10',['~ISPIController',['../classISPIController.html#a06e0163b5d3e8451ba9d24980ff33b69',1,'ISPIController']]],
-  ['_7ejoystickscontroller_11',['~JoysticksController',['../classJoysticksController.html#aefc241b71fcfefa8850ffe417f6b2363',1,'JoysticksController']]],
-  ['_7emcp2515configurator_12',['~MCP2515Configurator',['../classMCP2515Configurator.html#a71268bfd1522a5aef3f73d788cd7df5e',1,'MCP2515Configurator']]],
-  ['_7emcp2515controller_13',['~MCP2515Controller',['../classMCP2515Controller.html#a5d95e9b30cfaf6efab8159add3e2825a',1,'MCP2515Controller']]],
-  ['_7emileagecalculator_14',['~MileageCalculator',['../classMileageCalculator.html#ad252dc84b4a3074b1b376759ab2ed7b0',1,'MileageCalculator']]],
-  ['_7emileagefilehandler_15',['~MileageFileHandler',['../classMileageFileHandler.html#aa685592fce3cb7992e89cf6a6b65c7d7',1,'MileageFileHandler']]],
-  ['_7emileagemanager_16',['~MileageManager',['../classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4',1,'MileageManager']]],
-  ['_7emocksyscalls_17',['~MockSysCalls',['../classMockSysCalls.html#a4e1bce1416b03d259780dfef9923131d',1,'MockSysCalls']]],
-  ['_7eperipheralcontroller_18',['~PeripheralController',['../classPeripheralController.html#a5f4b0999172eb541ab5066139c9129de',1,'PeripheralController']]],
-  ['_7espicontroller_19',['~SPIController',['../classSPIController.html#af7e0207785deb89c9e7c7d74d20ba876',1,'SPIController']]]
+  ['wifistatusupdated_0',['wifiStatusUpdated',['../classSystemManager.html#a1f612cad69e98840b1e0cff8039273fa',1,'SystemManager']]],
+  ['write_1',['write',['../namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec',1,'FileController']]],
+  ['write_5fbyte_5fdata_2',['write_byte_data',['../classIPeripheralController.html#a3da03878435a865d4edc2dbd947d4674',1,'IPeripheralController::write_byte_data()'],['../classPeripheralController.html#a90f289229af99c3efc8c835c2da39c85',1,'PeripheralController::write_byte_data()']]],
+  ['writebyte_3',['writeByte',['../classISPIController.html#a4a24db4176bf09874ad9031c26702947',1,'ISPIController::writeByte()'],['../classSPIController.html#aa7f5558d2491039a4f7f7024ca6f56f9',1,'SPIController::writeByte()']]],
+  ['writemileage_4',['writeMileage',['../classIMileageFileHandler.html#aa74d18576ecbd1ddc6e077806a4f3ce7',1,'IMileageFileHandler::writeMileage()'],['../classMileageFileHandler.html#ab59b540b919f9fa4f721f2bb71933f41',1,'MileageFileHandler::writeMileage()']]],
+  ['writeregister_5',['writeRegister',['../classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a',1,'MCP2515Configurator::writeRegister()'],['../classI2CController.html#a2fd9e6276b46f449611d412cc604c00d',1,'I2CController::writeRegister()'],['../classII2CController.html#ae6acfc629026f4eabe7d6cdffded437d',1,'II2CController::writeRegister()']]]
 ];

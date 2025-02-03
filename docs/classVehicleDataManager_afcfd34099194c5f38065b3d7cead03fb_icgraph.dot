@@ -1,0 +1,15 @@
+digraph "VehicleDataManager::mileageUpdated"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="VehicleDataManager\l::mileageUpdated",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="DataManager::DataManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#affb37dc13db06ecf6853c9fa25e5ed7a",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="VehicleDataManager\l::handleMileageUpdate",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVehicleDataManager.html#abb246c989c8a11c45f821c0ff32ac3b3",tooltip=" "];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="TEST_F",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$test__VehicleDataManager_8cpp.html#afcd2d1214eefc030487db7efe35ecbd2",tooltip=" "];
+}

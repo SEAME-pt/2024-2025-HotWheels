@@ -1,10 +1,21 @@
 var searchData=
 [
-  ['wifistatusupdated_0',['wifiStatusUpdated',['../classSystemManager.html#a1f612cad69e98840b1e0cff8039273fa',1,'SystemManager']]],
-  ['word_1',['word',['../unioni2c__smbus__data.html#ae8621bf131cbdfff90b21499a2c11a26',1,'i2c_smbus_data']]],
-  ['write_2',['Write',['../classSPIController.html#ac1d6cf9475b5cf1ac88c233be36669e6a1129c0e4d43f2d121652a7302712cff6',1,'SPIController']]],
-  ['write_5fbyte_5fdata_3',['write_byte_data',['../classIPeripheralController.html#a3da03878435a865d4edc2dbd947d4674',1,'IPeripheralController::write_byte_data()'],['../classPeripheralController.html#a90f289229af99c3efc8c835c2da39c85',1,'PeripheralController::write_byte_data()']]],
-  ['writebyte_4',['writeByte',['../classISPIController.html#a4a24db4176bf09874ad9031c26702947',1,'ISPIController::writeByte()'],['../classSPIController.html#aa7f5558d2491039a4f7f7024ca6f56f9',1,'SPIController::writeByte()']]],
-  ['writemileage_5',['writeMileage',['../classMileageFileHandler.html#a518c1fdab28768863d4852b3c78c990d',1,'MileageFileHandler']]],
-  ['writeregister_6',['writeRegister',['../classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a',1,'MCP2515Configurator::writeRegister()'],['../classI2CController.html#abc0aadcfe4073103553746f2011edf75',1,'I2CController::writeRegister()']]]
+  ['ui_0',['Ui',['../namespaceUi.html',1,'']]],
+  ['ui_1',['ui',['../classCarManager.html#a5532cd768f42e8ee61c6448887a76534',1,'CarManager']]],
+  ['ui_5fcarmanager_2',['Ui_CarManager',['../classUi__CarManager.html',1,'']]],
+  ['ui_5fcarmanager_2eh_3',['ui_CarManager.h',['../build-x86_2ui__CarManager_8h.html',1,'(Global Namespace)'],['../build_2ui__CarManager_8h.html',1,'(Global Namespace)']]],
+  ['unix_4',['unix',['../build-x86_2moc__predefs_8h.html#a4e65214f450ef6326b96b52e6dd5714b',1,'unix:&#160;moc_predefs.h'],['../build_2moc__predefs_8h.html#a4e65214f450ef6326b96b52e6dd5714b',1,'unix:&#160;moc_predefs.h']]],
+  ['updatebatterypercentage_5',['updateBatteryPercentage',['../classDisplayManager.html#abd05bbcd46db02809b4f69043b0f5bde',1,'DisplayManager']]],
+  ['updatecanbusdata_6',['updateCanBusData',['../classDisplayManager.html#abebd3e93be5761533885e1fdf03c34cb',1,'DisplayManager']]],
+  ['updateclustermetrics_7',['updateClusterMetrics',['../classDisplayManager.html#ac098d036b85f24328a11731da7b2196f',1,'DisplayManager']]],
+  ['updateclustertheme_8',['updateClusterTheme',['../classDisplayManager.html#a0c970606c6077d168cf6f4ad63dc4fcc',1,'DisplayManager']]],
+  ['updatedrivingmode_9',['updateDrivingMode',['../classDisplayManager.html#a06d94f6ce20c23eaa1e25bc6e8c9496a',1,'DisplayManager']]],
+  ['updateenginedata_10',['updateEngineData',['../classDisplayManager.html#aca4a27c20086ba98ae87490fb3d7867e',1,'DisplayManager']]],
+  ['updateipaddress_11',['updateIpAddress',['../classDisplayManager.html#a2cc5f9b4a7359f71d4bd730e8d5e3c3b',1,'DisplayManager']]],
+  ['updatemileage_12',['updateMileage',['../classDisplayManager.html#aef67b2d47859a3a6ef96d622925c84c2',1,'DisplayManager::updateMileage()'],['../classMileageManager.html#a912c517158c90834792c3d00c0af101c',1,'MileageManager::updateMileage()']]],
+  ['updatesystemstatus_13',['updateSystemStatus',['../classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78',1,'SystemManager']]],
+  ['updatesystemtime_14',['updateSystemTime',['../classDisplayManager.html#aa871409b067196dc448ce1cec4ad1437',1,'DisplayManager']]],
+  ['updatetemperature_15',['updateTemperature',['../classDisplayManager.html#a002b346babdbbdf852f9121a32e80e9d',1,'DisplayManager']]],
+  ['updatetime_16',['updateTime',['../classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d',1,'SystemManager']]],
+  ['updatewifistatus_17',['updateWifiStatus',['../classDisplayManager.html#af6cc252c8fd7ca1836e5c38265489f2e',1,'DisplayManager']]]
 ];

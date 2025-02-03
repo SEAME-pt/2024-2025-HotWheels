@@ -105,59 +105,49 @@ $(function(){initNavTree('classBatteryController.html',''); initResizable(true);
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a>  </div>
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">BatteryController Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Class that manages the battery of a vehicle. QObject and <a class="el" href="classI2CController.html" title="Class that controls I2C devices.">I2CController</a>.  
- <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="BatteryController_8hpp_source.html">BatteryController.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaccd35f242bd573a391aa10ed188d23c" id="r_aaccd35f242bd573a391aa10ed188d23c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaccd35f242bd573a391aa10ed188d23c">BatteryController</a> (const char *i2c_device, int address, QObject *parent=nullptr)</td></tr>
-<tr class="memdesc:aaccd35f242bd573a391aa10ed188d23c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classBatteryController.html" title="Class that manages the battery of a vehicle. QObject and I2CController.">BatteryController</a> object.  <br /></td></tr>
-<tr class="separator:aaccd35f242bd573a391aa10ed188d23c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80018b8d8c530b2573213e9cb0a9e2e3" id="r_a80018b8d8c530b2573213e9cb0a9e2e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80018b8d8c530b2573213e9cb0a9e2e3">~BatteryController</a> () override=default</td></tr>
-<tr class="separator:a80018b8d8c530b2573213e9cb0a9e2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accd0ef9bbfb8b70c012ee2c65b4e74dd" id="r_accd0ef9bbfb8b70c012ee2c65b4e74dd"><td class="memItemLeft" align="right" valign="top">Q_INVOKABLE float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accd0ef9bbfb8b70c012ee2c65b4e74dd">getBatteryPercentage</a> ()</td></tr>
-<tr class="memdesc:accd0ef9bbfb8b70c012ee2c65b4e74dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the battery percentage.  <br /></td></tr>
-<tr class="separator:accd0ef9bbfb8b70c012ee2c65b4e74dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2cd6e8c9f9a6b009fd437d38162ec4a" id="r_ab2cd6e8c9f9a6b009fd437d38162ec4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2cd6e8c9f9a6b009fd437d38162ec4a">BatteryController</a> (<a class="el" href="classII2CController.html">II2CController</a> *i2cController=nullptr)</td></tr>
+<tr class="separator:ab2cd6e8c9f9a6b009fd437d38162ec4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c0d11f0c9994a7bc510a7d461774c00" id="r_a7c0d11f0c9994a7bc510a7d461774c00"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c0d11f0c9994a7bc510a7d461774c00">~BatteryController</a> () override</td></tr>
+<tr class="separator:a7c0d11f0c9994a7bc510a7d461774c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0f3d011563baf767f5c5d6853795a40" id="r_ae0f3d011563baf767f5c5d6853795a40"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0f3d011563baf767f5c5d6853795a40">getBatteryPercentage</a> () override</td></tr>
+<tr class="memdesc:ae0f3d011563baf767f5c5d6853795a40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the battery percentage.  <br /></td></tr>
+<tr class="separator:ae0f3d011563baf767f5c5d6853795a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classIBatteryController"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIBatteryController')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIBatteryController.html">IBatteryController</a></td></tr>
+<tr class="memitem:aeaccb254f8a8b98e8cf436d2f924d21f inherit pub_methods_classIBatteryController" id="r_aeaccb254f8a8b98e8cf436d2f924d21f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIBatteryController.html#aeaccb254f8a8b98e8cf436d2f924d21f">~IBatteryController</a> ()=default</td></tr>
+<tr class="separator:aeaccb254f8a8b98e8cf436d2f924d21f inherit pub_methods_classIBatteryController"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a2af3e0526f5bf22a6d13d79567afac6b" id="r_a2af3e0526f5bf22a6d13d79567afac6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2af3e0526f5bf22a6d13d79567afac6b">setCalibration32V2A</a> ()</td></tr>
-<tr class="memdesc:a2af3e0526f5bf22a6d13d79567afac6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the calibration for the INA219.  <br /></td></tr>
 <tr class="separator:a2af3e0526f5bf22a6d13d79567afac6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add316f29d2f9f264297eeec5249f42c3" id="r_add316f29d2f9f264297eeec5249f42c3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add316f29d2f9f264297eeec5249f42c3">getBusVoltage_V</a> ()</td></tr>
-<tr class="memdesc:add316f29d2f9f264297eeec5249f42c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a 16-bit register from the INA219.  <br /></td></tr>
 <tr class="separator:add316f29d2f9f264297eeec5249f42c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf2ad0dcf1a0b71f94a9d3606010c901" id="r_adf2ad0dcf1a0b71f94a9d3606010c901"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf2ad0dcf1a0b71f94a9d3606010c901">getShuntVoltage_V</a> ()</td></tr>
-<tr class="memdesc:adf2ad0dcf1a0b71f94a9d3606010c901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a 16-bit register from the INA219.  <br /></td></tr>
 <tr class="separator:adf2ad0dcf1a0b71f94a9d3606010c901"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classI2CController"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classI2CController')"><img src="closed.png" alt="-"/>&#160;Private Member Functions inherited from <a class="el" href="classI2CController.html">I2CController</a></td></tr>
-<tr class="memitem:acc26f9f8e1263b59dcd0ef7851d1a07a inherit pub_methods_classI2CController" id="r_acc26f9f8e1263b59dcd0ef7851d1a07a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController</a> (const char *i2c_device, int address)</td></tr>
-<tr class="memdesc:acc26f9f8e1263b59dcd0ef7851d1a07a inherit pub_methods_classI2CController"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classI2CController.html" title="Class that controls I2C devices.">I2CController</a> object.  <br /></td></tr>
-<tr class="separator:acc26f9f8e1263b59dcd0ef7851d1a07a inherit pub_methods_classI2CController"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b0b813e9c5b9ac827bc2c0374b21ff0 inherit pub_methods_classI2CController" id="r_a6b0b813e9c5b9ac827bc2c0374b21ff0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2CController.html#a6b0b813e9c5b9ac827bc2c0374b21ff0">~I2CController</a> ()</td></tr>
-<tr class="memdesc:a6b0b813e9c5b9ac827bc2c0374b21ff0 inherit pub_methods_classI2CController"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classI2CController.html" title="Class that controls I2C devices.">I2CController</a> object.  <br /></td></tr>
-<tr class="separator:a6b0b813e9c5b9ac827bc2c0374b21ff0 inherit pub_methods_classI2CController"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc0aadcfe4073103553746f2011edf75 inherit pub_methods_classI2CController" id="r_abc0aadcfe4073103553746f2011edf75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2CController.html#abc0aadcfe4073103553746f2011edf75">writeRegister</a> (uint8_t reg, uint16_t value)</td></tr>
-<tr class="memdesc:abc0aadcfe4073103553746f2011edf75 inherit pub_methods_classI2CController"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a 16-bit value to a register.  <br /></td></tr>
-<tr class="separator:abc0aadcfe4073103553746f2011edf75 inherit pub_methods_classI2CController"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac08dc2b4529d59d0129f09791a4a5e00 inherit pub_methods_classI2CController" id="r_ac08dc2b4529d59d0129f09791a4a5e00"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00">readRegister</a> (uint8_t reg)</td></tr>
-<tr class="memdesc:ac08dc2b4529d59d0129f09791a4a5e00 inherit pub_methods_classI2CController"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a 16-bit value from a register.  <br /></td></tr>
-<tr class="separator:ac08dc2b4529d59d0129f09791a4a5e00 inherit pub_methods_classI2CController"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af41fbfa2217425e5bb3f40fcdb024b1d" id="r_af41fbfa2217425e5bb3f40fcdb024b1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classII2CController.html">II2CController</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af41fbfa2217425e5bb3f40fcdb024b1d">m_i2cController</a></td></tr>
+<tr class="separator:af41fbfa2217425e5bb3f40fcdb024b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad183e47ac58fdc9df69af3f3c94c2978" id="r_ad183e47ac58fdc9df69af3f3c94c2978"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad183e47ac58fdc9df69af3f3c94c2978">m_ownI2CController</a></td></tr>
+<tr class="separator:ad183e47ac58fdc9df69af3f3c94c2978"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class that manages the battery of a vehicle. QObject and <a class="el" href="classI2CController.html" title="Class that controls I2C devices.">I2CController</a>. </p>
-
-<p class="definition">Definition at line <a class="el" href="BatteryController_8hpp_source.html#l00026">26</a> of file <a class="el" href="BatteryController_8hpp_source.html">BatteryController.hpp</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="BatteryController_8hpp_source.html#l00023">23</a> of file <a class="el" href="BatteryController_8hpp_source.html">BatteryController.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aaccd35f242bd573a391aa10ed188d23c" name="aaccd35f242bd573a391aa10ed188d23c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaccd35f242bd573a391aa10ed188d23c">&#9670;&#160;</a></span>BatteryController()</h2>
+<a id="ab2cd6e8c9f9a6b009fd437d38162ec4a" name="ab2cd6e8c9f9a6b009fd437d38162ec4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2cd6e8c9f9a6b009fd437d38162ec4a">&#9670;&#160;</a></span>BatteryController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,17 +158,8 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname">BatteryController::BatteryController </td>
           <td>(</td>
-          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>i2c_device</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="classII2CController.html">II2CController</a> *</td>          <td class="paramname"><span class="paramname"><em>i2cController</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span></td><td>)</td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">QObject *</td>          <td class="paramname"><span class="paramname"><em>parent</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -188,37 +169,17 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classBatteryController.html" title="Class that manages the battery of a vehicle. QObject and I2CController.">BatteryController</a> object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i2c_device</td><td>The I2C device to use for communication. </td></tr>
-    <tr><td class="paramname">address</td><td>The I2C address of the INA219. </td></tr>
-    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This constructor initializes the <a class="el" href="classBatteryController.html" title="Class that manages the battery of a vehicle. QObject and I2CController.">BatteryController</a> object with the specified I2C device and address. </p>
-
-<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00037">37</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00030">30</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classBatteryController_aaccd35f242bd573a391aa10ed188d23c_cgraph.png" border="0" usemap="#aclassBatteryController_aaccd35f242bd573a391aa10ed188d23c_cgraph" alt=""/></div>
-<map name="aclassBatteryController_aaccd35f242bd573a391aa10ed188d23c_cgraph" id="aclassBatteryController_aaccd35f242bd573a391aa10ed188d23c_cgraph">
-<area shape="rect" title="Construct a new BatteryController object." alt="" coords="5,27,148,67"/>
-<area shape="rect" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a" title="Construct a new I2CController object." alt="" coords="196,5,396,31"/>
-<area shape="poly" title=" " alt="" coords="148,35,187,30,188,35,149,40"/>
-<area shape="rect" href="classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b" title="Set the calibration for the INA219." alt="" coords="219,55,373,95"/>
-<area shape="poly" title=" " alt="" coords="149,54,205,61,204,66,148,59"/>
-<area shape="rect" href="classI2CController.html#abc0aadcfe4073103553746f2011edf75" title="Write a 16&#45;bit value to a register." alt="" coords="444,63,647,88"/>
-<area shape="poly" title=" " alt="" coords="373,73,430,73,430,78,373,78"/>
-</map>
+<div class="center"><img src="classBatteryController_ab2cd6e8c9f9a6b009fd437d38162ec4a_cgraph.png" border="0" usemap="#aclassBatteryController_ab2cd6e8c9f9a6b009fd437d38162ec4a_cgraph" alt=""/></div>
 </div>
 
 </div>
 </div>
-<a id="a80018b8d8c530b2573213e9cb0a9e2e3" name="a80018b8d8c530b2573213e9cb0a9e2e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80018b8d8c530b2573213e9cb0a9e2e3">&#9670;&#160;</a></span>~BatteryController()</h2>
+<a id="a7c0d11f0c9994a7bc510a7d461774c00" name="a7c0d11f0c9994a7bc510a7d461774c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c0d11f0c9994a7bc510a7d461774c00">&#9670;&#160;</a></span>~BatteryController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,19 +196,24 @@ Here is the call graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel default">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00037">37</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="accd0ef9bbfb8b70c012ee2c65b4e74dd" name="accd0ef9bbfb8b70c012ee2c65b4e74dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accd0ef9bbfb8b70c012ee2c65b4e74dd">&#9670;&#160;</a></span>getBatteryPercentage()</h2>
+<a id="ae0f3d011563baf767f5c5d6853795a40" name="ae0f3d011563baf767f5c5d6853795a40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0f3d011563baf767f5c5d6853795a40">&#9670;&#160;</a></span>getBatteryPercentage()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">float BatteryController::getBatteryPercentage </td>
@@ -256,27 +222,24 @@ Here is the call graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Get the battery percentage. </p>
 <dl class="section return"><dt>Returns</dt><dd>float The battery percentage.</dd></dl>
 <p>This function calculates the battery percentage based on the bus and shunt voltages. </p>
 
-<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00079">79</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
+<p>Implements <a class="el" href="classIBatteryController.html#aa20b28b939b1d3224233e9a5bc574ee8">IBatteryController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00067">67</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classBatteryController_accd0ef9bbfb8b70c012ee2c65b4e74dd_cgraph.png" border="0" usemap="#aclassBatteryController_accd0ef9bbfb8b70c012ee2c65b4e74dd_cgraph" alt=""/></div>
-<map name="aclassBatteryController_accd0ef9bbfb8b70c012ee2c65b4e74dd_cgraph" id="aclassBatteryController_accd0ef9bbfb8b70c012ee2c65b4e74dd_cgraph">
-<area shape="rect" title="Get the battery percentage." alt="" coords="5,37,169,77"/>
-<area shape="rect" href="classBatteryController.html#add316f29d2f9f264297eeec5249f42c3" title="Read a 16&#45;bit register from the INA219." alt="" coords="219,5,361,45"/>
-<area shape="poly" title=" " alt="" coords="169,42,205,36,206,41,170,47"/>
-<area shape="rect" href="classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901" title="Read a 16&#45;bit register from the INA219." alt="" coords="217,69,363,109"/>
-<area shape="poly" title=" " alt="" coords="170,68,204,73,204,78,169,73"/>
-<area shape="rect" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00" title="Read a 16&#45;bit value from a register." alt="" coords="411,45,609,70"/>
-<area shape="poly" title=" " alt="" coords="362,33,410,40,409,45,362,38"/>
-<area shape="poly" title=" " alt="" coords="363,76,409,69,409,75,363,81"/>
-</map>
+<div class="center"><img src="classBatteryController_ae0f3d011563baf767f5c5d6853795a40_cgraph.png" border="0" usemap="#aclassBatteryController_ae0f3d011563baf767f5c5d6853795a40_cgraph" alt=""/></div>
 </div>
 
 </div>
@@ -304,36 +267,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Read a 16-bit register from the INA219. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">reg</td><td>The register address to read. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>uint16_t The value read from the register.</dd></dl>
-<p>This function reads a 16-bit register from the INA219. </p>
-
-<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00057">57</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBatteryController_add316f29d2f9f264297eeec5249f42c3_cgraph.png" border="0" usemap="#aclassBatteryController_add316f29d2f9f264297eeec5249f42c3_cgraph" alt=""/></div>
-<map name="aclassBatteryController_add316f29d2f9f264297eeec5249f42c3_cgraph" id="aclassBatteryController_add316f29d2f9f264297eeec5249f42c3_cgraph">
-<area shape="rect" title="Read a 16&#45;bit register from the INA219." alt="" coords="5,5,148,45"/>
-<area shape="rect" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00" title="Read a 16&#45;bit value from a register." alt="" coords="196,13,395,38"/>
-<area shape="poly" title=" " alt="" coords="148,23,182,23,182,28,148,28"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00049">49</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBatteryController_add316f29d2f9f264297eeec5249f42c3_icgraph.png" border="0" usemap="#aclassBatteryController_add316f29d2f9f264297eeec5249f42c3_icgraph" alt=""/></div>
-<map name="aclassBatteryController_add316f29d2f9f264297eeec5249f42c3_icgraph" id="aclassBatteryController_add316f29d2f9f264297eeec5249f42c3_icgraph">
-<area shape="rect" title="Read a 16&#45;bit register from the INA219." alt="" coords="217,5,360,45"/>
-<area shape="rect" href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd" title="Get the battery percentage." alt="" coords="5,5,169,45"/>
-<area shape="poly" title=" " alt="" coords="204,28,170,28,170,23,204,23"/>
-</map>
 </div>
 
 </div>
@@ -361,36 +299,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Read a 16-bit register from the INA219. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">reg</td><td>The register address to read. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>uint16_t The value read from the register.</dd></dl>
-<p>This function reads a 16-bit register from the INA219. </p>
-
-<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00068">68</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_cgraph.png" border="0" usemap="#aclassBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_cgraph" alt=""/></div>
-<map name="aclassBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_cgraph" id="aclassBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_cgraph">
-<area shape="rect" title="Read a 16&#45;bit register from the INA219." alt="" coords="5,5,151,45"/>
-<area shape="rect" href="classI2CController.html#ac08dc2b4529d59d0129f09791a4a5e00" title="Read a 16&#45;bit value from a register." alt="" coords="199,13,397,38"/>
-<area shape="poly" title=" " alt="" coords="151,23,185,23,185,28,151,28"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00055">55</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_icgraph.png" border="0" usemap="#aclassBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_icgraph" alt=""/></div>
-<map name="aclassBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_icgraph" id="aclassBatteryController_adf2ad0dcf1a0b71f94a9d3606010c901_icgraph">
-<area shape="rect" title="Read a 16&#45;bit register from the INA219." alt="" coords="217,5,363,45"/>
-<area shape="rect" href="classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd" title="Get the battery percentage." alt="" coords="5,5,169,45"/>
-<area shape="poly" title=" " alt="" coords="204,28,170,28,170,23,204,23"/>
-</map>
 </div>
 
 </div>
@@ -418,30 +331,61 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Set the calibration for the INA219. </p>
-<p>This function sets the calibration for the INA219 to 32V and 2A. </p>
-
-<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00047">47</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_cgraph.png" border="0" usemap="#aclassBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_cgraph" alt=""/></div>
-<map name="aclassBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_cgraph" id="aclassBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_cgraph">
-<area shape="rect" title="Set the calibration for the INA219." alt="" coords="5,5,160,45"/>
-<area shape="rect" href="classI2CController.html#abc0aadcfe4073103553746f2011edf75" title="Write a 16&#45;bit value to a register." alt="" coords="208,13,411,38"/>
-<area shape="poly" title=" " alt="" coords="160,23,194,23,194,28,160,28"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="BatteryController_8cpp_source.html#l00044">44</a> of file <a class="el" href="BatteryController_8cpp_source.html">BatteryController.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_icgraph.png" border="0" usemap="#aclassBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_icgraph" alt=""/></div>
-<map name="aclassBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_icgraph" id="aclassBatteryController_a2af3e0526f5bf22a6d13d79567afac6b_icgraph">
-<area shape="rect" title="Set the calibration for the INA219." alt="" coords="196,5,351,45"/>
-<area shape="rect" href="classBatteryController.html#aaccd35f242bd573a391aa10ed188d23c" title="Construct a new BatteryController object." alt="" coords="5,5,148,45"/>
-<area shape="poly" title=" " alt="" coords="182,28,148,28,148,23,182,23"/>
-</map>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="af41fbfa2217425e5bb3f40fcdb024b1d" name="af41fbfa2217425e5bb3f40fcdb024b1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af41fbfa2217425e5bb3f40fcdb024b1d">&#9670;&#160;</a></span>m_i2cController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classII2CController.html">II2CController</a>* BatteryController::m_i2cController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BatteryController_8hpp_source.html#l00036">36</a> of file <a class="el" href="BatteryController_8hpp_source.html">BatteryController.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad183e47ac58fdc9df69af3f3c94c2978" name="ad183e47ac58fdc9df69af3f3c94c2978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad183e47ac58fdc9df69af3f3c94c2978">&#9670;&#160;</a></span>m_ownI2CController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BatteryController::m_ownI2CController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="BatteryController_8hpp_source.html#l00037">37</a> of file <a class="el" href="BatteryController_8hpp_source.html">BatteryController.hpp</a>.</p>
 
 </div>
 </div>

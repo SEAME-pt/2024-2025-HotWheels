@@ -30,6 +30,7 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
@@ -40,7 +41,7 @@ var NAVTREE =
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
       ] ]
@@ -48,11 +49,11 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Macros", "globals_defs.html", "globals_defs" ]
       ] ]
     ] ]
   ] ]
@@ -61,8 +62,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BatteryController_8cpp.html",
-"classIMCP2515Controller.html",
-"functions_func_e.html"
+"build-x86_2moc__predefs_8h.html#a1b8832b164a1e36ed6756895a71c7e54",
+"build-x86_2moc__predefs_8h.html#ab53ade321286145b92622c3a79fc168f",
+"build_2moc__predefs_8h.html#a2de04841ef7b55be4035cea463161678",
+"build_2moc__predefs_8h.html#ac2dfcd39d29c1e34de6421b15b2cfde9",
+"classEngineController.html#ac8eec06ff1cd7c9031b47e2bad8e65a0",
+"classSPIController.html#aa7f5558d2491039a4f7f7024ca6f56f9",
+"functions_vars_l.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

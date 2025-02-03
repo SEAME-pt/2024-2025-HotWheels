@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['addspeed_0',['addSpeed',['../classMileageCalculator.html#a3d21d739a248a8609a7ee375f198fb7c',1,'MileageCalculator']]]
+  ['addspeed_0',['addSpeed',['../classIMileageCalculator.html#a4b581f7ea90804517dbfda8338b96bfe',1,'IMileageCalculator::addSpeed()'],['../classMileageCalculator.html#abada6f682ea4a24a10314421ccf84d6e',1,'MileageCalculator::addSpeed()']]]
 ];

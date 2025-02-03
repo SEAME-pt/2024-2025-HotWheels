@@ -5,7 +5,7 @@ digraph "MockMCP2515Controller::MOCK_METHOD"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node1 [id="Node000001",label="MockMCP2515Controller\l::MOCK_METHOD",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [id="Node000001",label="MockMCP2515Controller\l::MOCK_METHOD",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Mocked method to check if the stop reading flag is set."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="IMCP2515Controller\l::isStopReadingFlagSet",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classIMCP2515Controller.html#ab1e13e225c3ca10a9fcb356cb4ca79b2",tooltip=" "];
 }

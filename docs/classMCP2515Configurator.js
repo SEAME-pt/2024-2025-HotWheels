@@ -10,6 +10,7 @@ var classMCP2515Configurator =
     [ "readCANMessage", "classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb", null ],
     [ "readRegister", "classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553", null ],
     [ "resetChip", "classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6", null ],
+    [ "sendCANMessage", "classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403", null ],
     [ "sendCommand", "classMCP2515Configurator.html#aa6630dccbad67624dc8a4cdd95a7a684", null ],
     [ "setMode", "classMCP2515Configurator.html#a522a619dc1668ac677ca9f422f8f302a", null ],
     [ "verifyMode", "classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c", null ],

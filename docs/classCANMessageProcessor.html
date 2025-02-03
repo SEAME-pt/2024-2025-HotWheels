@@ -128,9 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5a553fd79ced878925a6436d62b5da7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adde54365847f68f33c8c4c85e3f5fc3b" id="r_adde54365847f68f33c8c4c85e3f5fc3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adde54365847f68f33c8c4c85e3f5fc3b">~CANMessageProcessor</a> ()=default</td></tr>
 <tr class="separator:adde54365847f68f33c8c4c85e3f5fc3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a071e6612cf3890b12d7d78a0a37875ff" id="r_a071e6612cf3890b12d7d78a0a37875ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a071e6612cf3890b12d7d78a0a37875ff">registerHandler</a> (uint16_t frameID, <a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> &amp;handler)</td></tr>
-<tr class="memdesc:a071e6612cf3890b12d7d78a0a37875ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="#a5a553fd79ced878925a6436d62b5da7c" title="Construct a new CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::CANMessageProcessor</a> object.  <br /></td></tr>
-<tr class="separator:a071e6612cf3890b12d7d78a0a37875ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a341f7667f2f9972ef580726fe49f28d2" id="r_a341f7667f2f9972ef580726fe49f28d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a341f7667f2f9972ef580726fe49f28d2">registerHandler</a> (uint16_t frameID, <a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> handler)</td></tr>
+<tr class="memdesc:a341f7667f2f9972ef580726fe49f28d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="#a5a553fd79ced878925a6436d62b5da7c" title="Construct a new CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::CANMessageProcessor</a> object.  <br /></td></tr>
+<tr class="separator:a341f7667f2f9972ef580726fe49f28d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa539cf227ee7367ba1f498288b8bc102" id="r_aa539cf227ee7367ba1f498288b8bc102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa539cf227ee7367ba1f498288b8bc102">processMessage</a> (uint16_t frameID, const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
 <tr class="memdesc:aa539cf227ee7367ba1f498288b8bc102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a CAN message.  <br /></td></tr>
 <tr class="separator:aa539cf227ee7367ba1f498288b8bc102"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -251,19 +251,12 @@ Private Attributes</h2></td></tr>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph.png" border="0" usemap="#aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph" alt=""/></div>
-<map name="aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph" id="aclassCANMessageProcessor_aa539cf227ee7367ba1f498288b8bc102_icgraph">
-<area shape="rect" title="Process a CAN message." alt="" coords="123,23,293,63"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#a7379d3bb55019313ec7dd8a03c4802b2" title="Ensures that the RPM signal emits the correct value." alt="" coords="5,5,75,31"/>
-<area shape="poly" title=" " alt="" coords="109,31,74,26,75,21,110,26"/>
-<area shape="rect" href="test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c" title="Ensures that the speed signal is emitted with the correct value." alt="" coords="5,55,75,80"/>
-<area shape="poly" title=" " alt="" coords="110,60,75,65,75,60,109,55"/>
-</map>
 </div>
 
 </div>
 </div>
-<a id="a071e6612cf3890b12d7d78a0a37875ff" name="a071e6612cf3890b12d7d78a0a37875ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a071e6612cf3890b12d7d78a0a37875ff">&#9670;&#160;</a></span>registerHandler()</h2>
+<a id="a341f7667f2f9972ef580726fe49f28d2" name="a341f7667f2f9972ef580726fe49f28d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a341f7667f2f9972ef580726fe49f28d2">&#9670;&#160;</a></span>registerHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -276,7 +269,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>handler</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a></td>          <td class="paramname"><span class="paramname"><em>handler</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -1,0 +1,15 @@
+digraph "MileageManager::saveMileage"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="MileageManager::saveMileage",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Save the mileage to the file."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="MileageManager::initialize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMileageManager.html#ad615b78584e6c337ae3417089e035d48",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="MileageManager::shutdown",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMileageManager.html#ad56194c997ffbdd3692adb68c65a2d2e",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="MileageManager::~Mileage\lManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4",tooltip=" "];
+}

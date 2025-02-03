@@ -7,5 +7,5 @@ digraph "ISPIController::writeByte"
   rankdir="RL";
   Node1 [id="Node000001",label="ISPIController::writeByte",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="MockSPIController::\lMOCK_METHOD",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockSPIController.html#a7a34bf09a0a0bcd950d6a4e8a613198a",tooltip=" "];
+  Node2 [id="Node000002",label="MockSPIController::\lMOCK_METHOD",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockSPIController.html#a7a34bf09a0a0bcd950d6a4e8a613198a",tooltip="Mocked method to write a byte of data to the SPI device."];
 }

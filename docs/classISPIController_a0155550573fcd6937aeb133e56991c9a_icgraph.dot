@@ -7,5 +7,5 @@ digraph "ISPIController::readByte"
   rankdir="RL";
   Node1 [id="Node000001",label="ISPIController::readByte",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="MockSPIController::\lMOCK_METHOD",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockSPIController.html#a51c5f13fd99e415f946d7bec4f7f7378",tooltip=" "];
+  Node2 [id="Node000002",label="MockSPIController::\lMOCK_METHOD",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockSPIController.html#a51c5f13fd99e415f946d7bec4f7f7378",tooltip="Mocked method to read a byte of data from the SPI device."];
 }

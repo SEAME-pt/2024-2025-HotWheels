@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['license_0',['License',['..//home/michel-batista/Documents/HotWheels-Cluster/app/README.md#autotoc_md10',1,'']]],
-  ['light_1',['Light',['../enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cdaa9914a0ce04a7b7b6a8e39bec55064b82',1,'enums.hpp']]],
-  ['list_2',['Test List',['../test.html',1,'']]]
+  ['kilometers_0',['Kilometers',['../enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1',1,'enums.hpp']]]
 ];
