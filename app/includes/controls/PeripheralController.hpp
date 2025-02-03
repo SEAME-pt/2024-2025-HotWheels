@@ -1,4 +1,4 @@
-/**
+/*!
  * @file PeripheralController.hpp
  * @brief Definition of the PeripheralController class.
  * @version 0.1
@@ -25,7 +25,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-/**
+/*!
  * @class PeripheralController
  * @brief Class that controls the car's peripherals.
  */

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file CanBusManager.cpp
  * @brief Implementation of the CanBusManager class.
  * @version 0.1
@@ -24,7 +24,7 @@
 #include "MCP2515Controller.hpp"
 #include <QDebug>
 
-/**
+/*!
  * @brief Construct a new CanBusManager::CanBusManager object
  *
  * @param spi_device The SPI device to use for communication.
@@ -40,7 +40,7 @@ CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
   connectSignals();
 }
 
-/**
+/*!
  * @brief Construct a new CanBusManager::CanBusManager object
  *
  * @param controller The MCP2515 controller to use.
@@ -55,7 +55,7 @@ CanBusManager::CanBusManager(IMCP2515Controller *controller, QObject *parent)
   connectSignals();
 }
 
-/**
+/*!
  * @brief Destroy the CanBusManager::CanBusManager object
  *
  * @details Cleans up the resources used by the CanBusManager, including
@@ -76,7 +76,7 @@ CanBusManager::~CanBusManager() {
   }
 }
 
-/**
+/*!
  * @brief Connects the signals from the MCP2515 controller to the CanBusManager
  * slots.
  *
@@ -90,7 +90,7 @@ void CanBusManager::connectSignals() {
           &CanBusManager::rpmUpdated);
 }
 
-/**
+/*!
  * @brief Initializes the CanBusManager.
  *
  * @details Initializes the MCP2515 controller and starts the reading thread.

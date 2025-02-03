@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_MCP2515Controller.cpp
  * @brief File containing integration tests for the MCP2515 controller.
  * @version 0.1
@@ -22,38 +22,38 @@
 #include <thread>
 #include <vector>
 
-/**
+/*!
  * @brief Structure to represent a CAN frame.
  * @struct CANFrame with the following fields needed to represent a CAN frame
  */
 struct CANFrame {
-  /** @brief Identifier */
+  /*! @brief Identifier */
   uint32_t id;
-  /** @brief Remote Transmission Request */
+  /*! @brief Remote Transmission Request */
   uint8_t rtr;
-  /** @brief Data field */
+  /*! @brief Data field */
   std::vector<uint8_t> data;
-  /** @brief Data Length Code */
+  /*! @brief Data Length Code */
   uint8_t dlc;
-  /** @brief CRC validity */
+  /*! @brief CRC validity */
   bool crcValid;
-  /** @brief Acknowledgement received */
+  /*! @brief Acknowledgement received */
   bool ackReceived;
 };
 
-/**
+/*!
  * @brief Class to test the integration between the MCP2515 controller and the
  * SPI controller.
  * @class RS485CANTest
  */
 class RS485CANTest : public ::testing::Test {
 protected:
-  /** @brief MCP2515 configurator */
+  /*! @brief MCP2515 configurator */
   MCP2515Configurator *canBusConfigurator;
-  /** @brief SPI controller */
+  /*! @brief SPI controller */
   SPIController *spiController;
 
-  /**
+  /*!
    * @brief Set up the test fixture.
    */
   void SetUp() override {
@@ -62,7 +62,7 @@ protected:
     canBusConfigurator = new MCP2515Configurator(*spiController);
   }
 
-  /**
+  /*!
    * @brief Tear down the test fixture.
    */
   void TearDown() override {
@@ -71,7 +71,7 @@ protected:
   }
 };
 
-/**
+/*!
  * @test Tests the initialization of the MCP2515 controller.
  * @brief Ensures that the MCP2515 controller initializes successfully.
  * @details This test verifies that the MCP2515 controller initializes
@@ -111,7 +111,7 @@ TEST_F(RS485CANTest, DataFrameTest) {
   ASSERT_TRUE(true); // Placeholder for ACK check
 }
 
-/**
+/*!
  * @test Tests the initialization of the MCP2515 controller.
  * @brief Ensures that the MCP2515 controller initializes successfully.
  * @details This test verifies that the MCP2515 controller initializes
@@ -148,7 +148,7 @@ TEST_F(RS485CANTest, RemoteFrameTest) {
   ASSERT_TRUE(true); // Placeholder for ACK check
 }
 
-/**
+/*!
  * @test Tests the initialization of the MCP2515 controller.
  * @brief Ensures that the MCP2515 controller initializes successfully.
  * @details This test verifies that the MCP2515 controller initializes
@@ -192,7 +192,7 @@ TEST_F(RS485CANTest, ErrorFrameTest) {
                                      errorFrame.dlc);
 }
 
-/**
+/*!
  * @test Tests the initialization of the MCP2515 controller.
  * @brief Ensures that the MCP2515 controller initializes successfully.
  * @details This test verifies that the MCP2515 controller initializes
@@ -235,7 +235,7 @@ TEST_F(RS485CANTest, MaxBusSpeedTest) {
   ASSERT_TRUE(true); // Placeholder for ACK check
 }
 
-/**
+/*!
  * @test Tests the initialization of the MCP2515 controller.
  * @brief Ensures that the MCP2515 controller initializes successfully.
  * @details This test verifies that the MCP2515 controller initializes
@@ -278,7 +278,7 @@ TEST_F(RS485CANTest, MinBusSpeedTest) {
   ASSERT_TRUE(true); // Placeholder for ACK check
 }
 
-/**
+/*!
  * @test Tests the initialization of the MCP2515 controller.
  * @brief Ensures that the MCP2515 controller initializes successfully.
  * @details This test verifies that the MCP2515 controller initializes

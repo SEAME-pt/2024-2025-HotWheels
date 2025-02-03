@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_MCP2515Controller.cpp
  * @brief Unit tests for the MCP2515Controller class.
  * @version 0.1
@@ -24,7 +24,7 @@ using ::testing::_;
 using ::testing::Return;
 using ::testing::Throw;
 
-/**
+/*!
  * @class MCP2515ControllerTest
  * @brief Test fixture for testing the MCP2515Controller class.
  *
@@ -33,17 +33,17 @@ using ::testing::Throw;
  */
 class MCP2515ControllerTest : public ::testing::Test {
 protected:
-  /** @brief Mocked SPI controller. */
+  /*! @brief Mocked SPI controller. */
   MockSPIController mockSPI;
-  /** @brief MCP2515Configurator object. */
+  /*! @brief MCP2515Configurator object. */
   MCP2515Configurator configurator{mockSPI};
-  /** @brief CANMessageProcessor object. */
+  /*! @brief CANMessageProcessor object. */
   CANMessageProcessor messageProcessor;
-  /** @brief MCP2515Controller object set as default. */
+  /*! @brief MCP2515Controller object set as default. */
   MCP2515ControllerTest() = default;
 };
 
-/**
+/*!
  * @test Tests if the initialization is successful.
  * @brief Ensures that init() does not throw an exception.
  * @details Verifies that init() does not throw an exception when the
@@ -63,7 +63,7 @@ TEST_F(MCP2515ControllerTest, InitializationSuccess) {
   ASSERT_NO_THROW(controller.init());
 }
 
-/**
+/*!
  * @test Tests if the initialization fails.
  * @brief Ensures that init() throws an exception when the initialization fails.
  * @details Verifies that init() throws a runtime_error when the initialization
@@ -76,7 +76,7 @@ TEST_F(MCP2515ControllerTest, InitializationFailure) {
                std::runtime_error);
 }
 
-/**
+/*!
  * @test Tests if handlers are set up correctly.
  * @brief Ensures that registerHandler() does not throw an exception.
  * @details Verifies that registerHandler() does not throw an exception when
@@ -95,7 +95,7 @@ TEST_F(MCP2515ControllerTest, SetupHandlersTest) {
       processor.registerHandler(0x200, [](const std::vector<uint8_t> &) {}));
 }
 
-/**
+/*!
  * @test Tests if the speedUpdated signal is emitted correctly.
  * @brief Ensures that the speed signal is emitted with the correct value.
  * @details Uses QSignalSpy to verify that speedUpdated emits the expected speed
@@ -118,7 +118,7 @@ TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
   ASSERT_EQ(arguments.at(0).toFloat(), 1.0F); // Speed divided by 10
 }
 
-/**
+/*!
  * @test Tests if the rpmUpdated signal is emitted correctly.
  * @brief Ensures that the RPM signal emits the correct value.
  * @details Uses QSignalSpy to verify that rpmUpdated emits the expected RPM
@@ -141,7 +141,7 @@ TEST_F(MCP2515ControllerTest, RpmUpdatedSignal) {
   ASSERT_EQ(arguments.at(0).toInt(), 1000);
 }
 
-/**
+/*!
  * @test Tests if processReading() calls handlers correctly.
  * @brief Ensures that processReading() calls the registered handlers.
  * @details Verifies that processReading() calls the registered handlers when
@@ -175,7 +175,7 @@ TEST_F(MCP2515ControllerTest, ProcessReadingCallsHandlers) {
   ASSERT_TRUE(controller.isStopReadingFlagSet());
 }
 
-/**
+/*!
  * @test Tests if stopReading() stops the processing.
  * @brief Ensures that stopReading() sets the stop flag.
  * @details Verifies that stopReading() sets the stop flag to true.

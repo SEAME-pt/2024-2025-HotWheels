@@ -1,4 +1,4 @@
-/**
+/*!
  * @file EngineController.cpp
  * @brief Implementation of the EngineController class.
  * @details This file contains the implementation of the EngineController class,
@@ -30,7 +30,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-/**
+/*!
  * @brief Clamp a value between a minimum and a maximum.
  *
  * @tparam T The type of the value.
@@ -44,13 +44,13 @@ template <typename T> T clamp(T value, T min_val, T max_val) {
   return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
 }
 
-/**
+/*!
  * @brief Construct a new EngineController object.
  * @details This constructor initializes the EngineController object.
  */
 EngineController::EngineController() {}
 
-/**
+/*!
  * @brief Construct a new EngineController object.
  * @param servo_addr The address of the servo controller.
  * @param motor_addr The address of the motor controller.
@@ -68,7 +68,7 @@ EngineController::EngineController(int servo_addr, int motor_addr,
   pcontrol->init_motors();
 }
 
-/**
+/*!
  * @brief Destroy the EngineController object.
  * @details This destructor stops the engine and cleans up resources.
  */
@@ -77,13 +77,13 @@ EngineController::~EngineController() {
   delete pcontrol;
 }
 
-/**
+/*!
  * @brief Start the engine.
  * @details This function sets the running state to true.
  */
 void EngineController::start() { m_running = true; }
 
-/**
+/*!
  * @brief Stop the engine.
  * @details This function sets the running state to false and stops the motor
  * and steering.
@@ -94,7 +94,7 @@ void EngineController::stop() {
   set_steering(0);
 }
 
-/**
+/*!
  * @brief Set the direction of the car.
  * @param newDirection The new direction of the car.
  * @details This function updates the car's direction and emits a signal if the
@@ -107,7 +107,7 @@ void EngineController::setDirection(CarDirection newDirection) {
   }
 }
 
-/**
+/*!
  * @brief Set the speed of the car.
  * @param speed The new speed of the car.
  * @details This function sets the speed of the car, clamping it between -100
@@ -143,7 +143,7 @@ void EngineController::set_speed(int speed) {
   m_current_speed = speed;
 }
 
-/**
+/*!
  * @brief Set the steering angle of the car.
  * @param angle The new angle of the car.
  * @details This function sets the steering angle of the car, clamping it

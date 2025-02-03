@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MCP2515Configurator.hpp
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
@@ -21,7 +21,7 @@
 #include <cstdint>
 #include <vector>
 
-/**
+/*!
  * @brief Class that configures the MCP2515 CAN controller.
  * @class MCP2515Configurator
  */
@@ -65,7 +65,7 @@ public:
   static constexpr uint8_t CAN_RTS_TXB0 = 0x81;
 
 private:
-  /** @brief Reference to the SPI controller. */
+  /*! @brief Reference to the SPI controller. */
   ISPIController &spiController;
 
   void writeRegister(uint8_t address, uint8_t value);

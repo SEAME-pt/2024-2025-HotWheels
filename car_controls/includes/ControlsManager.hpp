@@ -16,7 +16,7 @@ private:
   DrivingMode m_currentMode;
 
 public:
-  /**
+  /*!
    * Constructs a ControlsManager instance, initializing the engine controller,
    * joystick controller, and setting up the necessary connections and threads.
    *
@@ -29,7 +29,7 @@ public:
    */
   explicit ControlsManager(QObject *parent = nullptr);
 
-  /**
+  /*!
    * Destroys the ControlsManager instance, ensuring that the joystick
    * controller and its thread are properly cleaned up.
    *
@@ -38,7 +38,7 @@ public:
    */
   ~ControlsManager();
 
-  /**
+  /*!
    * Sets the current driving mode.
    *
    * This function updates the `m_currentMode` member variable. If the mode has
@@ -50,7 +50,7 @@ public:
   void setMode(DrivingMode mode);
 
 public slots:
-  /**
+  /*!
    * Slot for updating the driving mode.
    *
    * This slot is invoked when the driving mode changes and calls the `setMode`
@@ -61,14 +61,14 @@ public slots:
   void drivingModeUpdated(DrivingMode newMode);
 
 signals:
-  /**
+  /*!
    * Signal emitted when the direction of the car is updated.
    *
    * @param newDirection The new direction of the car.
    */
   void directionChanged(CarDirection newDirection);
 
-  /**
+  /*!
    * Signal emitted when the steering angle of the car is updated.
    *
    * @param newAngle The new steering angle.

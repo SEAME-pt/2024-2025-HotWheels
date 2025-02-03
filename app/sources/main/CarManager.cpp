@@ -1,4 +1,4 @@
-/**
+/*!
  * @file CarManager.cpp
  * @brief Implementation of the CarManager class.
  * @version 0.1
@@ -20,7 +20,7 @@
 #include "ui_CarManager.h"
 #include <QDebug>
 
-/**
+/*!
  * @brief Construct a new CarManager object.
  * @param parent The parent QWidget.
  * @details This constructor initializes the CarManager object with the
@@ -38,7 +38,7 @@ CarManager::CarManager(QWidget *parent)
   initializeComponents();
 }
 
-/**
+/*!
  * @brief Destroy the CarManager object.
  * @details This destructor cleans up the resources used by the CarManager.
  */
@@ -51,7 +51,7 @@ CarManager::~CarManager() {
   delete ui;
 }
 
-/**
+/*!
  * @brief Initialize the components of the CarManager.
  * @details This function initializes the DataManager, CanBusManager,
  * ControlsManager, DisplayManager, SystemManager, and MileageManager.
@@ -66,7 +66,7 @@ void CarManager::initializeComponents() {
   qDebug() << "[Main] HotWheels Cluster operational.";
 }
 
-/**
+/*!
  * @brief Initialize the DataManager.
  * @details !No additional logic for now; ready for future extensions.
  */
@@ -74,7 +74,7 @@ void CarManager::initializeDataManager() {
   // No additional logic for now; ready for future extensions
 }
 
-/**
+/*!
  * @brief Initialize the CanBusManager.
  * @details This function initializes the CanBusManager and connects its signals
  * to the DataManager slots.
@@ -89,7 +89,7 @@ void CarManager::initializeCanBusManager() {
   }
 }
 
-/**
+/*!
  * @brief Initialize the ControlsManager.
  * @details This function initializes the ControlsManager and connects its
  * signals to the DataManager slots.
@@ -108,7 +108,7 @@ void CarManager::initializeControlsManager() {
   }
 }
 
-/**
+/*!
  * @brief Initialize the DisplayManager.
  * @details This function initializes the DisplayManager and connects its
  * signals to the DataManager slots.
@@ -163,7 +163,7 @@ void CarManager::initializeDisplayManager() {
   }
 }
 
-/**
+/*!
  * @brief Initialize the SystemManager.
  * @details This function initializes the SystemManager and connects its signals
  * to the DataManager slots.
@@ -189,7 +189,7 @@ void CarManager::initializeSystemManager() {
   }
 }
 
-/**
+/*!
  * @brief Initialize the MileageManager.
  * @details This function initializes the MileageManager and connects its
  * signals to the DataManager slots.

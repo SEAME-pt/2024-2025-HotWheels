@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_MCP2515Configurator.cpp
  * @brief Unit tests for the MCP2515Configurator class.
  * @version 0.1
@@ -20,7 +20,7 @@
 using ::testing::_;
 using ::testing::Return;
 
-/**
+/*!
  * @class MCP2515ConfiguratorTest
  * @brief Test fixture for testing the MCP2515Configurator class.
  *
@@ -29,13 +29,13 @@ using ::testing::Return;
  */
 class MCP2515ConfiguratorTest : public ::testing::Test {
 protected:
-  /** @brief Mocked SPI controller. */
+  /*! @brief Mocked SPI controller. */
   MockSPIController mockSPI;
-  /** @brief MCP2515Configurator object. */
+  /*! @brief MCP2515Configurator object. */
   MCP2515Configurator configurator{mockSPI};
 };
 
-/**
+/*!
  * @test Tests if the chip reset is successful.
  * @brief Ensures that resetChip() returns true when the reset is successful.
  * @details Verifies that resetChip() returns true when the chip reset is
@@ -49,7 +49,7 @@ TEST_F(MCP2515ConfiguratorTest, ResetChipSuccess) {
   ASSERT_TRUE(configurator.resetChip());
 }
 
-/**
+/*!
  * @test Tests if the chip reset fails.
  * @brief Ensures that resetChip() returns false when the reset fails.
  * @details Verifies that resetChip() returns false when the chip reset fails.
@@ -62,7 +62,7 @@ TEST_F(MCP2515ConfiguratorTest, ResetChipFailure) {
   ASSERT_FALSE(configurator.resetChip());
 }
 
-/**
+/*!
  * @test Tests if the baud rate is configured correctly.
  * @brief Ensures that configureBaudRate() writes the correct values to the
  * registers.
@@ -77,7 +77,7 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureBaudRate) {
   configurator.configureBaudRate();
 }
 
-/**
+/*!
  * @test Tests if the TX buffer is configured correctly.
  * @brief Ensures that configureTXBuffer() writes the correct value to the
  * TXB0CTRL register.
@@ -90,7 +90,7 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureTXBuffer) {
   configurator.configureTXBuffer();
 }
 
-/**
+/*!
  * @test Tests if the RX buffer is configured correctly.
  * @brief Ensures that configureRXBuffer() writes the correct value to the
  * RXB0CTRL register.
@@ -103,7 +103,7 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureRXBuffer) {
   configurator.configureRXBuffer();
 }
 
-/**
+/*!
  * @test Tests if the filters and masks are configured correctly.
  * @brief Ensures that configureFiltersAndMasks() writes the correct values to
  * the registers.
@@ -117,7 +117,7 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureFiltersAndMasks) {
   configurator.configureFiltersAndMasks();
 }
 
-/**
+/*!
  * @test Tests if the interrupts are configured correctly.
  * @brief Ensures that configureInterrupts() writes the correct value to the
  * CANINTE register.
@@ -130,7 +130,7 @@ TEST_F(MCP2515ConfiguratorTest, ConfigureInterrupts) {
   configurator.configureInterrupts();
 }
 
-/**
+/*!
  * @test Tests if the mode is set correctly.
  * @brief Ensures that setMode() writes the correct value to the CANCTRL
  * register.
@@ -143,7 +143,7 @@ TEST_F(MCP2515ConfiguratorTest, SetMode) {
   configurator.setMode(0x02);
 }
 
-/**
+/*!
  * @test Tests if the mode verification is successful.
  * @brief Ensures that verifyMode() returns true when the mode is correct.
  * @details Verifies that verifyMode() returns true when the mode is correct.
@@ -155,7 +155,7 @@ TEST_F(MCP2515ConfiguratorTest, VerifyModeSuccess) {
   ASSERT_TRUE(configurator.verifyMode(0x80));
 }
 
-/**
+/*!
  * @test Tests if the mode verification fails.
  * @brief Ensures that verifyMode() returns false when the mode is incorrect.
  * @details Verifies that verifyMode() returns false when the mode is incorrect.
@@ -167,7 +167,7 @@ TEST_F(MCP2515ConfiguratorTest, VerifyModeFailure) {
   ASSERT_FALSE(configurator.verifyMode(0x80));
 }
 
-/**
+/*!
  * @test Tests if a CAN message with data is read correctly.
  * @brief Ensures that readCANMessage() reads the correct frame ID and data.
  * @details Verifies that readCANMessage() reads the correct frame ID and data
@@ -196,7 +196,7 @@ TEST_F(MCP2515ConfiguratorTest, ReadCANMessageWithData) {
   ASSERT_EQ(data[2], 0xC2);
 }
 
-/**
+/*!
  * @test Tests if a CAN message with no data is read correctly.
  * @brief Ensures that readCANMessage() returns an empty data vector when no CAN
  * message is available.

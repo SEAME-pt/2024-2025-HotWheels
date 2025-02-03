@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_SPIController.cpp
  * @brief Unit tests for the SPIController class.
  * @version 0.1
@@ -20,7 +20,7 @@
 using ::testing::_;
 using ::testing::Return;
 
-/**
+/*!
  * @class SPIControllerTest
  * @brief Test fixture for testing the SPIController class.
  *
@@ -29,10 +29,10 @@ using ::testing::Return;
  */
 class SPIControllerTest : public ::testing::Test {
 protected:
-  /** @brief SPIController object. */
+  /*! @brief SPIController object. */
   SPIController *spiController;
 
-  /**
+  /*!
    * @brief Set up the test environment.
    *
    * @details This method is called before each test to set up the necessary
@@ -42,7 +42,7 @@ protected:
     spiController = new SPIController(mock_ioctl, mock_open, mock_close);
   }
 
-  /**
+  /*!
    * @brief Tear down the test environment.
    *
    * @details This method is called after each test to clean up the objects
@@ -51,7 +51,7 @@ protected:
   void TearDown() override { delete spiController; }
 };
 
-/**
+/*!
  * @test Tests if the device opens successfully.
  * @brief Ensures that the device opens without throwing an exception.
  * @details Verifies that openDevice() does not throw an exception when the
@@ -66,7 +66,7 @@ TEST_F(SPIControllerTest, OpenDeviceSuccess) {
   ASSERT_NO_THROW(spiController->openDevice("/dev/spidev0.0"));
 }
 
-/**
+/*!
  * @test Tests if the device fails to open.
  * @brief Ensures that openDevice() throws an exception when the device fails to
  * open.
@@ -84,7 +84,7 @@ TEST_F(SPIControllerTest, OpenDeviceFailure) {
   ASSERT_THROW(spiController->openDevice("/dev/spidev0.0"), std::runtime_error);
 }
 
-/**
+/*!
  * @test Tests if the SPI configuration is successful with valid parameters.
  * @brief Ensures that configure() does not throw an exception with valid
  * parameters.
@@ -108,7 +108,7 @@ TEST_F(SPIControllerTest, ConfigureSPIValidParameters) {
   ASSERT_NO_THROW(spiController->configure(0, 8, 500000));
 }
 
-/**
+/*!
  * @test Tests if writing a byte is successful.
  * @brief Ensures that writeByte() does not throw an exception.
  *
@@ -127,7 +127,7 @@ TEST_F(SPIControllerTest, WriteByteSuccess) {
   ASSERT_NO_THROW(spiController->writeByte(0x01, 0xFF));
 }
 
-/**
+/*!
  * @test Tests if reading a byte is successful.
  * @brief Ensures that readByte() does not throw an exception.
  *
@@ -146,7 +146,7 @@ TEST_F(SPIControllerTest, ReadByteSuccess) {
   ASSERT_NO_THROW(spiController->readByte(0x01));
 }
 
-/**
+/*!
  * @test Tests if SPI transfer is successful.
  * @brief Ensures that spiTransfer() does not throw an exception.
  *
@@ -168,7 +168,7 @@ TEST_F(SPIControllerTest, SpiTransferSuccess) {
   ASSERT_NO_THROW(spiController->spiTransfer(tx, rx, sizeof(tx)));
 }
 
-/**
+/*!
  * @test Tests if the device closes successfully.
  * @brief Ensures that closeDevice() does not throw an exception.
  *

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file PeripheralController.cpp
  * @brief Implementation of the PeripheralController class for I2C
  * communication.
@@ -22,7 +22,7 @@
 
 #include "PeripheralController.hpp"
 
-/**
+/*!
  * @union i2c_smbus_data that contains the data to be sent or received.
  * @brief Union that contains the data to be sent or received over I2C.
  */
@@ -33,14 +33,14 @@ union i2c_smbus_data {
 };
 
 /* ------------------------------------ */
-/** @def I2C_SMBUS_WRITE Macro to indicate a write operation. */
+/*! @def I2C_SMBUS_WRITE Macro to indicate a write operation. */
 #define I2C_SMBUS_WRITE 0
-/** @def I2C_SMBUS_READ Macro to indicate a read operation. */
+/*! @def I2C_SMBUS_READ Macro to indicate a read operation. */
 #define I2C_SMBUS_READ 1
-/** @def I2C_SMBUS_BYTE_DATA Macro to indicate a byte data operation. */
+/*! @def I2C_SMBUS_BYTE_DATA Macro to indicate a byte data operation. */
 #define I2C_SMBUS_BYTE_DATA 2
 
-/**
+/*!
  * @brief Clamp a value to a specified range.
  *
  * @tparam T
@@ -53,7 +53,7 @@ template <typename T> T clamp(T value, T min_val, T max_val) {
   return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
 }
 
-/**
+/*!
  * @brief Constructor for the PeripheralController class.
  * @param servo_addr I2C address of the servo controller.
  * @param motor_addr I2C address of the motor controller.
@@ -81,7 +81,7 @@ PeripheralController::PeripheralController(int servo_addr, int motor_addr)
   }
 }
 
-/**
+/*!
  * @brief Destructor for the PeripheralController class.
  * @details Closes the I2C file descriptors for the servo and motor controllers.
  */
@@ -90,7 +90,7 @@ PeripheralController::~PeripheralController() {
   close(motor_bus_fd_);
 }
 
-/**
+/*!
  * @brief Writes a byte of data to a specific register on the I2C device.
  * @param file File descriptor of the I2C device.
  * @param command Register address to write to.
@@ -111,7 +111,7 @@ int PeripheralController::i2c_smbus_write_byte_data(int file, uint8_t command,
   return ioctl(file, I2C_SMBUS, &args);
 }
 
-/**
+/*!
  * @brief Reads a byte of data from a specific register on the I2C device.
  * @param file File descriptor of the I2C device.
  * @param command Register address to read from.
@@ -132,7 +132,7 @@ int PeripheralController::i2c_smbus_read_byte_data(int file, uint8_t command) {
   return data.byte;
 }
 
-/**
+/*!
  * @brief Writes a byte of data to a specific register.
  * @param fd File descriptor of the I2C device.
  * @param reg Register address to write to.
@@ -145,7 +145,7 @@ void PeripheralController::write_byte_data(int fd, int reg, int value) {
   }
 }
 
-/**
+/*!
  * @brief Reads a byte of data from a specific register.
  * @param fd File descriptor of the I2C device.
  * @param reg Register address to read from.
@@ -160,7 +160,7 @@ int PeripheralController::read_byte_data(int fd, int reg) {
   return result;
 }
 
-/**
+/*!
  * @brief Sets the PWM values for a specific servo channel.
  * @param channel Servo channel number.
  * @param on_value PWM on value.
@@ -177,7 +177,7 @@ void PeripheralController::set_servo_pwm(int channel, int on_value,
   write_byte_data(servo_bus_fd_, base_reg + 3, off_value >> 8);
 }
 
-/**
+/*!
  * @brief Sets the PWM value for a specific motor channel.
  * @param channel Motor channel number.
  * @param value PWM value (0-4095).
@@ -192,7 +192,7 @@ void PeripheralController::set_motor_pwm(int channel, int value) {
   write_byte_data(motor_bus_fd_, 0x09 + (4 * channel), value >> 8);
 }
 
-/**
+/*!
  * @brief Initializes the servo controller.
  * @details Configures the servo controller with the necessary settings and
  * delays.
@@ -214,7 +214,7 @@ void PeripheralController::init_servo() {
   usleep(100000);
 }
 
-/**
+/*!
  * @brief Initializes the motor controller.
  * @details Configures the motor controller with the necessary settings and
  * delays.

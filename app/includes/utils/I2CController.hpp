@@ -1,4 +1,4 @@
-/**
+/*!
  * @file I2CController.hpp
  * @brief Definition of the I2CController class.
  * @version 0.1
@@ -19,15 +19,15 @@
 #include <cstdint>
 #include <stdexcept>
 
-/**
+/*!
  * @brief Class that controls I2C devices.
  * @class I2CController
  */
 class I2CController {
 private:
-  /** @brief File descriptor for the I2C device. */
+  /*! @brief File descriptor for the I2C device. */
   int i2c_fd_;
-  /** @brief I2C device address. */
+  /*! @brief I2C device address. */
   int i2c_addr_;
 
 public:

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file JoysticksController.cpp
  * @brief Implementation of the JoysticksController class.
  * @version 0.1
@@ -23,7 +23,7 @@
 #include <QDebug>
 #include <QThread>
 
-/**
+/*!
  * @brief Construct a new JoysticksController object.
  * @param steeringCallback The callback function to update the steering angle.
  * @param speedCallback The callback function to update the speed.
@@ -38,7 +38,7 @@ JoysticksController::JoysticksController(
       m_updateSteering(std::move(steeringCallback)),
       m_updateSpeed(std::move(speedCallback)), m_running(false) {}
 
-/**
+/*!
  * @brief Destroy the JoysticksController object.
  * @details This destructor closes the joystick and quits SDL.
  */
@@ -49,7 +49,7 @@ JoysticksController::~JoysticksController() {
   SDL_Quit();
 }
 
-/**
+/*!
  * @brief Initialize the JoysticksController.
  * @return true If the initialization was successful.
  * @return false If the initialization failed.
@@ -72,13 +72,13 @@ bool JoysticksController::init() {
   return true;
 }
 
-/**
+/*!
  * @brief Request the JoysticksController to stop.
  * @details This function requests the JoysticksController to stop.
  */
 void JoysticksController::requestStop() { m_running = false; }
 
-/**
+/*!
  * @brief Process the input from the joystick.
  * @details This function processes the input from the joystick and updates the
  *          steering and speed accordingly.

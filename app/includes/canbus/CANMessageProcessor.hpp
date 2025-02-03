@@ -1,4 +1,4 @@
-/**
+/*!
  * @file CANMessageProcessor.hpp
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
@@ -22,7 +22,7 @@
 #include <unordered_map>
 #include <vector>
 
-/**
+/*!
  * @brief Class that processes CAN messages.
  * @class CANMessageProcessor
  */
@@ -36,7 +36,7 @@ public:
   void processMessage(uint16_t frameID, const std::vector<uint8_t> &data);
 
 private:
-  /** @brief Map of frame IDs to message handlers. */
+  /*! @brief Map of frame IDs to message handlers. */
   std::unordered_map<uint16_t, MessageHandler> handlers;
 };
 

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file ControlsManager.cpp
  * @brief Implementation of the ControlsManager class.
  * @details This file contains the implementation of the ControlsManager class,
@@ -23,7 +23,7 @@
 #include "ControlsManager.hpp"
 #include <QDebug>
 
-/**
+/*!
  * @brief Construct a new ControlsManager object.
  * @param parent The parent QObject.
  * @details This constructor initializes the ControlsManager object.
@@ -68,7 +68,7 @@ ControlsManager::ControlsManager(QObject *parent)
   m_manualControllerThread->start();
 }
 
-/**
+/*!
  * @brief Destroy the ControlsManager object.
  * @details This destructor stops the joystick controller and waits for the
  * thread to finish.
@@ -83,7 +83,7 @@ ControlsManager::~ControlsManager() {
   delete m_manualController;
 }
 
-/**
+/*!
  * @brief Set the driving mode.
  * @param mode The new driving mode.
  * @details This slot is called when the driving mode is changed. It updates the
@@ -103,7 +103,7 @@ void ControlsManager::setMode(DrivingMode mode) {
   // }
 }
 
-/**
+/*!
  * @brief Update the driving mode of the vehicle.
  * @param newMode The new driving mode of the vehicle.
  * @details This slot is called when the driving mode of the vehicle is changed.

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file BatteryController.hpp
  * @brief Definition of the BatteryController class.
  * @version 0.1
@@ -19,7 +19,7 @@
 #include "I2CController.hpp"
 #include <QObject>
 
-/**
+/*!
  * @brief Class that manages the battery of a vehicle.
  * @class BatteryController inherits from QObject and I2CController
  */

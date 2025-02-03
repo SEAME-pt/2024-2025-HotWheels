@@ -1,4 +1,4 @@
-/**
+/*!
  * @file ISPIController.hpp
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
@@ -20,7 +20,7 @@
 #include <cstdint>
 #include <string>
 
-/**
+/*!
  * @brief Interface for the SPI controller.
  * @class ISPIController
  */

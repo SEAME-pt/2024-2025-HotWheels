@@ -1,4 +1,4 @@
-/**
+/*!
  * @file I2CController.cpp
  * @brief Implementation of the I2CController class.
  * @version 0.1
@@ -22,7 +22,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-/**
+/*!
  * @brief Construct a new I2CController object.
  * @param i2c_device The I2C device to use for communication.
  * @param address The I2C address of the device.
@@ -45,7 +45,7 @@ I2CController::I2CController(const char *i2c_device, int address)
   }
 }
 
-/**
+/*!
  * @brief Destroy the I2CController object
  * @details This destructor closes the I2C device.
  */
@@ -55,7 +55,7 @@ I2CController::~I2CController() {
   }
 }
 
-/**
+/*!
  * @brief Write a 16-bit value to a register.
  * @param reg The register address to write to.
  * @param value The value to write.
@@ -69,7 +69,7 @@ void I2CController::writeRegister(uint8_t reg, uint16_t value) {
   }
 }
 
-/**
+/*!
  * @brief Read a 16-bit value from a register.
  * @param reg The register address to read from.
  * @return uint16_t The value read from the register.

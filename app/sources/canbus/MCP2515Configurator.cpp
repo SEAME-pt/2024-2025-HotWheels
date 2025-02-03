@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MCP2515Configurator.cpp
  * @brief Implementation of the MCP2515Configurator class.
  * @version 0.1
@@ -26,7 +26,7 @@
 #include <chrono>
 #include <thread>
 
-/**
+/*!
  * @brief Construct a new MCP2515Configurator::MCP2515Configurator object
  * @param spiController The SPI controller to use for communication.
  * @details This constructor initializes the MCP2515Configurator object with the
@@ -35,7 +35,7 @@
 MCP2515Configurator::MCP2515Configurator(ISPIController &spiController)
     : spiController(spiController) {}
 
-/**
+/*!
  * @brief clean up the resources used by the MCP2515Configurator.
  * @returns The chip in configuration mode.
  * @details This function cleans up the resources used putting the MCP2515 to
@@ -48,7 +48,7 @@ bool MCP2515Configurator::resetChip() {
   return (status & 0xE0) == 0x80; // Verify configuration mode
 }
 
-/**
+/*!
  * @brief Configure the baud rate for the MCP2515.
  * @details This function sets the baud rate for the MCP2515.
  */
@@ -58,7 +58,7 @@ void MCP2515Configurator::configureBaudRate() {
   writeRegister(CNF3, 0x02); // Set Phase Segment 2
 }
 
-/**
+/*!
  * @brief Configure the TX buffer for the MCP2515.
  * @details This function configures the TX buffer for the MCP2515.
  */
@@ -66,7 +66,7 @@ void MCP2515Configurator::configureTXBuffer() {
   writeRegister(TXB0CTRL, 0x00); // Clear TX buffer control register
 }
 
-/**
+/*!
  * @brief Configure the RX buffer for the MCP2515.
  * @details This function configures the RX buffer for the MCP2515.
  */
@@ -75,7 +75,7 @@ void MCP2515Configurator::configureRXBuffer() {
                 0x60); // Enable rollover and set RX mode to receive all
 }
 
-/**
+/*!
  * @brief Configure the filters and masks for the MCP2515.
  * @details This function configures the filters and masks for the MCP2515.
  */
@@ -84,7 +84,7 @@ void MCP2515Configurator::configureFiltersAndMasks() {
   writeRegister(0x01, 0xFF); // Set mask 0
 }
 
-/**
+/*!
  * @brief Configure the interrupts for the MCP2515.
  * @details This function configures the interrupts for the MCP2515.
  */
@@ -92,7 +92,7 @@ void MCP2515Configurator::configureInterrupts() {
   writeRegister(CANINTE, 0x01); // Enable receive interrupt
 }
 
-/**
+/*!
  * @brief Set the mode for the MCP2515.
  * @param mode The mode to set.
  * @details This function sets the mode for the MCP2515.
@@ -101,7 +101,7 @@ void MCP2515Configurator::setMode(uint8_t mode) {
   writeRegister(CANCTRL, mode);
 }
 
-/**
+/*!
  * @brief Verify the mode of the MCP2515.
  * @param expectedMode The expected mode.
  * @returns True if the mode is as expected, false otherwise.
@@ -112,7 +112,7 @@ bool MCP2515Configurator::verifyMode(uint8_t expectedMode) {
   return mode == expectedMode;
 }
 
-/**
+/*!
  * @brief Write a value to a register.
  * @param address The address of the register.
  * @param value The value to write.
@@ -122,7 +122,7 @@ void MCP2515Configurator::writeRegister(uint8_t address, uint8_t value) {
   spiController.writeByte(address, value);
 }
 
-/**
+/*!
  * @brief Read a value from a register.
  * @param address The address of the register.
  * @returns The value read from the register.
@@ -132,7 +132,7 @@ uint8_t MCP2515Configurator::readRegister(uint8_t address) {
   return spiController.readByte(address);
 }
 
-/**
+/*!
  * @brief Send a command to the MCP2515.
  * @param command The command to send.
  * @returns The response from the MCP2515.
@@ -143,7 +143,7 @@ void MCP2515Configurator::sendCommand(uint8_t command) {
   spiController.spiTransfer(tx, nullptr, sizeof(tx));
 }
 
-/**
+/*!
  * @brief Read a CAN message from the MCP2515.
  * @param frameID The frame ID of the message.
  * @returns The data of the message.

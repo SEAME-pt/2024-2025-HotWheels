@@ -1,4 +1,4 @@
-/**
+/*!
  * @file SystemManager.hpp
  * @brief Definition of the SystemManager class.
  * @version 0.1
@@ -25,7 +25,7 @@
 #include <QTextStream>
 #include <QTimer>
 
-/**
+/*!
  * @brief Class that manages the system time, status, and battery.
  * @class SystemManager inherits from QObject
  */
@@ -36,7 +36,7 @@ public:
   explicit SystemManager(QObject *parent = nullptr);
 
 signals:
-  /**
+  /*!
    * @brief Signal emitted when the system time is updated.
    * @param currentDate The current date.
    * @param currentTime The current time.
@@ -44,23 +44,23 @@ signals:
    */
   void timeUpdated(const QString &currentDate, const QString &currentTime,
                    const QString &currentDay);
-  /**
+  /*!
    * @brief Signal emitted when the wifi status is updated.
    * @param status The new wifi status.
    * @param wifiName The name of the wifi network.
    */
   void wifiStatusUpdated(const QString &status, const QString &wifiName);
-  /**
+  /*!
    * @brief Signal emitted when the temperature is updated.
    * @param temperature The new temperature.
    */
   void temperatureUpdated(const QString &temperature);
-  /**
+  /*!
    * @brief Signal emitted when the battery percentage is updated.
    * @param batteryPercentage The new battery percentage.
    */
   void batteryPercentageUpdated(float batteryPercentage);
-  /**
+  /*!
    * @brief Signal emitted when the IP address is updated.
    * @param ipAddress The new IP address.
    */
@@ -74,11 +74,11 @@ private:
   QString fetchWifiStatus(QString &wifiName) const;
   QString fetchTemperature() const;
   QString fetchIpAddress() const;
-  /** @brief Timer to update the system time every second. */
+  /*! @brief Timer to update the system time every second. */
   QTimer *m_timeTimer;
-  /** @brief Timer to update the system status every 5 seconds. */
+  /*! @brief Timer to update the system status every 5 seconds. */
   QTimer *m_statusTimer;
-  /** @brief BatteryController to fetch battery percentage. */
+  /*! @brief BatteryController to fetch battery percentage. */
   BatteryController *m_batteryController;
 };
 

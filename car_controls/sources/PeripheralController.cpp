@@ -1,6 +1,6 @@
 #include "PeripheralController.hpp"
 
-/**
+/*!
  * Represents data formats for I2C SMBus communication:
  * - `byte`: Single byte of data.
  * - `word`: 16-bit (2 byte) data.

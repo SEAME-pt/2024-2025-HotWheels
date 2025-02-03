@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_CANMessageProcessor.cpp
  * @brief Unit tests for the CANMessageProcessor class.
  * @version 0.1
@@ -17,7 +17,7 @@
 #include <stdexcept>
 #include <vector>
 
-/**
+/*!
  * @class CANMessageProcessorTest
  * @brief Test fixture for testing the CANMessageProcessor class.
  *
@@ -29,7 +29,7 @@ protected:
   CANMessageProcessor processor; ///< CANMessageProcessor object.
 };
 
-/**
+/*!
  * @test Tests if a handler can be registered successfully.
  * @brief Ensures that registerHandler() does not throw an exception.
  * @details Verifies that registerHandler() does not throw an exception when a
@@ -41,7 +41,7 @@ TEST_F(CANMessageProcessorTest, RegisterHandlerSuccess) {
       processor.registerHandler(0x123, [](const std::vector<uint8_t> &) {}));
 }
 
-/**
+/*!
  * @test Tests if registering a null handler throws an exception.
  * @brief Ensures that registerHandler() throws an invalid_argument exception.
  * @details Verifies that registerHandler() throws an invalid_argument exception
@@ -53,7 +53,7 @@ TEST_F(CANMessageProcessorTest, RegisterHandlerNullThrowsException) {
                std::invalid_argument);
 }
 
-/**
+/*!
  * @test Tests if a message is processed with a registered handler.
  * @brief Ensures that the registered handler is called with the correct data.
  * @details Verifies that processMessage() calls the registered handler with the
@@ -74,7 +74,7 @@ TEST_F(CANMessageProcessorTest, ProcessMessageWithRegisteredHandler) {
   ASSERT_TRUE(handlerCalled);
 }
 
-/**
+/*!
  * @test Tests if processing a message with an unregistered handler throws an
  * exception.
  * @brief Ensures that processMessage() throws a runtime_error exception.
@@ -88,7 +88,7 @@ TEST_F(CANMessageProcessorTest,
   ASSERT_THROW(processor.processMessage(0x456, message), std::runtime_error);
 }
 
-/**
+/*!
  * @test Tests if a handler can be overwritten for the same frame ID.
  * @brief Ensures that the new handler is called instead of the old handler.
  * @details Verifies that registering a new handler for the same frame

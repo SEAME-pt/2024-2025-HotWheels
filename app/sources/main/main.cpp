@@ -1,4 +1,4 @@
-/**
+/*!
  * @file main.cpp
  * @brief Main file of the HotWheels Cluster application.
  * @version 0.1
@@ -20,7 +20,7 @@
 #include <QDebug>
 #include <csignal>
 
-/**
+/*!
  * @brief Signal handler for SIGINT.
  * @param signal The signal number.
  * @details This function is called when a SIGINT signal is received.
@@ -30,7 +30,7 @@ void handleSigint(int) {
   QCoreApplication::quit();
 }
 
-/**
+/*!
  * @brief Main function of the HotWheels Cluster application.
  * @param argc The number of command-line arguments.
  * @param argv The command-line arguments.

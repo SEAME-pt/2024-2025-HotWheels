@@ -1,4 +1,4 @@
-/**
+/*!
  * @file JoysticksController.hpp
  * @brief Definition of the JoysticksController class.
  * @version 0.1
@@ -21,7 +21,7 @@
 #include <SDL2/SDL.h>
 #include <functional>
 
-/**
+/*!
  * @brief Class that controls the car's steering and speed using a joystick.
  * @class JoysticksController inherits from QObject
  */
@@ -29,13 +29,13 @@ class JoysticksController : public QObject {
   Q_OBJECT
 
 private:
-  /** @brief Pointer to the joystick device. */
+  /*! @brief Pointer to the joystick device. */
   SDL_Joystick *m_joystick;
-  /** @brief Callback function to update the steering value. */
+  /*! @brief Callback function to update the steering value. */
   std::function<void(int)> m_updateSteering;
-  /** @brief Callback function to update the speed value. */
+  /*! @brief Callback function to update the speed value. */
   std::function<void(int)> m_updateSpeed;
-  /** @brief Flag to indicate if the controller is running. */
+  /*! @brief Flag to indicate if the controller is running. */
   bool m_running;
 
 public:
@@ -50,7 +50,7 @@ public:
   void processInput();
 
 signals:
-  /** @brief Signal emitted when the controller is finished. */
+  /*! @brief Signal emitted when the controller is finished. */
   void finished();
 };
 

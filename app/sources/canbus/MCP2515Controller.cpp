@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MCP2515Controller.cpp
  * @brief Implementation of the MCP2515Controller class.
  * @version 0.1
@@ -29,7 +29,7 @@
 #include <cstring>
 #include <stdexcept>
 
-/**
+/*!
  * @brief Construct a new MCP2515Controller::MCP2515Controller object
  * @param spiDevice The SPI device to use for communication.
  * @throw std::runtime_error if the SPI device cannot be opened.
@@ -45,7 +45,7 @@ MCP2515Controller::MCP2515Controller(const std::string &spiDevice)
   setupHandlers();
 }
 
-/**
+/*!
  * @brief Construct a new MCP2515Controller::MCP2515Controller object
  * @param spiDevice The SPI device to use for communication.
  * @param spiController The SPI controller to use for communication.
@@ -63,7 +63,7 @@ MCP2515Controller::MCP2515Controller(const std::string &spiDevice,
   setupHandlers();
 }
 
-/**
+/*!
  * @brief Destroy the MCP2515Controller::MCP2515Controller object
  * @details This destructor closes the SPI device and deletes the SPI controller
  * if it was created by the MCP2515Controller.
@@ -75,7 +75,7 @@ MCP2515Controller::~MCP2515Controller() {
   }
 }
 
-/**
+/*!
  * @brief Initialize the MCP2515 controller.
  * @throw std::runtime_error if the MCP2515 cannot be reset.
  * @returns True if the MCP2515 is successfully initialized
@@ -101,7 +101,7 @@ bool MCP2515Controller::init() {
   return true;
 }
 
-/**
+/*!
  * @brief Start reading CAN messages.
  * @details This function starts reading CAN messages from the MCP2515.
  */
@@ -124,13 +124,13 @@ void MCP2515Controller::processReading() {
   }
 }
 
-/**
+/*!
  * @brief Stop reading CAN messages.
  * @details This function stops reading CAN messages from the MCP2515.
  */
 void MCP2515Controller::stopReading() { stopReadingFlag = true; }
 
-/**
+/*!
  * @brief Send a CAN message.
  * @param frameID The frame ID of the message.
  * @param data The data of the message.
@@ -156,7 +156,7 @@ void MCP2515Controller::setupHandlers() {
                                    });
 }
 
-/**
+/*!
  * @brief Check if the stop reading flag is set.
  * @returns True if the stop reading flag is set, false otherwise.
  * @details This function checks if the stop reading flag is set.

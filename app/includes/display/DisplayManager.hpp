@@ -1,4 +1,4 @@
-/**
+/*!
  * @file DisplayManager.hpp
  * @brief Definition of the DisplayManager class.
  * @version 0.1
@@ -21,7 +21,7 @@
 #include <QObject>
 #include <QString>
 
-/**
+/*!
  * @brief Class that manages the display of the car manager.
  * @class DisplayManager inherits from QObject
  */
@@ -46,15 +46,15 @@ public slots:
   void updateClusterMetrics(ClusterMetrics newMetrics);
 
 signals:
-  /** @brief Signal emitted when the driving mode is toggled. */
+  /*! @brief Signal emitted when the driving mode is toggled. */
   void drivingModeToggled();
-  /** @brief Signal emitted when the cluster theme is toggled. */
+  /*! @brief Signal emitted when the cluster theme is toggled. */
   void clusterThemeToggled();
-  /** @brief Signal emitted when the cluster metrics are toggled. */
+  /*! @brief Signal emitted when the cluster metrics are toggled. */
   void clusterMetricsToggled();
 
 private:
-  /** @brief Pointer to the UI object. */
+  /*! @brief Pointer to the UI object. */
   Ui::CarManager *m_ui;
 };
 

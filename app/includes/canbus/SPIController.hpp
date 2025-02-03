@@ -1,4 +1,4 @@
-/**
+/*!
  * @file SPIController.hpp
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
@@ -28,7 +28,7 @@ using IoctlFunc = int (*)(int, unsigned long, ...);
 using OpenFunc = int (*)(const char *, int, ...);
 using CloseFunc = int (*)(int);
 
-/**
+/*!
  * @brief Class that controls the SPI communication.
  * @class SPIController inherits from ISPIController
  */
@@ -48,20 +48,20 @@ public:
   void closeDevice() override;
 
 private:
-  /** @brief File descriptor of the SPI device. */
+  /*! @brief File descriptor of the SPI device. */
   int spi_fd;
-  /** @brief Mode of the SPI communication. */
+  /*! @brief Mode of the SPI communication. */
   uint8_t mode;
-  /** @brief Number of bits per word. */
+  /*! @brief Number of bits per word. */
   uint8_t bits;
-  /** @brief Speed of the SPI communication. */
+  /*! @brief Speed of the SPI communication. */
   uint32_t speed;
 
-  /** @brief Function pointer to the ioctl function. */
+  /*! @brief Function pointer to the ioctl function. */
   IoctlFunc m_ioctlFunc;
-  /** @brief Function pointer to the open function. */
+  /*! @brief Function pointer to the open function. */
   OpenFunc m_openFunc;
-  /** @brief Function pointer to the close function. */
+  /*! @brief Function pointer to the close function. */
   CloseFunc m_closeFunc;
 
   static constexpr uint8_t DefaultBitsPerWord = 8;

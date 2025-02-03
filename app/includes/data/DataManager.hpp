@@ -1,4 +1,4 @@
-/**
+/*!
  * @file DataManager.hpp
  * @brief Definition of the DataManager class.
  * @version 0.1
@@ -20,7 +20,7 @@
 #include <QObject>
 #include <QString>
 
-/**
+/*!
  * @brief Class that manages the data received from the car's systems.
  * @class DataManager inherits from QObject
  */
@@ -51,19 +51,19 @@ public slots:
   void toggleClusterMetrics();
 
 signals:
-  /**
+  /*!
    * @brief Signal emitted when the processed speed and RPM are updated.
    * @param processedSpeed The processed speed value.
    * @param processedRpm The processed RPM value.
    */
   void canDataProcessed(float processedSpeed, int processedRpm);
-  /**
+  /*!
    * @brief Signal emitted when the processed steering angle is updated.
    * @param processedDirection The processed direction value.
    * @param processedAngle The processed angle value.
    */
   void engineDataProcessed(CarDirection processedDirection, int processedAngle);
-  /**
+  /*!
    * @brief Signal emitted when the system time is updated.
    * @param currentDate The current date.
    * @param currentTime The current time.
@@ -71,76 +71,76 @@ signals:
    */
   void systemTimeUpdated(const QString &currentDate, const QString &currentTime,
                          const QString &currentDay);
-  /**
+  /*!
    * @brief Signal emitted when the WiFi status is updated.
    * @param status The WiFi status.
    * @param wifiName The WiFi name.
    */
   void systemWifiUpdated(const QString &status, const QString &wifiName);
-  /**
+  /*!
    * @brief Signal emitted when the system temperature is updated.
    * @param temperature The temperature value.
    */
   void systemTemperatureUpdated(const QString &temperature);
-  /**
+  /*!
    * @brief Signal emitted when the IP address is updated.
    * @param ipAddress The IP address.
    */
   void ipAddressUpdated(const QString &ipAddress);
-  /**
+  /*!
    * @brief Signal emitted when the battery percentage is updated.
    * @param batteryPercentage The battery percentage value.
    */
   void batteryPercentageUpdated(float batteryPercentage);
-  /**
+  /*!
    * @brief Signal emitted when the driving mode is updated.
    * @param newMode The new driving mode.
    */
   void mileageUpdated(double mileage);
-  /**
+  /*!
    * @brief Signal emitted when the driving mode is updated.
    * @param newMode The new driving mode.
    */
   void drivingModeUpdated(DrivingMode newMode);
-  /**
+  /*!
    * @brief Signal emitted when the cluster theme is updated.
    * @param newTheme The new cluster theme.
    */
   void clusterThemeUpdated(ClusterTheme newTheme);
-  /**
+  /*!
    * @brief Signal emitted when the cluster metrics are updated.
    * @param newMetrics The new cluster metrics.
    */
   void clusterMetricsUpdated(ClusterMetrics newMetrics);
 
 private:
-  /** @brief Processed speed value. */
+  /*! @brief Processed speed value. */
   float m_speed = 0.0F;
-  /** @brief Processed RPM value. */
+  /*! @brief Processed RPM value. */
   int m_rpm = 0;
-  /** @brief Processed direction value. */
+  /*! @brief Processed direction value. */
   CarDirection m_carDirection = CarDirection::Stop;
-  /** @brief Processed steering angle value. */
+  /*! @brief Processed steering angle value. */
   int m_steeringDirection = 0;
-  /** @brief Processed date value. */
+  /*! @brief Processed date value. */
   QString m_time = "";
-  /** @brief Processed WiFi name value. */
+  /*! @brief Processed WiFi name value. */
   QString m_wifiName = "";
-  /** @brief Processed WiFi status value. */
+  /*! @brief Processed WiFi status value. */
   QString m_wifiStatus = "";
-  /** @brief Processed temperature value. */
+  /*! @brief Processed temperature value. */
   QString m_temperature = "";
-  /** @brief Processed IP address value. */
+  /*! @brief Processed IP address value. */
   QString m_ipAddress = "";
-  /** @brief Processed battery percentage value. */
+  /*! @brief Processed battery percentage value. */
   float m_batteryPercentage = -1.0F;
-  /** @brief Processed mileage value. */
+  /*! @brief Processed mileage value. */
   double m_mileage = 0.0;
-  /** @brief Processed driving mode value. */
+  /*! @brief Processed driving mode value. */
   DrivingMode m_drivingMode = DrivingMode::Manual;
-  /** @brief Processed cluster theme value. */
+  /*! @brief Processed cluster theme value. */
   ClusterTheme m_clusterTheme = ClusterTheme::Dark;
-  /** @brief Processed cluster metrics value. */
+  /*! @brief Processed cluster metrics value. */
   ClusterMetrics m_clusterMetrics = ClusterMetrics::Kilometers;
 };
 

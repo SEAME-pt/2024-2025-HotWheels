@@ -21,7 +21,7 @@ private:
   std::atomic<int> m_current_angle;
   CarDirection m_currentDirection = CarDirection::Stop;
 
-  /**
+  /*!
    * Sets the direction of the car and emits the directionUpdated signal if the
    * direction has changed.
    *
@@ -32,12 +32,12 @@ private:
   IPeripheralController *pcontrol;
 
 public:
-  /**
+  /*!
    * Default constructor for the EngineController class.
    */
   EngineController();
 
-  /**
+  /*!
    * Constructor for the EngineController class, initializing the motor and
    * servo controllers.
    *
@@ -47,25 +47,25 @@ public:
    */
   EngineController(int servo_addr, int motor_addr, QObject *parent = nullptr);
 
-  /**
+  /*!
    * Destructor for the EngineController class.
    *
    * Stops the engine and deletes the peripheral controller.
    */
   ~EngineController();
 
-  /**
+  /*!
    * Starts the engine controller, setting the m_running flag to true.
    */
   void start();
 
-  /**
+  /*!
    * Stops the engine controller, setting the m_running flag to false,
    * and setting speed and steering to zero.
    */
   void stop();
 
-  /**
+  /*!
    * Sets the speed of the car, adjusting the motor PWM values based on the
    * speed.
    *
@@ -73,7 +73,7 @@ public:
    */
   void set_speed(int speed);
 
-  /**
+  /*!
    * Sets the steering angle of the car, adjusting the servo PWM based on the
    * angle.
    *
@@ -83,14 +83,14 @@ public:
   void set_steering(int angle);
 
 signals:
-  /**
+  /*!
    * Signal emitted when the direction of the car is updated.
    *
    * @param newDirection The new direction of the car.
    */
   void directionUpdated(CarDirection newDirection);
 
-  /**
+  /*!
    * Signal emitted when the steering angle of the car is updated.
    *
    * @param newAngle The new steering angle.

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_CanBusManager.cpp
  * @brief Unit tests for the CanBusManager class.
  * @version 0.1
@@ -23,7 +23,7 @@
 using ::testing::_;
 using ::testing::Return;
 
-/**
+/*!
  * @class CanBusManagerTest
  * @brief Test fixture for testing the CanBusManager class.
  *
@@ -32,7 +32,7 @@ using ::testing::Return;
  */
 class CanBusManagerTest : public ::testing::Test {
 protected:
-  /**
+  /*!
    * @brief Set up the test environment.
    *
    * @details This method is called before each test to set up the necessary
@@ -43,7 +43,7 @@ protected:
     manager = new CanBusManager(mockMcpController);
   }
 
-  /**
+  /*!
    * @brief Tear down the test environment.
    *
    * @details This method is called after each test to clean up the objects
@@ -58,13 +58,13 @@ protected:
     }
   }
 
-  /** @brief Mocked MCP2515 controller. */
+  /*! @brief Mocked MCP2515 controller. */
   IMCP2515Controller *mockMcpController;
-  /** @brief CanBusManager object. */
+  /*! @brief CanBusManager object. */
   CanBusManager *manager;
 };
 
-/**
+/*!
  * @test Tests if the `speedUpdated` signal is emitted correctly.
  * @brief Ensures that the speed signal is emitted with the correct value.
  *
@@ -83,7 +83,7 @@ TEST_F(CanBusManagerTest, SpeedSignalEmitsCorrectly) {
   ASSERT_EQ(speedSpy.takeFirst().at(0).toFloat(), expectedSpeed);
 }
 
-/**
+/*!
  * @test Tests if the `rpmUpdated` signal is emitted correctly.
  * @brief Ensures that the RPM signal emits the correct value.
  *
@@ -102,7 +102,7 @@ TEST_F(CanBusManagerTest, RpmSignalEmitsCorrectly) {
   ASSERT_EQ(rpmSpy.takeFirst().at(0).toInt(), expectedRpm);
 }
 
-/**
+/*!
  * @test Tests `CanBusManager::initialize()` when `init()` fails.
  * @brief Ensures that `initialize()` fails when the controller fails to
  * initialize.
@@ -119,7 +119,7 @@ TEST_F(CanBusManagerTest, InitializeFailsWhenControllerFails) {
   ASSERT_FALSE(manager->initialize());
 }
 
-/**
+/*!
  * @test Tests `CanBusManager::initialize()` when `init()` succeeds.
  * @brief Ensures that `initialize()` succeeds when the controller initializes
  * successfully.
@@ -136,7 +136,7 @@ TEST_F(CanBusManagerTest, InitializeSucceedsWhenControllerSucceeds) {
   ASSERT_TRUE(manager->initialize());
 }
 
-/**
+/*!
  * @test Ensures that `stopReading()` is called when `CanBusManager` is
  * destroyed.
  * @brief Verifies that `stopReading()` is triggered in the destructor.

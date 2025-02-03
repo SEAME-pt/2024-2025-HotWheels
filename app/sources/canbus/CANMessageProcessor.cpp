@@ -1,4 +1,4 @@
-/**
+/*!
  * @file CANMessageProcessor.cpp
  * @brief Implementation of the CANMessageProcessor class.
  * @version 0.1
@@ -24,14 +24,14 @@
 #include "CANMessageProcessor.hpp"
 #include <stdexcept>
 
-/**
+/*!
  * @brief Construct a new CANMessageProcessor::CANMessageProcessor object
  *
  * @details This constructor initializes the CANMessageProcessor object.
  */
 CANMessageProcessor::CANMessageProcessor() {}
 
-/**
+/*!
  * @brief Destroy the CANMessageProcessor::CANMessageProcessor object
  *
  * @param frameID
@@ -47,7 +47,7 @@ void CANMessageProcessor::registerHandler(uint16_t frameID,
   handlers[frameID] = handler;
 }
 
-/**
+/*!
  * @brief Process a CAN message
  *
  * @param frameID The frame ID of the message.

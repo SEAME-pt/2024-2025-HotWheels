@@ -1,4 +1,4 @@
-/**
+/*!
  * @file SPIController.cpp
  * @brief Implementation of the SPIController class.
  * @version 0.1
@@ -31,7 +31,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-/**
+/*!
  * @brief Construct a new SPIController::SPIController object
  *
  * @param ioctlFunc
@@ -46,14 +46,14 @@ SPIController::SPIController(IoctlFunc ioctlFunc, OpenFunc openFunc,
       speed(DefaultSpeedHz), m_ioctlFunc(ioctlFunc), m_openFunc(openFunc),
       m_closeFunc(closeFunc) {}
 
-/**
+/*!
  * @brief Destroy the SPIController::SPIController object
  *
  * @details This destructor closes the SPI device.
  */
 SPIController::~SPIController() { closeDevice(); }
 
-/**
+/*!
  * @brief Open the SPI device.
  *
  * @param device The device to open.
@@ -69,7 +69,7 @@ bool SPIController::openDevice(const std::string &device) {
   return true;
 }
 
-/**
+/*!
  * @brief Configure the SPI device.
  *
  * @param mode The SPI mode.
@@ -104,7 +104,7 @@ void SPIController::configure(uint8_t mode, uint8_t bits, uint32_t speed) {
   }
 }
 
-/**
+/*!
  * @brief Write a byte to the SPI device.
  *
  * @param address The address to write to.
@@ -117,7 +117,7 @@ void SPIController::writeByte(uint8_t address, uint8_t data) {
   spiTransfer(tx, nullptr, sizeof(tx));
 }
 
-/**
+/*!
  * @brief Read a byte from the SPI device.
  *
  * @param address The address to read from.
@@ -132,7 +132,7 @@ uint8_t SPIController::readByte(uint8_t address) {
   return rx[2];
 }
 
-/**
+/*!
  * @brief Transfer data over SPI.
  *
  * @param tx The data to transmit.
@@ -159,7 +159,7 @@ void SPIController::spiTransfer(const uint8_t *tx, uint8_t *rx, size_t length) {
   }
 }
 
-/**
+/*!
  * @brief Close the SPI device.
  * @details This function closes the SPI device.
  */

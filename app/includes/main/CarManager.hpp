@@ -1,4 +1,4 @@
-/**
+/*!
  * @file CarManager.hpp
  * @brief Definition of the CarManager class.
  * @version 0.1
@@ -30,7 +30,7 @@ class CarManager;
 }
 QT_END_NAMESPACE
 
-/**
+/*!
  * @brief Class that manages the car manager application.
  * @class CarManager inherits from QMainWindow
  */
@@ -42,19 +42,19 @@ public:
   ~CarManager();
 
 private:
-  /** @brief Pointer to the user interface for the car manager. */
+  /*! @brief Pointer to the user interface for the car manager. */
   Ui::CarManager *ui;
-  /** @brief Pointer to the DataManager instance. */
+  /*! @brief Pointer to the DataManager instance. */
   DataManager *m_dataManager;
-  /** @brief Pointer to the CanBusManager instance. */
+  /*! @brief Pointer to the CanBusManager instance. */
   CanBusManager *m_canBusManager;
-  /** @brief Pointer to the ControlsManager instance. */
+  /*! @brief Pointer to the ControlsManager instance. */
   ControlsManager *m_controlsManager;
-  /** @brief Pointer to the DisplayManager instance. */
+  /*! @brief Pointer to the DisplayManager instance. */
   DisplayManager *m_displayManager;
-  /** @brief Pointer to the SystemManager instance. */
+  /*! @brief Pointer to the SystemManager instance. */
   SystemManager *m_systemManager;
-  /** @brief Pointer to the MileageManager instance. */
+  /*! @brief Pointer to the MileageManager instance. */
   MileageManager *m_mileageManager;
 
   void initializeComponents();

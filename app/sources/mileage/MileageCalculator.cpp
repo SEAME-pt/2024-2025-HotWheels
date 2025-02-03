@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MileageCalculator.cpp
  * @brief Implementation of the MileageCalculator class.
  * @version 0.1
@@ -19,14 +19,14 @@
 #include "MileageCalculator.hpp"
 #include <QDebug>
 
-/**
+/*!
  * @brief Construct a new MileageCalculator object.
  * @details This constructor initializes the MileageCalculator object with a
  * started interval timer.
  */
 MileageCalculator::MileageCalculator() { m_intervalTimer.start(); }
 
-/**
+/*!
  * @brief Add a speed value to the calculator.
  * @param speed The speed value to add.
  * @details This function adds a speed value to the calculator with the current
@@ -45,7 +45,7 @@ void MileageCalculator::addSpeed(float speed) {
   }
 }
 
-/**
+/*!
  * @brief Calculate the distance traveled by the vehicle.
  * @return double The distance traveled by the vehicle.
  * @details This function calculates the distance traveled by the vehicle based

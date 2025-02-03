@@ -1,4 +1,4 @@
-/**
+/*!
  * @file enums.hpp
  * @brief Definition of the enums used in the application.
  * @version 0.1
@@ -18,15 +18,15 @@
 
 #include <QtCore/qmetatype.h>
 
-/** @brief Enum class for the component status. */
+/*! @brief Enum class for the component status. */
 enum class ComponentStatus { Idle, Starting, Operational, Down };
-/** @brief Enum class for the driving mode. */
+/*! @brief Enum class for the driving mode. */
 enum class DrivingMode { Manual, Automatic };
-/** @brief Enum class for the cluster theme. */
+/*! @brief Enum class for the cluster theme. */
 enum class ClusterTheme { Dark, Light };
-/** @brief Enum class for the cluster metrics. */
+/*! @brief Enum class for the cluster metrics. */
 enum class ClusterMetrics { Miles, Kilometers };
-/** @brief Enum class for the car direction. */
+/*! @brief Enum class for the car direction. */
 enum class CarDirection { Drive, Reverse, Stop };
 
 Q_DECLARE_METATYPE(const ComponentStatus)

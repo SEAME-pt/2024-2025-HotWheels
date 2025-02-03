@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MileageFileHandler.hpp
  * @brief Definition of the MileageFileHandler class.
  * @version 0.1
@@ -18,7 +18,7 @@
 
 #include <QString>
 
-/**
+/*!
  * @brief Class that manages the mileage file.
  * @class MileageFileHandler
  */
@@ -31,7 +31,7 @@ public:
   void ensureFileExists() const;
 
 private:
-  /** @brief The path to the mileage file to be managed. */
+  /*! @brief The path to the mileage file to be managed. */
   QString filePath;
 };
 

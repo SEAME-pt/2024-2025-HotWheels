@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MileageManager.cpp
  * @brief Implementation of the MileageManager class.
  * @version 0.1
@@ -18,7 +18,7 @@
 #include "MileageManager.hpp"
 #include <QDebug>
 
-/**
+/*!
  * @brief Construct a new MileageManager object
  *
  * @param filePath The path of the mileage file to manage.
@@ -31,7 +31,7 @@ MileageManager::MileageManager(const QString &filePath, QObject *parent)
 
 MileageManager::~MileageManager() { shutdown(); }
 
-/**
+/*!
  * @brief Initialize the MileageManager.
  * @details This function initializes the MileageManager by loading the initial
  * mileage from the file and starting the update and persistence timers.
@@ -50,7 +50,7 @@ void MileageManager::initialize() {
   persistenceTimer.start(10000);
 }
 
-/**
+/*!
  * @brief Shutdown the MileageManager.
  * @details This function stops the update and persistence timers and saves the
  * mileage to the file.
@@ -61,14 +61,14 @@ void MileageManager::shutdown() {
   persistenceTimer.stop();
 }
 
-/**
+/*!
  * @brief Slot for handling speed updates.
  * @param speed The current speed of the vehicle.
  * @details This function is called when the speed of the vehicle is updated.
  */
 void MileageManager::onSpeedUpdated(float speed) { calculator.addSpeed(speed); }
 
-/**
+/*!
  * @brief Update the mileage of the vehicle.
  * @details This function calculates the distance traveled by the vehicle and
  * updates the total mileage.
@@ -84,7 +84,7 @@ void MileageManager::updateMileage() {
   emit mileageUpdated(totalMileage);
 }
 
-/**
+/*!
  * @brief Save the mileage to the file.
  * @details This function saves the total mileage to the file.
  */

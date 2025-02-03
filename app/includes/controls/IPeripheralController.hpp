@@ -1,4 +1,4 @@
-/**
+/*!
  * @file IPeripheralController.hpp
  * @brief File containing the IPeripheralController interface.
  * @version 0.1
@@ -23,7 +23,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-/**
+/*!
  * @brief Interface for the peripheral controller.
  * @class IPeripheralController
  */

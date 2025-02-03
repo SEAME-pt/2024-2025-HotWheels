@@ -1,4 +1,4 @@
-/**
+/*!
  * @file CanBusManager.hpp
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
@@ -21,7 +21,7 @@
 #include <QObject>
 #include <QThread>
 
-/**
+/*!
  * @brief Class that manages the CAN bus communication.
  * @class CanBusManager inherits from QObject
  */
@@ -35,26 +35,26 @@ public:
   bool initialize();
 
 signals:
-  /**
+  /*!
    * @brief Signal emitted when the speed is updated.
    * @param newSpeed The new speed value.
    */
   void speedUpdated(float newSpeed);
-  /**
+  /*!
    * @brief Signal emitted when the RPM is updated.
    * @param newRpm The new RPM value.
    */
   void rpmUpdated(int newRpm);
 
 private:
-  /** @brief Pointer to the IMCP2515Controller object. */
+  /*! @brief Pointer to the IMCP2515Controller object. */
   IMCP2515Controller *m_controller = nullptr;
-  /** @brief Pointer to the QThread object. */
+  /*! @brief Pointer to the QThread object. */
   QThread *m_thread = nullptr;
-  /** @brief Flag to indicate if the MCP2515 controller is owned by the
+  /*! @brief Flag to indicate if the MCP2515 controller is owned by the
    * CanBusManager. */
   bool ownsMCP2515Controller = false;
-  /** @brief Method to connect signals. */
+  /*! @brief Method to connect signals. */
   void connectSignals();
 };
 

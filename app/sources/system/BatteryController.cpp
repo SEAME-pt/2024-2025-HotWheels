@@ -1,4 +1,4 @@
-/**
+/*!
  * @file BatteryController.cpp
  * @brief Implementation of the BatteryController class.
  * @version 0.1
@@ -18,15 +18,15 @@
 
 #include "BatteryController.hpp"
 
-/** @def REG_CALIBRATION The register address for the calibration register. */
+/*! @def REG_CALIBRATION The register address for the calibration register. */
 #define REG_CALIBRATION 0x05
-/** @def REG_BUSVOLTAGE The register address for the bus voltage register. */
+/*! @def REG_BUSVOLTAGE The register address for the bus voltage register. */
 #define REG_BUSVOLTAGE 0x02
-/** @def REG_SHUNTVOLTAGE The register address for the shunt voltage register.
+/*! @def REG_SHUNTVOLTAGE The register address for the shunt voltage register.
  */
 #define REG_SHUNTVOLTAGE 0x01
 
-/**
+/*!
  * @brief Construct a new BatteryController object.
  * @param i2c_device The I2C device to use for communication.
  * @param address The I2C address of the INA219.
@@ -40,7 +40,7 @@ BatteryController::BatteryController(const char *i2c_device, int address,
   setCalibration32V2A();
 }
 
-/**
+/*!
  * @brief Set the calibration for the INA219.
  * @details This function sets the calibration for the INA219 to 32V and 2A.
  */
@@ -48,7 +48,7 @@ void BatteryController::setCalibration32V2A() {
   writeRegister(REG_CALIBRATION, 4096);
 }
 
-/**
+/*!
  * @brief Read a 16-bit register from the INA219.
  * @param reg The register address to read.
  * @return uint16_t The value read from the register.
@@ -59,7 +59,7 @@ float BatteryController::getBusVoltage_V() {
   return ((raw >> 3) * 0.004); // Convert to volts
 }
 
-/**
+/*!
  * @brief Read a 16-bit register from the INA219.
  * @param reg The register address to read.
  * @return uint16_t The value read from the register.
@@ -70,7 +70,7 @@ float BatteryController::getShuntVoltage_V() {
   return raw * 0.01; // Convert to volts
 }
 
-/**
+/*!
  * @brief Get the battery percentage.
  * @return float The battery percentage.
  * @details This function calculates the battery percentage based on the bus and

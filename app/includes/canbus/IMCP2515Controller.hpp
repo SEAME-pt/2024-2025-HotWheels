@@ -1,4 +1,4 @@
-/**
+/*!
  * @file IMCP2515Controller.hpp
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
@@ -19,7 +19,7 @@
 
 #include <QObject>
 
-/**
+/*!
  * @brief Interface for the MCP2515 CAN controller.
  * @class IMCP2515Controller inherits from QObject
  */
@@ -33,13 +33,13 @@ public:
   virtual bool isStopReadingFlagSet() const = 0;
 
 signals:
-  /**
+  /*!
    * @brief Signal emitted when the speed is updated.
    * @param newSpeed The new speed value.
    */
   void speedUpdated(float newSpeed);
 
-  /**
+  /*!
    * @brief Signal emitted when the RPM is updated.
    * @param newRpm The new RPM value.
    */

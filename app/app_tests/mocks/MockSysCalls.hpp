@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MockSysCalls.hpp
  * @brief File containing Mock classes to test the system calls.
  *
@@ -26,13 +26,13 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-/**
+/*!
  * @class MockSysCalls
  * @brief Class to emulate the behavior of the system calls.
  */
 class MockSysCalls {
 public:
-  /**
+  /*!
    * @brief Get the instance object
    * @return MockSysCalls&
    */
@@ -41,25 +41,25 @@ public:
     return instance;
   }
 
-  /** @brief Mocked method to open a file. */
+  /*! @brief Mocked method to open a file. */
   MOCK_METHOD(int, open, (const char *path, int flags), ());
-  /** @brief Mocked method to perform an I/O control operation. */
+  /*! @brief Mocked method to perform an I/O control operation. */
   MOCK_METHOD(int, ioctl, (int fd, unsigned long request), ());
-  /** @brief Mocked method to close a file. */
+  /*! @brief Mocked method to close a file. */
   MOCK_METHOD(int, close, (int fd), ());
 
 private:
-  /** @brief Constructor of the class set as default. */
+  /*! @brief Constructor of the class set as default. */
   MockSysCalls() = default;
-  /** @brief Destructor of the class set as default. */
+  /*! @brief Destructor of the class set as default. */
   ~MockSysCalls() = default;
-  /** @brief Copy constructor of the class set as delete. */
+  /*! @brief Copy constructor of the class set as delete. */
   MockSysCalls(const MockSysCalls &) = delete;
-  /** @brief Operator of the class set as delete. */
+  /*! @brief Operator of the class set as delete. */
   MockSysCalls &operator=(const MockSysCalls &) = delete;
 };
 
-/**
+/*!
  * @brief Mocked open function.
  * @param path The path to the file to open.
  * @param flags The flags for opening the file.
@@ -70,7 +70,7 @@ inline int mock_open(const char *path, int flags, ...) {
   return MockSysCalls::instance().open(path, flags);
 }
 
-/**
+/*!
  * @brief Mocked ioctl function.
  * @param fd The file descriptor.
  * @param request The request code.
@@ -81,7 +81,7 @@ inline int mock_ioctl(int fd, unsigned long request, ...) {
   return MockSysCalls::instance().ioctl(fd, request);
 }
 
-/**
+/*!
  * @brief Mocked close function.
  * @param fd The file descriptor.
  * @return a mocked close return value.

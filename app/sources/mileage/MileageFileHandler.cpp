@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MileageFileHandler.cpp
  * @brief Implementation of the MileageFileHandler class.
  * @version 0.1
@@ -20,7 +20,7 @@
 #include <QFile>
 #include <QTextStream>
 
-/**
+/*!
  * @brief Construct a new MileageFileHandler object
  *
  * @param filePath The path of the mileage file to manage.
@@ -32,7 +32,7 @@ MileageFileHandler::MileageFileHandler(const QString &filePath)
   ensureFileExists();
 }
 
-/**
+/*!
  * @brief Ensures that the mileage file exists.
  * If the file does not exist, it creates the file and initializes it with a
  * mileage of 0.0.
@@ -53,7 +53,7 @@ void MileageFileHandler::ensureFileExists() const {
   }
 }
 
-/**
+/*!
  * @brief This function reads the mileage value from the file and returns it.
  * @details Reads the mileage value from the file.
  * If the file cannot be opened or contains an invalid value, a default
@@ -84,7 +84,7 @@ double MileageFileHandler::readMileage() const {
   return mileage;
 }
 
-/**
+/*!
  * @brief This function writes the provided mileage value to the file.
  * @details Writes the provided mileage value to the file.
  * The value is saved with two decimal precision.

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file DisplayManager.cpp
  * @brief Implementation of the DisplayManager class for handling the display of
  * the cluster.
@@ -21,7 +21,7 @@
 #include <QDebug>
 #include <QPushButton>
 
-/**
+/*!
  * @brief Construct a new DisplayManager object.
  * @param ui The UI form for the cluster.
  * @param parent The parent QObject.
@@ -58,7 +58,7 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
           &DisplayManager::clusterMetricsToggled);
 }
 
-/**
+/*!
  * @brief Updates the CAN bus data on the display.
  * @details This function updates the speed and RPM labels based on the CAN bus
  * data.
@@ -71,7 +71,7 @@ void DisplayManager::updateCanBusData(float speed, int rpm) {
       QString::number(static_cast<double>(rpm) / 1000, 'f', 2));
 }
 
-/**
+/*!
  * @brief Updates the engine data on the display.
  * @details This function updates the direction label and blinker visibility
  * based on the engine data.
@@ -107,7 +107,7 @@ void DisplayManager::updateEngineData(CarDirection direction,
   }
 }
 
-/**
+/*!
  * @brief Updates the system time on the display.
  * @details This function updates the date, time, and weekday labels based on
  * the current system time.
@@ -123,7 +123,7 @@ void DisplayManager::updateSystemTime(const QString &currentDate,
   m_ui->weekDayLabel->setText(currentDay);
 }
 
-/**
+/*!
  * @brief Updates the WiFi status on the display.
  * @details This function updates the WiFi status label based on the current
  * WiFi status and name.
@@ -139,7 +139,7 @@ void DisplayManager::updateWifiStatus(const QString &status,
   m_ui->wifiLabel->setText("📶 " + wifiName);
 }
 
-/**
+/*!
  * @brief Updates the temperature on the display.
  * @details This function updates the temperature label based on the current
  * temperature.
@@ -149,7 +149,7 @@ void DisplayManager::updateTemperature(const QString &temperature) {
   m_ui->temperatureLabel->setText("🌡️ " + temperature);
 }
 
-/**
+/*!
  * @brief Updates the battery percentage on the display.
  * @details This function updates the battery percentage label and low battery
  * warning based on the current battery percentage.
@@ -163,7 +163,7 @@ void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
                               "% " + (batteryPercentage > 20.0 ? "🔋" : "🪫"));
 }
 
-/**
+/*!
  * @brief Updates the mileage on the display.
  * @details This function updates the mileage label based on the current
  * mileage.
@@ -174,7 +174,7 @@ void DisplayManager::updateMileage(double mileage) {
                               " m");
 }
 
-/**
+/*!
  * @brief Updates the IP address on the display.
  * @details This function updates the IP address label based on the current IP
  * address.
@@ -184,7 +184,7 @@ void DisplayManager::updateIpAddress(const QString &ipAddress) {
   m_ui->ipAddressLabel->setText("IP " + ipAddress);
 }
 
-/**
+/*!
  * @brief Updates the driving mode on the display.
  * @details This function updates the driving mode label based on the current
  * driving mode.
@@ -203,7 +203,7 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
   m_ui->drivingModeLabel->setText("Mode: " + modeText);
 }
 
-/**
+/*!
  * @brief Updates the cluster theme on the display.
  * @details This function updates the cluster theme label based on the current
  * cluster theme.
@@ -222,7 +222,7 @@ void DisplayManager::updateClusterTheme(ClusterTheme newTheme) {
   m_ui->clusterThemeLabel->setText("Theme: " + themeText);
 }
 
-/**
+/*!
  * @brief Updates the cluster metrics on the display.
  * @details This function updates the cluster metrics label and speed metrics
  * label based on the current cluster metrics.

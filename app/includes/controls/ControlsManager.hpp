@@ -1,4 +1,4 @@
-/**
+/*!
  * @file ControlsManager.hpp
  * @brief Definition of the ControlsManager class.
  * @version 0.1
@@ -21,7 +21,7 @@
 #include <QObject>
 #include <QThread>
 
-/**
+/*!
  * @brief Class that manages the car's controls.
  * @class ControlsManager inherits from QObject
  */
@@ -29,13 +29,13 @@ class ControlsManager : public QObject {
   Q_OBJECT
 
 private:
-  /** @brief EngineController object. */
+  /*! @brief EngineController object. */
   EngineController m_engineController;
-  /** @brief JoysticksController object. */
+  /*! @brief JoysticksController object. */
   JoysticksController *m_manualController;
-  /** @brief Thread for the manual controller. */
+  /*! @brief Thread for the manual controller. */
   QThread *m_manualControllerThread;
-  /** @brief Current driving mode. */
+  /*! @brief Current driving mode. */
   DrivingMode m_currentMode;
 
 public:

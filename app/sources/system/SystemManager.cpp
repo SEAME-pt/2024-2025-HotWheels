@@ -1,4 +1,4 @@
-/**
+/*!
  * @file SystemManager.cpp
  * @brief Implementation of the SystemManager class.
  * @version 0.1
@@ -19,7 +19,7 @@
 
 #include "SystemManager.hpp"
 
-/**
+/*!
  * @brief Construct a new SystemManager object.
  * @param parent The parent QObject.
  * @details This constructor initializes the SystemManager object with the
@@ -41,7 +41,7 @@ SystemManager::SystemManager(QObject *parent)
   m_statusTimer->start(5000);
 }
 
-/**
+/*!
  * @brief Destroy the SystemManager object.
  * @details This destructor cleans up the resources used by the SystemManager.
  */
@@ -54,7 +54,7 @@ void SystemManager::updateTime() {
   emit timeUpdated(currentDate, currentTime, currentDay);
 }
 
-/**
+/*!
  * @brief Update the system status.
  * @details This function updates the system status, including the WiFi,
  * temperature, battery, and IP address.
@@ -78,7 +78,7 @@ void SystemManager::updateSystemStatus() {
   emit ipAddressUpdated(ipAddress);
 }
 
-/**
+/*!
  * @brief Fetch the WiFi status.
  * @param wifiName The name of the connected WiFi network.
  * @return QString The WiFi status.
@@ -113,7 +113,7 @@ QString SystemManager::fetchWifiStatus(QString &wifiName) const {
   return "No interface detected";
 }
 
-/**
+/*!
  * @brief Fetch the temperature.
  * @return QString The temperature.
  * @details This function fetches the temperature from the temperature sensor.
@@ -135,7 +135,7 @@ QString SystemManager::fetchTemperature() const {
   return "N/A";
 }
 
-/**
+/*!
  * @brief Fetch the IP address.
  * @return QString The IP address.
  * @details This function fetches the IP address of the device.
