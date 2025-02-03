@@ -23,7 +23,7 @@ HEADERS += \
     includes/enums.hpp
 
 # Common Libraries
-LIBS += -lSDL2
+LIBS += -lSDL2 -lrt
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {
