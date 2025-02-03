@@ -47,7 +47,7 @@ ControlsManager::ControlsManager(QObject *parent)
   m_sharedMemoryThread = QThread::create([this]() {
     while (m_threadRunning) {
       readSharedMemory();
-      QThread::msleep(500);  // Adjust delay as needed
+      QThread::msleep(50);  // Adjust delay as needed
     }
   });
 
@@ -87,10 +87,8 @@ void ControlsManager::readSharedMemory() {
     else {
       // Read the bool value
       bool* flag = static_cast<bool*>(ptr);
-      std::cout << "Read value from shared memory on car_controls: " << std::boolalpha << *flag << "\n";
 
       setMode(*flag ? DrivingMode::Manual : DrivingMode::Automatic);
-      std::cout << "Current mode: " << (m_currentMode == DrivingMode::Manual ? "Manual" : "Automatic") << "\n";
 
       // Cleanup
       munmap(ptr, sizeof(bool));
@@ -104,10 +102,4 @@ void ControlsManager::setMode(DrivingMode mode) {
     return;
 
   m_currentMode = mode;
-
-  // if (m_currentMode == DrivingMode::Automatic) {
-  //     qDebug() << "Switched to Automatic mode (joystick disabled).";
-  // } else if (m_currentMode == DrivingMode::Manual) {
-  //     qDebug() << "Switched to Manual mode (joystick enabled).";
-  // }
 }
