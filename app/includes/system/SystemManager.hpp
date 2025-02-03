@@ -1,15 +1,34 @@
+/*!
+ * @file SystemManager.hpp
+ * @brief Definition of the SystemManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the definition of the SystemManager class, which
+ * is used to manage the system time, status, and battery.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef SYSTEMMANAGER_HPP
 #define SYSTEMMANAGER_HPP
 
 #include <QObject>
 #include <QTimer>
+
 #include "IBatteryController.hpp"
 #include "ISystemCommandExecutor.hpp"
 #include "ISystemInfoProvider.hpp"
 
-class SystemManager : public QObject
-{
-    Q_OBJECT
+/*!
+ * @brief Class that manages the system time, status, and battery.
+ * @class SystemManager inherits from QObject
+ */
+class SystemManager : public QObject {
+  Q_OBJECT
 
 public:
     explicit SystemManager(IBatteryController *batteryController = nullptr,

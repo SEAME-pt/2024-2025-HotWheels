@@ -4,14 +4,14 @@ CONFIG += c++17
 
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
-    $$PWD/includes/main \
-    $$PWD/includes/data \
-    $$PWD/includes/canbus \
-    $$PWD/includes/controls \
-    $$PWD/includes/display \
-    $$PWD/includes/system \
+	$$PWD/includes/main \
+	$$PWD/includes/data \
+	$$PWD/includes/canbus \
+	$$PWD/includes/controls \
+	$$PWD/includes/display \
+	$$PWD/includes/system \
 	$$PWD/includes/mileage \
-    $$PWD/includes/utils
+	$$PWD/includes/utils
 
 # Application Sources
 SOURCES += \
@@ -86,6 +86,6 @@ LIBS += -lSDL2
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {
-    LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
-    INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
+	LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
+	INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
 }

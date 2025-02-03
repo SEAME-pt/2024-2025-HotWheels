@@ -16,6 +16,7 @@ INCLUDEPATH += \
 TESTS_PATH = app_tests
 
 SOURCES += \
+	# $$TESTS_PATH/integration/test_MCP2515Controller.cpp \
 	$$TESTS_PATH/unit/canbus/test_SPIController.cpp \
 	$$TESTS_PATH/unit/canbus/test_MCP2515Configurator.cpp \
 	$$TESTS_PATH/unit/canbus/test_CANMessageProcessor.cpp \
@@ -63,6 +64,7 @@ HEADERS += \
   includes/system/SystemManager.hpp \
   includes/mileage/MileageManager.hpp \
 	includes/canbus/MCP2515Controller.hpp \
+	includes/canbus/MCP2515Configurator.hpp \
 	includes/canbus/IMCP2515Controller.hpp \
 	includes/canbus/CanBusManager.hpp \
 	includes/data/SystemDataManager.hpp \

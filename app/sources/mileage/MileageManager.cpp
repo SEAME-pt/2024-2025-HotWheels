@@ -1,3 +1,20 @@
+/*!
+ * @file MileageManager.cpp
+ * @brief Implementation of the MileageManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the implementation of the MileageManager class,
+ * which is used to manage the mileage of the vehicle.
+ * @note This class is used to manage the mileage of the vehicle.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * @warning Ensure that the file path is valid and accessible.
+ * @see MileageManager.hpp
+ * @copyright Copyright (c) 2025
+ */
+
 #include "MileageManager.hpp"
 #include <QDebug>
 #include "MileageCalculator.hpp"
@@ -62,3 +79,9 @@ void MileageManager::saveMileage()
 {
     m_fileHandler->writeMileage(m_totalMileage);
 }
+
+/*!
+ * @brief Save the mileage to the file.
+ * @details This function saves the total mileage to the file.
+ */
+void MileageManager::saveMileage() { fileHandler.writeMileage(totalMileage); }

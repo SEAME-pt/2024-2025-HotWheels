@@ -1,6 +1,22 @@
+/*!
+ * @file DataManager.hpp
+ * @brief Definition of the DataManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the definition of the DataManager class, which is
+ * responsible for managing the data received from the car's systems.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef DATAMANAGER_HPP
 #define DATAMANAGER_HPP
 
+#include "enums.hpp"
 #include <QObject>
 #include <QString>
 #include "ClusterSettingsManager.hpp"
@@ -8,9 +24,12 @@
 #include "VehicleDataManager.hpp"
 #include "enums.hpp"
 
-class DataManager : public QObject
-{
-    Q_OBJECT
+/*!
+ * @brief Class that manages the data received from the car's systems.
+ * @class DataManager inherits from QObject
+ */
+class DataManager : public QObject {
+  Q_OBJECT
 
 public:
     explicit DataManager(QObject *parent = nullptr);

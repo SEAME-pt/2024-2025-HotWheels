@@ -1,3 +1,22 @@
+/*!
+ * @file DataManager.cpp
+ * @brief Implementation of the DataManager class for handling various data
+ * types.
+ * @version 0.1
+ * @date 2025-01-31
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * @details This file contains the implementation of the DataManager class,
+ * which is responsible for handling different types of data such as CAN data,
+ * system data, battery data, and driving mode.
+ * @note See DataManager.hpp for the class definition.
+ * @warning Ensure proper data validation before processing.
+ * @see DataManager.hpp
+ * @copyright Copyright (c) 2025
+ */
+
 #include "DataManager.hpp"
 #include <QDebug>
 

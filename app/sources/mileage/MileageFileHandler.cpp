@@ -1,3 +1,20 @@
+/*!
+ * @file MileageFileHandler.cpp
+ * @brief Implementation of the MileageFileHandler class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the implementation of the MileageFileHandler
+ * class, which is used to read and write the mileage to a file.
+ * @note This class is used to read and write the mileage to a file.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * @warning Ensure that the file path is valid and accessible.
+ * @see MileageFileHandler.hpp
+ * @copyright Copyright (c) 2025
+ */
+
 #include "MileageFileHandler.hpp"
 #include <QDebug>
 
@@ -29,6 +46,7 @@ void MileageFileHandler::ensureFileExists() const
             qWarning() << "Failed to create mileage file at:" << filePath;
         }
     }
+  }
 }
 
 double MileageFileHandler::readMileage() const
@@ -48,7 +66,6 @@ double MileageFileHandler::readMileage() const
         qWarning() << "Invalid mileage value in file. Defaulting to 0.";
         return 0.0;
     }
-
     return mileage;
 }
 

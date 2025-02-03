@@ -1,3 +1,22 @@
+/*!
+ * @file SystemManager.cpp
+ * @brief Implementation of the SystemManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the implementation of the SystemManager class,
+ * which is used to manage the system status.
+ * @note This class is used to manage the system status, including the time,
+ * WiFi, temperature, battery, and IP address.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ * @warning Ensure that the WiFi interface is properly configured and the
+ * temperature sensor is connected.
+ * @see SystemManager.hpp for the class definition.
+ * @copyright Copyright (c) 2025
+ */
+
 #include "SystemManager.hpp"
 #include <QDateTime>
 #include <QDebug>

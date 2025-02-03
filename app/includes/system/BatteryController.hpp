@@ -1,3 +1,18 @@
+/*!
+ * @file BatteryController.hpp
+ * @brief Definition of the BatteryController class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the definition of the BatteryController class,
+ * which is used to manage the battery of the vehicle.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef BATTERYCONTROLLER_HPP
 #define BATTERYCONTROLLER_HPP
 

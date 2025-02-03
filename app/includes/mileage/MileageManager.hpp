@@ -1,3 +1,18 @@
+/*!
+ * @file MileageManager.hpp
+ * @brief Definition of the MileageManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the definition of the MileageManager class, which
+ * is responsible for managing the mileage of a vehicle.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef MILEAGEMANAGER_HPP
 #define MILEAGEMANAGER_HPP
 
@@ -6,9 +21,12 @@
 #include "IMileageCalculator.hpp"
 #include "IMileageFileHandler.hpp"
 
-class MileageManager : public QObject
-{
-    Q_OBJECT
+/*!
+ * @brief Class that manages the mileage of a vehicle.
+ * @class MileageManager inherits from QObject
+ */
+class MileageManager : public QObject {
+  Q_OBJECT
 
 public:
     explicit MileageManager(const QString &filePath,
