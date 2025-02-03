@@ -1,4 +1,8 @@
 #include "ControlsManager.hpp"
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <iostream>
 #include <QDebug>
 
 ControlsManager::ControlsManager(QObject *parent)
@@ -83,8 +87,4 @@ void ControlsManager::setMode(DrivingMode mode) {
   // } else if (m_currentMode == DrivingMode::Manual) {
   //     qDebug() << "Switched to Manual mode (joystick enabled).";
   // }
-}
-
-void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
-  setMode(newMode);
 }
