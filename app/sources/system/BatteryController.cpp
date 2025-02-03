@@ -17,6 +17,7 @@
  */
 
 #include "BatteryController.hpp"
+#include "I2CController.hpp"
 
 /*! @def REG_CALIBRATION The register address for the calibration register. */
 #define REG_CALIBRATION 0x05
@@ -26,48 +27,35 @@
  */
 #define REG_SHUNTVOLTAGE 0x01
 
-/*!
- * @brief Construct a new BatteryController object.
- * @param i2c_device The I2C device to use for communication.
- * @param address The I2C address of the INA219.
- * @param parent The parent QObject.
- * @details This constructor initializes the BatteryController object with the
- * specified I2C device and address.
- */
-BatteryController::BatteryController(const char *i2c_device, int address,
-                                     QObject *parent)
-    : QObject(parent), I2CController(i2c_device, address) {
-  setCalibration32V2A();
+BatteryController::BatteryController(II2CController *i2cController)
+    : m_i2cController(i2cController ? i2cController : new I2CController("/dev/i2c-1", 0x41))
+    , m_ownI2CController(i2cController == nullptr)
+{
+    setCalibration32V2A();
 }
 
-/*!
- * @brief Set the calibration for the INA219.
- * @details This function sets the calibration for the INA219 to 32V and 2A.
- */
-void BatteryController::setCalibration32V2A() {
-  writeRegister(REG_CALIBRATION, 4096);
+BatteryController::~BatteryController()
+{
+    if (m_ownI2CController) {
+        delete m_i2cController;
+    }
 }
 
-/*!
- * @brief Read a 16-bit register from the INA219.
- * @param reg The register address to read.
- * @return uint16_t The value read from the register.
- * @details This function reads a 16-bit register from the INA219.
- */
-float BatteryController::getBusVoltage_V() {
-  uint16_t raw = readRegister(REG_BUSVOLTAGE);
-  return ((raw >> 3) * 0.004); // Convert to volts
+void BatteryController::setCalibration32V2A()
+{
+    m_i2cController->writeRegister(REG_CALIBRATION, 4096);
 }
 
-/*!
- * @brief Read a 16-bit register from the INA219.
- * @param reg The register address to read.
- * @return uint16_t The value read from the register.
- * @details This function reads a 16-bit register from the INA219.
- */
-float BatteryController::getShuntVoltage_V() {
-  int16_t raw = static_cast<int16_t>(readRegister(REG_SHUNTVOLTAGE));
-  return raw * 0.01; // Convert to volts
+float BatteryController::getBusVoltage_V()
+{
+    uint16_t raw = m_i2cController->readRegister(REG_BUSVOLTAGE);
+    return ((raw >> 3) * 0.004); // Convert to volts
+}
+
+float BatteryController::getShuntVoltage_V()
+{
+    int16_t raw = static_cast<int16_t>(m_i2cController->readRegister(REG_SHUNTVOLTAGE));
+    return raw * 0.01; // Convert to volts
 }
 
 /*!

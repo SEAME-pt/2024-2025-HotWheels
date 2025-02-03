@@ -16,14 +16,12 @@
 #ifndef SYSTEMMANAGER_HPP
 #define SYSTEMMANAGER_HPP
 
-#include "BatteryController.hpp"
-#include <QDateTime>
-#include <QFile>
 #include <QObject>
-#include <QProcess>
-#include <QString>
-#include <QTextStream>
 #include <QTimer>
+
+#include "IBatteryController.hpp"
+#include "ISystemCommandExecutor.hpp"
+#include "ISystemInfoProvider.hpp"
 
 /*!
  * @brief Class that manages the system time, status, and battery.
@@ -33,53 +31,37 @@ class SystemManager : public QObject {
   Q_OBJECT
 
 public:
-  explicit SystemManager(QObject *parent = nullptr);
+    explicit SystemManager(IBatteryController *batteryController = nullptr,
+                           ISystemInfoProvider *systemInfoProvider = nullptr,
+                           ISystemCommandExecutor *systemCommandExecutor = nullptr,
+                           QObject *parent = nullptr);
+    ~SystemManager();
+
+    void initialize();
+    void shutdown();
 
 signals:
-  /*!
-   * @brief Signal emitted when the system time is updated.
-   * @param currentDate The current date.
-   * @param currentTime The current time.
-   * @param currentDay The current day.
-   */
-  void timeUpdated(const QString &currentDate, const QString &currentTime,
-                   const QString &currentDay);
-  /*!
-   * @brief Signal emitted when the wifi status is updated.
-   * @param status The new wifi status.
-   * @param wifiName The name of the wifi network.
-   */
-  void wifiStatusUpdated(const QString &status, const QString &wifiName);
-  /*!
-   * @brief Signal emitted when the temperature is updated.
-   * @param temperature The new temperature.
-   */
-  void temperatureUpdated(const QString &temperature);
-  /*!
-   * @brief Signal emitted when the battery percentage is updated.
-   * @param batteryPercentage The new battery percentage.
-   */
-  void batteryPercentageUpdated(float batteryPercentage);
-  /*!
-   * @brief Signal emitted when the IP address is updated.
-   * @param ipAddress The new IP address.
-   */
-  void ipAddressUpdated(const QString &ipAddress);
+    void timeUpdated(const QString &currentDate,
+                     const QString &currentTime,
+                     const QString &currentDay);
+    void wifiStatusUpdated(const QString &status, const QString &wifiName);
+    void temperatureUpdated(const QString &temperature);
+    void batteryPercentageUpdated(float batteryPercentage);
+    void ipAddressUpdated(const QString &ipAddress);
 
-private slots:
-  void updateTime();
-  void updateSystemStatus();
+public slots:
+    void updateTime();
+    void updateSystemStatus();
 
 private:
-  QString fetchWifiStatus(QString &wifiName) const;
-  QString fetchTemperature() const;
-  QString fetchIpAddress() const;
-  /*! @brief Timer to update the system time every second. */
-  QTimer *m_timeTimer;
-  /*! @brief Timer to update the system status every 5 seconds. */
-  QTimer *m_statusTimer;
-  /*! @brief BatteryController to fetch battery percentage. */
-  BatteryController *m_batteryController;
+    QTimer m_timeTimer;
+    QTimer m_statusTimer;
+    IBatteryController *m_batteryController;
+    ISystemInfoProvider *m_systemInfoProvider;
+    ISystemCommandExecutor *m_systemCommandExecutor;
+    bool m_ownBatteryController;
+    bool m_ownSystemInfoProvider;
+    bool m_ownSystemCommandExecutor;
 };
 
 #endif // SYSTEMMANAGER_HPP

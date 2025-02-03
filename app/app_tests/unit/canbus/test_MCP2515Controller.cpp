@@ -52,15 +52,13 @@ protected:
  */
 TEST_F(MCP2515ControllerTest, InitializationSuccess) {
   EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
-  EXPECT_CALL(mockSPI, closeDevice()).Times(1);
-  EXPECT_CALL(mockSPI, spiTransfer(_, nullptr, 1)).WillOnce(Return());
-  EXPECT_CALL(mockSPI, readByte(_))
-      .WillOnce(Return(0x80))        // For resetChip
-      .WillRepeatedly(Return(0x00)); // For verifyMode
-  EXPECT_CALL(mockSPI, writeByte(_, _)).Times(::testing::AtLeast(1));
+    EXPECT_CALL(mockSPI, closeDevice()).Times(1);
+    EXPECT_CALL(mockSPI, spiTransfer(_, nullptr, 1)).WillOnce(Return());
+    EXPECT_CALL(mockSPI, readByte(_)).WillOnce(Return(0x80)).WillRepeatedly(Return(0x00));
+    EXPECT_CALL(mockSPI, writeByte(_, _)).Times(::testing::AtLeast(1));
 
-  MCP2515Controller controller("/dev/spidev0.0", mockSPI);
-  ASSERT_NO_THROW(controller.init());
+    MCP2515Controller controller("/dev/spidev0.0", mockSPI);
+    ASSERT_NO_THROW(controller.init());
 }
 
 /*!

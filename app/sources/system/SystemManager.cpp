@@ -18,140 +18,65 @@
  */
 
 #include "SystemManager.hpp"
+#include <QDateTime>
+#include <QDebug>
+#include "BatteryController.hpp"
+#include "SystemCommandExecutor.hpp"
+#include "SystemInfoProvider.hpp"
 
-/*!
- * @brief Construct a new SystemManager object.
- * @param parent The parent QObject.
- * @details This constructor initializes the SystemManager object with the
- * specified parent.
- */
-SystemManager::SystemManager(QObject *parent)
-    : QObject(parent), m_timeTimer(new QTimer(this)),
-      m_statusTimer(new QTimer(this)),
-      m_batteryController(new BatteryController("/dev/i2c-1", 0x41, this)) {
-  QTimer::singleShot(0, this, &SystemManager::updateSystemStatus);
+SystemManager::SystemManager(IBatteryController *batteryController,
+                             ISystemInfoProvider *systemInfoProvider,
+                             ISystemCommandExecutor *systemCommandExecutor,
+                             QObject *parent)
+    : QObject(parent)
+    , m_batteryController(batteryController ? batteryController : new BatteryController())
+    , m_systemInfoProvider(systemInfoProvider ? systemInfoProvider : new SystemInfoProvider())
+    , m_systemCommandExecutor(systemCommandExecutor ? systemCommandExecutor
+                                                    : new SystemCommandExecutor())
+    , m_ownBatteryController(batteryController == nullptr)
+    , m_ownSystemInfoProvider(systemInfoProvider == nullptr)
+    , m_ownSystemCommandExecutor(systemCommandExecutor == nullptr)
+{}
 
-  // Update time every second
-  connect(m_timeTimer, &QTimer::timeout, this, &SystemManager::updateTime);
-  m_timeTimer->start(1000);
-
-  // Update system status (WiFi, temperature, battery) every 5 seconds
-  connect(m_statusTimer, &QTimer::timeout, this,
-          &SystemManager::updateSystemStatus);
-  m_statusTimer->start(5000);
+SystemManager::~SystemManager()
+{
+    shutdown();
+    if (m_ownBatteryController)
+        delete m_batteryController;
+    if (m_ownSystemInfoProvider)
+        delete m_systemInfoProvider;
+    if (m_ownSystemCommandExecutor)
+        delete m_systemCommandExecutor;
 }
 
-/*!
- * @brief Destroy the SystemManager object.
- * @details This destructor cleans up the resources used by the SystemManager.
- */
-void SystemManager::updateTime() {
-  QDateTime currentDateTime = QDateTime::currentDateTime();
-  QString currentDate = currentDateTime.toString("dd-MM-yy");
-  QString currentTime = currentDateTime.toString("HH:mm");
-  QString currentDay = currentDateTime.toString("dddd");
-
-  emit timeUpdated(currentDate, currentTime, currentDay);
+void SystemManager::initialize()
+{
+    connect(&m_timeTimer, &QTimer::timeout, this, &SystemManager::updateTime);
+    connect(&m_statusTimer, &QTimer::timeout, this, &SystemManager::updateSystemStatus);
+    m_timeTimer.start(1000);
+    m_statusTimer.start(5000);
+    updateSystemStatus();
 }
 
-/*!
- * @brief Update the system status.
- * @details This function updates the system status, including the WiFi,
- * temperature, battery, and IP address.
- */
-void SystemManager::updateSystemStatus() {
-  // Fetch and emit WiFi status
-  QString wifiName;
-  QString wifiStatus = fetchWifiStatus(wifiName);
-  emit wifiStatusUpdated(wifiStatus, wifiName);
-
-  // Fetch and emit temperature
-  QString temperature = fetchTemperature();
-  emit temperatureUpdated(temperature);
-
-  // Fetch and emit battery percentage
-  float batteryPercentage = m_batteryController->getBatteryPercentage();
-  emit batteryPercentageUpdated(batteryPercentage);
-
-  // Fetch and emit IP address
-  QString ipAddress = fetchIpAddress();
-  emit ipAddressUpdated(ipAddress);
+void SystemManager::shutdown()
+{
+    m_timeTimer.stop();
+    m_statusTimer.stop();
 }
 
-/*!
- * @brief Fetch the WiFi status.
- * @param wifiName The name of the connected WiFi network.
- * @return QString The WiFi status.
- * @details This function fetches the WiFi status and the name of the connected
- * WiFi network.
- */
-QString SystemManager::fetchWifiStatus(QString &wifiName) const {
-  QProcess process;
-  process.start("nmcli", {"-t", "-f", "DEVICE,STATE,CONNECTION", "dev"});
-  process.waitForFinished();
-
-  QString output = process.readAllStandardOutput().trimmed();
-  QStringList lines = output.split('\n');
-
-  for (const QString &line : lines) {
-    if (line.startsWith("wlan")) { // Assuming WiFi interface starts with 'wlan'
-      QStringList parts = line.split(':');
-      if (parts.size() >= 3) {
-        QString state = parts[1];
-        wifiName = parts[2]; // Extract connection name
-
-        if (state == "connected") {
-          return "Connected";
-        } else {
-          wifiName.clear();
-          return "Disconnected";
-        }
-      }
-    }
-  }
-  wifiName.clear();
-  return "No interface detected";
+void SystemManager::updateTime()
+{
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    emit timeUpdated(currentDateTime.toString("dd-MM-yy"),
+                     currentDateTime.toString("HH:mm"),
+                     currentDateTime.toString("dddd"));
 }
 
-/*!
- * @brief Fetch the temperature.
- * @return QString The temperature.
- * @details This function fetches the temperature from the temperature sensor.
- */
-QString SystemManager::fetchTemperature() const {
-  QString tempFile = "/sys/class/hwmon/hwmon0/temp1_input";
-  QFile tempInput(tempFile);
-  if (tempInput.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    QTextStream in(&tempInput);
-    QString tempStr = in.readLine().trimmed();
-    tempInput.close();
-
-    bool ok;
-    double tempMillidegrees = tempStr.toDouble(&ok);
-    if (ok) {
-      return QString("%1°C").arg(tempMillidegrees / 1000.0, 0, 'f', 1);
-    }
-  }
-  return "N/A";
-}
-
-/*!
- * @brief Fetch the IP address.
- * @return QString The IP address.
- * @details This function fetches the IP address of the device.
- */
-QString SystemManager::fetchIpAddress() const {
-  QProcess process;
-  process.start(
-      "sh",
-      {"-c",
-       "ip addr show wlan0 | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1"});
-  process.waitForFinished();
-
-  QString output = process.readAllStandardOutput().trimmed();
-
-  if (!output.isEmpty()) {
-    return output; // Return the extracted IP address
-  }
-  return "No IP address"; // Fallback if no IP address is found
+void SystemManager::updateSystemStatus()
+{
+    QString wifiName;
+    emit wifiStatusUpdated(m_systemInfoProvider->getWifiStatus(wifiName), wifiName);
+    emit temperatureUpdated(m_systemInfoProvider->getTemperature());
+    emit batteryPercentageUpdated(m_batteryController->getBatteryPercentage());
+    emit ipAddressUpdated(m_systemInfoProvider->getIpAddress());
 }

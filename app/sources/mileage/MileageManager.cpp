@@ -17,71 +17,67 @@
 
 #include "MileageManager.hpp"
 #include <QDebug>
+#include "MileageCalculator.hpp"
+#include "MileageFileHandler.hpp"
 
-/*!
- * @brief Construct a new MileageManager object
- *
- * @param filePath The path of the mileage file to manage.
- * @param parent The parent QObject.
- * @details This constructor initializes the MileageManager object with the
- * specified file path.
- */
-MileageManager::MileageManager(const QString &filePath, QObject *parent)
-    : QObject(parent), fileHandler(filePath), totalMileage(0.0) {}
+MileageManager::MileageManager(const QString &filePath,
+                               IMileageCalculator *calculator,
+                               IMileageFileHandler *fileHandler,
+                               QObject *parent)
+    : QObject(parent)
+    , m_calculator(calculator ? calculator : new MileageCalculator())
+    , m_fileHandler(fileHandler ? fileHandler : new MileageFileHandler(filePath))
+    , m_ownCalculator(calculator == nullptr)
+    , m_ownFileHandler(fileHandler == nullptr)
+    , m_totalMileage(0.0)
+{}
 
-MileageManager::~MileageManager() { shutdown(); }
+MileageManager::~MileageManager()
+{
+    shutdown();
 
-/*!
- * @brief Initialize the MileageManager.
- * @details This function initializes the MileageManager by loading the initial
- * mileage from the file and starting the update and persistence timers.
- */
-void MileageManager::initialize() {
-  // Load initial mileage from file
-  totalMileage = fileHandler.readMileage();
-
-  // Configure update timer (every 5 seconds)
-  connect(&updateTimer, &QTimer::timeout, this, &MileageManager::updateMileage);
-  updateTimer.start(1000);
-
-  // Configure persistence timer (every 10 seconds)
-  connect(&persistenceTimer, &QTimer::timeout, this,
-          &MileageManager::saveMileage);
-  persistenceTimer.start(10000);
+    // Only delete instances if they were created internally
+    if (m_ownCalculator) {
+        delete m_calculator;
+    }
+    if (m_ownFileHandler) {
+        delete m_fileHandler;
+    }
 }
 
-/*!
- * @brief Shutdown the MileageManager.
- * @details This function stops the update and persistence timers and saves the
- * mileage to the file.
- */
-void MileageManager::shutdown() {
-  saveMileage(); // Ensure mileage is saved on shutdown
-  updateTimer.stop();
-  persistenceTimer.stop();
+void MileageManager::initialize()
+{
+    m_totalMileage = m_fileHandler->readMileage();
+
+    connect(&m_updateTimer, &QTimer::timeout, this, &MileageManager::updateMileage);
+    m_updateTimer.start(1000);
+
+    connect(&m_persistenceTimer, &QTimer::timeout, this, &MileageManager::saveMileage);
+    m_persistenceTimer.start(10000);
 }
 
-/*!
- * @brief Slot for handling speed updates.
- * @param speed The current speed of the vehicle.
- * @details This function is called when the speed of the vehicle is updated.
- */
-void MileageManager::onSpeedUpdated(float speed) { calculator.addSpeed(speed); }
+void MileageManager::shutdown()
+{
+    saveMileage();
+    m_updateTimer.stop();
+    m_persistenceTimer.stop();
+}
 
-/*!
- * @brief Update the mileage of the vehicle.
- * @details This function calculates the distance traveled by the vehicle and
- * updates the total mileage.
- */
-void MileageManager::updateMileage() {
-  // Calculate distance for the last interval
-  // qDebug() << "Updating mileage";
-  double distance = calculator.calculateDistance();
-  totalMileage += distance;
+void MileageManager::onSpeedUpdated(float speed)
+{
+    m_calculator->addSpeed(speed);
+}
 
-  // Emit updated mileage
-  // qDebug() << "Updating mileage" << totalMileage;
-  emit mileageUpdated(totalMileage);
+void MileageManager::updateMileage()
+{
+    double distance = m_calculator->calculateDistance();
+    m_totalMileage += distance;
+    emit mileageUpdated(m_totalMileage);
+}
+
+void MileageManager::saveMileage()
+{
+    m_fileHandler->writeMileage(m_totalMileage);
 }
 
 /*!

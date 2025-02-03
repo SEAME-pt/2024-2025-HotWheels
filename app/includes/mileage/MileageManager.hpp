@@ -16,10 +16,10 @@
 #ifndef MILEAGEMANAGER_HPP
 #define MILEAGEMANAGER_HPP
 
-#include "MileageCalculator.hpp"
-#include "MileageFileHandler.hpp"
 #include <QObject>
 #include <QTimer>
+#include "IMileageCalculator.hpp"
+#include "IMileageFileHandler.hpp"
 
 /*!
  * @brief Class that manages the mileage of a vehicle.
@@ -29,36 +29,30 @@ class MileageManager : public QObject {
   Q_OBJECT
 
 public:
-  explicit MileageManager(const QString &filePath, QObject *parent = nullptr);
-  ~MileageManager();
-  void initialize();
-  void shutdown();
+    explicit MileageManager(const QString &filePath,
+                            IMileageCalculator *calculator = nullptr,
+                            IMileageFileHandler *fileHandler = nullptr,
+                            QObject *parent = nullptr);
+    ~MileageManager();
+    void initialize();
+    void shutdown();
 
 public slots:
-
-  void onSpeedUpdated(float speed);
-  void updateMileage();
-  void saveMileage();
+    void onSpeedUpdated(float speed);
+    void updateMileage();
+    void saveMileage();
 
 signals:
-  /*!
-   * @brief Signal emitted when the mileage is updated.
-   * @param mileage The new mileage value.
-   */
-  void mileageUpdated(double mileage);
+    void mileageUpdated(double mileage);
 
 private:
-  /*! @brief The calculator that computes the distance based on speed and time
-   * intervals. */
-  MileageCalculator calculator;
-  /*! @brief The file handler to read and write mileage data. */
-  MileageFileHandler fileHandler;
-  /*! @brief A timer that triggers mileage updates every 1 second. */
-  QTimer updateTimer;
-  /*! @brief A timer that triggers saving mileage every 10 seconds. */
-  QTimer persistenceTimer;
-  /*! @brief The current total mileage of the vehicle. */
-  double totalMileage;
+    IMileageCalculator *m_calculator;
+    IMileageFileHandler *m_fileHandler;
+    bool m_ownCalculator;
+    bool m_ownFileHandler;
+    QTimer m_updateTimer;
+    QTimer m_persistenceTimer;
+    double m_totalMileage;
 };
 
 #endif // MILEAGEMANAGER_HPP

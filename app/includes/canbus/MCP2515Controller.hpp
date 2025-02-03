@@ -44,10 +44,6 @@ public:
   CANMessageProcessor &getMessageProcessor() { return messageProcessor; }
   bool isStopReadingFlagSet() const override;
 
-signals:
-  void speedUpdated(float newSpeed);
-  void rpmUpdated(int newRpm);
-
 private:
   /*! @brief Pointer to the ISPIController object. */
   ISPIController *spiController;
