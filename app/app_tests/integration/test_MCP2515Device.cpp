@@ -48,23 +48,19 @@ struct CANFrame {
  */
 class RS485CANTest : public ::testing::Test {
 protected:
-  /*! @brief MCP2515 configurator */
-  MCP2515Configurator *canBusConfigurator;
-  /*! @brief SPI controller */
-  SPIController *spiController;
+  MCP2515Configurator* canBusConfigurator;
+  SPIController* spiController;
 
-  /*!
-   * @brief Set up the test fixture.
-   */
   void SetUp() override {
-    spiController = new SPIController();
-    spiController->openDevice("/dev/spidev0.0");
-    canBusConfigurator = new MCP2515Configurator(*spiController);
+    try {
+      spiController = new SPIController("/dev/spidev0.0");
+      canBusConfigurator = new MCP2515Configurator(spiController);
+      canBusConfigurator->init();
+    } catch (const std::exception& e) {
+      FAIL() << "SetUp() failed with exception: " << e.what();
+    }
   }
 
-  /*!
-   * @brief Tear down the test fixture.
-   */
   void TearDown() override {
     delete canBusConfigurator;
     delete spiController;
