@@ -17,6 +17,7 @@
  */
 
 #include "I2CController.hpp"
+#include <array>
 #include <cstdio>
 #include <fcntl.h>
 #include <linux/i2c-dev.h>

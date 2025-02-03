@@ -75,13 +75,11 @@ void MileageManager::updateMileage()
     emit mileageUpdated(m_totalMileage);
 }
 
-void MileageManager::saveMileage()
-{
-    m_fileHandler->writeMileage(m_totalMileage);
-}
-
 /*!
  * @brief Save the mileage to the file.
  * @details This function saves the total mileage to the file.
  */
-void MileageManager::saveMileage() { fileHandler.writeMileage(totalMileage); }
+void MileageManager::saveMileage()
+{
+    m_fileHandler->writeMileage(m_totalMileage);
+}
