@@ -90,6 +90,7 @@ void ControlsManager::readSharedMemory() {
       std::cout << "Read value from shared memory on car_controls: " << std::boolalpha << *flag << "\n";
 
       setMode(*flag ? DrivingMode::Manual : DrivingMode::Automatic);
+      std::cout << "Current mode: " << (m_currentMode == DrivingMode::Manual ? "Manual" : "Automatic") << "\n";
 
       // Cleanup
       munmap(ptr, sizeof(bool));

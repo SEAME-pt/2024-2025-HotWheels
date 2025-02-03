@@ -34,7 +34,7 @@ ControlsManager::ControlsManager(QObject *parent)
     : QObject(parent) {
 
     // Create shared memory object
-    this->shm_fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
+    this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
     if (shm_fd == -1) {
         std::cerr << "Failed to create shared memory\n";
     }
@@ -52,9 +52,6 @@ ControlsManager::ControlsManager(QObject *parent)
 
     // Write to shared memory (set bool value)
     *(static_cast<bool*>(this->ptr)) = true;
-
-    bool* flag = static_cast<bool*>(this->ptr);
-    std::cout << "Read value from shared memory: " << std::boolalpha << *flag << "\n";
 }
 
 /*!
@@ -80,7 +77,7 @@ ControlsManager::~ControlsManager() {
  *          It updates the current driving mode by calling the setMode() method.
  */
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
-  int shm_fd = shm_open(SHM_NAME, O_RDWR, 0666);
+  int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
   if (shm_fd == -1) {
       std::cerr << "Failed to open shared memory\n";
   }
@@ -90,10 +87,6 @@ void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
   if (ptr == MAP_FAILED) {
       std::cerr << "Failed to map memory\n";
   }
-
-  // Read the bool value
-  bool* flag = static_cast<bool*>(ptr);
-  std::cout << "Read value from shared memory: " << std::boolalpha << *flag << "\n";
 
   // Modify the shared memory
   if (newMode == DrivingMode::Automatic)
