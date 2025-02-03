@@ -49,17 +49,6 @@ public:
    */
   void setMode(DrivingMode mode);
 
-public slots:
-  /*!
-   * Slot for updating the driving mode.
-   *
-   * This slot is invoked when the driving mode changes and calls the `setMode`
-   * function to update the current mode.
-   *
-   * @param newMode The new driving mode.
-   */
-  void drivingModeUpdated(DrivingMode newMode);
-
 signals:
   /*!
    * Signal emitted when the direction of the car is updated.
