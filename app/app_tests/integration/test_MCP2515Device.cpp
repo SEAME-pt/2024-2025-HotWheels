@@ -53,9 +53,9 @@ protected:
 
   void SetUp() override {
     try {
-      spiController = new SPIController("/dev/spidev0.0");
-      canBusConfigurator = new MCP2515Configurator(spiController);
-      canBusConfigurator->init();
+		spiController = new SPIController();
+    	spiController->openDevice("/dev/spidev0.0");
+    	canBusConfigurator = new MCP2515Configurator(*spiController);
     } catch (const std::exception& e) {
       FAIL() << "SetUp() failed with exception: " << e.what();
     }
