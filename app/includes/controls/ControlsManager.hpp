@@ -16,8 +16,11 @@
 #ifndef CONTROLSMANAGER_HPP
 #define CONTROLSMANAGER_HPP
 
-#include "EngineController.hpp"
-#include "JoysticksController.hpp"
+#include "enums.hpp"
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <iostream>
 #include <QObject>
 #include <QThread>
 
@@ -28,20 +31,9 @@
 class ControlsManager : public QObject {
   Q_OBJECT
 
-private:
-  /*! @brief EngineController object. */
-  EngineController m_engineController;
-  /*! @brief JoysticksController object. */
-  JoysticksController *m_manualController;
-  /*! @brief Thread for the manual controller. */
-  QThread *m_manualControllerThread;
-  /*! @brief Current driving mode. */
-  DrivingMode m_currentMode;
-
 public:
   explicit ControlsManager(QObject *parent = nullptr);
   ~ControlsManager();
-  void setMode(DrivingMode mode);
 
 public slots:
   void drivingModeUpdated(DrivingMode newMode);
@@ -49,6 +41,10 @@ public slots:
 signals:
   void directionChanged(CarDirection newDirection);
   void steeringChanged(int newAngle);
+
+private:
+  int shm_fd;
+  void* ptr;
 };
 
 #endif // CONTROLSMANAGER_HPP

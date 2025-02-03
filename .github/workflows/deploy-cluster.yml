@@ -3,14 +3,14 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - add-shared-memory
+    #paths:
+      #- 'app/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'app/**'
+      - add-shared-memory
+    #paths:
+      #- 'app/**'
 
 jobs:
   run-on-self-hosted:
