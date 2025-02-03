@@ -1,42 +1,43 @@
+/*!
+ * @file MileageCalculator.hpp
+ * @brief Definition of the MileageCalculator class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the definition of the MileageCalculator class,
+ * which is responsible for calculating the total distance traveled based on
+ * speed measurements.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef MILEAGECALCULATOR_HPP
 #define MILEAGECALCULATOR_HPP
 
 #include <QElapsedTimer>
 #include <QList>
 
-class MileageCalculator
-{
+/*!
+ * @brief Class that calculates the total distance traveled based on speed
+ * measurements.
+ * @class MileageCalculator
+ */
+class MileageCalculator {
 public:
-    /**
-     * Constructor for the MileageCalculator class.
-     * Initializes the interval timer to track the time between speed measurements.
-     */
-    MileageCalculator();
-
-    /**
-     * Destructor for the MileageCalculator class.
-     * The destructor is implicitly defaulted as no resources need explicit cleanup.
-     */
-    ~MileageCalculator() = default;
-
-    /**
-     * Adds a new speed measurement along with the time interval.
-     * The speed and interval are stored for later calculation of total distance.
-     *
-     * @param speed The speed measurement in kilometers per hour.
-     */
-    void addSpeed(float speed);
-
-    /**
-     * Calculates the total distance traveled based on the stored speed values and their corresponding intervals.
-     *
-     * @return The total distance traveled in meters.
-     */
-    double calculateDistance();
+  MileageCalculator();
+  ~MileageCalculator() = default;
+  void addSpeed(float speed);
+  double calculateDistance();
 
 private:
-    QList<QPair<float, qint64>> m_speedValues; /**< List of speed and interval pairs to store measurements. */
-    QElapsedTimer m_intervalTimer; /**< Timer used to track the time intervals between speed measurements. */
+  /*! @brief List of speed and interval pairs to store measurements. */
+  QList<QPair<float, qint64>> m_speedValues;
+  /*! @brief Timer used to track the time intervals between speed measurements.
+   */
+  QElapsedTimer m_intervalTimer;
 };
 
 #endif // MILEAGECALCULATOR_HPP

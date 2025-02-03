@@ -1,6 +1,22 @@
+/*!
+ * @file SystemManager.hpp
+ * @brief Definition of the SystemManager class.
+ * @version 0.1
+ * @date 2025-01-31
+ * @details This file contains the definition of the SystemManager class, which
+ * is used to manage the system time, status, and battery.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef SYSTEMMANAGER_HPP
 #define SYSTEMMANAGER_HPP
 
+#include "BatteryController.hpp"
 #include <QDateTime>
 #include <QFile>
 #include <QObject>
@@ -8,102 +24,62 @@
 #include <QString>
 #include <QTextStream>
 #include <QTimer>
-#include "BatteryController.hpp"
 
-class SystemManager : public QObject
-{
-    Q_OBJECT
+/*!
+ * @brief Class that manages the system time, status, and battery.
+ * @class SystemManager inherits from QObject
+ */
+class SystemManager : public QObject {
+  Q_OBJECT
 
 public:
-    /**
-     * Constructor for the SystemManager class.
-     * Initializes timers for updating system time and system status.
-     * Sets up communication with the BatteryController.
-     *
-     * @param parent The parent QObject.
-     */
-    explicit SystemManager(QObject *parent = nullptr);
+  explicit SystemManager(QObject *parent = nullptr);
 
 signals:
-    /**
-     * Signal emitted when the system time is updated.
-     *
-     * @param currentDate The current date in "dd-MM-yy" format.
-     * @param currentTime The current time in "HH:mm" format.
-     * @param currentDay The current day of the week.
-     */
-    void timeUpdated(const QString &currentDate,
-                     const QString &currentTime,
-                     const QString &currentDay);
-
-    /**
-     * Signal emitted when the WiFi status is updated.
-     *
-     * @param status The WiFi status (e.g., "Connected", "Disconnected", "No interface detected").
-     * @param wifiName The name of the connected WiFi network, if applicable.
-     */
-    void wifiStatusUpdated(const QString &status, const QString &wifiName);
-
-    /**
-     * Signal emitted when the temperature is updated.
-     *
-     * @param temperature The current temperature (e.g., "25.0°C").
-     */
-    void temperatureUpdated(const QString &temperature);
-
-    /**
-     * Signal emitted when the battery percentage is updated.
-     *
-     * @param batteryPercentage The current battery percentage (0.0 to 100.0).
-     */
-    void batteryPercentageUpdated(float batteryPercentage);
-
-    /**
-     * Signal emitted when the IP address is updated.
-     *
-     * @param ipAddress The current IP address.
-     */
-    void ipAddressUpdated(const QString &ipAddress);
+  /*!
+   * @brief Signal emitted when the system time is updated.
+   * @param currentDate The current date.
+   * @param currentTime The current time.
+   * @param currentDay The current day.
+   */
+  void timeUpdated(const QString &currentDate, const QString &currentTime,
+                   const QString &currentDay);
+  /*!
+   * @brief Signal emitted when the wifi status is updated.
+   * @param status The new wifi status.
+   * @param wifiName The name of the wifi network.
+   */
+  void wifiStatusUpdated(const QString &status, const QString &wifiName);
+  /*!
+   * @brief Signal emitted when the temperature is updated.
+   * @param temperature The new temperature.
+   */
+  void temperatureUpdated(const QString &temperature);
+  /*!
+   * @brief Signal emitted when the battery percentage is updated.
+   * @param batteryPercentage The new battery percentage.
+   */
+  void batteryPercentageUpdated(float batteryPercentage);
+  /*!
+   * @brief Signal emitted when the IP address is updated.
+   * @param ipAddress The new IP address.
+   */
+  void ipAddressUpdated(const QString &ipAddress);
 
 private slots:
-    /**
-     * Slot to update the system time every second.
-     * Emits the updated time, date, and day.
-     */
-    void updateTime();
-
-    /**
-     * Slot to update system status every 5 seconds.
-     * Fetches and emits the WiFi status, temperature, battery percentage, and IP address.
-     */
-    void updateSystemStatus();
+  void updateTime();
+  void updateSystemStatus();
 
 private:
-    /**
-     * Fetches the current WiFi status and network name.
-     *
-     * @param wifiName Reference to a QString to store the WiFi network name.
-     * @return The status of the WiFi connection (e.g., "Connected", "Disconnected").
-     */
-    QString fetchWifiStatus(QString &wifiName) const;
-
-    /**
-     * Fetches the current temperature from a system file.
-     *
-     * @return The temperature in degrees Celsius (e.g., "25.0°C").
-     */
-    QString fetchTemperature() const;
-
-    /**
-     * Fetches the current IP address of the system.
-     *
-     * @return The current IP address (e.g., "192.168.1.2").
-     */
-    QString fetchIpAddress() const;
-
-    QTimer *m_timeTimer;             // Timer to update the system time every second.
-    QTimer *m_statusTimer;           // Timer to update the system status every 5 seconds.
-    BatteryController *m_batteryController;  // BatteryController to fetch battery percentage.
+  QString fetchWifiStatus(QString &wifiName) const;
+  QString fetchTemperature() const;
+  QString fetchIpAddress() const;
+  /*! @brief Timer to update the system time every second. */
+  QTimer *m_timeTimer;
+  /*! @brief Timer to update the system status every 5 seconds. */
+  QTimer *m_statusTimer;
+  /*! @brief BatteryController to fetch battery percentage. */
+  BatteryController *m_batteryController;
 };
 
 #endif // SYSTEMMANAGER_HPP

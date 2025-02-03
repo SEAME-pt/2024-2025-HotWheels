@@ -1,0 +1,9 @@
+version = 1
+
+test_patterns = ["app/app_tests/**"]
+
+[[analyzers]]
+name = "cxx"
+
+[[transformers]]
+name = "clang-format"
