@@ -18,6 +18,7 @@
 
 #include <cstdint>
 #include <stdexcept>
+#include <array>
 
 /*!
  * @brief Class that controls I2C devices.

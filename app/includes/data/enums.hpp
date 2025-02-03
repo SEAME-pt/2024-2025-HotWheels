@@ -29,10 +29,10 @@ enum class ClusterMetrics { Miles, Kilometers };
 /*! @brief Enum class for the car direction. */
 enum class CarDirection { Drive, Reverse, Stop };
 
-Q_DECLARE_METATYPE(const ComponentStatus)
-Q_DECLARE_METATYPE(const DrivingMode)
-Q_DECLARE_METATYPE(const ClusterTheme)
-Q_DECLARE_METATYPE(const ClusterMetrics)
-Q_DECLARE_METATYPE(const CarDirection)
+Q_DECLARE_METATYPE(ComponentStatus)
+Q_DECLARE_METATYPE(DrivingMode)
+Q_DECLARE_METATYPE(ClusterTheme)
+Q_DECLARE_METATYPE(ClusterMetrics)
+Q_DECLARE_METATYPE(CarDirection)
 
 #endif // ENUMS_HPP

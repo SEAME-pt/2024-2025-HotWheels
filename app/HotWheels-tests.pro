@@ -13,19 +13,19 @@ INCLUDEPATH += \
 TESTS_PATH = app_tests
 
 SOURCES += \
-	$$TESTS_PATH/integration/test_MCP2515Controller.cpp \
-	$$TESTS_PATH/unit/canbus/test_SPIController.cpp \
-	$$TESTS_PATH/unit/canbus/test_MCP2515Configurator.cpp \
+	$$TESTS_PATH/integration/test_MCP2515Device.cpp \
 	$$TESTS_PATH/unit/canbus/test_CANMessageProcessor.cpp \
-	$$TESTS_PATH/unit/canbus/test_MCP2515Controller.cpp \
 	$$TESTS_PATH/unit/canbus/test_CanBusManager.cpp \
-  	$$TESTS_PATH/unit/controls/test_PeripheralController.cpp \
-  	sources/controls/PeripheralController.cpp \
-	sources/canbus/MCP2515Configurator.cpp \
+	$$TESTS_PATH/unit/canbus/test_MCP2515Configurator.cpp \
+	$$TESTS_PATH/unit/canbus/test_MCP2515Controller.cpp \
+	$$TESTS_PATH/unit/canbus/test_SPIController.cpp \
 	sources/canbus/CANMessageProcessor.cpp \
+	sources/canbus/CanBusManager.cpp \
+	sources/canbus/MCP2515Configurator.cpp \
 	sources/canbus/MCP2515Controller.cpp \
 	sources/canbus/SPIController.cpp \
-	sources/canbus/CanBusManager.cpp
+  	$$TESTS_PATH/unit/controls/test_PeripheralController.cpp \
+  	sources/controls/PeripheralController.cpp \
 
 HEADERS += \
 	$$TESTS_PATH/mocks/MockSPIController.hpp \
