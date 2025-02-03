@@ -88,6 +88,8 @@ void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
       std::cerr << "Failed to map memory\n";
   }
 
+  bool* flag = static_cast<bool*>(ptr);
+
   // Modify the shared memory
   if (newMode == DrivingMode::Automatic)
     *flag = false;
