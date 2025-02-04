@@ -37,7 +37,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cd app/build-x86
+          cd car_controls/build-x86
           ./car-controls-tests
 
       - name: Deploy executable to target
