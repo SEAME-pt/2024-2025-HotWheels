@@ -103,7 +103,6 @@ void ControlsManager::readSharedMemory() {
   int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
   if (shm_fd == -1) {
       return;
-      //std::cerr << "Failed to open shared memory\n";
   }
   else {
     // Map shared memory
