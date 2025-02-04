@@ -45,6 +45,27 @@ ControlsManager::ControlsManager(QObject *parent)
 
   m_manualControllerThread->start();
 
+  // Create shared memory object
+    this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
+    if (shm_fd == -1) {
+        std::cerr << "Failed to create shared memory\n";
+    }
+
+    // Set size of shared memory
+    if (ftruncate(this->shm_fd, sizeof(bool)) == -1) {
+        std::cerr << "Failed to set size\n";
+    }
+
+    // Map shared memory
+    this->ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, this->shm_fd, 0);
+    if (this->ptr == MAP_FAILED) {
+        std::cerr << "Failed to map memory\n";
+    }
+
+    // Write to shared memory (set bool value)
+    *(static_cast<bool*>(this->ptr)) = true;
+
+
   // **Shared Memory Thread**
   m_sharedMemoryThread = QThread::create([this]() {
     while (m_threadRunning) {

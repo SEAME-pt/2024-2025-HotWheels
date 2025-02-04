@@ -34,7 +34,7 @@ ControlsManager::ControlsManager(QObject *parent)
     : QObject(parent) {
 
     // Create shared memory object
-    this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
+    /* this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
     if (shm_fd == -1) {
         std::cerr << "Failed to create shared memory\n";
     }
@@ -51,7 +51,7 @@ ControlsManager::ControlsManager(QObject *parent)
     }
 
     // Write to shared memory (set bool value)
-    *(static_cast<bool*>(this->ptr)) = true;
+    *(static_cast<bool*>(this->ptr)) = true; */
 }
 
 /*!
