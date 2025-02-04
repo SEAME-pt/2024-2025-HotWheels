@@ -45,6 +45,7 @@ ControlsManager::ControlsManager(QObject *parent)
 
   m_manualControllerThread->start();
 
+  // **Shared Memory Thread**
   m_sharedMemoryThread = QThread::create([this]() {
     while (m_threadRunning) {
       readSharedMemory();
@@ -55,22 +56,6 @@ ControlsManager::ControlsManager(QObject *parent)
   m_sharedMemoryThread->start();
 
   // **Process Monitoring Thread**
-  /* m_processMonitorThread = QThread::create([this]() {
-      QString serviceName = "car_controls";  // Change to actual service name
-
-      while (m_threadRunning) {
-          if (!isServiceRunning(serviceName)) {
-              if (m_currentMode == DrivingMode::Automatic)
-                setMode(DrivingMode::Manual);
-              qDebug() << "The monitored service has unexpectedly stopped!";
-              //break;
-          }
-          QThread::sleep(1);  // Check every 1 second
-      }
-  });
-
-  m_processMonitorThread->start(); */
-
   m_processMonitorThread = QThread::create([this]() {
     QString targetProcessName = "car-controls-qt"; // Change this to actual process name
 
@@ -120,6 +105,7 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
     QProcess process;
     process.start("pgrep", QStringList() << processName);
     process.waitForFinished();
+    std::cout << process.readAllStandardOutput().toStdString() << std::endl;
 
     return !process.readAllStandardOutput().isEmpty();
 }
