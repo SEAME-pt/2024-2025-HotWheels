@@ -82,6 +82,13 @@ ControlsManager::~ControlsManager() {
     delete m_sharedMemoryThread;
   }
 
+  if (m_processMonitorThread) {
+    m_threadRunning = false;
+    m_processMonitorThread->quit();
+    m_processMonitorThread->wait();
+    delete m_processMonitorThread;
+  }
+
   if (m_manualControllerThread) {
     m_manualController->requestStop();
     m_manualControllerThread->quit();
