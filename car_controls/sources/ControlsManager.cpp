@@ -72,7 +72,7 @@ ControlsManager::ControlsManager(QObject *parent)
   m_processMonitorThread->start(); */
 
   m_processMonitorThread = QThread::create([this]() {
-    QString targetProcessName = "HotWheels-app"; // Change this to actual process name
+    QString targetProcessName = "car-controls-qt"; // Change this to actual process name
 
     while (m_threadRunning) {
       if (!isProcessRunning(targetProcessName)) {
@@ -126,11 +126,29 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
 
 void ControlsManager::readSharedMemory() {
   int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
-  if (shm_fd == -1) {
+  /* if (shm_fd == -1) {
       std::cerr << "Failed to open shared memory\n";
   }
   else {
     // Map shared memory
+    void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    if (ptr == MAP_FAILED) {
+        std::cerr << "Failed to map memory\n";
+    }
+    else {
+      // Read the bool value
+      bool* flag = static_cast<bool*>(ptr);
+
+      setMode(*flag ? DrivingMode::Manual : DrivingMode::Automatic);
+
+      // Cleanup
+      munmap(ptr, sizeof(bool));
+    }
+    close(shm_fd);
+  } */
+
+  if (shm_fd != -1)
+  {
     void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
     if (ptr == MAP_FAILED) {
         std::cerr << "Failed to map memory\n";
