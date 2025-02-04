@@ -46,6 +46,8 @@ ControlsManager::ControlsManager(QObject *parent)
   m_manualControllerThread->start();
 
   // Create shared memory object
+    shm_unlink("/joystick_enable"); // Remove any stale shared memory
+
     this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
     if (shm_fd == -1) {
         std::cerr << "Failed to create shared memory\n";
@@ -64,7 +66,6 @@ ControlsManager::ControlsManager(QObject *parent)
 
     // Write to shared memory (set bool value)
     *(static_cast<bool*>(this->ptr)) = true;
-
 
   // **Shared Memory Thread**
   m_sharedMemoryThread = QThread::create([this]() {
@@ -94,6 +95,14 @@ ControlsManager::ControlsManager(QObject *parent)
 }
 
 ControlsManager::~ControlsManager() {
+  // Cleanup of shared memory
+  if (this->ptr)
+    munmap(ptr, sizeof(bool));
+  if (this->shm_fd != -1)
+  {
+    close(this->shm_fd);
+    shm_unlink("/joystick_enable");
+  }
 
   // Stop the shared memory thread safely
   if (m_sharedMemoryThread) {
@@ -130,6 +139,7 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
 void ControlsManager::readSharedMemory() {
   int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
   if (shm_fd == -1) {
+      setMode(DrivingMode::Manual);
       return;
   }
   else {

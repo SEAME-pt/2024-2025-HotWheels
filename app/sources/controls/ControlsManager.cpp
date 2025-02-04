@@ -31,44 +31,14 @@
  * @details This constructor initializes the ControlsManager object.
  */
 ControlsManager::ControlsManager(QObject *parent)
-    : QObject(parent) {
-
-    // Create shared memory object
-    /* this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
-    if (shm_fd == -1) {
-        std::cerr << "Failed to create shared memory\n";
-    }
-
-    // Set size of shared memory
-    if (ftruncate(this->shm_fd, sizeof(bool)) == -1) {
-        std::cerr << "Failed to set size\n";
-    }
-
-    // Map shared memory
-    this->ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, this->shm_fd, 0);
-    if (this->ptr == MAP_FAILED) {
-        std::cerr << "Failed to map memory\n";
-    }
-
-    // Write to shared memory (set bool value)
-    *(static_cast<bool*>(this->ptr)) = true; */
-}
+    : QObject(parent) {}
 
 /*!
  * @brief Destroy the ControlsManager object.
  * @details This destructor stops the joystick controller and waits for the
  * thread to finish.
  */
-ControlsManager::~ControlsManager() {
-  // Cleanup of shared memory
-  if (this->ptr)
-    munmap(ptr, sizeof(bool));
-  if (this->shm_fd != -1)
-  {
-    close(this->shm_fd);
-    shm_unlink(SHM_NAME);
-  }
-}
+ControlsManager::~ControlsManager() {}
 
 /*!
  * @brief Update the driving mode of the vehicle.
