@@ -5,6 +5,7 @@
 #include "JoysticksController.hpp"
 #include <QObject>
 #include <QThread>
+#include <QProcess>
 
 class ControlsManager : public QObject {
   Q_OBJECT
@@ -15,6 +16,7 @@ private:
   QThread *m_manualControllerThread;
   DrivingMode m_currentMode;
   QThread* m_sharedMemoryThread;
+  QThread* m_processMonitorThread;
   std::atomic<bool> m_threadRunning;
 
 public:
@@ -52,6 +54,8 @@ public:
   void setMode(DrivingMode mode);
 
   void  readSharedMemory();
+
+  bool isServiceRunning(const QString &serviceName);
 
 signals:
   /*!

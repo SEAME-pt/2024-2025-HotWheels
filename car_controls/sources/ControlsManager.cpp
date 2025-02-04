@@ -8,7 +8,8 @@
 ControlsManager::ControlsManager(QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
       m_manualController(nullptr), m_manualControllerThread(nullptr),
-      m_currentMode(DrivingMode::Manual), m_sharedMemoryThread(nullptr), m_threadRunning(true) {
+      m_currentMode(DrivingMode::Manual), m_sharedMemoryThread(nullptr),
+      m_processMonitorThread(nullptr), m_threadRunning(true) {
   // Connect EngineController signals to ControlsManager signals
   connect(&m_engineController, &EngineController::directionUpdated, this,
           &ControlsManager::directionChanged);
@@ -52,6 +53,23 @@ ControlsManager::ControlsManager(QObject *parent)
   });
 
   m_sharedMemoryThread->start();
+
+  // **Process Monitoring Thread**
+  m_processMonitorThread = QThread::create([this]() {
+      QString serviceName = "car_controls";  // Change to actual service name
+
+      while (m_threadRunning) {
+          if (!isServiceRunning(serviceName)) {
+              setMode(DrivingMode::Manual);
+              qDebug() << "The monitored service has unexpectedly stopped!";
+              // Handle unexpected service shutdown (restart, alert, etc.)
+              //break;
+          }
+          QThread::sleep(1);  // Check every 2 seconds
+      }
+  });
+
+  m_processMonitorThread->start();
 }
 
 ControlsManager::~ControlsManager() {
@@ -71,6 +89,15 @@ ControlsManager::~ControlsManager() {
   }
 
   delete m_manualController;
+}
+
+bool ControlsManager::isServiceRunning(const QString &serviceName) {
+    QProcess process;
+    process.start("systemctl", QStringList() << "is-active" << serviceName);
+    process.waitForFinished();
+
+    QString output = process.readAllStandardOutput().trimmed();
+    return output == "active";  // Returns true if service is running
 }
 
 void ControlsManager::readSharedMemory() {

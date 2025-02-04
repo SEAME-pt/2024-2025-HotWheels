@@ -3,14 +3,14 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - fix-app-shutdown-controls
+    ##paths:
+      ##- 'car_controls/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - fix-app-shutdown-controls
+    ##paths:
+      ##- 'car_controls/**'
 
 jobs:
   run-on-self-hosted:
