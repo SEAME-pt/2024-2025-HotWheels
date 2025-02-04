@@ -55,7 +55,9 @@ public:
 
   void  readSharedMemory();
 
-  bool isServiceRunning(const QString &serviceName);
+  //bool isServiceRunning(const QString &serviceName);
+
+  bool isProcessRunning(const QString &processName);
 
 signals:
   /*!

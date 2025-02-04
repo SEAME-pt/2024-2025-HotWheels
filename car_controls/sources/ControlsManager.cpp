@@ -55,18 +55,34 @@ ControlsManager::ControlsManager(QObject *parent)
   m_sharedMemoryThread->start();
 
   // **Process Monitoring Thread**
-  m_processMonitorThread = QThread::create([this]() {
+  /* m_processMonitorThread = QThread::create([this]() {
       QString serviceName = "car_controls";  // Change to actual service name
 
       while (m_threadRunning) {
           if (!isServiceRunning(serviceName)) {
-              setMode(DrivingMode::Manual);
+              if (m_currentMode == DrivingMode::Automatic)
+                setMode(DrivingMode::Manual);
               qDebug() << "The monitored service has unexpectedly stopped!";
-              // Handle unexpected service shutdown (restart, alert, etc.)
               //break;
           }
-          QThread::sleep(1);  // Check every 2 seconds
+          QThread::sleep(1);  // Check every 1 second
       }
+  });
+
+  m_processMonitorThread->start(); */
+
+  m_processMonitorThread = QThread::create([this]() {
+    QString targetProcessName = "HotWheels-app"; // Change this to actual process name
+
+    while (m_threadRunning) {
+      if (!isProcessRunning(targetProcessName)) {
+        if (m_currentMode == DrivingMode::Automatic)
+                setMode(DrivingMode::Manual);
+        qDebug() << "The monitored program has unexpectedly shut down!";
+        break;
+      }
+      QThread::sleep(1);  // Check every 1 second
+    }
   });
 
   m_processMonitorThread->start();
@@ -91,13 +107,21 @@ ControlsManager::~ControlsManager() {
   delete m_manualController;
 }
 
-bool ControlsManager::isServiceRunning(const QString &serviceName) {
+/* bool ControlsManager::isServiceRunning(const QString &serviceName) {
     QProcess process;
     process.start("systemctl", QStringList() << "is-active" << serviceName);
     process.waitForFinished();
 
     QString output = process.readAllStandardOutput().trimmed();
     return output == "active";  // Returns true if service is running
+} */
+
+bool ControlsManager::isProcessRunning(const QString &processName) {
+    QProcess process;
+    process.start("pgrep", QStringList() << processName);
+    process.waitForFinished();
+
+    return !process.readAllStandardOutput().isEmpty();
 }
 
 void ControlsManager::readSharedMemory() {
