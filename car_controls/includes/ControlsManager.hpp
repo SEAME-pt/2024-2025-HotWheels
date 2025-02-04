@@ -73,6 +73,10 @@ signals:
    * @param newAngle The new steering angle.
    */
   void steeringChanged(int newAngle);
+
+private:
+  int shm_fd;
+  void* ptr;
 };
 
 #endif // CONTROLSMANAGER_HPP
