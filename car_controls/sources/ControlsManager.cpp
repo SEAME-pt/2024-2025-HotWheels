@@ -64,7 +64,7 @@ ControlsManager::ControlsManager(QObject *parent)
         if (m_currentMode == DrivingMode::Automatic)
                 setMode(DrivingMode::Manual);
         qDebug() << "The monitored program has unexpectedly shut down!";
-        break;
+        //break;
       }
       QThread::sleep(1);  // Check every 1 second
     }
@@ -105,7 +105,6 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
     QProcess process;
     process.start("pgrep", QStringList() << processName);
     process.waitForFinished();
-    std::cout << process.readAllStandardOutput().toStdString() << std::endl;
 
     return !process.readAllStandardOutput().isEmpty();
 }
