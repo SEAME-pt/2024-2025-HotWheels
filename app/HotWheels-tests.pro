@@ -5,7 +5,6 @@ TARGET   = HotWheels-tests
 # Include Paths
 INCLUDEPATH += \
     $$PWD/includes/canbus \
-    $$PWD/includes/controls \
 	$$PWD/includes/data \
 	$$PWD/includes/mileage \
 	$$PWD/includes/utils \
@@ -22,7 +21,6 @@ SOURCES += \
 	$$TESTS_PATH/unit/canbus/test_CANMessageProcessor.cpp \
 	$$TESTS_PATH/unit/canbus/test_MCP2515Controller.cpp \
 	$$TESTS_PATH/unit/canbus/test_CanBusManager.cpp \
-  $$TESTS_PATH/unit/controls/test_PeripheralController.cpp \
   $$TESTS_PATH/unit/data/test_SystemDataManager.cpp \
   $$TESTS_PATH/unit/data/test_VehicleDataManager.cpp \
   $$TESTS_PATH/unit/data/test_ClusterSettingsManager.cpp \
@@ -41,7 +39,6 @@ SOURCES += \
   sources/mileage/MileageFileHandler.cpp \
   sources/mileage/MileageCalculator.cpp \
   sources/mileage/MileageManager.cpp \
-  sources/controls/PeripheralController.cpp \
 	sources/canbus/MCP2515Configurator.cpp \
 	sources/canbus/CANMessageProcessor.cpp \
 	sources/canbus/MCP2515Controller.cpp \
