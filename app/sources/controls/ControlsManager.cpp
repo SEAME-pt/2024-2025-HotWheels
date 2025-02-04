@@ -23,49 +23,35 @@
 #include "ControlsManager.hpp"
 #include <QDebug>
 
+#define SHM_NAME "/joystick_enable"
+
 /*!
  * @brief Construct a new ControlsManager object.
  * @param parent The parent QObject.
  * @details This constructor initializes the ControlsManager object.
  */
 ControlsManager::ControlsManager(QObject *parent)
-    : QObject(parent), m_engineController(0x40, 0x60, this),
-      m_manualController(nullptr), m_manualControllerThread(nullptr),
-      m_currentMode(DrivingMode::Manual) {
-  // Connect EngineController signals to ControlsManager signals
-  connect(&m_engineController, &EngineController::directionUpdated, this,
-          &ControlsManager::directionChanged);
-  connect(&m_engineController, &EngineController::steeringUpdated, this,
-          &ControlsManager::steeringChanged);
+    : QObject(parent) {
 
-  // Initialize the joystick controller with callbacks
-  m_manualController = new JoysticksController(
-      [this](int steering) {
-        if (m_currentMode == DrivingMode::Manual) {
-          m_engineController.set_steering(steering);
-        }
-      },
-      [this](int speed) {
-        if (m_currentMode == DrivingMode::Manual) {
-          m_engineController.set_speed(speed);
-        }
-      });
+    // Create shared memory object
+    this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
+    if (shm_fd == -1) {
+        std::cerr << "Failed to create shared memory\n";
+    }
 
-  if (!m_manualController->init()) {
-    qDebug() << "Failed to initialize joystick controller.";
-    return;
-  }
+    // Set size of shared memory
+    if (ftruncate(this->shm_fd, sizeof(bool)) == -1) {
+        std::cerr << "Failed to set size\n";
+    }
 
-  // Start the joystick controller in its own thread
-  m_manualControllerThread = new QThread(this);
-  m_manualController->moveToThread(m_manualControllerThread);
+    // Map shared memory
+    this->ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, this->shm_fd, 0);
+    if (this->ptr == MAP_FAILED) {
+        std::cerr << "Failed to map memory\n";
+    }
 
-  connect(m_manualControllerThread, &QThread::started, m_manualController,
-          &JoysticksController::processInput);
-  connect(m_manualController, &JoysticksController::finished,
-          m_manualControllerThread, &QThread::quit);
-
-  m_manualControllerThread->start();
+    // Write to shared memory (set bool value)
+    *(static_cast<bool*>(this->ptr)) = true;
 }
 
 /*!
@@ -74,33 +60,14 @@ ControlsManager::ControlsManager(QObject *parent)
  * thread to finish.
  */
 ControlsManager::~ControlsManager() {
-  if (m_manualControllerThread) {
-    m_manualController->requestStop();
-    m_manualControllerThread->quit();
-    m_manualControllerThread->wait();
+  // Cleanup of shared memory
+  if (this->ptr)
+    munmap(ptr, sizeof(bool));
+  if (this->shm_fd != -1)
+  {
+    close(this->shm_fd);
+    shm_unlink(SHM_NAME);
   }
-
-  delete m_manualController;
-}
-
-/*!
- * @brief Set the driving mode.
- * @param mode The new driving mode.
- * @details This slot is called when the driving mode is changed. It updates the
- *          current driving mode and stops the joystick controller if the new
- * mode is Automatic.
- */
-void ControlsManager::setMode(DrivingMode mode) {
-  if (m_currentMode == mode)
-    return;
-
-  m_currentMode = mode;
-
-  // if (m_currentMode == DrivingMode::Automatic) {
-  //     qDebug() << "Switched to Automatic mode (joystick disabled).";
-  // } else if (m_currentMode == DrivingMode::Manual) {
-  //     qDebug() << "Switched to Manual mode (joystick enabled).";
-  // }
 }
 
 /*!
@@ -110,5 +77,26 @@ void ControlsManager::setMode(DrivingMode mode) {
  *          It updates the current driving mode by calling the setMode() method.
  */
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
-  setMode(newMode);
+  int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
+  if (shm_fd == -1) {
+      std::cerr << "Failed to open shared memory\n";
+  }
+
+  // Map shared memory
+  void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+  if (ptr == MAP_FAILED) {
+      std::cerr << "Failed to map memory\n";
+  }
+
+  bool* flag = static_cast<bool*>(ptr);
+
+  // Modify the shared memory
+  if (newMode == DrivingMode::Automatic)
+    *flag = false;
+  else
+    *flag = true;
+
+  // Cleanup
+  munmap(ptr, sizeof(bool));
+  close(shm_fd);
 }

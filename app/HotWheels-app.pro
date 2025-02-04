@@ -27,9 +27,6 @@ SOURCES += \
     sources/canbus/MCP2515Configurator.cpp \
     sources/canbus/CANMessageProcessor.cpp \
     sources/controls/ControlsManager.cpp \
-    sources/controls/JoysticksController.cpp \
-    sources/controls/EngineController.cpp \
-    sources/controls/PeripheralController.cpp \
     sources/display/DisplayManager.cpp \
     sources/system/SystemManager.cpp \
 	sources/system/SystemCommandExecutor.cpp \
@@ -56,10 +53,6 @@ HEADERS += \
     includes/canbus/MCP2515Configurator.hpp \
     includes/canbus/CANMessageProcessor.hpp \
     includes/controls/ControlsManager.hpp \
-    includes/controls/JoysticksController.hpp \
-    includes/controls/EngineController.hpp \
-    includes/controls/PeripheralController.hpp \
-    includes/controls/IPeripheralController.hpp \
     includes/display/DisplayManager.hpp \
     includes/system/SystemManager.hpp \
     includes/system/BatteryController.hpp \
@@ -82,7 +75,7 @@ RESOURCES += \
 	forms/resources.qrc
 
 # Common Libraries
-LIBS += -lSDL2
+LIBS += -lSDL2 -lrt
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {

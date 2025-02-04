@@ -14,6 +14,8 @@ private:
   JoysticksController *m_manualController;
   QThread *m_manualControllerThread;
   DrivingMode m_currentMode;
+  QThread* m_sharedMemoryThread;
+  std::atomic<bool> m_threadRunning;
 
 public:
   /*!
@@ -49,16 +51,7 @@ public:
    */
   void setMode(DrivingMode mode);
 
-public slots:
-  /*!
-   * Slot for updating the driving mode.
-   *
-   * This slot is invoked when the driving mode changes and calls the `setMode`
-   * function to update the current mode.
-   *
-   * @param newMode The new driving mode.
-   */
-  void drivingModeUpdated(DrivingMode newMode);
+  void  readSharedMemory();
 
 signals:
   /*!
