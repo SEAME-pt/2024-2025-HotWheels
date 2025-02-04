@@ -40,6 +40,9 @@ public:
     void initialize();
     void shutdown();
 
+    QTimer &getTimeTimer() { return this->m_timeTimer; };
+    QTimer &getStatusTimer() { return this->m_statusTimer; };
+
 signals:
     void timeUpdated(const QString &currentDate,
                      const QString &currentTime,

@@ -35,6 +35,10 @@ public:
     explicit DataManager(QObject *parent = nullptr);
     ~DataManager();
 
+    VehicleDataManager *getVehicleDataManager() { return this->m_vehicleDataManager; };
+    SystemDataManager *getSystemDataManager() { return this->m_systemDataManager; };
+    ClusterSettingsManager *getClusterSettingsManager() { return this->m_clusterSettingsManager; };
+
 public slots:
     // Forwarded slots from subclasses
     void handleRpmData(int rawRpm);

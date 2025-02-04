@@ -34,7 +34,9 @@ public:
   ~CanBusManager();
   bool initialize();
 
-signals:
+  QThread *getThread() const { return m_thread; }
+
+  signals:
   /*!
    * @brief Signal emitted when the speed is updated.
    * @param newSpeed The new speed value.
