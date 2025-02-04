@@ -8,7 +8,6 @@ TARGET = HotWheels-unit-tests
 # Include Paths
 INCLUDEPATH += \
 	$$PWD/includes/canbus \
-	$$PWD/includes/controls \
 	$$PWD/includes/data \
 	$$PWD/includes/mileage \
 	$$PWD/includes/utils \
@@ -25,7 +24,6 @@ SOURCES += \
 	$$UNIT_TESTS_PATH/canbus/test_CANMessageProcessor.cpp \
 	$$UNIT_TESTS_PATH/canbus/test_MCP2515Controller.cpp \
 	$$UNIT_TESTS_PATH/canbus/test_CanBusManager.cpp \
-	$$UNIT_TESTS_PATH/controls/test_PeripheralController.cpp \
 	$$UNIT_TESTS_PATH/data/test_SystemDataManager.cpp \
 	$$UNIT_TESTS_PATH/data/test_VehicleDataManager.cpp \
 	$$UNIT_TESTS_PATH/data/test_ClusterSettingsManager.cpp \
@@ -40,7 +38,6 @@ SOURCES += \
 HEADERS += \
 	$$MOCKS_PATH/MockSPIController.hpp \
 	$$MOCKS_PATH/MockMCP2515Controller.hpp \
-	$$MOCKS_PATH/MockPeripheralController.hpp \
 	$$MOCKS_PATH/MockFileController.hpp \
 	$$MOCKS_PATH/MockMileageFileHandler.hpp \
 	$$MOCKS_PATH/MockMileageCalculator.hpp \
@@ -59,7 +56,6 @@ SOURCES += \
 	sources/mileage/MileageFileHandler.cpp \
 	sources/mileage/MileageCalculator.cpp \
 	sources/mileage/MileageManager.cpp \
-	sources/controls/PeripheralController.cpp \
 	sources/canbus/MCP2515Configurator.cpp \
 	sources/canbus/CANMessageProcessor.cpp \
 	sources/canbus/MCP2515Controller.cpp \
