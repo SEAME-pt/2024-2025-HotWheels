@@ -12,7 +12,8 @@
  * using Google Test and Google Mock frameworks.
  */
 
-#include "MockPeripheralController.hpp"
+#include "../mocks/MockPeripheralController.hpp"
+#include "tests/mocks/MockPeripheralController.hpp"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 

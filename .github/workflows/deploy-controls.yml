@@ -3,14 +3,14 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - testing-car-controls
+    #paths:
+      #- 'car_controls/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'car_controls/**'
+      - testing-car-controls
+    #paths:
+      #- 'car_controls/**'
 
 jobs:
   run-on-self-hosted:
@@ -26,6 +26,19 @@ jobs:
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
+
+      - name: Build x86 executable for testing
+        run: |
+          cd car_controls
+          mkdir build-x86
+          cd build-x86
+          qmake ../root.pro
+          make -j$(nproc)
+
+      - name: Run tests
+        run: |
+          cd app/build-x86
+          ./car-controls-tests
 
       - name: Deploy executable to target
         env:
