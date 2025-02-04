@@ -57,7 +57,7 @@ ControlsManager::ControlsManager(QObject *parent)
 
   // **Process Monitoring Thread**
   m_processMonitorThread = QThread::create([this]() {
-    QString targetProcessName = "car-controls-qt"; // Change this to actual process name
+    QString targetProcessName = "HotWheels-app"; // Change this to actual process name
 
     while (m_threadRunning) {
       if (!isProcessRunning(targetProcessName)) {
