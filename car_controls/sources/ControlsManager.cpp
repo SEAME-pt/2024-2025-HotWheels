@@ -8,7 +8,8 @@
 ControlsManager::ControlsManager(QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
       m_manualController(nullptr), m_manualControllerThread(nullptr),
-      m_currentMode(DrivingMode::Manual), m_sharedMemoryThread(nullptr), m_threadRunning(true) {
+      m_currentMode(DrivingMode::Manual), m_sharedMemoryThread(nullptr),
+      m_processMonitorThread(nullptr), m_threadRunning(true) {
   // Connect EngineController signals to ControlsManager signals
   connect(&m_engineController, &EngineController::directionUpdated, this,
           &ControlsManager::directionChanged);
@@ -44,6 +45,7 @@ ControlsManager::ControlsManager(QObject *parent)
 
   m_manualControllerThread->start();
 
+  // **Shared Memory Thread**
   m_sharedMemoryThread = QThread::create([this]() {
     while (m_threadRunning) {
       readSharedMemory();
@@ -52,6 +54,22 @@ ControlsManager::ControlsManager(QObject *parent)
   });
 
   m_sharedMemoryThread->start();
+
+  // **Process Monitoring Thread**
+  m_processMonitorThread = QThread::create([this]() {
+    QString targetProcessName = "HotWheels-app"; // Change this to actual process name
+
+    while (m_threadRunning) {
+      if (!isProcessRunning(targetProcessName)) {
+        if (m_currentMode == DrivingMode::Automatic)
+                setMode(DrivingMode::Manual);
+        qDebug() << "Cluster is not running.";
+      }
+      QThread::sleep(1);  // Check every 1 second
+    }
+  });
+
+  m_processMonitorThread->start();
 }
 
 ControlsManager::~ControlsManager() {
@@ -73,10 +91,18 @@ ControlsManager::~ControlsManager() {
   delete m_manualController;
 }
 
+bool ControlsManager::isProcessRunning(const QString &processName) {
+    QProcess process;
+    process.start("pgrep", QStringList() << processName);
+    process.waitForFinished();
+
+    return !process.readAllStandardOutput().isEmpty();
+}
+
 void ControlsManager::readSharedMemory() {
   int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
   if (shm_fd == -1) {
-      std::cerr << "Failed to open shared memory\n";
+      return;
   }
   else {
     // Map shared memory

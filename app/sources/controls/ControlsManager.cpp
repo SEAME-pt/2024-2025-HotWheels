@@ -79,24 +79,27 @@ ControlsManager::~ControlsManager() {
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
   int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
   if (shm_fd == -1) {
-      std::cerr << "Failed to open shared memory\n";
+      return;
   }
+  else {
+    // Map shared memory
+    void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    if (ptr == MAP_FAILED) {
+        std::cerr << "Failed to map memory\n";
+    }
+    else {
+      // Read the bool value
+      bool* flag = static_cast<bool*>(ptr);
 
-  // Map shared memory
-  void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-  if (ptr == MAP_FAILED) {
-      std::cerr << "Failed to map memory\n";
+      // Modify the shared memory
+      if (newMode == DrivingMode::Automatic)
+        *flag = false;
+      else
+        *flag = true;
+
+      // Cleanup
+      munmap(ptr, sizeof(bool));
+    }
+    close(shm_fd);
   }
-
-  bool* flag = static_cast<bool*>(ptr);
-
-  // Modify the shared memory
-  if (newMode == DrivingMode::Automatic)
-    *flag = false;
-  else
-    *flag = true;
-
-  // Cleanup
-  munmap(ptr, sizeof(bool));
-  close(shm_fd);
 }
