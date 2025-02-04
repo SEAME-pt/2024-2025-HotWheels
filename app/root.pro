@@ -6,11 +6,18 @@ BASE_DIR = $$PWD
 
 # Subprojects
 TEMPLATE = subdirs
-SUBDIRS += app_target tests_target
+SUBDIRS += \
+	app_target \
+	unit_tests_target \
+	integration_tests_target
 
 # App Subproject
 app_target.file = $$BASE_DIR/HotWheels-app.pro
 
-# Tests Subproject
-tests_target.file = $$BASE_DIR/HotWheels-tests.pro
-tests_target.depends = app_target
+# Unit Tests Subproject
+unit_tests_target.file = $$BASE_DIR/HotWheels-unit-tests.pro
+unit_tests_target.depends = app_target
+
+# Integration Tests Subproject
+integration_tests_target.file = $$BASE_DIR/HotWheels-integration-tests.pro
+integration_tests_target.depends = app_target

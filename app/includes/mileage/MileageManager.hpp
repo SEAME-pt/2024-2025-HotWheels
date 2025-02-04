@@ -37,6 +37,8 @@ public:
     void initialize();
     void shutdown();
 
+    double getTotalMileage() const { return this->m_totalMileage; };
+
 public slots:
     void onSpeedUpdated(float speed);
     void updateMileage();

@@ -106,11 +106,10 @@ bool MCP2515Controller::init() {
  * @details This function starts reading CAN messages from the MCP2515.
  */
 void MCP2515Controller::processReading() {
-  stopReadingFlag = false;
   while (!stopReadingFlag) {
     uint16_t frameID;
     std::vector<uint8_t> data;
-
+    // qDebug() << "In loop" << stopReadingFlag;
     try {
       data = configurator.readCANMessage(frameID);
       if (!data.empty()) {
@@ -118,6 +117,10 @@ void MCP2515Controller::processReading() {
       }
     } catch (const std::exception &e) {
       qDebug() << "Error while processing CAN message:" << e.what();
+    }
+
+    if (stopReadingFlag) {
+        break;
     }
 
     QThread::msleep(10);

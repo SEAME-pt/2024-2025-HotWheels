@@ -38,7 +38,7 @@ jobs:
       - name: Run tests
         run: |
           cd app/build-x86
-          ./HotWheels-tests
+          ./HotWheels-unit-tests
 
       - name: Deploy executable to target
         env:
