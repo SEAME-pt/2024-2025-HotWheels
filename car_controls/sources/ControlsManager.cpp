@@ -63,8 +63,7 @@ ControlsManager::ControlsManager(QObject *parent)
       if (!isProcessRunning(targetProcessName)) {
         if (m_currentMode == DrivingMode::Automatic)
                 setMode(DrivingMode::Manual);
-        qDebug() << "The monitored program has unexpectedly shut down!";
-        //break;
+        qDebug() << "Cluster is not running.";
       }
       QThread::sleep(1);  // Check every 1 second
     }
@@ -92,15 +91,6 @@ ControlsManager::~ControlsManager() {
   delete m_manualController;
 }
 
-/* bool ControlsManager::isServiceRunning(const QString &serviceName) {
-    QProcess process;
-    process.start("systemctl", QStringList() << "is-active" << serviceName);
-    process.waitForFinished();
-
-    QString output = process.readAllStandardOutput().trimmed();
-    return output == "active";  // Returns true if service is running
-} */
-
 bool ControlsManager::isProcessRunning(const QString &processName) {
     QProcess process;
     process.start("pgrep", QStringList() << processName);
@@ -112,7 +102,8 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
 void ControlsManager::readSharedMemory() {
   int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
   if (shm_fd == -1) {
-      std::cerr << "Failed to open shared memory\n";
+      return;
+      //std::cerr << "Failed to open shared memory\n";
   }
   else {
     // Map shared memory
