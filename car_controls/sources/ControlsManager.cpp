@@ -112,6 +112,7 @@ ControlsManager::~ControlsManager() {
     delete m_sharedMemoryThread;
   }
 
+  // Stop the process monitoring thread safely
   if (m_processMonitorThread) {
     m_threadRunning = false;
     m_processMonitorThread->quit();
@@ -119,6 +120,7 @@ ControlsManager::~ControlsManager() {
     delete m_processMonitorThread;
   }
 
+  // Stop the controller thread safely
   if (m_manualControllerThread) {
     m_manualController->requestStop();
     m_manualControllerThread->quit();

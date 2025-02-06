@@ -1,0 +1,3 @@
+g++ -std=c++11 -I . -o server server.cpp Joystick.cpp -lIce -lpthread
+g++ -std=c++11 -I . -o client client.cpp Joystick.cpp -lIce -lpthread
+
