@@ -15,6 +15,12 @@ SRCS_CLIENT = client.cpp Joystick.cpp
 OUT_SERVER = server
 OUT_CLIENT = client
 
+# Ice file
+ICE_FILE = Joystick.ice
+
+#Created Ice files
+ICE_FILES = Joystick.cpp Joystick.h
+
 # Default target to build both server and client
 all: $(OUT_SERVER) $(OUT_CLIENT)
 
@@ -28,7 +34,10 @@ $(OUT_CLIENT): $(SRCS_CLIENT)
 
 # Clean rule to remove compiled files
 clean:
-	rm -f $(OUT_SERVER) $(OUT_CLIENT)
+	rm -f $(OUT_SERVER) $(OUT_CLIENT) $(ICE_FILES)
+
+ice:
+	slice2cpp -I /usr/include/Ice $(ICE_FILE)
 
 # Phony targets
 .PHONY: all clean
