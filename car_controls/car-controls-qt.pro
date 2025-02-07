@@ -8,6 +8,9 @@ INCLUDEPATH += \
 
 # Application Sources
 SOURCES += \
+    middleware/CarDataI.cpp \
+    middleware/ClientThread.cpp \
+    middleware/Joystick.cpp \
     sources/ControlsManager.cpp \
     sources/JoysticksController.cpp \
     sources/EngineController.cpp \
@@ -15,6 +18,9 @@ SOURCES += \
     sources/main.cpp
 
 HEADERS += \
+    middleware/CarDataI.hpp \
+    middleware/ClientThread.hpp \
+    middleware/Joystick.h \
     includes/ControlsManager.hpp \
     includes/JoysticksController.hpp \
     includes/EngineController.hpp \
@@ -23,7 +29,7 @@ HEADERS += \
     includes/enums.hpp
 
 # Common Libraries
-LIBS += -lSDL2 -lrt
+LIBS += -lSDL2 -lrt -lIce
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {

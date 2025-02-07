@@ -1,9 +1,7 @@
 #include "ControlsManager.hpp"
 #include <QCoreApplication>
-#include <atomic>
 #include <csignal>
 #include <iostream>
-#include <thread>
 
 volatile bool keepRunning = true;
 
@@ -19,7 +17,7 @@ int main(int argc, char *argv[]) {
 
   try {
     ControlsManager *m_controlsManager;
-    m_controlsManager = new ControlsManager();
+    m_controlsManager = new ControlsManager(argc, argv);
     return a.exec();
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << std::endl;

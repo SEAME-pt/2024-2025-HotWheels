@@ -2,19 +2,13 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include <iostream>
 #include <QDebug>
 
-ControlsManager::ControlsManager(QObject *parent)
+ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
-      m_manualController(nullptr), m_manualControllerThread(nullptr),
-      m_currentMode(DrivingMode::Manual), m_sharedMemoryThread(nullptr),
-      m_processMonitorThread(nullptr), m_threadRunning(true) {
-  // Connect EngineController signals to ControlsManager signals
-  connect(&m_engineController, &EngineController::directionUpdated, this,
-          &ControlsManager::directionChanged);
-  connect(&m_engineController, &EngineController::steeringUpdated, this,
-          &ControlsManager::steeringChanged);
+      m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
+      m_manualControllerThread(nullptr), m_processMonitorThread(nullptr),
+      m_carDataThread(nullptr), m_clientThread(nullptr), m_threadRunning(true) {
 
   // Initialize the joystick controller with callbacks
   m_manualController = new JoysticksController(
@@ -34,6 +28,7 @@ ControlsManager::ControlsManager(QObject *parent)
     return;
   }
 
+
   // Start the joystick controller in its own thread
   m_manualControllerThread = new QThread(this);
   m_manualController->moveToThread(m_manualControllerThread);
@@ -45,37 +40,23 @@ ControlsManager::ControlsManager(QObject *parent)
 
   m_manualControllerThread->start();
 
-  // Create shared memory object
-    shm_unlink("/joystick_enable"); // Remove any stale shared memory
 
-    this->shm_fd = shm_open("/joystick_enable", O_CREAT | O_RDWR, 0666);
-    if (shm_fd == -1) {
-        std::cerr << "Failed to create shared memory\n";
-    }
-
-    // Set size of shared memory
-    if (ftruncate(this->shm_fd, sizeof(bool)) == -1) {
-        std::cerr << "Failed to set size\n";
-    }
-
-    // Map shared memory
-    this->ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, this->shm_fd, 0);
-    if (this->ptr == MAP_FAILED) {
-        std::cerr << "Failed to map memory\n";
-    }
-
-    // Write to shared memory (set bool value)
-    *(static_cast<bool*>(this->ptr)) = true;
-
-  // **Shared Memory Thread**
-  m_sharedMemoryThread = QThread::create([this]() {
+  // Server Middleware Thread
+  m_carDataThread = QThread::create([this, argc, argv]() {
     while (m_threadRunning) {
-      readSharedMemory();
-      QThread::msleep(50);  // Adjust delay as needed
+      m_carDataObject->runServer(argc, argv);
     }
   });
+  m_carDataThread->start();
 
-  m_sharedMemoryThread->start();
+
+  // Client Middleware Interface Therad
+  m_clientObject = new ClientThread();
+  m_clientThread = QThread::create([this, argc, argv]() {
+      m_clientObject->runClient(argc, argv);
+  });
+  m_clientThread->start();
+
 
   // **Process Monitoring Thread**
   m_processMonitorThread = QThread::create([this]() {
@@ -95,21 +76,19 @@ ControlsManager::ControlsManager(QObject *parent)
 }
 
 ControlsManager::~ControlsManager() {
-  // Cleanup of shared memory
-  if (this->ptr)
-    munmap(ptr, sizeof(bool));
-  if (this->shm_fd != -1)
-  {
-    close(this->shm_fd);
-    shm_unlink("/joystick_enable");
+  // Stop the client thread safely
+  if (m_clientThread) {
+    m_clientThread->quit();
+    m_clientThread->wait();
+    delete m_clientThread;
   }
 
   // Stop the shared memory thread safely
-  if (m_sharedMemoryThread) {
+  if (m_carDataThread) {
     m_threadRunning = false;
-    m_sharedMemoryThread->quit();
-    m_sharedMemoryThread->wait();
-    delete m_sharedMemoryThread;
+    m_carDataThread->quit();
+    m_carDataThread->wait();
+    delete m_carDataThread;
   }
 
   // Stop the process monitoring thread safely
@@ -127,6 +106,7 @@ ControlsManager::~ControlsManager() {
     m_manualControllerThread->wait();
   }
 
+  delete m_clientObject;
   delete m_manualController;
 }
 
@@ -138,28 +118,13 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
     return !process.readAllStandardOutput().isEmpty();
 }
 
-void ControlsManager::readSharedMemory() {
-  int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
-  if (shm_fd == -1) {
-      setMode(DrivingMode::Manual);
-      return;
-  }
-  else {
-    // Map shared memory
-    void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-    if (ptr == MAP_FAILED) {
-        std::cerr << "Failed to map memory\n";
-    }
-    else {
-      // Read the bool value
-      bool* flag = static_cast<bool*>(ptr);
-
-      setMode(*flag ? DrivingMode::Manual : DrivingMode::Automatic);
-
-      // Cleanup
-      munmap(ptr, sizeof(bool));
-    }
-    close(shm_fd);
+void ControlsManager::readJoystickEnable()
+{
+  bool joystickData = m_clientObject->getJoystickValue();
+  if (joystickData) {
+    setMode(DrivingMode::Manual);
+  } else {
+    setMode(DrivingMode::Automatic);
   }
 }
 

@@ -3,6 +3,8 @@
 
 #include "EngineController.hpp"
 #include "JoysticksController.hpp"
+#include "../middleware/ClientThread.hpp"
+#include "../middleware/CarDataI.hpp"
 #include <QObject>
 #include <QThread>
 #include <QProcess>
@@ -13,70 +15,25 @@ class ControlsManager : public QObject {
 private:
   EngineController m_engineController;
   JoysticksController *m_manualController;
-  QThread *m_manualControllerThread;
   DrivingMode m_currentMode;
-  QThread* m_sharedMemoryThread;
+  ClientThread *m_clientObject;
+  Data::CarDataI *m_carDataObject;
+
+  QThread *m_manualControllerThread;
   QThread* m_processMonitorThread;
+  QThread* m_carDataThread;
+  QThread* m_clientThread;
+
   std::atomic<bool> m_threadRunning;
 
 public:
-  /*!
-   * Constructs a ControlsManager instance, initializing the engine controller,
-   * joystick controller, and setting up the necessary connections and threads.
-   *
-   * This constructor sets up the EngineController signals to be connected to
-   * the ControlsManager signals. It initializes the JoysticksController with
-   * callbacks for steering and speed. It also initializes and starts the
-   * joystick controller in a separate thread.
-   *
-   * @param parent The parent QObject for this instance.
-   */
-  explicit ControlsManager(QObject *parent = nullptr);
-
-  /*!
-   * Destroys the ControlsManager instance, ensuring that the joystick
-   * controller and its thread are properly cleaned up.
-   *
-   * This destructor stops the joystick controller, waits for the thread to
-   * finish, and deletes the JoysticksController object.
-   */
+  explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);
   ~ControlsManager();
 
-  /*!
-   * Sets the current driving mode.
-   *
-   * This function updates the `m_currentMode` member variable. If the mode has
-   * not changed, the function returns early. It is called to switch between
-   * Manual and Automatic modes.
-   *
-   * @param mode The new driving mode to set.
-   */
   void setMode(DrivingMode mode);
-
-  void  readSharedMemory();
-
-  //bool isServiceRunning(const QString &serviceName);
-
+  void readJoystickEnable();
   bool isProcessRunning(const QString &processName);
-
-signals:
-  /*!
-   * Signal emitted when the direction of the car is updated.
-   *
-   * @param newDirection The new direction of the car.
-   */
-  void directionChanged(CarDirection newDirection);
-
-  /*!
-   * Signal emitted when the steering angle of the car is updated.
-   *
-   * @param newAngle The new steering angle.
-   */
-  void steeringChanged(int newAngle);
-
-private:
-  int shm_fd;
-  void* ptr;
+  //bool isServiceRunning(const QString &serviceName);
 };
 
 #endif // CONTROLSMANAGER_HPP

@@ -8,8 +8,8 @@ CXXFLAGS = -std=c++11 -I.
 LIBS = -lIce -lpthread
 
 # Source files
-SRCS_SERVER = server.cpp Joystick.cpp
-SRCS_CLIENT = client.cpp Joystick.cpp
+SRCS_SERVER = server.cpp CarDataI.cpp Joystick.cpp
+SRCS_CLIENT = client.cpp ClientThread.cpp Joystick.cpp
 
 # Output files (executables)
 OUT_SERVER = server
