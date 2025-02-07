@@ -5,8 +5,9 @@ CONFIG += c++17 cmdline
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
     $$PWD/includes \
-    /usr/include/Ice \
-    /usr/include/IceUtil
+    /home/michel/qt***/sysroot/usr/include/Ice \
+    /home/michel/qt***/sysroot/usr/include/IceUtil
+
 
 # Application Sources
 SOURCES += \
