@@ -6,7 +6,7 @@ CONFIG += c++17 cmdline
 INCLUDEPATH += \
     $$PWD/includes \
     /usr/include/Ice \
-    /usr/include/IceUtil
+    /usr/include/IceUtil \
     $$[QT_SYSROOT]/usr/include/Ice \
     $$[QT_SYSROOT]/usr/include/IceUtil
 
