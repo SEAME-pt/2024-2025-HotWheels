@@ -39,6 +39,6 @@ LIBS += -lSDL2 -lrt -lIce
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {
     LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
-    LIBS += -L/usr/lib -lIce
+    LIBS += -L/home/michel/qt***/sysroot/usr/lib -lIce
     INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
 }
