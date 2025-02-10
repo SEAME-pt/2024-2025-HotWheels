@@ -19,9 +19,9 @@ INCLUDEPATH += \
 
 # Application Sources
 SOURCES += \
-	../car_controls/middleware/CarDataI.cpp \
-    ../car_controls/middleware/ClientThread.cpp \
-    ../car_controls/middleware/Joystick.cpp \
+	../ZeroC/CarDataI.cpp \
+    ../ZeroC/ClientThread.cpp \
+    ../ZeroC/Joystick.cpp \
     sources/main/main.cpp \
     sources/main/CarManager.cpp \
     sources/data/DataManager.cpp \
@@ -46,9 +46,9 @@ SOURCES += \
 	sources/utils/FileController.cpp
 
 HEADERS += \
-	../car_controls/middleware/CarDataI.hpp \
-    ../car_controls/middleware/ClientThread.hpp \
-    ../car_controls/middleware/Joystick.h \
+	../ZeroC/CarDataI.hpp \
+    ../ZeroC/ClientThread.hpp \
+    ../ZeroC/Joystick.h \
     includes/main/CarManager.hpp \
     includes/data/DataManager.hpp \
 	includes/data/SystemDataManager.hpp \
