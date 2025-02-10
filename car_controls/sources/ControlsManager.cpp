@@ -41,10 +41,13 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
   m_manualControllerThread->start();
 
-  // Initialize m_carDataObject before creating the thread
+
+  // **Server Middleware Thread**
+
+  // Run thread to start the server
   m_carDataObject = new Data::CarDataI();
 
-  // Server Middleware Thread
+  // Initialize m_carDataObject before creating the thread
   m_carDataThread = QThread::create([this, argc, argv]() {
     while (m_threadRunning) {
       m_carDataObject->runServer(argc, argv);
@@ -53,12 +56,12 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
   m_carDataThread->start();
 
 
-  // Client Middleware Interface Therad
-  /* m_clientObject = new ClientThread();
+  // **Client Middleware Interface Thread**
+  m_clientObject = new ClientThread();
   m_clientThread = QThread::create([this, argc, argv]() {
       m_clientObject->runClient(argc, argv);
   });
-  m_clientThread->start(); */
+  m_clientThread->start();
 
 
   // **Process Monitoring Thread**
@@ -109,6 +112,7 @@ ControlsManager::~ControlsManager() {
     m_manualControllerThread->wait();
   }
 
+  delete m_carDataObject;
   delete m_clientObject;
   delete m_manualController;
 }
