@@ -21,6 +21,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <iostream>
+#include "../car_controls/middleware/ClientThread.hpp"
 #include <QObject>
 #include <QThread>
 
@@ -43,8 +44,9 @@ signals:
   void steeringChanged(int newAngle);
 
 private:
-  int shm_fd;
-  void* ptr;
+  ClientThread *m_clientObject;
+
+  QThread* m_clientThread;
 };
 
 #endif // CONTROLSMANAGER_HPP

@@ -31,7 +31,16 @@
  * @details This constructor initializes the ControlsManager object.
  */
 ControlsManager::ControlsManager(QObject *parent)
-    : QObject(parent) {}
+    : QObject(parent), m_clientObject(nullptr),
+    m_clientThread(nullptr) {
+
+  // **Client Middleware Interface Thread**
+  m_clientObject = new ClientThread();
+  m_clientThread = QThread::create([this, argc, argv]() {
+      m_clientObject->runClient(argc, argv);
+  });
+  m_clientThread->start();
+}
 
 /*!
  * @brief Destroy the ControlsManager object.
@@ -47,29 +56,12 @@ ControlsManager::~ControlsManager() {}
  *          It updates the current driving mode by calling the setMode() method.
  */
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
-  int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
-  if (shm_fd == -1) {
-      return;
+  if (newMode == DrivingMode::Automatic) {
+    m_clientObject->setJoystickValue(false);
+    qDebug() << "Automatic mode enabled.";
   }
   else {
-    // Map shared memory
-    void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-    if (ptr == MAP_FAILED) {
-        std::cerr << "Failed to map memory\n";
-    }
-    else {
-      // Read the bool value
-      bool* flag = static_cast<bool*>(ptr);
-
-      // Modify the shared memory
-      if (newMode == DrivingMode::Automatic)
-        *flag = false;
-      else
-        *flag = true;
-
-      // Cleanup
-      munmap(ptr, sizeof(bool));
-    }
-    close(shm_fd);
+    m_clientObject->setJoystickValue(true);
+    qDebug() << "Manual mode enabled.";
   }
 }
