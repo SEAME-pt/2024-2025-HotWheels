@@ -41,6 +41,8 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
   m_manualControllerThread->start();
 
+  // Initialize m_carDataObject before creating the thread
+  m_carDataObject = new CarDataI();
 
   // Server Middleware Thread
   m_carDataThread = QThread::create([this, argc, argv]() {
