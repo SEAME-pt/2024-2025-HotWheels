@@ -75,7 +75,10 @@ RESOURCES += \
 	forms/resources.qrc
 
 # Common Libraries
-LIBS += -lSDL2 -lrt
+LIBS += -lSDL2 -lrt -lIce
+
+# Add explicit path for Ice library
+LIBS += -L/home/michel/qt***/sysroot/usr/lib/aarch64-linux-gnu -lIce
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {
