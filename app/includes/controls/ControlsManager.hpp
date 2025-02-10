@@ -21,7 +21,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <iostream>
-#include "../car_controls/middleware/ClientThread.hpp"
+#include "../ZeroC/ClientThread.hpp"
 #include <QObject>
 #include <QThread>
 

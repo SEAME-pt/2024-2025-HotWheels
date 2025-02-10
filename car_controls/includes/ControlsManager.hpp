@@ -3,8 +3,8 @@
 
 #include "EngineController.hpp"
 #include "JoysticksController.hpp"
-#include "../middleware/ClientThread.hpp"
-#include "../middleware/CarDataI.hpp"
+#include "../ZeroC/ClientThread.hpp"
+#include "../ZeroC/CarDataI.hpp"
 #include <QObject>
 #include <QThread>
 #include <QProcess>
