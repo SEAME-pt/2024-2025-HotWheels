@@ -33,7 +33,7 @@ class ControlsManager : public QObject {
   Q_OBJECT
 
 public:
-  explicit ControlsManager(QObject *parent = nullptr);
+  explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);
   ~ControlsManager();
 
 public slots:

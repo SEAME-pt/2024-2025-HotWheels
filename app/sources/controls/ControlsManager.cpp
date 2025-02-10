@@ -30,7 +30,7 @@
  * @param parent The parent QObject.
  * @details This constructor initializes the ControlsManager object.
  */
-ControlsManager::ControlsManager(QObject *parent)
+ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
     : QObject(parent), m_clientObject(nullptr),
     m_clientThread(nullptr) {
 

@@ -26,12 +26,12 @@
  * @details This constructor initializes the CarManager object with the
  * specified parent.
  */
-CarManager::CarManager(QWidget *parent)
+CarManager::CarManager(int argc, char **argv, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CarManager)
     , m_dataManager(new DataManager())
     , m_canBusManager(new CanBusManager("/dev/spidev0.0"))
-    , m_controlsManager(new ControlsManager())
+    , m_controlsManager(new ControlsManager(argc, argv))
     , m_displayManager(nullptr)
     , m_systemManager(new SystemManager())
     , m_mileageManager(new MileageManager("/home/hotweels/app_data/mileage.json"))

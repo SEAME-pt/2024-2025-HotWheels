@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
 
   QApplication a(argc, argv);
 
-  CarManager w;
+  CarManager w(argc, argv);
 
   w.showFullScreen();
 
