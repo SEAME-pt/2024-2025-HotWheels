@@ -146,10 +146,10 @@ void ControlsManager::readJoystickEnable()
   bool joystickData = m_clientObject->getJoystickValue();
   if (joystickData) {
     setMode(DrivingMode::Manual);
-    qdebug() << "JManual mode enabled.";
+    qDebug() << "JManual mode enabled.";
   } else {
     setMode(DrivingMode::Automatic);
-    qdebug() << "Automatic mode enabled.";
+    qDebug() << "Automatic mode enabled.";
   }
 }
 
