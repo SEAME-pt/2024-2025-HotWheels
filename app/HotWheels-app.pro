@@ -11,10 +11,17 @@ INCLUDEPATH += \
 	$$PWD/includes/display \
 	$$PWD/includes/system \
 	$$PWD/includes/mileage \
-	$$PWD/includes/utils
+	$$PWD/includes/utils \
+	/usr/include/Ice \
+    /usr/include/IceUtil \
+	$$[QT_SYSROOT]/usr/include/Ice \
+    $$[QT_SYSROOT]/usr/include/IceUtil
 
 # Application Sources
 SOURCES += \
+	../car_controls/middleware/CarDataI.cpp \
+    ../car_controls/middleware/ClientThread.cpp \
+    ../car_controls/middleware/Joystick.cpp \
     sources/main/main.cpp \
     sources/main/CarManager.cpp \
     sources/data/DataManager.cpp \
@@ -39,6 +46,9 @@ SOURCES += \
 	sources/utils/FileController.cpp
 
 HEADERS += \
+	../car_controls/middleware/CarDataI.hpp \
+    ../car_controls/middleware/ClientThread.hpp \
+    ../car_controls/middleware/Joystick.h \
     includes/main/CarManager.hpp \
     includes/data/DataManager.hpp \
 	includes/data/SystemDataManager.hpp \
