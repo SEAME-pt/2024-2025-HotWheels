@@ -9,7 +9,8 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
       m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
       m_clientObject(nullptr), m_carDataObject(nullptr),
       m_manualControllerThread(nullptr), m_processMonitorThread(nullptr),
-      m_carDataThread(nullptr), m_clientThread(nullptr), m_threadRunning(true) {
+      m_carDataThread(nullptr), m_clientThread(nullptr),
+      m_joystickControlThread(nullptr), m_threadRunning(true) {
 
   // Initialize the joystick controller with callbacks
   m_manualController = new JoysticksController(
@@ -77,8 +78,17 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
       QThread::sleep(1);  // Check every 1 second
     }
   });
-
   m_processMonitorThread->start();
+
+
+  // **Joystick Control Thread**
+  m_joystickControlThread = QThread::create([this]() {
+    while (m_threadRunning) {
+      readJoystickEnable();
+      QThread::msleep(50);  // Adjust delay as needed
+    }
+  });
+  m_joystickControlThread->start();
 }
 
 ControlsManager::~ControlsManager() {
@@ -112,6 +122,12 @@ ControlsManager::~ControlsManager() {
     m_manualControllerThread->wait();
   }
 
+  // Stop the joystick control thread safely
+  if (m_joystickControlThread) {
+    m_joystickControlThread->quit();
+    m_joystickControlThread->wait();
+  }
+
   delete m_carDataObject;
   delete m_clientObject;
   delete m_manualController;
@@ -130,8 +146,10 @@ void ControlsManager::readJoystickEnable()
   bool joystickData = m_clientObject->getJoystickValue();
   if (joystickData) {
     setMode(DrivingMode::Manual);
+    qdebug() << "JManual mode enabled.";
   } else {
     setMode(DrivingMode::Automatic);
+    qdebug() << "Automatic mode enabled.";
   }
 }
 

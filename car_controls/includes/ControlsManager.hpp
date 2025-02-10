@@ -23,6 +23,7 @@ private:
   QThread* m_processMonitorThread;
   QThread* m_carDataThread;
   QThread* m_clientThread;
+  QThread* m_joystickControlThread;
 
   std::atomic<bool> m_threadRunning;
 
