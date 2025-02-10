@@ -42,12 +42,12 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 
   // Server Middleware Thread
-  /* m_carDataThread = QThread::create([this, argc, argv]() {
+  m_carDataThread = QThread::create([this, argc, argv]() {
     while (m_threadRunning) {
       m_carDataObject->runServer(argc, argv);
     }
   });
-  m_carDataThread->start(); */
+  m_carDataThread->start();
 
 
   // Client Middleware Interface Therad
