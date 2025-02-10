@@ -7,6 +7,7 @@
 ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
       m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
+      m_clientObject(nullptr), m_carDataObject(nullptr)
       m_manualControllerThread(nullptr), m_processMonitorThread(nullptr),
       m_carDataThread(nullptr), m_clientThread(nullptr), m_threadRunning(true) {
 
