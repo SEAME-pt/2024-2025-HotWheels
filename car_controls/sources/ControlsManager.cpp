@@ -2,19 +2,23 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include <iostream>
 #include <QDebug>
 
-ControlsManager::ControlsManager(QObject *parent)
+/*!
+ * @brief Construct a new ControlsManager object.
+ * @param argc The number of command-line arguments.
+ * @param argv The command-line argument values.
+ * @param parent The parent QObject.
+ * @details This constructor initializes the ControlsManager object,
+ *          sets up multiple worker threads, and manages different controllers.
+ */
+ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
-      m_manualController(nullptr), m_manualControllerThread(nullptr),
-      m_currentMode(DrivingMode::Manual), m_sharedMemoryThread(nullptr),
-      m_processMonitorThread(nullptr), m_threadRunning(true) {
-  // Connect EngineController signals to ControlsManager signals
-  connect(&m_engineController, &EngineController::directionUpdated, this,
-          &ControlsManager::directionChanged);
-  connect(&m_engineController, &EngineController::steeringUpdated, this,
-          &ControlsManager::steeringChanged);
+      m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
+      m_clientObject(nullptr), m_carDataObject(nullptr),
+      m_manualControllerThread(nullptr), m_processMonitorThread(nullptr),
+      m_carDataThread(nullptr), m_clientThread(nullptr),
+      m_joystickControlThread(nullptr), m_threadRunning(true) {
 
   // Initialize the joystick controller with callbacks
   m_manualController = new JoysticksController(
@@ -34,6 +38,7 @@ ControlsManager::ControlsManager(QObject *parent)
     return;
   }
 
+
   // Start the joystick controller in its own thread
   m_manualControllerThread = new QThread(this);
   m_manualController->moveToThread(m_manualControllerThread);
@@ -45,15 +50,28 @@ ControlsManager::ControlsManager(QObject *parent)
 
   m_manualControllerThread->start();
 
-  // **Shared Memory Thread**
-  m_sharedMemoryThread = QThread::create([this]() {
+
+  // **Server Middleware Thread**
+
+  // Run thread to start the server
+  m_carDataObject = new Data::CarDataI();
+
+  // Initialize m_carDataObject before creating the thread
+  m_carDataThread = QThread::create([this, argc, argv]() {
     while (m_threadRunning) {
-      readSharedMemory();
-      QThread::msleep(50);  // Adjust delay as needed
+      m_carDataObject->runServer(argc, argv);
     }
   });
+  m_carDataThread->start();
 
-  m_sharedMemoryThread->start();
+
+  // **Client Middleware Interface Thread**
+  m_clientObject = new ClientThread();
+  m_clientThread = QThread::create([this, argc, argv]() {
+      m_clientObject->runClient(argc, argv);
+  });
+  m_clientThread->start();
+
 
   // **Process Monitoring Thread**
   m_processMonitorThread = QThread::create([this]() {
@@ -63,34 +81,79 @@ ControlsManager::ControlsManager(QObject *parent)
       if (!isProcessRunning(targetProcessName)) {
         if (m_currentMode == DrivingMode::Automatic)
                 setMode(DrivingMode::Manual);
-        qDebug() << "Cluster is not running.";
+        //qDebug() << "Cluster is not running.";
       }
       QThread::sleep(1);  // Check every 1 second
     }
   });
-
   m_processMonitorThread->start();
+
+
+  // **Joystick Control Thread**
+  m_joystickControlThread = QThread::create([this]() {
+    while (m_threadRunning) {
+      readJoystickEnable();
+      QThread::msleep(1000);  // Adjust delay as needed
+    }
+  });
+  m_joystickControlThread->start();
 }
 
+/*!
+ * @brief Destroy the ControlsManager object.
+ * @details Ensures proper cleanup of all worker threads and dynamically allocated objects.
+ */
 ControlsManager::~ControlsManager() {
-
-  // Stop the shared memory thread safely
-  if (m_sharedMemoryThread) {
-    m_threadRunning = false;
-    m_sharedMemoryThread->quit();
-    m_sharedMemoryThread->wait();
-    delete m_sharedMemoryThread;
+  // Stop the client thread safely
+  if (m_clientThread) {
+    m_clientObject->setRunning(false);
+    m_clientThread->quit();
+    m_clientThread->wait();
+    delete m_clientThread;
   }
 
+  // Stop the shared memory thread safely
+  if (m_carDataThread) {
+    m_threadRunning = false;
+    m_carDataThread->quit();
+    m_carDataThread->wait();
+    delete m_carDataThread;
+  }
+
+  // Stop the process monitoring thread safely
+  if (m_processMonitorThread) {
+    m_threadRunning = false;
+    m_processMonitorThread->quit();
+    m_processMonitorThread->wait();
+    delete m_processMonitorThread;
+  }
+
+  // Stop the controller thread safely
   if (m_manualControllerThread) {
     m_manualController->requestStop();
     m_manualControllerThread->quit();
     m_manualControllerThread->wait();
+    delete m_manualControllerThread;
   }
 
+  // Stop the joystick control thread safely
+  if (m_joystickControlThread) {
+    m_joystickControlThread->quit();
+    m_joystickControlThread->wait();
+    delete m_joystickControlThread;
+  }
+
+  delete m_carDataObject;
+  delete m_clientObject;
   delete m_manualController;
 }
 
+/*!
+ * @brief Check if a process is running.
+ * @param processName The name of the process to check.
+ * @return True if the process is running, false otherwise.
+ * @details Uses the `pgrep` command to determine if a given process is active.
+ */
 bool ControlsManager::isProcessRunning(const QString &processName) {
     QProcess process;
     process.start("pgrep", QStringList() << processName);
@@ -99,30 +162,26 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
     return !process.readAllStandardOutput().isEmpty();
 }
 
-void ControlsManager::readSharedMemory() {
-  int shm_fd = shm_open("/joystick_enable", O_RDWR, 0666);
-  if (shm_fd == -1) {
-      return;
-  }
-  else {
-    // Map shared memory
-    void* ptr = mmap(0, sizeof(bool), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-    if (ptr == MAP_FAILED) {
-        std::cerr << "Failed to map memory\n";
-    }
-    else {
-      // Read the bool value
-      bool* flag = static_cast<bool*>(ptr);
-
-      setMode(*flag ? DrivingMode::Manual : DrivingMode::Automatic);
-
-      // Cleanup
-      munmap(ptr, sizeof(bool));
-    }
-    close(shm_fd);
+/*!
+ * @brief Reads joystick enable status.
+ * @details Checks if joystick control is enabled through the client middleware
+ *          and updates the driving mode accordingly.
+ */
+void ControlsManager::readJoystickEnable()
+{
+  bool joystickData = m_clientObject->getJoystickValue();
+  if (joystickData) {
+    setMode(DrivingMode::Manual);
+  } else {
+    setMode(DrivingMode::Automatic);
   }
 }
 
+/*!
+ * @brief Sets the driving mode.
+ * @param mode The new driving mode.
+ * @details Updates the current driving mode if it has changed.
+ */
 void ControlsManager::setMode(DrivingMode mode) {
   if (m_currentMode == mode)
     return;

@@ -38,7 +38,7 @@ class CarManager : public QMainWindow {
   Q_OBJECT
 
 public:
-  CarManager(QWidget *parent = nullptr);
+  CarManager(int argc, char **argv, QWidget *parent = nullptr);
   ~CarManager();
 
 private:

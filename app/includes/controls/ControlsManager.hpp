@@ -21,6 +21,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <iostream>
+#include "../ZeroC/ClientThread.hpp"
 #include <QObject>
 #include <QThread>
 
@@ -32,7 +33,7 @@ class ControlsManager : public QObject {
   Q_OBJECT
 
 public:
-  explicit ControlsManager(QObject *parent = nullptr);
+  explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);
   ~ControlsManager();
 
 public slots:
@@ -43,8 +44,9 @@ signals:
   void steeringChanged(int newAngle);
 
 private:
-  int shm_fd;
-  void* ptr;
+  ClientThread *m_clientObject;
+
+  QThread* m_clientThread;
 };
 
 #endif // CONTROLSMANAGER_HPP
