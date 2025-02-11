@@ -5,6 +5,7 @@ ClientThread::ClientThread(QObject *parent) : QObject(parent) {}
 // Destructor stops the client thread gracefully
 ClientThread::~ClientThread() {
      if (communicator) {
+        communicator->shutdown();
         communicator->destroy();
     }
 }

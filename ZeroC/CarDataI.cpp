@@ -7,7 +7,8 @@ CarDataI::CarDataI(QObject *parent) : QObject(parent) {}
 // Destructor implementation
 CarDataI::~CarDataI() {
     if (communicator) {
-        communicator->shutdown();  // Stop the server safely
+        communicator->shutdown();
+        communicator->destroy();
     }
 }
 
