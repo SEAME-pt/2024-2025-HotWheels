@@ -81,7 +81,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
       if (!isProcessRunning(targetProcessName)) {
         if (m_currentMode == DrivingMode::Automatic)
                 setMode(DrivingMode::Manual);
-        qDebug() << "Cluster is not running.";
+        //qDebug() << "Cluster is not running.";
       }
       QThread::sleep(1);  // Check every 1 second
     }
