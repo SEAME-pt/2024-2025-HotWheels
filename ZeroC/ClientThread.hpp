@@ -32,7 +32,7 @@ public:
     void setJoystickValue(bool value);
     bool getJoystickValue();
 
-    setRunning(bool running);
+    void setRunning(bool value);
 };
 
 #endif

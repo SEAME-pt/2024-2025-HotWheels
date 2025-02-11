@@ -85,7 +85,7 @@ bool ClientThread::getJoystickValue() {
     }
 }
 
-void ClientThread::setRunning(bool running) {
+void ClientThread::setRunning(bool value) {
     std::lock_guard<std::mutex> lock(mtx);
-    this->running = running;
+    this->running = value;
 }
