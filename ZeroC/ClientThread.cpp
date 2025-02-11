@@ -84,3 +84,8 @@ bool ClientThread::getJoystickValue() {
         return false;  // Return default value if the proxy is invalid
     }
 }
+
+void ClientThread::setRunning(bool running) {
+    std::lock_guard<std::mutex> lock(mtx);
+    this->running = running;
+}

@@ -94,6 +94,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 ControlsManager::~ControlsManager() {
   // Stop the client thread safely
   if (m_clientThread) {
+    m->clientObject->setRunning(false);
     m_clientThread->quit();
     m_clientThread->wait();
     delete m_clientThread;
@@ -120,12 +121,14 @@ ControlsManager::~ControlsManager() {
     m_manualController->requestStop();
     m_manualControllerThread->quit();
     m_manualControllerThread->wait();
+    delete m_manualControllerThread
   }
 
   // Stop the joystick control thread safely
   if (m_joystickControlThread) {
     m_joystickControlThread->quit();
     m_joystickControlThread->wait();
+    delete m_joystickControlThread;
   }
 
   delete m_carDataObject;
@@ -146,10 +149,8 @@ void ControlsManager::readJoystickEnable()
   bool joystickData = m_clientObject->getJoystickValue();
   if (joystickData) {
     setMode(DrivingMode::Manual);
-    qDebug() << "Manual mode enabled.";
   } else {
     setMode(DrivingMode::Automatic);
-    qDebug() << "Automatic mode enabled.";
   }
 }
 

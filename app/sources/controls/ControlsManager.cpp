@@ -47,7 +47,16 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
  * @details This destructor stops the joystick controller and waits for the
  * thread to finish.
  */
-ControlsManager::~ControlsManager() {}
+ControlsManager::~ControlsManager()
+{
+  if (m_clientThread) {
+    m->clientObject->setRunning(false);
+    m_clientThread->quit();
+    m_clientThread->wait();
+    delete m_clientThread;
+  }
+  delete m_clientObject;
+}
 
 /*!
  * @brief Update the driving mode of the vehicle.
@@ -58,10 +67,8 @@ ControlsManager::~ControlsManager() {}
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
   if (newMode == DrivingMode::Automatic) {
     m_clientObject->setJoystickValue(false);
-    qDebug() << "Automatic mode enabled.";
   }
   else {
     m_clientObject->setJoystickValue(true);
-    qDebug() << "Manual mode enabled.";
   }
 }

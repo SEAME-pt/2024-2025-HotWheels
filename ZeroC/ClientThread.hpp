@@ -31,6 +31,8 @@ public:
 
     void setJoystickValue(bool value);
     bool getJoystickValue();
+
+    setRunning(bool running);
 };
 
 #endif
