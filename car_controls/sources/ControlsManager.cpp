@@ -108,7 +108,7 @@ ControlsManager::~ControlsManager() {
   if (m_clientThread) {
     m_clientObject->setRunning(false);
     m_clientThread->quit();
-    //m_clientThread->wait();
+    m_clientThread->wait();
     delete m_clientThread;
   }
 
@@ -116,7 +116,7 @@ ControlsManager::~ControlsManager() {
   if (m_carDataThread) {
     m_threadRunning = false;
     m_carDataThread->quit();
-    //m_carDataThread->wait();
+    m_carDataThread->wait();
     delete m_carDataThread;
   }
 
@@ -124,7 +124,7 @@ ControlsManager::~ControlsManager() {
   if (m_processMonitorThread) {
     m_threadRunning = false;
     m_processMonitorThread->quit();
-    //m_processMonitorThread->wait();
+    m_processMonitorThread->wait();
     delete m_processMonitorThread;
   }
 
@@ -132,14 +132,14 @@ ControlsManager::~ControlsManager() {
   if (m_manualControllerThread) {
     m_manualController->requestStop();
     m_manualControllerThread->quit();
-    //m_manualControllerThread->wait();
+    m_manualControllerThread->wait();
     delete m_manualControllerThread;
   }
 
   // Stop the joystick control thread safely
   if (m_joystickControlThread) {
     m_joystickControlThread->quit();
-    //m_joystickControlThread->wait();
+    m_joystickControlThread->wait();
     delete m_joystickControlThread;
   }
 
