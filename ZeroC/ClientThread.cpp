@@ -56,7 +56,6 @@ void ClientThread::setJoystickValue(bool value) {
     if (carData) {
         try {
             carData->setJoystickValue(value);
-            std::cout << "Joystick state set to: " << value << std::endl;
         } catch (const Ice::Exception& e) {
             std::cerr << "Error setting joystick value: " << e.what() << std::endl;
         }
@@ -74,7 +73,6 @@ bool ClientThread::getJoystickValue() {
     if (carData) {
         try {
             bool state = carData->getJoystickValue();
-            std::cout << "Joystick state retrieved: " << state << std::endl;
             return state;
         } catch (const Ice::Exception& e) {
             std::cerr << "Error getting joystick value: " << e.what() << std::endl;

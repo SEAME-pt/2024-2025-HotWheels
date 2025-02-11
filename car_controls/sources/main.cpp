@@ -16,8 +16,10 @@ int main(int argc, char *argv[]) {
   std::signal(SIGINT, handleSigint);
 
   try {
-    ControlsManager *m_controlsManager;
-    m_controlsManager = new ControlsManager(argc, argv);
+    //ControlsManager *m_controlsManager;
+    //m_controlsManager = new ControlsManager(argc, argv);
+    ControlsManager m_controlsManager(argc, argv);
+
     return a.exec();
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << std::endl;
