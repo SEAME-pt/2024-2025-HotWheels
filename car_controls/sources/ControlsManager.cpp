@@ -4,6 +4,14 @@
 #include <unistd.h>
 #include <QDebug>
 
+/*!
+ * @brief Construct a new ControlsManager object.
+ * @param argc The number of command-line arguments.
+ * @param argv The command-line argument values.
+ * @param parent The parent QObject.
+ * @details This constructor initializes the ControlsManager object,
+ *          sets up multiple worker threads, and manages different controllers.
+ */
 ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
     : QObject(parent), m_engineController(0x40, 0x60, this),
       m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
@@ -91,6 +99,10 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
   m_joystickControlThread->start();
 }
 
+/*!
+ * @brief Destroy the ControlsManager object.
+ * @details Ensures proper cleanup of all worker threads and dynamically allocated objects.
+ */
 ControlsManager::~ControlsManager() {
   // Stop the client thread safely
   if (m_clientThread) {
@@ -121,7 +133,7 @@ ControlsManager::~ControlsManager() {
     m_manualController->requestStop();
     m_manualControllerThread->quit();
     m_manualControllerThread->wait();
-    delete m_manualControllerThread
+    delete m_manualControllerThread;
   }
 
   // Stop the joystick control thread safely
@@ -136,6 +148,12 @@ ControlsManager::~ControlsManager() {
   delete m_manualController;
 }
 
+/*!
+ * @brief Check if a process is running.
+ * @param processName The name of the process to check.
+ * @return True if the process is running, false otherwise.
+ * @details Uses the `pgrep` command to determine if a given process is active.
+ */
 bool ControlsManager::isProcessRunning(const QString &processName) {
     QProcess process;
     process.start("pgrep", QStringList() << processName);
@@ -144,6 +162,11 @@ bool ControlsManager::isProcessRunning(const QString &processName) {
     return !process.readAllStandardOutput().isEmpty();
 }
 
+/*!
+ * @brief Reads joystick enable status.
+ * @details Checks if joystick control is enabled through the client middleware
+ *          and updates the driving mode accordingly.
+ */
 void ControlsManager::readJoystickEnable()
 {
   bool joystickData = m_clientObject->getJoystickValue();
@@ -154,6 +177,11 @@ void ControlsManager::readJoystickEnable()
   }
 }
 
+/*!
+ * @brief Sets the driving mode.
+ * @param mode The new driving mode.
+ * @details Updates the current driving mode if it has changed.
+ */
 void ControlsManager::setMode(DrivingMode mode) {
   if (m_currentMode == mode)
     return;
