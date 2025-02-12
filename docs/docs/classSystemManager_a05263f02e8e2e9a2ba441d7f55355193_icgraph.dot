@@ -1,0 +1,24 @@
+digraph "SystemManager::ipAddressUpdated"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="SystemManager::ipAddress\lUpdated",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CarManager::initializeSystem\lManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a",tooltip="Initialize the SystemManager."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CarManager::initializeComponents",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f",tooltip="Initialize the components of the CarManager."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="CarManager::CarManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d",tooltip="Construct a new CarManager object."];
+  Node4 -> Node4 [id="edge4_Node000004_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node5 [id="edge5_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="TEST_F",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$test__int__SystemManager_8cpp.html#a15142c6d4b89accf17e086fefc686475",tooltip="Ensures that the SystemManager updates the IP address."];
+  Node1 -> Node6 [id="edge6_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="TEST_F",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$test__SystemManager_8cpp.html#abea5a15fdef9d863b8c232bc09ea8b13",tooltip="Ensures that the system status is correctly updated."];
+  Node1 -> Node7 [id="edge7_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="SystemManager::updateSystem\lStatus",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78",tooltip="Updates the system status."];
+  Node7 -> Node8 [id="edge8_Node000007_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="SystemManager::initialize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classSystemManager.html#af40b45c958865de2ff03d0a8a7eafafa",tooltip="Initializes the SystemManager object."];
+}
