@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MileageManager.cpp
  * @brief Implementation of the MileageManager class.
  * @version 0.1
@@ -20,7 +20,7 @@
 #include "MileageCalculator.hpp"
 #include "MileageFileHandler.hpp"
 
-/**
+/*!
  * @brief Constructs a MileageManager object with the specified file path, calculator, and file handler.
  * @param filePath The path to the mileage file.
  * @param calculator The mileage calculator to use.
@@ -42,7 +42,7 @@ MileageManager::MileageManager(const QString &filePath,
 	, m_totalMileage(0.0)
 {}
 
-/**
+/*!
  * @brief Destructs the MileageManager object.
  *
  * @details This destructor calls the shutdown method to stop the timers and
@@ -62,7 +62,7 @@ MileageManager::~MileageManager()
 	}
 }
 
-/**
+/*!
  * @brief Initializes the MileageManager object.
  *
  * @details This method initializes the MileageManager object by reading the
@@ -79,7 +79,7 @@ void MileageManager::initialize()
 	m_persistenceTimer.start(10000);
 }
 
-/**
+/*!
  * @brief Shuts down the MileageManager object.
  *
  * @details This method stops the update and persistence timers and saves the
@@ -92,7 +92,7 @@ void MileageManager::shutdown()
 	m_persistenceTimer.stop();
 }
 
-/**
+/*!
  * @brief Updates the mileage.
  *
  * @details This method updates the mileage by calculating the distance traveled
@@ -105,7 +105,7 @@ void MileageManager::updateMileage()
 	emit mileageUpdated(m_totalMileage);
 }
 
-/**
+/*!
  * @brief Saves the mileage to the file.
  *
  * @details This method saves the total mileage to the file using the file handler.
@@ -115,7 +115,7 @@ void MileageManager::saveMileage()
 	m_fileHandler->writeMileage(m_totalMileage);
 }
 
-/**
+/*!
  * @brief Handles the speed updated signal.
  * @param speed The new speed value.
  *

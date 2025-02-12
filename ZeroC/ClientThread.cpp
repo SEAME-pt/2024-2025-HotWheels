@@ -15,7 +15,7 @@
 
 #include "ClientThread.hpp"
 
-/**
+/*!
  * @brief Construct a new Client Thread:: Client Thread object
  * 
  * @param parent 
@@ -23,7 +23,7 @@
 ClientThread::ClientThread(QObject *parent) : QObject(parent) {}
 
 
-/**
+/*!
  * @brief Destructor for the ClientThread class.
  * @details Shuts down and destroys the Ice communicator if it is initialized,
  * ensuring a clean termination of client-server communication.
@@ -35,7 +35,7 @@ ClientThread::~ClientThread() {
 	}
 }
 
-/**
+/*!
  * @brief Run the client by initializing the Ice communicator and connecting to the server.
  * @param argc The number of command-line arguments.
  * @param argv The array of command-line arguments.
@@ -81,7 +81,7 @@ void ClientThread::runClient(int argc, char* argv[]) {
 	}
 }
 
-/**
+/*!
  * @brief Set the joystick value on the server.
  * @param value The new value to set the joystick to.
  * @details This method sets the joystick value on the server by calling the
@@ -107,7 +107,7 @@ void ClientThread::setJoystickValue(bool value) {
 	}
 }
 
-/**
+/*!
  * @brief Get the joystick value from the server.
  * @details This method gets the joystick value from the server by calling the
  * getJoystickValue method on the carData proxy. It first waits until the client
@@ -136,7 +136,7 @@ bool ClientThread::getJoystickValue() {
 	}
 }
 
-/**
+/*!
  * @brief Sets the running flag of the client thread.
  * @details This method sets the running flag of the client thread, which
  * controls whether the client is connected to the server or not. This flag is

@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_int_DataManager.cpp
  * @brief Integration tests for the DataManager class.
  * @version 0.1
@@ -17,7 +17,7 @@
 #include "DataManager.hpp"
 #include <gtest/gtest.h>
 
-/**
+/*!
  * @brief Class to test the integration between the DataManager and the
  * SystemDataManager, VehicleDataManager, and ClusterSettingsManager.
  * @class DataManagerTest
@@ -49,10 +49,10 @@ protected:
 	void TearDown() override { delete dataManager; }
 };
 
-/** @brief Initialize static member */
+/*! @brief Initialize static member */
 QCoreApplication *DataManagerTest::app = nullptr;
 
-/**
+/*!
  * @test 🚗 Forward Speed Data
  * @brief Ensures that the DataManager forwards speed data to the VehicleDataManager.
  * @details This test verifies that the DataManager forwards speed data to the VehicleDataManager
@@ -71,7 +71,7 @@ TEST_F(DataManagerTest, ForwardSpeedDataToVehicleDataManager)
 	EXPECT_FLOAT_EQ(args.at(0).toFloat(), 42.5f);
 }
 
-/**
+/*!
  * @test 🔄 Forward RPM Data
  * @brief Ensures that the DataManager forwards RPM data to the VehicleDataManager.
  * @details This test verifies that the DataManager forwards RPM data to the VehicleDataManager
@@ -90,7 +90,7 @@ TEST_F(DataManagerTest, ForwardRpmDataToVehicleDataManager)
 	EXPECT_EQ(args.at(1).toInt(), 3500);
 }
 
-/**
+/*!
  * @test 🏎️ Forward Steering Data
  * @brief Ensures that the DataManager forwards steering data to the VehicleDataManager.
  * @details This test verifies that the DataManager forwards steering data to the VehicleDataManager
@@ -109,7 +109,7 @@ TEST_F(DataManagerTest, ForwardSteeringDataToVehicleDataManager)
 	EXPECT_EQ(args.at(1).toInt(), 15);
 }
 
-/**
+/*!
  * @test 🚦 Forward Direction Data
  * @brief Ensures that the DataManager forwards direction data to the VehicleDataManager.
  * @details This test verifies that the DataManager forwards direction data to the VehicleDataManager
@@ -128,7 +128,7 @@ TEST_F(DataManagerTest, ForwardDirectionDataToVehicleDataManager)
 	EXPECT_EQ(args.at(0).value<CarDirection>(), CarDirection::Drive);
 }
 
-/**
+/*!
  * @test 📅 Forward Time Data
  * @brief Ensures that the DataManager forwards time data to the SystemDataManager.
  * @details This test verifies that the DataManager forwards time data to the SystemDataManager
@@ -149,7 +149,7 @@ TEST_F(DataManagerTest, ForwardTimeDataToSystemDataManager)
 	EXPECT_EQ(args.at(2).toString(), "Friday");
 }
 
-/**
+/*!
  * @test 📡 Forward WiFi Data
  * @brief Ensures that the DataManager forwards WiFi data to the SystemDataManager.
  * @details This test verifies that the DataManager forwards WiFi data to the SystemDataManager
@@ -169,7 +169,7 @@ TEST_F(DataManagerTest, ForwardWifiDataToSystemDataManager)
 	EXPECT_EQ(args.at(1).toString(), "MyWiFi");
 }
 
-/**
+/*!
  * @test 🌡 Forward Temperature Data
  * @brief Ensures that the DataManager forwards temperature data to the SystemDataManager.
  * @details This test verifies that the DataManager forwards temperature data to the SystemDataManager
@@ -188,7 +188,7 @@ TEST_F(DataManagerTest, ForwardTemperatureDataToSystemDataManager)
 	EXPECT_EQ(args.at(0).toString(), "25.5°C");
 }
 
-/**
+/*!
  * @test 🌍 Forward IP Address Data
  * @brief Ensures that the DataManager forwards IP address data to the SystemDataManager.
  * @details This test verifies that the DataManager forwards IP address data to the SystemDataManager
@@ -207,7 +207,7 @@ TEST_F(DataManagerTest, ForwardIpAddressDataToSystemDataManager)
 	EXPECT_EQ(args.at(0).toString(), "192.168.1.100");
 }
 
-/**
+/*!
  * @test 🔋 Forward Battery Percentage
  * @brief Ensures that the DataManager forwards battery percentage data to the SystemDataManager.
  * @details This test verifies that the DataManager forwards battery percentage data to the SystemDataManager
@@ -226,7 +226,7 @@ TEST_F(DataManagerTest, ForwardBatteryPercentageToSystemDataManager)
 	EXPECT_FLOAT_EQ(args.at(0).toFloat(), 87.5f);
 }
 
-/**
+/*!
  * @test 🚘 Forward Mileage Update
  * @brief Ensures that the DataManager forwards mileage data to the VehicleDataManager.
  * @details This test verifies that the DataManager forwards mileage data to the VehicleDataManager
@@ -245,7 +245,7 @@ TEST_F(DataManagerTest, ForwardMileageUpdateToVehicleDataManager)
 	EXPECT_DOUBLE_EQ(args.at(0).toDouble(), 12345.67);
 }
 
-/**
+/*!
  * @test 🎛 Toggle Driving Mode
  * @brief Ensures that the DataManager toggles the driving mode.
  * @details This test verifies that the DataManager toggles the driving mode
@@ -262,7 +262,7 @@ TEST_F(DataManagerTest, ToggleDrivingMode)
 	ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
 }
 
-/**
+/*!
  * @test 🎨 Toggle Cluster Theme
  * @brief Ensures that the DataManager toggles the cluster theme.
  * @details This test verifies that the DataManager toggles the cluster theme
@@ -279,7 +279,7 @@ TEST_F(DataManagerTest, ToggleClusterTheme)
 	ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
 }
 
-/**
+/*!
  * @test 📊 Toggle Cluster Metrics
  * @brief Ensures that the DataManager toggles the cluster metrics.
  * @details This test verifies that the DataManager toggles the cluster metrics

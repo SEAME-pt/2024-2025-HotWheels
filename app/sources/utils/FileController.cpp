@@ -16,13 +16,13 @@
 #include <QDebug>
 #include <QTextStream>
 
-/**
+/*!
  * @namespace FileController
  * @brief Open a file.
  */
 namespace FileController {
 
-	/**
+	/*!
 	 * @brief Open a file.
 	 *
 	 * @details Opens a file with the specified mode.
@@ -37,7 +37,7 @@ namespace FileController {
 		return file.open(mode);
 	}
 
-	/**
+	/*!
 	 * @brief Reads a line from the file.
 	 *
 	 * @details This function reads a single line from the specified file using
@@ -53,7 +53,7 @@ namespace FileController {
 		return in.readLine();
 	}
 
-	/**
+	/*!
 	 * @brief Writes a line to the file.
 	 *
 	 * @details This function writes a single line to the specified file using
@@ -71,7 +71,7 @@ namespace FileController {
 		return true;
 	}
 
-	/**
+	/*!
 	 * @brief Checks if a file exists.
 	 *
 	 * @details This function checks if the given file path exists.

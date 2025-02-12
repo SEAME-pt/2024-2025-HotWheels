@@ -23,7 +23,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-/**
+/*!
  * @brief Clamps a value to a given range.
  *
  * @param value Value to be clamped.
@@ -74,7 +74,7 @@ EngineController::~EngineController() {
  */
 void EngineController::start() { m_running = true; }
 
-/**
+/*!
  * @brief Stops the engine.
  * 
  * @details Sets the m_running flag to false and sets both speed and steering to 0.

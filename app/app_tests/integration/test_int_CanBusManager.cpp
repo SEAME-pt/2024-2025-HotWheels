@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_int_CanBusManager.cpp
  * @brief Integration tests for the CanBusManager class.
  * @version 0.1
@@ -19,7 +19,7 @@
 #include "MCP2515Controller.hpp"
 #include <gtest/gtest.h>
 
-/**
+/*!
  * @brief Class to test the integration between the CanBusManager and the
  * MCP2515 controller.
  * @class CanBusManagerTest
@@ -56,10 +56,10 @@ protected:
 	}
 };
 
-/** @brief Initialize static member */
+/*! @brief Initialize static member */
 QCoreApplication *CanBusManagerTest::app = nullptr;
 
-/**
+/*!
  * @test 🚗 Forward Speed Data
  * @brief Ensures that the CanBusManager forwards speed data from the MCP2515
  * controller.
@@ -79,7 +79,7 @@ TEST_F(CanBusManagerTest, ForwardSpeedDataFromMCP2515)
 	EXPECT_FLOAT_EQ(args.at(0).toFloat(), 88.8f);
 }
 
-/**
+/*!
  * @test 🔄 Forward RPM Data
  * @brief Ensures that the CanBusManager forwards RPM data from the MCP2515
  * controller.
@@ -99,7 +99,7 @@ TEST_F(CanBusManagerTest, ForwardRpmDataFromMCP2515)
 	EXPECT_EQ(args.at(0).toInt(), 4500);
 }
 
-/**
+/*!
  * @test 🚀 Initialization
  * @brief Ensures that the CanBusManager initializes successfully.
  * @details This test verifies that the CanBusManager initializes successfully
@@ -113,7 +113,7 @@ TEST_F(CanBusManagerTest, InitializeCanBusManager)
 	ASSERT_TRUE(canBusManager->getThread()->isRunning()) << "Thread did not start!";
 }
 
-/**
+/*!
  * @test 🧹 Manager Clean-Up Behavior
  * @brief Ensures that the CanBusManager cleans up properly.
  * @details This test verifies that the CanBusManager cleans up properly by

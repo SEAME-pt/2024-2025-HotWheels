@@ -24,7 +24,7 @@
 #include "SystemCommandExecutor.hpp"
 #include "SystemInfoProvider.hpp"
 
-/**
+/*!
  * @brief Constructor for the SystemManager class.
  * @details Allocates a BatteryController, SystemInfoProvider, and
  * SystemCommandExecutor if the ones provided are nullptr.
@@ -50,7 +50,7 @@ SystemManager::SystemManager(IBatteryController *batteryController,
 	, m_ownSystemCommandExecutor(systemCommandExecutor == nullptr)
 {}
 
-/**
+/*!
  * @brief Destructor for the SystemManager class.
  * @details Calls shutdown() to stop all threads and then deletes the
  * BatteryController, SystemInfoProvider, and SystemCommandExecutor objects if
@@ -67,7 +67,7 @@ SystemManager::~SystemManager()
 		delete m_systemCommandExecutor;
 }
 
-/**
+/*!
  * @brief Initializes the SystemManager object.
  * @details This method initializes the SystemManager object by starting two
  * timers: one to update the time every second and another to update the system
@@ -84,7 +84,7 @@ void SystemManager::initialize()
 }
 
 
-/**
+/*!
  * @brief Shuts down the SystemManager object.
  * @details This method stops the time and status timers to halt periodic updates.
  */
@@ -107,7 +107,7 @@ void SystemManager::updateTime()
 					 currentDateTime.toString("dddd"));
 }
 
-/**
+/*!
  * @brief Updates the system status.
  * @details This function updates the system status by calling the getters on the
 

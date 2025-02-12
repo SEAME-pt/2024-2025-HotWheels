@@ -1,4 +1,4 @@
-/**
+/*!
  * @file MockBatteryController.hpp
  * @brief File containing the Mock class of the BatteryController module.
  * @version 0.1

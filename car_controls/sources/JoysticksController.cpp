@@ -20,7 +20,7 @@
 #include <QThread>
 
 
-/**
+/*!
  * @brief Construct a JoysticksController object.
  * @details This constructor takes a QObject parent and two std::function callbacks.
  * The first callback is called when the steering of the joystick is updated, and
@@ -38,7 +38,7 @@ JoysticksController::JoysticksController(
 			m_updateSteering(std::move(steeringCallback)),
 			m_updateSpeed(std::move(speedCallback)), m_running(false) {}
 
-/**
+/*!
  * @brief Destruct a JoysticksController object.
  * @details This destructor closes the SDL joystick and quits SDL if a joystick
  * was opened.
@@ -50,7 +50,7 @@ JoysticksController::~JoysticksController() {
 	SDL_Quit();
 }
 
-/**
+/*!
  * @brief Initializes the joystick controller.
  * @details This function initializes the SDL joystick subsystem and opens the
  * first available joystick device. If SDL initialization fails, an error message
@@ -71,14 +71,14 @@ bool JoysticksController::init() {
 	return true;
 }
 
-/**
+/*!
  * @brief Requests the joystick controller to stop.
  * @details This function sets the running flag to false, which will stop the
  * joystick controller loop.
  */
 void JoysticksController::requestStop() { m_running = false; }
 
-/**
+/*!
  * @brief Runs the joystick controller loop.
  * @details This function is run in its own thread and waits for SDL events
  * from the joystick. If the joystick is not initialized, it logs an error

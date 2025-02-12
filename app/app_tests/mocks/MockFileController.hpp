@@ -28,13 +28,13 @@
 class MockFileController
 {
 public:
-	/** @brief Mocked method to open a file. */
+	/*! @brief Mocked method to open a file. */
 	MOCK_METHOD(bool, open, (QFile &, QIODevice::OpenMode), ());
-	/** @brief Mocked method to close a file. */
+	/*! @brief Mocked method to close a file. */
 	MOCK_METHOD(QString, read, (QFile &), ());
-	/** @brief Mocked method to write to a file. */
+	/*! @brief Mocked method to write to a file. */
 	MOCK_METHOD(bool, write, (QFile &, const QString &), ());
-	/** @brief Mocked method to check if a file exists. */
+	/*! @brief Mocked method to check if a file exists. */
 	MOCK_METHOD(bool, exists, (const QString &), ());
 };
 

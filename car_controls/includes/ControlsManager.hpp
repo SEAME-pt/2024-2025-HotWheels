@@ -23,7 +23,7 @@
 #include <QThread>
 #include <QProcess>
 
-/**
+/*!
  * @brief The ControlsManager class.
  * @details This class is responsible for managing the controls of the car.
  */

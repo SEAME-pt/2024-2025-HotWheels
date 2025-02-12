@@ -1,4 +1,4 @@
-/**
+/*!
  * @file test_int_MileageManager.cpp
  * @brief Integration tests for the MileageManager class.
  * @version 0.1
@@ -19,7 +19,7 @@
 #include "MileageManager.hpp"
 #include <gtest/gtest.h>
 
-/**
+/*!
  * @brief Class to test the integration between the MileageManager and the
  * MileageCalculator and MileageFileHandler.
  * @class MileageManagerTest
@@ -58,10 +58,10 @@ protected:
 	}
 };
 
-/** @brief Initialize static member */
+/*! @brief Initialize static member */
 QCoreApplication *MileageManagerTest::app = nullptr;
 
-/** 
+/*! 
  * @test 🔄 Forward Mileage Data
  * @brief Ensures that the MileageManager forwards mileage data.
  * @details This test verifies that the MileageManager forwards mileage data
@@ -80,7 +80,7 @@ TEST_F(MileageManagerTest, ForwardMileageData)
 	EXPECT_DOUBLE_EQ(args.at(0).toDouble(), 10.0);
 }
 
-/** 
+/*! 
  * @test 🚗 Initialize Mileage Manager
  * @brief Ensures that the MileageManager initializes successfully.
  * @details This test verifies that the MileageManager initializes successfully
@@ -98,7 +98,7 @@ TEST_F(MileageManagerTest, InitializeMileageManager)
 	EXPECT_DOUBLE_EQ(args.at(0).toDouble(), 0.0);
 }
 
-/** 
+/*! 
  * @test 🏎️💨 Update Mileage on Speed Update
  * @brief Ensures that the MileageManager updates the mileage on speed update.
  * @details This test verifies that the MileageManager updates the mileage on
@@ -117,7 +117,7 @@ TEST_F(MileageManagerTest, UpdateMileageOnSpeedUpdate)
 	EXPECT_DOUBLE_EQ(args.at(0).toDouble(), 10.0);
 }
 
-/** 
+/*! 
  * @test 💾 Save Mileage
  * @brief Ensures that the MileageManager saves the mileage.
  * @details This test verifies that the MileageManager saves the mileage by
@@ -136,7 +136,7 @@ TEST_F(MileageManagerTest, SaveMileage)
 	EXPECT_DOUBLE_EQ(savedMileage, 5.0);
 }
 
-/** 
+/*! 
  * @test ⏱ Update Timer Interval
  * @brief Ensures that the MileageManager updates the timer interval.
  * @details This test verifies that the MileageManager updates the timer interval
@@ -154,7 +154,7 @@ TEST_F(MileageManagerTest, UpdateTimerInterval)
 	ASSERT_GT(spy.count(), 0);
 }
 
-/** 
+/*! 
  * @test ⏻ Shutdown Mileage Manager
  * @brief Ensures that the MileageManager shuts down successfully.
  * @details This test verifies that the MileageManager shuts down successfully

@@ -34,7 +34,7 @@ union i2c_smbus_data {
 #define I2C_SMBUS_READ 1
 #define I2C_SMBUS_BYTE_DATA 2
 
-/**
+/*!
  * @brief Clamps a value to a given range.
  *
  * @param value Value to be clamped.
@@ -46,7 +46,7 @@ template <typename T> T clamp(T value, T min_val, T max_val) {
 	return (value < min_val) ? min_val : ((value > max_val) ? max_val : value);
 }
 
-/**
+/*!
  * @brief Constructor for the PeripheralController class.
  *
  * @param servo_addr The address of the servo controller.
@@ -75,7 +75,7 @@ PeripheralController::PeripheralController(int servo_addr, int motor_addr)
 	}
 }
 
-/**
+/*!
  * @brief Destructor for the PeripheralController class.
  *
  * @details Closes the file descriptors for the servo and motor I2C buses,
@@ -87,7 +87,7 @@ PeripheralController::~PeripheralController() {
 	close(motor_bus_fd_);
 }
 
-/**
+/*!
  * @brief Writes a byte of data to a specific register.
  *
  * @param file The file descriptor for the I2C bus.
@@ -110,7 +110,7 @@ int PeripheralController::i2c_smbus_write_byte_data(int file, uint8_t command,
 	return ioctl(file, I2C_SMBUS, &args);
 }
 
-/**
+/*!
  * @brief Reads a byte of data from a specific register.
  *
  * @param file The file descriptor of the I2C bus.
@@ -132,7 +132,7 @@ int PeripheralController::i2c_smbus_read_byte_data(int file, uint8_t command) {
 	return data.byte;
 }
 
-/**
+/*!
  * @brief Writes a byte of data to a specific register.
  *
  * @param fd The file descriptor for the I2C bus.
@@ -146,7 +146,7 @@ void PeripheralController::write_byte_data(int fd, int reg, int value) {
 	}
 }
 
-/**
+/*!
  * @brief Reads a byte of data from a specific register.
  *
  * @param fd The file descriptor for the I2C bus.
@@ -163,7 +163,7 @@ int PeripheralController::read_byte_data(int fd, int reg) {
 	return result;
 }
 
-/**
+/*!
  * @brief Sets the PWM of a servo motor.
  *
  * @param channel The channel number of the servo motor to control.
@@ -183,7 +183,7 @@ void PeripheralController::set_servo_pwm(int channel, int on_value,
 	write_byte_data(servo_bus_fd_, base_reg + 3, off_value >> 8);
 }
 
-/**
+/*!
  * @brief Sets the PWM value for a motor.
  *
  * @param channel The motor channel to set.
@@ -200,7 +200,7 @@ void PeripheralController::set_motor_pwm(int channel, int value) {
 	write_byte_data(motor_bus_fd_, 0x09 + (4 * channel), value >> 8);
 }
 
-/**
+/*!
  * @brief Initializes the servo controller.
  *
  * @details Configures the servo controller with specific register settings.
@@ -227,7 +227,7 @@ void PeripheralController::init_servo() {
 	usleep(100000);
 }
 
-/**
+/*!
  * @brief Initializes the motor controllers.
  *
  * @details Sets up the motor controllers, configuring them for 100 Hz PWM

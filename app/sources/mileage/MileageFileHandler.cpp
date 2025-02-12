@@ -18,7 +18,7 @@
 #include "MileageFileHandler.hpp"
 #include <QDebug>
 
-/**
+/*!
  * @brief Constructs a MileageFileHandler object with the specified file path and functions.
  * @param filePath The path to the mileage file.
  * @param openFunc The function to open a file.
@@ -44,7 +44,7 @@ MileageFileHandler::MileageFileHandler(const QString &filePath,
 	ensureFileExists();
 }
 
-/**
+/*!
  * @brief Checks if the file exists and creates it if it does not.
  *
  * @details This method checks if the file exists by calling the existsFunc
@@ -73,7 +73,7 @@ void MileageFileHandler::ensureFileExists() const
 	}
 }
 
-/**
+/*!
  * @brief Reads the mileage from the file.
  * @return The mileage value read from the file or 0.0 if the file is invalid.
  *
@@ -101,7 +101,7 @@ double MileageFileHandler::readMileage() const
 	}
 	return mileage;
 }
-/**
+/*!
  * @brief Writes the mileage to the file.
  * @param mileage The mileage value to write.
  *

@@ -24,7 +24,7 @@
 #include <condition_variable>
 #include <QObject>
 
-/**
+/*!
  * @brief Class for the client thread
  * @class ClientThread
  */

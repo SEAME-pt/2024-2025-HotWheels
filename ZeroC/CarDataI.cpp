@@ -15,20 +15,20 @@
 
 #include "CarDataI.hpp"
 
-/**
+/*!
  * @brief Namespace for the car data
  * @namespace Data
  */
 namespace Data
 {
 
-	/**
+	/*!
 	 * @brief Constructor for the CarDataI class
 	 * @param parent The parent QObject
 	 */
 	CarDataI::CarDataI(QObject *parent) : QObject(parent) {}
 
-	/**
+	/*!
 	 * @brief Destructor for the CarDataI class
 	 * @details This destructor is responsible for stopping the Ice communicator
 	 * and destroying it.
@@ -42,7 +42,7 @@ namespace Data
 		}
 	}
 
-	/**
+	/*!
 	 * @brief Set the joystick value
 	 * @details This method is responsible for setting the joystick value.
 	 * @param newValue The new value for the joystick
@@ -55,7 +55,7 @@ namespace Data
 		std::cout << "Joystick value set to: " << joystick_enable << std::endl;
 	}
 
-	/**
+	/*!
 	 * @brief Get the joystick value
 	 * @details This method is responsible for getting the joystick value.
 	 * @return The current value of the joystick
@@ -66,7 +66,7 @@ namespace Data
 		return joystick_enable;
 	}
 
-	/**
+	/*!
 	 * @brief Set the car temperature value
 	 * @details This method sets the temperature of the car to the specified value.
 	 *          It is thread-safe and uses a mutex to ensure that the temperature
@@ -82,7 +82,7 @@ namespace Data
 		std::cout << "Car temperature value set to: " << car_temperature << std::endl;
 	}
 
-	/**
+	/*!
 	 * @brief Get the car temperature value
 	 * @details This method is responsible for getting the car temperature value.
 	 *          It is thread-safe and uses a mutex to ensure that the temperature
@@ -95,7 +95,7 @@ namespace Data
 		return car_temperature;
 	}
 
-	/**
+	/*!
 	 * @brief Runs the Ice server.
 	 * @details This method runs the Ice server by initializing the
 	 * Ice communicator with the given arguments and custom properties.
