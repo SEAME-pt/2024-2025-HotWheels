@@ -16,15 +16,15 @@
 #include <QDebug>
 #include "SystemCommandExecutor.hpp"
 
-    /*!
-     * @brief Constructor for the SystemInfoProvider class.
-     * @details Allocates a SystemCommandExecutor if the one provided is nullptr.
-     * @param executor The executor to use. If nullptr, a new SystemCommandExecutor is
-     *        allocated.
-     */
+	/*!
+	 * @brief Constructor for the SystemInfoProvider class.
+	 * @details Allocates a SystemCommandExecutor if the one provided is nullptr.
+	 * @param executor The executor to use. If nullptr, a new SystemCommandExecutor is
+	 *        allocated.
+	 */
 SystemInfoProvider::SystemInfoProvider(ISystemCommandExecutor *executor)
-    : m_executor(executor ? executor : new SystemCommandExecutor())
-    , m_ownExecutor(executor == nullptr)
+	: m_executor(executor ? executor : new SystemCommandExecutor())
+	, m_ownExecutor(executor == nullptr)
 {}
 
 
@@ -33,35 +33,35 @@ SystemInfoProvider::SystemInfoProvider(ISystemCommandExecutor *executor)
  * @details Deletes the executor if it was allocated by the SystemInfoProvider. */
 SystemInfoProvider::~SystemInfoProvider()
 {
-    if (m_ownExecutor)
-        delete m_executor;
+	if (m_ownExecutor)
+		delete m_executor;
 }
 
-    /*!
-     * @brief Gets the current WiFi status.
-     * @param wifiName The name of the WiFi network we are connected to, or an empty
-     *        string if not connected.
-     * @return The current WiFi status as a QString:
-     *         - "Connected" if connected to a network
-     *         - "Disconnected" if not connected to a network
-     *         - "No interface detected" if no wlan interface is detected
-     */
+	/*!
+	 * @brief Gets the current WiFi status.
+	 * @param wifiName The name of the WiFi network we are connected to, or an empty
+	 *        string if not connected.
+	 * @return The current WiFi status as a QString:
+	 *         - "Connected" if connected to a network
+	 *         - "Disconnected" if not connected to a network
+	 *         - "No interface detected" if no wlan interface is detected
+	 */
 QString SystemInfoProvider::getWifiStatus(QString &wifiName) const
 {
-    QString output = m_executor->executeCommand("nmcli -t -f DEVICE,STATE,CONNECTION dev");
-    QStringList lines = output.split('\n');
+	QString output = m_executor->executeCommand("nmcli -t -f DEVICE,STATE,CONNECTION dev");
+	QStringList lines = output.split('\n');
 
-    for (const QString &line : lines) {
-        if (line.startsWith("wlan")) {
-            QStringList parts = line.split(':');
-            if (parts.size() >= 3) {
-                wifiName = parts[2];
-                return (parts[1] == "connected") ? "Connected" : "Disconnected";
-            }
-        }
-    }
-    wifiName.clear();
-    return "No interface detected";
+	for (const QString &line : lines) {
+		if (line.startsWith("wlan")) {
+			QStringList parts = line.split(':');
+			if (parts.size() >= 3) {
+				wifiName = parts[2];
+				return (parts[1] == "connected") ? "Connected" : "Disconnected";
+			}
+		}
+	}
+	wifiName.clear();
+	return "No interface detected";
 }
 
 
@@ -72,11 +72,11 @@ QString SystemInfoProvider::getWifiStatus(QString &wifiName) const
  */
 QString SystemInfoProvider::getTemperature() const
 {
-    QString tempStr = m_executor->readFile("/sys/class/hwmon/hwmon0/temp1_input").trimmed();
+	QString tempStr = m_executor->readFile("/sys/class/hwmon/hwmon0/temp1_input").trimmed();
 
-    bool ok;
-    double tempMillidegrees = tempStr.toDouble(&ok);
-    return ok ? QString("%1°C").arg(tempMillidegrees / 1000.0, 0, 'f', 1) : "N/A";
+	bool ok;
+	double tempMillidegrees = tempStr.toDouble(&ok);
+	return ok ? QString("%1°C").arg(tempMillidegrees / 1000.0, 0, 'f', 1) : "N/A";
 }
 /*!
  * @brief Gets the current IP address of the WiFi interface.
@@ -86,8 +86,8 @@ QString SystemInfoProvider::getTemperature() const
 
 QString SystemInfoProvider::getIpAddress() const
 {
-    QString output = m_executor->executeCommand(
-        "sh -c \"ip -4 addr show wlan0 | grep -oP '(?<=inet\\s)\\d+\\.\\d+\\.\\d+\\.\\d+'\"");
+	QString output = m_executor->executeCommand(
+		"sh -c \"ip -4 addr show wlan0 | grep -oP '(?<=inet\\s)\\d+\\.\\d+\\.\\d+\\.\\d+'\"");
 
-    return output.trimmed().isEmpty() ? "No IP address" : output.trimmed();
+	return output.trimmed().isEmpty() ? "No IP address" : output.trimmed();
 }

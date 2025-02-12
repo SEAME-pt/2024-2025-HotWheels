@@ -25,8 +25,8 @@ volatile bool keepRunning = true;
  * The function will quit the QCoreApplication.
  */
 void handleSigint(int) {
-  qDebug() << "SIGINT received. Quitting application...";
-  QCoreApplication::quit();
+	qDebug() << "SIGINT received. Quitting application...";
+	QCoreApplication::quit();
 }
 
 /*!
@@ -41,17 +41,17 @@ void handleSigint(int) {
  */
 
 int main(int argc, char *argv[]) {
-  QCoreApplication a(argc, argv);
-  std::signal(SIGINT, handleSigint);
+	QCoreApplication a(argc, argv);
+	std::signal(SIGINT, handleSigint);
 
-  try {
-    ControlsManager *m_controlsManager;
-    m_controlsManager = new ControlsManager(argc, argv);
+	try {
+		ControlsManager *m_controlsManager;
+		m_controlsManager = new ControlsManager(argc, argv);
 
-    return a.exec();
-  } catch (const std::exception &e) {
-    std::cerr << "Error: " << e.what() << std::endl;
-    return 1;
-  }
-  std::cout << "Service has stopped." << std::endl;
+		return a.exec();
+	} catch (const std::exception &e) {
+		std::cerr << "Error: " << e.what() << std::endl;
+		return 1;
+	}
+	std::cout << "Service has stopped." << std::endl;
 }

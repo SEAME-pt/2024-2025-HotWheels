@@ -16,7 +16,7 @@
 #include <QtMath>
 
 SystemDataManager::SystemDataManager(QObject *parent)
-    : QObject(parent)
+	: QObject(parent)
 {}
 
 SystemDataManager::~SystemDataManager() {}
@@ -29,11 +29,11 @@ SystemDataManager::~SystemDataManager() {}
  * @details This function processes the time data.
  */
 void SystemDataManager::handleTimeData(const QString &currentDate,
-                                       const QString &currentTime,
-                                       const QString &currentDay)
+									   const QString &currentTime,
+									   const QString &currentDay)
 {
-    m_time = currentTime;
-    emit systemTimeUpdated(currentDate, currentTime, currentDay);
+	m_time = currentTime;
+	emit systemTimeUpdated(currentDate, currentTime, currentDay);
 }
 
 /*!
@@ -44,11 +44,11 @@ void SystemDataManager::handleTimeData(const QString &currentDate,
  */
 void SystemDataManager::handleWifiData(const QString &status, const QString &wifiName)
 {
-    if (m_wifiStatus != status || m_wifiName != wifiName) {
-        m_wifiStatus = status;
-        m_wifiName = wifiName;
-        emit systemWifiUpdated(status, wifiName);
-    }
+	if (m_wifiStatus != status || m_wifiName != wifiName) {
+		m_wifiStatus = status;
+		m_wifiName = wifiName;
+		emit systemWifiUpdated(status, wifiName);
+	}
 }
 
 /*!
@@ -58,10 +58,10 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
  */
 void SystemDataManager::handleTemperatureData(const QString &temperature)
 {
-    if (m_temperature != temperature) {
-        m_temperature = temperature;
-        emit systemTemperatureUpdated(temperature);
-    }
+	if (m_temperature != temperature) {
+		m_temperature = temperature;
+		emit systemTemperatureUpdated(temperature);
+	}
 }
 
 /*!
@@ -71,10 +71,10 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
  */
 void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 {
-    if (m_ipAddress != ipAddress) {
-        m_ipAddress = ipAddress;
-        emit ipAddressUpdated(ipAddress);
-    }
+	if (m_ipAddress != ipAddress) {
+		m_ipAddress = ipAddress;
+		emit ipAddressUpdated(ipAddress);
+	}
 }
 
 /*!
@@ -84,8 +84,8 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
  */
 void SystemDataManager::handleBatteryPercentage(float batteryPercentage)
 {
-    if (!qFuzzyCompare(batteryPercentage, m_batteryPercentage)) {
-        m_batteryPercentage = batteryPercentage;
-        emit batteryPercentageUpdated(batteryPercentage);
-    }
+	if (!qFuzzyCompare(batteryPercentage, m_batteryPercentage)) {
+		m_batteryPercentage = batteryPercentage;
+		emit batteryPercentageUpdated(batteryPercentage);
+	}
 }

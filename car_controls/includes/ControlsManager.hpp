@@ -28,31 +28,31 @@
  * @details This class is responsible for managing the controls of the car.
  */
 class ControlsManager : public QObject {
-  Q_OBJECT
+	Q_OBJECT
 
 private:
-  EngineController m_engineController;
-  JoysticksController *m_manualController;
-  DrivingMode m_currentMode;
-  ClientThread *m_clientObject;
-  Data::CarDataI *m_carDataObject;
+	EngineController m_engineController;
+	JoysticksController *m_manualController;
+	DrivingMode m_currentMode;
+	ClientThread *m_clientObject;
+	Data::CarDataI *m_carDataObject;
 
-  QThread *m_manualControllerThread;
-  QThread* m_processMonitorThread;
-  QThread* m_carDataThread;
-  QThread* m_clientThread;
-  QThread* m_joystickControlThread;
+	QThread *m_manualControllerThread;
+	QThread* m_processMonitorThread;
+	QThread* m_carDataThread;
+	QThread* m_clientThread;
+	QThread* m_joystickControlThread;
 
-  std::atomic<bool> m_threadRunning;
+	std::atomic<bool> m_threadRunning;
 
 public:
-  explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);
-  ~ControlsManager();
+	explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);
+	~ControlsManager();
 
-  void setMode(DrivingMode mode);
-  void readJoystickEnable();
-  bool isProcessRunning(const QString &processName);
-  //bool isServiceRunning(const QString &serviceName);
+	void setMode(DrivingMode mode);
+	void readJoystickEnable();
+	bool isProcessRunning(const QString &processName);
+	//bool isServiceRunning(const QString &serviceName);
 };
 
 #endif // CONTROLSMANAGER_HPP

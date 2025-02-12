@@ -22,7 +22,7 @@
  * @details This constructor initializes the VehicleDataManager object.
  */
 VehicleDataManager::VehicleDataManager(QObject *parent)
-    : QObject(parent)
+	: QObject(parent)
 {}
 
 /*!
@@ -41,8 +41,8 @@ VehicleDataManager::~VehicleDataManager() {}
  */
 void VehicleDataManager::handleRpmData(int rawRpm)
 {
-    m_rpm = rawRpm;
-    emit canDataProcessed(m_speed, rawRpm);
+	m_rpm = rawRpm;
+	emit canDataProcessed(m_speed, rawRpm);
 }
 
 /*!
@@ -56,12 +56,12 @@ void VehicleDataManager::handleRpmData(int rawRpm)
  */
 void VehicleDataManager::handleSpeedData(float rawSpeed)
 {
-    float processedSpeed = rawSpeed;
-    if (m_clusterMetrics == ClusterMetrics::Miles) {
-        processedSpeed *= 0.621371f;
-    }
-    m_speed = processedSpeed;
-    emit canDataProcessed(processedSpeed, m_rpm);
+	float processedSpeed = rawSpeed;
+	if (m_clusterMetrics == ClusterMetrics::Miles) {
+		processedSpeed *= 0.621371f;
+	}
+	m_speed = processedSpeed;
+	emit canDataProcessed(processedSpeed, m_rpm);
 }
 
 /*!
@@ -73,10 +73,10 @@ void VehicleDataManager::handleSpeedData(float rawSpeed)
  */
 void VehicleDataManager::handleMileageUpdate(double mileage)
 {
-    if (!qFuzzyCompare(m_mileage, mileage)) {
-        m_mileage = mileage;
-        emit mileageUpdated(m_mileage);
-    }
+	if (!qFuzzyCompare(m_mileage, mileage)) {
+		m_mileage = mileage;
+		emit mileageUpdated(m_mileage);
+	}
 }
 
 /*!
@@ -89,10 +89,10 @@ void VehicleDataManager::handleMileageUpdate(double mileage)
  */
 void VehicleDataManager::handleDirectionData(CarDirection rawDirection)
 {
-    if (m_carDirection != rawDirection) {
-        m_carDirection = rawDirection;
-        emit engineDataProcessed(rawDirection, m_steeringDirection);
-    }
+	if (m_carDirection != rawDirection) {
+		m_carDirection = rawDirection;
+		emit engineDataProcessed(rawDirection, m_steeringDirection);
+	}
 }
 
 
@@ -106,8 +106,8 @@ void VehicleDataManager::handleDirectionData(CarDirection rawDirection)
  */
 void VehicleDataManager::handleSteeringData(int rawAngle)
 {
-    if (m_steeringDirection != rawAngle) {
-        m_steeringDirection = rawAngle;
-        emit engineDataProcessed(m_carDirection, rawAngle);
-    }
+	if (m_steeringDirection != rawAngle) {
+		m_steeringDirection = rawAngle;
+		emit engineDataProcessed(m_carDirection, rawAngle);
+	}
 }

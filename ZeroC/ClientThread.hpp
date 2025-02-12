@@ -30,29 +30,29 @@
  */
 class ClientThread : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 private:
-    Ice::CommunicatorPtr communicator;
-    Ice::ObjectPrx base;
-    Data::CarDataPrx carData; // Proxy to communicate with the server
-    std::thread clientThread;
-    bool running = true;
-    bool connected = false;     // Flag to check if the client is connected
-    std::mutex mtx;             // Mutex for synchronization
-    std::condition_variable cv; // Condition variable for synchronization
+	Ice::CommunicatorPtr communicator;
+	Ice::ObjectPrx base;
+	Data::CarDataPrx carData; // Proxy to communicate with the server
+	std::thread clientThread;
+	bool running = true;
+	bool connected = false;     // Flag to check if the client is connected
+	std::mutex mtx;             // Mutex for synchronization
+	std::condition_variable cv; // Condition variable for synchronization
 
 public:
-    explicit ClientThread(QObject *parent = nullptr);
+	explicit ClientThread(QObject *parent = nullptr);
 
-    ~ClientThread();
+	~ClientThread();
 
-    void runClient(int argc, char *argv[]);
+	void runClient(int argc, char *argv[]);
 
-    void setJoystickValue(bool value);
-    bool getJoystickValue();
+	void setJoystickValue(bool value);
+	bool getJoystickValue();
 
-    void setRunning(bool value);
+	void setRunning(bool value);
 };
 
 #endif

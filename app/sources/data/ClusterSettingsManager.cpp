@@ -21,7 +21,7 @@
  * @details This constructor initializes the ClusterSettingsManager object.
  */
 ClusterSettingsManager::ClusterSettingsManager(QObject *parent)
-    : QObject(parent)
+	: QObject(parent)
 {}
 
 /*!
@@ -38,10 +38,10 @@ ClusterSettingsManager::~ClusterSettingsManager() {}
  */
 void ClusterSettingsManager::setDrivingMode(DrivingMode newMode)
 {
-    if (m_drivingMode != newMode) {
-        m_drivingMode = newMode;
-        emit drivingModeUpdated(newMode);
-    }
+	if (m_drivingMode != newMode) {
+		m_drivingMode = newMode;
+		emit drivingModeUpdated(newMode);
+	}
 }
 
 /*!
@@ -50,11 +50,11 @@ void ClusterSettingsManager::setDrivingMode(DrivingMode newMode)
  */
 void ClusterSettingsManager::toggleDrivingMode()
 {
-    if (m_drivingMode == DrivingMode::Manual) {
-        setDrivingMode(DrivingMode::Automatic);
-    } else {
-        setDrivingMode(DrivingMode::Manual);
-    }
+	if (m_drivingMode == DrivingMode::Manual) {
+		setDrivingMode(DrivingMode::Automatic);
+	} else {
+		setDrivingMode(DrivingMode::Manual);
+	}
 }
 
 /*!
@@ -64,10 +64,10 @@ void ClusterSettingsManager::toggleDrivingMode()
  */
 void ClusterSettingsManager::setClusterTheme(ClusterTheme newTheme)
 {
-    if (m_clusterTheme != newTheme) {
-        m_clusterTheme = newTheme;
-        emit clusterThemeUpdated(newTheme);
-    }
+	if (m_clusterTheme != newTheme) {
+		m_clusterTheme = newTheme;
+		emit clusterThemeUpdated(newTheme);
+	}
 }
 
 /*!
@@ -76,11 +76,11 @@ void ClusterSettingsManager::setClusterTheme(ClusterTheme newTheme)
  */
 void ClusterSettingsManager::toggleClusterTheme()
 {
-    if (m_clusterTheme == ClusterTheme::Dark) {
-        setClusterTheme(ClusterTheme::Light);
-    } else {
-        setClusterTheme(ClusterTheme::Dark);
-    }
+	if (m_clusterTheme == ClusterTheme::Dark) {
+		setClusterTheme(ClusterTheme::Light);
+	} else {
+		setClusterTheme(ClusterTheme::Dark);
+	}
 }
 
 /*!
@@ -90,10 +90,10 @@ void ClusterSettingsManager::toggleClusterTheme()
  */
 void ClusterSettingsManager::setClusterMetrics(ClusterMetrics newMetrics)
 {
-    if (m_clusterMetrics != newMetrics) {
-        m_clusterMetrics = newMetrics;
-        emit clusterMetricsUpdated(newMetrics);
-    }
+	if (m_clusterMetrics != newMetrics) {
+		m_clusterMetrics = newMetrics;
+		emit clusterMetricsUpdated(newMetrics);
+	}
 }
 
 /*!
@@ -102,9 +102,9 @@ void ClusterSettingsManager::setClusterMetrics(ClusterMetrics newMetrics)
  */
 void ClusterSettingsManager::toggleClusterMetrics()
 {
-    if (m_clusterMetrics == ClusterMetrics::Kilometers) {
-        setClusterMetrics(ClusterMetrics::Miles);
-    } else {
-        setClusterMetrics(ClusterMetrics::Kilometers);
-    }
+	if (m_clusterMetrics == ClusterMetrics::Kilometers) {
+		setClusterMetrics(ClusterMetrics::Miles);
+	} else {
+		setClusterMetrics(ClusterMetrics::Kilometers);
+	}
 }

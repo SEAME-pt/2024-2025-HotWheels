@@ -27,32 +27,32 @@
  */
 #define REG_SHUNTVOLTAGE 0x01
 
-    /*!
-     * @brief Construct a new BatteryController object.
-     * @param i2cController The I2C controller to use for communication with the
-     * INA219. If `nullptr`, a default I2C controller is created.
-     * @details This constructor initializes the BatteryController object with
-     * the specified I2C controller and address. If `i2cController` is `nullptr`,
-     * a default I2C controller is created.
-     */
+	/*!
+	 * @brief Construct a new BatteryController object.
+	 * @param i2cController The I2C controller to use for communication with the
+	 * INA219. If `nullptr`, a default I2C controller is created.
+	 * @details This constructor initializes the BatteryController object with
+	 * the specified I2C controller and address. If `i2cController` is `nullptr`,
+	 * a default I2C controller is created.
+	 */
 BatteryController::BatteryController(II2CController *i2cController)
-    : m_i2cController(i2cController ? i2cController : new I2CController("/dev/i2c-1", 0x41))
-    , m_ownI2CController(i2cController == nullptr)
+	: m_i2cController(i2cController ? i2cController : new I2CController("/dev/i2c-1", 0x41))
+	, m_ownI2CController(i2cController == nullptr)
 {
-    setCalibration32V2A();
+	setCalibration32V2A();
 }
 
-    /*!
-     * @brief Destroy the BatteryController object
-     * @details This destructor releases any resources allocated by the
-     * BatteryController object. If the object created its own I2C controller,
-     * it is deleted.
-     */
+	/*!
+	 * @brief Destroy the BatteryController object
+	 * @details This destructor releases any resources allocated by the
+	 * BatteryController object. If the object created its own I2C controller,
+	 * it is deleted.
+	 */
 BatteryController::~BatteryController()
 {
-    if (m_ownI2CController) {
-        delete m_i2cController;
-    }
+	if (m_ownI2CController) {
+		delete m_i2cController;
+	}
 }
 
 /*!
@@ -64,7 +64,7 @@ BatteryController::~BatteryController()
 
 void BatteryController::setCalibration32V2A()
 {
-    m_i2cController->writeRegister(REG_CALIBRATION, 4096);
+	m_i2cController->writeRegister(REG_CALIBRATION, 4096);
 }
 
 /*!
@@ -77,21 +77,21 @@ void BatteryController::setCalibration32V2A()
 
 float BatteryController::getBusVoltage_V()
 {
-    uint16_t raw = m_i2cController->readRegister(REG_BUSVOLTAGE);
-    return ((raw >> 3) * 0.004); // Convert to volts
+	uint16_t raw = m_i2cController->readRegister(REG_BUSVOLTAGE);
+	return ((raw >> 3) * 0.004); // Convert to volts
 }
 
-    /*!
-     * @brief Get the shunt voltage in volts.
-     * @return float The shunt voltage in volts.
-     * @details This function reads the raw shunt voltage register value from the
-     * INA219 sensor, shifts it to align with the measurement resolution, and
-     * converts it to volts.
-     */
+	/*!
+	 * @brief Get the shunt voltage in volts.
+	 * @return float The shunt voltage in volts.
+	 * @details This function reads the raw shunt voltage register value from the
+	 * INA219 sensor, shifts it to align with the measurement resolution, and
+	 * converts it to volts.
+	 */
 float BatteryController::getShuntVoltage_V()
 {
-    int16_t raw = static_cast<int16_t>(m_i2cController->readRegister(REG_SHUNTVOLTAGE));
-    return raw * 0.01; // Convert to volts
+	int16_t raw = static_cast<int16_t>(m_i2cController->readRegister(REG_SHUNTVOLTAGE));
+	return raw * 0.01; // Convert to volts
 }
 
 /*!
@@ -108,8 +108,8 @@ float BatteryController::getBatteryPercentage() {
   // Calculate percentage
   float percentage = (loadVoltage - 6.0F) / 2.4f * 100.0F;
   if (percentage > 100.0F)
-    percentage = 100.0F;
+	percentage = 100.0F;
   if (percentage < 0.0F)
-    percentage = 0.0F;
+	percentage = 0.0F;
   return percentage;
 }

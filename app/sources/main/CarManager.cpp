@@ -82,10 +82,10 @@ void CarManager::initializeDataManager() {
 void CarManager::initializeCanBusManager() {
   if (m_canBusManager->initialize()) {
     connect(m_canBusManager, &CanBusManager::speedUpdated, m_dataManager,
-            &DataManager::handleSpeedData);
+	    &DataManager::handleSpeedData);
 
     connect(m_canBusManager, &CanBusManager::rpmUpdated, m_dataManager,
-            &DataManager::handleRpmData);
+	    &DataManager::handleRpmData);
   }
 }
 
@@ -98,13 +98,13 @@ void CarManager::initializeControlsManager() {
   if (m_controlsManager) {
     // Connect ControlsManager signals to DataManager slots
     connect(m_controlsManager, &ControlsManager::directionChanged,
-            m_dataManager, &DataManager::handleDirectionData);
+	    m_dataManager, &DataManager::handleDirectionData);
 
     connect(m_controlsManager, &ControlsManager::steeringChanged, m_dataManager,
-            &DataManager::handleSteeringData);
+	    &DataManager::handleSteeringData);
 
     connect(m_dataManager, &DataManager::drivingModeUpdated, m_controlsManager,
-            &ControlsManager::drivingModeUpdated);
+	    &ControlsManager::drivingModeUpdated);
   }
 }
 
@@ -119,47 +119,47 @@ void CarManager::initializeDisplayManager() {
 
     // Connect DataManager signals to DisplayManager slots
     connect(m_dataManager, &DataManager::canDataProcessed, m_displayManager,
-            &DisplayManager::updateCanBusData);
+	    &DisplayManager::updateCanBusData);
 
     connect(m_dataManager, &DataManager::engineDataProcessed, m_displayManager,
-            &DisplayManager::updateEngineData);
+	    &DisplayManager::updateEngineData);
 
     connect(m_dataManager, &DataManager::systemTimeUpdated, m_displayManager,
-            &DisplayManager::updateSystemTime);
+	    &DisplayManager::updateSystemTime);
 
     connect(m_dataManager, &DataManager::systemWifiUpdated, m_displayManager,
-            &DisplayManager::updateWifiStatus);
+	    &DisplayManager::updateWifiStatus);
 
     connect(m_dataManager, &DataManager::systemTemperatureUpdated,
-            m_displayManager, &DisplayManager::updateTemperature);
+	    m_displayManager, &DisplayManager::updateTemperature);
 
     connect(m_dataManager, &DataManager::batteryPercentageUpdated,
-            m_displayManager, &DisplayManager::updateBatteryPercentage);
+	    m_displayManager, &DisplayManager::updateBatteryPercentage);
 
     connect(m_dataManager, &DataManager::ipAddressUpdated, m_displayManager,
-            &DisplayManager::updateIpAddress);
+	    &DisplayManager::updateIpAddress);
 
     connect(m_dataManager, &DataManager::drivingModeUpdated, m_displayManager,
-            &DisplayManager::updateDrivingMode);
+	    &DisplayManager::updateDrivingMode);
 
     connect(m_dataManager, &DataManager::clusterThemeUpdated, m_displayManager,
-            &DisplayManager::updateClusterTheme);
+	    &DisplayManager::updateClusterTheme);
 
     connect(m_dataManager, &DataManager::clusterMetricsUpdated,
-            m_displayManager, &DisplayManager::updateClusterMetrics);
+	    m_displayManager, &DisplayManager::updateClusterMetrics);
 
     connect(m_dataManager, &DataManager::mileageUpdated, m_displayManager,
-            &DisplayManager::updateMileage);
+	    &DisplayManager::updateMileage);
 
     // Connect DisplayManager toggle signals to DataManager slots
     connect(m_displayManager, &DisplayManager::drivingModeToggled,
-            m_dataManager, &DataManager::toggleDrivingMode);
+	    m_dataManager, &DataManager::toggleDrivingMode);
 
     connect(m_displayManager, &DisplayManager::clusterThemeToggled,
-            m_dataManager, &DataManager::toggleClusterTheme);
+	    m_dataManager, &DataManager::toggleClusterTheme);
 
     connect(m_displayManager, &DisplayManager::clusterMetricsToggled,
-            m_dataManager, &DataManager::toggleClusterMetrics);
+	    m_dataManager, &DataManager::toggleClusterMetrics);
   }
 }
 
@@ -171,33 +171,33 @@ void CarManager::initializeDisplayManager() {
 void CarManager::initializeSystemManager()
 {
     if (m_systemManager) {
-        m_systemManager->initialize();
-        // Connect SystemManager signals to DataManager slots
-        connect(m_systemManager,
-                &SystemManager::timeUpdated,
-                m_dataManager,
-                &DataManager::handleTimeData);
+	m_systemManager->initialize();
+	// Connect SystemManager signals to DataManager slots
+	connect(m_systemManager,
+		&SystemManager::timeUpdated,
+		m_dataManager,
+		&DataManager::handleTimeData);
 
-        connect(m_systemManager,
-                &SystemManager::wifiStatusUpdated,
-                m_dataManager,
-                &DataManager::handleWifiData);
+	connect(m_systemManager,
+		&SystemManager::wifiStatusUpdated,
+		m_dataManager,
+		&DataManager::handleWifiData);
 
-        connect(m_systemManager,
-                &SystemManager::temperatureUpdated,
-                m_dataManager,
-                &DataManager::handleTemperatureData);
+	connect(m_systemManager,
+		&SystemManager::temperatureUpdated,
+		m_dataManager,
+		&DataManager::handleTemperatureData);
 
-        // Connect SystemManager's battery signal to DataManager's battery slot
-        connect(m_systemManager,
-                &SystemManager::batteryPercentageUpdated,
-                m_dataManager,
-                &DataManager::handleBatteryPercentage);
+	// Connect SystemManager's battery signal to DataManager's battery slot
+	connect(m_systemManager,
+		&SystemManager::batteryPercentageUpdated,
+		m_dataManager,
+		&DataManager::handleBatteryPercentage);
 
-        connect(m_systemManager,
-                &SystemManager::ipAddressUpdated,
-                m_dataManager,
-                &DataManager::handleIpAddressData);
+	connect(m_systemManager,
+		&SystemManager::ipAddressUpdated,
+		m_dataManager,
+		&DataManager::handleIpAddressData);
     }
 }
 
@@ -212,10 +212,10 @@ void CarManager::initializeMileageManager() {
 
     // Connect CanBusManager signals to MileageManager slots
     connect(m_canBusManager, &CanBusManager::speedUpdated, m_mileageManager,
-            &MileageManager::onSpeedUpdated);
+	    &MileageManager::onSpeedUpdated);
 
     // Connect MileageManager signals to DataManager slots
     connect(m_mileageManager, &MileageManager::mileageUpdated, m_dataManager,
-            &DataManager::handleMileageUpdate);
+	    &DataManager::handleMileageUpdate);
   }
 }

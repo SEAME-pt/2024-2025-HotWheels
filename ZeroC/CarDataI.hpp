@@ -30,34 +30,34 @@
 namespace Data
 {
 
-    /**
-     * @brief Class for the car data
-     * @class CarDataI
-     */
-    class CarDataI : public QObject, public CarData
-    {
-        Q_OBJECT
-    private:
-        bool joystick_enable;
-        double car_temperature;
+	/**
+	 * @brief Class for the car data
+	 * @class CarDataI
+	 */
+	class CarDataI : public QObject, public CarData
+	{
+		Q_OBJECT
+	private:
+		bool joystick_enable;
+		double car_temperature;
 
-        std::mutex joystick_mutex;
-        std::mutex temperature_mutex;
-        std::thread serverThread;
-        Ice::CommunicatorPtr communicator;
+		std::mutex joystick_mutex;
+		std::mutex temperature_mutex;
+		std::thread serverThread;
+		Ice::CommunicatorPtr communicator;
 
-    public:
-        explicit CarDataI(QObject *parent = nullptr);
-        ~CarDataI();
+	public:
+		explicit CarDataI(QObject *parent = nullptr);
+		~CarDataI();
 
-        void setJoystickValue(bool newValue, const Ice::Current &) override;
-        bool getJoystickValue(const Ice::Current &) override;
+		void setJoystickValue(bool newValue, const Ice::Current &) override;
+		bool getJoystickValue(const Ice::Current &) override;
 
-        void setCarTemperatureValue(double newValue, const Ice::Current &) override;
-        double getCarTemperatureValue(const Ice::Current &) override;
+		void setCarTemperatureValue(double newValue, const Ice::Current &) override;
+		double getCarTemperatureValue(const Ice::Current &) override;
 
-        void runServer(int argc, char **argv);
-    };
+		void runServer(int argc, char **argv);
+	};
 
 } // namespace Data
 

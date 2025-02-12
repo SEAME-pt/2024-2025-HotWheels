@@ -31,15 +31,15 @@
  * file path, calculator, and file handler. It also sets the total mileage to 0.0.
  */
 MileageManager::MileageManager(const QString &filePath,
-                               IMileageCalculator *calculator,
-                               IMileageFileHandler *fileHandler,
-                               QObject *parent)
-    : QObject(parent)
-    , m_calculator(calculator ? calculator : new MileageCalculator())
-    , m_fileHandler(fileHandler ? fileHandler : new MileageFileHandler(filePath))
-    , m_ownCalculator(calculator == nullptr)
-    , m_ownFileHandler(fileHandler == nullptr)
-    , m_totalMileage(0.0)
+							   IMileageCalculator *calculator,
+							   IMileageFileHandler *fileHandler,
+							   QObject *parent)
+	: QObject(parent)
+	, m_calculator(calculator ? calculator : new MileageCalculator())
+	, m_fileHandler(fileHandler ? fileHandler : new MileageFileHandler(filePath))
+	, m_ownCalculator(calculator == nullptr)
+	, m_ownFileHandler(fileHandler == nullptr)
+	, m_totalMileage(0.0)
 {}
 
 /**
@@ -51,15 +51,15 @@ MileageManager::MileageManager(const QString &filePath,
  */
 MileageManager::~MileageManager()
 {
-    shutdown();
+	shutdown();
 
-    // Only delete instances if they were created internally
-    if (m_ownCalculator) {
-        delete m_calculator;
-    }
-    if (m_ownFileHandler) {
-        delete m_fileHandler;
-    }
+	// Only delete instances if they were created internally
+	if (m_ownCalculator) {
+		delete m_calculator;
+	}
+	if (m_ownFileHandler) {
+		delete m_fileHandler;
+	}
 }
 
 /**
@@ -70,13 +70,13 @@ MileageManager::~MileageManager()
  */
 void MileageManager::initialize()
 {
-    m_totalMileage = m_fileHandler->readMileage();
+	m_totalMileage = m_fileHandler->readMileage();
 
-    connect(&m_updateTimer, &QTimer::timeout, this, &MileageManager::updateMileage);
-    m_updateTimer.start(1000);
+	connect(&m_updateTimer, &QTimer::timeout, this, &MileageManager::updateMileage);
+	m_updateTimer.start(1000);
 
-    connect(&m_persistenceTimer, &QTimer::timeout, this, &MileageManager::saveMileage);
-    m_persistenceTimer.start(10000);
+	connect(&m_persistenceTimer, &QTimer::timeout, this, &MileageManager::saveMileage);
+	m_persistenceTimer.start(10000);
 }
 
 /**
@@ -87,9 +87,9 @@ void MileageManager::initialize()
  */
 void MileageManager::shutdown()
 {
-    saveMileage();
-    m_updateTimer.stop();
-    m_persistenceTimer.stop();
+	saveMileage();
+	m_updateTimer.stop();
+	m_persistenceTimer.stop();
 }
 
 /**
@@ -100,9 +100,9 @@ void MileageManager::shutdown()
  */
 void MileageManager::updateMileage()
 {
-    double distance = m_calculator->calculateDistance();
-    m_totalMileage += distance;
-    emit mileageUpdated(m_totalMileage);
+	double distance = m_calculator->calculateDistance();
+	m_totalMileage += distance;
+	emit mileageUpdated(m_totalMileage);
 }
 
 /**
@@ -112,7 +112,7 @@ void MileageManager::updateMileage()
  */
 void MileageManager::saveMileage()
 {
-    m_fileHandler->writeMileage(m_totalMileage);
+	m_fileHandler->writeMileage(m_totalMileage);
 }
 
 /**
@@ -124,5 +124,5 @@ void MileageManager::saveMileage()
  */
 void MileageManager::onSpeedUpdated(float speed)
 {
-    m_calculator->addSpeed(speed);
+	m_calculator->addSpeed(speed);
 }

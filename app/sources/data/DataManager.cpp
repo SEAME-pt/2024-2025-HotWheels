@@ -27,62 +27,62 @@
  * managers: VehicleDataManager, SystemDataManager, and ClusterSettingsManager.
  */
 DataManager::DataManager(QObject *parent)
-    : QObject(parent)
+	: QObject(parent)
 {
-    // Initialize the three managers
-    m_vehicleDataManager = new VehicleDataManager(this);
-    m_systemDataManager = new SystemDataManager(this);
-    m_clusterSettingsManager = new ClusterSettingsManager(this);
+	// Initialize the three managers
+	m_vehicleDataManager = new VehicleDataManager(this);
+	m_systemDataManager = new SystemDataManager(this);
+	m_clusterSettingsManager = new ClusterSettingsManager(this);
 
-    // Connect signals from VehicleDataManager
-    connect(m_vehicleDataManager,
-            &VehicleDataManager::canDataProcessed,
-            this,
-            &DataManager::canDataProcessed);
-    connect(m_vehicleDataManager,
-            &VehicleDataManager::engineDataProcessed,
-            this,
-            &DataManager::engineDataProcessed);
-    connect(m_vehicleDataManager,
-            &VehicleDataManager::mileageUpdated,
-            this,
-            &DataManager::mileageUpdated);
+	// Connect signals from VehicleDataManager
+	connect(m_vehicleDataManager,
+			&VehicleDataManager::canDataProcessed,
+			this,
+			&DataManager::canDataProcessed);
+	connect(m_vehicleDataManager,
+			&VehicleDataManager::engineDataProcessed,
+			this,
+			&DataManager::engineDataProcessed);
+	connect(m_vehicleDataManager,
+			&VehicleDataManager::mileageUpdated,
+			this,
+			&DataManager::mileageUpdated);
 
-    // Connect signals from SystemDataManager
-    connect(m_systemDataManager,
-            &SystemDataManager::systemTimeUpdated,
-            this,
-            &DataManager::systemTimeUpdated);
-    connect(m_systemDataManager,
-            &SystemDataManager::systemWifiUpdated,
-            this,
-            &DataManager::systemWifiUpdated);
-    connect(m_systemDataManager,
-            &SystemDataManager::systemTemperatureUpdated,
-            this,
-            &DataManager::systemTemperatureUpdated);
-    connect(m_systemDataManager,
-            &SystemDataManager::ipAddressUpdated,
-            this,
-            &DataManager::ipAddressUpdated);
-    connect(m_systemDataManager,
-            &SystemDataManager::batteryPercentageUpdated,
-            this,
-            &DataManager::batteryPercentageUpdated);
+	// Connect signals from SystemDataManager
+	connect(m_systemDataManager,
+			&SystemDataManager::systemTimeUpdated,
+			this,
+			&DataManager::systemTimeUpdated);
+	connect(m_systemDataManager,
+			&SystemDataManager::systemWifiUpdated,
+			this,
+			&DataManager::systemWifiUpdated);
+	connect(m_systemDataManager,
+			&SystemDataManager::systemTemperatureUpdated,
+			this,
+			&DataManager::systemTemperatureUpdated);
+	connect(m_systemDataManager,
+			&SystemDataManager::ipAddressUpdated,
+			this,
+			&DataManager::ipAddressUpdated);
+	connect(m_systemDataManager,
+			&SystemDataManager::batteryPercentageUpdated,
+			this,
+			&DataManager::batteryPercentageUpdated);
 
-    // Connect signals from ClusterSettingsManager
-    connect(m_clusterSettingsManager,
-            &ClusterSettingsManager::drivingModeUpdated,
-            this,
-            &DataManager::drivingModeUpdated);
-    connect(m_clusterSettingsManager,
-            &ClusterSettingsManager::clusterThemeUpdated,
-            this,
-            &DataManager::clusterThemeUpdated);
-    connect(m_clusterSettingsManager,
-            &ClusterSettingsManager::clusterMetricsUpdated,
-            this,
-            &DataManager::clusterMetricsUpdated);
+	// Connect signals from ClusterSettingsManager
+	connect(m_clusterSettingsManager,
+			&ClusterSettingsManager::drivingModeUpdated,
+			this,
+			&DataManager::drivingModeUpdated);
+	connect(m_clusterSettingsManager,
+			&ClusterSettingsManager::clusterThemeUpdated,
+			this,
+			&DataManager::clusterThemeUpdated);
+	connect(m_clusterSettingsManager,
+			&ClusterSettingsManager::clusterMetricsUpdated,
+			this,
+			&DataManager::clusterMetricsUpdated);
 }
 
 /*!
@@ -91,9 +91,9 @@ DataManager::DataManager(QObject *parent)
  */
 DataManager::~DataManager()
 {
-    delete m_vehicleDataManager;
-    delete m_systemDataManager;
-    delete m_clusterSettingsManager;
+	delete m_vehicleDataManager;
+	delete m_systemDataManager;
+	delete m_clusterSettingsManager;
 }
 
 /*!
@@ -105,19 +105,19 @@ DataManager::~DataManager()
  */
 void DataManager::handleRpmData(int rawRpm)
 {
-    m_vehicleDataManager->handleRpmData(rawRpm);
+	m_vehicleDataManager->handleRpmData(rawRpm);
 }
 
 /*!
  * @brief Handle Speed data.
-    * @param rawSpeed The raw speed data.
-    * @details This function processes the speed data by forwarding it to the
-    * VehicleDataManager.
-    */
+	* @param rawSpeed The raw speed data.
+	* @details This function processes the speed data by forwarding it to the
+	* VehicleDataManager.
+	*/
 void DataManager::handleSpeedData(float rawSpeed)
 {
-    m_vehicleDataManager->handleSpeedData(rawSpeed);
-    // qDebug() << "Speed updated";
+	m_vehicleDataManager->handleSpeedData(rawSpeed);
+	// qDebug() << "Speed updated";
 }
 
 /*!
@@ -128,7 +128,7 @@ void DataManager::handleSpeedData(float rawSpeed)
  */
 void DataManager::handleSteeringData(int rawAngle)
 {
-    m_vehicleDataManager->handleSteeringData(rawAngle);
+	m_vehicleDataManager->handleSteeringData(rawAngle);
 }
 
 /*!
@@ -139,7 +139,7 @@ void DataManager::handleSteeringData(int rawAngle)
  */
 void DataManager::handleDirectionData(CarDirection rawDirection)
 {
-    m_vehicleDataManager->handleDirectionData(rawDirection);
+	m_vehicleDataManager->handleDirectionData(rawDirection);
 }
 
 /*!
@@ -150,7 +150,7 @@ void DataManager::handleDirectionData(CarDirection rawDirection)
  */
 void DataManager::handleMileageUpdate(double mileage)
 {
-    m_vehicleDataManager->handleMileageUpdate(mileage);
+	m_vehicleDataManager->handleMileageUpdate(mileage);
 }
 
 /*!
@@ -162,10 +162,10 @@ void DataManager::handleMileageUpdate(double mileage)
  * SystemDataManager.
  */
 void DataManager::handleTimeData(const QString &currentDate,
-                                 const QString &currentTime,
-                                 const QString &currentDay)
+								 const QString &currentTime,
+								 const QString &currentDay)
 {
-    m_systemDataManager->handleTimeData(currentDate, currentTime, currentDay);
+	m_systemDataManager->handleTimeData(currentDate, currentTime, currentDay);
 }
 
 /*!
@@ -177,7 +177,7 @@ void DataManager::handleTimeData(const QString &currentDate,
  */
 void DataManager::handleWifiData(const QString &status, const QString &wifiName)
 {
-    m_systemDataManager->handleWifiData(status, wifiName);
+	m_systemDataManager->handleWifiData(status, wifiName);
 }
 
 /*!
@@ -187,7 +187,7 @@ void DataManager::handleWifiData(const QString &status, const QString &wifiName)
  */
 void DataManager::handleTemperatureData(const QString &temperature)
 {
-    m_systemDataManager->handleTemperatureData(temperature);
+	m_systemDataManager->handleTemperatureData(temperature);
 }
 
 /*!
@@ -197,7 +197,7 @@ void DataManager::handleTemperatureData(const QString &temperature)
  */
 void DataManager::handleIpAddressData(const QString &ipAddress)
 {
-    m_systemDataManager->handleIpAddressData(ipAddress);
+	m_systemDataManager->handleIpAddressData(ipAddress);
 }
 
 /*!
@@ -207,7 +207,7 @@ void DataManager::handleIpAddressData(const QString &ipAddress)
  */
 void DataManager::handleBatteryPercentage(float batteryPercentage)
 {
-    m_systemDataManager->handleBatteryPercentage(batteryPercentage);
+	m_systemDataManager->handleBatteryPercentage(batteryPercentage);
 }
 
 /*!
@@ -216,7 +216,7 @@ void DataManager::handleBatteryPercentage(float batteryPercentage)
  */
 void DataManager::toggleDrivingMode()
 {
-    m_clusterSettingsManager->toggleDrivingMode();
+	m_clusterSettingsManager->toggleDrivingMode();
 }
 /*!
  * @brief Toggle the cluster theme.
@@ -225,7 +225,7 @@ void DataManager::toggleDrivingMode()
  */
 void DataManager::toggleClusterTheme()
 {
-    m_clusterSettingsManager->toggleClusterTheme();
+	m_clusterSettingsManager->toggleClusterTheme();
 
 }
 /*!
@@ -236,5 +236,5 @@ void DataManager::toggleClusterTheme()
 
 void DataManager::toggleClusterMetrics()
 {
-    m_clusterSettingsManager->toggleClusterMetrics();
+	m_clusterSettingsManager->toggleClusterMetrics();
 }
