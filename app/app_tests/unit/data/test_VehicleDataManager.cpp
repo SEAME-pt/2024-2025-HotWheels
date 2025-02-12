@@ -1,7 +1,29 @@
+/*!
+ * @file test_VehicleDataManager.cpp
+ * @brief Unit tests for the VehicleDataManager class.
+ * @version 0.1
+ * @date 2025-02-12
+ * @details This file contains unit tests for the VehicleDataManager class, using
+ * Google Test and Google Mock frameworks.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #include <QSignalSpy>
 #include "VehicleDataManager.hpp"
 #include <gtest/gtest.h>
 
+/*!
+ * @class VehicleDataManagerTest
+ * @brief Test fixture for testing the VehicleDataManager class.
+ *
+ * @details This class sets up the necessary objects and provides setup and
+ * teardown methods for each test.
+ */
 class VehicleDataManagerTest : public ::testing::Test
 {
 protected:
@@ -12,6 +34,14 @@ protected:
     void TearDown() override { delete vehicleDataManager; }
 };
 
+/*!
+ * @test Tests if the RPM data emits a signal when changed.
+ * @brief Ensures that the RPM data emits a signal when changed.
+ *
+ * @details This test verifies that the RPM data emits a signal when changed.
+ *
+ * @see VehicleDataManager::handleRpmData
+ */
 TEST_F(VehicleDataManagerTest, RpmDataEmitsSignal)
 {
     QSignalSpy canDataSpy(vehicleDataManager, &VehicleDataManager::canDataProcessed);
@@ -26,6 +56,14 @@ TEST_F(VehicleDataManagerTest, RpmDataEmitsSignal)
     ASSERT_EQ(args.at(1).toInt(), expectedRpm);
 }
 
+/*!
+ * @test Tests if the speed data emits a signal when changed.
+ * @brief Ensures that the speed data emits a signal when changed.
+ *
+ * @details This test verifies that the speed data emits a signal when changed.
+ *
+ * @see VehicleDataManager::handleSpeedData
+ */
 TEST_F(VehicleDataManagerTest, SpeedDataEmitsSignalInKilometers)
 {
     QSignalSpy canDataSpy(vehicleDataManager, &VehicleDataManager::canDataProcessed);
@@ -40,6 +78,14 @@ TEST_F(VehicleDataManagerTest, SpeedDataEmitsSignalInKilometers)
     ASSERT_EQ(args.at(1).toInt(), 0); // RPM remains unchanged
 }
 
+/*!
+ * @test Tests if the mileage data emits a signal when changed.
+ * @brief Ensures that the mileage data emits a signal when changed.
+ *
+ * @details This test verifies that the mileage data emits a signal when changed.
+ *
+ * @see VehicleDataManager::handleMileageUpdate
+ */
 TEST_F(VehicleDataManagerTest, MileageDataEmitsSignalOnChange)
 {
     QSignalSpy mileageSpy(vehicleDataManager, &VehicleDataManager::mileageUpdated);
@@ -57,6 +103,14 @@ TEST_F(VehicleDataManagerTest, MileageDataEmitsSignalOnChange)
     ASSERT_EQ(mileageSpy.count(), 0);
 }
 
+/*!
+ * @test Tests if the direction data emits a signal when changed.
+ * @brief Ensures that the direction data emits a signal when changed.
+ *
+ * @details This test verifies that the direction data emits a signal when changed.
+ *
+ * @see VehicleDataManager::handleDirectionData
+ */
 TEST_F(VehicleDataManagerTest, DirectionDataEmitsSignalOnChange)
 {
     QSignalSpy engineDataSpy(vehicleDataManager, &VehicleDataManager::engineDataProcessed);
@@ -75,6 +129,14 @@ TEST_F(VehicleDataManagerTest, DirectionDataEmitsSignalOnChange)
     ASSERT_EQ(engineDataSpy.count(), 0);
 }
 
+/*!
+ * @test Tests if the steering data emits a signal when changed.
+ * @brief Ensures that the steering data emits a signal when changed.
+ *
+ * @details This test verifies that the steering data emits a signal when changed.
+ *
+ * @see VehicleDataManager::handleSteeringData
+ */
 TEST_F(VehicleDataManagerTest, SteeringDataEmitsSignalOnChange)
 {
     QSignalSpy engineDataSpy(vehicleDataManager, &VehicleDataManager::engineDataProcessed);

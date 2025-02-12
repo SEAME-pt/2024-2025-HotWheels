@@ -20,6 +20,10 @@
 #include "IBatteryController.hpp"
 #include "II2CController.hpp"
 
+/*!
+ * @brief Class that manages the battery of the vehicle.
+ * @class BatteryController
+ */
 class BatteryController : public IBatteryController
 {
 public:

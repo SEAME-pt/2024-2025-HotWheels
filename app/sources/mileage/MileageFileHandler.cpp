@@ -18,6 +18,18 @@
 #include "MileageFileHandler.hpp"
 #include <QDebug>
 
+/**
+ * @brief Constructs a MileageFileHandler object with the specified file path and functions.
+ * @param filePath The path to the mileage file.
+ * @param openFunc The function to open a file.
+ * @param readFunc The function to read from a file.
+ * @param writeFunc The function to write to a file.
+ * @param existsFunc The function to check if a file exists.
+ *
+ * @details This constructor initializes the MileageFileHandler object with the specified
+ * file path and functions. It also calls ensureFileExists() to create the file if it
+ * does not exist.
+ */
 MileageFileHandler::MileageFileHandler(const QString &filePath,
                                        FileOpenFunc openFunc,
                                        FileReadFunc readFunc,
@@ -32,6 +44,19 @@ MileageFileHandler::MileageFileHandler(const QString &filePath,
     ensureFileExists();
 }
 
+/**
+ * @brief Checks if the file exists and creates it if it does not.
+ *
+ * @details This method checks if the file exists by calling the existsFunc
+ * function. If the file does not exist, it is created by calling the openFunc
+ * function with the QIODevice::WriteOnly and QIODevice::Text flags. The default
+ * value of the mileage is written to the file by calling the writeFunc function.
+ * If the file is created successfully, a message is logged to the console
+ * indicating that the file was created.
+ *
+ * @warning If the file cannot be created, a warning message is logged to the
+ * console.
+ */
 void MileageFileHandler::ensureFileExists() const
 {
     if (!existsFunc(filePath)) {
@@ -48,6 +73,15 @@ void MileageFileHandler::ensureFileExists() const
     }
 }
 
+/**
+ * @brief Reads the mileage from the file.
+ * @return The mileage value read from the file or 0.0 if the file is invalid.
+ *
+ * @details This method reads the mileage value from the file by calling the
+ * readFunc function. If the file cannot be opened for reading, a warning message
+ * is logged to the console. If the mileage value is invalid, a warning message is
+ * logged to the console and the default value of 0.0 is returned.
+ */
 double MileageFileHandler::readMileage() const
 {
     QFile file(filePath);
@@ -67,7 +101,14 @@ double MileageFileHandler::readMileage() const
     }
     return mileage;
 }
-
+/**
+ * @brief Writes the mileage to the file.
+ * @param mileage The mileage value to write.
+ *
+ * @details This method writes the mileage value to the file by calling the
+ * writeFunc function. If the file cannot be opened for writing, a warning message
+ * is logged to the console.
+ */
 void MileageFileHandler::writeMileage(double mileage) const
 {
     QFile file(filePath);

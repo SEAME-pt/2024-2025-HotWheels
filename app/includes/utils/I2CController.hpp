@@ -19,6 +19,10 @@
 #include "II2CController.hpp"
 #include <cstdint>
 
+/*!
+ * @brief Class that controls I2C devices.
+ * @class I2CController
+ */
 class I2CController : public II2CController
 {
 private:

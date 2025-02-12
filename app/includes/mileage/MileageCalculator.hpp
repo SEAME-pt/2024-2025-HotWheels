@@ -21,6 +21,10 @@
 #include <QList>
 #include "IMileageCalculator.hpp"
 
+/*!
+ * @brief Class that calculates the total distance traveled based on speed measurements.
+ * @class MileageCalculator
+ */
 class MileageCalculator : public IMileageCalculator
 {
 public:

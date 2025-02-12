@@ -25,6 +25,10 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
+/**
+ * @namespace Ui
+ * @brief Namespace containing the user interface for the car manager.
+ */
 namespace Ui {
 class CarManager;
 }

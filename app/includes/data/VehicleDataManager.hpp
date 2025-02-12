@@ -1,3 +1,18 @@
+/*!
+ * @file VehicleDataManager.hpp
+ * @brief Definition of the VehicleDataManager class.
+ * @version 0.1
+ * @date 2025-02-12
+ * @details This file contains the definition of the VehicleDataManager class, which is
+ * responsible for managing the data received from the car's systems.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef VEHICLEDATAMANAGER_HPP
 #define VEHICLEDATAMANAGER_HPP
 
@@ -5,6 +20,10 @@
 #include <QString>
 #include "enums.hpp"
 
+/*!
+ * @brief Class that manages the data received from the car's systems.
+ * @class VehicleDataManager inherits from QObject
+ */
 class VehicleDataManager : public QObject
 {
     Q_OBJECT

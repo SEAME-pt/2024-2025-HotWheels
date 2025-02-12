@@ -168,6 +168,13 @@ std::vector<uint8_t> MCP2515Configurator::readCANMessage(uint16_t &frameID) {
   return CAN_RX_Buf;
 }
 
+/*!
+ * @brief Send a CAN message to the MCP2515.
+ * @param frameID The frame ID of the message.
+ * @param CAN_TX_Buf The data of the message.
+ * @param length1 The length of the data.
+ * @details This function sends a CAN message to the MCP2515.
+ */
 void MCP2515Configurator::sendCANMessage(uint16_t frameID, uint8_t *CAN_TX_Buf,
                                          uint8_t length1) {
   uint8_t tempdata = readRegister(CAN_RD_STATUS);

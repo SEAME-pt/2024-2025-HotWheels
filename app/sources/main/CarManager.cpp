@@ -163,6 +163,11 @@ void CarManager::initializeDisplayManager() {
   }
 }
 
+/*!
+ * @brief Initialize the SystemManager.
+ * @details This function initializes the SystemManager and connects its signals
+ * to the DataManager slots.
+ */
 void CarManager::initializeSystemManager()
 {
     if (m_systemManager) {

@@ -1,3 +1,18 @@
+/*!
+ * @file IPeripheralController.hpp
+ * @brief Definition of the IPeripheralController interface.
+ * @version 0.1
+ * @date 2025-02-12
+ * @details This file contains the definition of the IPeripheralController
+ * interface, which is used to control the peripherals of the car.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef IPERIPHERALCONTROLLER_HPP
 #define IPERIPHERALCONTROLLER_HPP
 
@@ -9,6 +24,10 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
+/*!
+ * @brief Interface for the peripheral controller.
+ * @class IPeripheralController
+ */
 class IPeripheralController {
 public:
   virtual ~IPeripheralController() = default;

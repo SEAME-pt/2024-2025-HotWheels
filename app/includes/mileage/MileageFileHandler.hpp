@@ -27,6 +27,10 @@ using FileReadFunc = std::function<QString(QFile &)>;
 using FileWriteFunc = std::function<bool(QFile &, const QString &)>;
 using FileExistsFunc = std::function<bool(const QString &)>;
 
+/*!
+ * @brief Class that manages the mileage file.
+ * @class MileageFileHandler
+ */
 class MileageFileHandler : public IMileageFileHandler
 {
 public:

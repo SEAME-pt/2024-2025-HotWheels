@@ -1,9 +1,28 @@
+/*!
+ * @file ClusterSettingsManager.hpp
+ * @brief File containing the ClusterSettingsManager class.
+ * @version 0.1
+ * @date 2025-02-12
+ * @details Definition of the ClusterSettingsManager class, which is responsible
+ * for managing the cluster settings.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef CLUSTERSETTINGSMANAGER_HPP
 #define CLUSTERSETTINGSMANAGER_HPP
 
 #include <QObject>
 #include "enums.hpp"
 
+/*!
+ * @brief Class that manages the cluster settings.
+ * @class ClusterSettingsManager
+ */
 class ClusterSettingsManager : public QObject
 {
     Q_OBJECT

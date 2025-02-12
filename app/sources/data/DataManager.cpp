@@ -20,6 +20,12 @@
 #include "DataManager.hpp"
 #include <QDebug>
 
+/*!
+ * @brief Construct a new DataManager::DataManager object
+ * @param parent The parent QObject.
+ * @details This constructor initializes the DataManager object and the three
+ * managers: VehicleDataManager, SystemDataManager, and ClusterSettingsManager.
+ */
 DataManager::DataManager(QObject *parent)
     : QObject(parent)
 {
@@ -79,6 +85,10 @@ DataManager::DataManager(QObject *parent)
             &DataManager::clusterMetricsUpdated);
 }
 
+/*!
+ * @brief Destroy the DataManager::DataManager object
+ * @details This destructor cleans up the resources used by the DataManager.
+ */
 DataManager::~DataManager()
 {
     delete m_vehicleDataManager;
@@ -86,30 +96,71 @@ DataManager::~DataManager()
     delete m_clusterSettingsManager;
 }
 
-// Forward slots to VehicleDataManager
+/*!
+ * @brief Handle CAN data.
+ * @param frameID The frame ID of the CAN message.
+ * @param data The data of the CAN message.
+ * @details This function processes the CAN data by forwarding it to the
+ * VehicleDataManager.
+ */
 void DataManager::handleRpmData(int rawRpm)
 {
     m_vehicleDataManager->handleRpmData(rawRpm);
 }
+
+/*!
+ * @brief Handle Speed data.
+    * @param rawSpeed The raw speed data.
+    * @details This function processes the speed data by forwarding it to the
+    * VehicleDataManager.
+    */
 void DataManager::handleSpeedData(float rawSpeed)
 {
     m_vehicleDataManager->handleSpeedData(rawSpeed);
     // qDebug() << "Speed updated";
 }
+
+/*!
+ * @brief Handle Steering data.
+ * @param rawAngle The raw angle data.
+ * @details This function processes the steering data by forwarding it to the
+ * VehicleDataManager.
+ */
 void DataManager::handleSteeringData(int rawAngle)
 {
     m_vehicleDataManager->handleSteeringData(rawAngle);
 }
+
+/*!
+ * @brief Handle Direction data.
+ * @param rawDirection The raw direction data.
+ * @details This function processes the direction data by forwarding it to the
+ * VehicleDataManager.
+ */
 void DataManager::handleDirectionData(CarDirection rawDirection)
 {
     m_vehicleDataManager->handleDirectionData(rawDirection);
 }
+
+/*!
+ * @brief Handle Engine data.
+ * @param engineStatus The engine status.
+ * @details This function processes the engine data by forwarding it to the
+ * VehicleDataManager.
+ */
 void DataManager::handleMileageUpdate(double mileage)
 {
     m_vehicleDataManager->handleMileageUpdate(mileage);
 }
 
-// Forward slots to SystemDataManager
+/*!
+ * @brief Handle Time data.
+ * @param currentDate The current date.
+ * @param currentTime The current time.
+ * @param currentDay The current day.
+ * @details This function processes the time data by forwarding it to the
+ * SystemDataManager.
+ */
 void DataManager::handleTimeData(const QString &currentDate,
                                  const QString &currentTime,
                                  const QString &currentDay)
@@ -117,35 +168,72 @@ void DataManager::handleTimeData(const QString &currentDate,
     m_systemDataManager->handleTimeData(currentDate, currentTime, currentDay);
 }
 
+/*!
+ * @brief Handle WiFi data.
+ * @param status The WiFi status.
+ * @param wifiName The WiFi name.
+ * @details This function processes the WiFi data by forwarding it to the
+ * SystemDataManager.
+ */
 void DataManager::handleWifiData(const QString &status, const QString &wifiName)
 {
     m_systemDataManager->handleWifiData(status, wifiName);
 }
 
+/*!
+ * @brief Handle Temperature data.
+ * @param temperature The temperature data.
+ * @details This function processes the temperature data.
+ */
 void DataManager::handleTemperatureData(const QString &temperature)
 {
     m_systemDataManager->handleTemperatureData(temperature);
 }
 
+/*!
+ * @brief Handle IP Address data.
+ * @param ipAddress The IP address.
+ * @details This function processes the IP address data.
+ */
 void DataManager::handleIpAddressData(const QString &ipAddress)
 {
     m_systemDataManager->handleIpAddressData(ipAddress);
 }
 
+/*!
+ * @brief Handle Battery Percentage data.
+ * @param batteryPercentage The battery percentage.
+ * @details This function processes the battery percentage data.
+ */
 void DataManager::handleBatteryPercentage(float batteryPercentage)
 {
     m_systemDataManager->handleBatteryPercentage(batteryPercentage);
 }
 
-// Forward slots to ClusterSettingsManager
+/*!
+ * @brief Toggle the driving mode.
+ * @details This function toggles the driving mode between day and night mode.
+ */
 void DataManager::toggleDrivingMode()
 {
     m_clusterSettingsManager->toggleDrivingMode();
 }
+/*!
+ * @brief Toggle the cluster theme.
+ * @details This function toggles the cluster theme between a light or dark
+ * theme.
+ */
 void DataManager::toggleClusterTheme()
 {
     m_clusterSettingsManager->toggleClusterTheme();
+
 }
+/*!
+ * @brief Toggle the cluster metrics.
+ * @details This function toggles the cluster metrics between kilometers and miles
+ * by delegating the operation to the ClusterSettingsManager.
+ */
+
 void DataManager::toggleClusterMetrics()
 {
     m_clusterSettingsManager->toggleClusterMetrics();

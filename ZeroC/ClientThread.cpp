@@ -1,8 +1,33 @@
+/*!
+ * @file ClientThread.cpp
+ * @brief Implementation of the ClientThread class.
+ * @version 0.1
+ * @date 2025-02-12
+ * @details This file contains the implementation of the ClientThread class,
+ * which is responsible for handling the client-side communication with the server.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #include "ClientThread.hpp"
 
+/**
+ * @brief Construct a new Client Thread:: Client Thread object
+ * 
+ * @param parent 
+ */
 ClientThread::ClientThread(QObject *parent) : QObject(parent) {}
 
-// Destructor stops the client thread gracefully
+
+/**
+ * @brief Destructor for the ClientThread class.
+ * @details Shuts down and destroys the Ice communicator if it is initialized,
+ * ensuring a clean termination of client-server communication.
+ */
 ClientThread::~ClientThread() {
      if (communicator) {
         communicator->shutdown();
@@ -10,7 +35,17 @@ ClientThread::~ClientThread() {
     }
 }
 
-// The client thread runs this method
+/**
+ * @brief Run the client by initializing the Ice communicator and connecting to the server.
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line arguments.
+ * @details This method initializes the Ice communicator using the given argc and argv and
+ * connects to the server by specifying the proxy endpoint. The carData proxy is then cast
+ * to the correct type (carDataPrx). The connected flag is set to true once the connection
+ * is established and the main thread is notified via a condition variable. The client then
+ * enters a loop where it waits for requests and processes them. The loop is exited when the
+ * running flag is set to false and the communicator is gracefully shutdown.
+ */
 void ClientThread::runClient(int argc, char* argv[]) {
     try {
         // Initialize Ice communicator
@@ -46,7 +81,15 @@ void ClientThread::runClient(int argc, char* argv[]) {
     }
 }
 
-// Methods to interact with the server via the client
+/**
+ * @brief Set the joystick value on the server.
+ * @param value The new value to set the joystick to.
+ * @details This method sets the joystick value on the server by calling the
+ * setJoystickValue method on the carData proxy. It first waits until the client
+ * is connected to the server and then checks if the carData proxy is valid.
+ * If the proxy is valid, it calls the method, otherwise it prints an error
+ * message.
+ */
 void ClientThread::setJoystickValue(bool value) {
     // Wait until the client is connected to the server
     std::unique_lock<std::mutex> lock(mtx);
@@ -64,6 +107,15 @@ void ClientThread::setJoystickValue(bool value) {
     }
 }
 
+/**
+ * @brief Get the joystick value from the server.
+ * @details This method gets the joystick value from the server by calling the
+ * getJoystickValue method on the carData proxy. It first waits until the client
+ * is connected to the server and then checks if the carData proxy is valid.
+ * If the proxy is valid, it calls the method and returns the joystick value,
+ * otherwise it returns false and prints an error message.
+ * @return The current value of the joystick.
+ */
 bool ClientThread::getJoystickValue() {
     // Wait until the client is connected to the server
     std::unique_lock<std::mutex> lock(mtx);
@@ -84,6 +136,13 @@ bool ClientThread::getJoystickValue() {
     }
 }
 
+/**
+ * @brief Sets the running flag of the client thread.
+ * @details This method sets the running flag of the client thread, which
+ * controls whether the client is connected to the server or not. This flag is
+ * used to stop the client thread gracefully when requested.
+ * @param value The new value for the running flag.
+ */
 void ClientThread::setRunning(bool value) {
     std::lock_guard<std::mutex> lock(mtx);
     this->running = value;

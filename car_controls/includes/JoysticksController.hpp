@@ -1,3 +1,19 @@
+/*!
+ * @file JoysticksController.hpp
+ * @brief File containing the JoysticksController class.
+ * @version 0.1
+ * @date 2025-02-12
+ * @details This class is responsible for controlling the joysticks of the car.
+ * @note This class is a subclass of QObject.
+ * 
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #ifndef JOYSTICKS_CONTROLLER_HPP
 #define JOYSTICKS_CONTROLLER_HPP
 
@@ -5,7 +21,12 @@
 #include <SDL2/SDL.h>
 #include <functional>
 
-class JoysticksController : public QObject {
+/*!
+ * @brief The JoysticksController class
+ * @details This class is responsible for controlling the joysticks of the car.
+ */
+class JoysticksController : public QObject
+{
   Q_OBJECT
 
 private:
@@ -15,48 +36,17 @@ private:
   bool m_running;
 
 public:
-  /*!
-   * Constructor for the JoysticksController class, initializing the joystick
-   * controller with the provided callbacks for steering and speed.
-   *
-   * @param steeringCallback The callback function to update the steering value.
-   * @param speedCallback The callback function to update the speed value.
-   * @param parent The parent QObject for this instance.
-   */
   JoysticksController(std::function<void(int)> steeringCallback,
                       std::function<void(int)> speedCallback,
                       QObject *parent = nullptr);
-
-  /*!
-   * Destructor for the JoysticksController class, cleaning up the joystick
-   * resources.
-   */
   ~JoysticksController();
-
-  /*!
-   * Initializes the joystick controller by setting up SDL and opening the
-   * joystick device.
-   *
-   * @return True if the joystick was successfully initialized, false otherwise.
-   */
   bool init();
-
-  /*!
-   * Requests the joystick controller to stop processing input.
-   */
   void requestStop();
 
 public slots:
-  /*!
-   * Processes joystick input in a loop, updating steering and speed based on
-   * joystick events. This method runs in a separate thread.
-   */
   void processInput();
 
 signals:
-  /*!
-   * Emitted when the joystick input processing has finished.
-   */
   void finished();
 };
 

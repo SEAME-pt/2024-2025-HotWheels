@@ -1,14 +1,45 @@
+/*!
+ * @file test_MileageCalculator.cpp
+ * @brief Unit tests for the MileageCalculator class.
+ * @version 0.1
+ * @date 2025-02-12
+ * @details This file contains unit tests for the MileageCalculator class, using
+ * Google Test and Google Mock frameworks.
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Tiago Pereira (@t-pereira06)
+ * @author Ricardo Melo (@reomelo)
+ * @author Michel Batista (@MicchelFAB)
+ *
+ * @copyright Copyright (c) 2025
+ */
+
 #include <QElapsedTimer>
 #include <QTest>
 #include "MileageCalculator.hpp"
 #include <gtest/gtest.h>
 
+/*!
+ * @class MileageCalculatorTest
+ * @brief Test fixture for testing the MileageCalculator class.
+ *
+ * @details This class sets up the necessary objects and provides setup and
+ * teardown methods for each test.
+ */
 class MileageCalculatorTest : public ::testing::Test
 {
 protected:
     MileageCalculator calculator;
 };
 
+/*!
+ * @test Tests if the mileage calculator does not crash when adding speeds.
+ * @brief Ensures that the mileage calculator does not crash when adding speeds.
+ *
+ * @details This test verifies that the mileage calculator does not crash when
+ * adding speeds.
+ *
+ * @see MileageCalculator::addSpeed
+ */
 TEST_F(MileageCalculatorTest, AddSpeed_DoesNotCrash)
 {
     calculator.addSpeed(50.0);
@@ -16,11 +47,29 @@ TEST_F(MileageCalculatorTest, AddSpeed_DoesNotCrash)
     EXPECT_NO_THROW(calculator.calculateDistance());
 }
 
+/*!
+ * @test Tests if the mileage calculator calculates the distance correctly.
+ * @brief Ensures that the mileage calculator calculates the distance correctly.
+ *
+ * @details This test verifies that the mileage calculator calculates the distance
+ * correctly.
+ *
+ * @see MileageCalculator::calculateDistance
+ */
 TEST_F(MileageCalculatorTest, CalculateDistance_NoSpeeds_ReturnsZero)
 {
     EXPECT_DOUBLE_EQ(calculator.calculateDistance(), 0.0);
 }
 
+/*!
+ * @test Tests if the mileage calculator calculates the distance correctly.
+ * @brief Ensures that the mileage calculator calculates the distance correctly.
+ *
+ * @details This test verifies that the mileage calculator calculates the distance
+ * correctly.
+ *
+ * @see MileageCalculator::calculateDistance
+ */
 TEST_F(MileageCalculatorTest, CalculateDistance_ZeroSpeed_ReturnsZero)
 {
     calculator.addSpeed(0.0);
@@ -29,6 +78,15 @@ TEST_F(MileageCalculatorTest, CalculateDistance_ZeroSpeed_ReturnsZero)
     EXPECT_DOUBLE_EQ(calculator.calculateDistance(), 0.0);
 }
 
+/*!
+ * @test Tests if the mileage calculator calculates the distance correctly.
+ * @brief Ensures that the mileage calculator calculates the distance correctly.
+ *
+ * @details This test verifies that the mileage calculator calculates the distance
+ * correctly.
+ *
+ * @see MileageCalculator::calculateDistance
+ */
 TEST_F(MileageCalculatorTest, CalculateDistance_BasicCalculation)
 {
     QElapsedTimer timer;
@@ -50,6 +108,15 @@ TEST_F(MileageCalculatorTest, CalculateDistance_BasicCalculation)
     EXPECT_NEAR(distance, expected, 0.1);
 }
 
+/*!
+ * @test Tests if the mileage calculator calculates the distance correctly.
+ * @brief Ensures that the mileage calculator calculates the distance correctly.
+ *
+ * @details This test verifies that the mileage calculator calculates the distance
+ * correctly.
+ *
+ * @see MileageCalculator::calculateDistance
+ */
 TEST_F(MileageCalculatorTest, CalculateDistance_MultipleSpeeds)
 {
     QElapsedTimer timer;
