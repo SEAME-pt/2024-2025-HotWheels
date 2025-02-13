@@ -109,21 +109,27 @@ $(function(){initNavTree('classSystemCommandExecutor.html',''); initResizable(tr
 </div><!--header-->
 <div class="contents">
 
+<p>Class that executes system commands and reads files.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="SystemCommandExecutor_8hpp_source.html">SystemCommandExecutor.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3fcf74c0d253899fb690479644ef7506" id="r_a3fcf74c0d253899fb690479644ef7506"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fcf74c0d253899fb690479644ef7506">executeCommand</a> (const QString &amp;command) const override</td></tr>
+<tr class="memdesc:a3fcf74c0d253899fb690479644ef7506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a system command.  <br /></td></tr>
 <tr class="separator:a3fcf74c0d253899fb690479644ef7506"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea22148a0514321fb757f4e7d1400098" id="r_aea22148a0514321fb757f4e7d1400098"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea22148a0514321fb757f4e7d1400098">readFile</a> (const QString &amp;filePath) const override</td></tr>
+<tr class="memdesc:aea22148a0514321fb757f4e7d1400098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a file and returns its contents.  <br /></td></tr>
 <tr class="separator:aea22148a0514321fb757f4e7d1400098"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classISystemCommandExecutor"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classISystemCommandExecutor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classISystemCommandExecutor.html">ISystemCommandExecutor</a></td></tr>
 <tr class="memitem:a1bcd24c9a4a4940157dea56437dcb89a inherit pub_methods_classISystemCommandExecutor" id="r_a1bcd24c9a4a4940157dea56437dcb89a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classISystemCommandExecutor.html#a1bcd24c9a4a4940157dea56437dcb89a">~ISystemCommandExecutor</a> ()=default</td></tr>
 <tr class="separator:a1bcd24c9a4a4940157dea56437dcb89a inherit pub_methods_classISystemCommandExecutor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="SystemCommandExecutor_8hpp_source.html#l00009">9</a> of file <a class="el" href="SystemCommandExecutor_8hpp_source.html">SystemCommandExecutor.hpp</a>.</p>
+<div class="textblock"><p>Class that executes system commands and reads files. </p>
+
+<p class="definition">Definition at line <a class="el" href="SystemCommandExecutor_8hpp_source.html#l00028">28</a> of file <a class="el" href="SystemCommandExecutor_8hpp_source.html">SystemCommandExecutor.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3fcf74c0d253899fb690479644ef7506" name="a3fcf74c0d253899fb690479644ef7506"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3fcf74c0d253899fb690479644ef7506">&#9670;&#160;</a></span>executeCommand()</h2>
@@ -148,9 +154,18 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Executes a system command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>The command to execute as a QString. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The standard output of the executed command, trimmed of any leading or trailing whitespace. </dd></dl>
+
 <p>Implements <a class="el" href="classISystemCommandExecutor.html#aab312dabe95f379d38f848148b8a679d">ISystemCommandExecutor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SystemCommandExecutor_8cpp_source.html#l00003">3</a> of file <a class="el" href="SystemCommandExecutor_8cpp_source.html">SystemCommandExecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemCommandExecutor_8cpp_source.html#l00025">25</a> of file <a class="el" href="SystemCommandExecutor_8cpp_source.html">SystemCommandExecutor.cpp</a>.</p>
 
 </div>
 </div>
@@ -177,9 +192,18 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Reads a file and returns its contents. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filePath</td><td>The path to the file to read as a QString. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The contents of the file, trimmed of any leading or trailing whitespace, or an empty string if the file could not be opened. </dd></dl>
+
 <p>Implements <a class="el" href="classISystemCommandExecutor.html#af6b0f40b84d6f2bd396daf93d158f91f">ISystemCommandExecutor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SystemCommandExecutor_8cpp_source.html#l00011">11</a> of file <a class="el" href="SystemCommandExecutor_8cpp_source.html">SystemCommandExecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemCommandExecutor_8cpp_source.html#l00039">39</a> of file <a class="el" href="SystemCommandExecutor_8cpp_source.html">SystemCommandExecutor.cpp</a>.</p>
 
 </div>
 </div>

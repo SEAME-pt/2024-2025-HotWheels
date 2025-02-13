@@ -10,14 +10,12 @@ digraph "CarManager::initializeControlsManager"
   Node2 [id="Node000002",label="ControlsManager::direction\lChanged",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#a8dc2e1cb0a9ddf10e37034404e7460b4",tooltip=" "];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="ControlsManager::driving\lModeUpdated",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#ad3cd1fa6493f5e17cc1806d993266fac",tooltip="Update the driving mode of the vehicle."];
-  Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="ControlsManager::setMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#aa925f92fc442ed25200f3bcd0df3d08a",tooltip="Set the driving mode."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="DataManager::drivingMode\lUpdated",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26",tooltip=" "];
   Node1 -> Node5 [id="edge4_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="DataManager::drivingMode\lUpdated",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26",tooltip=" "];
+  Node5 [id="Node000005",label="DataManager::handleDirectionData",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#afcadf5c275fd6fd89c4199abebc8b03d",tooltip="Handle Direction data."];
   Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
-  Node6 [id="Node000006",label="DataManager::handleDirectionData",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#afcadf5c275fd6fd89c4199abebc8b03d",tooltip=" "];
+  Node6 [id="Node000006",label="DataManager::handleSteeringData",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a8d76e60050120ecb940f90726e03cbf8",tooltip="Handle Steering data."];
   Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
-  Node7 [id="Node000007",label="DataManager::handleSteeringData",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a8d76e60050120ecb940f90726e03cbf8",tooltip=" "];
-  Node1 -> Node8 [id="edge7_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
-  Node8 [id="Node000008",label="ControlsManager::steering\lChanged",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#af4a0e934840d2b38f783e6b52fedab38",tooltip=" "];
+  Node7 [id="Node000007",label="ControlsManager::steering\lChanged",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#af4a0e934840d2b38f783e6b52fedab38",tooltip=" "];
 }

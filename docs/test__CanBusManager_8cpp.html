@@ -123,7 +123,7 @@ $(function(){initNavTree('test__CanBusManager_8cpp.html',''); initResizable(true
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanBusManagerTest.html">CanBusManagerTest</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a> class.  <a href="classCanBusManagerTest.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to test the integration between the <a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a> and the MCP2515 controller.  <a href="classCanBusManagerTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -180,7 +180,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Verifies that <code>stopReading()</code> is triggered in the destructor. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000011">Test</a></b></dt><dd>Ensures that <code>stopReading()</code> is called when <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code> is destroyed. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000040">Test</a></b></dt><dd>Ensures that <code>stopReading()</code> is called when <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code> is destroyed. </dd></dl>
 <p>This test initializes <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code>, then deletes it and confirms that <code>stopReading()</code> was called exactly once.</p>
 <dl class="section note"><dt>Note</dt><dd>This test indirectly verifies proper cleanup behavior in the destructor.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ae2d9ac999a161b57b12867473f4ac710" title="Destroy the CanBusManager::CanBusManager object.">CanBusManager::~CanBusManager</a> </dd></dl>
@@ -209,7 +209,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that <code>initialize()</code> fails when the controller fails to initialize. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000009">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> fails. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000038">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> fails. </dd></dl>
 <p>This test sets up a mock expectation that <code>init()</code> will return <code>false</code>, verifying that <code>initialize()</code> correctly fails in this case.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize</a> </dd></dl>
 
@@ -237,7 +237,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that <code>initialize()</code> succeeds when the controller initializes successfully. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000010">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> succeeds. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000039">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> succeeds. </dd></dl>
 <p>This test sets up a mock expectation that <code>init()</code> will return <code>true</code>, verifying that <code>initialize()</code> correctly returns <code>true</code>.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize</a> </dd></dl>
 
@@ -265,7 +265,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that the RPM signal emits the correct value. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000008">Test</a></b></dt><dd>Tests if the <code>rpmUpdated</code> signal is emitted correctly. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000037">Test</a></b></dt><dd>Tests if the <code>rpmUpdated</code> signal is emitted correctly. </dd></dl>
 <p>Similar to <code>SpeedSignalEmitsCorrectly</code>, this test verifies that <code>rpmUpdated</code> emits the expected RPM value.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a" title="Signal emitted when the RPM is updated.">CanBusManager::rpmUpdated</a> </dd></dl>
 
@@ -298,7 +298,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Ensures that the speed signal is emitted with the correct value. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000007">Test</a></b></dt><dd>Tests if the <code>speedUpdated</code> signal is emitted correctly. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000036">Test</a></b></dt><dd>Tests if the <code>speedUpdated</code> signal is emitted correctly. </dd></dl>
 <p>This test uses <code>QSignalSpy</code> to verify that <code>speedUpdated</code> emits the expected speed value when the mock controller triggers the signal.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title="Signal emitted when the speed is updated.">CanBusManager::speedUpdated</a> </dd></dl>
 

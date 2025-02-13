@@ -1,5 +1,0 @@
-<map id="MCP2515Configurator::configureFiltersAndMasks" name="MCP2515Configurator::configureFiltersAndMasks">
-<area shape="rect" id="Node000001" title="Configure the filters and masks for the MCP2515." alt="" coords="5,5,203,45"/>
-<area shape="rect" id="Node000002" href="$classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="251,5,413,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,23,237,23,237,28,203,28"/>
-</map>

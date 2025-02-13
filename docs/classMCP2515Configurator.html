@@ -152,6 +152,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab14424f50fc8e6367c586f26f8dedbfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a CAN message from the MCP2515.  <br /></td></tr>
 <tr class="separator:ab14424f50fc8e6367c586f26f8dedbfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af76ba874fc502fdbfe7b020ded2e1403" id="r_af76ba874fc502fdbfe7b020ded2e1403"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af76ba874fc502fdbfe7b020ded2e1403">sendCANMessage</a> (uint16_t frameID, uint8_t *CAN_TX_Buf, uint8_t length1)</td></tr>
+<tr class="memdesc:af76ba874fc502fdbfe7b020ded2e1403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a CAN message to the MCP2515.  <br /></td></tr>
 <tr class="separator:af76ba874fc502fdbfe7b020ded2e1403"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
@@ -545,7 +546,18 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00171">171</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
+<p>Send a CAN message to the MCP2515. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frameID</td><td>The frame ID of the message. </td></tr>
+    <tr><td class="paramname">CAN_TX_Buf</td><td>The data of the message. </td></tr>
+    <tr><td class="paramname">length1</td><td>The length of the data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function sends a CAN message to the MCP2515. </p>
+
+<p class="definition">Definition at line <a class="el" href="MCP2515Configurator_8cpp_source.html#l00178">178</a> of file <a class="el" href="MCP2515Configurator_8cpp_source.html">MCP2515Configurator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

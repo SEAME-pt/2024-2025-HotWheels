@@ -113,54 +113,66 @@ $(function(){initNavTree('classClusterSettingsManager.html',''); initResizable(t
 </div><!--header-->
 <div class="contents">
 
+<p>Class that manages the cluster settings.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:ae4c7a5eb9d19c5b8c4553f32eb02491e" id="r_ae4c7a5eb9d19c5b8c4553f32eb02491e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4c7a5eb9d19c5b8c4553f32eb02491e">toggleDrivingMode</a> ()</td></tr>
+<tr class="memdesc:ae4c7a5eb9d19c5b8c4553f32eb02491e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the driving mode.  <br /></td></tr>
 <tr class="separator:ae4c7a5eb9d19c5b8c4553f32eb02491e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af21562d3ea2c834694ed001c4b2ad20e" id="r_af21562d3ea2c834694ed001c4b2ad20e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af21562d3ea2c834694ed001c4b2ad20e">toggleClusterTheme</a> ()</td></tr>
+<tr class="memdesc:af21562d3ea2c834694ed001c4b2ad20e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the cluster theme.  <br /></td></tr>
 <tr class="separator:af21562d3ea2c834694ed001c4b2ad20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e479a61a9660352b712288b4d6863eb" id="r_a6e479a61a9660352b712288b4d6863eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e479a61a9660352b712288b4d6863eb">toggleClusterMetrics</a> ()</td></tr>
+<tr class="memdesc:a6e479a61a9660352b712288b4d6863eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle the cluster metrics.  <br /></td></tr>
 <tr class="separator:a6e479a61a9660352b712288b4d6863eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
-<tr class="memitem:ae7b90b3f91043042f48ceb3d687de35a" id="r_ae7b90b3f91043042f48ceb3d687de35a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7b90b3f91043042f48ceb3d687de35a">drivingModeUpdated</a> (<a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a> newMode)</td></tr>
+<tr class="memitem:ae7b90b3f91043042f48ceb3d687de35a" id="r_ae7b90b3f91043042f48ceb3d687de35a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7b90b3f91043042f48ceb3d687de35a">drivingModeUpdated</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a> newMode)</td></tr>
 <tr class="separator:ae7b90b3f91043042f48ceb3d687de35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1005ce9d351512abbb39247355877284" id="r_a1005ce9d351512abbb39247355877284"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1005ce9d351512abbb39247355877284">clusterThemeUpdated</a> (<a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a> newTheme)</td></tr>
+<tr class="memitem:a1005ce9d351512abbb39247355877284" id="r_a1005ce9d351512abbb39247355877284"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1005ce9d351512abbb39247355877284">clusterThemeUpdated</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a> newTheme)</td></tr>
 <tr class="separator:a1005ce9d351512abbb39247355877284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5656fcb4e0e3713afa145a15346a924" id="r_af5656fcb4e0e3713afa145a15346a924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5656fcb4e0e3713afa145a15346a924">clusterMetricsUpdated</a> (<a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> newMetrics)</td></tr>
+<tr class="memitem:af5656fcb4e0e3713afa145a15346a924" id="r_af5656fcb4e0e3713afa145a15346a924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5656fcb4e0e3713afa145a15346a924">clusterMetricsUpdated</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> newMetrics)</td></tr>
 <tr class="separator:af5656fcb4e0e3713afa145a15346a924"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a248ab4c1cbc652a4b2fbad5de37ebce5" id="r_a248ab4c1cbc652a4b2fbad5de37ebce5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a248ab4c1cbc652a4b2fbad5de37ebce5">ClusterSettingsManager</a> (QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:a248ab4c1cbc652a4b2fbad5de37ebce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="#a248ab4c1cbc652a4b2fbad5de37ebce5" title="Construct a new ClusterSettingsManager::ClusterSettingsManager object.">ClusterSettingsManager::ClusterSettingsManager</a> object.  <br /></td></tr>
 <tr class="separator:a248ab4c1cbc652a4b2fbad5de37ebce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd43ecd9473690999d3a49acd3d53384" id="r_acd43ecd9473690999d3a49acd3d53384"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd43ecd9473690999d3a49acd3d53384">~ClusterSettingsManager</a> ()</td></tr>
+<tr class="memdesc:acd43ecd9473690999d3a49acd3d53384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="#a248ab4c1cbc652a4b2fbad5de37ebce5" title="Construct a new ClusterSettingsManager::ClusterSettingsManager object.">ClusterSettingsManager::ClusterSettingsManager</a> object.  <br /></td></tr>
 <tr class="separator:acd43ecd9473690999d3a49acd3d53384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a16bdb0a115c2ca9d4d036214697414e1" id="r_a16bdb0a115c2ca9d4d036214697414e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16bdb0a115c2ca9d4d036214697414e1">setDrivingMode</a> (<a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a> newMode)</td></tr>
+<tr class="memitem:a16bdb0a115c2ca9d4d036214697414e1" id="r_a16bdb0a115c2ca9d4d036214697414e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16bdb0a115c2ca9d4d036214697414e1">setDrivingMode</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a> newMode)</td></tr>
+<tr class="memdesc:a16bdb0a115c2ca9d4d036214697414e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the driving mode.  <br /></td></tr>
 <tr class="separator:a16bdb0a115c2ca9d4d036214697414e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae85e9adc14376a37696da9996d812ad5" id="r_ae85e9adc14376a37696da9996d812ad5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae85e9adc14376a37696da9996d812ad5">setClusterTheme</a> (<a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a> newTheme)</td></tr>
+<tr class="memitem:ae85e9adc14376a37696da9996d812ad5" id="r_ae85e9adc14376a37696da9996d812ad5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae85e9adc14376a37696da9996d812ad5">setClusterTheme</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a> newTheme)</td></tr>
+<tr class="memdesc:ae85e9adc14376a37696da9996d812ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cluster theme.  <br /></td></tr>
 <tr class="separator:ae85e9adc14376a37696da9996d812ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7017650bbc4722f307c877545b4dd973" id="r_a7017650bbc4722f307c877545b4dd973"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7017650bbc4722f307c877545b4dd973">setClusterMetrics</a> (<a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> newMetrics)</td></tr>
+<tr class="memitem:a7017650bbc4722f307c877545b4dd973" id="r_a7017650bbc4722f307c877545b4dd973"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7017650bbc4722f307c877545b4dd973">setClusterMetrics</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> newMetrics)</td></tr>
+<tr class="memdesc:a7017650bbc4722f307c877545b4dd973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the cluster metrics.  <br /></td></tr>
 <tr class="separator:a7017650bbc4722f307c877545b4dd973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a26688e1e57baa0d83005acc4bb46713c" id="r_a26688e1e57baa0d83005acc4bb46713c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26688e1e57baa0d83005acc4bb46713c">m_drivingMode</a> = <a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70ae1ba155a9f2e8c3be94020eef32a0301">DrivingMode::Manual</a></td></tr>
+<tr class="memitem:a26688e1e57baa0d83005acc4bb46713c" id="r_a26688e1e57baa0d83005acc4bb46713c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26688e1e57baa0d83005acc4bb46713c">m_drivingMode</a> = <a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70ae1ba155a9f2e8c3be94020eef32a0301">DrivingMode::Manual</a></td></tr>
 <tr class="separator:a26688e1e57baa0d83005acc4bb46713c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a158ef23af6445298d466accff4f22f5b" id="r_a158ef23af6445298d466accff4f22f5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a158ef23af6445298d466accff4f22f5b">m_clusterTheme</a> = <a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cdaaa18366b217ebf811ad1886e4f4f865b2">ClusterTheme::Dark</a></td></tr>
+<tr class="memitem:a158ef23af6445298d466accff4f22f5b" id="r_a158ef23af6445298d466accff4f22f5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a158ef23af6445298d466accff4f22f5b">m_clusterTheme</a> = <a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cdaaa18366b217ebf811ad1886e4f4f865b2">ClusterTheme::Dark</a></td></tr>
 <tr class="separator:a158ef23af6445298d466accff4f22f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a147a8846b34777210c69c3f089f139f6" id="r_a147a8846b34777210c69c3f089f139f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a147a8846b34777210c69c3f089f139f6">m_clusterMetrics</a> = <a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td></tr>
+<tr class="memitem:a147a8846b34777210c69c3f089f139f6" id="r_a147a8846b34777210c69c3f089f139f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a147a8846b34777210c69c3f089f139f6">m_clusterMetrics</a> = <a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td></tr>
 <tr class="separator:a147a8846b34777210c69c3f089f139f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00007">7</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
+<div class="textblock"><p>Class that manages the cluster settings. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00026">26</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a248ab4c1cbc652a4b2fbad5de37ebce5" name="a248ab4c1cbc652a4b2fbad5de37ebce5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a248ab4c1cbc652a4b2fbad5de37ebce5">&#9670;&#160;</a></span>ClusterSettingsManager()</h2>
@@ -185,7 +197,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00003">3</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Construct a new <a class="el" href="#a248ab4c1cbc652a4b2fbad5de37ebce5" title="Construct a new ClusterSettingsManager::ClusterSettingsManager object.">ClusterSettingsManager::ClusterSettingsManager</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This constructor initializes the <a class="el" href="classClusterSettingsManager.html" title="Class that manages the cluster settings.">ClusterSettingsManager</a> object. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00023">23</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -204,7 +225,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00007">7</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Destroy the <a class="el" href="#a248ab4c1cbc652a4b2fbad5de37ebce5" title="Construct a new ClusterSettingsManager::ClusterSettingsManager object.">ClusterSettingsManager::ClusterSettingsManager</a> object. </p>
+<p>This destructor cleans up the resources used by the <a class="el" href="classClusterSettingsManager.html" title="Class that manages the cluster settings.">ClusterSettingsManager</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00032">32</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -221,7 +245,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void ClusterSettingsManager::clusterMetricsUpdated </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a></td>          <td class="paramname"><span class="paramname"><em>newMetrics</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a></td>          <td class="paramname"><span class="paramname"><em>newMetrics</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -231,8 +255,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__ClusterSettingsManager_8cpp_source.html#l00215">215</a> of file <a class="el" href="build-x86_2moc__ClusterSettingsManager_8cpp_source.html">moc_ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -253,7 +275,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ClusterSettingsManager::clusterThemeUpdated </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a></td>          <td class="paramname"><span class="paramname"><em>newTheme</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a></td>          <td class="paramname"><span class="paramname"><em>newTheme</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -263,8 +285,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__ClusterSettingsManager_8cpp_source.html#l00208">208</a> of file <a class="el" href="build-x86_2moc__ClusterSettingsManager_8cpp_source.html">moc_ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -285,7 +305,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ClusterSettingsManager::drivingModeUpdated </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a></td>          <td class="paramname"><span class="paramname"><em>newMode</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a></td>          <td class="paramname"><span class="paramname"><em>newMode</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -295,8 +315,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__ClusterSettingsManager_8cpp_source.html#l00201">201</a> of file <a class="el" href="build-x86_2moc__ClusterSettingsManager_8cpp_source.html">moc_ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -317,7 +335,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ClusterSettingsManager::setClusterMetrics </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a></td>          <td class="paramname"><span class="paramname"><em>newMetrics</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a></td>          <td class="paramname"><span class="paramname"><em>newMetrics</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -328,7 +346,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00046">46</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Get the cluster metrics. </p>
+<dl class="section return"><dt>Returns</dt><dd>The cluster metrics.</dd></dl>
+<p>This function returns the current cluster metrics. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00091">91</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -354,7 +376,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ClusterSettingsManager::setClusterTheme </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a></td>          <td class="paramname"><span class="paramname"><em>newTheme</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a></td>          <td class="paramname"><span class="paramname"><em>newTheme</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -365,7 +387,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00028">28</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Get the cluster theme. </p>
+<dl class="section return"><dt>Returns</dt><dd>The cluster theme.</dd></dl>
+<p>This function returns the current cluster theme. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00065">65</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -391,7 +417,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ClusterSettingsManager::setDrivingMode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a></td>          <td class="paramname"><span class="paramname"><em>newMode</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a></td>          <td class="paramname"><span class="paramname"><em>newMode</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -402,7 +428,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00010">10</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Get the driving mode. </p>
+<dl class="section return"><dt>Returns</dt><dd>The driving mode.</dd></dl>
+<p>This function returns the current driving mode. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00039">39</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -439,7 +469,10 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00054">54</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Toggle the cluster metrics. </p>
+<p>This function toggles the cluster metrics between kilometers and miles. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00103">103</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -471,7 +504,10 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00036">36</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Toggle the cluster theme. </p>
+<p>This function toggles the cluster theme between light and dark. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00077">77</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -503,7 +539,10 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00018">18</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
+<p>Toggle the driving mode. </p>
+<p>This function toggles the driving mode between manual and automatic. </p>
+
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8cpp_source.html#l00051">51</a> of file <a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -523,7 +562,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> ClusterSettingsManager::m_clusterMetrics = <a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td>
+          <td class="memname"><a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> ClusterSettingsManager::m_clusterMetrics = <a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td>
         </tr>
       </table>
   </td>
@@ -533,7 +572,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00028">28</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00047">47</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -547,7 +586,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a> ClusterSettingsManager::m_clusterTheme = <a class="el" href="enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cdaaa18366b217ebf811ad1886e4f4f865b2">ClusterTheme::Dark</a></td>
+          <td class="memname"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cda">ClusterTheme</a> ClusterSettingsManager::m_clusterTheme = <a class="el" href="app_2includes_2data_2enums_8hpp.html#ad415a8d90ae9e75a02f0ff53c32c1cdaaa18366b217ebf811ad1886e4f4f865b2">ClusterTheme::Dark</a></td>
         </tr>
       </table>
   </td>
@@ -557,7 +596,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00027">27</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00046">46</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,7 +610,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a> ClusterSettingsManager::m_drivingMode = <a class="el" href="enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70ae1ba155a9f2e8c3be94020eef32a0301">DrivingMode::Manual</a></td>
+          <td class="memname"><a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a> ClusterSettingsManager::m_drivingMode = <a class="el" href="app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70ae1ba155a9f2e8c3be94020eef32a0301">DrivingMode::Manual</a></td>
         </tr>
       </table>
   </td>
@@ -581,14 +620,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00026">26</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ClusterSettingsManager_8hpp_source.html#l00045">45</a> of file <a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>app/includes/data/<a class="el" href="ClusterSettingsManager_8hpp_source.html">ClusterSettingsManager.hpp</a></li>
-<li>app/build-x86/<a class="el" href="build-x86_2moc__ClusterSettingsManager_8cpp_source.html">moc_ClusterSettingsManager.cpp</a></li>
-<li>app/build/<a class="el" href="build_2moc__ClusterSettingsManager_8cpp_source.html">moc_ClusterSettingsManager.cpp</a></li>
 <li>app/sources/data/<a class="el" href="ClusterSettingsManager_8cpp_source.html">ClusterSettingsManager.cpp</a></li>
 </ul>
 </div><!-- contents -->

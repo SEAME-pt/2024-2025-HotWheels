@@ -17,11 +17,13 @@ digraph "CanBusManager::speedUpdated"
   Node5 -> Node6 [id="edge5_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node6 [id="Node000006",label="CarManager::initializeComponents",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f",tooltip="Initialize the components of the CarManager."];
   Node6 -> Node7 [id="edge6_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node7 [id="Node000007",label="CarManager::CarManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67",tooltip="Construct a new CarManager object."];
+  Node7 [id="Node000007",label="CarManager::CarManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d",tooltip="Construct a new CarManager object."];
   Node7 -> Node7 [id="edge7_Node000007_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node8 [id="edge8_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node8 [id="Node000008",label="CarManager::initializeMileage\lManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#a5bf066ce114aea750d5d71c7618a9ac1",tooltip="Initialize the MileageManager."];
   Node8 -> Node6 [id="edge9_Node000008_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node9 [id="edge10_Node000001_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node9 [id="Node000009",label="TEST_F",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$test__CanBusManager_8cpp.html#a70d830f942e7f0655d57fea1262bc424",tooltip="Ensures that the speed signal is emitted with the correct value."];
+  Node9 [id="Node000009",label="TEST_F",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$test__int__CanBusManager_8cpp.html#a1663b9c9f59a3bf484bdaad0a716a671",tooltip="Ensures that the CanBusManager forwards speed data from the MCP2515 controller."];
+  Node1 -> Node10 [id="edge11_Node000001_Node000010",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="TEST_F",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$test__CanBusManager_8cpp.html#a70d830f942e7f0655d57fea1262bc424",tooltip="Ensures that the speed signal is emitted with the correct value."];
 }

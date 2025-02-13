@@ -112,26 +112,34 @@ $(function(){initNavTree('classVehicleDataManager.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 
+<p>Class that manages the data received from the car's systems. QObject.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:a080f5c555bb54d96455e44f1a906bc65" id="r_a080f5c555bb54d96455e44f1a906bc65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a080f5c555bb54d96455e44f1a906bc65">handleRpmData</a> (int rawRpm)</td></tr>
+<tr class="memdesc:a080f5c555bb54d96455e44f1a906bc65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle Rotation Per Minute data.  <br /></td></tr>
 <tr class="separator:a080f5c555bb54d96455e44f1a906bc65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4379e81efb70186d8103e61003df1e2e" id="r_a4379e81efb70186d8103e61003df1e2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4379e81efb70186d8103e61003df1e2e">handleSpeedData</a> (float rawSpeed)</td></tr>
+<tr class="memdesc:a4379e81efb70186d8103e61003df1e2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle Speed data.  <br /></td></tr>
 <tr class="separator:a4379e81efb70186d8103e61003df1e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96a6fd992d1922733cd4e69471756f41" id="r_a96a6fd992d1922733cd4e69471756f41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96a6fd992d1922733cd4e69471756f41">handleDirectionData</a> (<a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> rawDirection)</td></tr>
+<tr class="memitem:a96a6fd992d1922733cd4e69471756f41" id="r_a96a6fd992d1922733cd4e69471756f41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96a6fd992d1922733cd4e69471756f41">handleDirectionData</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> rawDirection)</td></tr>
+<tr class="memdesc:a96a6fd992d1922733cd4e69471756f41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle Direction data.  <br /></td></tr>
 <tr class="separator:a96a6fd992d1922733cd4e69471756f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c390c4430b442344f03b4730b848860" id="r_a2c390c4430b442344f03b4730b848860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c390c4430b442344f03b4730b848860">handleSteeringData</a> (int rawAngle)</td></tr>
+<tr class="memdesc:a2c390c4430b442344f03b4730b848860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle Steering data.  <br /></td></tr>
 <tr class="separator:a2c390c4430b442344f03b4730b848860"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb246c989c8a11c45f821c0ff32ac3b3" id="r_abb246c989c8a11c45f821c0ff32ac3b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb246c989c8a11c45f821c0ff32ac3b3">handleMileageUpdate</a> (double mileage)</td></tr>
+<tr class="memdesc:abb246c989c8a11c45f821c0ff32ac3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle mileage data.  <br /></td></tr>
 <tr class="separator:abb246c989c8a11c45f821c0ff32ac3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a339ff33005bae04795a23d67fbc42cae" id="r_a339ff33005bae04795a23d67fbc42cae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a339ff33005bae04795a23d67fbc42cae">canDataProcessed</a> (float processedSpeed, int processedRpm)</td></tr>
 <tr class="separator:a339ff33005bae04795a23d67fbc42cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a344d0766b0033aa8041337b142a927e4" id="r_a344d0766b0033aa8041337b142a927e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344d0766b0033aa8041337b142a927e4">engineDataProcessed</a> (<a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> processedDirection, int processedAngle)</td></tr>
+<tr class="memitem:a344d0766b0033aa8041337b142a927e4" id="r_a344d0766b0033aa8041337b142a927e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344d0766b0033aa8041337b142a927e4">engineDataProcessed</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> processedDirection, int processedAngle)</td></tr>
 <tr class="separator:a344d0766b0033aa8041337b142a927e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcfd34099194c5f38065b3d7cead03fb" id="r_afcfd34099194c5f38065b3d7cead03fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcfd34099194c5f38065b3d7cead03fb">mileageUpdated</a> (double mileage)</td></tr>
 <tr class="separator:afcfd34099194c5f38065b3d7cead03fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,8 +147,10 @@ Signals</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9b89358b54a58aa9aed95a04c7ea09d1" id="r_a9b89358b54a58aa9aed95a04c7ea09d1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b89358b54a58aa9aed95a04c7ea09d1">VehicleDataManager</a> (QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:a9b89358b54a58aa9aed95a04c7ea09d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="#a9b89358b54a58aa9aed95a04c7ea09d1" title="Construct a new VehicleDataManager::VehicleDataManager object.">VehicleDataManager::VehicleDataManager</a> object.  <br /></td></tr>
 <tr class="separator:a9b89358b54a58aa9aed95a04c7ea09d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a598aa50fb213d5fa945e6e17adfaee61" id="r_a598aa50fb213d5fa945e6e17adfaee61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a598aa50fb213d5fa945e6e17adfaee61">~VehicleDataManager</a> ()</td></tr>
+<tr class="memdesc:a598aa50fb213d5fa945e6e17adfaee61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="#a9b89358b54a58aa9aed95a04c7ea09d1" title="Construct a new VehicleDataManager::VehicleDataManager object.">VehicleDataManager::VehicleDataManager</a> object.  <br /></td></tr>
 <tr class="separator:a598aa50fb213d5fa945e6e17adfaee61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -149,18 +159,19 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a6b50e43bffecdf99e4f179285ef7939f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f177c621382b1f8910a1d63acc297e8" id="r_a1f177c621382b1f8910a1d63acc297e8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f177c621382b1f8910a1d63acc297e8">m_rpm</a> = 0</td></tr>
 <tr class="separator:a1f177c621382b1f8910a1d63acc297e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d54ea5ad6f2be90ed8f4f299e417331" id="r_a6d54ea5ad6f2be90ed8f4f299e417331"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d54ea5ad6f2be90ed8f4f299e417331">m_carDirection</a> = <a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td></tr>
+<tr class="memitem:a6d54ea5ad6f2be90ed8f4f299e417331" id="r_a6d54ea5ad6f2be90ed8f4f299e417331"><td class="memItemLeft" align="right" valign="top"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d54ea5ad6f2be90ed8f4f299e417331">m_carDirection</a> = <a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td></tr>
 <tr class="separator:a6d54ea5ad6f2be90ed8f4f299e417331"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9da56b9f1b38797c08a5843cd6de35b" id="r_ac9da56b9f1b38797c08a5843cd6de35b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9da56b9f1b38797c08a5843cd6de35b">m_steeringDirection</a> = 0</td></tr>
 <tr class="separator:ac9da56b9f1b38797c08a5843cd6de35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28aad57fe9d07330a0d3dce66c27b0b3" id="r_a28aad57fe9d07330a0d3dce66c27b0b3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28aad57fe9d07330a0d3dce66c27b0b3">m_mileage</a> = 0.0</td></tr>
 <tr class="separator:a28aad57fe9d07330a0d3dce66c27b0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ada366c36950f2087066e7fd7553e97" id="r_a8ada366c36950f2087066e7fd7553e97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ada366c36950f2087066e7fd7553e97">m_clusterMetrics</a> = <a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td></tr>
+<tr class="memitem:a8ada366c36950f2087066e7fd7553e97" id="r_a8ada366c36950f2087066e7fd7553e97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ada366c36950f2087066e7fd7553e97">m_clusterMetrics</a> = <a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td></tr>
 <tr class="separator:a8ada366c36950f2087066e7fd7553e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00008">8</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
+<div class="textblock"><p>Class that manages the data received from the car's systems. QObject. </p>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00027">27</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9b89358b54a58aa9aed95a04c7ea09d1" name="a9b89358b54a58aa9aed95a04c7ea09d1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9b89358b54a58aa9aed95a04c7ea09d1">&#9670;&#160;</a></span>VehicleDataManager()</h2>
@@ -185,7 +196,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00004">4</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
+<p>Construct a new <a class="el" href="#a9b89358b54a58aa9aed95a04c7ea09d1" title="Construct a new VehicleDataManager::VehicleDataManager object.">VehicleDataManager::VehicleDataManager</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This constructor initializes the <a class="el" href="classVehicleDataManager.html" title="Class that manages the data received from the car&#39;s systems. QObject.">VehicleDataManager</a> object. </p>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00024">24</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -204,7 +224,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00008">8</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
+<p>Destroy the <a class="el" href="#a9b89358b54a58aa9aed95a04c7ea09d1" title="Construct a new VehicleDataManager::VehicleDataManager object.">VehicleDataManager::VehicleDataManager</a> object. </p>
+<p>This destructor cleans up the resources used by the <a class="el" href="classVehicleDataManager.html" title="Class that manages the data received from the car&#39;s systems. QObject.">VehicleDataManager</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00032">32</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,8 +258,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__VehicleDataManager_8cpp_source.html#l00210">210</a> of file <a class="el" href="build-x86_2moc__VehicleDataManager_8cpp_source.html">moc_VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -257,7 +278,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void VehicleDataManager::engineDataProcessed </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>processedDirection</em></span>, </td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>processedDirection</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -271,8 +292,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__VehicleDataManager_8cpp_source.html#l00217">217</a> of file <a class="el" href="build-x86_2moc__VehicleDataManager_8cpp_source.html">moc_VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -293,7 +312,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void VehicleDataManager::handleDirectionData </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>rawDirection</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>rawDirection</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -304,7 +323,16 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00037">37</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
+<p>Handle Direction data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rawDirection</td><td>The raw direction data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the direction data by updating the internal direction value and emitting an engineDataProcessed signal if the value has changed. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#a344d0766b0033aa8041337b142a927e4">VehicleDataManager::engineDataProcessed</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00090">90</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -336,7 +364,16 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00028">28</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
+<p>Handle mileage data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mileage</td><td>The mileage data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the mileage data by updating the internal mileage value and emitting a mileageUpdated signal if the value has changed. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#afcfd34099194c5f38065b3d7cead03fb">VehicleDataManager::mileageUpdated</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00074">74</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -368,7 +405,16 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00011">11</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
+<p>Handle Rotation Per Minute data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rawRpm</td><td>The raw rotation per minute data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the RPM data by forwarding it to the canDataProcessed signal. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#a339ff33005bae04795a23d67fbc42cae">VehicleDataManager::canDataProcessed</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00042">42</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -400,7 +446,18 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00017">17</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
+<p>Handle Speed data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rawSpeed</td><td>The raw speed data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the speed data by forwarding it to the canDataProcessed signal. The speed data is converted to the current cluster metrics (either kilometers or miles). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#a339ff33005bae04795a23d67fbc42cae">VehicleDataManager::canDataProcessed</a> </dd>
+<dd>
+VehicleDataManager::setClusterMetrics </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00057">57</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -432,7 +489,16 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00045">45</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
+<p>Handle Steering data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rawAngle</td><td>The raw steering angle data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the steering data by updating the internal steering direction value and emitting an engineDataProcessed signal if the value has changed. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#a344d0766b0033aa8041337b142a927e4">VehicleDataManager::engineDataProcessed</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8cpp_source.html#l00107">107</a> of file <a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -463,8 +529,6 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__VehicleDataManager_8cpp_source.html#l00224">224</a> of file <a class="el" href="build-x86_2moc__VehicleDataManager_8cpp_source.html">moc_VehicleDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -484,7 +548,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> VehicleDataManager::m_carDirection = <a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td>
+          <td class="memname"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> VehicleDataManager::m_carDirection = <a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td>
         </tr>
       </table>
   </td>
@@ -494,7 +558,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00031">31</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00050">50</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -508,7 +572,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> VehicleDataManager::m_clusterMetrics = <a class="el" href="enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td>
+          <td class="memname"><a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71e">ClusterMetrics</a> VehicleDataManager::m_clusterMetrics = <a class="el" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1">ClusterMetrics::Kilometers</a></td>
         </tr>
       </table>
   </td>
@@ -518,7 +582,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00034">34</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00053">53</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +606,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00033">33</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00052">52</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -566,7 +630,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00030">30</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00049">49</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -590,7 +654,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00029">29</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00048">48</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -614,14 +678,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00032">32</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VehicleDataManager_8hpp_source.html#l00051">51</a> of file <a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>app/includes/data/<a class="el" href="VehicleDataManager_8hpp_source.html">VehicleDataManager.hpp</a></li>
-<li>app/build-x86/<a class="el" href="build-x86_2moc__VehicleDataManager_8cpp_source.html">moc_VehicleDataManager.cpp</a></li>
-<li>app/build/<a class="el" href="build_2moc__VehicleDataManager_8cpp_source.html">moc_VehicleDataManager.cpp</a></li>
 <li>app/sources/data/<a class="el" href="VehicleDataManager_8cpp_source.html">VehicleDataManager.cpp</a></li>
 </ul>
 </div><!-- contents -->

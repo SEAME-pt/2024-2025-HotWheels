@@ -1,7 +1,0 @@
-<map id="MCP2515Controller::processReading" name="MCP2515Controller::processReading">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,160,77"/>
-<area shape="rect" id="Node000002" href="$classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102" title=" " alt="" coords="208,5,379,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,43,194,38,195,43,161,48"/>
-<area shape="rect" id="Node000003" href="$classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title=" " alt="" coords="212,69,375,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,66,199,72,198,78,160,72"/>
-</map>

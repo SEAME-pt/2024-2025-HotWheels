@@ -109,6 +109,9 @@ $(function(){initNavTree('test__MileageManager_8cpp.html',''); initResizable(tru
   <div class="headertitle"><div class="title">test_MileageManager.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Unit tests for the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> class.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;QSignalSpy&gt;</code><br />
 <code>#include &quot;<a class="el" href="MileageManager_8hpp_source.html">MileageManager.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MockMileageCalculator_8hpp_source.html">MockMileageCalculator.hpp</a>&quot;</code><br />
@@ -121,20 +124,39 @@ $(function(){initNavTree('test__MileageManager_8cpp.html',''); initResizable(tru
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMileageManagerTest.html">MileageManagerTest</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to test the integration between the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> and the <a class="el" href="classMileageCalculator.html" title="Class that calculates the total distance traveled based on speed measurements.">MileageCalculator</a> and <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a>.  <a href="classMileageManagerTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a662cfc6eac68180e3ace397f24998de6" id="r_a662cfc6eac68180e3ace397f24998de6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a662cfc6eac68180e3ace397f24998de6">TEST_F</a> (<a class="el" href="classMileageManagerTest.html">MileageManagerTest</a>, Initialize_LoadsMileageFromFile)</td></tr>
+<tr class="memdesc:a662cfc6eac68180e3ace397f24998de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage manager initializes correctly.  <br /></td></tr>
 <tr class="separator:a662cfc6eac68180e3ace397f24998de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c5117228d88e795d72c3803377dcf79" id="r_a9c5117228d88e795d72c3803377dcf79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c5117228d88e795d72c3803377dcf79">TEST_F</a> (<a class="el" href="classMileageManagerTest.html">MileageManagerTest</a>, OnSpeedUpdated_CallsCalculator)</td></tr>
+<tr class="memdesc:a9c5117228d88e795d72c3803377dcf79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage manager calls the calculator when the speed is updated.  <br /></td></tr>
 <tr class="separator:a9c5117228d88e795d72c3803377dcf79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1749df8df42cab89bb455b712472ab8b" id="r_a1749df8df42cab89bb455b712472ab8b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1749df8df42cab89bb455b712472ab8b">TEST_F</a> (<a class="el" href="classMileageManagerTest.html">MileageManagerTest</a>, UpdateMileage_EmitsMileageUpdatedSignal)</td></tr>
+<tr class="memdesc:a1749df8df42cab89bb455b712472ab8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage manager updates the mileage correctly.  <br /></td></tr>
 <tr class="separator:a1749df8df42cab89bb455b712472ab8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97285896a7ea29e1790083dc67f52355" id="r_a97285896a7ea29e1790083dc67f52355"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97285896a7ea29e1790083dc67f52355">TEST_F</a> (<a class="el" href="classMileageManagerTest.html">MileageManagerTest</a>, SaveMileage_CallsFileHandler)</td></tr>
+<tr class="memdesc:a97285896a7ea29e1790083dc67f52355"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage manager saves the mileage correctly.  <br /></td></tr>
 <tr class="separator:a97285896a7ea29e1790083dc67f52355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Unit tests for the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> class. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-02-12</dd></dl>
+<p>This file contains unit tests for the <a class="el" href="classMileageManager.html" title="Class that manages the mileage of a vehicle. QObject.">MileageManager</a> class, using Google Test and Google Mock frameworks. </p><dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
+<dd>
+Tiago Pereira (@t-pereira06) </dd>
+<dd>
+Ricardo Melo (@reomelo) </dd>
+<dd>
+Michel Batista (@MicchelFAB)</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a662cfc6eac68180e3ace397f24998de6" name="a662cfc6eac68180e3ace397f24998de6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a662cfc6eac68180e3ace397f24998de6">&#9670;&#160;</a></span>TEST_F() <span class="overload">[1/4]</span></h2>
 
@@ -154,7 +176,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00028">28</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
+<p>Ensures that the mileage manager initializes correctly. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000094">Test</a></b></dt><dd>Tests if the mileage manager initializes correctly. </dd></dl>
+<p>This test verifies that the mileage manager initializes correctly.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initializes the MileageManager object.">MileageManager::initialize</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00057">57</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -177,7 +204,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00039">39</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
+<p>Ensures that the mileage manager calls the calculator when the speed is updated. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000095">Test</a></b></dt><dd>Test OnSpeedUpdated method. </dd></dl>
+<p>This test verifies that the mileage manager calls the calculator when the speed is updated.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9" title="Handles the speed updated signal.">MileageManager::onSpeedUpdated</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00075">75</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -200,7 +232,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00059">59</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
+<p>Ensures that the mileage manager saves the mileage correctly. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000097">Test</a></b></dt><dd>Test SaveMileage method. </dd></dl>
+<p>This test verifies that the mileage manager saves the mileage correctly.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title="Saves the mileage to the file.">MileageManager::saveMileage</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00109">109</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -223,7 +260,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00045">45</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
+<p>Ensures that the mileage manager updates the mileage correctly. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000096">Test</a></b></dt><dd>Test UpdateMileage method. </dd></dl>
+<p>This test verifies that the mileage manager updates the mileage correctly.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageManager.html#a912c517158c90834792c3d00c0af101c" title="Updates the mileage.">MileageManager::updateMileage</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageManager_8cpp_source.html#l00088">88</a> of file <a class="el" href="test__MileageManager_8cpp_source.html">test_MileageManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

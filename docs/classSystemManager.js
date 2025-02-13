@@ -3,6 +3,8 @@ var classSystemManager =
     [ "SystemManager", "classSystemManager.html#a7891dcf51d9a2ae9d7bc968f16b8eec3", null ],
     [ "~SystemManager", "classSystemManager.html#a0fa2e3c0906401494f6bf4e482aecc0d", null ],
     [ "batteryPercentageUpdated", "classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3", null ],
+    [ "getStatusTimer", "classSystemManager.html#a4fedb4364a32dad46754a53e797878de", null ],
+    [ "getTimeTimer", "classSystemManager.html#a1afb87ba2cf06677863e52c7fe2f49f1", null ],
     [ "initialize", "classSystemManager.html#af40b45c958865de2ff03d0a8a7eafafa", null ],
     [ "ipAddressUpdated", "classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193", null ],
     [ "shutdown", "classSystemManager.html#a79dccf0fa71b88589c122c4be79bdcfe", null ],

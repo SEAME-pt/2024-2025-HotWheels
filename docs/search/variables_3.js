@@ -1,11 +1,25 @@
 var searchData=
 [
-  ['data_0',['data',['../structCANFrame.html#a8d85431dd443412a6c29ee4414b293fa',1,'CANFrame::data'],['../structqt__meta__stringdata__CanBusManager__t.html#ae7acd567348147433fe5c940fa001b3e',1,'qt_meta_stringdata_CanBusManager_t::data'],['../structqt__meta__stringdata__CarManager__t.html#aa36a66524e264e098af996cd119bbe0d',1,'qt_meta_stringdata_CarManager_t::data'],['../structqt__meta__stringdata__ClusterSettingsManager__t.html#a73de018820c0a2de93c66bbf080a0b67',1,'qt_meta_stringdata_ClusterSettingsManager_t::data'],['../structqt__meta__stringdata__ControlsManager__t.html#a6f9e4885a38c8b567727567852690d38',1,'qt_meta_stringdata_ControlsManager_t::data'],['../structqt__meta__stringdata__DataManager__t.html#a0dec92721614c6d7b20381e7f7650de9',1,'qt_meta_stringdata_DataManager_t::data'],['../structqt__meta__stringdata__DisplayManager__t.html#a5cb35fa1f1a1873e24fc9583c7aa2247',1,'qt_meta_stringdata_DisplayManager_t::data'],['../structqt__meta__stringdata__EngineController__t.html#afda698df70cfb6823091caaa1eecf6ce',1,'qt_meta_stringdata_EngineController_t::data'],['../structqt__meta__stringdata__IMCP2515Controller__t.html#a2631a4bd37c327c18c19581c572848a6',1,'qt_meta_stringdata_IMCP2515Controller_t::data'],['../structqt__meta__stringdata__JoysticksController__t.html#a878b2c4bf0072761681c8e312813697f',1,'qt_meta_stringdata_JoysticksController_t::data'],['../structqt__meta__stringdata__MCP2515Controller__t.html#a432258bedf6b7d4bde2892b5737ef183',1,'qt_meta_stringdata_MCP2515Controller_t::data'],['../structqt__meta__stringdata__MileageManager__t.html#a99b3cbacef6553a92e47a4087da31258',1,'qt_meta_stringdata_MileageManager_t::data'],['../structqt__meta__stringdata__MockMCP2515Controller__t.html#a0b7bab71750720cdd052007564fd4808',1,'qt_meta_stringdata_MockMCP2515Controller_t::data'],['../structqt__meta__stringdata__SystemDataManager__t.html#a6c2e6b73fda5bfada5942e945006337b',1,'qt_meta_stringdata_SystemDataManager_t::data'],['../structqt__meta__stringdata__SystemManager__t.html#aa295c3f8efdb1252d06337325573d463',1,'qt_meta_stringdata_SystemManager_t::data'],['../structqt__meta__stringdata__VehicleDataManager__t.html#a1c947ce7bc1b473c51b3abaa6b658d17',1,'qt_meta_stringdata_VehicleDataManager_t::data']]],
-  ['datelabel_1',['dateLabel',['../classUi__CarManager.html#ab1f3ed18a6d667d14cfd958a3b4519df',1,'Ui_CarManager']]],
-  ['defaultbitsperword_2',['DefaultBitsPerWord',['../classSPIController.html#acaf343bc6454225c06d3972f9715fa52',1,'SPIController']]],
-  ['defaultmode_3',['DefaultMode',['../classSPIController.html#a5b4ca853af7170f0eb5fca2eae1834ec',1,'SPIController']]],
-  ['defaultspeedhz_4',['DefaultSpeedHz',['../classSPIController.html#a32720dd654d5fcbcf08dcd5bb2dae274',1,'SPIController']]],
-  ['directionlabel_5',['directionLabel',['../classUi__CarManager.html#a2708b3b729d13df9a4431205a9241beb',1,'Ui_CarManager']]],
-  ['dlc_6',['dlc',['../structCANFrame.html#ae2343b49bc07fda8079ef25a89ad1987',1,'CANFrame']]],
-  ['drivingmodelabel_7',['drivingModeLabel',['../classUi__CarManager.html#ad7c09552d99fe45197cba16779f365ca',1,'Ui_CarManager']]]
+  ['calculator_0',['calculator',['../classMileageManagerTest.html#ad7e69719aa1fe6d111fa188eb185d669',1,'MileageManagerTest::calculator'],['../classMileageCalculatorTest.html#a19179a43d26423a70da5f781455f3c4e',1,'MileageCalculatorTest::calculator']]],
+  ['can_5frd_5fstatus_1',['CAN_RD_STATUS',['../classMCP2515Configurator.html#aa4046995f5ea5f9bd1127edf48ce8ae0',1,'MCP2515Configurator']]],
+  ['can_5frts_5ftxb0_2',['CAN_RTS_TXB0',['../classMCP2515Configurator.html#ae701cd016d6148ab9c29dc1c40e927a8',1,'MCP2515Configurator']]],
+  ['canbusconfigurator_3',['canBusConfigurator',['../classRS485CANTest.html#a00811593bc85ee7a5280792b07c365c0',1,'RS485CANTest']]],
+  ['canbusmanager_4',['canBusManager',['../classCanBusManagerTest.html#a6e3cd351bc60aa6a0c05cfadbc0cfe14',1,'CanBusManagerTest']]],
+  ['canctrl_5',['CANCTRL',['../classMCP2515Configurator.html#a35a365ada57c5e59d6d42869d80d9e13',1,'MCP2515Configurator']]],
+  ['caninte_6',['CANINTE',['../classMCP2515Configurator.html#a801a01b6f64e6e82b6a036d123f5d262',1,'MCP2515Configurator']]],
+  ['canintf_7',['CANINTF',['../classMCP2515Configurator.html#a4fd1432bce6564d1fc463707c6763fd4',1,'MCP2515Configurator']]],
+  ['canstat_8',['CANSTAT',['../classMCP2515Configurator.html#af67d0d6ccc54479b3971984482cbe9de',1,'MCP2515Configurator']]],
+  ['car_5ftemperature_9',['car_temperature',['../classData_1_1CarDataI.html#ac761bc078af10398cf3797ffe6356471',1,'Data::CarDataI']]],
+  ['cardata_10',['carData',['../classClientThread.html#a67a7f0d0caa289f1585d9cb7f00acdd8',1,'ClientThread']]],
+  ['clientthread_11',['clientThread',['../classClientThread.html#add6dbc47cac539890942fd84861aa754',1,'ClientThread']]],
+  ['clustersettingsmanager_12',['clusterSettingsManager',['../classClusterSettingsManagerTest.html#a8fdd4c8b83ff38811f57d080d760b8b3',1,'ClusterSettingsManagerTest']]],
+  ['cnf1_13',['CNF1',['../classMCP2515Configurator.html#a0d1554e881a9465667272643528898c1',1,'MCP2515Configurator']]],
+  ['cnf2_14',['CNF2',['../classMCP2515Configurator.html#a0a3beb14d463b4e107fc0b78b880d971',1,'MCP2515Configurator']]],
+  ['cnf3_15',['CNF3',['../classMCP2515Configurator.html#a32598bab7e12020f9859d0d0b3af2e87',1,'MCP2515Configurator']]],
+  ['communicator_16',['communicator',['../classData_1_1CarDataI.html#a5c52cb71e0ca77f01c83afb4d5185114',1,'Data::CarDataI::communicator'],['../classClientThread.html#a1e8d2d44ed85de38dc8fdccd78f28468',1,'ClientThread::communicator']]],
+  ['configurator_17',['configurator',['../classMCP2515ConfiguratorTest.html#a14ca85f619bcc6518c6ea15a024a7d97',1,'MCP2515ConfiguratorTest::configurator'],['../classMCP2515ControllerTest.html#a21111797963949a5b502f05237221e23',1,'MCP2515ControllerTest::configurator'],['../classMCP2515Controller.html#abcbf0e5bcaf4890fa5986ce8742de41b',1,'MCP2515Controller::configurator']]],
+  ['connected_18',['connected',['../classClientThread.html#a84156a357e4714f4d55a27ebb427a8ce',1,'ClientThread']]],
+  ['controller_19',['controller',['../classCanBusManagerTest.html#adfdf34a36fd0bd8d894a68a0629ff188',1,'CanBusManagerTest']]],
+  ['crcvalid_20',['crcValid',['../structCANFrame.html#a1184d2dc77ae8e7edff20686951a047e',1,'CANFrame']]],
+  ['cv_21',['cv',['../classClientThread.html#a21cdf3ed0f25fda688f4293ac6c4c927',1,'ClientThread']]]
 ];

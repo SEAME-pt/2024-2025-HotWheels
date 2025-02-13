@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['qrc_5fresources_2ecpp_0',['qrc_resources.cpp',['../build-x86_2qrc__resources_8cpp.html',1,'(Global Namespace)'],['../build_2qrc__resources_8cpp.html',1,'(Global Namespace)']]]
+  ['peripheralcontroller_2ecpp_0',['PeripheralController.cpp',['../PeripheralController_8cpp.html',1,'']]],
+  ['peripheralcontroller_2ehpp_1',['PeripheralController.hpp',['../PeripheralController_8hpp.html',1,'']]]
 ];

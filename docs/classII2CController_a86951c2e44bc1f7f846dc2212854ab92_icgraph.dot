@@ -7,5 +7,5 @@ digraph "II2CController::readRegister"
   rankdir="RL";
   Node1 [id="Node000001",label="II2CController::readRegister",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="MockI2CController::\lMOCK_METHOD",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockI2CController.html#a46f1fb9a6cdd7733c77ba11f59f7be01",tooltip=" "];
+  Node2 [id="Node000002",label="MockI2CController::\lMOCK_METHOD",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockI2CController.html#a46f1fb9a6cdd7733c77ba11f59f7be01",tooltip="Mocked method to read a register from the I2C controller."];
 }

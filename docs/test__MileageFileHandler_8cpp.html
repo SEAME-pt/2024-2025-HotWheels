@@ -109,6 +109,9 @@ $(function(){initNavTree('test__MileageFileHandler_8cpp.html',''); initResizable
   <div class="headertitle"><div class="title">test_MileageFileHandler.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Unit tests for the <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a> class.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="MileageFileHandler_8hpp_source.html">MileageFileHandler.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MockFileController_8hpp_source.html">MockFileController.hpp</a>&quot;</code><br />
 <code>#include &lt;gmock/gmock.h&gt;</code><br />
@@ -119,20 +122,39 @@ $(function(){initNavTree('test__MileageFileHandler_8cpp.html',''); initResizable
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMileageFileHandlerTest.html">MileageFileHandlerTest</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a> class.  <a href="classMileageFileHandlerTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:acdb4e20fe546be0a4ddb64a6d2a1638a" id="r_acdb4e20fe546be0a4ddb64a6d2a1638a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdb4e20fe546be0a4ddb64a6d2a1638a">TEST_F</a> (<a class="el" href="classMileageFileHandlerTest.html">MileageFileHandlerTest</a>, EnsureFileExists_FileDoesNotExist_CreatesFileWithZeroMileage)</td></tr>
+<tr class="memdesc:acdb4e20fe546be0a4ddb64a6d2a1638a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage file handler creates the file if it does not exist.  <br /></td></tr>
 <tr class="separator:acdb4e20fe546be0a4ddb64a6d2a1638a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a781b9e1f6b68af69401341bfea7df85c" id="r_a781b9e1f6b68af69401341bfea7df85c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a781b9e1f6b68af69401341bfea7df85c">TEST_F</a> (<a class="el" href="classMileageFileHandlerTest.html">MileageFileHandlerTest</a>, ReadMileage_ValidNumber_ReturnsParsedValue)</td></tr>
+<tr class="memdesc:a781b9e1f6b68af69401341bfea7df85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage file handler does not create the file if it already exists.  <br /></td></tr>
 <tr class="separator:a781b9e1f6b68af69401341bfea7df85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2205a14a396f5a069546ebcf1fc1f4d" id="r_ae2205a14a396f5a069546ebcf1fc1f4d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2205a14a396f5a069546ebcf1fc1f4d">TEST_F</a> (<a class="el" href="classMileageFileHandlerTest.html">MileageFileHandlerTest</a>, ReadMileage_InvalidNumber_ReturnsZero)</td></tr>
+<tr class="memdesc:ae2205a14a396f5a069546ebcf1fc1f4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage file handler reads zero mileage if the file is empty.  <br /></td></tr>
 <tr class="separator:ae2205a14a396f5a069546ebcf1fc1f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab43c43a82c001b4ba0e8ccc1d39477f9" id="r_ab43c43a82c001b4ba0e8ccc1d39477f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab43c43a82c001b4ba0e8ccc1d39477f9">TEST_F</a> (<a class="el" href="classMileageFileHandlerTest.html">MileageFileHandlerTest</a>, WriteMileage_ValidNumber_WritesToFile)</td></tr>
+<tr class="memdesc:ab43c43a82c001b4ba0e8ccc1d39477f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the mileage file handler writes the mileage to the file.  <br /></td></tr>
 <tr class="separator:ab43c43a82c001b4ba0e8ccc1d39477f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Unit tests for the <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a> class. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-02-12</dd></dl>
+<p>This file contains unit tests for the <a class="el" href="classMileageFileHandler.html" title="Class that manages the mileage file.">MileageFileHandler</a> class, using Google Test and Google Mock frameworks. </p><dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
+<dd>
+Tiago Pereira (@t-pereira06) </dd>
+<dd>
+Ricardo Melo (@reomelo) </dd>
+<dd>
+Michel Batista (@MicchelFAB)</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="acdb4e20fe546be0a4ddb64a6d2a1638a" name="acdb4e20fe546be0a4ddb64a6d2a1638a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acdb4e20fe546be0a4ddb64a6d2a1638a">&#9670;&#160;</a></span>TEST_F() <span class="overload">[1/4]</span></h2>
 
@@ -152,7 +174,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00036">36</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
+<p>Ensures that the mileage file handler creates the file if it does not exist. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000090">Test</a></b></dt><dd>Tests if the mileage file handler creates the file if it does not exist. </dd></dl>
+<p>This test verifies that the mileage file handler creates the file if it does not exist.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662" title="Checks if the file exists and creates it if it does not.">MileageFileHandler::ensureFileExists</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00065">65</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
 
 </div>
 </div>
@@ -175,7 +202,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00073">73</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
+<p>Ensures that the mileage file handler reads zero mileage if the file is empty. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000092">Test</a></b></dt><dd>Tests if the mileage file handler reads zero mileage if the file is empty. </dd></dl>
+<p>This test verifies that the mileage file handler reads zero mileage if the file is empty.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageFileHandler.html#a486b2169b0e7b12e08a355536d103ae8" title="Reads the mileage from the file.">MileageFileHandler::readMileage</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00116">116</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
 
 </div>
 </div>
@@ -198,7 +230,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00061">61</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
+<p>Ensures that the mileage file handler does not create the file if it already exists. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000091">Test</a></b></dt><dd>Tests if the mileage file handler does not create the file if it already exists. </dd></dl>
+<p>This test verifies that the mileage file handler does not create the file if it already exists.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662" title="Checks if the file exists and creates it if it does not.">MileageFileHandler::ensureFileExists</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00097">97</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -226,7 +263,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00085">85</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
+<p>Ensures that the mileage file handler writes the mileage to the file. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000093">Test</a></b></dt><dd>Tests if the mileage file handler writes the mileage to the file. </dd></dl>
+<p>This test verifies that the mileage file handler writes the mileage to the file.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classMileageFileHandler.html#ab59b540b919f9fa4f721f2bb71933f41" title="Writes the mileage to the file.">MileageFileHandler::writeMileage</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__MileageFileHandler_8cpp_source.html#l00135">135</a> of file <a class="el" href="test__MileageFileHandler_8cpp_source.html">test_MileageFileHandler.cpp</a>.</p>
 
 </div>
 </div>

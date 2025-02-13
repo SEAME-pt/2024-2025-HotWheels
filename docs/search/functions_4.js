@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['enginecontroller_0',['EngineController',['../classEngineController.html#a046ba741e7683358a38778a92d083947',1,'EngineController::EngineController()'],['../classEngineController.html#a36923247340945dd1c6edb1a073361a6',1,'EngineController::EngineController(int servo_addr, int motor_addr, QObject *parent=nullptr)']]],
-  ['enginedataprocessed_1',['engineDataProcessed',['../classDataManager.html#a23da75da1d1fa2d90c7f885b850b515d',1,'DataManager::engineDataProcessed()'],['../classVehicleDataManager.html#a344d0766b0033aa8041337b142a927e4',1,'VehicleDataManager::engineDataProcessed()']]],
-  ['ensurefileexists_2',['ensureFileExists',['../classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662',1,'MileageFileHandler']]],
-  ['executecommand_3',['executeCommand',['../classISystemCommandExecutor.html#aab312dabe95f379d38f848148b8a679d',1,'ISystemCommandExecutor::executeCommand()'],['../classSystemCommandExecutor.html#a3fcf74c0d253899fb690479644ef7506',1,'SystemCommandExecutor::executeCommand()']]],
-  ['exists_4',['exists',['../namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7',1,'FileController']]]
+  ['datamanager_0',['DataManager',['../classDataManager.html#affb37dc13db06ecf6853c9fa25e5ed7a',1,'DataManager']]],
+  ['directionchanged_1',['directionChanged',['../classControlsManager.html#a8dc2e1cb0a9ddf10e37034404e7460b4',1,'ControlsManager']]],
+  ['directionupdated_2',['directionUpdated',['../classEngineController.html#afe7335b983ea3c6c36dc0eaa00918d82',1,'EngineController']]],
+  ['displaymanager_3',['DisplayManager',['../classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a',1,'DisplayManager']]],
+  ['drivingmodetoggled_4',['drivingModeToggled',['../classDisplayManager.html#a82ccd56efaf1a42e2e2823a4fbaec4a0',1,'DisplayManager']]],
+  ['drivingmodeupdated_5',['drivingModeUpdated',['../classControlsManager.html#ad3cd1fa6493f5e17cc1806d993266fac',1,'ControlsManager::drivingModeUpdated()'],['../classClusterSettingsManager.html#ae7b90b3f91043042f48ceb3d687de35a',1,'ClusterSettingsManager::drivingModeUpdated()'],['../classDataManager.html#a7fb9e70b6b53f7dba26470ec79253e26',1,'DataManager::drivingModeUpdated()']]]
 ];

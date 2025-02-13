@@ -1,5 +1,0 @@
-<map id="IMCP2515Controller::stopReading" name="IMCP2515Controller::stopReading">
-<area shape="rect" id="Node000001" title=" " alt="" coords="236,5,387,45"/>
-<area shape="rect" id="Node000002" href="$classMockMCP2515Controller.html#a20e2fee22f8a39b5f941df712a6519d2" title="Mocked method to stop the reading of the MCP2515 controller." alt="" coords="5,5,188,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,28,188,28,188,23,222,23"/>
-</map>

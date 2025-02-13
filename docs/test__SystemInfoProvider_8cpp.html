@@ -109,6 +109,9 @@ $(function(){initNavTree('test__SystemInfoProvider_8cpp.html',''); initResizable
   <div class="headertitle"><div class="title">test_SystemInfoProvider.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Unit tests for the <a class="el" href="classSystemInfoProvider.html" title="Class that provides system information to the display manager.">SystemInfoProvider</a> class.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="MockSystemCommandExecutor_8hpp_source.html">MockSystemCommandExecutor.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="SystemInfoProvider_8hpp_source.html">SystemInfoProvider.hpp</a>&quot;</code><br />
 <code>#include &lt;gmock/gmock.h&gt;</code><br />
@@ -119,26 +122,48 @@ $(function(){initNavTree('test__SystemInfoProvider_8cpp.html',''); initResizable
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test fixture for testing the <a class="el" href="classSystemInfoProvider.html" title="Class that provides system information to the display manager.">SystemInfoProvider</a> class.  <a href="classSystemInfoProviderTest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a85e550eabfe9e97e9e2a8f822a68d1d5" id="r_a85e550eabfe9e97e9e2a8f822a68d1d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85e550eabfe9e97e9e2a8f822a68d1d5">TEST_F</a> (<a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a>, GetWifiStatus_Connected)</td></tr>
+<tr class="memdesc:a85e550eabfe9e97e9e2a8f822a68d1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the wifi status is correctly retrieved.  <br /></td></tr>
 <tr class="separator:a85e550eabfe9e97e9e2a8f822a68d1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeee5196e90ab11258e0948f39dd4dfab" id="r_aeee5196e90ab11258e0948f39dd4dfab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeee5196e90ab11258e0948f39dd4dfab">TEST_F</a> (<a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a>, GetWifiStatus_Disconnected)</td></tr>
+<tr class="memdesc:aeee5196e90ab11258e0948f39dd4dfab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the wifi status is correctly retrieved when disconnected.  <br /></td></tr>
 <tr class="separator:aeee5196e90ab11258e0948f39dd4dfab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22696f2ea7fc3f1d638c8c8c581a18c9" id="r_a22696f2ea7fc3f1d638c8c8c581a18c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22696f2ea7fc3f1d638c8c8c581a18c9">TEST_F</a> (<a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a>, GetWifiStatus_NoInterface)</td></tr>
+<tr class="memdesc:a22696f2ea7fc3f1d638c8c8c581a18c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the wifi status is correctly retrieved when no interface is detected.  <br /></td></tr>
 <tr class="separator:a22696f2ea7fc3f1d638c8c8c581a18c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab393040b04f8fe1ec79fcad5fe79aaa0" id="r_ab393040b04f8fe1ec79fcad5fe79aaa0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab393040b04f8fe1ec79fcad5fe79aaa0">TEST_F</a> (<a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a>, GetTemperature_ValidReading)</td></tr>
+<tr class="memdesc:ab393040b04f8fe1ec79fcad5fe79aaa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the wifi status is correctly retrieved when the wifi name is empty.  <br /></td></tr>
 <tr class="separator:ab393040b04f8fe1ec79fcad5fe79aaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa355bf41a1cd3f3b7287b58e9f43db67" id="r_aa355bf41a1cd3f3b7287b58e9f43db67"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa355bf41a1cd3f3b7287b58e9f43db67">TEST_F</a> (<a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a>, GetTemperature_InvalidReading)</td></tr>
+<tr class="memdesc:aa355bf41a1cd3f3b7287b58e9f43db67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the temperature is correctly retrieved when the reading is invalid.  <br /></td></tr>
 <tr class="separator:aa355bf41a1cd3f3b7287b58e9f43db67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a282bfce0c1e4ff987f9a4ae7acef00a3" id="r_a282bfce0c1e4ff987f9a4ae7acef00a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a282bfce0c1e4ff987f9a4ae7acef00a3">TEST_F</a> (<a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a>, GetIpAddress_Valid)</td></tr>
+<tr class="memdesc:a282bfce0c1e4ff987f9a4ae7acef00a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the IP address is correctly retrieved.  <br /></td></tr>
 <tr class="separator:a282bfce0c1e4ff987f9a4ae7acef00a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38cb454bddfad26e50648fe1bc5b7280" id="r_a38cb454bddfad26e50648fe1bc5b7280"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38cb454bddfad26e50648fe1bc5b7280">TEST_F</a> (<a class="el" href="classSystemInfoProviderTest.html">SystemInfoProviderTest</a>, GetIpAddress_NoIP)</td></tr>
+<tr class="memdesc:a38cb454bddfad26e50648fe1bc5b7280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the IP address is correctly retrieved when no IP address is found.  <br /></td></tr>
 <tr class="separator:a38cb454bddfad26e50648fe1bc5b7280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Unit tests for the <a class="el" href="classSystemInfoProvider.html" title="Class that provides system information to the display manager.">SystemInfoProvider</a> class. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-02-12</dd></dl>
+<p>This file contains unit tests for the <a class="el" href="classSystemInfoProvider.html" title="Class that provides system information to the display manager.">SystemInfoProvider</a> class, using Google Test and Google Mock frameworks. </p><dl class="section author"><dt>Author</dt><dd>Félix LE BIHAN (@Fle-bihh) </dd>
+<dd>
+Tiago Pereira (@t-pereira06) </dd>
+<dd>
+Ricardo Melo (@reomelo) </dd>
+<dd>
+Michel Batista (@MicchelFAB)</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a38cb454bddfad26e50648fe1bc5b7280" name="a38cb454bddfad26e50648fe1bc5b7280"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38cb454bddfad26e50648fe1bc5b7280">&#9670;&#160;</a></span>TEST_F() <span class="overload">[1/7]</span></h2>
 
@@ -158,7 +183,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00090">90</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+<p>Ensures that the IP address is correctly retrieved when no IP address is found. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000106">Test</a></b></dt><dd>Tests if the IP address is correctly retrieved when no IP address is found. </dd></dl>
+<p>This test verifies that the IP address is correctly retrieved when no IP address is found. The IP address should be "No IP address".</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSystemInfoProvider.html#a87f3f227d8c5894a09b823c64537c0be" title="Gets the current IP address of the WiFi interface.">SystemInfoProvider::getIpAddress</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00171">171</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
 
 </div>
 </div>
@@ -181,7 +211,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00077">77</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+<p>Ensures that the IP address is correctly retrieved. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000105">Test</a></b></dt><dd>Tests if the IP address is correctly retrieved. </dd></dl>
+<p>This test verifies that the IP address is correctly retrieved. The IP address should be "</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSystemInfoProvider.html#a87f3f227d8c5894a09b823c64537c0be" title="Gets the current IP address of the WiFi interface.">SystemInfoProvider::getIpAddress</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00150">150</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
 
 </div>
 </div>
@@ -204,7 +239,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00067">67</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+<p>Ensures that the temperature is correctly retrieved when the reading is invalid. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000104">Test</a></b></dt><dd>Tests if the temperature is correctly retrieved when the reading is invalid. </dd></dl>
+<p>This test verifies that the temperature is correctly retrieved when the reading is invalid. The temperature should be "N/A".</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSystemInfoProvider.html#a9afa991ae3553a9cbcc9c9b2d070769e" title="Gets the current temperature in degrees Celsius.">SystemInfoProvider::getTemperature</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00132">132</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +267,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00057">57</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+<p>Ensures that the wifi status is correctly retrieved when the wifi name is empty. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000103">Test</a></b></dt><dd>Tests if the wifi status is correctly retrieved when the wifi name is empty. </dd></dl>
+<p>This test verifies that the wifi status is correctly retrieved when the wifi name is empty. The wifi status should be "Connected" and the wifi name should be empty.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSystemInfoProvider.html#a149f0effbf4179a057544ba6fe8cece8" title="Gets the current WiFi status.">SystemInfoProvider::getWifiStatus</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00114">114</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
 
 </div>
 </div>
@@ -250,7 +295,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00021">21</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+<p>Ensures that the wifi status is correctly retrieved. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000100">Test</a></b></dt><dd>Tests if the wifi status is correctly retrieved. </dd></dl>
+<p>This test verifies that the wifi status is correctly retrieved. The wifi status should be "Connected" and the wifi name should be "MyWiFi".</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSystemInfoProvider.html#a149f0effbf4179a057544ba6fe8cece8" title="Gets the current WiFi status.">SystemInfoProvider::getWifiStatus</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00051">51</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +323,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00033">33</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+<p>Ensures that the wifi status is correctly retrieved when disconnected. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000101">Test</a></b></dt><dd>Tests if the wifi status is correctly retrieved when disconnected. </dd></dl>
+<p>This test verifies that the wifi status is correctly retrieved when disconnected. The wifi status should be "Disconnected" and the wifi name should be empty.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSystemInfoProvider.html#a149f0effbf4179a057544ba6fe8cece8" title="Gets the current WiFi status.">SystemInfoProvider::getWifiStatus</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00072">72</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
 
 </div>
 </div>
@@ -296,7 +351,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00045">45</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
+<p>Ensures that the wifi status is correctly retrieved when no interface is detected. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000102">Test</a></b></dt><dd>Tests if the wifi status is correctly retrieved when no interface is detected. </dd></dl>
+<p>This test verifies that the wifi status is correctly retrieved when no interface is detected. The wifi status should be "No interface detected" and the wifi name should be empty.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classSystemInfoProvider.html#a149f0effbf4179a057544ba6fe8cece8" title="Gets the current WiFi status.">SystemInfoProvider::getWifiStatus</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="test__SystemInfoProvider_8cpp_source.html#l00093">93</a> of file <a class="el" href="test__SystemInfoProvider_8cpp_source.html">test_SystemInfoProvider.cpp</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['4_20tt_20tests_20tt_0',['4. &lt;tt&gt;tests/&lt;/tt&gt;',['..//home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/app/README.md#autotoc_md6',1,'']]]
+  ['3_20tt_20assets_20tt_0',['3. &lt;tt&gt;assets/&lt;/tt&gt;',['..//home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/app/README.md#autotoc_md9',1,'']]]
 ];

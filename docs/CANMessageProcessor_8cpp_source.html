@@ -115,24 +115,24 @@ $(function(){initNavTree('CANMessageProcessor_8cpp_source.html',''); initResizab
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
 <div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2">CANMessageProcessor::registerHandler</a>(uint16_t frameID,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                          <a class="code hl_typedef" href="classCANMessageProcessor.html#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> handler) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordflow">if</span> (!handler) {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Handler cannot be null&quot;</span>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_variable" href="classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d">handlers</a>[frameID] = handler;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                                                                    <a class="code hl_typedef" href="classCANMessageProcessor.html#a76c0176001e48cd4ecbdf506f96e1fd2">MessageHandler</a> handler) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">if</span> (!handler) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Handler cannot be null&quot;</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_variable" href="classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d">handlers</a>[frameID] = handler;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
 <div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102">   59</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102">CANMessageProcessor::processMessage</a>(uint16_t frameID,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                         <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;data) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">auto</span> it = <a class="code hl_variable" href="classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d">handlers</a>.find(frameID);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d">handlers</a>.end()) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    it-&gt;second(data);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;No handler registered for frame ID: &quot;</span> +</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                             std::to_string(frameID));</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                                                                 <span class="keyword">const</span> std::vector&lt;uint8_t&gt; &amp;data) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">auto</span> it = <a class="code hl_variable" href="classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d">handlers</a>.find(frameID);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d">handlers</a>.end()) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        it-&gt;second(data);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;No handler registered for frame ID: &quot;</span> +</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                                         std::to_string(frameID));</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
 </div>
 <div class="ttc" id="aCANMessageProcessor_8hpp_html"><div class="ttname"><a href="CANMessageProcessor_8hpp.html">CANMessageProcessor.hpp</a></div><div class="ttdoc">Definition of the CANMessageProcessor class.</div></div>

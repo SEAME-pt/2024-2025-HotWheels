@@ -1,9 +1,0 @@
-<map id="EngineController::set_speed" name="EngineController::set_speed">
-<area shape="rect" id="Node000001" title="Set the speed of the car." alt="" coords="5,23,164,63"/>
-<area shape="rect" id="Node000002" href="$EngineController_8cpp.html#a83100694a686c920777a21081dc0db93" title="Clamp a value between a minimum and a maximum." alt="" coords="289,5,352,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,32,275,20,276,25,165,37"/>
-<area shape="rect" id="Node000003" href="$classEngineController.html#a19a12b6f34f267a3e7ed78ffe2980c4f" title="Set the direction of the car." alt="" coords="212,55,429,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,49,199,52,198,58,164,54"/>
-<area shape="rect" id="Node000004" href="$classEngineController.html#afe7335b983ea3c6c36dc0eaa00918d82" title="Signal emitted when the speed is updated." alt="" coords="477,47,672,87"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="430,65,463,65,463,70,430,70"/>
-</map>

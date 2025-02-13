@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ui_5fcarmanager_2eh_0',['ui_CarManager.h',['../build-x86_2ui__CarManager_8h.html',1,'(Global Namespace)'],['../build_2ui__CarManager_8h.html',1,'(Global Namespace)']]]
+  ['vehicledatamanager_2ecpp_0',['VehicleDataManager.cpp',['../VehicleDataManager_8cpp.html',1,'']]],
+  ['vehicledatamanager_2ehpp_1',['VehicleDataManager.hpp',['../VehicleDataManager_8hpp.html',1,'']]]
 ];

@@ -1,5 +1,0 @@
-<map id="DataManager::handleTemperatureData" name="DataManager::handleTemperatureData">
-<area shape="rect" id="Node000001" title="Handles temperature data." alt="" coords="5,13,280,38"/>
-<area shape="rect" id="Node000002" href="$classDataManager.html#aec107b5ae90d533648f43f9a13f244fe" title="Signal emitted when the system temperature is updated." alt="" coords="328,5,576,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,23,314,23,314,28,280,28"/>
-</map>

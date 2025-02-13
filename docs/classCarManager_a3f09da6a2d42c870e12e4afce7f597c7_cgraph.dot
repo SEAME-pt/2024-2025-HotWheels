@@ -35,11 +35,11 @@ digraph "CarManager::initializeDisplayManager"
   Node1 -> Node15 [id="edge14_Node000001_Node000015",color="steelblue1",style="solid",tooltip=" "];
   Node15 [id="Node000015",label="DataManager::systemWifiUpdated",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#af2e9914a800be00c40d17a60ace49e61",tooltip=" "];
   Node1 -> Node16 [id="edge15_Node000001_Node000016",color="steelblue1",style="solid",tooltip=" "];
-  Node16 [id="Node000016",label="DataManager::toggleCluster\lMetrics",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a08ec424331443675ba3c31b1a50da50c",tooltip=" "];
+  Node16 [id="Node000016",label="DataManager::toggleCluster\lMetrics",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a08ec424331443675ba3c31b1a50da50c",tooltip="Toggle the cluster metrics."];
   Node1 -> Node17 [id="edge16_Node000001_Node000017",color="steelblue1",style="solid",tooltip=" "];
-  Node17 [id="Node000017",label="DataManager::toggleCluster\lTheme",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a8ba9ea7dd957fadef8c562f0865ff55e",tooltip=" "];
+  Node17 [id="Node000017",label="DataManager::toggleCluster\lTheme",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a8ba9ea7dd957fadef8c562f0865ff55e",tooltip="Toggle the cluster theme."];
   Node1 -> Node18 [id="edge17_Node000001_Node000018",color="steelblue1",style="solid",tooltip=" "];
-  Node18 [id="Node000018",label="DataManager::toggleDrivingMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a820db17b9b1aa9a70cbdc8ef05a46584",tooltip=" "];
+  Node18 [id="Node000018",label="DataManager::toggleDrivingMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDataManager.html#a820db17b9b1aa9a70cbdc8ef05a46584",tooltip="Toggle the driving mode."];
   Node1 -> Node19 [id="edge18_Node000001_Node000019",color="steelblue1",style="solid",tooltip=" "];
   Node19 [id="Node000019",label="DisplayManager::updateBattery\lPercentage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classDisplayManager.html#abd05bbcd46db02809b4f69043b0f5bde",tooltip="Updates the battery percentage on the display."];
   Node1 -> Node20 [id="edge19_Node000001_Node000020",color="steelblue1",style="solid",tooltip=" "];

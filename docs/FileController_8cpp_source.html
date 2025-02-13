@@ -106,50 +106,52 @@ $(function(){initNavTree('FileController_8cpp_source.html',''); initResizable(tr
   <div class="headertitle"><div class="title">FileController.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="FileController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="FileController_8hpp.html">FileController.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;QTextStream&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceFileController.html">FileController</a> {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25">    7</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25">open</a>(QFile &amp;file, QIODevice::OpenMode mode)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">return</span> file.open(mode);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>}</div>
+<a href="FileController_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="FileController_8hpp.html">FileController.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;QDebug&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;QTextStream&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceFileController.html">FileController</a> {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25">   35</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25">open</a>(QFile &amp;file, QIODevice::OpenMode mode)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> file.open(mode);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
 </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespaceFileController.html#a86b0f4c7251f1fde424968500736b8f0">   12</a></span>QString <a class="code hl_function" href="namespaceFileController.html#a86b0f4c7251f1fde424968500736b8f0">read</a>(QFile &amp;file)</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    QTextStream in(&amp;file);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> in.readLine();</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="namespaceFileController.html#a86b0f4c7251f1fde424968500736b8f0">   50</a></span>    QString <a class="code hl_function" href="namespaceFileController.html#a86b0f4c7251f1fde424968500736b8f0">read</a>(QFile &amp;file)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        QTextStream in(&amp;file);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> in.readLine();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
 </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec">   18</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec">write</a>(QFile &amp;file, <span class="keyword">const</span> QString &amp;data)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    QTextStream out(&amp;file);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    out &lt;&lt; data &lt;&lt; Qt::endl;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span></div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec">   67</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec">write</a>(QFile &amp;file, <span class="keyword">const</span> QString &amp;data)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        QTextStream out(&amp;file);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        out &lt;&lt; data &lt;&lt; Qt::endl;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7">   25</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7">exists</a>(<span class="keyword">const</span> QString &amp;path)</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> QFile::exists(path);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7">   83</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7">exists</a>(<span class="keyword">const</span> QString &amp;path)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">return</span> QFile::exists(path);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
 </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <span class="comment">// namespace FileController</span></div>
-<div class="ttc" id="aFileController_8hpp_html"><div class="ttname"><a href="FileController_8hpp.html">FileController.hpp</a></div></div>
-<div class="ttc" id="anamespaceFileController_html"><div class="ttname"><a href="namespaceFileController.html">FileController</a></div><div class="ttdef"><b>Definition</b> <a href="FileController_8hpp_source.html#l00007">FileController.hpp:7</a></div></div>
-<div class="ttc" id="anamespaceFileController_html_a093a115723b6351790b2805ec3e2ff25"><div class="ttname"><a href="namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25">FileController::open</a></div><div class="ttdeci">bool open(QFile &amp;file, QIODevice::OpenMode mode)</div><div class="ttdef"><b>Definition</b> <a href="#l00007">FileController.cpp:7</a></div></div>
-<div class="ttc" id="anamespaceFileController_html_a4f8cccd67f327da9321c5db04d9d73d7"><div class="ttname"><a href="namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7">FileController::exists</a></div><div class="ttdeci">bool exists(const QString &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="#l00025">FileController.cpp:25</a></div></div>
-<div class="ttc" id="anamespaceFileController_html_a86b0f4c7251f1fde424968500736b8f0"><div class="ttname"><a href="namespaceFileController.html#a86b0f4c7251f1fde424968500736b8f0">FileController::read</a></div><div class="ttdeci">QString read(QFile &amp;file)</div><div class="ttdef"><b>Definition</b> <a href="#l00012">FileController.cpp:12</a></div></div>
-<div class="ttc" id="anamespaceFileController_html_ad675dd48596341c8302d9e3b68eeeaec"><div class="ttname"><a href="namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec">FileController::write</a></div><div class="ttdeci">bool write(QFile &amp;file, const QString &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="#l00018">FileController.cpp:18</a></div></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>} <span class="comment">// namespace FileController</span></div>
+<div class="ttc" id="aFileController_8hpp_html"><div class="ttname"><a href="FileController_8hpp.html">FileController.hpp</a></div><div class="ttdoc">Definition of the FileController namespace.</div></div>
+<div class="ttc" id="anamespaceFileController_html"><div class="ttname"><a href="namespaceFileController.html">FileController</a></div><div class="ttdoc">Namespace containing file handling functions.</div></div>
+<div class="ttc" id="anamespaceFileController_html_a093a115723b6351790b2805ec3e2ff25"><div class="ttname"><a href="namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25">FileController::open</a></div><div class="ttdeci">bool open(QFile &amp;file, QIODevice::OpenMode mode)</div><div class="ttdoc">Open a file.</div><div class="ttdef"><b>Definition</b> <a href="#l00035">FileController.cpp:35</a></div></div>
+<div class="ttc" id="anamespaceFileController_html_a4f8cccd67f327da9321c5db04d9d73d7"><div class="ttname"><a href="namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7">FileController::exists</a></div><div class="ttdeci">bool exists(const QString &amp;path)</div><div class="ttdoc">Checks if a file exists.</div><div class="ttdef"><b>Definition</b> <a href="#l00083">FileController.cpp:83</a></div></div>
+<div class="ttc" id="anamespaceFileController_html_a86b0f4c7251f1fde424968500736b8f0"><div class="ttname"><a href="namespaceFileController.html#a86b0f4c7251f1fde424968500736b8f0">FileController::read</a></div><div class="ttdeci">QString read(QFile &amp;file)</div><div class="ttdoc">Reads a line from the file.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">FileController.cpp:50</a></div></div>
+<div class="ttc" id="anamespaceFileController_html_ad675dd48596341c8302d9e3b68eeeaec"><div class="ttname"><a href="namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec">FileController::write</a></div><div class="ttdeci">bool write(QFile &amp;file, const QString &amp;data)</div><div class="ttdoc">Writes a line to the file.</div><div class="ttdef"><b>Definition</b> <a href="#l00067">FileController.cpp:67</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

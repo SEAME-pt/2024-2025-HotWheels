@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['vehicledatamanager_0',['VehicleDataManager',['../classVehicleDataManager.html',1,'VehicleDataManager'],['../classVehicleDataManager.html#a9b89358b54a58aa9aed95a04c7ea09d1',1,'VehicleDataManager::VehicleDataManager()']]],
-  ['vehicledatamanager_1',['vehicleDataManager',['../classVehicleDataManagerTest.html#a680577430de7177135176a70685cb9f7',1,'VehicleDataManagerTest']]],
-  ['vehicledatamanager_2ecpp_2',['VehicleDataManager.cpp',['../VehicleDataManager_8cpp.html',1,'']]],
-  ['vehicledatamanager_2ehpp_3',['VehicleDataManager.hpp',['../VehicleDataManager_8hpp.html',1,'']]],
-  ['vehicledatamanagertest_4',['VehicleDataManagerTest',['../classVehicleDataManagerTest.html',1,'']]],
-  ['verifymode_5',['verifyMode',['../classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c',1,'MCP2515Configurator']]],
-  ['verticallayout_6',['verticalLayout',['../classUi__CarManager.html#a25cef6c9ed238544b77eb3aeed810944',1,'Ui_CarManager']]],
-  ['verticallayout_5f2_7',['verticalLayout_2',['../classUi__CarManager.html#a6030049864c5a4a1467e10665e14eec6',1,'Ui_CarManager']]],
-  ['verticallayout_5f3_8',['verticalLayout_3',['../classUi__CarManager.html#a3bec517074490c1688e885f4028f0eef',1,'Ui_CarManager']]],
-  ['verticallayoutwidget_9',['verticalLayoutWidget',['../classUi__CarManager.html#a9a15386ea9c6b63091710a0fdb1c5d1c',1,'Ui_CarManager']]],
-  ['verticallayoutwidget_5f2_10',['verticalLayoutWidget_2',['../classUi__CarManager.html#ad345ccc031ea0f6a86bc912b8a9cea06',1,'Ui_CarManager']]],
-  ['verticallayoutwidget_5f3_11',['verticalLayoutWidget_3',['../classUi__CarManager.html#a5e10e231254d30d44916597774c32610',1,'Ui_CarManager']]]
+  ['ui_0',['Ui',['../namespaceUi.html',1,'']]],
+  ['ui_1',['ui',['../classCarManager.html#a5532cd768f42e8ee61c6448887a76534',1,'CarManager']]],
+  ['updatebatterypercentage_2',['updateBatteryPercentage',['../classDisplayManager.html#abd05bbcd46db02809b4f69043b0f5bde',1,'DisplayManager']]],
+  ['updatecanbusdata_3',['updateCanBusData',['../classDisplayManager.html#abebd3e93be5761533885e1fdf03c34cb',1,'DisplayManager']]],
+  ['updateclustermetrics_4',['updateClusterMetrics',['../classDisplayManager.html#ac098d036b85f24328a11731da7b2196f',1,'DisplayManager']]],
+  ['updateclustertheme_5',['updateClusterTheme',['../classDisplayManager.html#a0c970606c6077d168cf6f4ad63dc4fcc',1,'DisplayManager']]],
+  ['updatedrivingmode_6',['updateDrivingMode',['../classDisplayManager.html#a06d94f6ce20c23eaa1e25bc6e8c9496a',1,'DisplayManager']]],
+  ['updateenginedata_7',['updateEngineData',['../classDisplayManager.html#aca4a27c20086ba98ae87490fb3d7867e',1,'DisplayManager']]],
+  ['updateipaddress_8',['updateIpAddress',['../classDisplayManager.html#a2cc5f9b4a7359f71d4bd730e8d5e3c3b',1,'DisplayManager']]],
+  ['updatemileage_9',['updateMileage',['../classDisplayManager.html#aef67b2d47859a3a6ef96d622925c84c2',1,'DisplayManager::updateMileage()'],['../classMileageManager.html#a912c517158c90834792c3d00c0af101c',1,'MileageManager::updateMileage()']]],
+  ['updatesystemstatus_10',['updateSystemStatus',['../classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78',1,'SystemManager']]],
+  ['updatesystemtime_11',['updateSystemTime',['../classDisplayManager.html#aa871409b067196dc448ce1cec4ad1437',1,'DisplayManager']]],
+  ['updatetemperature_12',['updateTemperature',['../classDisplayManager.html#a002b346babdbbdf852f9121a32e80e9d',1,'DisplayManager']]],
+  ['updatetime_13',['updateTime',['../classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d',1,'SystemManager']]],
+  ['updatewifistatus_14',['updateWifiStatus',['../classDisplayManager.html#af6cc252c8fd7ca1836e5c38265489f2e',1,'DisplayManager']]],
+  ['using_20spi_20pins_15',['Adaptation to Read CAN Messages Using SPI Pins',['../index.html#autotoc_md19',1,'']]]
 ];

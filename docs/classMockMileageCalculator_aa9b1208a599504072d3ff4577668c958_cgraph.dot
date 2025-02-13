@@ -5,7 +5,7 @@ digraph "MockMileageCalculator::MOCK_METHOD"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node1 [id="Node000001",label="MockMileageCalculator\l::MOCK_METHOD",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [id="Node000001",label="MockMileageCalculator\l::MOCK_METHOD",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Mocked method to add a time to the MileageCalculator."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="IMileageCalculator\l::calculateDistance",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classIMileageCalculator.html#adf2cad1363155e44a743d984acf0c5ff",tooltip=" "];
 }

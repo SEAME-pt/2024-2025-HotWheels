@@ -1,7 +1,25 @@
 var annotated_dup =
 [
-    [ "Ui", "namespaceUi.html", [
-      [ "CarManager", "classUi_1_1CarManager.html", null ]
+    [ "Data", "namespaceData.html", [
+      [ "Callback_CarData_getCarTemperatureValue", "classData_1_1Callback__CarData__getCarTemperatureValue.html", "classData_1_1Callback__CarData__getCarTemperatureValue" ],
+      [ "Callback_CarData_getCarTemperatureValue_Base", "classData_1_1Callback__CarData__getCarTemperatureValue__Base.html", null ],
+      [ "Callback_CarData_getJoystickValue", "classData_1_1Callback__CarData__getJoystickValue.html", "classData_1_1Callback__CarData__getJoystickValue" ],
+      [ "Callback_CarData_getJoystickValue_Base", "classData_1_1Callback__CarData__getJoystickValue__Base.html", null ],
+      [ "Callback_CarData_setCarTemperatureValue", "classData_1_1Callback__CarData__setCarTemperatureValue.html", "classData_1_1Callback__CarData__setCarTemperatureValue" ],
+      [ "Callback_CarData_setCarTemperatureValue_Base", "classData_1_1Callback__CarData__setCarTemperatureValue__Base.html", null ],
+      [ "Callback_CarData_setJoystickValue", "classData_1_1Callback__CarData__setJoystickValue.html", "classData_1_1Callback__CarData__setJoystickValue" ],
+      [ "Callback_CarData_setJoystickValue_Base", "classData_1_1Callback__CarData__setJoystickValue__Base.html", null ],
+      [ "CallbackNC_CarData_getCarTemperatureValue", "classData_1_1CallbackNC__CarData__getCarTemperatureValue.html", "classData_1_1CallbackNC__CarData__getCarTemperatureValue" ],
+      [ "CallbackNC_CarData_getJoystickValue", "classData_1_1CallbackNC__CarData__getJoystickValue.html", "classData_1_1CallbackNC__CarData__getJoystickValue" ],
+      [ "CallbackNC_CarData_setCarTemperatureValue", "classData_1_1CallbackNC__CarData__setCarTemperatureValue.html", "classData_1_1CallbackNC__CarData__setCarTemperatureValue" ],
+      [ "CallbackNC_CarData_setJoystickValue", "classData_1_1CallbackNC__CarData__setJoystickValue.html", "classData_1_1CallbackNC__CarData__setJoystickValue" ],
+      [ "CarData", "classData_1_1CarData.html", "classData_1_1CarData" ],
+      [ "CarDataI", "classData_1_1CarDataI.html", "classData_1_1CarDataI" ]
+    ] ],
+    [ "IceProxy", "namespaceIceProxy.html", [
+      [ "Data", "namespaceIceProxy_1_1Data.html", [
+        [ "CarData", "classIceProxy_1_1Data_1_1CarData.html", "classIceProxy_1_1Data_1_1CarData" ]
+      ] ]
     ] ],
     [ "BatteryController", "classBatteryController.html", "classBatteryController" ],
     [ "BatteryControllerTest", "classBatteryControllerTest.html", "classBatteryControllerTest" ],
@@ -11,10 +29,12 @@ var annotated_dup =
     [ "CANMessageProcessor", "classCANMessageProcessor.html", "classCANMessageProcessor" ],
     [ "CANMessageProcessorTest", "classCANMessageProcessorTest.html", "classCANMessageProcessorTest" ],
     [ "CarManager", "classCarManager.html", "classCarManager" ],
+    [ "ClientThread", "classClientThread.html", "classClientThread" ],
     [ "ClusterSettingsManager", "classClusterSettingsManager.html", "classClusterSettingsManager" ],
     [ "ClusterSettingsManagerTest", "classClusterSettingsManagerTest.html", "classClusterSettingsManagerTest" ],
     [ "ControlsManager", "classControlsManager.html", "classControlsManager" ],
     [ "DataManager", "classDataManager.html", "classDataManager" ],
+    [ "DataManagerTest", "classDataManagerTest.html", "classDataManagerTest" ],
     [ "DisplayManager", "classDisplayManager.html", "classDisplayManager" ],
     [ "EngineController", "classEngineController.html", "classEngineController" ],
     [ "i2c_smbus_data", "unioni2c__smbus__data.html", "unioni2c__smbus__data" ],
@@ -51,21 +71,6 @@ var annotated_dup =
     [ "MockSystemCommandExecutor", "classMockSystemCommandExecutor.html", "classMockSystemCommandExecutor" ],
     [ "MockSystemInfoProvider", "classMockSystemInfoProvider.html", "classMockSystemInfoProvider" ],
     [ "PeripheralController", "classPeripheralController.html", "classPeripheralController" ],
-    [ "qt_meta_stringdata_CanBusManager_t", "structqt__meta__stringdata__CanBusManager__t.html", "structqt__meta__stringdata__CanBusManager__t" ],
-    [ "qt_meta_stringdata_CarManager_t", "structqt__meta__stringdata__CarManager__t.html", "structqt__meta__stringdata__CarManager__t" ],
-    [ "qt_meta_stringdata_ClusterSettingsManager_t", "structqt__meta__stringdata__ClusterSettingsManager__t.html", "structqt__meta__stringdata__ClusterSettingsManager__t" ],
-    [ "qt_meta_stringdata_ControlsManager_t", "structqt__meta__stringdata__ControlsManager__t.html", "structqt__meta__stringdata__ControlsManager__t" ],
-    [ "qt_meta_stringdata_DataManager_t", "structqt__meta__stringdata__DataManager__t.html", "structqt__meta__stringdata__DataManager__t" ],
-    [ "qt_meta_stringdata_DisplayManager_t", "structqt__meta__stringdata__DisplayManager__t.html", "structqt__meta__stringdata__DisplayManager__t" ],
-    [ "qt_meta_stringdata_EngineController_t", "structqt__meta__stringdata__EngineController__t.html", "structqt__meta__stringdata__EngineController__t" ],
-    [ "qt_meta_stringdata_IMCP2515Controller_t", "structqt__meta__stringdata__IMCP2515Controller__t.html", "structqt__meta__stringdata__IMCP2515Controller__t" ],
-    [ "qt_meta_stringdata_JoysticksController_t", "structqt__meta__stringdata__JoysticksController__t.html", "structqt__meta__stringdata__JoysticksController__t" ],
-    [ "qt_meta_stringdata_MCP2515Controller_t", "structqt__meta__stringdata__MCP2515Controller__t.html", "structqt__meta__stringdata__MCP2515Controller__t" ],
-    [ "qt_meta_stringdata_MileageManager_t", "structqt__meta__stringdata__MileageManager__t.html", "structqt__meta__stringdata__MileageManager__t" ],
-    [ "qt_meta_stringdata_MockMCP2515Controller_t", "structqt__meta__stringdata__MockMCP2515Controller__t.html", "structqt__meta__stringdata__MockMCP2515Controller__t" ],
-    [ "qt_meta_stringdata_SystemDataManager_t", "structqt__meta__stringdata__SystemDataManager__t.html", "structqt__meta__stringdata__SystemDataManager__t" ],
-    [ "qt_meta_stringdata_SystemManager_t", "structqt__meta__stringdata__SystemManager__t.html", "structqt__meta__stringdata__SystemManager__t" ],
-    [ "qt_meta_stringdata_VehicleDataManager_t", "structqt__meta__stringdata__VehicleDataManager__t.html", "structqt__meta__stringdata__VehicleDataManager__t" ],
     [ "RS485CANTest", "classRS485CANTest.html", "classRS485CANTest" ],
     [ "SPIController", "classSPIController.html", "classSPIController" ],
     [ "SPIControllerTest", "classSPIControllerTest.html", "classSPIControllerTest" ],
@@ -76,7 +81,6 @@ var annotated_dup =
     [ "SystemInfoProviderTest", "classSystemInfoProviderTest.html", "classSystemInfoProviderTest" ],
     [ "SystemManager", "classSystemManager.html", "classSystemManager" ],
     [ "SystemManagerTest", "classSystemManagerTest.html", "classSystemManagerTest" ],
-    [ "Ui_CarManager", "classUi__CarManager.html", "classUi__CarManager" ],
     [ "VehicleDataManager", "classVehicleDataManager.html", "classVehicleDataManager" ],
     [ "VehicleDataManagerTest", "classVehicleDataManagerTest.html", "classVehicleDataManagerTest" ]
 ];

@@ -1,5 +1,0 @@
-<map id="MockSPIController::MOCK_METHOD" name="MockSPIController::MOCK_METHOD">
-<area shape="rect" id="Node000001" title="Mocked method to read a byte of data from the SPI device." alt="" coords="5,5,155,45"/>
-<area shape="rect" id="Node000002" href="$classISPIController.html#a0155550573fcd6937aeb133e56991c9a" title=" " alt="" coords="203,13,380,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,23,189,23,189,28,155,28"/>
-</map>

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['qcleanupresources_5fresources_0',['qCleanupResources_resources',['../build-x86_2qrc__resources_8cpp.html#ad0d952fa95a34f46e133cbae89e63f19',1,'qCleanupResources_resources():&#160;qrc_resources.cpp'],['../build_2qrc__resources_8cpp.html#ad0d952fa95a34f46e133cbae89e63f19',1,'qCleanupResources_resources():&#160;qrc_resources.cpp']]],
-  ['qinitresources_5fresources_1',['qInitResources_resources',['../build-x86_2qrc__resources_8cpp.html#a41b16846f72e5d0840f5e7ec00e5bc89',1,'qInitResources_resources():&#160;qrc_resources.cpp'],['../build_2qrc__resources_8cpp.html#a41b16846f72e5d0840f5e7ec00e5bc89',1,'qInitResources_resources():&#160;qrc_resources.cpp']]],
-  ['qregisterresourcedata_2',['qRegisterResourceData',['../build-x86_2qrc__resources_8cpp.html#a2ce5a6cde5b318dc75442940471e05f7',1,'qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *):&#160;qrc_resources.cpp'],['../build_2qrc__resources_8cpp.html#a2ce5a6cde5b318dc75442940471e05f7',1,'qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *):&#160;qrc_resources.cpp']]],
-  ['qunregisterresourcedata_3',['qUnregisterResourceData',['../build-x86_2qrc__resources_8cpp.html#a54b96c9f44d004fc0ea13bb581f97a71',1,'qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *):&#160;qrc_resources.cpp'],['../build_2qrc__resources_8cpp.html#a54b96c9f44d004fc0ea13bb581f97a71',1,'qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *):&#160;qrc_resources.cpp']]]
+  ['onspeedupdated_0',['onSpeedUpdated',['../classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9',1,'MileageManager']]],
+  ['open_1',['open',['../namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25',1,'FileController']]],
+  ['opendevice_2',['openDevice',['../classISPIController.html#afaa405cd677e773051353f60b6cf8eb5',1,'ISPIController::openDevice()'],['../classSPIController.html#aad09c12ef162826e6ddbe042c43f3a99',1,'SPIController::openDevice()']]],
+  ['operator_3d_3',['operator=',['../classMockSysCalls.html#a5991d4b114f9bc2bcd94f0a17db75567',1,'MockSysCalls']]]
 ];

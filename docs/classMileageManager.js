@@ -2,6 +2,7 @@ var classMileageManager =
 [
     [ "MileageManager", "classMileageManager.html#a2fa63c45c2f318f155becbeb39d547e5", null ],
     [ "~MileageManager", "classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4", null ],
+    [ "getTotalMileage", "classMileageManager.html#a90f1735a5be87193e0872b49a0eb9174", null ],
     [ "initialize", "classMileageManager.html#ad615b78584e6c337ae3417089e035d48", null ],
     [ "mileageUpdated", "classMileageManager.html#abdfcf1b966a300db82a8347ef9454000", null ],
     [ "onSpeedUpdated", "classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9", null ],

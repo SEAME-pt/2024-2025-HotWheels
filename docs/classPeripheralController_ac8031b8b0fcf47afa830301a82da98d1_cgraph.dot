@@ -7,5 +7,5 @@ digraph "PeripheralController::read_byte_data"
   rankdir="LR";
   Node1 [id="Node000001",label="PeripheralController\l::read_byte_data",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Reads a byte of data from a specific register."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="PeripheralController\l::i2c_smbus_read_byte_data",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classPeripheralController.html#a74944b38fa602d38df1d7d3fd5c3e8bf",tooltip="Reads a byte of data from a specific register on the I2C device."];
+  Node2 [id="Node000002",label="PeripheralController\l::i2c_smbus_read_byte_data",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classPeripheralController.html#a74944b38fa602d38df1d7d3fd5c3e8bf",tooltip="Reads a byte of data from a specific register."];
 }

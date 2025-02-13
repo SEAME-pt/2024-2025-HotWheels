@@ -19,7 +19,7 @@ digraph "MCP2515Configurator::writeRegister"
   Node1 -> Node7 [id="edge6_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node7 [id="Node000007",label="MCP2515Configurator\l::readCANMessage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb",tooltip="Read a CAN message from the MCP2515."];
   Node1 -> Node8 [id="edge7_Node000001_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node8 [id="Node000008",label="MCP2515Configurator\l::sendCANMessage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403",tooltip=" "];
+  Node8 [id="Node000008",label="MCP2515Configurator\l::sendCANMessage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403",tooltip="Send a CAN message to the MCP2515."];
   Node1 -> Node9 [id="edge8_Node000001_Node000009",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node9 [id="Node000009",label="MCP2515Configurator\l::setMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#a522a619dc1668ac677ca9f422f8f302a",tooltip="Set the mode for the MCP2515."];
 }

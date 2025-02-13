@@ -25,13 +25,20 @@
 var NAVTREE =
 [
   [ "Hotwheels-Cluster", "index.html", [
+    [ "HotWheels - Instrument Cluster ⏲ 🎮", "index.html", "index" ],
+    [ "Nvidea or RaspberryPi", "md_ADR_2001-NvideaOrRaspberry.html", [
+      [ "Context", "md_ADR_2001-NvideaOrRaspberry.html#autotoc_md1", null ],
+      [ "Decision", "md_ADR_2001-NvideaOrRaspberry.html#autotoc_md2", null ],
+      [ "Consequences", "md_ADR_2001-NvideaOrRaspberry.html#autotoc_md3", null ]
+    ] ],
     [ "Test List", "test.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ]
       ] ]
     ] ],
     [ "Data Structures", "annotated.html", [
@@ -41,7 +48,7 @@ var NAVTREE =
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
       ] ]
@@ -49,11 +56,12 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
-        [ "All", "globals.html", "globals_dup" ],
+        [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -62,13 +70,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BatteryController_8cpp.html",
-"build-x86_2moc__predefs_8h.html#a1b8832b164a1e36ed6756895a71c7e54",
-"build-x86_2moc__predefs_8h.html#ab53ade321286145b92622c3a79fc168f",
-"build_2moc__predefs_8h.html#a2de04841ef7b55be4035cea463161678",
-"build_2moc__predefs_8h.html#ac2dfcd39d29c1e34de6421b15b2cfde9",
-"classEngineController.html#ac8eec06ff1cd7c9031b47e2bad8e65a0",
-"classSPIController.html#aa7f5558d2491039a4f7f7024ca6f56f9",
-"functions_vars_l.html"
+"classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b",
+"classData_1_1Callback__CarData__setCarTemperatureValue__Base.html",
+"classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6",
+"classSystemManagerTest.html#a3e069af09364c3ff4ace1ebb8243ce81",
+"test__MileageCalculator_8cpp.html#a5d7a5c3c86a642faeb1a7b43009a998a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

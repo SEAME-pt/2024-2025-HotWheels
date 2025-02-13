@@ -112,87 +112,76 @@ $(function(){initNavTree('classEngineController.html',''); initResizable(true); 
 </div><!--header-->
 <div class="contents">
 
-<p>Class that controls the car's engine. QObject.  
+<p>The <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> class.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
 Signals</h2></td></tr>
-<tr class="memitem:afe7335b983ea3c6c36dc0eaa00918d82" id="r_afe7335b983ea3c6c36dc0eaa00918d82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe7335b983ea3c6c36dc0eaa00918d82">directionUpdated</a> (<a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> newDirection)</td></tr>
-<tr class="memdesc:afe7335b983ea3c6c36dc0eaa00918d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the speed is updated.  <br /></td></tr>
+<tr class="memitem:afe7335b983ea3c6c36dc0eaa00918d82" id="r_afe7335b983ea3c6c36dc0eaa00918d82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe7335b983ea3c6c36dc0eaa00918d82">directionUpdated</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> newDirection)</td></tr>
 <tr class="separator:afe7335b983ea3c6c36dc0eaa00918d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2a03e1ff8759c458d7cc34ccae7f22c" id="r_ac2a03e1ff8759c458d7cc34ccae7f22c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2a03e1ff8759c458d7cc34ccae7f22c">steeringUpdated</a> (int newAngle)</td></tr>
-<tr class="memdesc:ac2a03e1ff8759c458d7cc34ccae7f22c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal emitted when the speed is updated.  <br /></td></tr>
 <tr class="separator:ac2a03e1ff8759c458d7cc34ccae7f22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a046ba741e7683358a38778a92d083947" id="r_a046ba741e7683358a38778a92d083947"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a046ba741e7683358a38778a92d083947">EngineController</a> ()</td></tr>
-<tr class="memdesc:a046ba741e7683358a38778a92d083947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object.  <br /></td></tr>
+<tr class="memdesc:a046ba741e7683358a38778a92d083947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for the <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> class.  <br /></td></tr>
 <tr class="separator:a046ba741e7683358a38778a92d083947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36923247340945dd1c6edb1a073361a6" id="r_a36923247340945dd1c6edb1a073361a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36923247340945dd1c6edb1a073361a6">EngineController</a> (int servo_addr, int motor_addr, QObject *parent=nullptr)</td></tr>
-<tr class="memdesc:a36923247340945dd1c6edb1a073361a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object.  <br /></td></tr>
+<tr class="memdesc:a36923247340945dd1c6edb1a073361a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> object, initializing motor and servo controllers.  <br /></td></tr>
 <tr class="separator:a36923247340945dd1c6edb1a073361a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af49b8503ec1964013a1a232de4d5ec39" id="r_af49b8503ec1964013a1a232de4d5ec39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af49b8503ec1964013a1a232de4d5ec39">~EngineController</a> ()</td></tr>
-<tr class="memdesc:af49b8503ec1964013a1a232de4d5ec39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object.  <br /></td></tr>
+<tr class="memdesc:af49b8503ec1964013a1a232de4d5ec39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> class.  <br /></td></tr>
 <tr class="separator:af49b8503ec1964013a1a232de4d5ec39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb446520ced6f6a43cb28dc59181c9bb" id="r_adb446520ced6f6a43cb28dc59181c9bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb446520ced6f6a43cb28dc59181c9bb">start</a> ()</td></tr>
-<tr class="memdesc:adb446520ced6f6a43cb28dc59181c9bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the engine.  <br /></td></tr>
+<tr class="memdesc:adb446520ced6f6a43cb28dc59181c9bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the engine.  <br /></td></tr>
 <tr class="separator:adb446520ced6f6a43cb28dc59181c9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a074d7c44fc23053b0bc8aee6650971bf" id="r_a074d7c44fc23053b0bc8aee6650971bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a074d7c44fc23053b0bc8aee6650971bf">stop</a> ()</td></tr>
-<tr class="memdesc:a074d7c44fc23053b0bc8aee6650971bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the engine.  <br /></td></tr>
+<tr class="memdesc:a074d7c44fc23053b0bc8aee6650971bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the engine.  <br /></td></tr>
 <tr class="separator:a074d7c44fc23053b0bc8aee6650971bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad865d656c4d1dd4a86b9206a2a9bd926" id="r_ad865d656c4d1dd4a86b9206a2a9bd926"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad865d656c4d1dd4a86b9206a2a9bd926">set_speed</a> (int speed)</td></tr>
-<tr class="memdesc:ad865d656c4d1dd4a86b9206a2a9bd926"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the speed of the car.  <br /></td></tr>
+<tr class="memdesc:ad865d656c4d1dd4a86b9206a2a9bd926"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the speed of the car.  <br /></td></tr>
 <tr class="separator:ad865d656c4d1dd4a86b9206a2a9bd926"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb4f398c794e6d6bb99b2e5426ce4567" id="r_afb4f398c794e6d6bb99b2e5426ce4567"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb4f398c794e6d6bb99b2e5426ce4567">set_steering</a> (int angle)</td></tr>
-<tr class="memdesc:afb4f398c794e6d6bb99b2e5426ce4567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the steering angle of the car.  <br /></td></tr>
+<tr class="memdesc:afb4f398c794e6d6bb99b2e5426ce4567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the steering angle of the car.  <br /></td></tr>
 <tr class="separator:afb4f398c794e6d6bb99b2e5426ce4567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a19a12b6f34f267a3e7ed78ffe2980c4f" id="r_a19a12b6f34f267a3e7ed78ffe2980c4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19a12b6f34f267a3e7ed78ffe2980c4f">setDirection</a> (<a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> newDirection)</td></tr>
-<tr class="memdesc:a19a12b6f34f267a3e7ed78ffe2980c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the direction of the car.  <br /></td></tr>
+<tr class="memitem:a19a12b6f34f267a3e7ed78ffe2980c4f" id="r_a19a12b6f34f267a3e7ed78ffe2980c4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19a12b6f34f267a3e7ed78ffe2980c4f">setDirection</a> (<a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> newDirection)</td></tr>
+<tr class="memdesc:a19a12b6f34f267a3e7ed78ffe2980c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the direction of the car and emits the directionUpdated signal if the direction has changed.  <br /></td></tr>
 <tr class="separator:a19a12b6f34f267a3e7ed78ffe2980c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a84d98fd5668d26a43a58a32ab24d1311" id="r_a84d98fd5668d26a43a58a32ab24d1311"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84d98fd5668d26a43a58a32ab24d1311">MAX_ANGLE</a> = 180</td></tr>
-<tr class="memdesc:a84d98fd5668d26a43a58a32ab24d1311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum angle for the steering servo.  <br /></td></tr>
 <tr class="separator:a84d98fd5668d26a43a58a32ab24d1311"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad55d72fdd80e0a09f9323858c6b1d59c" id="r_ad55d72fdd80e0a09f9323858c6b1d59c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad55d72fdd80e0a09f9323858c6b1d59c">SERVO_CENTER_PWM</a> = 345</td></tr>
-<tr class="memdesc:ad55d72fdd80e0a09f9323858c6b1d59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center point for the steering servo.  <br /></td></tr>
+<tr class="memitem:ad55d72fdd80e0a09f9323858c6b1d59c" id="r_ad55d72fdd80e0a09f9323858c6b1d59c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad55d72fdd80e0a09f9323858c6b1d59c">SERVO_CENTER_PWM</a> = 340</td></tr>
 <tr class="separator:ad55d72fdd80e0a09f9323858c6b1d59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae45bc703b4745d1374c77d89ca853eca" id="r_ae45bc703b4745d1374c77d89ca853eca"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae45bc703b4745d1374c77d89ca853eca">SERVO_LEFT_PWM</a> = 345 - 140</td></tr>
-<tr class="memdesc:ae45bc703b4745d1374c77d89ca853eca"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM value for the leftmost steering position.  <br /></td></tr>
+<tr class="memitem:ae45bc703b4745d1374c77d89ca853eca" id="r_ae45bc703b4745d1374c77d89ca853eca"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae45bc703b4745d1374c77d89ca853eca">SERVO_LEFT_PWM</a> = 340 - 100</td></tr>
 <tr class="separator:ae45bc703b4745d1374c77d89ca853eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00a250362b50f3e6521189faa059935c" id="r_a00a250362b50f3e6521189faa059935c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00a250362b50f3e6521189faa059935c">SERVO_RIGHT_PWM</a> = 345 + 140</td></tr>
-<tr class="memdesc:a00a250362b50f3e6521189faa059935c"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM value for the rightmost steering position.  <br /></td></tr>
+<tr class="memitem:a00a250362b50f3e6521189faa059935c" id="r_a00a250362b50f3e6521189faa059935c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00a250362b50f3e6521189faa059935c">SERVO_RIGHT_PWM</a> = 340 + 130</td></tr>
 <tr class="separator:a00a250362b50f3e6521189faa059935c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8eec06ff1cd7c9031b47e2bad8e65a0" id="r_ac8eec06ff1cd7c9031b47e2bad8e65a0"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8eec06ff1cd7c9031b47e2bad8e65a0">STEERING_CHANNEL</a> = 0</td></tr>
-<tr class="memdesc:ac8eec06ff1cd7c9031b47e2bad8e65a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM value for the neutral position.  <br /></td></tr>
 <tr class="separator:ac8eec06ff1cd7c9031b47e2bad8e65a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa963f98c8a23b6c55e34dce7ed903a87" id="r_aa963f98c8a23b6c55e34dce7ed903a87"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa963f98c8a23b6c55e34dce7ed903a87">m_running</a></td></tr>
-<tr class="memdesc:aa963f98c8a23b6c55e34dce7ed903a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bool to indicate if the engine is running.  <br /></td></tr>
 <tr class="separator:aa963f98c8a23b6c55e34dce7ed903a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eb0f9386103debc30653ab874aec954" id="r_a3eb0f9386103debc30653ab874aec954"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3eb0f9386103debc30653ab874aec954">m_current_speed</a></td></tr>
-<tr class="memdesc:a3eb0f9386103debc30653ab874aec954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current speed of the car.  <br /></td></tr>
 <tr class="separator:a3eb0f9386103debc30653ab874aec954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab527a7078a23b4347e6dad339d481145" id="r_ab527a7078a23b4347e6dad339d481145"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab527a7078a23b4347e6dad339d481145">m_current_angle</a></td></tr>
-<tr class="memdesc:ab527a7078a23b4347e6dad339d481145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current angle of the steering servo.  <br /></td></tr>
 <tr class="separator:ab527a7078a23b4347e6dad339d481145"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac62efd85e860580070d2015d1c92d1ab" id="r_ac62efd85e860580070d2015d1c92d1ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac62efd85e860580070d2015d1c92d1ab">m_currentDirection</a> = <a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td></tr>
-<tr class="memdesc:ac62efd85e860580070d2015d1c92d1ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current direction of the car.  <br /></td></tr>
+<tr class="memitem:ac62efd85e860580070d2015d1c92d1ab" id="r_ac62efd85e860580070d2015d1c92d1ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac62efd85e860580070d2015d1c92d1ab">m_currentDirection</a> = <a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td></tr>
 <tr class="separator:ac62efd85e860580070d2015d1c92d1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ba587bb19cae85d7cd9ea3ae221e7a0" id="r_a1ba587bb19cae85d7cd9ea3ae221e7a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIPeripheralController.html">IPeripheralController</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ba587bb19cae85d7cd9ea3ae221e7a0">pcontrol</a></td></tr>
-<tr class="memdesc:a1ba587bb19cae85d7cd9ea3ae221e7a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the peripheral controller.  <br /></td></tr>
 <tr class="separator:a1ba587bb19cae85d7cd9ea3ae221e7a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class that controls the car's engine. QObject. </p>
+<div class="textblock"><p>The <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> class. </p>
+<p>This class is responsible for controlling the engine of the car. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00028">28</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00027">27</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a046ba741e7683358a38778a92d083947" name="a046ba741e7683358a38778a92d083947"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a046ba741e7683358a38778a92d083947">&#9670;&#160;</a></span>EngineController() <span class="overload">[1/2]</span></h2>
@@ -209,10 +198,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object. </p>
-<p>This constructor initializes the <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object. </p>
+<p>Default constructor for the <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> class. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00051">51</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00041">41</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 
 </div>
 </div>
@@ -240,18 +228,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object. </p>
+<p>Constructs an <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> object, initializing motor and servo controllers. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">servo_addr</td><td>The address of the servo controller. </td></tr>
     <tr><td class="paramname">motor_addr</td><td>The address of the motor controller. </td></tr>
-    <tr><td class="paramname">parent</td><td>The parent QObject.</td></tr>
+    <tr><td class="paramname">parent</td><td>The parent QObject for this instance.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This constructor initializes the <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object with the specified servo and motor addresses. </p>
+<p>Sets up the <a class="el" href="classPeripheralController.html" title="The PeripheralController class.">PeripheralController</a> and initializes the servo and motor controllers. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00061">61</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00050">50</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 
 </div>
 </div>
@@ -270,10 +258,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destroy the <a class="el" href="classEngineController.html" title="Class that controls the car&#39;s engine. QObject.">EngineController</a> object. </p>
-<p>This destructor stops the engine and cleans up resources. </p>
+<p>Destructor for the <a class="el" href="classEngineController.html" title="The EngineController class.">EngineController</a> class. </p>
+<p>Stops the engine and deletes the peripheral controller. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00075">75</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00065">65</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -295,7 +283,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void EngineController::directionUpdated </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>newDirection</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>newDirection</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -305,10 +293,6 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Signal emitted when the speed is updated. </p>
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__EngineController_8cpp_source.html#l00155">155</a> of file <a class="el" href="build-x86_2moc__EngineController_8cpp_source.html">moc_EngineController.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -332,16 +316,16 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Set the speed of the car. </p>
+<p>Sets the speed of the car. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">speed</td><td>The new speed of the car.</td></tr>
+    <tr><td class="paramname">speed</td><td>The desired speed value, ranging from -100 to 100.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This function sets the speed of the car, clamping it between -100 and 100, and updates the motor PWM values accordingly. </p>
+<p>This function adjusts the motor PWM signals based on the input speed value. Positive values set the car to move in reverse due to joystick reversal, while negative values move it forward. A speed of zero stops the car. The function also updates the car's direction accordingly and clamps the speed to ensure it is within the valid range. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00116">116</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00112">112</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -370,16 +354,16 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Set the steering angle of the car. </p>
+<p>Sets the steering angle of the car. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">angle</td><td>The new angle of the car.</td></tr>
+    <tr><td class="paramname">angle</td><td>The desired steering angle in degrees, ranging from -MAX_ANGLE to MAX_ANGLE.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This function sets the steering angle of the car, clamping it between -MAX_ANGLE and MAX_ANGLE, and updates the servo PWM values accordingly. </p>
+<p>This function adjusts the servo PWM signal based on the input angle value. The function clamps the angle to ensure it is within the valid range and calculates the corresponding PWM value. The function also updates the internal steering angle and emits the steeringUpdated signal. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00153">153</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00152">152</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -405,7 +389,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void EngineController::setDirection </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>newDirection</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></td>          <td class="paramname"><span class="paramname"><em>newDirection</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -416,16 +400,15 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Set the direction of the car. </p>
+<p>Sets the direction of the car and emits the directionUpdated signal if the direction has changed. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newDirection</td><td>The new direction of the car.</td></tr>
+    <tr><td class="paramname">newDirection</td><td>The new direction to set. </td></tr>
   </table>
   </dd>
 </dl>
-<p>This function updates the car's direction and emits a signal if the direction changes. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00103">103</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00094">94</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -454,10 +437,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Start the engine. </p>
-<p>This function sets the running state to true. </p>
+<p>Starts the engine. </p>
+<p>Sets the m_running flag to true. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00084">84</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00075">75</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 
 </div>
 </div>
@@ -483,10 +466,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Signal emitted when the speed is updated. </p>
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__EngineController_8cpp_source.html#l00162">162</a> of file <a class="el" href="build-x86_2moc__EngineController_8cpp_source.html">moc_EngineController.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -510,10 +489,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Stop the engine. </p>
-<p>This function sets the running state to false and stops the motor and steering. </p>
+<p>Stops the engine. </p>
+<p>Sets the m_running flag to false and sets both speed and steering to 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00091">91</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8cpp_source.html#l00082">82</a> of file <a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -548,9 +527,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Current angle of the steering servo. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00048">48</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00039">39</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -574,9 +551,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Current speed of the car. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00046">46</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00038">38</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -590,7 +565,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> EngineController::m_currentDirection = <a class="el" href="enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td>
+          <td class="memname"><a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> EngineController::m_currentDirection = <a class="el" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54a11a755d598c0c417f9a36758c3da7481">CarDirection::Stop</a></td>
         </tr>
       </table>
   </td>
@@ -600,9 +575,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Current direction of the car. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00050">50</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00040">40</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -626,9 +599,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Bool to indicate if the engine is running. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00044">44</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00037">37</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -652,9 +623,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Maximum angle for the steering servo. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00033">33</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00031">31</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -678,9 +647,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Pointer to the peripheral controller. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00055">55</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00044">44</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -694,7 +661,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const int EngineController::SERVO_CENTER_PWM = 345</td>
+          <td class="memname">const int EngineController::SERVO_CENTER_PWM = 340</td>
         </tr>
       </table>
   </td>
@@ -704,9 +671,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Center point for the steering servo. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00035">35</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00032">32</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -720,7 +685,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const int EngineController::SERVO_LEFT_PWM = 345 - 140</td>
+          <td class="memname">const int EngineController::SERVO_LEFT_PWM = 340 - 100</td>
         </tr>
       </table>
   </td>
@@ -730,9 +695,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>PWM value for the leftmost steering position. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00037">37</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00033">33</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -746,7 +709,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const int EngineController::SERVO_RIGHT_PWM = 345 + 140</td>
+          <td class="memname">const int EngineController::SERVO_RIGHT_PWM = 340 + 130</td>
         </tr>
       </table>
   </td>
@@ -756,9 +719,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>PWM value for the rightmost steering position. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00039">39</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00034">34</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
@@ -782,17 +743,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>PWM value for the neutral position. </p>
-
-<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00041">41</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EngineController_8hpp_source.html#l00035">35</a> of file <a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>app/includes/controls/<a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a></li>
-<li>app/build-x86/<a class="el" href="build-x86_2moc__EngineController_8cpp_source.html">moc_EngineController.cpp</a></li>
-<li>app/build/<a class="el" href="build_2moc__EngineController_8cpp_source.html">moc_EngineController.cpp</a></li>
-<li>app/sources/controls/<a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a></li>
+<li>car_controls/includes/<a class="el" href="EngineController_8hpp_source.html">EngineController.hpp</a></li>
+<li>car_controls/sources/<a class="el" href="EngineController_8cpp_source.html">EngineController.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

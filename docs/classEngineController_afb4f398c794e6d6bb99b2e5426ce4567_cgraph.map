@@ -1,7 +1,0 @@
-<map id="EngineController::set_steering" name="EngineController::set_steering">
-<area shape="rect" id="Node000001" title="Set the steering angle of the car." alt="" coords="5,27,164,67"/>
-<area shape="rect" id="Node000002" href="$EngineController_8cpp.html#a83100694a686c920777a21081dc0db93" title="Clamp a value between a minimum and a maximum." alt="" coords="276,5,339,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,34,262,21,263,26,165,40"/>
-<area shape="rect" id="Node000003" href="$classEngineController.html#ac2a03e1ff8759c458d7cc34ccae7f22c" title="Signal emitted when the speed is updated." alt="" coords="212,55,403,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,55,199,59,198,64,164,60"/>
-</map>

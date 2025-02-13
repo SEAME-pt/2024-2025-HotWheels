@@ -1,5 +1,0 @@
-<map id="MileageManager::updateMileage" name="MileageManager::updateMileage">
-<area shape="rect" id="Node000001" title="Update the mileage of the vehicle." alt="" coords="5,5,241,31"/>
-<area shape="rect" id="Node000002" href="$classMileageManager.html#abdfcf1b966a300db82a8347ef9454000" title="Signal emitted when the mileage is updated." alt="" coords="289,5,536,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,15,275,15,275,21,242,21"/>
-</map>

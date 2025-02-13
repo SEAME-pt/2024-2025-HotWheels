@@ -1,13 +1,11 @@
 var searchData=
 [
-  ['batterycontroller_0',['BatteryController',['../classBatteryController.html',1,'BatteryController'],['../classBatteryController.html#ab2cd6e8c9f9a6b009fd437d38162ec4a',1,'BatteryController::BatteryController()']]],
-  ['batterycontroller_1',['batteryController',['../classBatteryControllerTest.html#a0112c0afa78eb8a13cca1d62802272ba',1,'BatteryControllerTest']]],
-  ['batterycontroller_2ecpp_2',['BatteryController.cpp',['../BatteryController_8cpp.html',1,'']]],
-  ['batterycontroller_2ehpp_3',['BatteryController.hpp',['../BatteryController_8hpp.html',1,'']]],
-  ['batterycontrollertest_4',['BatteryControllerTest',['../classBatteryControllerTest.html',1,'']]],
-  ['batterylabel_5',['batteryLabel',['../classUi__CarManager.html#a22e515d880c4257f959fd4b3cd9c5ebd',1,'Ui_CarManager']]],
-  ['batterypercentageupdated_6',['batteryPercentageUpdated',['../classDataManager.html#a03f614a2259b6a7070150d90ecfa987f',1,'DataManager::batteryPercentageUpdated()'],['../classSystemDataManager.html#ae265aba111c6666b80f4300a05f298df',1,'SystemDataManager::batteryPercentageUpdated()'],['../classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3',1,'SystemManager::batteryPercentageUpdated()']]],
-  ['bits_7',['bits',['../classSPIController.html#ab215fe00d0693bd5aa4b4711abf99ca2',1,'SPIController']]],
-  ['block_8',['block',['../unioni2c__smbus__data.html#ae3dc6ce058d6ab3672bf68dc460e007d',1,'i2c_smbus_data']]],
-  ['byte_9',['byte',['../unioni2c__smbus__data.html#a7145699abf962d118aa1c78ff864e892',1,'i2c_smbus_data']]]
+  ['ackreceived_0',['ackReceived',['../structCANFrame.html#acf965134bf0e6566b91dcf392a1f34ff',1,'CANFrame']]],
+  ['adaptation_20to_20read_20can_20messages_20using_20spi_20pins_1',['Adaptation to Read CAN Messages Using SPI Pins',['../index.html#autotoc_md19',1,'']]],
+  ['addspeed_2',['addSpeed',['../classIMileageCalculator.html#a4b581f7ea90804517dbfda8338b96bfe',1,'IMileageCalculator::addSpeed()'],['../classMileageCalculator.html#abada6f682ea4a24a10314421ccf84d6e',1,'MileageCalculator::addSpeed()']]],
+  ['app_3',['APP',['../namespacetest-entry-point.html#aad59e08b568b9ce8d5e97dfef6ab87f8',1,'test-entry-point']]],
+  ['app_4',['app',['../classCanBusManagerTest.html#a0e056971cf1325dbaa6448aec2f91a97',1,'CanBusManagerTest::app'],['../classDataManagerTest.html#a9fc3b8eba4b418dcb4cd9b0381005cca',1,'DataManagerTest::app'],['../classMileageManagerTest.html#aaf660189417b3c03d143ada2c6eaef3b',1,'MileageManagerTest::app'],['../classSystemManagerTest.html#a9f9c74597f93629b39bd07bd5929f3d2',1,'SystemManagerTest::app']]],
+  ['architecture_5',['Architecture',['../index.html#autotoc_md17',1,'Communication Architecture'],['../index.html#autotoc_md18',1,'Software Architecture']]],
+  ['assets_20tt_6',['3. &lt;tt&gt;assets/&lt;/tt&gt;',['..//home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/app/README.md#autotoc_md9',1,'']]],
+  ['automatic_7',['Automatic',['../app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70a086247a9b57fde6eefee2a0c4752242d',1,'Automatic:&#160;enums.hpp'],['../car__controls_2includes_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70a086247a9b57fde6eefee2a0c4752242d',1,'Automatic:&#160;enums.hpp'],['../app_2includes_2data_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70a086247a9b57fde6eefee2a0c4752242d',1,'Automatic:&#160;enums.hpp'],['../car__controls_2includes_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70a086247a9b57fde6eefee2a0c4752242d',1,'Automatic:&#160;enums.hpp']]]
 ];

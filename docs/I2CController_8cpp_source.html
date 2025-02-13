@@ -118,48 +118,48 @@ $(function(){initNavTree('I2CController_8cpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
 <div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">   36</a></span><a class="code hl_function" href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController::I2CController</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *i2c_device, <span class="keywordtype">int</span> address)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    : <a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>(-1), <a class="code hl_variable" href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">i2c_addr_</a>(address) {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="comment">// Open I2C device</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a> = open(i2c_device, O_RDWR);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a> &lt; 0) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    perror(<span class="stringliteral">&quot;Failed to open I2C device&quot;</span>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        : <a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>(-1), <a class="code hl_variable" href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">i2c_addr_</a>(address) {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Open I2C device</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a> = open(i2c_device, O_RDWR);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a> &lt; 0) {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        perror(<span class="stringliteral">&quot;Failed to open I2C device&quot;</span>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="comment">// Set I2C address</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keywordflow">if</span> (ioctl(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, I2C_SLAVE, <a class="code hl_variable" href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">i2c_addr_</a>) &lt; 0) {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    perror(<span class="stringliteral">&quot;Failed to set I2C address&quot;</span>);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// Set I2C address</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span> (ioctl(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, I2C_SLAVE, <a class="code hl_variable" href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">i2c_addr_</a>) &lt; 0) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        perror(<span class="stringliteral">&quot;Failed to set I2C address&quot;</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
 <div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classI2CController.html#a901b4842e06104fd5e788359bc7c1a4f">   54</a></span><a class="code hl_function" href="classI2CController.html#a901b4842e06104fd5e788359bc7c1a4f">I2CController::~I2CController</a>() {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a> &gt;= 0) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    close(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a> &gt;= 0) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        close(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
 </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
 <div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classI2CController.html#a2fd9e6276b46f449611d412cc604c00d">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classI2CController.html#a2fd9e6276b46f449611d412cc604c00d">I2CController::writeRegister</a>(uint8_t reg, uint16_t value) {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  std::array&lt;uint8_t, 3&gt; buffer = {reg, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(value &gt;&gt; 8),</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                   <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(value &amp; 0xFF)};</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keywordflow">if</span> (write(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, buffer.data(), buffer.size()) != 3) {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    perror(<span class="stringliteral">&quot;I2C write failed&quot;</span>);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    std::array&lt;uint8_t, 3&gt; buffer = {reg, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(value &gt;&gt; 8),</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                                                     <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(value &amp; 0xFF)};</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (write(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, buffer.data(), buffer.size()) != 3) {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        perror(<span class="stringliteral">&quot;I2C write failed&quot;</span>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
 <div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classI2CController.html#a2c64e3a7375e1f37af191589a58d5438">   81</a></span>uint16_t <a class="code hl_function" href="classI2CController.html#a2c64e3a7375e1f37af191589a58d5438">I2CController::readRegister</a>(uint8_t reg) {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="keywordflow">if</span> (write(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, &amp;reg, 1) != 1) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    perror(<span class="stringliteral">&quot;I2C write failed&quot;</span>);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  std::array&lt;uint8_t, 2&gt; buffer;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="keywordflow">if</span> (read(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, buffer.data(), buffer.size()) != 2) {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    perror(<span class="stringliteral">&quot;I2C read failed&quot;</span>);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keywordflow">return</span> (buffer[0] &lt;&lt; 8) | buffer[1];</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (write(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, &amp;reg, 1) != 1) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        perror(<span class="stringliteral">&quot;I2C write failed&quot;</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    std::array&lt;uint8_t, 2&gt; buffer;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (read(<a class="code hl_variable" href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">i2c_fd_</a>, buffer.data(), buffer.size()) != 2) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        perror(<span class="stringliteral">&quot;I2C read failed&quot;</span>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> (buffer[0] &lt;&lt; 8) | buffer[1];</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
 </div>
 <div class="ttc" id="aI2CController_8hpp_html"><div class="ttname"><a href="I2CController_8hpp.html">I2CController.hpp</a></div><div class="ttdoc">Definition of the I2CController class.</div></div>
@@ -167,8 +167,8 @@ $(function(){initNavTree('I2CController_8cpp_source.html',''); initResizable(tru
 <div class="ttc" id="aclassI2CController_html_a2fd9e6276b46f449611d412cc604c00d"><div class="ttname"><a href="classI2CController.html#a2fd9e6276b46f449611d412cc604c00d">I2CController::writeRegister</a></div><div class="ttdeci">void writeRegister(uint8_t reg, uint16_t value) override</div><div class="ttdoc">Write a 16-bit value to a register.</div><div class="ttdef"><b>Definition</b> <a href="#l00066">I2CController.cpp:66</a></div></div>
 <div class="ttc" id="aclassI2CController_html_a901b4842e06104fd5e788359bc7c1a4f"><div class="ttname"><a href="classI2CController.html#a901b4842e06104fd5e788359bc7c1a4f">I2CController::~I2CController</a></div><div class="ttdeci">~I2CController() override</div><div class="ttdoc">Destroy the I2CController object.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">I2CController.cpp:54</a></div></div>
 <div class="ttc" id="aclassI2CController_html_acc26f9f8e1263b59dcd0ef7851d1a07a"><div class="ttname"><a href="classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a">I2CController::I2CController</a></div><div class="ttdeci">I2CController(const char *i2c_device, int address)</div><div class="ttdoc">Construct a new I2CController object.</div><div class="ttdef"><b>Definition</b> <a href="#l00036">I2CController.cpp:36</a></div></div>
-<div class="ttc" id="aclassI2CController_html_ad83582d34723f9a5de073fbae04c5f43"><div class="ttname"><a href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">I2CController::i2c_fd_</a></div><div class="ttdeci">int i2c_fd_</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8hpp_source.html#l00025">I2CController.hpp:25</a></div></div>
-<div class="ttc" id="aclassI2CController_html_affdd88dfc9472d548d10ebf37c79ef2a"><div class="ttname"><a href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">I2CController::i2c_addr_</a></div><div class="ttdeci">int i2c_addr_</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8hpp_source.html#l00026">I2CController.hpp:26</a></div></div>
+<div class="ttc" id="aclassI2CController_html_ad83582d34723f9a5de073fbae04c5f43"><div class="ttname"><a href="classI2CController.html#ad83582d34723f9a5de073fbae04c5f43">I2CController::i2c_fd_</a></div><div class="ttdeci">int i2c_fd_</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8hpp_source.html#l00029">I2CController.hpp:29</a></div></div>
+<div class="ttc" id="aclassI2CController_html_affdd88dfc9472d548d10ebf37c79ef2a"><div class="ttname"><a href="classI2CController.html#affdd88dfc9472d548d10ebf37c79ef2a">I2CController::i2c_addr_</a></div><div class="ttdeci">int i2c_addr_</div><div class="ttdef"><b>Definition</b> <a href="I2CController_8hpp_source.html#l00030">I2CController.hpp:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

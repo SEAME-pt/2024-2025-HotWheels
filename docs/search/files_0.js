@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['batterycontroller_2ecpp_0',['BatteryController.cpp',['../BatteryController_8cpp.html',1,'']]],
-  ['batterycontroller_2ehpp_1',['BatteryController.hpp',['../BatteryController_8hpp.html',1,'']]]
+  ['001_2dnvideaorraspberry_2emd_0',['001-NvideaOrRaspberry.md',['../001-NvideaOrRaspberry_8md.html',1,'']]]
 ];

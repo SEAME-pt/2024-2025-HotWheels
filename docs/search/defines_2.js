@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linux_0',['linux',['../build-x86_2moc__predefs_8h.html#aa092b0d4c1d4d4407b97024f6cb2820c',1,'linux:&#160;moc_predefs.h'],['../build_2moc__predefs_8h.html#aa092b0d4c1d4d4407b97024f6cb2820c',1,'linux:&#160;moc_predefs.h']]]
+  ['shm_5fname_0',['SHM_NAME',['../app_2sources_2controls_2ControlsManager_8cpp.html#a86393b21e6f74e9870d92149e7fe7f20',1,'ControlsManager.cpp']]]
 ];

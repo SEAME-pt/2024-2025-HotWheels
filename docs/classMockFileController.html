@@ -109,22 +109,30 @@ $(function(){initNavTree('classMockFileController.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 
+<p>Class to emulate the behavior of the File controller.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="MockFileController_8hpp_source.html">MockFileController.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a191941e3d16a998798bccedc314390ab" id="r_a191941e3d16a998798bccedc314390ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a191941e3d16a998798bccedc314390ab">MOCK_METHOD</a> (bool, open,(QFile &amp;, QIODevice::OpenMode),())</td></tr>
+<tr class="memdesc:a191941e3d16a998798bccedc314390ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mocked method to open a file.  <br /></td></tr>
 <tr class="separator:a191941e3d16a998798bccedc314390ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a451241a7b0ba54921f29471826b0b7de" id="r_a451241a7b0ba54921f29471826b0b7de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a451241a7b0ba54921f29471826b0b7de">MOCK_METHOD</a> (QString, read,(QFile &amp;),())</td></tr>
+<tr class="memdesc:a451241a7b0ba54921f29471826b0b7de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mocked method to close a file.  <br /></td></tr>
 <tr class="separator:a451241a7b0ba54921f29471826b0b7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa710e4c550eae7ccb2cac801af47edaa" id="r_aa710e4c550eae7ccb2cac801af47edaa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa710e4c550eae7ccb2cac801af47edaa">MOCK_METHOD</a> (bool, write,(QFile &amp;, const QString &amp;),())</td></tr>
+<tr class="memdesc:aa710e4c550eae7ccb2cac801af47edaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mocked method to write to a file.  <br /></td></tr>
 <tr class="separator:aa710e4c550eae7ccb2cac801af47edaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5865ac194bb59b901259426042682bd" id="r_ad5865ac194bb59b901259426042682bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5865ac194bb59b901259426042682bd">MOCK_METHOD</a> (bool, exists,(const QString &amp;),())</td></tr>
+<tr class="memdesc:ad5865ac194bb59b901259426042682bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mocked method to check if a file exists.  <br /></td></tr>
 <tr class="separator:ad5865ac194bb59b901259426042682bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="MockFileController_8hpp_source.html#l00008">8</a> of file <a class="el" href="MockFileController_8hpp_source.html">MockFileController.hpp</a>.</p>
+<div class="textblock"><p>Class to emulate the behavior of the File controller. </p>
+
+<p class="definition">Definition at line <a class="el" href="MockFileController_8hpp_source.html#l00028">28</a> of file <a class="el" href="MockFileController_8hpp_source.html">MockFileController.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad5865ac194bb59b901259426042682bd" name="ad5865ac194bb59b901259426042682bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5865ac194bb59b901259426042682bd">&#9670;&#160;</a></span>MOCK_METHOD() <span class="overload">[1/4]</span></h2>
@@ -154,6 +162,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Mocked method to check if a file exists. </p>
 
 </div>
 </div>
@@ -186,6 +196,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Mocked method to open a file. </p>
+
 </div>
 </div>
 <a id="aa710e4c550eae7ccb2cac801af47edaa" name="aa710e4c550eae7ccb2cac801af47edaa"></a>
@@ -217,6 +229,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Mocked method to write to a file. </p>
+
 </div>
 </div>
 <a id="a451241a7b0ba54921f29471826b0b7de" name="a451241a7b0ba54921f29471826b0b7de"></a>
@@ -247,6 +261,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Mocked method to close a file. </p>
 
 </div>
 </div>

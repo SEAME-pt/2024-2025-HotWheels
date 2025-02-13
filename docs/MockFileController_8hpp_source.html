@@ -106,30 +106,32 @@ $(function(){initNavTree('MockFileController_8hpp_source.html',''); initResizabl
   <div class="headertitle"><div class="title">MockFileController.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="MockFileController_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MOCKFILECONTROLLER_HPP</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MOCKFILECONTROLLER_HPP</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QFile&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;QString&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;gmock/gmock.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classMockFileController.html">    8</a></span><span class="keyword">class </span><a class="code hl_class" href="classMockFileController.html">MockFileController</a></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classMockFileController.html#a191941e3d16a998798bccedc314390ab">   11</a></span>    <a class="code hl_function" href="classMockFileController.html#a191941e3d16a998798bccedc314390ab">MOCK_METHOD</a>(<span class="keywordtype">bool</span>, open, (QFile &amp;, QIODevice::OpenMode), ());</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classMockFileController.html#a451241a7b0ba54921f29471826b0b7de">   12</a></span>    <a class="code hl_function" href="classMockFileController.html#a451241a7b0ba54921f29471826b0b7de">MOCK_METHOD</a>(QString, read, (QFile &amp;), ());</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classMockFileController.html#aa710e4c550eae7ccb2cac801af47edaa">   13</a></span>    <a class="code hl_function" href="classMockFileController.html#aa710e4c550eae7ccb2cac801af47edaa">MOCK_METHOD</a>(<span class="keywordtype">bool</span>, write, (QFile &amp;, <span class="keyword">const</span> QString &amp;), ());</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classMockFileController.html#ad5865ac194bb59b901259426042682bd">   14</a></span>    <a class="code hl_function" href="classMockFileController.html#ad5865ac194bb59b901259426042682bd">MOCK_METHOD</a>(<span class="keywordtype">bool</span>, exists, (<span class="keyword">const</span> QString &amp;), ());</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
-</div>
+<a href="MockFileController_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif </span><span class="comment">// MOCKFILECONTROLLER_HPP</span></div>
-<div class="ttc" id="aclassMockFileController_html"><div class="ttname"><a href="classMockFileController.html">MockFileController</a></div><div class="ttdef"><b>Definition</b> <a href="#l00008">MockFileController.hpp:9</a></div></div>
-<div class="ttc" id="aclassMockFileController_html_a191941e3d16a998798bccedc314390ab"><div class="ttname"><a href="classMockFileController.html#a191941e3d16a998798bccedc314390ab">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(bool, open,(QFile &amp;, QIODevice::OpenMode),())</div></div>
-<div class="ttc" id="aclassMockFileController_html_a451241a7b0ba54921f29471826b0b7de"><div class="ttname"><a href="classMockFileController.html#a451241a7b0ba54921f29471826b0b7de">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(QString, read,(QFile &amp;),())</div></div>
-<div class="ttc" id="aclassMockFileController_html_aa710e4c550eae7ccb2cac801af47edaa"><div class="ttname"><a href="classMockFileController.html#aa710e4c550eae7ccb2cac801af47edaa">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(bool, write,(QFile &amp;, const QString &amp;),())</div></div>
-<div class="ttc" id="aclassMockFileController_html_ad5865ac194bb59b901259426042682bd"><div class="ttname"><a href="classMockFileController.html#ad5865ac194bb59b901259426042682bd">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(bool, exists,(const QString &amp;),())</div></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifndef MOCKFILECONTROLLER_HPP</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define MOCKFILECONTROLLER_HPP</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;QFile&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;gmock/gmock.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classMockFileController.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="classMockFileController.html">MockFileController</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classMockFileController.html#a191941e3d16a998798bccedc314390ab">   32</a></span>    <a class="code hl_function" href="classMockFileController.html#a191941e3d16a998798bccedc314390ab">MOCK_METHOD</a>(<span class="keywordtype">bool</span>, open, (QFile &amp;, QIODevice::OpenMode), ());</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classMockFileController.html#a451241a7b0ba54921f29471826b0b7de">   34</a></span>    <a class="code hl_function" href="classMockFileController.html#a451241a7b0ba54921f29471826b0b7de">MOCK_METHOD</a>(QString, read, (QFile &amp;), ());</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classMockFileController.html#aa710e4c550eae7ccb2cac801af47edaa">   36</a></span>    <a class="code hl_function" href="classMockFileController.html#aa710e4c550eae7ccb2cac801af47edaa">MOCK_METHOD</a>(<span class="keywordtype">bool</span>, write, (QFile &amp;, <span class="keyword">const</span> QString &amp;), ());</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classMockFileController.html#ad5865ac194bb59b901259426042682bd">   38</a></span>    <a class="code hl_function" href="classMockFileController.html#ad5865ac194bb59b901259426042682bd">MOCK_METHOD</a>(<span class="keywordtype">bool</span>, exists, (<span class="keyword">const</span> QString &amp;), ());</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">// MOCKFILECONTROLLER_HPP</span></div>
+<div class="ttc" id="aclassMockFileController_html"><div class="ttname"><a href="classMockFileController.html">MockFileController</a></div><div class="ttdoc">Class to emulate the behavior of the File controller.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">MockFileController.hpp:29</a></div></div>
+<div class="ttc" id="aclassMockFileController_html_a191941e3d16a998798bccedc314390ab"><div class="ttname"><a href="classMockFileController.html#a191941e3d16a998798bccedc314390ab">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(bool, open,(QFile &amp;, QIODevice::OpenMode),())</div><div class="ttdoc">Mocked method to open a file.</div></div>
+<div class="ttc" id="aclassMockFileController_html_a451241a7b0ba54921f29471826b0b7de"><div class="ttname"><a href="classMockFileController.html#a451241a7b0ba54921f29471826b0b7de">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(QString, read,(QFile &amp;),())</div><div class="ttdoc">Mocked method to close a file.</div></div>
+<div class="ttc" id="aclassMockFileController_html_aa710e4c550eae7ccb2cac801af47edaa"><div class="ttname"><a href="classMockFileController.html#aa710e4c550eae7ccb2cac801af47edaa">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(bool, write,(QFile &amp;, const QString &amp;),())</div><div class="ttdoc">Mocked method to write to a file.</div></div>
+<div class="ttc" id="aclassMockFileController_html_ad5865ac194bb59b901259426042682bd"><div class="ttname"><a href="classMockFileController.html#ad5865ac194bb59b901259426042682bd">MockFileController::MOCK_METHOD</a></div><div class="ttdeci">MOCK_METHOD(bool, exists,(const QString &amp;),())</div><div class="ttdoc">Mocked method to check if a file exists.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

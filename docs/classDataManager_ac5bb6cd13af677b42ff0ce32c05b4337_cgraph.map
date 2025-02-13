@@ -1,5 +1,0 @@
-<map id="DataManager::handleBatteryPercentage" name="DataManager::handleBatteryPercentage">
-<area shape="rect" id="Node000001" title="Handles battery percentage data." alt="" coords="5,5,216,45"/>
-<area shape="rect" id="Node000002" href="$classDataManager.html#a03f614a2259b6a7070150d90ecfa987f" title="Signal emitted when the battery percentage is updated." alt="" coords="264,5,503,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,23,250,23,250,28,216,28"/>
-</map>

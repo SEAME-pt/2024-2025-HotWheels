@@ -1,5 +1,0 @@
-<map id="JoysticksController::processInput" name="JoysticksController::processInput">
-<area shape="rect" id="Node000001" title="Process the input from the joystick." alt="" coords="248,5,392,45"/>
-<area shape="rect" id="Node000002" href="$classControlsManager.html#aa7bcb9c7b38b703a8736327ad872ea03" title="Construct a new ControlsManager object." alt="" coords="5,5,200,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,28,200,28,200,23,234,23"/>
-</map>

@@ -1,6 +1,6 @@
 var classCarManager =
 [
-    [ "CarManager", "classCarManager.html#a66ad3776f275138f4af1c9c0dabaef67", null ],
+    [ "CarManager", "classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d", null ],
     [ "~CarManager", "classCarManager.html#a85d97ce75d7c95f5adf95eaf9c5b263c", null ],
     [ "initializeCanBusManager", "classCarManager.html#a33ab3dce383d94c8500b74ed21f56724", null ],
     [ "initializeComponents", "classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f", null ],

@@ -112,19 +112,27 @@ $(function(){initNavTree('classSystemDataManager.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 
+<p>Class that manages the data received from the car's systems. QObject.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:a384830f395f9325f263db7bf0e274379" id="r_a384830f395f9325f263db7bf0e274379"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a384830f395f9325f263db7bf0e274379">handleTimeData</a> (const QString &amp;currentDate, const QString &amp;currentTime, const QString &amp;currentDay)</td></tr>
+<tr class="memdesc:a384830f395f9325f263db7bf0e274379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle Time data.  <br /></td></tr>
 <tr class="separator:a384830f395f9325f263db7bf0e274379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ad861f3ee72f7b152026b24624091de" id="r_a7ad861f3ee72f7b152026b24624091de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ad861f3ee72f7b152026b24624091de">handleWifiData</a> (const QString &amp;status, const QString &amp;wifiName)</td></tr>
+<tr class="memdesc:a7ad861f3ee72f7b152026b24624091de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle WiFi data.  <br /></td></tr>
 <tr class="separator:a7ad861f3ee72f7b152026b24624091de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a753ebaa1e5803cd19b645c5559d21936" id="r_a753ebaa1e5803cd19b645c5559d21936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a753ebaa1e5803cd19b645c5559d21936">handleTemperatureData</a> (const QString &amp;temperature)</td></tr>
+<tr class="memdesc:a753ebaa1e5803cd19b645c5559d21936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle Temperature data.  <br /></td></tr>
 <tr class="separator:a753ebaa1e5803cd19b645c5559d21936"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1da4f82db9ddc9badb703f2069d6450" id="r_ac1da4f82db9ddc9badb703f2069d6450"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1da4f82db9ddc9badb703f2069d6450">handleIpAddressData</a> (const QString &amp;ipAddress)</td></tr>
+<tr class="memdesc:ac1da4f82db9ddc9badb703f2069d6450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle IP Address data.  <br /></td></tr>
 <tr class="separator:ac1da4f82db9ddc9badb703f2069d6450"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4d7e0b454c38eed521f40215557f250" id="r_ad4d7e0b454c38eed521f40215557f250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4d7e0b454c38eed521f40215557f250">handleBatteryPercentage</a> (float batteryPercentage)</td></tr>
+<tr class="memdesc:ad4d7e0b454c38eed521f40215557f250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle Battery Percentage data.  <br /></td></tr>
 <tr class="separator:ad4d7e0b454c38eed521f40215557f250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
@@ -163,8 +171,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a2a5a6fc456d5b33e7e5d49a29c37592d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00007">7</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
+<div class="textblock"><p>Class that manages the data received from the car's systems. QObject. </p>
+
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00026">26</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0f154df020504d5d704db55d8c0b5253" name="a0f154df020504d5d704db55d8c0b5253"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f154df020504d5d704db55d8c0b5253">&#9670;&#160;</a></span>SystemDataManager()</h2>
@@ -189,7 +198,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00004">4</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00018">18</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -208,7 +217,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00008">8</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00022">22</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,8 +244,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html#l00240">240</a> of file <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html">moc_SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -268,7 +275,16 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00048">48</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
+<p>Handle Battery Percentage data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">batteryPercentage</td><td>The battery percentage.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the battery percentage data. </p>
+
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00085">85</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -300,7 +316,16 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00039">39</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
+<p>Handle IP Address data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipAddress</td><td>The IP address.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the IP address data. </p>
+
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00072">72</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -332,7 +357,16 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00030">30</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
+<p>Handle Temperature data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temperature</td><td>The temperature data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the temperature data. </p>
+
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00059">59</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -373,7 +407,18 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00011">11</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
+<p>Handle Time data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currentDate</td><td>The current date. </td></tr>
+    <tr><td class="paramname">currentTime</td><td>The current time. </td></tr>
+    <tr><td class="paramname">currentDay</td><td>The current day.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the time data. </p>
+
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00031">31</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -409,7 +454,17 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00020">20</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
+<p>Handle WiFi data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>The WiFi status. </td></tr>
+    <tr><td class="paramname">wifiName</td><td>The WiFi name.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function processes the WiFi data. </p>
+
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8cpp_source.html#l00045">45</a> of file <a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -440,8 +495,6 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html#l00233">233</a> of file <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html">moc_SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -472,8 +525,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html#l00226">226</a> of file <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html">moc_SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -513,8 +564,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html#l00212">212</a> of file <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html">moc_SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -549,8 +598,6 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html#l00219">219</a> of file <a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html">moc_SystemDataManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -580,7 +627,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00039">39</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00058">58</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -604,7 +651,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00038">38</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00057">57</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -628,7 +675,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00037">37</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00056">56</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -652,7 +699,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00034">34</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00053">53</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -676,7 +723,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00035">35</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00054">54</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -700,14 +747,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00036">36</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SystemDataManager_8hpp_source.html#l00055">55</a> of file <a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>app/includes/data/<a class="el" href="SystemDataManager_8hpp_source.html">SystemDataManager.hpp</a></li>
-<li>app/build-x86/<a class="el" href="build-x86_2moc__SystemDataManager_8cpp_source.html">moc_SystemDataManager.cpp</a></li>
-<li>app/build/<a class="el" href="build_2moc__SystemDataManager_8cpp_source.html">moc_SystemDataManager.cpp</a></li>
 <li>app/sources/data/<a class="el" href="SystemDataManager_8cpp_source.html">SystemDataManager.cpp</a></li>
 </ul>
 </div><!-- contents -->

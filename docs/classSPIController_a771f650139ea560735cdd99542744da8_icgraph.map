@@ -1,5 +1,0 @@
-<map id="SPIController::closeDevice" name="SPIController::closeDevice">
-<area shape="rect" id="Node000001" title="Close the SPI device." alt="" coords="263,5,456,31"/>
-<area shape="rect" id="Node000002" href="$classSPIController.html#af7e0207785deb89c9e7c7d74d20ba876" title="Destroy the SPIController::SPIController object." alt="" coords="5,5,215,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,21,215,21,215,15,249,15"/>
-</map>

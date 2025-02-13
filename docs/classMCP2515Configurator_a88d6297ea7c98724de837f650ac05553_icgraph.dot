@@ -11,7 +11,7 @@ digraph "MCP2515Configurator::readRegister"
   Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="MCP2515Configurator\l::resetChip",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6",tooltip="clean up the resources used by the MCP2515Configurator."];
   Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="MCP2515Configurator\l::sendCANMessage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403",tooltip=" "];
+  Node4 [id="Node000004",label="MCP2515Configurator\l::sendCANMessage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403",tooltip="Send a CAN message to the MCP2515."];
   Node1 -> Node5 [id="edge4_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node5 [id="Node000005",label="MCP2515Configurator\l::verifyMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c",tooltip="Verify the mode of the MCP2515."];
 }

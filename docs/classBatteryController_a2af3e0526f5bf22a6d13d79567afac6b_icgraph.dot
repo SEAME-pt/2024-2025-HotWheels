@@ -5,7 +5,7 @@ digraph "BatteryController::setCalibration32V2A"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="RL";
-  Node1 [id="Node000001",label="BatteryController::\lsetCalibration32V2A",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [id="Node000001",label="BatteryController::\lsetCalibration32V2A",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Set the calibration for 32V and 2A."];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="BatteryController::\lBatteryController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classBatteryController.html#ab2cd6e8c9f9a6b009fd437d38162ec4a",tooltip=" "];
+  Node2 [id="Node000002",label="BatteryController::\lBatteryController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classBatteryController.html#ab2cd6e8c9f9a6b009fd437d38162ec4a",tooltip="Construct a new BatteryController object."];
 }

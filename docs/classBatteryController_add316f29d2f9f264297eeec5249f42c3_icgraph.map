@@ -1,5 +1,0 @@
-<map id="BatteryController::getBusVoltage_V" name="BatteryController::getBusVoltage_V">
-<area shape="rect" id="Node000001" title="Read a 16&#45;bit register from the INA219." alt="" coords="217,5,360,45"/>
-<area shape="rect" id="Node000002" href="$classBatteryController.html#accd0ef9bbfb8b70c012ee2c65b4e74dd" title="Get the battery percentage." alt="" coords="5,5,169,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,28,170,28,170,23,204,23"/>
-</map>
