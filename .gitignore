@@ -2,5 +2,4 @@
 *.vscode
 *build
 *docs/
-app/root.pro.user
-car_controls/root.pro.user
+**/*.pro.user

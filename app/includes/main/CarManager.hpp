@@ -25,6 +25,10 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
+/*!
+ * @namespace Ui
+ * @brief Namespace containing the user interface for the car manager.
+ */
 namespace Ui {
 class CarManager;
 }
@@ -35,35 +39,35 @@ QT_END_NAMESPACE
  * @class CarManager inherits from QMainWindow
  */
 class CarManager : public QMainWindow {
-  Q_OBJECT
+	Q_OBJECT
 
 public:
-  CarManager(int argc, char **argv, QWidget *parent = nullptr);
-  ~CarManager();
+	CarManager(int argc, char **argv, QWidget *parent = nullptr);
+	~CarManager();
 
 private:
-  /*! @brief Pointer to the user interface for the car manager. */
-  Ui::CarManager *ui;
-  /*! @brief Pointer to the DataManager instance. */
-  DataManager *m_dataManager;
-  /*! @brief Pointer to the CanBusManager instance. */
-  CanBusManager *m_canBusManager;
-  /*! @brief Pointer to the ControlsManager instance. */
-  ControlsManager *m_controlsManager;
-  /*! @brief Pointer to the DisplayManager instance. */
-  DisplayManager *m_displayManager;
-  /*! @brief Pointer to the SystemManager instance. */
-  SystemManager *m_systemManager;
-  /*! @brief Pointer to the MileageManager instance. */
-  MileageManager *m_mileageManager;
+	/*! @brief Pointer to the user interface for the car manager. */
+	Ui::CarManager *ui;
+	/*! @brief Pointer to the DataManager instance. */
+	DataManager *m_dataManager;
+	/*! @brief Pointer to the CanBusManager instance. */
+	CanBusManager *m_canBusManager;
+	/*! @brief Pointer to the ControlsManager instance. */
+	ControlsManager *m_controlsManager;
+	/*! @brief Pointer to the DisplayManager instance. */
+	DisplayManager *m_displayManager;
+	/*! @brief Pointer to the SystemManager instance. */
+	SystemManager *m_systemManager;
+	/*! @brief Pointer to the MileageManager instance. */
+	MileageManager *m_mileageManager;
 
-  void initializeComponents();
-  void initializeDataManager();
-  void initializeCanBusManager();
-  void initializeControlsManager();
-  void initializeDisplayManager();
-  void initializeSystemManager();
-  void initializeMileageManager();
+	void initializeComponents();
+	void initializeDataManager();
+	void initializeCanBusManager();
+	void initializeControlsManager();
+	void initializeDisplayManager();
+	void initializeSystemManager();
+	void initializeMileageManager();
 };
 
 #endif // CARMANAGER_H

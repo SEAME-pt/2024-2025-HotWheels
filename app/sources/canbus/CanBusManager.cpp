@@ -34,11 +34,11 @@
  * device and sets up the MCP2515 controller.
  */
 CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
-    : QObject(parent)
+	: QObject(parent)
 {
-    m_controller = new MCP2515Controller(spi_device);
-    ownsMCP2515Controller = true;
-    connectSignals();
+	m_controller = new MCP2515Controller(spi_device);
+	ownsMCP2515Controller = true;
+	connectSignals();
 }
 
 /*!
@@ -51,11 +51,11 @@ CanBusManager::CanBusManager(const std::string &spi_device, QObject *parent)
  * MCP2515 controller.
  */
 CanBusManager::CanBusManager(IMCP2515Controller *controller, QObject *parent)
-    : QObject(parent)
-    , m_controller(controller)
+	: QObject(parent)
+	, m_controller(controller)
 {
-    ownsMCP2515Controller = false;
-    connectSignals();
+	ownsMCP2515Controller = false;
+	connectSignals();
 }
 
 /*!
@@ -66,19 +66,19 @@ CanBusManager::CanBusManager(IMCP2515Controller *controller, QObject *parent)
  */
 CanBusManager::~CanBusManager()
 {
-    if (m_thread) {
-        m_controller->stopReading();
-        m_thread->disconnect();
-        m_thread->quit();
-        m_thread->wait();
+	if (m_thread) {
+		m_controller->stopReading();
+		m_thread->disconnect();
+		m_thread->quit();
+		m_thread->wait();
 
-        delete m_thread;
-        m_thread = nullptr;
-    }
+		delete m_thread;
+		m_thread = nullptr;
+	}
 
-    if (ownsMCP2515Controller) {
-        delete m_controller;
-    }
+	if (ownsMCP2515Controller) {
+		delete m_controller;
+	}
 }
 
 /*!
@@ -90,8 +90,8 @@ CanBusManager::~CanBusManager()
  */
 void CanBusManager::connectSignals()
 {
-    connect(m_controller, &IMCP2515Controller::speedUpdated, this, &CanBusManager::speedUpdated);
-    connect(m_controller, &IMCP2515Controller::rpmUpdated, this, &CanBusManager::rpmUpdated);
+	connect(m_controller, &IMCP2515Controller::speedUpdated, this, &CanBusManager::speedUpdated);
+	connect(m_controller, &IMCP2515Controller::rpmUpdated, this, &CanBusManager::rpmUpdated);
 }
 
 /*!
@@ -103,17 +103,17 @@ void CanBusManager::connectSignals()
  */
 bool CanBusManager::initialize()
 {
-    if (!m_controller->init()) {
-        return false;
-    }
+	if (!m_controller->init()) {
+		return false;
+	}
 
-    m_thread = new QThread(this);
-    m_controller->moveToThread(m_thread);
+	m_thread = new QThread(this);
+	m_controller->moveToThread(m_thread);
 
-    connect(m_thread, &QThread::started, m_controller, &IMCP2515Controller::processReading);
-    connect(m_thread, &QThread::finished, m_controller, &QObject::deleteLater);
-    connect(m_thread, &QThread::finished, m_thread, &QObject::deleteLater);
+	connect(m_thread, &QThread::started, m_controller, &IMCP2515Controller::processReading);
+	connect(m_thread, &QThread::finished, m_controller, &QObject::deleteLater);
+	connect(m_thread, &QThread::finished, m_thread, &QObject::deleteLater);
 
-    m_thread->start();
-    return true;
+	m_thread->start();
+	return true;
 }

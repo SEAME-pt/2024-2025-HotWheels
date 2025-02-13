@@ -40,11 +40,11 @@ CANMessageProcessor::CANMessageProcessor() {}
  * @details This method registers a handler for a specific frame ID.
  */
 void CANMessageProcessor::registerHandler(uint16_t frameID,
-                                          MessageHandler handler) {
-  if (!handler) {
-    throw std::invalid_argument("Handler cannot be null");
-  }
-  handlers[frameID] = handler;
+																					MessageHandler handler) {
+	if (!handler) {
+		throw std::invalid_argument("Handler cannot be null");
+	}
+	handlers[frameID] = handler;
 }
 
 /*!
@@ -57,12 +57,12 @@ void CANMessageProcessor::registerHandler(uint16_t frameID,
  * handler for the frame ID.
  */
 void CANMessageProcessor::processMessage(uint16_t frameID,
-                                         const std::vector<uint8_t> &data) {
-  auto it = handlers.find(frameID);
-  if (it != handlers.end()) {
-    it->second(data);
-  } else {
-    throw std::runtime_error("No handler registered for frame ID: " +
-                             std::to_string(frameID));
-  }
+																				 const std::vector<uint8_t> &data) {
+	auto it = handlers.find(frameID);
+	if (it != handlers.end()) {
+		it->second(data);
+	} else {
+		throw std::runtime_error("No handler registered for frame ID: " +
+														 std::to_string(frameID));
+	}
 }

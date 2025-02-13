@@ -32,31 +32,31 @@
  */
 class MockSysCalls {
 public:
-  /*!
-   * @brief Get the instance object
-   * @return MockSysCalls&
-   */
-  static MockSysCalls &instance() {
-    static MockSysCalls instance;
-    return instance;
-  }
+	/*!
+	 * @brief Get the instance object
+	 * @return MockSysCalls&
+	 */
+	static MockSysCalls &instance() {
+		static MockSysCalls instance;
+		return instance;
+	}
 
-  /*! @brief Mocked method to open a file. */
-  MOCK_METHOD(int, open, (const char *path, int flags), ());
-  /*! @brief Mocked method to perform an I/O control operation. */
-  MOCK_METHOD(int, ioctl, (int fd, unsigned long request), ());
-  /*! @brief Mocked method to close a file. */
-  MOCK_METHOD(int, close, (int fd), ());
+	/*! @brief Mocked method to open a file. */
+	MOCK_METHOD(int, open, (const char *path, int flags), ());
+	/*! @brief Mocked method to perform an I/O control operation. */
+	MOCK_METHOD(int, ioctl, (int fd, unsigned long request), ());
+	/*! @brief Mocked method to close a file. */
+	MOCK_METHOD(int, close, (int fd), ());
 
 private:
-  /*! @brief Constructor of the class set as default. */
-  MockSysCalls() = default;
-  /*! @brief Destructor of the class set as default. */
-  ~MockSysCalls() = default;
-  /*! @brief Copy constructor of the class set as delete. */
-  MockSysCalls(const MockSysCalls &) = delete;
-  /*! @brief Operator of the class set as delete. */
-  MockSysCalls &operator=(const MockSysCalls &) = delete;
+	/*! @brief Constructor of the class set as default. */
+	MockSysCalls() = default;
+	/*! @brief Destructor of the class set as default. */
+	~MockSysCalls() = default;
+	/*! @brief Copy constructor of the class set as delete. */
+	MockSysCalls(const MockSysCalls &) = delete;
+	/*! @brief Operator of the class set as delete. */
+	MockSysCalls &operator=(const MockSysCalls &) = delete;
 };
 
 /*!
@@ -67,7 +67,7 @@ private:
  * @retval int
  */
 inline int mock_open(const char *path, int flags, ...) {
-  return MockSysCalls::instance().open(path, flags);
+	return MockSysCalls::instance().open(path, flags);
 }
 
 /*!
@@ -78,7 +78,7 @@ inline int mock_open(const char *path, int flags, ...) {
  * @retval int
  */
 inline int mock_ioctl(int fd, unsigned long request, ...) {
-  return MockSysCalls::instance().ioctl(fd, request);
+	return MockSysCalls::instance().ioctl(fd, request);
 }
 
 /*!

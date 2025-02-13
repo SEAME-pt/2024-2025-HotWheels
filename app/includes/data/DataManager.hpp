@@ -32,51 +32,51 @@ class DataManager : public QObject {
   Q_OBJECT
 
 public:
-    explicit DataManager(QObject *parent = nullptr);
-    ~DataManager();
+	explicit DataManager(QObject *parent = nullptr);
+	~DataManager();
 
-    VehicleDataManager *getVehicleDataManager() { return this->m_vehicleDataManager; };
-    SystemDataManager *getSystemDataManager() { return this->m_systemDataManager; };
-    ClusterSettingsManager *getClusterSettingsManager() { return this->m_clusterSettingsManager; };
+	VehicleDataManager *getVehicleDataManager() { return this->m_vehicleDataManager; };
+	SystemDataManager *getSystemDataManager() { return this->m_systemDataManager; };
+	ClusterSettingsManager *getClusterSettingsManager() { return this->m_clusterSettingsManager; };
 
 public slots:
-    // Forwarded slots from subclasses
-    void handleRpmData(int rawRpm);
-    void handleSpeedData(float rawSpeed);
-    void handleSteeringData(int rawAngle);
-    void handleDirectionData(CarDirection rawDirection);
-    void handleTimeData(const QString &currentDate,
-                        const QString &currentTime,
-                        const QString &currentDay);
-    void handleWifiData(const QString &status, const QString &wifiName);
-    void handleTemperatureData(const QString &temperature);
-    void handleIpAddressData(const QString &ipAddress);
-    void handleBatteryPercentage(float batteryPercentage);
-    void handleMileageUpdate(double mileage);
-    void toggleDrivingMode();
-    void toggleClusterTheme();
-    void toggleClusterMetrics();
+	// Forwarded slots from subclasses
+	void handleRpmData(int rawRpm);
+	void handleSpeedData(float rawSpeed);
+	void handleSteeringData(int rawAngle);
+	void handleDirectionData(CarDirection rawDirection);
+	void handleTimeData(const QString &currentDate,
+						const QString &currentTime,
+						const QString &currentDay);
+	void handleWifiData(const QString &status, const QString &wifiName);
+	void handleTemperatureData(const QString &temperature);
+	void handleIpAddressData(const QString &ipAddress);
+	void handleBatteryPercentage(float batteryPercentage);
+	void handleMileageUpdate(double mileage);
+	void toggleDrivingMode();
+	void toggleClusterTheme();
+	void toggleClusterMetrics();
 
 signals:
-    // Forwarded signals from subclasses
-    void canDataProcessed(float processedSpeed, int processedRpm);
-    void engineDataProcessed(CarDirection processedDirection, int processedAngle);
-    void systemTimeUpdated(const QString &currentDate,
-                           const QString &currentTime,
-                           const QString &currentDay);
-    void systemWifiUpdated(const QString &status, const QString &wifiName);
-    void systemTemperatureUpdated(const QString &temperature);
-    void ipAddressUpdated(const QString &ipAddress);
-    void batteryPercentageUpdated(float batteryPercentage);
-    void mileageUpdated(double mileage);
-    void drivingModeUpdated(DrivingMode newMode);
-    void clusterThemeUpdated(ClusterTheme newTheme);
-    void clusterMetricsUpdated(ClusterMetrics newMetrics);
+	// Forwarded signals from subclasses
+	void canDataProcessed(float processedSpeed, int processedRpm);
+	void engineDataProcessed(CarDirection processedDirection, int processedAngle);
+	void systemTimeUpdated(const QString &currentDate,
+						   const QString &currentTime,
+						   const QString &currentDay);
+	void systemWifiUpdated(const QString &status, const QString &wifiName);
+	void systemTemperatureUpdated(const QString &temperature);
+	void ipAddressUpdated(const QString &ipAddress);
+	void batteryPercentageUpdated(float batteryPercentage);
+	void mileageUpdated(double mileage);
+	void drivingModeUpdated(DrivingMode newMode);
+	void clusterThemeUpdated(ClusterTheme newTheme);
+	void clusterMetricsUpdated(ClusterMetrics newMetrics);
 
 private:
-    VehicleDataManager *m_vehicleDataManager;
-    SystemDataManager *m_systemDataManager;
-    ClusterSettingsManager *m_clusterSettingsManager;
+	VehicleDataManager *m_vehicleDataManager;
+	SystemDataManager *m_systemDataManager;
+	ClusterSettingsManager *m_clusterSettingsManager;
 };
 
 #endif // DATAMANAGER_HPP

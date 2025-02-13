@@ -27,28 +27,32 @@ using FileReadFunc = std::function<QString(QFile &)>;
 using FileWriteFunc = std::function<bool(QFile &, const QString &)>;
 using FileExistsFunc = std::function<bool(const QString &)>;
 
+/*!
+ * @brief Class that manages the mileage file.
+ * @class MileageFileHandler
+ */
 class MileageFileHandler : public IMileageFileHandler
 {
 public:
-    explicit MileageFileHandler(const QString &filePath,
-                                FileOpenFunc openFunc = FileController::open,
-                                FileReadFunc readFunc = FileController::read,
-                                FileWriteFunc writeFunc = FileController::write,
-                                FileExistsFunc existsFunc = FileController::exists);
+	explicit MileageFileHandler(const QString &filePath,
+								FileOpenFunc openFunc = FileController::open,
+								FileReadFunc readFunc = FileController::read,
+								FileWriteFunc writeFunc = FileController::write,
+								FileExistsFunc existsFunc = FileController::exists);
 
-    ~MileageFileHandler() = default;
+	~MileageFileHandler() = default;
 
-    double readMileage() const override;
-    void writeMileage(double mileage) const override;
+	double readMileage() const override;
+	void writeMileage(double mileage) const override;
 
 private:
-    QString filePath;
-    FileOpenFunc openFunc;
-    FileReadFunc readFunc;
-    FileWriteFunc writeFunc;
-    FileExistsFunc existsFunc;
+	QString filePath;
+	FileOpenFunc openFunc;
+	FileReadFunc readFunc;
+	FileWriteFunc writeFunc;
+	FileExistsFunc existsFunc;
 
-    void ensureFileExists() const;
+	void ensureFileExists() const;
 };
 
 #endif // MILEAGEFILEHANDLER_HPP

@@ -30,23 +30,23 @@
  * @class ControlsManager inherits from QObject
  */
 class ControlsManager : public QObject {
-  Q_OBJECT
+	Q_OBJECT
 
 public:
-  explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);
-  ~ControlsManager();
+	explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);
+	~ControlsManager();
 
 public slots:
-  void drivingModeUpdated(DrivingMode newMode);
+	void drivingModeUpdated(DrivingMode newMode);
 
 signals:
-  void directionChanged(CarDirection newDirection);
-  void steeringChanged(int newAngle);
+	void directionChanged(CarDirection newDirection);
+	void steeringChanged(int newAngle);
 
 private:
-  ClientThread *m_clientObject;
+	ClientThread *m_clientObject;
 
-  QThread* m_clientThread;
+	QThread* m_clientThread;
 };
 
 #endif // CONTROLSMANAGER_HPP

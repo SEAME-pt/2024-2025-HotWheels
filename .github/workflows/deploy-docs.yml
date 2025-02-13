@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'app/**'
   pull_request:
     branches:
       - main
-    paths:
-      - 'app/**'
 
 jobs:
   run-on-self-hosted:
@@ -20,10 +16,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Go to the repository
-        run: cd ~/Documents/${{ github.event.repository.name }}
+        run: cd $GITHUB_WORKSPACE
 
       - name: List the files in the repository
         run: ls -la
 
       - name: Run Doxygen
         run: doxygen Doxyfile
+
+      - name: Copy folder to ~/Documents
+        run: |
+          cp -r $GITHUB_WORKSPACE/docs ~/Documents/Documentation_cluster/docs
+          /bin/bash -c "~/Documents/Documentation_cluster/update.sh"

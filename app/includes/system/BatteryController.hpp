@@ -20,21 +20,25 @@
 #include "IBatteryController.hpp"
 #include "II2CController.hpp"
 
+/*!
+ * @brief Class that manages the battery of the vehicle.
+ * @class BatteryController
+ */
 class BatteryController : public IBatteryController
 {
 public:
-    explicit BatteryController(II2CController *i2cController = nullptr);
-    ~BatteryController() override;
+	explicit BatteryController(II2CController *i2cController = nullptr);
+	~BatteryController() override;
 
-    float getBatteryPercentage() override;
+	float getBatteryPercentage() override;
 
 private:
-    void setCalibration32V2A();
-    float getBusVoltage_V();
-    float getShuntVoltage_V();
+	void setCalibration32V2A();
+	float getBusVoltage_V();
+	float getShuntVoltage_V();
 
-    II2CController *m_i2cController;
-    bool m_ownI2CController;
+	II2CController *m_i2cController;
+	bool m_ownI2CController;
 };
 
 #endif // BATTERYCONTROLLER_HPP

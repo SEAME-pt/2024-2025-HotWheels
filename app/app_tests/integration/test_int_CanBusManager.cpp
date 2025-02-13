@@ -1,3 +1,17 @@
+/*!
+ * @file test_int_CanBusManager.cpp
+ * @brief Integration tests for the CanBusManager class.
+ * @version 0.1
+ * @date 2025-02-12
+ * @author Michel Batista (@MicchelFAB)
+ * @author Félix LE BIHAN (@Fle-bihh)
+ * @author Ricardo Melo (@reomelo)
+ * @author Tiago Pereira (@t-pereira06)
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include <QCoreApplication>
 #include <QDebug>
 #include <QSignalSpy>
@@ -5,88 +19,119 @@
 #include "MCP2515Controller.hpp"
 #include <gtest/gtest.h>
 
+/*!
+ * @brief Class to test the integration between the CanBusManager and the
+ * MCP2515 controller.
+ * @class CanBusManagerTest
+ */
 class CanBusManagerTest : public ::testing::Test
 {
 protected:
-    static QCoreApplication *app;
-    CanBusManager *canBusManager;
-    IMCP2515Controller *controller;
+	static QCoreApplication *app;
+	CanBusManager *canBusManager;
+	IMCP2515Controller *controller;
 
-    static void SetUpTestSuite()
-    {
-        int argc = 0;
-        char *argv[] = {nullptr};
-        app = new QCoreApplication(argc, argv);
-    }
+	static void SetUpTestSuite()
+	{
+		int argc = 0;
+		char *argv[] = {nullptr};
+		app = new QCoreApplication(argc, argv);
+	}
 
-    static void TearDownTestSuite() { delete app; }
+	static void TearDownTestSuite() { delete app; }
 
-    void SetUp() override
-    {
-        controller = new MCP2515Controller("/dev/spidev0.0");
-        ASSERT_NE(controller, nullptr);
+	void SetUp() override
+	{
+		controller = new MCP2515Controller("/dev/spidev0.0");
+		ASSERT_NE(controller, nullptr);
 
-        canBusManager = new CanBusManager(controller);
-        ASSERT_NE(canBusManager, nullptr);
-    }
+		canBusManager = new CanBusManager(controller);
+		ASSERT_NE(canBusManager, nullptr);
+	}
 
-    void TearDown() override
-    {
-        delete canBusManager;
-        delete controller;
-    }
+	void TearDown() override
+	{
+		delete canBusManager;
+		delete controller;
+	}
 };
 
-// Initialize static member
+/*! @brief Initialize static member */
 QCoreApplication *CanBusManagerTest::app = nullptr;
 
-// 🚗 **Test: Forward Speed Data**
+/*!
+ * @test 🚗 Forward Speed Data
+ * @brief Ensures that the CanBusManager forwards speed data from the MCP2515
+ * controller.
+ * @details This test verifies that the CanBusManager forwards speed data from
+ * the MCP2515 controller by emitting the speedUpdated signal.
+ * @see CanBusManager::speedUpdated
+ */
 TEST_F(CanBusManagerTest, ForwardSpeedDataFromMCP2515)
 {
-    QSignalSpy spy(canBusManager, &CanBusManager::speedUpdated);
+	QSignalSpy spy(canBusManager, &CanBusManager::speedUpdated);
 
-    emit controller->speedUpdated(88.8f);
-    QCoreApplication::processEvents();
+	emit controller->speedUpdated(88.8f);
+	QCoreApplication::processEvents();
 
-    ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
-    QList<QVariant> args = spy.takeFirst();
-    EXPECT_FLOAT_EQ(args.at(0).toFloat(), 88.8f);
+	ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
+	QList<QVariant> args = spy.takeFirst();
+	EXPECT_FLOAT_EQ(args.at(0).toFloat(), 88.8f);
 }
 
-// 🔄 **Test: Forward RPM Data**
+/*!
+ * @test 🔄 Forward RPM Data
+ * @brief Ensures that the CanBusManager forwards RPM data from the MCP2515
+ * controller.
+ * @details This test verifies that the CanBusManager forwards RPM data from
+ * the MCP2515 controller by emitting the rpmUpdated signal.
+ * @see CanBusManager::rpmUpdated
+ */
 TEST_F(CanBusManagerTest, ForwardRpmDataFromMCP2515)
 {
-    QSignalSpy spy(canBusManager, &CanBusManager::rpmUpdated);
+	QSignalSpy spy(canBusManager, &CanBusManager::rpmUpdated);
 
-    emit controller->rpmUpdated(4500);
-    QCoreApplication::processEvents();
+	emit controller->rpmUpdated(4500);
+	QCoreApplication::processEvents();
 
-    ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
-    QList<QVariant> args = spy.takeFirst();
-    EXPECT_EQ(args.at(0).toInt(), 4500);
+	ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
+	QList<QVariant> args = spy.takeFirst();
+	EXPECT_EQ(args.at(0).toInt(), 4500);
 }
 
-// 🚀 **Test: Initialization**
+/*!
+ * @test 🚀 Initialization
+ * @brief Ensures that the CanBusManager initializes successfully.
+ * @details This test verifies that the CanBusManager initializes successfully
+ * by calling the initialize() method.
+ * @see CanBusManager::initialize
+ */
 TEST_F(CanBusManagerTest, InitializeCanBusManager)
 {
-    ASSERT_TRUE(canBusManager->initialize()) << "Initialization failed!";
-    ASSERT_NE(canBusManager->getThread(), nullptr) << "Thread not created!";
-    ASSERT_TRUE(canBusManager->getThread()->isRunning()) << "Thread did not start!";
+	ASSERT_TRUE(canBusManager->initialize()) << "Initialization failed!";
+	ASSERT_NE(canBusManager->getThread(), nullptr) << "Thread not created!";
+	ASSERT_TRUE(canBusManager->getThread()->isRunning()) << "Thread did not start!";
 }
 
+/*!
+ * @test 🧹 Manager Clean-Up Behavior
+ * @brief Ensures that the CanBusManager cleans up properly.
+ * @details This test verifies that the CanBusManager cleans up properly by
+ * deleting the manager and checking if the thread was deleted.
+ */
 TEST_F(CanBusManagerTest, ManagerCleanUpBehavior)
 {
-    CanBusManager *tmpManager = new CanBusManager("/dev/spidev0.0");
-    ASSERT_NE(tmpManager, nullptr);
+	CanBusManager *tmpManager = new CanBusManager("/dev/spidev0.0");
+	ASSERT_NE(tmpManager, nullptr);
 
-    ASSERT_EQ(tmpManager->getThread(), nullptr) << "Thread created too soon!";
+	ASSERT_EQ(tmpManager->getThread(), nullptr) << "Thread created too soon!";
 
-    tmpManager->initialize();
+	tmpManager->initialize();
 
-    ASSERT_NE(tmpManager->getThread(), nullptr) << "Thread not created!";
-    ASSERT_TRUE(tmpManager->getThread()->isRunning()) << "Thread did not start!";
+	ASSERT_NE(tmpManager->getThread(), nullptr) << "Thread not created!";
+	ASSERT_TRUE(tmpManager->getThread()->isRunning()) << "Thread did not start!";
 
-    delete tmpManager;
+	delete tmpManager;
 
-    ASSERT_EQ(tmpManager->getThread(), nullptr) << "Thread not deleted!";
+	ASSERT_EQ(tmpManager->getThread(), nullptr) << "Thread not deleted!";
 }

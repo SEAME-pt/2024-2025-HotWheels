@@ -24,26 +24,26 @@
  * @class IMCP2515Controller inherits from QObject
  */
 class IMCP2515Controller : public QObject {
-  Q_OBJECT
+	Q_OBJECT
 public:
-  virtual ~IMCP2515Controller() = default;
-  virtual bool init() = 0;
-  virtual void processReading() = 0;
-  virtual void stopReading() = 0;
-  virtual bool isStopReadingFlagSet() const = 0;
+	virtual ~IMCP2515Controller() = default;
+	virtual bool init() = 0;
+	virtual void processReading() = 0;
+	virtual void stopReading() = 0;
+	virtual bool isStopReadingFlagSet() const = 0;
 
 signals:
-  /*!
-   * @brief Signal emitted when the speed is updated.
-   * @param newSpeed The new speed value.
-   */
-  void speedUpdated(float newSpeed);
+	/*!
+	 * @brief Signal emitted when the speed is updated.
+	 * @param newSpeed The new speed value.
+	 */
+	void speedUpdated(float newSpeed);
 
-  /*!
-   * @brief Signal emitted when the RPM is updated.
-   * @param newRpm The new RPM value.
-   */
-  void rpmUpdated(int newRpm);
+	/*!
+	 * @brief Signal emitted when the RPM is updated.
+	 * @param newRpm The new RPM value.
+	 */
+	void rpmUpdated(int newRpm);
 };
 
 #endif // IMCP2515CONTROLLER_HPP
