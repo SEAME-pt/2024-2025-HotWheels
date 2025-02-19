@@ -5,12 +5,15 @@ on:
     branches:
       - main
     paths:
-      - 'car_controls/**'
+      - '${{ env.DIR }}/**'
   pull_request:
     branches:
       - main
     paths:
-      - 'car_controls/**'
+      - '${{ env.DIR }}/**'
+
+env:
+  DIR: apps/car_controls
 
 jobs:
   run-on-self-hosted:
@@ -21,7 +24,7 @@ jobs:
 
       - name: Build arm64 executable
         run: |
-          cd car_controls
+          cd $DIR
           mkdir build
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
@@ -29,7 +32,7 @@ jobs:
 
       - name: Build x86 executable for testing
         run: |
-          cd car_controls
+          cd $DIR
           mkdir build-x86
           cd build-x86
           qmake ../root.pro
@@ -37,11 +40,11 @@ jobs:
 
       - name: Run tests
         run: |
-          cd car_controls/build-x86
+          cd $DIR/build-x86
           ./car-controls-tests
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete car_controls/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/
