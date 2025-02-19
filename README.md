@@ -16,7 +16,7 @@ In this project, we have a Nvidea board that is responsible for all the decision
 To achieve all this the project is divided into main modules: Cluster Instrument, Lane Detection, Object Detection and Lane Segmentation. These modules have their own readme file that you can check below.
 
 ## Modules
-> ### [Instrument Cluster]() ⏲ 🎮  
+> ### [Instrument Cluster](https://github.com/SEAME-pt/2024-2025-HotWheels/blob/main/Instrument-Cluster.md) ⏲ 🎮  
 > ### [Lane Detection]() 🛣️ 📷  
 > ### [Object Detection]()  
 > ### [Road Segmentation]()  
