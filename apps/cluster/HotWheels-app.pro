@@ -13,32 +13,32 @@ INCLUDEPATH += \
 	$$PWD/includes/mileage \
 	$$PWD/includes/utils \
 	/usr/include/Ice \
-    /usr/include/IceUtil \
+        /usr/include/IceUtil \
 	$$[QT_SYSROOT]/usr/include/Ice \
-    $$[QT_SYSROOT]/usr/include/IceUtil
+        $$[QT_SYSROOT]/usr/include/IceUtil
 
 # Application Sources
 SOURCES += \
-	../ZeroC/CarDataI.cpp \
-    ../ZeroC/ClientThread.cpp \
-    ../ZeroC/Joystick.cpp \
-    sources/main/main.cpp \
-    sources/main/CarManager.cpp \
-    sources/data/DataManager.cpp \
+        ../../ZeroC/CarDataI.cpp \
+        ../../ZeroC/ClientThread.cpp \
+        ../../ZeroC/Joystick.cpp \
+        sources/main/main.cpp \
+        sources/main/CarManager.cpp \
+        sources/data/DataManager.cpp \
 	sources/data/SystemDataManager.cpp \
 	sources/data/VehicleDataManager.cpp \
 	sources/data/ClusterSettingsManager.cpp \
-    sources/canbus/MCP2515Controller.cpp \
-    sources/canbus/CanBusManager.cpp \
-    sources/canbus/SPIController.cpp \
-    sources/canbus/MCP2515Configurator.cpp \
-    sources/canbus/CANMessageProcessor.cpp \
-    sources/controls/ControlsManager.cpp \
-    sources/display/DisplayManager.cpp \
-    sources/system/SystemManager.cpp \
+        sources/canbus/MCP2515Controller.cpp \
+        sources/canbus/CanBusManager.cpp \
+        sources/canbus/SPIController.cpp \
+        sources/canbus/MCP2515Configurator.cpp \
+        sources/canbus/CANMessageProcessor.cpp \
+        sources/controls/ControlsManager.cpp \
+        sources/display/DisplayManager.cpp \
+        sources/system/SystemManager.cpp \
 	sources/system/SystemCommandExecutor.cpp \
 	sources/system/SystemInfoProvider.cpp \
-    sources/system/BatteryController.cpp \
+        sources/system/BatteryController.cpp \
 	sources/mileage/MileageCalculator.cpp \
 	sources/mileage/MileageManager.cpp \
 	sources/mileage/MileageFileHandler.cpp \
@@ -46,26 +46,26 @@ SOURCES += \
 	sources/utils/FileController.cpp
 
 HEADERS += \
-	../ZeroC/CarDataI.hpp \
-    ../ZeroC/ClientThread.hpp \
-    ../ZeroC/Joystick.h \
-    includes/main/CarManager.hpp \
-    includes/data/DataManager.hpp \
+        ../../ZeroC/CarDataI.hpp \
+        ../../ZeroC/ClientThread.hpp \
+        ../../ZeroC/Joystick.h \
+        includes/main/CarManager.hpp \
+        includes/data/DataManager.hpp \
 	includes/data/SystemDataManager.hpp \
 	includes/data/VehicleDataManager.hpp \
 	includes/data/ClusterSettingsManager.hpp \
-    includes/data/enums.hpp \
-    includes/canbus/MCP2515Controller.hpp \
+        includes/data/enums.hpp \
+        includes/canbus/MCP2515Controller.hpp \
 	includes/canbus/IMCP2515Controller.hpp \
-    includes/canbus/CanBusManager.hpp \
-    includes/canbus/SPIController.hpp \
+        includes/canbus/CanBusManager.hpp \
+        includes/canbus/SPIController.hpp \
 	includes/canbus/ISPIController.hpp \
-    includes/canbus/MCP2515Configurator.hpp \
-    includes/canbus/CANMessageProcessor.hpp \
-    includes/controls/ControlsManager.hpp \
-    includes/display/DisplayManager.hpp \
-    includes/system/SystemManager.hpp \
-    includes/system/BatteryController.hpp \
+        includes/canbus/MCP2515Configurator.hpp \
+        includes/canbus/CANMessageProcessor.hpp \
+        includes/controls/ControlsManager.hpp \
+        includes/display/DisplayManager.hpp \
+        includes/system/SystemManager.hpp \
+        includes/system/BatteryController.hpp \
 	includes/system/IBatteryController.hpp \
 	includes/system/SystemCommandExecutor.hpp \
 	includes/system/SystemInfoProvider.hpp \

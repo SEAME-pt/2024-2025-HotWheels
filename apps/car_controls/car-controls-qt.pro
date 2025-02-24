@@ -13,9 +13,9 @@ INCLUDEPATH += \
 
 # Application Sources
 SOURCES += \
-    ../ZeroC/CarDataI.cpp \
-    ../ZeroC/ClientThread.cpp \
-    ../ZeroC/Joystick.cpp \
+    ../../ZeroC/CarDataI.cpp \
+    ../../ZeroC/ClientThread.cpp \
+    ../../ZeroC/Joystick.cpp \
     sources/ControlsManager.cpp \
     sources/JoysticksController.cpp \
     sources/EngineController.cpp \
@@ -23,9 +23,9 @@ SOURCES += \
     sources/main.cpp
 
 HEADERS += \
-    ../ZeroC/CarDataI.hpp \
-    ../ZeroC/ClientThread.hpp \
-    ../ZeroC/Joystick.h \
+    ../../ZeroC/CarDataI.hpp \
+    ../../ZeroC/ClientThread.hpp \
+    ../../ZeroC/Joystick.h \
     includes/ControlsManager.hpp \
     includes/JoysticksController.hpp \
     includes/EngineController.hpp \
