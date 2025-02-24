@@ -25,11 +25,19 @@
 var NAVTREE =
 [
   [ "Hotwheels-Cluster", "index.html", [
-    [ "HotWheels - Instrument Cluster ⏲ 🎮", "index.html", "index" ],
+    [ "HotWheels 🏁 🏎️", "index.html", "index" ],
     [ "Nvidea or RaspberryPi", "md_ADR_2001-NvideaOrRaspberry.html", [
       [ "Context", "md_ADR_2001-NvideaOrRaspberry.html#autotoc_md1", null ],
       [ "Decision", "md_ADR_2001-NvideaOrRaspberry.html#autotoc_md2", null ],
       [ "Consequences", "md_ADR_2001-NvideaOrRaspberry.html#autotoc_md3", null ]
+    ] ],
+    [ "HotWheels - Instrument Cluster ⏲ 🎮", "md_Instrument-Cluster.html", [
+      [ "Module Description", "md_Instrument-Cluster.html#autotoc_md16", null ],
+      [ "Communication Architecture", "md_Instrument-Cluster.html#autotoc_md17", null ],
+      [ "Software Architecture", "md_Instrument-Cluster.html#autotoc_md18", null ],
+      [ "Adaptation to Read CAN Messages Using SPI Pins", "md_Instrument-Cluster.html#autotoc_md19", null ],
+      [ "Cross-Compilation Method", "md_Instrument-Cluster.html#autotoc_md20", null ],
+      [ "Results", "md_Instrument-Cluster.html#autotoc_md21", null ]
     ] ],
     [ "Test List", "test.html", null ],
     [ "Namespaces", "namespaces.html", [
@@ -70,11 +78,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BatteryController_8cpp.html",
-"classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b",
-"classData_1_1Callback__CarData__setCarTemperatureValue__Base.html",
-"classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6",
-"classSystemManagerTest.html#a3e069af09364c3ff4ace1ebb8243ce81",
-"test__MileageCalculator_8cpp.html#a5d7a5c3c86a642faeb1a7b43009a998a"
+"classCanBusManagerTest.html#adfdf34a36fd0bd8d894a68a0629ff188",
+"classData_1_1CarData.html#ae0db8ca0c41958e5a49a00e091d7f32b",
+"classMileageCalculatorTest.html",
+"cluster_2includes_2data_2enums_8hpp.html#a7742add5e28549b88107eeec57b2f835ae599161956d626eda4cb0a5ffb85271c",
+"test__MCP2515Device_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

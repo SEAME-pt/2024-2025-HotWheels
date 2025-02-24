@@ -15,5 +15,5 @@ var searchData=
   ['updatetemperature_12',['updateTemperature',['../classDisplayManager.html#a002b346babdbbdf852f9121a32e80e9d',1,'DisplayManager']]],
   ['updatetime_13',['updateTime',['../classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d',1,'SystemManager']]],
   ['updatewifistatus_14',['updateWifiStatus',['../classDisplayManager.html#af6cc252c8fd7ca1836e5c38265489f2e',1,'DisplayManager']]],
-  ['using_20spi_20pins_15',['Adaptation to Read CAN Messages Using SPI Pins',['../index.html#autotoc_md19',1,'']]]
+  ['using_20spi_20pins_15',['Adaptation to Read CAN Messages Using SPI Pins',['../md_Instrument-Cluster.html#autotoc_md19',1,'']]]
 ];

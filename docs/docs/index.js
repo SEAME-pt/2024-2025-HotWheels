@@ -1,9 +1,12 @@
 var index =
 [
-    [ "Project Description", "index.html#autotoc_md16", null ],
-    [ "Communication Architecture", "index.html#autotoc_md17", null ],
-    [ "Software Architecture", "index.html#autotoc_md18", null ],
-    [ "Adaptation to Read CAN Messages Using SPI Pins", "index.html#autotoc_md19", null ],
-    [ "Cross-Compilation Method", "index.html#autotoc_md20", null ],
-    [ "Results", "index.html#autotoc_md21", null ]
+    [ "Introduction", "index.html#autotoc_md24", [
+      [ "What is SEA:ME?", "index.html#autotoc_md25", null ]
+    ] ],
+    [ "Project Description", "index.html#autotoc_md26", null ],
+    [ "Modules", "index.html#autotoc_md27", [
+      [ "[Lane Detection]() 🛣️ 📷", "index.html#autotoc_md28", null ],
+      [ "[Object Detection]()", "index.html#autotoc_md29", null ],
+      [ "[Road Segmentation]()", "index.html#autotoc_md30", null ]
+    ] ]
 ];

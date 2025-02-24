@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hotwheels-Cluster: app/app_tests/integration/test_int_DataManager.cpp Source File</title>
+<title>Hotwheels-Cluster: apps/cluster/app_tests/integration/test_int_DataManager.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -195,12 +195,12 @@ $(function(){initNavTree('test__int__DataManager_8cpp_source.html',''); initResi
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>{</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    QSignalSpy spy(dataManager, &amp;<a class="code hl_signal" href="classDataManager.html#a23da75da1d1fa2d90c7f885b850b515d">DataManager::engineDataProcessed</a>);</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    dataManager-&gt;handleDirectionData(<a class="code hl_enumvalue" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5">CarDirection::Drive</a>);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    dataManager-&gt;handleDirectionData(<a class="code hl_enumvalue" href="car__controls_2includes_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5">CarDirection::Drive</a>);</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    QCoreApplication::processEvents();</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    ASSERT_GT(spy.count(), 0) &lt;&lt; <span class="stringliteral">&quot;Signal was not emitted!&quot;</span>;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    QList&lt;QVariant&gt; args = spy.takeFirst();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    EXPECT_EQ(args.at(0).value&lt;<a class="code hl_enumeration" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a>&gt;(), <a class="code hl_enumvalue" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5">CarDirection::Drive</a>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    EXPECT_EQ(args.at(0).value&lt;<a class="code hl_enumeration" href="car__controls_2includes_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a>&gt;(), <a class="code hl_enumvalue" href="car__controls_2includes_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5">CarDirection::Drive</a>);</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
 </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span></div>
@@ -327,8 +327,8 @@ $(function(){initNavTree('test__int__DataManager_8cpp_source.html',''); initResi
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>}</div>
 </div>
 <div class="ttc" id="aDataManager_8hpp_html"><div class="ttname"><a href="DataManager_8hpp.html">DataManager.hpp</a></div><div class="ttdoc">Definition of the DataManager class.</div></div>
-<div class="ttc" id="aapp_2includes_2data_2enums_8hpp_html_ac36a4d48cbe104b682caf973f09e3f54"><div class="ttname"><a href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></div><div class="ttdeci">CarDirection</div><div class="ttdoc">Enum class for the car direction.</div><div class="ttdef"><b>Definition</b> <a href="app_2includes_2data_2enums_8hpp_source.html#l00030">enums.hpp:30</a></div></div>
-<div class="ttc" id="aapp_2includes_2data_2enums_8hpp_html_ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5"><div class="ttname"><a href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5">CarDirection::Drive</a></div><div class="ttdeci">@ Drive</div><div class="ttdef"><b>Definition</b> <a href="app_2includes_2data_2enums_8hpp_source.html#l00030">enums.hpp:30</a></div></div>
+<div class="ttc" id="acar__controls_2includes_2enums_8hpp_html_ac36a4d48cbe104b682caf973f09e3f54"><div class="ttname"><a href="car__controls_2includes_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></div><div class="ttdeci">CarDirection</div><div class="ttdoc">Enum class for the car direction.</div><div class="ttdef"><b>Definition</b> <a href="car__controls_2includes_2enums_8hpp_source.html#l00030">enums.hpp:30</a></div></div>
+<div class="ttc" id="acar__controls_2includes_2enums_8hpp_html_ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5"><div class="ttname"><a href="car__controls_2includes_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54af2c6151d6c0d99f3666129b97e2100f5">CarDirection::Drive</a></div><div class="ttdeci">@ Drive</div><div class="ttdef"><b>Definition</b> <a href="car__controls_2includes_2enums_8hpp_source.html#l00030">enums.hpp:30</a></div></div>
 <div class="ttc" id="aclassDataManagerTest_html"><div class="ttname"><a href="classDataManagerTest.html">DataManagerTest</a></div><div class="ttdoc">Class to test the integration between the DataManager and the SystemDataManager, VehicleDataManager,...</div><div class="ttdef"><b>Definition</b> <a href="#l00025">test_int_DataManager.cpp:26</a></div></div>
 <div class="ttc" id="aclassDataManagerTest_html_a230de32f703b444f1a2849816e92df11"><div class="ttname"><a href="classDataManagerTest.html#a230de32f703b444f1a2849816e92df11">DataManagerTest::TearDownTestSuite</a></div><div class="ttdeci">static void TearDownTestSuite()</div><div class="ttdef"><b>Definition</b> <a href="#l00038">test_int_DataManager.cpp:38</a></div></div>
 <div class="ttc" id="aclassDataManagerTest_html_a8eda5fcda5752c7360494c0cf851c77f"><div class="ttname"><a href="classDataManagerTest.html#a8eda5fcda5752c7360494c0cf851c77f">DataManagerTest::TearDown</a></div><div class="ttdeci">void TearDown() override</div><div class="ttdef"><b>Definition</b> <a href="#l00049">test_int_DataManager.cpp:49</a></div></div>
@@ -354,7 +354,7 @@ $(function(){initNavTree('test__int__DataManager_8cpp_source.html',''); initResi
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_233f5a9e11cb958617720b9aa5e796d9.html">app_tests</a></li><li class="navelem"><a class="el" href="dir_c4611509ca9f72a4af4073838a355ce9.html">integration</a></li><li class="navelem"><a class="el" href="test__int__DataManager_8cpp.html">test_int_DataManager.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="dir_3fc8f51dd17eafa9e714d9ca93022f96.html">cluster</a></li><li class="navelem"><a class="el" href="dir_9a8e47ff0ccc8ec46d7f358cedb1d1e1.html">app_tests</a></li><li class="navelem"><a class="el" href="dir_1bcda06b1955ca184a28917bef2dbc28.html">integration</a></li><li class="navelem"><a class="el" href="test__int__DataManager_8cpp.html">test_int_DataManager.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

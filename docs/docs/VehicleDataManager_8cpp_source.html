@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hotwheels-Cluster: app/sources/data/VehicleDataManager.cpp Source File</title>
+<title>Hotwheels-Cluster: apps/cluster/sources/data/VehicleDataManager.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -132,7 +132,7 @@ $(function(){initNavTree('VehicleDataManager_8cpp_source.html',''); initResizabl
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classVehicleDataManager.html#a4379e81efb70186d8103e61003df1e2e">   57</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classVehicleDataManager.html#a4379e81efb70186d8103e61003df1e2e">VehicleDataManager::handleSpeedData</a>(<span class="keywordtype">float</span> rawSpeed)</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">float</span> processedSpeed = rawSpeed;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classVehicleDataManager.html#a8ada366c36950f2087066e7fd7553e97">m_clusterMetrics</a> == <a class="code hl_enumvalue" href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71ea6e02fb12e2553176759ef52952b5b037">ClusterMetrics::Miles</a>) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classVehicleDataManager.html#a8ada366c36950f2087066e7fd7553e97">m_clusterMetrics</a> == <a class="code hl_enumvalue" href="car__controls_2includes_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71ea6e02fb12e2553176759ef52952b5b037">ClusterMetrics::Miles</a>) {</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        processedSpeed *= 0.621371f;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_variable" href="classVehicleDataManager.html#a6b50e43bffecdf99e4f179285ef7939f">m_speed</a> = processedSpeed;</div>
@@ -151,7 +151,7 @@ $(function(){initNavTree('VehicleDataManager_8cpp_source.html',''); initResizabl
 </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span></div>
 <div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classVehicleDataManager.html#a96a6fd992d1922733cd4e69471756f41">   90</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classVehicleDataManager.html#a96a6fd992d1922733cd4e69471756f41">VehicleDataManager::handleDirectionData</a>(<a class="code hl_enumeration" href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> rawDirection)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classVehicleDataManager.html#a96a6fd992d1922733cd4e69471756f41">   90</a></span><span class="keywordtype">void</span> <a class="code hl_slot" href="classVehicleDataManager.html#a96a6fd992d1922733cd4e69471756f41">VehicleDataManager::handleDirectionData</a>(<a class="code hl_enumeration" href="car__controls_2includes_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a> rawDirection)</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>{</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classVehicleDataManager.html#a6d54ea5ad6f2be90ed8f4f299e417331">m_carDirection</a> != rawDirection) {</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_variable" href="classVehicleDataManager.html#a6d54ea5ad6f2be90ed8f4f299e417331">m_carDirection</a> = rawDirection;</div>
@@ -171,8 +171,8 @@ $(function(){initNavTree('VehicleDataManager_8cpp_source.html',''); initResizabl
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
 </div>
 <div class="ttc" id="aVehicleDataManager_8hpp_html"><div class="ttname"><a href="VehicleDataManager_8hpp.html">VehicleDataManager.hpp</a></div><div class="ttdoc">Definition of the VehicleDataManager class.</div></div>
-<div class="ttc" id="aapp_2includes_2data_2enums_8hpp_html_ac36a4d48cbe104b682caf973f09e3f54"><div class="ttname"><a href="app_2includes_2data_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></div><div class="ttdeci">CarDirection</div><div class="ttdoc">Enum class for the car direction.</div><div class="ttdef"><b>Definition</b> <a href="app_2includes_2data_2enums_8hpp_source.html#l00030">enums.hpp:30</a></div></div>
-<div class="ttc" id="aapp_2includes_2data_2enums_8hpp_html_af3fd2dcbd5b122a026970fb65fdbe71ea6e02fb12e2553176759ef52952b5b037"><div class="ttname"><a href="app_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71ea6e02fb12e2553176759ef52952b5b037">ClusterMetrics::Miles</a></div><div class="ttdeci">@ Miles</div><div class="ttdef"><b>Definition</b> <a href="app_2includes_2data_2enums_8hpp_source.html#l00028">enums.hpp:28</a></div></div>
+<div class="ttc" id="acar__controls_2includes_2enums_8hpp_html_ac36a4d48cbe104b682caf973f09e3f54"><div class="ttname"><a href="car__controls_2includes_2enums_8hpp.html#ac36a4d48cbe104b682caf973f09e3f54">CarDirection</a></div><div class="ttdeci">CarDirection</div><div class="ttdoc">Enum class for the car direction.</div><div class="ttdef"><b>Definition</b> <a href="car__controls_2includes_2enums_8hpp_source.html#l00030">enums.hpp:30</a></div></div>
+<div class="ttc" id="acar__controls_2includes_2enums_8hpp_html_af3fd2dcbd5b122a026970fb65fdbe71ea6e02fb12e2553176759ef52952b5b037"><div class="ttname"><a href="car__controls_2includes_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71ea6e02fb12e2553176759ef52952b5b037">ClusterMetrics::Miles</a></div><div class="ttdeci">@ Miles</div><div class="ttdef"><b>Definition</b> <a href="car__controls_2includes_2enums_8hpp_source.html#l00028">enums.hpp:28</a></div></div>
 <div class="ttc" id="aclassVehicleDataManager_html_a080f5c555bb54d96455e44f1a906bc65"><div class="ttname"><a href="classVehicleDataManager.html#a080f5c555bb54d96455e44f1a906bc65">VehicleDataManager::handleRpmData</a></div><div class="ttdeci">void handleRpmData(int rawRpm)</div><div class="ttdoc">Handle Rotation Per Minute data.</div><div class="ttdef"><b>Definition</b> <a href="#l00042">VehicleDataManager.cpp:42</a></div></div>
 <div class="ttc" id="aclassVehicleDataManager_html_a1f177c621382b1f8910a1d63acc297e8"><div class="ttname"><a href="classVehicleDataManager.html#a1f177c621382b1f8910a1d63acc297e8">VehicleDataManager::m_rpm</a></div><div class="ttdeci">int m_rpm</div><div class="ttdef"><b>Definition</b> <a href="VehicleDataManager_8hpp_source.html#l00049">VehicleDataManager.hpp:49</a></div></div>
 <div class="ttc" id="aclassVehicleDataManager_html_a28aad57fe9d07330a0d3dce66c27b0b3"><div class="ttname"><a href="classVehicleDataManager.html#a28aad57fe9d07330a0d3dce66c27b0b3">VehicleDataManager::m_mileage</a></div><div class="ttdeci">double m_mileage</div><div class="ttdef"><b>Definition</b> <a href="VehicleDataManager_8hpp_source.html#l00052">VehicleDataManager.hpp:52</a></div></div>
@@ -194,7 +194,7 @@ $(function(){initNavTree('VehicleDataManager_8cpp_source.html',''); initResizabl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_3f48404d21ee623985261530746c4ec3.html">sources</a></li><li class="navelem"><a class="el" href="dir_5b6048588361f7cb3f45b897a6db7dc3.html">data</a></li><li class="navelem"><a class="el" href="VehicleDataManager_8cpp.html">VehicleDataManager.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="dir_3fc8f51dd17eafa9e714d9ca93022f96.html">cluster</a></li><li class="navelem"><a class="el" href="dir_e8585d75386710cc6ee08c6bbe2706b6.html">sources</a></li><li class="navelem"><a class="el" href="dir_b9e2b4c4c3bb5f06329c7d00fb0adc22.html">data</a></li><li class="navelem"><a class="el" href="VehicleDataManager_8cpp.html">VehicleDataManager.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

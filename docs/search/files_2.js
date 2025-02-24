@@ -12,6 +12,6 @@ var searchData=
   ['clientthread_2ehpp_9',['ClientThread.hpp',['../ClientThread_8hpp.html',1,'']]],
   ['clustersettingsmanager_2ecpp_10',['ClusterSettingsManager.cpp',['../ClusterSettingsManager_8cpp.html',1,'']]],
   ['clustersettingsmanager_2ehpp_11',['ClusterSettingsManager.hpp',['../ClusterSettingsManager_8hpp.html',1,'']]],
-  ['controlsmanager_2ecpp_12',['ControlsManager.cpp',['../app_2sources_2controls_2ControlsManager_8cpp.html',1,'(Global Namespace)'],['../car__controls_2sources_2ControlsManager_8cpp.html',1,'(Global Namespace)']]],
-  ['controlsmanager_2ehpp_13',['ControlsManager.hpp',['../app_2includes_2controls_2ControlsManager_8hpp.html',1,'(Global Namespace)'],['../car__controls_2includes_2ControlsManager_8hpp.html',1,'(Global Namespace)']]]
+  ['controlsmanager_2ecpp_12',['ControlsManager.cpp',['../car__controls_2sources_2ControlsManager_8cpp.html',1,'(Global Namespace)'],['../cluster_2sources_2controls_2ControlsManager_8cpp.html',1,'(Global Namespace)']]],
+  ['controlsmanager_2ehpp_13',['ControlsManager.hpp',['../car__controls_2includes_2ControlsManager_8hpp.html',1,'(Global Namespace)'],['../cluster_2includes_2controls_2ControlsManager_8hpp.html',1,'(Global Namespace)']]]
 ];

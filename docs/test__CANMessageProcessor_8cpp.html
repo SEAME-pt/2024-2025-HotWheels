@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hotwheels-Cluster: app/app_tests/unit/canbus/test_CANMessageProcessor.cpp File Reference</title>
+<title>Hotwheels-Cluster: apps/cluster/app_tests/unit/canbus/test_CANMessageProcessor.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -178,7 +178,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that the new handler is called instead of the old handler. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000045">Test</a></b></dt><dd>Tests if a handler can be overwritten for the same frame ID. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000053">Test</a></b></dt><dd>Tests if a handler can be overwritten for the same frame ID. </dd></dl>
 <p>Verifies that registering a new handler for the same frame ID overwrites the old handler.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2" title="Destroy the CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::registerHandler</a> </dd></dl>
 
@@ -206,7 +206,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that the registered handler is called with the correct data. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000043">Test</a></b></dt><dd>Tests if a message is processed with a registered handler. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000051">Test</a></b></dt><dd>Tests if a message is processed with a registered handler. </dd></dl>
 <p>Verifies that processMessage() calls the registered handler with the correct data. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102" title="Process a CAN message.">CANMessageProcessor::processMessage</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00063">63</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
@@ -233,7 +233,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that processMessage() throws a runtime_error exception. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000044">Test</a></b></dt><dd>Tests if processing a message with an unregistered handler throws an exception. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000052">Test</a></b></dt><dd>Tests if processing a message with an unregistered handler throws an exception. </dd></dl>
 <p>Verifies that processMessage() throws a runtime_error exception when no handler is registered for the given frame ID. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102" title="Process a CAN message.">CANMessageProcessor::processMessage</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00085">85</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
@@ -260,7 +260,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that registerHandler() throws an invalid_argument exception. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000042">Test</a></b></dt><dd>Tests if registering a null handler throws an exception. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000050">Test</a></b></dt><dd>Tests if registering a null handler throws an exception. </dd></dl>
 <p>Verifies that registerHandler() throws an invalid_argument exception when a null handler is registered. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2" title="Destroy the CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::registerHandler</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00051">51</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
@@ -287,7 +287,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that registerHandler() does not throw an exception. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000041">Test</a></b></dt><dd>Tests if a handler can be registered successfully. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000049">Test</a></b></dt><dd>Tests if a handler can be registered successfully. </dd></dl>
 <p>Verifies that registerHandler() does not throw an exception when a valid handler is registered. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2" title="Destroy the CANMessageProcessor::CANMessageProcessor object.">CANMessageProcessor::registerHandler</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="test__CANMessageProcessor_8cpp_source.html#l00039">39</a> of file <a class="el" href="test__CANMessageProcessor_8cpp_source.html">test_CANMessageProcessor.cpp</a>.</p>
@@ -299,7 +299,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_233f5a9e11cb958617720b9aa5e796d9.html">app_tests</a></li><li class="navelem"><a class="el" href="dir_9f3cf4e9959d69a629065a14f6a7ea01.html">unit</a></li><li class="navelem"><a class="el" href="dir_f4ace13d0aacd39de1d84f7f5e87bc22.html">canbus</a></li><li class="navelem"><a class="el" href="test__CANMessageProcessor_8cpp.html">test_CANMessageProcessor.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="dir_3fc8f51dd17eafa9e714d9ca93022f96.html">cluster</a></li><li class="navelem"><a class="el" href="dir_9a8e47ff0ccc8ec46d7f358cedb1d1e1.html">app_tests</a></li><li class="navelem"><a class="el" href="dir_44399569173f8f27c4cea4a3da0cd3f4.html">unit</a></li><li class="navelem"><a class="el" href="dir_d2736d9507cfd71962b54b3af5f704b3.html">canbus</a></li><li class="navelem"><a class="el" href="test__CANMessageProcessor_8cpp.html">test_CANMessageProcessor.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

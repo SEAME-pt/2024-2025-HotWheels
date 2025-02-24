@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hotwheels-Cluster: HotWheels - Instrument Cluster ⏲ 🎮</title>
+<title>Hotwheels-Cluster: HotWheels 🏁 🏎️</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -103,39 +103,42 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">HotWheels - Instrument Cluster ⏲ 🎮 </div></div>
+  <div class="headertitle"><div class="title">HotWheels 🏁 🏎️ </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
-<p>Welcome to the Instrument Cluster repository of the HotWheels team! Here you'll find all the work done during the SEA:ME Instrument Cluster project. <br  />
+<h3><a class="anchor" id="autotoc_md23"></a>
+🤝 Authorship - Collaborative Work</h3>
+<blockquote class="doxtable">
+<p>Project done in collaboration with <a href="https://github.com/reomelo">Ricardo Melo</a>, <a href="https://github.com/fle-bihh">Félix Bihan</a>, <a href="https://github.com/t-pereira06">Tiago Pereira</a> and <a href="https://github.com/MicchelFAB">Michel Batista</a> </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md24"></a>
+Introduction</h1>
+<p>Welcome to the main repository of the HotWheels team! Here you'll find all the details regarding the autonomous driving JetRacer project developed by Team01 (HotWheels) during the <a href="https://seame.space/">SEA:ME</a> program in Portugal (2024-2025). <br  />
 </p>
-<p>Main repository: <a href="https://github.com/SEAME-pt/2024-2025-HotWheels">https://github.com/SEAME-pt/2024-2025-HotWheels</a></p>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
+What is SEA:ME?</h2>
+<p>SEA:ME is a cutting-edge, tuition-free advanced studies program in which students develop expertise in Code-driven Mobility, Autonomous Mobility, and Future Mobility Ecosystems. Over a 6-12 month period, students engage in expert-designed, practical coursework emphasizing hands-on, peer-to-peer learning in a lab environment. This immersive approach prepares them for work in the dynamic field of mobility IT. <br  />
+</p>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Project Description</h1>
-<p>The HotWheels Instrument Cluster project aims to develop a sophisticated instrument cluster for a model car. The project focuses on integrating various components such as sensors, motors, and displays to create a functional and interactive system. The primary goals of the project are to enhance the driving experience, provide real-time data to the driver, and ensure seamless communication between different components.</p>
-<h1><a class="anchor" id="autotoc_md17"></a>
-Communication Architecture</h1>
-<p>The communication architecture of the project is based on the CAN-BUS protocol. CAN-BUS (Controller Area Network) is a robust vehicle bus standard designed to allow microcontrollers and devices to communicate with each other without a host computer. In this project, CAN-BUS is used for communication between the Nvidea board and the arduino. <br  />
+<p>The main goal of the SEA:ME program is to develop a fully autonomous driving car. The car's communication system is based on the CAN(Controller Area Network) protocol which is a robust vehicle bus standard designed to allow microcontrollers and devices to communicate with each other without a host computer. <br  />
 </p>
-<p>This communication system and its components can be visualized as follows:</p>
-<p><img src="https://github.com/user-attachments/assets/8a0310a5-d845-49f4-b54a-a813153147cf" alt="image" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md18"></a>
-Software Architecture</h1>
-<p>The software architecture of the project is designed to leverage the capabilities of the Nvidea board. The decision to use this board was based on its powerful GPU and AI tools, which are essential for advanced computer vision and sensor fusion tasks, providing the necessary processing power to run the main control operations for the motors and other components.</p>
-<p>Our software architecture is simple, easy to understand and well organized allowing all team members to work on the code simultaneously and the expansion of the app for the future modules.</p>
-<p><img src="https://github.com/user-attachments/assets/f113d084-b909-42c2-b1a0-845ba5ca4f2a" alt="software-arch" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md19"></a>
-Adaptation to Read CAN Messages Using SPI Pins</h1>
-<p>Unfortunately this version of the Jetson Nano doesn't provide the CAN interface necessary to read CAN messages directly. Being so we were forced to improvise and adapt the QT app to read CAN messages using SPI (Serial Peripheral Interface) pins. <br  />
- This adaptation allows the system to interface with the CAN-BUS protocol through the pins on the Nvidea board guaranteeing proper communication between the components.</p>
-<h1><a class="anchor" id="autotoc_md20"></a>
-Cross-Compilation Method</h1>
-<p>To ensure compatibility with the Nvidea board, the project employs a cross-compilation method from x86 to aarm64. This method involves compiling the software on an x86 machine and then deploying it on the aarm64 architecture of the board ensuring that the software runs efficiently on the target hardware.</p>
-<h1><a class="anchor" id="autotoc_md21"></a>
-Results</h1>
-<p>Below is a small video of our final results. <br  />
+<p>In this project, we have a Nvidea board that is responsible for all the decision making and image processing tasks taking advantage of it's powerful GPU and AI tools. This main board gets the essential data from a microcontroller called arduino that is reponsible for communicating with the sensors (speed and ultrasound) and send the data via the CAN-BUS protocol. <br  />
 </p>
-<p><a href="https://github.com/user-attachments/assets/36f429f6-f533-4ab9-9822-74d56cfc7189">https://github.com/user-attachments/assets/36f429f6-f533-4ab9-9822-74d56cfc7189</a> </p>
+<p>To achieve all this the project is divided into main modules: Cluster Instrument, Lane Detection, Object Detection and Lane Segmentation. These modules have their own readme file that you can check below.</p>
+<h1><a class="anchor" id="autotoc_md27"></a>
+Modules</h1>
+<blockquote class="doxtable">
+<p>### <a href="https://github.com/SEAME-pt/2024-2025-HotWheels/blob/main/Instrument-Cluster.md">Instrument Cluster</a> ⏲ 🎮 <br  />
+ </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md28"></a>
+[Lane Detection]() 🛣️ 📷</h2>
+<h2><a class="anchor" id="autotoc_md29"></a>
+[Object Detection]()</h2>
+<h2><a class="anchor" id="autotoc_md30"></a>
+[Road Segmentation]()</h2>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

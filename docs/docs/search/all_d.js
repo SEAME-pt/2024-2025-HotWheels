@@ -13,7 +13,7 @@ var searchData=
   ['gettemperature_10',['getTemperature',['../classISystemInfoProvider.html#a5da52499bfc71b3ab410c514fd4c933c',1,'ISystemInfoProvider::getTemperature()'],['../classSystemInfoProvider.html#a9afa991ae3553a9cbcc9c9b2d070769e',1,'SystemInfoProvider::getTemperature()']]],
   ['getthread_11',['getThread',['../classCanBusManager.html#a0bc2f5ec1d447d0179d7ae96a9188dea',1,'CanBusManager']]],
   ['gettimetimer_12',['getTimeTimer',['../classSystemManager.html#a1afb87ba2cf06677863e52c7fe2f49f1',1,'SystemManager']]],
-  ['getting_20started_13',['Getting Started',['..//home/michel/actions-runner/_work/HotWheels-Cluster/HotWheels-Cluster/app/README.md#autotoc_md12',1,'']]],
+  ['getting_20started_13',['Getting Started',['..//home/michel/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/cluster/README.md#autotoc_md12',1,'']]],
   ['gettotalmileage_14',['getTotalMileage',['../classMileageManager.html#a90f1735a5be87193e0872b49a0eb9174',1,'MileageManager']]],
   ['getvehicledatamanager_15',['getVehicleDataManager',['../classDataManager.html#acf3ef4e542046531da664381ce337fc5',1,'DataManager']]],
   ['getwifistatus_16',['getWifiStatus',['../classISystemInfoProvider.html#a1ebc4c5f88dade63c28f5051b2178344',1,'ISystemInfoProvider::getWifiStatus()'],['../classSystemInfoProvider.html#a149f0effbf4179a057544ba6fe8cece8',1,'SystemInfoProvider::getWifiStatus()']]]

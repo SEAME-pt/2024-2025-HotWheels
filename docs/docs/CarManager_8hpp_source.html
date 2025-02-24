@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hotwheels-Cluster: app/includes/main/CarManager.hpp Source File</title>
+<title>Hotwheels-Cluster: apps/cluster/includes/main/CarManager.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -112,7 +112,7 @@ $(function(){initNavTree('CarManager_8hpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define CARMANAGER_H</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="CanBusManager_8hpp.html">CanBusManager.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="app_2includes_2controls_2ControlsManager_8hpp.html">ControlsManager.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;ControlsManager.hpp&quot;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="DataManager_8hpp.html">DataManager.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="DisplayManager_8hpp.html">DisplayManager.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="MileageManager_8hpp.html">MileageManager.hpp</a>&quot;</span></div>
@@ -158,7 +158,6 @@ $(function(){initNavTree('CarManager_8hpp_source.html',''); initResizable(true);
 <div class="ttc" id="aDisplayManager_8hpp_html"><div class="ttname"><a href="DisplayManager_8hpp.html">DisplayManager.hpp</a></div><div class="ttdoc">Definition of the DisplayManager class.</div></div>
 <div class="ttc" id="aMileageManager_8hpp_html"><div class="ttname"><a href="MileageManager_8hpp.html">MileageManager.hpp</a></div><div class="ttdoc">Definition of the MileageManager class.</div></div>
 <div class="ttc" id="aSystemManager_8hpp_html"><div class="ttname"><a href="SystemManager_8hpp.html">SystemManager.hpp</a></div><div class="ttdoc">Definition of the SystemManager class.</div></div>
-<div class="ttc" id="aapp_2includes_2controls_2ControlsManager_8hpp_html"><div class="ttname"><a href="app_2includes_2controls_2ControlsManager_8hpp.html">ControlsManager.hpp</a></div><div class="ttdoc">Definition of the ControlsManager class.</div></div>
 <div class="ttc" id="aclassCanBusManager_html"><div class="ttname"><a href="classCanBusManager.html">CanBusManager</a></div><div class="ttdoc">Class that manages the CAN bus communication. QObject.</div><div class="ttdef"><b>Definition</b> <a href="CanBusManager_8hpp_source.html#l00028">CanBusManager.hpp:28</a></div></div>
 <div class="ttc" id="aclassCarManager_html"><div class="ttname"><a href="classCarManager.html">CarManager</a></div><div class="ttdoc">Class that manages the car manager application. QMainWindow.</div><div class="ttdef"><b>Definition</b> <a href="#l00041">CarManager.hpp:41</a></div></div>
 <div class="ttc" id="aclassCarManager_html_a0898d82016d07e29823bd6e1ff7d379a"><div class="ttname"><a href="classCarManager.html#a0898d82016d07e29823bd6e1ff7d379a">CarManager::initializeSystemManager</a></div><div class="ttdeci">void initializeSystemManager()</div><div class="ttdoc">Initialize the SystemManager.</div><div class="ttdef"><b>Definition</b> <a href="CarManager_8cpp_source.html#l00171">CarManager.cpp:171</a></div></div>
@@ -177,7 +176,7 @@ $(function(){initNavTree('CarManager_8hpp_source.html',''); initResizable(true);
 <div class="ttc" id="aclassCarManager_html_abcdc65e32dc6c5edb7fcd5a9e1e82f6b"><div class="ttname"><a href="classCarManager.html#abcdc65e32dc6c5edb7fcd5a9e1e82f6b">CarManager::m_canBusManager</a></div><div class="ttdeci">CanBusManager * m_canBusManager</div><div class="ttdoc">Pointer to the CanBusManager instance.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">CarManager.hpp:54</a></div></div>
 <div class="ttc" id="aclassCarManager_html_ac0417ed42e8afc27fa74ebc093e3038d"><div class="ttname"><a href="classCarManager.html#ac0417ed42e8afc27fa74ebc093e3038d">CarManager::m_dataManager</a></div><div class="ttdeci">DataManager * m_dataManager</div><div class="ttdoc">Pointer to the DataManager instance.</div><div class="ttdef"><b>Definition</b> <a href="#l00052">CarManager.hpp:52</a></div></div>
 <div class="ttc" id="aclassCarManager_html_ada40d7d41c1bcf3d25a122e3fecc0b0d"><div class="ttname"><a href="classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d">CarManager::CarManager</a></div><div class="ttdeci">CarManager(int argc, char **argv, QWidget *parent=nullptr)</div><div class="ttdoc">Construct a new CarManager object.</div><div class="ttdef"><b>Definition</b> <a href="CarManager_8cpp_source.html#l00029">CarManager.cpp:29</a></div></div>
-<div class="ttc" id="aclassControlsManager_html"><div class="ttname"><a href="classControlsManager.html">ControlsManager</a></div><div class="ttdoc">The ControlsManager class.</div><div class="ttdef"><b>Definition</b> <a href="app_2includes_2controls_2ControlsManager_8hpp_source.html#l00032">ControlsManager.hpp:32</a></div></div>
+<div class="ttc" id="aclassControlsManager_html"><div class="ttname"><a href="classControlsManager.html">ControlsManager</a></div><div class="ttdoc">The ControlsManager class.</div><div class="ttdef"><b>Definition</b> <a href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00030">ControlsManager.hpp:30</a></div></div>
 <div class="ttc" id="aclassDataManager_html"><div class="ttname"><a href="classDataManager.html">DataManager</a></div><div class="ttdoc">Class that manages the data received from the car&#39;s systems. QObject.</div><div class="ttdef"><b>Definition</b> <a href="DataManager_8hpp_source.html#l00031">DataManager.hpp:31</a></div></div>
 <div class="ttc" id="aclassDisplayManager_html"><div class="ttname"><a href="classDisplayManager.html">DisplayManager</a></div><div class="ttdoc">Class that manages the display of the car manager. QObject.</div><div class="ttdef"><b>Definition</b> <a href="DisplayManager_8hpp_source.html#l00028">DisplayManager.hpp:28</a></div></div>
 <div class="ttc" id="aclassMileageManager_html"><div class="ttname"><a href="classMileageManager.html">MileageManager</a></div><div class="ttdoc">Class that manages the mileage of a vehicle. QObject.</div><div class="ttdef"><b>Definition</b> <a href="MileageManager_8hpp_source.html#l00028">MileageManager.hpp:28</a></div></div>
@@ -188,7 +187,7 @@ $(function(){initNavTree('CarManager_8hpp_source.html',''); initResizable(true);
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_1c5c03227cca0102ee47bee331c2b55d.html">includes</a></li><li class="navelem"><a class="el" href="dir_83306c9dc01739987acb050d99938567.html">main</a></li><li class="navelem"><a class="el" href="CarManager_8hpp.html">CarManager.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="dir_3fc8f51dd17eafa9e714d9ca93022f96.html">cluster</a></li><li class="navelem"><a class="el" href="dir_2a4f0eb436765d0e1bfbb2d23c4680c4.html">includes</a></li><li class="navelem"><a class="el" href="dir_e9148dff22b8b892bf0cfcda0ecc6f90.html">main</a></li><li class="navelem"><a class="el" href="CarManager_8hpp.html">CarManager.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

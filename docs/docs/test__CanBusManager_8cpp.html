@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hotwheels-Cluster: app/app_tests/unit/canbus/test_CanBusManager.cpp File Reference</title>
+<title>Hotwheels-Cluster: apps/cluster/app_tests/unit/canbus/test_CanBusManager.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -180,7 +180,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Verifies that <code>stopReading()</code> is triggered in the destructor. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000040">Test</a></b></dt><dd>Ensures that <code>stopReading()</code> is called when <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code> is destroyed. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000048">Test</a></b></dt><dd>Ensures that <code>stopReading()</code> is called when <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code> is destroyed. </dd></dl>
 <p>This test initializes <code><a class="el" href="classCanBusManager.html" title="Class that manages the CAN bus communication. QObject.">CanBusManager</a></code>, then deletes it and confirms that <code>stopReading()</code> was called exactly once.</p>
 <dl class="section note"><dt>Note</dt><dd>This test indirectly verifies proper cleanup behavior in the destructor.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ae2d9ac999a161b57b12867473f4ac710" title="Destroy the CanBusManager::CanBusManager object.">CanBusManager::~CanBusManager</a> </dd></dl>
@@ -209,7 +209,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that <code>initialize()</code> fails when the controller fails to initialize. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000038">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> fails. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000046">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> fails. </dd></dl>
 <p>This test sets up a mock expectation that <code>init()</code> will return <code>false</code>, verifying that <code>initialize()</code> correctly fails in this case.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize</a> </dd></dl>
 
@@ -237,7 +237,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that <code>initialize()</code> succeeds when the controller initializes successfully. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000039">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> succeeds. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000047">Test</a></b></dt><dd>Tests <code><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize()</a></code> when <code>init()</code> succeeds. </dd></dl>
 <p>This test sets up a mock expectation that <code>init()</code> will return <code>true</code>, verifying that <code>initialize()</code> correctly returns <code>true</code>.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager.">CanBusManager::initialize</a> </dd></dl>
 
@@ -265,7 +265,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 </div><div class="memdoc">
 
 <p>Ensures that the RPM signal emits the correct value. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000037">Test</a></b></dt><dd>Tests if the <code>rpmUpdated</code> signal is emitted correctly. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000045">Test</a></b></dt><dd>Tests if the <code>rpmUpdated</code> signal is emitted correctly. </dd></dl>
 <p>Similar to <code>SpeedSignalEmitsCorrectly</code>, this test verifies that <code>rpmUpdated</code> emits the expected RPM value.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a078fd69ae1f601a6a5792b41f5e6346a" title="Signal emitted when the RPM is updated.">CanBusManager::rpmUpdated</a> </dd></dl>
 
@@ -298,7 +298,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Ensures that the speed signal is emitted with the correct value. </p>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000036">Test</a></b></dt><dd>Tests if the <code>speedUpdated</code> signal is emitted correctly. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000044">Test</a></b></dt><dd>Tests if the <code>speedUpdated</code> signal is emitted correctly. </dd></dl>
 <p>This test uses <code>QSignalSpy</code> to verify that <code>speedUpdated</code> emits the expected speed value when the mock controller triggers the signal.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classCanBusManager.html#a26fcbb1afe5a721954bec9f1ac62f991" title="Signal emitted when the speed is updated.">CanBusManager::speedUpdated</a> </dd></dl>
 
@@ -316,7 +316,7 @@ Here is the call graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="dir_233f5a9e11cb958617720b9aa5e796d9.html">app_tests</a></li><li class="navelem"><a class="el" href="dir_9f3cf4e9959d69a629065a14f6a7ea01.html">unit</a></li><li class="navelem"><a class="el" href="dir_f4ace13d0aacd39de1d84f7f5e87bc22.html">canbus</a></li><li class="navelem"><a class="el" href="test__CanBusManager_8cpp.html">test_CanBusManager.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="dir_3fc8f51dd17eafa9e714d9ca93022f96.html">cluster</a></li><li class="navelem"><a class="el" href="dir_9a8e47ff0ccc8ec46d7f358cedb1d1e1.html">app_tests</a></li><li class="navelem"><a class="el" href="dir_44399569173f8f27c4cea4a3da0cd3f4.html">unit</a></li><li class="navelem"><a class="el" href="dir_d2736d9507cfd71962b54b3af5f704b3.html">canbus</a></li><li class="navelem"><a class="el" href="test__CanBusManager_8cpp.html">test_CanBusManager.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>
