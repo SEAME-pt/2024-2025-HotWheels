@@ -17,8 +17,8 @@
 
 #include "EngineController.hpp"
 #include "JoysticksController.hpp"
-#include "../ZeroC/ClientThread.hpp"
-#include "../ZeroC/CarDataI.hpp"
+#include "../../ZeroC/ClientThread.hpp"
+#include "../../ZeroC/CarDataI.hpp"
 #include <QObject>
 #include <QThread>
 #include <QProcess>

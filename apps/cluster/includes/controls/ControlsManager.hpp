@@ -20,8 +20,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include <iostream>
-#include "../ZeroC/ClientThread.hpp"
+#include "../../ZeroC/ClientThread.hpp"
 #include <QObject>
 #include <QThread>
 
