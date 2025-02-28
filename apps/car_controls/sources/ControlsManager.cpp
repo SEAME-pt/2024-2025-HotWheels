@@ -114,7 +114,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 											  {
 	while (m_threadRunning) {
 	  readJoystickEnable();
-	  QThread::msleep(1000);  // Adjust delay as needed
+	  QThread::msleep(100);  // Adjust delay as needed
 	} });
 	m_joystickControlThread->start();
 }
@@ -122,10 +122,10 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 /*!
  * @brief Destructor for the ControlsManager class.
- * @details Safely stops and cleans up all threads and resources associated 
- *          with the ControlsManager. This includes stopping the client, 
- *          shared memory, process monitoring, joystick control, and manual 
- *          controller threads. It also deletes associated objects such as 
+ * @details Safely stops and cleans up all threads and resources associated
+ *          with the ControlsManager. This includes stopping the client,
+ *          shared memory, process monitoring, joystick control, and manual
+ *          controller threads. It also deletes associated objects such as
  *          m_carDataObject, m_clientObject, and m_manualController.
  */
 

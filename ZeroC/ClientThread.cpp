@@ -17,8 +17,8 @@
 
 /*!
  * @brief Construct a new Client Thread:: Client Thread object
- * 
- * @param parent 
+ *
+ * @param parent
  */
 ClientThread::ClientThread(QObject *parent) : QObject(parent) {}
 
