@@ -153,7 +153,7 @@ void SystemDataManager::handleBatteryPercentage(float batteryPercentage)
 		emit batteryPercentageUpdated(batteryPercentage);
 
 		// Create a JSON object to hold the temperature data
-		QString temp = batteryPercentage;
+        QString temp = QString::number(batteryPercentage);
 		temp.remove("%");
 
 		QJsonObject json;
