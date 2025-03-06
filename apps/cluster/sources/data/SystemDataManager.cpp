@@ -48,6 +48,26 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 		m_wifiStatus = status;
 		m_wifiName = wifiName;
 		emit systemWifiUpdated(status, wifiName);
+
+		QJsonObject json;
+		json["wifi"] = wifiName;
+
+		// Convert the JSON object to a QJsonDocument
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+		// Create the network manager
+		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+		// Specify the URL of your Flask API (replace with your actual URL)
+		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/wifi");
+
+		// Create a network request
+		QNetworkRequest request(url);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+		// Send the POST request with the JSON data
+		manager->post(request,jsonData);
 	}
 }
 
@@ -85,8 +105,6 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 
 		// Send the POST request with the JSON data
 		manager->post(request,jsonData);
-
-		qDebug() << "Temperature updated." ;
 	}
 }
 
@@ -100,6 +118,26 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 	if (m_ipAddress != ipAddress) {
 		m_ipAddress = ipAddress;
 		emit ipAddressUpdated(ipAddress);
+
+		QJsonObject json;
+		json["ip"] = ipAddress;
+
+		// Convert the JSON object to a QJsonDocument
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+		// Create the network manager
+		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+		// Specify the URL of your Flask API (replace with your actual URL)
+		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/ip");
+
+		// Create a network request
+		QNetworkRequest request(url);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+		// Send the POST request with the JSON data
+		manager->post(request,jsonData);
 	}
 }
 
@@ -113,5 +151,29 @@ void SystemDataManager::handleBatteryPercentage(float batteryPercentage)
 	if (!qFuzzyCompare(batteryPercentage, m_batteryPercentage)) {
 		m_batteryPercentage = batteryPercentage;
 		emit batteryPercentageUpdated(batteryPercentage);
+
+		// Create a JSON object to hold the temperature data
+		QString temp = batteryPercentage;
+		temp.remove("%");
+
+		QJsonObject json;
+		json["battery"] = temp;
+
+		// Convert the JSON object to a QJsonDocument
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+		// Create the network manager
+		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+		// Specify the URL of your Flask API (replace with your actual URL)
+		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/battery");
+
+		// Create a network request
+		QNetworkRequest request(url);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+		// Send the POST request with the JSON data
+		manager->post(request,jsonData);
 	}
 }
