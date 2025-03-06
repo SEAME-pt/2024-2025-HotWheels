@@ -63,8 +63,11 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		emit systemTemperatureUpdated(temperature);
 
 		// Create a JSON object to hold the temperature data
+		QString temp = temperature;
+		temp.remove("°C");
+
 		QJsonObject json;
-		json["temperature"] = temperature;
+		json["temperature"] = temp;
 
 		// Convert the JSON object to a QJsonDocument
 		QJsonDocument doc(json);
@@ -81,9 +84,9 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
 		// Send the POST request with the JSON data
-        manager->post(request,jsonData);
+		manager->post(request,jsonData);
 
-        qDebug() << "Temperature updated." ;
+		qDebug() << "Temperature updated." ;
 	}
 }
 
