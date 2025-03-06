@@ -18,6 +18,12 @@
 
 #include <QObject>
 #include <QString>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
+#include <QDebug>
 
 /*!
  * @brief Class that manages the data received from the car's systems.

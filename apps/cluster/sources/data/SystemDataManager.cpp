@@ -1,9 +1,9 @@
 /*!
  * @file SystemDataManager.cpp
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-02-12
- * @details 
+ * @details
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -61,6 +61,29 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 	if (m_temperature != temperature) {
 		m_temperature = temperature;
 		emit systemTemperatureUpdated(temperature);
+
+		// Create a JSON object to hold the temperature data
+		QJsonObject json;
+		json["temperature"] = temperature;
+
+		// Convert the JSON object to a QJsonDocument
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+		// Create the network manager
+		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+		// Specify the URL of your Flask API (replace with your actual URL)
+		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/temperature");
+
+		// Create a network request
+		QNetworkRequest request(url);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+		// Send the POST request with the JSON data
+        manager->post(request,jsonData);
+
+        qDebug() << "Temperature updated." ;
 	}
 }
 
