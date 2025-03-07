@@ -3,14 +3,14 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - adding-api
-    #paths:
-      #- '${{ env.DIR }}/**'
+      - main
+    paths:
+      - '${{ env.DIR }}/**'
   pull_request:
     branches:
-      - adding-api
-    #paths:
-      #- '${{ env.DIR }}/**'
+      - main
+    paths:
+      - '${{ env.DIR }}/**'
 
 env:
   DIR: apps/cluster
