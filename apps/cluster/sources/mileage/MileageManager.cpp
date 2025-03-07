@@ -105,7 +105,7 @@ void MileageManager::updateMileage()
 	emit mileageUpdated(m_totalMileage);
 
 	QJsonObject json;
-	json["mileage"] = m_totalMileage;
+	json["mileage"] = static_cast<int>(m_totalMileage);
 
 	QJsonDocument doc(json);
 	QByteArray jsonData = doc.toJson();
