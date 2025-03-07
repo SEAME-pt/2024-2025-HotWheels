@@ -103,6 +103,21 @@ void MileageManager::updateMileage()
 	double distance = m_calculator->calculateDistance();
 	m_totalMileage += distance;
 	emit mileageUpdated(m_totalMileage);
+
+	QJsonObject json;
+	json["mileage"] = m_totalMileage;
+
+	QJsonDocument doc(json);
+	QByteArray jsonData = doc.toJson();
+
+	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+	QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/mileage");
+
+	QNetworkRequest request(url);
+	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+	manager->post(request,jsonData);
 }
 
 /*!

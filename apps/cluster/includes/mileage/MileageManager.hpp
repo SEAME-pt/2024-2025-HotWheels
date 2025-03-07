@@ -18,6 +18,11 @@
 
 #include <QObject>
 #include <QTimer>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
 #include "IMileageCalculator.hpp"
 #include "IMileageFileHandler.hpp"
 
