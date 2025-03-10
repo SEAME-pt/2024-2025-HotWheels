@@ -19,6 +19,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QNetworkAccessManager>
+#include <QProcessEnvironment>
 #include <QNetworkRequest>
 #include <QJsonDocument>
 #include <QJsonObject>

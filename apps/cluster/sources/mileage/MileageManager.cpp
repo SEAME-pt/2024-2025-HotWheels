@@ -105,15 +105,21 @@ void MileageManager::updateMileage()
 	m_totalMileage += distance;
 	emit mileageUpdated(m_totalMileage);
 
+	QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+	QString apiBaseUrl = env.value("API_KEY");
+
+	QUrl baseUrl(apiBaseUrl);
+	QUrl fullUrl = baseUrl.resolved(QUrl("/mileage"));
+
 	QJsonObject json;
 	json["mileage"] = static_cast<int>(m_totalMileage);
 
 	QJsonDocument doc(json);
 	QByteArray jsonData = doc.toJson();
 
-	QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/mileage");
+	//QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/mileage");
 
-	QNetworkRequest request(url);
+	QNetworkRequest request(fullUrl);
 	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
 	m_manager->post(request,jsonData);

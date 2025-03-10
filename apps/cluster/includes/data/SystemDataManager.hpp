@@ -20,6 +20,7 @@
 #include <QString>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
+#include <QProcessEnvironment>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QUrl>
