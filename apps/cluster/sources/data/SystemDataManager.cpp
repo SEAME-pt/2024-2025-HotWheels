@@ -85,6 +85,8 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		QString apiBaseUrl = env.value("API_KEY");
 
+		qDebug() << "API URL: " << apiBaseUrl;
+
 		QUrl baseUrl(apiBaseUrl);
 		QUrl fullUrl = baseUrl.resolved(QUrl("/temperature"));
 
