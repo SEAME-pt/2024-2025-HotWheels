@@ -25,6 +25,9 @@ jobs:
       - name: Create .env file
         run: echo "API_KEY=${{ secrets.API_KEY }}" > .env
 
+      - name: Load API Key from .env
+        run: export $(cat .env | xargs)
+
       - name: Build arm64 executable
         run: |
           cd $DIR
