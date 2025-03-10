@@ -88,6 +88,8 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		QUrl baseUrl(apiBaseUrl);
 		QUrl fullUrl = baseUrl.resolved(QUrl("/temperature"));
 
+		qDebug() << "URL: " << fullUrl;
+
 		QString temp = temperature;
 		temp.remove("°C");
 
