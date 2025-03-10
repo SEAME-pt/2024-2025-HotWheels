@@ -35,11 +35,12 @@ MileageManager::MileageManager(const QString &filePath,
 							   IMileageFileHandler *fileHandler,
 							   QObject *parent)
 	: QObject(parent)
-	, m_calculator(calculator ? calculator : new MileageCalculator())
-	, m_fileHandler(fileHandler ? fileHandler : new MileageFileHandler(filePath))
-	, m_ownCalculator(calculator == nullptr)
-	, m_ownFileHandler(fileHandler == nullptr)
-	, m_totalMileage(0.0)
+    , m_manager(new QNetworkAccessManager(this))
+    , m_calculator(calculator ? calculator : new MileageCalculator())
+    , m_fileHandler(fileHandler ? fileHandler : new MileageFileHandler(filePath))
+    , m_ownCalculator(calculator == nullptr)
+    , m_ownFileHandler(fileHandler == nullptr)
+    , m_totalMileage(0.0)
 {}
 
 /*!
@@ -110,14 +111,14 @@ void MileageManager::updateMileage()
 	QJsonDocument doc(json);
 	QByteArray jsonData = doc.toJson();
 
-	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+	//QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
 	QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/mileage");
 
 	QNetworkRequest request(url);
 	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-	manager->post(request,jsonData);
+	m_manager->post(request,jsonData);
 }
 
 /*!

@@ -62,6 +62,8 @@ private:
 	QString m_temperature = "";
 	QString m_ipAddress = "";
 	float m_batteryPercentage = -1.0f;
+
+    QNetworkAccessManager *m_manager;
 };
 
 #endif // SYSTEMDATAMANAGER_HPP

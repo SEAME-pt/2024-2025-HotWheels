@@ -17,6 +17,7 @@
 
 SystemDataManager::SystemDataManager(QObject *parent)
 	: QObject(parent)
+    , m_manager(new QNetworkAccessManager(this))
 {}
 
 SystemDataManager::~SystemDataManager() {}
@@ -55,14 +56,14 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/wifi");
 
 		QNetworkRequest request(url);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-		manager->post(request,jsonData);
+        m_manager->post(request,jsonData);
 	}
 }
 
@@ -87,14 +88,14 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/temperature");
 
 		QNetworkRequest request(url);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-		manager->post(request,jsonData);
+        m_manager->post(request,jsonData);
 	}
 }
 
@@ -115,14 +116,14 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/ip");
 
 		QNetworkRequest request(url);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-		manager->post(request,jsonData);
+        m_manager->post(request,jsonData);
 	}
 }
 
@@ -146,13 +147,13 @@ void SystemDataManager::handleBatteryPercentage(float batteryPercentage)
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/battery");
 
 		QNetworkRequest request(url);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-		manager->post(request,jsonData);
+        m_manager->post(request,jsonData);
 	}
 }

@@ -44,6 +44,8 @@ public:
 
 	double getTotalMileage() const { return this->m_totalMileage; };
 
+	QNetworkAccessManager *m_manager;
+
 public slots:
 	void onSpeedUpdated(float speed);
 	void updateMileage();
