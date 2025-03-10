@@ -30,6 +30,7 @@ jobs:
 
       - name: Build arm64 executable
         run: |
+          export $(cat .env | xargs)
           cd $DIR
           mkdir build
           cd build
