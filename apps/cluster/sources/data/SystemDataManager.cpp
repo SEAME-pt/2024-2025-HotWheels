@@ -56,8 +56,6 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/wifi");
 
 		QNetworkRequest request(url);
@@ -88,8 +86,6 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/temperature");
 
 		QNetworkRequest request(url);
@@ -115,8 +111,6 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
-
-        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/ip");
 
@@ -146,8 +140,6 @@ void SystemDataManager::handleBatteryPercentage(float batteryPercentage)
 
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
-
-        //QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
 		QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/battery");
 

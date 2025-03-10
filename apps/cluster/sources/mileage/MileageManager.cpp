@@ -111,8 +111,6 @@ void MileageManager::updateMileage()
 	QJsonDocument doc(json);
 	QByteArray jsonData = doc.toJson();
 
-	//QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-
 	QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/mileage");
 
 	QNetworkRequest request(url);
