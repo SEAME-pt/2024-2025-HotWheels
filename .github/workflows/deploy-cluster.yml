@@ -22,15 +22,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create .env file
-        run: echo "API_KEY=${{ secrets.API_KEY }}" > .env
-
-      - name: Load API Key from .env
-        run: export $(cat .env | xargs)
-
       - name: Build arm64 executable
         run: |
-          export $(cat .env | xargs)
           cd $DIR
           mkdir build
           cd build

@@ -62,8 +62,6 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-		//QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/wifi");
-
         QNetworkRequest request(fullUrl);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
@@ -85,12 +83,8 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		QString apiBaseUrl = env.value("API_KEY");
 
-		qDebug() << "API URL: " << apiBaseUrl;
-
 		QUrl baseUrl(apiBaseUrl);
 		QUrl fullUrl = baseUrl.resolved(QUrl("/temperature"));
-
-		qDebug() << "URL: " << fullUrl;
 
 		QString temp = temperature;
 		temp.remove("°C");
@@ -101,8 +95,6 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 		// Convert the JSON object to a QJsonDocument
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
-
-		//QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/temperature");
 
 		QNetworkRequest request(fullUrl);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -133,8 +125,6 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
-
-		//QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/ip");
 
 		QNetworkRequest request(fullUrl);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -168,8 +158,6 @@ void SystemDataManager::handleBatteryPercentage(float batteryPercentage)
 
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
-
-		//QUrl url("https://cluster-app-a7a39eb57433.herokuapp.com/battery");
 
 		QNetworkRequest request(fullUrl);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
