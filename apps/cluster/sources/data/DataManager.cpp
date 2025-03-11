@@ -85,6 +85,7 @@ DataManager::DataManager(QObject *parent)
 			&DataManager::clusterMetricsUpdated);
 
 
+	m_webSocket = new QWebSocket(QString(), QWebSocketProtocol::VersionLatest, this);
 	// Initialize WebSocket
 	connect(&m_webSocket, &QWebSocket::connected, this, &DataManager::onConnected);
 	connect(&m_webSocket, &QWebSocket::disconnected, this, &DataManager::onDisconnected);
