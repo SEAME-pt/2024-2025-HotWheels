@@ -1,4 +1,4 @@
-QT       += core testlib network websockets
+QT       += core testlib network
 CONFIG   += c++17
 
 # ====== Unit Tests Target ======
