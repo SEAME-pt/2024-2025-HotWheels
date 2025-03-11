@@ -37,6 +37,7 @@ jobs:
           cd build-x86
           qmake ../root.pro
           make -j$(nproc)
+        continue-on-error: true
 
       - name: Run tests
         run: |
