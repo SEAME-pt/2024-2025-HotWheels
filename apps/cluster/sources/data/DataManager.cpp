@@ -111,12 +111,8 @@ DataManager::~DataManager()
 
 void DataManager::onConnected()
 {
-	if (m_webSocket.isValid()) {
-		m_webSocket.sendTextMessage("heartbeat");
-		qDebug() << "Heartbeat sent";
-	} else {
-		qDebug() << "WebSocket is not valid. Can't send heartbeat.";
-	}
+	qDebug() << "Connected to WebSocket server";
+	m_heartbeatTimer.start(); // Start sending heartbeats
 }
 
 void DataManager::onDisconnected()
@@ -130,6 +126,8 @@ void DataManager::sendHeartbeat()
 	if (m_webSocket.isValid()) {
 		m_webSocket.sendTextMessage("heartbeat");
 		qDebug() << "Heartbeat sent";
+	} else {
+		qDebug() << "WebSocket is not valid. Can't send heartbeat.";
 	}
 }
 
