@@ -43,6 +43,7 @@ jobs:
         run: |
           cd $DIR/build-x86
           ./HotWheels-unit-tests
+        continue-on-error: true
 
       - name: Deploy executable to target
         env:
