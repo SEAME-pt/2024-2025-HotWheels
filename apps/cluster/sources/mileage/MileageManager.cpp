@@ -35,11 +35,12 @@ MileageManager::MileageManager(const QString &filePath,
 							   IMileageFileHandler *fileHandler,
 							   QObject *parent)
 	: QObject(parent)
-	, m_calculator(calculator ? calculator : new MileageCalculator())
-	, m_fileHandler(fileHandler ? fileHandler : new MileageFileHandler(filePath))
-	, m_ownCalculator(calculator == nullptr)
-	, m_ownFileHandler(fileHandler == nullptr)
-	, m_totalMileage(0.0)
+    , m_manager(new QNetworkAccessManager(this))
+    , m_calculator(calculator ? calculator : new MileageCalculator())
+    , m_fileHandler(fileHandler ? fileHandler : new MileageFileHandler(filePath))
+    , m_ownCalculator(calculator == nullptr)
+    , m_ownFileHandler(fileHandler == nullptr)
+    , m_totalMileage(0.0)
 {}
 
 /*!
@@ -103,6 +104,23 @@ void MileageManager::updateMileage()
 	double distance = m_calculator->calculateDistance();
 	m_totalMileage += distance;
 	emit mileageUpdated(m_totalMileage);
+
+	QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+	QString apiBaseUrl = env.value("API_KEY");
+
+	QUrl baseUrl(apiBaseUrl);
+	QUrl fullUrl = baseUrl.resolved(QUrl("/mileage"));
+
+	QJsonObject json;
+	json["mileage"] = static_cast<int>(m_totalMileage);
+
+	QJsonDocument doc(json);
+	QByteArray jsonData = doc.toJson();
+
+	QNetworkRequest request(fullUrl);
+	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+	m_manager->post(request,jsonData);
 }
 
 /*!

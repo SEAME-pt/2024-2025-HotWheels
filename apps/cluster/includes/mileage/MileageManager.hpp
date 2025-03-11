@@ -18,6 +18,12 @@
 
 #include <QObject>
 #include <QTimer>
+#include <QNetworkAccessManager>
+#include <QProcessEnvironment>
+#include <QNetworkRequest>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
 #include "IMileageCalculator.hpp"
 #include "IMileageFileHandler.hpp"
 
@@ -38,6 +44,8 @@ public:
 	void shutdown();
 
 	double getTotalMileage() const { return this->m_totalMileage; };
+
+	QNetworkAccessManager *m_manager;
 
 public slots:
 	void onSpeedUpdated(float speed);

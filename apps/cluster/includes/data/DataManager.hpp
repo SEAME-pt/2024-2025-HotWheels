@@ -19,6 +19,7 @@
 #include "enums.hpp"
 #include <QObject>
 #include <QString>
+#include <QTimer>
 #include "ClusterSettingsManager.hpp"
 #include "SystemDataManager.hpp"
 #include "VehicleDataManager.hpp"

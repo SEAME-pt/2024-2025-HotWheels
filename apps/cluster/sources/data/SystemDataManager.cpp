@@ -1,9 +1,9 @@
 /*!
  * @file SystemDataManager.cpp
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-02-12
- * @details 
+ * @details
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -17,6 +17,7 @@
 
 SystemDataManager::SystemDataManager(QObject *parent)
 	: QObject(parent)
+    , m_manager(new QNetworkAccessManager(this))
 {}
 
 SystemDataManager::~SystemDataManager() {}
@@ -48,6 +49,23 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 		m_wifiStatus = status;
 		m_wifiName = wifiName;
 		emit systemWifiUpdated(status, wifiName);
+
+        QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+        QString apiBaseUrl = env.value("API_KEY");
+
+        QUrl baseUrl(apiBaseUrl);
+        QUrl fullUrl = baseUrl.resolved(QUrl("/wifi"));
+
+		QJsonObject json;
+		json["wifi"] = wifiName;
+
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+        QNetworkRequest request(fullUrl);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+        m_manager->post(request,jsonData);
 	}
 }
 
@@ -61,6 +79,27 @@ void SystemDataManager::handleTemperatureData(const QString &temperature)
 	if (m_temperature != temperature) {
 		m_temperature = temperature;
 		emit systemTemperatureUpdated(temperature);
+
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		QString apiBaseUrl = env.value("API_KEY");
+
+		QUrl baseUrl(apiBaseUrl);
+		QUrl fullUrl = baseUrl.resolved(QUrl("/temperature"));
+
+		QString temp = temperature;
+		temp.remove("°C");
+
+		QJsonObject json;
+		json["temperature"] = temp;
+
+		// Convert the JSON object to a QJsonDocument
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+		QNetworkRequest request(fullUrl);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+		m_manager->post(request,jsonData);
 	}
 }
 
@@ -74,6 +113,23 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 	if (m_ipAddress != ipAddress) {
 		m_ipAddress = ipAddress;
 		emit ipAddressUpdated(ipAddress);
+
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		QString apiBaseUrl = env.value("API_KEY");
+
+		QUrl baseUrl(apiBaseUrl);
+		QUrl fullUrl = baseUrl.resolved(QUrl("/ip"));
+
+		QJsonObject json;
+		json["ip"] = ipAddress;
+
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+		QNetworkRequest request(fullUrl);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+        m_manager->post(request,jsonData);
 	}
 }
 
@@ -87,5 +143,25 @@ void SystemDataManager::handleBatteryPercentage(float batteryPercentage)
 	if (!qFuzzyCompare(batteryPercentage, m_batteryPercentage)) {
 		m_batteryPercentage = batteryPercentage;
 		emit batteryPercentageUpdated(batteryPercentage);
+
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		QString apiBaseUrl = env.value("API_KEY");
+
+		QUrl baseUrl(apiBaseUrl);
+		QUrl fullUrl = baseUrl.resolved(QUrl("/battery"));
+
+		QString temp = QString::number(batteryPercentage);
+		temp.remove("%");
+
+		QJsonObject json;
+		json["battery"] = temp;
+
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
+
+		QNetworkRequest request(fullUrl);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+        m_manager->post(request,jsonData);
 	}
 }

@@ -18,6 +18,13 @@
 
 #include <QObject>
 #include <QString>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QProcessEnvironment>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
+#include <QDebug>
 
 /*!
  * @brief Class that manages the data received from the car's systems.
@@ -56,6 +63,8 @@ private:
 	QString m_temperature = "";
 	QString m_ipAddress = "";
 	float m_batteryPercentage = -1.0f;
+
+    QNetworkAccessManager *m_manager;
 };
 
 #endif // SYSTEMDATAMANAGER_HPP

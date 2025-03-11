@@ -50,7 +50,7 @@ private:
 	CarDirection m_carDirection = CarDirection::Stop;
 	int m_steeringDirection = 0;
 	double m_mileage = 0.0;
-	ClusterMetrics m_clusterMetrics = ClusterMetrics::Kilometers;
+    ClusterMetrics m_clusterMetrics = ClusterMetrics::Kilometers;
 };
 
 #endif // VEHICLEDATAMANAGER_HPP
