@@ -58,11 +58,6 @@ public slots:
 	void toggleClusterTheme();
 	void toggleClusterMetrics();
 
-	//handle websockets
-    void onConnected();
-    void onDisconnected();
-    void sendHeartbeat();
-
 signals:
 	// Forwarded signals from subclasses
 	void canDataProcessed(float processedSpeed, int processedRpm);
