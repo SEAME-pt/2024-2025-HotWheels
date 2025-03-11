@@ -1,4 +1,4 @@
-QT       += core gui widgets network websockets
+QT       += core gui widgets network
 CONFIG   += c++17
 
 # Base directory (absolute path to the root of the project)
