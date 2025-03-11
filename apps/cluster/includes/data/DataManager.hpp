@@ -20,7 +20,6 @@
 #include <QObject>
 #include <QString>
 #include <QTimer>
-#include <QtWebSockets/QWebSocket>
 #include "ClusterSettingsManager.hpp"
 #include "SystemDataManager.hpp"
 #include "VehicleDataManager.hpp"
@@ -84,10 +83,6 @@ private:
 	VehicleDataManager *m_vehicleDataManager;
 	SystemDataManager *m_systemDataManager;
 	ClusterSettingsManager *m_clusterSettingsManager;
-
-	// Websocket connection for the API
-	QWebSocket m_webSocket;
-	QTimer m_heartbeatTimer;
 };
 
 #endif // DATAMANAGER_HPP

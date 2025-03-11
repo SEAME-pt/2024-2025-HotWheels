@@ -83,19 +83,6 @@ DataManager::DataManager(QObject *parent)
 			&ClusterSettingsManager::clusterMetricsUpdated,
 			this,
 			&DataManager::clusterMetricsUpdated);
-
-
-	m_webSocket = new QWebSocket(QString(), QWebSocketProtocol::VersionLatest, this);
-	// Initialize WebSocket
-	connect(&m_webSocket, &QWebSocket::connected, this, &DataManager::onConnected);
-	connect(&m_webSocket, &QWebSocket::disconnected, this, &DataManager::onDisconnected);
-
-	// Start connection to WebSocket server
-	m_webSocket.open(QUrl("ws://cluster-app-a7a39eb57433.herokuapp.com"));
-
-	// Configure and start the heartbeat timer
-	connect(&m_heartbeatTimer, &QTimer::timeout, this, &DataManager::sendHeartbeat);
-	m_heartbeatTimer.setInterval(2000); // 2 seconds
 }
 
 /*!
@@ -107,32 +94,7 @@ DataManager::~DataManager()
 	delete m_vehicleDataManager;
 	delete m_systemDataManager;
 	delete m_clusterSettingsManager;
-	m_webSocket.close();
 }
-
-void DataManager::onConnected()
-{
-	qDebug() << "Connected to WebSocket server";
-	m_heartbeatTimer.start(); // Start sending heartbeats
-}
-
-void DataManager::onDisconnected()
-{
-	qDebug() << "Disconnected from WebSocket server";
-	m_heartbeatTimer.stop();
-}
-
-void DataManager::sendHeartbeat()
-{
-	if (m_webSocket.isValid()) {
-		m_webSocket.sendTextMessage("heartbeat");
-		qDebug() << "Heartbeat sent";
-	} else {
-		qDebug() << "WebSocket is not valid. Can't send heartbeat.";
-	}
-}
-
-//ends here
 
 /*!
  * @brief Handle CAN data.
