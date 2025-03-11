@@ -19,6 +19,7 @@
 #include "enums.hpp"
 #include <QObject>
 #include <QString>
+#include <QTimer>
 #include <QtWebSockets/QWebSocket>
 #include "ClusterSettingsManager.hpp"
 #include "SystemDataManager.hpp"
