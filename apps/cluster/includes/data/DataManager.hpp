@@ -19,6 +19,7 @@
 #include "enums.hpp"
 #include <QObject>
 #include <QString>
+#include <QtWebSockets/QWebSocket>
 #include "ClusterSettingsManager.hpp"
 #include "SystemDataManager.hpp"
 #include "VehicleDataManager.hpp"
@@ -57,6 +58,11 @@ public slots:
 	void toggleClusterTheme();
 	void toggleClusterMetrics();
 
+	//handle websockets
+    void onConnected();
+    void onDisconnected();
+    void sendHeartbeat();
+
 signals:
 	// Forwarded signals from subclasses
 	void canDataProcessed(float processedSpeed, int processedRpm);
@@ -77,6 +83,10 @@ private:
 	VehicleDataManager *m_vehicleDataManager;
 	SystemDataManager *m_systemDataManager;
 	ClusterSettingsManager *m_clusterSettingsManager;
+
+	// Websocket connection for the API
+	QWebSocket m_webSocket;
+	QTimer m_heartbeatTimer;
 };
 
 #endif // DATAMANAGER_HPP
