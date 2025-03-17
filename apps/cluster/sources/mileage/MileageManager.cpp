@@ -73,6 +73,23 @@ void MileageManager::initialize()
 {
 	m_totalMileage = m_fileHandler->readMileage();
 
+	QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+	QString apiBaseUrl = env.value("API_KEY");
+
+	QUrl baseUrl(apiBaseUrl);
+	QUrl fullUrl = baseUrl.resolved(QUrl("/mileage"));
+
+	QJsonObject json;
+	json["mileage"] = static_cast<int>(m_totalMileage);
+
+	QJsonDocument doc(json);
+	QByteArray jsonData = doc.toJson();
+
+	QNetworkRequest request(fullUrl);
+	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+	m_manager->post(request,jsonData);
+
 	connect(&m_updateTimer, &QTimer::timeout, this, &MileageManager::updateMileage);
 	m_updateTimer.start(1000);
 
