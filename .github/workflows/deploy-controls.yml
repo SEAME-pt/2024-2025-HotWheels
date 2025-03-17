@@ -3,14 +3,14 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - workflow-changes
-    #paths:
-      #- '${{ env.DIR }}/**'
+      - main
+    paths:
+      - '${{ env.DIR }}/**'
   pull_request:
     branches:
-      - workflow-changes
-    #paths:
-      #- '${{ env.DIR }}/**'
+      - main
+    paths:
+      - '${{ env.DIR }}/**'
 
 env:
   DIR: apps/car_controls
