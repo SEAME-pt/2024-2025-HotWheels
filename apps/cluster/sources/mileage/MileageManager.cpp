@@ -105,9 +105,7 @@ void MileageManager::updateMileage()
 	m_totalMileage += distance;
 	emit mileageUpdated(m_totalMileage);
 
-	qDebug() << "Distance: " << distance;
-
-	if (distance != 0.0) {
+	if (distance > 1.0) {
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		QString apiBaseUrl = env.value("API_KEY");
 
