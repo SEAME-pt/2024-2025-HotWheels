@@ -105,22 +105,26 @@ void MileageManager::updateMileage()
 	m_totalMileage += distance;
 	emit mileageUpdated(m_totalMileage);
 
-	QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-	QString apiBaseUrl = env.value("API_KEY");
+	qDebug() << "Distance: " << distance;
 
-	QUrl baseUrl(apiBaseUrl);
-	QUrl fullUrl = baseUrl.resolved(QUrl("/mileage"));
+	if (distance != 0.0) {
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		QString apiBaseUrl = env.value("API_KEY");
 
-	QJsonObject json;
-	json["mileage"] = static_cast<int>(m_totalMileage);
+		QUrl baseUrl(apiBaseUrl);
+		QUrl fullUrl = baseUrl.resolved(QUrl("/mileage"));
 
-	QJsonDocument doc(json);
-	QByteArray jsonData = doc.toJson();
+		QJsonObject json;
+		json["mileage"] = static_cast<int>(m_totalMileage);
 
-	QNetworkRequest request(fullUrl);
-	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+		QJsonDocument doc(json);
+		QByteArray jsonData = doc.toJson();
 
-	m_manager->post(request,jsonData);
+		QNetworkRequest request(fullUrl);
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+		m_manager->post(request,jsonData);
+	}
 }
 
 /*!
