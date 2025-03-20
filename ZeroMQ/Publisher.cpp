@@ -23,6 +23,7 @@ void Publisher::setJoystickStatus(bool new_joytstick_value) {
 	std::lock_guard<std::mutex> lock(joystick_mtx);  // Ensure thread safety
 	if (new_joytstick_value != joytstick_value) {
 		joytstick_value = new_joytstick_value;
-		publish("status", "Updated value: " + joytstick_value);  // Publish a new status message
+		std::string bool_str = joytstick_value ? "true" : "false";
+		publish("status", "Updated value: " + bool_str);  // Publish a new status message
 	}
 }
