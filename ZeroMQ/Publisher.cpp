@@ -24,6 +24,6 @@ void Publisher::setJoystickStatus(bool new_joytstick_value) {
 	if (new_joytstick_value != joytstick_value) {
 		joytstick_value = new_joytstick_value;
 		std::string bool_str = joytstick_value ? "true" : "false";
-		publish("joystick_value", "Updated value: " + bool_str);  // Publish a new status message
+		publish("joystick_value ", bool_str);  // Publish a new status message
 	}
 }
