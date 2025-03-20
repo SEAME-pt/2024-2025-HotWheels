@@ -90,8 +90,10 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			if (received_msg.find("joystick_value") == 0) {
 				std::string value = received_msg.substr(std::string("joystick_value ").length());
 				if (value == "true") {
+					qDebug() << "Received true";
 					setMode(DrivingMode::Manual);
-				} else {
+				} else (value == "false") {
+					qDebug() << "Received false";
 					setMode(DrivingMode::Automatic);
 				}
 			}
