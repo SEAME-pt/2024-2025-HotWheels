@@ -15,7 +15,7 @@ void Publisher::publish(const std::string& topic, const std::string& message) {
 	std::string full_message = topic + " " + message;
 	zmq::message_t zmq_message(full_message.begin(), full_message.end());
 
-	publisher.send(zmq_message, zmq::send_flags::none);  // Send the message
+	publisher.send(zmq_message);  // Send the message
 	std::cout << "Sent: " << full_message << std::endl;
 }
 
