@@ -88,6 +88,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			std::cout << "Received: " << received_msg << std::endl;
 
 			if (received_msg.find("joystick_value") == 0) {
+				qDebug() << "Message received" << received_msg.c_str();
 				std::string value = received_msg.substr(std::string("joystick_value ").length());
 				if (value == "true")
 				{
