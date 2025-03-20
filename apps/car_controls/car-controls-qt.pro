@@ -13,9 +13,8 @@ INCLUDEPATH += \
 
 # Application Sources
 SOURCES += \
-    ../../ZeroC/CarDataI.cpp \
-    ../../ZeroC/ClientThread.cpp \
-    ../../ZeroC/Joystick.cpp \
+    ../../ZeroMQ/Publisher.cpp \
+    ../../ZeroMQ/Subscriber.cpp \
     sources/ControlsManager.cpp \
     sources/JoysticksController.cpp \
     sources/EngineController.cpp \
@@ -23,9 +22,8 @@ SOURCES += \
     sources/main.cpp
 
 HEADERS += \
-    ../../ZeroC/CarDataI.hpp \
-    ../../ZeroC/ClientThread.hpp \
-    ../../ZeroC/Joystick.h \
+    ../../ZeroMQ/Publisher.cpp \
+    ../../ZeroMQ/Subscriber.cpp \
     includes/ControlsManager.hpp \
     includes/JoysticksController.hpp \
     includes/EngineController.hpp \
@@ -34,7 +32,7 @@ HEADERS += \
     includes/enums.hpp
 
 # Common Libraries
-LIBS += -lSDL2 -lrt -lIce
+LIBS += -lSDL2 -lrt -lIce -lzmq
 
 # Add explicit path for Ice library
 LIBS += -L/home/michel/qt***/sysroot/usr/lib/aarch64-linux-gnu -lIce
