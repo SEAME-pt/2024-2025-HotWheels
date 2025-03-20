@@ -38,7 +38,7 @@ void Subscriber::listen() {
     while (running) {
         try {
             zmq::message_t message;
-            subscriber.recv(message, 0);
+            subscriber.recv(message);
 
             std::string received_msg(static_cast<char*>(message.data()), message.size());
             std::cout << "Received: " << received_msg << std::endl;
