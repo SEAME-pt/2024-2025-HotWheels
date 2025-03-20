@@ -2,13 +2,11 @@
 
 Publisher::Publisher() : context(1), publisher(context, ZMQ_PUB), joytstick_value(true), running(false) {
 	publisher.bind("tcp://*:5555");  // Bind to the publisher socket
-	std::cout << "Publisher initialized at tcp://*:5555" << std::endl;
 }
 
 Publisher::~Publisher() {
 	// Unbind the socket before cleanup
 	publisher.unbind("tcp://*:5555");
-	std::cout << "Publisher unbound from tcp://*:5555" << std::endl;
 }
 
 void Publisher::publish(const std::string& topic, const std::string& message) {
@@ -16,7 +14,6 @@ void Publisher::publish(const std::string& topic, const std::string& message) {
 	zmq::message_t zmq_message(full_message.begin(), full_message.end());
 
 	publisher.send(zmq_message);  // Send the message
-	std::cout << "Sent: " << full_message << std::endl;
 }
 
 void Publisher::setJoystickStatus(bool new_joytstick_value) {

@@ -33,7 +33,6 @@ zmq::socket_t& Subscriber::getSocket() {
 void Subscriber::subscribe(const std::string& topic) {
     // Subscribe to a topic only after successfully connecting
     subscriber.setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.size());
-    std::cout << "Subscribed to topic: " << topic << std::endl;
 }
 
 void Subscriber::listen() {
@@ -44,8 +43,6 @@ void Subscriber::listen() {
             zmq::message_t message;
             subscriber.recv(&message, 0);
 
-            std::string received_msg(static_cast<char*>(message.data()), message.size());
-            std::cout << "Received: " << received_msg << std::endl;
         }
         catch (const zmq::error_t& e) {
             if (running) {  // If running is still true, handle reconnection
@@ -81,7 +78,6 @@ void Subscriber::reconnect(const std::string& address) {
 }
 
 void Subscriber::stop() {
-    running = false;  // Set the running flag to false, causing the listen loop to stop
+    running = false;
     subscriber.close();  // Close the socket gracefully
-    std::cout << "Subscriber stopped." << std::endl;
 }

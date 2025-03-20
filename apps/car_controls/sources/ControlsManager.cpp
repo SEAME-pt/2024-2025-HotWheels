@@ -85,19 +85,13 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			m_subscriberObject->getSocket().recv(&message, 0);
 
 			std::string received_msg(static_cast<char*>(message.data()), message.size());
-			std::cout << "Received: " << received_msg << std::endl;
 
 			if (received_msg.find("joystick_value") == 0) {
-				qDebug() << "Message received" << received_msg.c_str();
 				std::string value = received_msg.substr(std::string("joystick_value ").length());
-				if (value == "true")
-				{
-					qDebug() << "Received true";
+				if (value == "true") {
 					setMode(DrivingMode::Manual);
 				}
-				else if (value == "false")
-				{
-					qDebug() << "Received false";
+				else if (value == "false") {
 					setMode(DrivingMode::Automatic);
 				}
 			}
@@ -115,20 +109,10 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  if (!isProcessRunning(targetProcessName)) {
 		if (m_currentMode == DrivingMode::Automatic)
 				setMode(DrivingMode::Manual);
-		//qDebug() << "Cluster is not running.";
 	  }
 	  QThread::sleep(1);  // Check every 1 second
 	} });
 	m_processMonitorThread->start();
-
-	// **Joystick Control Thread**
-	/* m_joystickControlThread = QThread::create([this]()
-											  {
-	while (m_threadRunning) {
-	  readJoystickEnable();
-	  QThread::msleep(100);  // Adjust delay as needed
-	} });
-	m_joystickControlThread->start(); */
 }
 
 
