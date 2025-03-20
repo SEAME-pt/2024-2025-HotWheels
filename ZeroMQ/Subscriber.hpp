@@ -15,6 +15,8 @@ public:
 	Subscriber();
 	~Subscriber();
 
+	zmq::socket_t& getSocket();
+
 	void subscribe(const std::string& topic);
 	void listen();
 	void connect(const std::string& address);

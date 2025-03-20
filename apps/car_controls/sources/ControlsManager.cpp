@@ -79,8 +79,24 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	m_subscriberThread = QThread::create([this, argc, argv]()
 									{
 		m_subscriberObject->connect("tcp://localhost:5555");
-		m_subscriberObject->subscribe("status");
-		m_subscriberObject->listen();
+		m_subscriberObject->subscribe("joystick_value");
+		while (true) {
+			zmq::message_t message;
+			m_subscriberObject->getSocket().recv(&message, 0);
+
+			std::string received_msg(static_cast<char*>(message.data()), message.size());
+			std::cout << "Received: " << received_msg << std::endl;
+
+			if (received_msg.find("joystick_value") == 0) {
+				std::string value = received_msg.substr(std::string("joystick_value ").length());
+				if (value == "true") {
+					setMode(DrivingMode::Manual);
+				} else {
+					setMode(DrivingMode::Automatic);
+				}
+			}
+		}
+		//m_subscriberObject->listen();
 	});
 	m_subscriberThread->start();
 

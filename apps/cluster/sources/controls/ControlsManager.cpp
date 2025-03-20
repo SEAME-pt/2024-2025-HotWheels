@@ -35,9 +35,6 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	// **Client Middleware Interface Thread**
 	m_serverThread = QThread::create([this, argc, argv]() {
 			m_serverObject = new Publisher();
-			//m_serverObject->connect("tcp://localhost:5555");
-			//m_serverObject->subscribe("status");
-			//m_serverObject->listen();
 	});
 	m_serverThread->start();
 }

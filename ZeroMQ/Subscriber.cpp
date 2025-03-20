@@ -26,6 +26,10 @@ void Subscriber::connect(const std::string& address) {
     }
 }
 
+zmq::socket_t& Subscriber::getSocket() {
+    return subscriber;
+}
+
 void Subscriber::subscribe(const std::string& topic) {
     // Subscribe to a topic only after successfully connecting
     subscriber.setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.size());
