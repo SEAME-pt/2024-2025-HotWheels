@@ -47,7 +47,6 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 ControlsManager::~ControlsManager()
 {
 	if (m_serverThread) {
-		//m_serverObject->setRunning(false);
 		m_serverThread->quit();
 		m_serverThread->wait();
 		delete m_serverThread;
