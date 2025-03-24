@@ -23,23 +23,20 @@
 #include "ControlsManager.hpp"
 #include <QDebug>
 
-#define SHM_NAME "/joystick_enable"
-
 /*!
  * @brief Construct a new ControlsManager object.
  * @param parent The parent QObject.
  * @details This constructor initializes the ControlsManager object.
  */
 ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
-		: QObject(parent), m_clientObject(nullptr),
-		m_clientThread(nullptr) {
+		: QObject(parent), m_serverObject(nullptr),
+		m_serverThread(nullptr) {
 
 	// **Client Middleware Interface Thread**
-	m_clientObject = new ClientThread();
-	m_clientThread = QThread::create([this, argc, argv]() {
-			m_clientObject->runClient(argc, argv);
+	m_serverThread = QThread::create([this, argc, argv]() {
+			m_serverObject = new Publisher();
 	});
-	m_clientThread->start();
+	m_serverThread->start();
 }
 
 /*!
@@ -49,13 +46,12 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
  */
 ControlsManager::~ControlsManager()
 {
-	if (m_clientThread) {
-		m_clientObject->setRunning(false);
-		m_clientThread->quit();
-		m_clientThread->wait();
-		delete m_clientThread;
+	if (m_serverThread) {
+		m_serverThread->quit();
+		m_serverThread->wait();
+		delete m_serverThread;
 	}
-	delete m_clientObject;
+	delete m_serverObject;
 }
 
 /*!
@@ -66,9 +62,9 @@ ControlsManager::~ControlsManager()
  */
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
 	if (newMode == DrivingMode::Automatic) {
-		m_clientObject->setJoystickValue(false);
+		m_serverObject->setJoystickStatus(false);
 	}
 	else {
-		m_clientObject->setJoystickValue(true);
+		m_serverObject->setJoystickStatus(true);
 	}
 }

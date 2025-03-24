@@ -20,7 +20,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include "../../ZeroC/ClientThread.hpp"
+#include "../../ZeroMQ/Publisher.hpp"
 #include <QObject>
 #include <QThread>
 
@@ -43,9 +43,9 @@ signals:
 	void steeringChanged(int newAngle);
 
 private:
-	ClientThread *m_clientObject;
+	Publisher *m_serverObject;
 
-	QThread* m_clientThread;
+	QThread* m_serverThread;
 };
 
 #endif // CONTROLSMANAGER_HPP
