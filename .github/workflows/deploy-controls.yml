@@ -3,14 +3,14 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - ZeroC-publish-subscriber
-    #paths:
-      #- '${{ env.DIR }}/**'
+      - main
+    paths:
+      - '${{ env.DIR }}/**'
   pull_request:
     branches:
-      - ZeroC-publish-subscriber
-    #paths:
-      #- '${{ env.DIR }}/**'
+      - main
+    paths:
+      - '${{ env.DIR }}/**'
 
 env:
   DIR: apps/car_controls
