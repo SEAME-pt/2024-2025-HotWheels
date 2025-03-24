@@ -49,7 +49,6 @@ public:
 	void setMode(DrivingMode mode);
 	void readJoystickEnable();
 	bool isProcessRunning(const QString &processName);
-	//bool isServiceRunning(const QString &serviceName);
 };
 
 #endif // CONTROLSMANAGER_HPP

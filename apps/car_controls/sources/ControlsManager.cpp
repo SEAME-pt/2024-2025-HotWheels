@@ -96,7 +96,6 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 				}
 			}
 		}
-		//m_subscriberObject->listen();
 	});
 	m_subscriberThread->start();
 
@@ -110,7 +109,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 		if (m_currentMode == DrivingMode::Automatic)
 				setMode(DrivingMode::Manual);
 	  }
-	  QThread::sleep(1);  // Check every 1 second
+	  QThread::sleep(1);
 	} });
 	m_processMonitorThread->start();
 }
@@ -180,24 +179,6 @@ bool ControlsManager::isProcessRunning(const QString &processName)
 
 	return !process.readAllStandardOutput().isEmpty();
 }
-
-/*!
- * @brief Reads joystick enable status.
- * @details Checks if joystick control is enabled through the client middleware
- *          and updates the driving mode accordingly.
- */
-/* void ControlsManager::readJoystickEnable()
-{
-	bool joystickData = m_subscriberThread->getJoystickValue();
-	if (joystickData)
-	{
-		setMode(DrivingMode::Manual);
-	}
-	else
-	{
-		setMode(DrivingMode::Automatic);
-	}
-} */
 
 /*!
  * @brief Sets the driving mode.
