@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '${{ env.DIR }}/**'
+    #paths:
+      #- '${{ env.DIR }}/**'
   pull_request:
     branches:
       - main
-    paths:
-      - '${{ env.DIR }}/**'
+    #paths:
+      #- '${{ env.DIR }}/**'
 
 env:
   DIR: apps/car_controls
@@ -45,8 +45,8 @@ jobs:
           ./car-controls-tests
         continue-on-error: true
 
-      - name: Deploy executable to target
+      - name: Deploy executable to Raspberry Pi
         env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+          SSHPASS: ${{ secrets.PI_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/
+            sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotwheels@10.21.221.33:/home/hotwheels/apps/
