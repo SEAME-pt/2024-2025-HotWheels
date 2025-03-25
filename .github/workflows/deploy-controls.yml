@@ -3,12 +3,12 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - main
+      - pi-deployment
     #paths:
       #- '${{ env.DIR }}/**'
   pull_request:
     branches:
-      - main
+      - pi-deployment
     #paths:
       #- '${{ env.DIR }}/**'
 
