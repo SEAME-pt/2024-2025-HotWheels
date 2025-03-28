@@ -46,18 +46,18 @@ void Publisher::setImageData(const std::vector<unsigned char>& new_image_data) {
 }
 
 void Publisher::sendImage(const std::string& image_path) {
-    // Load the image using OpenCV (you can replace this with your method of getting the image)
-    cv::Mat image = cv::imread(image_path, cv::IMREAD_COLOR);
+	// Load the image using OpenCV (you can replace this with your method of getting the image)
+	cv::Mat image = cv::imread(image_path, cv::IMREAD_COLOR);
 
-    if (image.empty()) {
-        std::cerr << "Error loading image" << std::endl;
-        return;
-    }
+	if (image.empty()) {
+		std::cerr << "Error loading image" << std::endl;
+		return;
+	}
 
-    // Convert the image to a std::vector<unsigned char> (flattened byte array)
-    std::vector<unsigned char> image_data;
-    cv::imencode(".jpg", image, image_data);  // You can choose a different format like PNG, etc.
+	// Convert the image to a std::vector<unsigned char> (flattened byte array)
+	std::vector<unsigned char> image_data;
+	cv::imencode(".jpg", image, image_data);  // You can choose a different format like PNG, etc.
 
-    // Publish the image data using ZeroMQ
-    publishImageData("image_data", image_data);
+	// Publish the image data using ZeroMQ
+	publishImageData("image_data", image_data);
 }
