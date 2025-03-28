@@ -9,7 +9,7 @@ class Subscriber {
 private:
 	zmq::context_t context;
 	zmq::socket_t subscriber;
-    bool running;
+	bool running;
 
 public:
 	Subscriber();

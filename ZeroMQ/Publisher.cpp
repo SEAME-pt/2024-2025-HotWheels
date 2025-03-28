@@ -9,7 +9,7 @@ Publisher::~Publisher() {
 	publisher.unbind("tcp://*:5555");
 }
 
-void Publisher::publish(const std::string& topic, const std::string& message) {
+void Publisher::publishJoytstickStatus(const std::string& topic, const std::string& message) {
 	std::string full_message = topic + " " + message;
 	zmq::message_t zmq_message(full_message.begin(), full_message.end());
 
@@ -35,12 +35,29 @@ void Publisher::setJoystickStatus(bool new_joytstick_value) {
 	if (new_joytstick_value != joytstick_value) {
 		joytstick_value = new_joytstick_value;
 		std::string bool_str = joytstick_value ? "true" : "false";
-		publish("joystick_value", bool_str);
+		publishJoytstickStatus("joystick_value", bool_str);
 	}
 }
 
 void Publisher::setImageData(const std::vector<unsigned char>& new_image_data) {
-	std::lock_guard<std::mutex> lock(image_mtx);  // Ensure thread safety
+	std::lock_guard<std::mutex> lock(image_mtx);
 	image_data = new_image_data;
-	publish("image_data", std::string(image_data.begin(), image_data.end()));
+	publishImageData("image_data", image_data);
+}
+
+void Publisher::sendImage(const std::string& image_path) {
+    // Load the image using OpenCV (you can replace this with your method of getting the image)
+    cv::Mat image = cv::imread(image_path, cv::IMREAD_COLOR);
+
+    if (image.empty()) {
+        std::cerr << "Error loading image" << std::endl;
+        return;
+    }
+
+    // Convert the image to a std::vector<unsigned char> (flattened byte array)
+    std::vector<unsigned char> image_data;
+    cv::imencode(".jpg", image, image_data);  // You can choose a different format like PNG, etc.
+
+    // Publish the image data using ZeroMQ
+    publishImageData("image_data", image_data);
 }
