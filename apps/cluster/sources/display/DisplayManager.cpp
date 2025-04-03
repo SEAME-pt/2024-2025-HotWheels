@@ -79,21 +79,24 @@ void DisplayManager::updateCanBusData(float speed, int rpm) {
  */
 void DisplayManager::updateEngineData(CarDirection direction,
 																			int steeringAngle) {
-	QString directionText;
+	//QString directionText;
 	switch (direction) {
 	case CarDirection::Drive:
-		directionText = "D";
+		//directionText = "D";
+		m_ui->directionDriveLabel->setStyleSheet("color: blue;");
 		break;
 	case CarDirection::Reverse:
-		directionText = "R";
+		//directionText = "R";
+		m_ui->directionReverseLabel->setStyleSheet("color: blue;");
 		break;
 	case CarDirection::Stop:
 	default:
-		directionText = "D";
+		//directionText = "D";
+		m_ui->directionDriveLabel->setStyleSheet("color: blue;");
 		break;
 	}
 
-	m_ui->directionLabel->setText(directionText);
+	//m_ui->directionLabel->setText(directionText);
 	if (steeringAngle > 0) {
 		m_ui->leftBlinkerLabel->setVisible(false);
 		m_ui->rightBlinkerLabel->setVisible(true);
@@ -176,7 +179,7 @@ void DisplayManager::updateMileage(double mileage) {
  * @param ipAddress The current IP address.
  */
 void DisplayManager::updateIpAddress(const QString &ipAddress) {
-	m_ui->ipAddressLabel->setText("IP " + ipAddress);
+	m_ui->ipAddressLabel->setText(ipAddress);
 }
 
 /*!
