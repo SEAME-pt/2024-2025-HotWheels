@@ -744,7 +744,6 @@
           <font>
            <family>Ubuntu Condensed</family>
            <pointsize>14</pointsize>
-           <hintingpreference>PreferDefaultHinting</hintingpreference>
           </font>
          </property>
          <property name="acceptDrops">
