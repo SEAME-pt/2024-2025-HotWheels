@@ -3,12 +3,12 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - deploy-camera
+      - deploy_camera
     #paths:
       #- '${{ env.DIR }}/**'
   pull_request:
     branches:
-      - deploy-camera
+      - deploy_camera
     #paths:
       #- '${{ env.DIR }}/**'
 
