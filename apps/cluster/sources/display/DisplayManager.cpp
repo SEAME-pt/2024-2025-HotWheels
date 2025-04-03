@@ -189,13 +189,13 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 	QString modeText;
 	switch (newMode) {
 	case DrivingMode::Manual:
-		modeText = "manual";
+		modeText = "Manual";
 		break;
 	case DrivingMode::Automatic:
-		modeText = "automatic";
+		modeText = "Automatic";
 		break;
 	}
-	m_ui->drivingModeLabel->setText("Mode: " + modeText);
+	m_ui->drivingModeLabel->setText(modeText);
 }
 
 /*!
