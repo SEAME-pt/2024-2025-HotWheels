@@ -82,16 +82,40 @@ void DisplayManager::updateEngineData(CarDirection direction,
 	switch (direction) {
 	case CarDirection::Drive:
 		//directionText = "D";
-		m_ui->directionDriveLabel->setStyleSheet("color: blue;");
+		m_ui->directionParkLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionReverseLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionNeutralLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionDriveLabel->setStyleSheet("color: green; background: transparent;");
+
+		m_ui->directionParkLabel->update();
+		m_ui->directionReverseLabel->update();
+		m_ui->directionNeutralLabel->update();
+		m_ui->directionDriveLabel->update();
 		break;
 	case CarDirection::Reverse:
 		//directionText = "R";
-		m_ui->directionReverseLabel->setStyleSheet("color: blue;");
+		m_ui->directionParkLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionReverseLabel->setStyleSheet("color: lightgreen; background: transparent;");
+		m_ui->directionNeutralLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionDriveLabel->setStyleSheet("color: white; background: transparent;");
+
+		m_ui->directionParkLabel->update();
+		m_ui->directionReverseLabel->update();
+		m_ui->directionNeutralLabel->update();
+		m_ui->directionDriveLabel->update();
 		break;
 	case CarDirection::Stop:
 	default:
 		//directionText = "D";
-		m_ui->directionDriveLabel->setStyleSheet("color: blue;");
+		m_ui->directionParkLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionReverseLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionNeutralLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionDriveLabel->setStyleSheet("color: lightgreen; background: transparent;");
+
+		m_ui->directionParkLabel->update();
+		m_ui->directionReverseLabel->update();
+		m_ui->directionNeutralLabel->update();
+		m_ui->directionDriveLabel->update();
 		break;
 	}
 

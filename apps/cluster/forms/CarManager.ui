@@ -73,7 +73,7 @@
          <property name="font">
           <font>
            <family>Ubuntu Condensed</family>
-           <pointsize>16</pointsize>
+           <pointsize>20</pointsize>
           </font>
          </property>
          <property name="styleSheet">
@@ -99,7 +99,7 @@
          <property name="font">
           <font>
            <family>Ubuntu Condensed</family>
-           <pointsize>26</pointsize>
+           <pointsize>20</pointsize>
           </font>
          </property>
          <property name="styleSheet">
@@ -284,7 +284,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white; background: transparent;
 </string>
          </property>
          <property name="text">
@@ -310,7 +310,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white; background: transparent;
 </string>
          </property>
          <property name="text">
@@ -336,7 +336,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white; background: transparent;
 </string>
          </property>
          <property name="text">
@@ -362,7 +362,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white; background: transparent;
 </string>
          </property>
          <property name="text">
