@@ -49,7 +49,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	m_ui->speedMetricsLabel->setText("KM/H");
 	m_ui->leftBlinkerLabel->setVisible(false);
 	m_ui->rightBlinkerLabel->setVisible(false);
-	m_ui->lowBatteryLabel->setVisible(false);
 
 	// Directly connect button clicks to signals
 	connect(m_ui->toggleDrivingModeButton, &QPushButton::clicked, this,
@@ -117,10 +116,9 @@ void DisplayManager::updateEngineData(CarDirection direction,
  */
 void DisplayManager::updateSystemTime(const QString &currentDate,
 																			const QString &currentTime,
-																			const QString &currentDay) {
+                                                                            const QString &currentDay) {
 	m_ui->dateLabel->setText(currentDate);
 	m_ui->timeLabel->setText(currentTime);
-	m_ui->weekDayLabel->setText(currentDay);
 }
 
 /*!
@@ -156,9 +154,6 @@ void DisplayManager::updateTemperature(const QString &temperature) {
  * @param batteryPercentage The current battery percentage.
  */
 void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
-	if (batteryPercentage < 20.0) {
-		m_ui->lowBatteryLabel->setVisible(true);
-	}
 	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) +
 															"% " + (batteryPercentage > 20.0 ? "🔋" : "🪫"));
 }
@@ -219,7 +214,6 @@ void DisplayManager::updateClusterTheme(ClusterTheme newTheme) {
 		themeText = "Light";
 		break;
 	}
-	m_ui->clusterThemeLabel->setText("Theme: " + themeText);
 }
 
 /*!
@@ -238,6 +232,6 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 		metricsText = "mph";
 		break;
 	}
-	m_ui->clusterMetricsLabel->setText("Metrics: " + metricsText);
+
 	m_ui->speedMetricsLabel->setText(metricsText.toUpper());
 }
