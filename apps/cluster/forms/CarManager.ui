@@ -268,7 +268,7 @@
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLabel" name="directionLabel">
+        <widget class="QLabel" name="directionNeutralLabel">
          <property name="geometry">
           <rect>
            <x>190</x>
@@ -294,7 +294,7 @@
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLabel" name="directionLabel_2">
+        <widget class="QLabel" name="directionReverseLabel">
          <property name="geometry">
           <rect>
            <x>150</x>
@@ -320,7 +320,7 @@
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLabel" name="directionLabel_3">
+        <widget class="QLabel" name="directionParkLabel">
          <property name="geometry">
           <rect>
            <x>110</x>
@@ -346,7 +346,7 @@
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLabel" name="directionLabel_4">
+        <widget class="QLabel" name="directionDriveLabel">
          <property name="geometry">
           <rect>
            <x>230</x>
@@ -752,6 +752,7 @@
           <font>
            <family>Ubuntu Condensed</family>
            <pointsize>14</pointsize>
+           <hintingpreference>PreferDefaultHinting</hintingpreference>
           </font>
          </property>
          <property name="acceptDrops">

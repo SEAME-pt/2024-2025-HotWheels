@@ -31,7 +31,7 @@
 DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 		: QObject(parent), m_ui(ui) {
 	// Ensure the labels are initialized
-	if (!m_ui->speedLabel || !m_ui->rpmLabel || !m_ui->directionLabel ||
+    if (!m_ui->speedLabel || !m_ui->rpmLabel ||
 			!m_ui->timeLabel || !m_ui->wifiLabel || !m_ui->temperatureLabel ||
 			!m_ui->batteryLabel) {
 		qDebug() << "Error: Labels not initialized in the UI form!";
@@ -41,7 +41,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	// Set initial values for the labels
 	m_ui->speedLabel->setText("0");
 	m_ui->rpmLabel->setText("0.00");
-	m_ui->directionLabel->setText("D");
 	m_ui->timeLabel->setText("--:--:--");
 	m_ui->wifiLabel->setText("📶 Disconnected");
 	m_ui->temperatureLabel->setText("🌡️ N/A");
