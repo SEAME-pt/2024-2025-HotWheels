@@ -5,3 +5,7 @@ int main() {
 	camera.start();
 	return 0;
 }
+
+/*to compile it
+	g++ main.cpp CameraStreamer.cpp -o camera_streamer `pkg-config --cflags --libs opencv4`
+*/
