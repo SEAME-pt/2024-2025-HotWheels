@@ -12,6 +12,9 @@ on:
     paths:
       - 'apps/cluster/**'
 
+env:
+  DIR: apps/cluster
+
 jobs:
   run-on-self-hosted:
     runs-on: [self-hosted, seame-computer-2]

@@ -12,6 +12,9 @@ on:
     paths:
       - 'apps/car_controls/**'
 
+env:
+  DIR: apps/car_controls
+
 jobs:
   run-on-self-hosted:
     runs-on: [self-hosted, seame-computer-2]
