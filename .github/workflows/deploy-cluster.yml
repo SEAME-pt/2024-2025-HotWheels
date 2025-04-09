@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - '${{ env.DIR }}/**'
+      - 'apps/cluster/**'
   pull_request:
     branches:
       - main
     paths:
-      - '${{ env.DIR }}/**'
+      - 'apps/cluster/**'
 
 env:
   DIR: apps/cluster

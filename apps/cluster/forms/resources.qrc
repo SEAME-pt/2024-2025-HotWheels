@@ -3,5 +3,6 @@
         <file>mini-car.png</file>
         <file>blinker.png</file>
         <file>left-blinker.png</file>
+        <file>background.jpg</file>
     </qresource>
 </RCC>

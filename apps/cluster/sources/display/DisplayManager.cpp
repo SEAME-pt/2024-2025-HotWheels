@@ -31,7 +31,7 @@
 DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 		: QObject(parent), m_ui(ui) {
 	// Ensure the labels are initialized
-	if (!m_ui->speedLabel || !m_ui->rpmLabel || !m_ui->directionLabel ||
+    if (!m_ui->speedLabel || !m_ui->rpmLabel ||
 			!m_ui->timeLabel || !m_ui->wifiLabel || !m_ui->temperatureLabel ||
 			!m_ui->batteryLabel) {
 		qDebug() << "Error: Labels not initialized in the UI form!";
@@ -41,7 +41,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	// Set initial values for the labels
 	m_ui->speedLabel->setText("0");
 	m_ui->rpmLabel->setText("0.00");
-	m_ui->directionLabel->setText("D");
 	m_ui->timeLabel->setText("--:--:--");
 	m_ui->wifiLabel->setText("📶 Disconnected");
 	m_ui->temperatureLabel->setText("🌡️ N/A");
@@ -49,7 +48,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	m_ui->speedMetricsLabel->setText("KM/H");
 	m_ui->leftBlinkerLabel->setVisible(false);
 	m_ui->rightBlinkerLabel->setVisible(false);
-	m_ui->lowBatteryLabel->setVisible(false);
 
 	// Directly connect button clicks to signals
 	connect(m_ui->toggleDrivingModeButton, &QPushButton::clicked, this,
@@ -80,21 +78,48 @@ void DisplayManager::updateCanBusData(float speed, int rpm) {
  */
 void DisplayManager::updateEngineData(CarDirection direction,
 																			int steeringAngle) {
-	QString directionText;
+	//QString directionText;
 	switch (direction) {
 	case CarDirection::Drive:
-		directionText = "D";
+		//directionText = "D";
+		m_ui->directionParkLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionReverseLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionNeutralLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionDriveLabel->setStyleSheet("color: green; background: transparent;");
+
+		m_ui->directionParkLabel->update();
+		m_ui->directionReverseLabel->update();
+		m_ui->directionNeutralLabel->update();
+		m_ui->directionDriveLabel->update();
 		break;
 	case CarDirection::Reverse:
-		directionText = "R";
+		//directionText = "R";
+		m_ui->directionParkLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionReverseLabel->setStyleSheet("color: lightgreen; background: transparent;");
+		m_ui->directionNeutralLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionDriveLabel->setStyleSheet("color: white; background: transparent;");
+
+		m_ui->directionParkLabel->update();
+		m_ui->directionReverseLabel->update();
+		m_ui->directionNeutralLabel->update();
+		m_ui->directionDriveLabel->update();
 		break;
 	case CarDirection::Stop:
 	default:
-		directionText = "D";
+		//directionText = "D";
+		m_ui->directionParkLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionReverseLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionNeutralLabel->setStyleSheet("color: white; background: transparent;");
+		m_ui->directionDriveLabel->setStyleSheet("color: lightgreen; background: transparent;");
+
+		m_ui->directionParkLabel->update();
+		m_ui->directionReverseLabel->update();
+		m_ui->directionNeutralLabel->update();
+		m_ui->directionDriveLabel->update();
 		break;
 	}
 
-	m_ui->directionLabel->setText(directionText);
+	//m_ui->directionLabel->setText(directionText);
 	if (steeringAngle > 0) {
 		m_ui->leftBlinkerLabel->setVisible(false);
 		m_ui->rightBlinkerLabel->setVisible(true);
@@ -117,10 +142,9 @@ void DisplayManager::updateEngineData(CarDirection direction,
  */
 void DisplayManager::updateSystemTime(const QString &currentDate,
 																			const QString &currentTime,
-																			const QString &currentDay) {
+                                                                            const QString &currentDay) {
 	m_ui->dateLabel->setText(currentDate);
 	m_ui->timeLabel->setText(currentTime);
-	m_ui->weekDayLabel->setText(currentDay);
 }
 
 /*!
@@ -156,9 +180,6 @@ void DisplayManager::updateTemperature(const QString &temperature) {
  * @param batteryPercentage The current battery percentage.
  */
 void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
-	if (batteryPercentage < 20.0) {
-		m_ui->lowBatteryLabel->setVisible(true);
-	}
 	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) +
 															"% " + (batteryPercentage > 20.0 ? "🔋" : "🪫"));
 }
@@ -181,7 +202,7 @@ void DisplayManager::updateMileage(double mileage) {
  * @param ipAddress The current IP address.
  */
 void DisplayManager::updateIpAddress(const QString &ipAddress) {
-	m_ui->ipAddressLabel->setText("IP " + ipAddress);
+	m_ui->ipAddressLabel->setText(ipAddress);
 }
 
 /*!
@@ -194,13 +215,13 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 	QString modeText;
 	switch (newMode) {
 	case DrivingMode::Manual:
-		modeText = "manual";
+		modeText = "Manual";
 		break;
 	case DrivingMode::Automatic:
-		modeText = "automatic";
+		modeText = "Automatic";
 		break;
 	}
-	m_ui->drivingModeLabel->setText("Mode: " + modeText);
+	m_ui->drivingModeLabel->setText(modeText);
 }
 
 /*!
@@ -219,7 +240,6 @@ void DisplayManager::updateClusterTheme(ClusterTheme newTheme) {
 		themeText = "Light";
 		break;
 	}
-	m_ui->clusterThemeLabel->setText("Theme: " + themeText);
 }
 
 /*!
@@ -238,6 +258,6 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 		metricsText = "mph";
 		break;
 	}
-	m_ui->clusterMetricsLabel->setText("Metrics: " + metricsText);
+
 	m_ui->speedMetricsLabel->setText(metricsText.toUpper());
 }
