@@ -24,9 +24,18 @@ void CameraStreamer::start() {
 			break;
 
 		//cv::Mat resized_frame;
+		cv::Mat cameraMatrix, distCoeffs;
+		FileStorage fs("camera_calibration.yml", FileStorage::READ);
+		fs["camera_matrix"] >> cameraMatrix;
+		fs["distortion_coefficients"] >> distCoeffs;
+		fs.release();
+
+		cv::Mat undistorted;
+		cv::undistort(frame, undistorted, cameraMatrix, distCoeffs);
+
 		cv::Mat prediction;
 		//cv::resize(frame, resized_frame, cv::Size(), scale_factor, scale_factor, cv::INTER_LINEAR);
-		prediction = inference.makePrediction(frame);
+		prediction = inference.makePrediction(undistorted);
 		cv::imshow(window_name, prediction);
 
 		if (cv::waitKey(1) == 27)

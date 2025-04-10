@@ -2,6 +2,7 @@
 #define CAMERA_STREAMER_HPP
 
 #include <opencv2/opencv.hpp>
+#include <opencv2/aruco/charuco.hpp>
 #include <iostream>
 #include "TensorRTInferencer.hpp"
 
