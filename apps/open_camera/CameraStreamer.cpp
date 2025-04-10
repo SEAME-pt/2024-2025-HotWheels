@@ -7,6 +7,8 @@ CameraStreamer::CameraStreamer(double scale, const std::string& win_name)
 	std::string pipeline = "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 	cap.open(pipeline, cv::CAP_GSTREAMER);
 
+	inference = new TensorRTInferencer("model.engine");
+
 	if (!cap.isOpened()) {
 		std::cerr << "Error: Could not open CSI camera" << std::endl;
 		exit(-1);
@@ -21,9 +23,11 @@ void CameraStreamer::start() {
 		if (frame.empty())
 			break;
 
-		cv::Mat resized_frame;
-		cv::resize(frame, resized_frame, cv::Size(), scale_factor, scale_factor, cv::INTER_LINEAR);
-		cv::imshow(window_name, resized_frame);
+		//cv::Mat resized_frame;
+		cv::Mat prediction;
+		//cv::resize(frame, resized_frame, cv::Size(), scale_factor, scale_factor, cv::INTER_LINEAR);
+		prediction = inference.makePrediction(frame);
+		cv::imshow(window_name, prediction);
 
 		if (cv::waitKey(1) == 27)
 			break; // Exit on ESC key
