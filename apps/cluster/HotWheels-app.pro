@@ -1,4 +1,4 @@
-QT       += core gui network
+QT	   += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++17
 
@@ -88,6 +88,8 @@ LIBS += -lSDL2 -lrt -lzmq
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm) {
+	message("Building for ARM architecture")
+
 	LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
 	INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
 
@@ -102,7 +104,6 @@ contains(QT_ARCH, arm) {
 
 	# OpenCV includes
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4/opencv2
 
 	# GStreamer includes (needed for camera streaming)
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/gstreamer-1.0
@@ -123,4 +124,5 @@ contains(QT_ARCH, arm) {
 
 	# Add rpath to help find libraries at runtime
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+
 }
