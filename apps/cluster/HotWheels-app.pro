@@ -96,14 +96,16 @@ contains(QT_ARCH, arm) {
 	# Define paths for Jetson cross-compilation
 	JETSON_SYSROOT = /home/michel/qtjetson/sysroot
 
-	# CUDA includes - use the exact path found on Jetson
+	# CUDA includes - add both directories structure for compatibility
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/include
+
+	# Add OpenCV includes - support both OpenCV2 and OpenCV4 style includes
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include  # For opencv2/opencv.hpp
 
 	# TensorRT includes
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu
-
-	# OpenCV includes
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4
 
 	# GStreamer includes (needed for camera streaming)
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/gstreamer-1.0
@@ -124,5 +126,6 @@ contains(QT_ARCH, arm) {
 
 	# Add rpath to help find libraries at runtime
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
 
 }
