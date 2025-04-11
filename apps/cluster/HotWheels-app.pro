@@ -87,14 +87,12 @@ RESOURCES += \
 LIBS += -lSDL2 -lrt -lzmq
 
 # Conditionally add paths for cross-compilation
-contains(QT_ARCH, arm) {
-	message("Building for ARM architecture")
-
+contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
 	INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
 
 	# Define paths for Jetson cross-compilation
-	JETSON_SYSROOT = /home/seame/qtjetson/sysroot
+	JETSON_SYSROOT = /home/michel/qtjetson/sysroot
 
 	# CUDA includes - use the exact path found on Jetson
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
