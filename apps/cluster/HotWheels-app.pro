@@ -1,6 +1,6 @@
 QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-CONFIG += c++17
+CONFIG += c++17 console
 
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
