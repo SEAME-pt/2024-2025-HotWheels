@@ -1,6 +1,6 @@
 QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-CONFIG += c++17 console
+CONFIG += c++17
 
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
@@ -102,6 +102,7 @@ contains(QT_ARCH, arm) {
 
 	# OpenCV includes
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4/opencv2
 
 	# GStreamer includes (needed for camera streaming)
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/gstreamer-1.0
