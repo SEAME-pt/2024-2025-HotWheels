@@ -11,15 +11,16 @@ class CameraStreamer : public QObject {
 	Q_OBJECT
 
 public:
-	explicit CameraStreamer(double scale = 0.5, const std::string& win_name = "CSI Camera", QObject *parent = nullptr);
+	explicit CameraStreamer(TensorRTInferencer& infer, double scale = 0.5,
+		const std::string& win_name = "CSI Camera", bool show_orig = false, QObject *parent = nullptr);
 	~CameraStreamer();
-
 	void start();
 
 private:
 	cv::VideoCapture cap;
 	double scale_factor;
 	std::string window_name;
+	bool show_original;
 
 	TensorRTInferencer *inferencer;
 };
