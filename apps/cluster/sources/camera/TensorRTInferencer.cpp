@@ -9,7 +9,8 @@ void TensorRTInferencer::Logger::log(Severity severity, const char* msg) noexcep
 		std::cout << msg << std::endl;
 }
 
-TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
+TensorRTInferencer::TensorRTInferencer(const std::string& enginePath, QObject *parent)
+	: QObject(parent),
 	runtime(nullptr),
 	engine(nullptr),
 	context(nullptr),

@@ -1,8 +1,10 @@
 #include "CameraStreamer.hpp"
 
 // Constructor
-CameraStreamer::CameraStreamer(double scale, const std::string& win_name)
-	: scale_factor(scale), window_name(win_name) {
+CameraStreamer::CameraStreamer(double scale, const std::string& win_name, QObject *parent)
+	: QObject(parent),
+	scale_factor(scale),
+	window_name(win_name) {
 
 	std::string pipeline = "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 	cap.open(pipeline, cv::CAP_GSTREAMER);

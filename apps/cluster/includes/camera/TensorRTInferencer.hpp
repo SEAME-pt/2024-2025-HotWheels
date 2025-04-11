@@ -1,5 +1,9 @@
+#ifndef TENSORRTINFERENCER_HPP
+#define TENSORRTINFERENCER_HPP
+
 #pragma once
 
+#include <QObject>
 #include <NvInfer.h>
 #include <cuda_runtime_api.h>
 #include <opencv2/opencv.hpp>
@@ -7,7 +11,15 @@
 #include <vector>
 #include <memory>
 
-class TensorRTInferencer {
+class TensorRTInferencer : public QObject {
+	Q_OBJECT
+
+public:
+	explicit TensorRTInferencer(const std::string& enginePath, QObject *parent = nullptr);
+	~TensorRTInferencer();
+
+	cv::Mat makePrediction(const cv::Mat& image);
+
 private:
 	class Logger : public nvinfer1::ILogger {
 	public:
@@ -28,10 +40,6 @@ private:
 	std::vector<char> readEngineFile(const std::string& enginePath);
 	cv::Mat preprocessImage(const cv::Mat& image);
 	std::vector<float> runInference(const cv::Mat& inputImage);
-
-public:
-	TensorRTInferencer(const std::string& enginePath);
-	~TensorRTInferencer();
-
-	cv::Mat makePrediction(const cv::Mat& image);
 };
+
+#endif // TENSORRTINFERENCER_HPP

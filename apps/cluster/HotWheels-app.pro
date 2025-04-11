@@ -12,6 +12,7 @@ INCLUDEPATH += \
 	$$PWD/includes/system \
 	$$PWD/includes/mileage \
 	$$PWD/includes/utils \
+	$$PWD/includes/camera
 
 # Application Sources
 SOURCES += \
@@ -89,4 +90,36 @@ LIBS += -lSDL2 -lrt -lzmq
 contains(QT_ARCH, arm) {
 	LIBS += -L$$[QT_SYSROOT]/usr/lib/aarch64-linux-gnu -lSDL2
 	INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
+
+	# Define paths for Jetson cross-compilation
+	JETSON_SYSROOT = /home/michel/qtjetson/sysroot
+
+	# CUDA includes - use the exact path found on Jetson
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
+
+	# TensorRT includes
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu
+
+	# OpenCV includes
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4
+
+	# GStreamer includes (needed for camera streaming)
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/gstreamer-1.0
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/glib-2.0
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/glib-2.0/include
+
+	# Library paths for ARM - add all necessary paths
+	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra  # Add Tegra libraries path
+
+	# Make sure we're linking against the right libraries
+	LIBS += -lcudart -lnvinfer -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_highgui -lopencv_calib3d
+	LIBS += -lnvmedia -lnvdla_compiler
+
+	# GStreamer libraries
+	LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
+
+	# Add rpath to help find libraries at runtime
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
 }
