@@ -39,7 +39,7 @@ void CameraStreamer::start() {
 	// ends here
 
 	// Run inference on the frame
-	cv::Mat prediction_mask = inferencer.makePrediction(frame);
+	cv::Mat prediction_mask = inferencer->makePrediction(frame);
 
 	// Convert prediction mask to visualization (assuming values between 0-1)
 	cv::Mat visualization;
