@@ -198,31 +198,6 @@ cv::Mat TensorRTInferencer::preprocessImage(const cv::Mat& image) {
     return floatImg;
 }
 
-/* cv::Mat TensorRTInferencer::preprocessImage(const cv::Mat& image) {
-    if (image.empty()) {
-        throw std::runtime_error("Input image is empty");
-    }
-
-    // Pre-allocate output matrices to avoid repeated allocations
-    static cv::Mat grayImg, resizedImg, floatImg;
-
-    // Convert to grayscale if needed
-    if (image.channels() > 1) {
-        cv::cvtColor(image, grayImg, cv::COLOR_BGR2GRAY);
-    } else {
-        // Avoid unnecessary copy when already grayscale
-        grayImg = image;
-    }
-
-    // Resize image - this can be CPU intensive
-    cv::resize(grayImg, resizedImg, inputSize, 0, 0, cv::INTER_LINEAR);  // INTER_LINEAR is faster than LANCZOS4
-
-    // Convert to float
-    resizedImg.convertTo(floatImg, CV_32F, 1.0/255.0);
-
-    return floatImg;
-} */
-
 std::vector<float> TensorRTInferencer::runInference(const cv::Mat& inputImage) {
     // Check for correct input dimensions
     if (inputImage.rows != inputSize.height || inputImage.cols != inputSize.width) {
