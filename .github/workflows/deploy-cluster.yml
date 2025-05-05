@@ -28,7 +28,7 @@ jobs:
           mkdir build
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../root.pro
-          make -j$(nproc)
+          make -j$(2)
 
       - name: Build x86 executable for testing
         run: |
