@@ -36,8 +36,8 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	: QObject(parent), m_engineController(0x40, 0x60, this),
 	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
 	  m_subscriberObject(nullptr), m_manualControllerThread(nullptr),
-	  m_processMonitorThread(nullptr), m_subscriberThread(nullptr),
-	  m_joystickControlThread(nullptr), m_threadRunning(true)
+	  m_subscriberThread(nullptr), m_joystickControlThread(nullptr),
+	  m_threadRunning(true)
 {
 
 	// Initialize the joystick controller with callbacks
@@ -98,20 +98,6 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 		}
 	});
 	m_subscriberThread->start();
-
-	// **Process Monitoring Thread**
-/* 	m_processMonitorThread = QThread::create([this]()
-											 {
-	QString targetProcessName = "HotWheels-app"; // Change this to actual process name
-
-	while (m_threadRunning) {
-	  if (!isProcessRunning(targetProcessName)) {
-		if (m_currentMode == DrivingMode::Automatic)
-				setMode(DrivingMode::Manual);
-	  }
-	  QThread::sleep(1);
-	} });
-	m_processMonitorThread->start(); */
 }
 
 
@@ -135,15 +121,6 @@ ControlsManager::~ControlsManager()
 		delete m_subscriberThread;
 	}
 
-	// Stop the process monitoring thread safely
-/* 	if (m_processMonitorThread)
-	{
-		m_threadRunning = false;
-		m_processMonitorThread->quit();
-		m_processMonitorThread->wait();
-		delete m_processMonitorThread;
-	} */
-
 	// Stop the controller thread safely
 	if (m_manualControllerThread)
 	{
@@ -163,21 +140,6 @@ ControlsManager::~ControlsManager()
 
 	delete m_subscriberThread;
 	delete m_manualController;
-}
-
-/*!
- * @brief Check if a process is running.
- * @param processName The name of the process to check.
- * @return True if the process is running, false otherwise.
- * @details Uses the `pgrep` command to determine if a given process is active.
- */
-bool ControlsManager::isProcessRunning(const QString &processName)
-{
-	QProcess process;
-	process.start("pgrep", QStringList() << processName);
-	process.waitForFinished();
-
-	return !process.readAllStandardOutput().isEmpty();
 }
 
 /*!

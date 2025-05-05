@@ -36,7 +36,6 @@ private:
 	Subscriber *m_subscriberObject;
 
 	QThread *m_manualControllerThread;
-	QThread *m_processMonitorThread;
 	QThread *m_subscriberThread;
 	QThread *m_joystickControlThread;
 
