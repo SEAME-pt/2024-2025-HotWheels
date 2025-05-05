@@ -27,7 +27,7 @@ jobs:
           cd $DIR
           mkdir build
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../root.pro
+          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
           make -j1 VERBOSE=1
 
       - name: Build x86 executable for testing
