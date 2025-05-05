@@ -24,4 +24,3 @@ app_target.file = $$BASE_DIR/HotWheels-app.pro
     integration_tests_target.file = $$BASE_DIR/HotWheels-integration-tests.pro
     integration_tests_target.depends = app_target
 }
-
