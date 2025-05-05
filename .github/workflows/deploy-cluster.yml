@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - model-on-cluster
-    paths:
-      - 'apps/cluster/**'
+    #paths:
+      #- 'apps/cluster/**'
   pull_request:
     branches:
       - model-on-cluster
-    paths:
-      - 'apps/cluster/**'
+    #paths:
+      #- 'apps/cluster/**'
 
 env:
   DIR: apps/cluster
@@ -28,7 +28,7 @@ jobs:
           mkdir build
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../root.pro
-          make -j$(2)
+          make -j1 VERBOSE=1
 
       - name: Build x86 executable for testing
         run: |
