@@ -110,7 +110,9 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 			// Create the TensorRT inferencer
 			std::cout << "Loading TensorRT engine from: " << enginePath << std::endl;
-			TensorRTInferencer inferencer(enginePath);
+			//TensorRTInferencer inferencer(enginePath);
+
+			auto inferencer = std::make_shared<TensorRTInferencer>(enginePath);
 
 			// Create the camera streamer with the inferencer
 			std::cout << "Initializing CSI camera..." << std::endl;

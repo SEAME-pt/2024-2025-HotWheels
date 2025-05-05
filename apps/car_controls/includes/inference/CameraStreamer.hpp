@@ -14,7 +14,7 @@
 
 class CameraStreamer {
 public:
-    CameraStreamer(TensorRTInferencer& infer, double scale = 0.5, const std::string& win_name = "CSI Camera", bool show_orig = false);
+    CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, double scale = 0.5, const std::string& win_name = "CSI Camera", bool show_orig = false);
     ~CameraStreamer();
 
     void initOpenGL();
@@ -39,6 +39,8 @@ private:
     int window_width, window_height;
 
     cudaGraphicsResource* cuda_resource;
+
+    std::shared_ptr<TensorRTInferencer> m_inferencer;
 };
 
 #endif // CAMERA_STREAMER_HPP
