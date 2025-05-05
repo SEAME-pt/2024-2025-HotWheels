@@ -49,7 +49,10 @@ public:
     TensorRTInferencer(const std::string& enginePath);
     ~TensorRTInferencer();
 
-    cv::Mat preprocessImage(const cv::Mat& image);
-    std::vector<float> runInference(const cv::Mat& inputImage);
-    cv::Mat makePrediction(const cv::Mat& image);
+    //cv::Mat preprocessImage(const cv::Mat& image);
+    cv::cuda::GpuMat preprocessImage(const cv::cuda::GpuMat& gpuImage);
+    //std::vector<float> runInference(const cv::Mat& inputImage);
+    void runInference(const cv::cuda::GpuMat& gpuInput);
+    //cv::Mat makePrediction(const cv::Mat& image);
+    cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage);
 };

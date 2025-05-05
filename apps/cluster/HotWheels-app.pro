@@ -40,8 +40,6 @@ SOURCES += \
 	sources/mileage/MileageFileHandler.cpp \
 	sources/utils/I2CController.cpp \
 	sources/utils/FileController.cpp \
-	sources/camera/CameraStreamer.cpp \
-	sources/camera/TensorRTInferencer.cpp
 
 HEADERS += \
 	../../ZeroMQ/Publisher.hpp \
@@ -75,8 +73,6 @@ HEADERS += \
 	includes/utils/I2CController.hpp \
 	includes/utils/II2CController.hpp \
 	includes/utils/FileController.hpp \
-	includes/camera/CameraStreamer.hpp \
-	includes/camera/TensorRTInferencer.hpp
 
 FORMS += forms/CarManager.ui
 
