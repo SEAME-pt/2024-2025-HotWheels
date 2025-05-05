@@ -106,7 +106,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			std::cout << "Starting TensorRT Inference on Jetson..." << std::endl;
 
 			// Path to your TensorRT engine file - adjust path as needed for Jetson
-			std::string enginePath = "models/model.engine";
+			std::string enginePath = "/home/hotweels/dev/model_loader/models/model.engine";
 
 			// Create the TensorRT inferencer
 			std::cout << "Loading TensorRT engine from: " << enginePath << std::endl;
