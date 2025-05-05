@@ -171,7 +171,7 @@ void CameraStreamer::start() {
         cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
         stream.waitForCompletion();  // Ensure async operations are complete
 
-        LaneAnalyzer analyzer;
+/*         LaneAnalyzer analyzer;
 
         LaneMetrics metrics = analyzer.computeMetrics(binary_mask_cpu);
 
@@ -181,7 +181,7 @@ void CameraStreamer::start() {
                       << "Position: " << metrics.positionStatus << std::endl;
         } else {
             std::cout << "[Lane] No lanes detected!" << std::endl;
-        }
+        } */
 
         // Convert model output to 8-bit binary mask on GPU
         cv::cuda::GpuMat d_visualization;
