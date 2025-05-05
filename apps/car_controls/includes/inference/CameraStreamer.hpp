@@ -29,7 +29,6 @@ private:
     cv::VideoCapture cap;
     double scale_factor;
     std::string window_name;
-    TensorRTInferencer& inferencer;
     bool show_original;
 
     cv::cuda::GpuMat d_mapx, d_mapy;
