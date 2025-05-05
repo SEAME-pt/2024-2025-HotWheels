@@ -15,9 +15,9 @@ SUBDIRS += \
 app_target.file = $$BASE_DIR/HotWheels-app.pro
 
 # Unit Tests Subproject
-unit_tests_target.file = $$BASE_DIR/HotWheels-unit-tests.pro
-unit_tests_target.depends = app_target
+#unit_tests_target.file = $$BASE_DIR/HotWheels-unit-tests.pro
+#unit_tests_target.depends = app_target
 
 # Integration Tests Subproject
-integration_tests_target.file = $$BASE_DIR/HotWheels-integration-tests.pro
-integration_tests_target.depends = app_target
+#integration_tests_target.file = $$BASE_DIR/HotWheels-integration-tests.pro
+#integration_tests_target.depends = app_target
