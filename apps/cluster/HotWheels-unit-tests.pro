@@ -78,7 +78,7 @@ HEADERS += \
 	includes/data/VehicleDataManager.hpp
 
 # Define paths for Jetson cross-compilation
-JETSON_SYSROOT = /home/michel/qtjetson/sysroot
+JETSON_SYSROOT = /home/seame/qtjetson/sysroot
 
 GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
 LIBS += -L$${GMOCK_LIBDIR} \
