@@ -17,6 +17,8 @@
 
 #include "EngineController.hpp"
 #include "JoysticksController.hpp"
+#include "CameraStreamer.hpp"
+#include "TensorRTInferencer.hpp"
 #include "../../ZeroMQ/Subscriber.hpp"
 #include <QObject>
 #include <QThread>
@@ -34,12 +36,14 @@ private:
 	JoysticksController *m_manualController;
 	DrivingMode m_currentMode;
 	Subscriber *m_subscriberObject;
+	CameraStreamer *m_cameraStreamerObject;
+
+	std::atomic<bool> m_running;
 
 	QThread *m_manualControllerThread;
 	QThread *m_subscriberThread;
 	QThread *m_joystickControlThread;
-
-	std::atomic<bool> m_threadRunning;
+	QThread *m_cameraStreamerThread;
 
 public:
 	explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);

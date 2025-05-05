@@ -204,3 +204,17 @@ void CameraStreamer::start() {
     glfwDestroyWindow(window);  // Clean up window
     glfwTerminate();  // Terminate GLFW
 }
+
+void CameraStreammer::run() {
+    try {
+        initUndistortMaps();
+
+        // Start the stream (this will run until ESC is pressed or program is terminated)
+        std::cout << "Starting camera stream with inference. Press ESC to exit." << std::endl;
+        start();
+
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+    std::cout << "Shutting down..." << std::endl;
+}

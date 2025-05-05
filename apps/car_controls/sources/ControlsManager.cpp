@@ -37,7 +37,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
 	  m_subscriberObject(nullptr), m_manualControllerThread(nullptr),
 	  m_subscriberThread(nullptr), m_joystickControlThread(nullptr),
-	  m_threadRunning(true)
+	  m_cameraStreamerThread(nullptr), m_cameraStreamer(nullptr)
 {
 
 	// Initialize the joystick controller with callbacks
@@ -98,6 +98,32 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 		}
 	});
 	m_subscriberThread->start();
+
+
+	m_cameraStreamerThread = QThread::create([this, argc, argv]()
+									{
+		try {
+			std::cout << "Starting TensorRT Inference on Jetson..." << std::endl;
+
+			// Path to your TensorRT engine file - adjust path as needed for Jetson
+			std::string enginePath = "models/model.engine";
+
+			// Create the TensorRT inferencer
+			std::cout << "Loading TensorRT engine from: " << enginePath << std::endl;
+			TensorRTInferencer inferencer(enginePath);
+
+			// Create the camera streamer with the inferencer
+			std::cout << "Initializing CSI camera..." << std::endl;
+			m_cameraStreamerObject = new CameraStreamer(inferencer, 0.5, "Jetson Camera Inference", true);
+			m_cameraStreamerObject->run();
+		} catch (const std::exception& e) {
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+
+		std::cout << "Shutting down..." << std::endl;
+	});
+	connect(m_cameraStreamerThread, &QThread::finished, m_cameraStreamerThread, &QObject::deleteLater);
+	m_cameraStreamerThread->start();
 }
 
 
@@ -136,6 +162,14 @@ ControlsManager::~ControlsManager()
 		m_joystickControlThread->quit();
 		m_joystickControlThread->wait();
 		delete m_joystickControlThread;
+	}
+
+	if (m_streamer) {
+		m_streamer->stop();
+	}
+	if (m_inferenceThread) {
+		m_inferenceThread->quit();
+		m_inferenceThread->wait();
 	}
 
 	delete m_subscriberThread;
