@@ -11,9 +11,9 @@ SUBDIRS += app_target
 app_target.file = $$BASE_DIR/HotWheels-app.pro
 
 # Only include test targets when not cross-compiling for ARM
-!contains(QT_ARCH, "arm") & \
-!contains(QT_ARCH, "arm64") & \
-!contains(QT_ARCH, "aarch64") {
+!contains(QT_ARCH, arm) && \
+!contains(QT_ARCH, arm64) && \
+!contains(QT_ARCH, aarch64) {
 
     SUBDIRS += unit_tests_target \
                integration_tests_target
