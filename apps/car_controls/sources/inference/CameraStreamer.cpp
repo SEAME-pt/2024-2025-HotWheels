@@ -141,14 +141,15 @@ void CameraStreamer::initUndistortMaps() {
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
     initUndistortMaps();  // Initialize camera undistortion maps
-    initOpenGL();  // Initialize OpenGL and CUDA interop
+    //initOpenGL();  // Initialize OpenGL and CUDA interop
 
     cv::Mat frame;
     cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
     const int framesToSkip = 2;  // Skip frames to reduce processing load
 
-    while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
+    //while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
+    while (1) {
         for (int i = 0; i < framesToSkip; ++i) {
             cap.grab();  // Grab frames without decoding
         }
@@ -201,8 +202,8 @@ void CameraStreamer::start() {
         std::this_thread::sleep_for(std::chrono::milliseconds(33));  // Frame delay (~30 FPS)
     }
 
-    glfwDestroyWindow(window);  // Clean up window
-    glfwTerminate();  // Terminate GLFW
+    //glfwDestroyWindow(window);  // Clean up window
+    //glfwTerminate();  // Terminate GLFW
 }
 
 void CameraStreamer::run() {
