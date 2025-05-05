@@ -23,6 +23,7 @@ public:
     void renderTexture();
 
     void start();
+    void run();
 
 private:
     cv::VideoCapture cap;

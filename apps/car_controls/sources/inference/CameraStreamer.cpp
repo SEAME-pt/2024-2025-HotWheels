@@ -207,11 +207,11 @@ void CameraStreamer::start() {
 
 void CameraStreammer::run() {
     try {
-        initUndistortMaps();
+        this->initUndistortMaps();
 
         // Start the stream (this will run until ESC is pressed or program is terminated)
         std::cout << "Starting camera stream with inference. Press ESC to exit." << std::endl;
-        start();
+        this->start();
 
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
