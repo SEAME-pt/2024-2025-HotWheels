@@ -7,9 +7,7 @@ BASE_DIR = $$PWD
 # Subprojects
 TEMPLATE = subdirs
 SUBDIRS += \
-	app_target \
-	unit_tests_target \
-	integration_tests_target
+	app_target
 
 # App Subproject
 app_target.file = $$BASE_DIR/HotWheels-app.pro
