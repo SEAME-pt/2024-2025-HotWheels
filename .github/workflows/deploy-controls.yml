@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - model-on-cluster
-    paths:
-      - 'apps/car_controls/**'
+    #paths:
+      #- 'apps/car_controls/**'
   pull_request:
     branches:
       - model-on-cluster
-    paths:
-      - 'apps/car_controls/**'
+    #paths:
+      #- 'apps/car_controls/**'
 
 env:
   DIR: apps/car_controls

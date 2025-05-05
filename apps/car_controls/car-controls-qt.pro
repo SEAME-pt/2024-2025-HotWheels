@@ -5,6 +5,7 @@ CONFIG += c++17 cmdline
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
 	$$PWD/includes \
+	$$PWD/includes/inference
 
 
 # Application Sources
