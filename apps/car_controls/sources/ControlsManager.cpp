@@ -100,7 +100,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	m_subscriberThread->start();
 
 	// **Process Monitoring Thread**
-	m_processMonitorThread = QThread::create([this]()
+/* 	m_processMonitorThread = QThread::create([this]()
 											 {
 	QString targetProcessName = "HotWheels-app"; // Change this to actual process name
 
@@ -111,7 +111,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  }
 	  QThread::sleep(1);
 	} });
-	m_processMonitorThread->start();
+	m_processMonitorThread->start(); */
 }
 
 
@@ -136,13 +136,13 @@ ControlsManager::~ControlsManager()
 	}
 
 	// Stop the process monitoring thread safely
-	if (m_processMonitorThread)
+/* 	if (m_processMonitorThread)
 	{
 		m_threadRunning = false;
 		m_processMonitorThread->quit();
 		m_processMonitorThread->wait();
 		delete m_processMonitorThread;
-	}
+	} */
 
 	// Stop the controller thread safely
 	if (m_manualControllerThread)

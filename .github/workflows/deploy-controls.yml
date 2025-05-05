@@ -3,12 +3,12 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - main
+      - model-on-cluster
     paths:
       - 'apps/car_controls/**'
   pull_request:
     branches:
-      - main
+      - model-on-cluster
     paths:
       - 'apps/car_controls/**'
 
