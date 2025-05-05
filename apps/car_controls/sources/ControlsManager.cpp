@@ -163,13 +163,10 @@ ControlsManager::~ControlsManager()
 		m_joystickControlThread->wait();
 		delete m_joystickControlThread;
 	}
-
-	if (m_streamer) {
-		m_streamer->stop();
-	}
-	if (m_inferenceThread) {
-		m_inferenceThread->quit();
-		m_inferenceThread->wait();
+	// Stop the camera streamer thread safely
+	if (m_cameraStreamerThread) {
+		m_cameraStreamerThread->quit();
+		m_cameraStreamerThread->wait();
 	}
 
 	delete m_subscriberThread;
