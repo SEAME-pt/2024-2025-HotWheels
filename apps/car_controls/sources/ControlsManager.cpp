@@ -37,7 +37,8 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
 	  m_subscriberObject(nullptr), m_manualControllerThread(nullptr),
 	  m_subscriberThread(nullptr), m_joystickControlThread(nullptr),
-	  m_cameraStreamerThread(nullptr), m_cameraStreamerObject(nullptr)
+	  m_cameraStreamerThread(nullptr), m_cameraStreamerObject(nullptr),
+	  m_running(true)
 {
 
 	// Initialize the joystick controller with callbacks
