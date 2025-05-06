@@ -123,6 +123,10 @@ void CameraStreamer::renderTexture() {
 void CameraStreamer::initUndistortMaps() {
     cv::Mat cameraMatrix, distCoeffs;
     cv::FileStorage fs("camera_calibration.yml", cv::FileStorage::READ);  // Open calibration file
+    if (!fs.isOpened()) {
+        std::cerr << "[Error] Failed to open camera_calibration.yml" << std::endl;
+        return;  // or throw, exit, etc.
+    }
     fs["camera_matrix"] >> cameraMatrix;  // Read camera matrix
     fs["distortion_coefficients"] >> distCoeffs;  // Read distortion coefficients
     fs.release();  // Close file
