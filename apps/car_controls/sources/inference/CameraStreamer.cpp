@@ -34,6 +34,9 @@ CameraStreamer::~CameraStreamer() {
 
     std::cout << "[~CameraStreamer] Releasing GPU textures..." << std::endl;
     if (textureID) {
+        if (window) {
+            glfwMakeContextCurrent(window);  // ✅ Ensure OpenGL context is current
+        }
         glDeleteTextures(1, &textureID);  // Delete OpenGL texture
         textureID = 0;
     }
