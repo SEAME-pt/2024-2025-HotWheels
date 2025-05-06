@@ -144,7 +144,7 @@ ControlsManager::~ControlsManager()
 		if (m_subscriberObject) {
 			m_subscriberObject->stop();
 		}
-
+		m_subscriberThread->quit();
 		m_subscriberThread->wait();
 		delete m_subscriberThread;
 		m_subscriberThread = nullptr;
