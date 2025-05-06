@@ -103,15 +103,10 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	m_cameraStreamerThread = QThread::create([this, argc, argv]()
 									{
 		try {
-			std::cout << "Starting TensorRT Inference on Jetson..." << std::endl;
-
 			// Path to your TensorRT engine file - adjust path as needed for Jetson
 			std::string enginePath = "/home/hotweels/dev/model_loader/models/model.engine";
 
 			// Create the TensorRT inferencer
-			std::cout << "Loading TensorRT engine from: " << enginePath << std::endl;
-			//TensorRTInferencer inferencer(enginePath);
-
 			auto inferencer = std::make_shared<TensorRTInferencer>(enginePath);
 
 			// Create the camera streamer with the inferencer
@@ -121,8 +116,6 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 		} catch (const std::exception& e) {
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
-
-		std::cout << "Shutting down..." << std::endl;
 	});
 	connect(m_cameraStreamerThread, &QThread::finished, m_cameraStreamerThread, &QObject::deleteLater);
 	m_cameraStreamerThread->start();
@@ -164,7 +157,6 @@ ControlsManager::~ControlsManager()
 	}
 
 	// Stop camera streamer thread
-	qDebug() << "[Shutdown] Stopping camera streamer thread...";
 	if (m_cameraStreamerThread) {
 		if (m_cameraStreamerObject)
 			m_cameraStreamerObject->stop();
@@ -174,20 +166,16 @@ ControlsManager::~ControlsManager()
 		delete m_cameraStreamerThread;
 		m_cameraStreamerThread = nullptr;
 	}
+
 	// Clean up objects
-	qDebug() << "[Shutdown] Deleting m_cameraStreamerObject...";
 	delete m_cameraStreamerObject;
 	m_cameraStreamerObject = nullptr;
 
-	qDebug() << "[Shutdown] Deleting m_manualController...";
 	delete m_manualController;
 	m_manualController = nullptr;
 
-	qDebug() << "[Shutdown] Deleting m_subscriberObject...";
 	delete m_subscriberObject;
 	m_subscriberObject = nullptr;
-
-	qDebug() << "[Shutdown] Cleanup complete.";
 }
 
 /*!
