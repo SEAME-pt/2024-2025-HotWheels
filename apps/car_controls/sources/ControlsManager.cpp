@@ -107,6 +107,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 					}
 				}
 			}
+		}
 	});
 	m_subscriberThread->start();
 
