@@ -44,8 +44,8 @@ void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& g
 		zmq::message_t topic_msg(topic.data(), topic.size());
 		zmq::message_t image_msg(encoded.data(), encoded.size());
 
-		publisher.send(topic_msg, zmq::send_flags::sndmore);
-		publisher.send(image_msg, zmq::send_flags::none);
+		publisher.send(&topic_msg, ZMQ_SNDMORE);
+		publisher.send(&image_msg, 0);
 
 	} catch (const std::exception& e) {
 		std::cerr << "[Publisher] Failed to publish image: " << e.what() << std::endl;

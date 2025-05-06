@@ -63,8 +63,8 @@ void Subscriber::listenFrames() {
             zmq::message_t topic_msg;
             zmq::message_t image_msg;
 
-            subscriber.recv(topic_msg, 0);
-            subscriber.recv(image_msg, 0);
+            subscriber.recv(&topic_msg, 0);
+            subscriber.recv(&image_msg, 0);
 
             std::string topic(static_cast<char*>(topic_msg.data()), topic_msg.size());
 
