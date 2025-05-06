@@ -80,7 +80,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 									{
 		m_subscriberObject->connect("tcp://localhost:5555");
 		m_subscriberObject->subscribe("joystick_value");
-		while (true) {
+		while (m_running) {
 			zmq::message_t message;
 			m_subscriberObject->getSocket().recv(&message, 0);
 
@@ -141,18 +141,21 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 ControlsManager::~ControlsManager()
 {
 	// Stop the client thread safely
-	if (m_subscriberThread)
-	{
-		m_subscriberObject->stop();
-		m_subscriberThread->quit();
+	if (m_subscriberThread) {
+		if (m_subscriberObject) {
+			m_subscriberObject->stop();
+		}
+
 		m_subscriberThread->wait();
 		delete m_subscriberThread;
+		m_subscriberThread = nullptr;
 	}
+
 
 	// Stop manual controller thread
 	if (m_manualControllerThread) {
 		if (m_manualController)
-			m_manualController->requestStop();  // You already have this
+			m_manualController->requestStop();
 
 		m_manualControllerThread->quit();
 		m_manualControllerThread->wait();
