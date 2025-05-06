@@ -2,7 +2,7 @@
 
 // Constructor: initializes camera capture, inference reference, and settings
 CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)
-    : scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)) {
+    : scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_running(true) {
 
     // Define GStreamer pipeline for CSI camera
     std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
@@ -155,7 +155,7 @@ void CameraStreamer::start() {
     const int framesToSkip = 2;  // Skip frames to reduce processing load
 
     //while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
-    while (1) {
+    while (m_running) {  // Main loop until stop signal
         for (int i = 0; i < framesToSkip; ++i) {
             cap.grab();  // Grab frames without decoding
         }
@@ -212,7 +212,11 @@ void CameraStreamer::start() {
     glfwTerminate();  // Terminate GLFW
 }
 
-void CameraStreamer::run() {
+void CameraStreamer::stop() {
+    m_running = false;
+}
+
+/* void CameraStreamer::run() {
     try {
         initUndistortMaps();
 
@@ -224,4 +228,4 @@ void CameraStreamer::run() {
         std::cerr << "Error: " << e.what() << std::endl;
     }
     std::cout << "Shutting down..." << std::endl;
-}
+} */

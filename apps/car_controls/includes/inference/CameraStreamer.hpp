@@ -23,6 +23,7 @@ public:
     void renderTexture();
 
     void start();
+    void stop();
     void run();
 
 private:
@@ -32,13 +33,13 @@ private:
     bool show_original;
 
     cv::cuda::GpuMat d_mapx, d_mapy;
+    cudaGraphicsResource* cuda_resource;
 
     GLFWwindow* window;
     GLuint textureID;
     int window_width, window_height;
 
-    cudaGraphicsResource* cuda_resource;
-
+    bool m_running;
     std::shared_ptr<TensorRTInferencer> m_inferencer;
 };
 

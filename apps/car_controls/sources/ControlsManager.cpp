@@ -99,7 +99,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	});
 	m_subscriberThread->start();
 
-
+	// **Running inference Thread**
 	m_cameraStreamerThread = QThread::create([this, argc, argv]()
 									{
 		try {
@@ -117,7 +117,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			// Create the camera streamer with the inferencer
 			std::cout << "Initializing CSI camera..." << std::endl;
 			m_cameraStreamerObject = new CameraStreamer(inferencer, 0.5, "Jetson Camera Inference", true);
-			m_cameraStreamerObject->run();
+			m_cameraStreamerObject->start();
 		} catch (const std::exception& e) {
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
@@ -149,30 +149,37 @@ ControlsManager::~ControlsManager()
 		delete m_subscriberThread;
 	}
 
-	// Stop the controller thread safely
-	if (m_manualControllerThread)
-	{
-		m_manualController->requestStop();
+	// Stop manual controller thread
+	if (m_manualControllerThread) {
+		if (m_manualController)
+			m_manualController->requestStop();  // You already have this
+
 		m_manualControllerThread->quit();
 		m_manualControllerThread->wait();
 		delete m_manualControllerThread;
+		m_manualControllerThread = nullptr;
 	}
 
-	// Stop the joystick control thread safely
-	if (m_joystickControlThread)
-	{
-		m_joystickControlThread->quit();
-		m_joystickControlThread->wait();
-		delete m_joystickControlThread;
-	}
-	// Stop the camera streamer thread safely
+	// Stop camera streamer thread
 	if (m_cameraStreamerThread) {
+		if (m_cameraStreamerObject)
+			m_cameraStreamerObject->stop();  // sets m_running = false in loop
+
 		m_cameraStreamerThread->quit();
 		m_cameraStreamerThread->wait();
+		delete m_cameraStreamerThread;
+		m_cameraStreamerThread = nullptr;
 	}
 
-	delete m_subscriberThread;
+	// Clean up objects
+	delete m_cameraStreamerObject;
+	m_cameraStreamerObject = nullptr;
+
 	delete m_manualController;
+	m_manualController = nullptr;
+
+	delete m_subscriberObject;
+	m_subscriberObject = nullptr;
 }
 
 /*!
