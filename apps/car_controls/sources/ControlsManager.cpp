@@ -85,14 +85,17 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			m_subscriberObject->getSocket().recv(&message, 0);
 
 			std::string received_msg(static_cast<char*>(message.data()), message.size());
+			std::cout << "[Subscriber] Raw message: " << received_msg << std::endl;
 
 			if (received_msg.find("joystick_value") == 0) {
 				std::string value = received_msg.substr(std::string("joystick_value ").length());
 				if (value == "true") {
 					setMode(DrivingMode::Manual);
+					std::cout << "[Subscriber] Mode updated to: " << (value == "true" ? "Manual" : "Automatic") << std::endl;
 				}
 				else if (value == "false") {
 					setMode(DrivingMode::Automatic);
+					std::cout << "[Subscriber] Mode updated to: " << (value == "true" ? "Manual" : "Automatic") << std::endl;
 				}
 			}
 		}

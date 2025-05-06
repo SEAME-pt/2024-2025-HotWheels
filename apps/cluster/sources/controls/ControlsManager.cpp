@@ -62,6 +62,8 @@ ControlsManager::~ControlsManager()
  *          It updates the current driving mode by calling the setMode() method.
  */
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
+	qDebug() << "[ControlsManager] drivingModeUpdated called with: " << (newMode == DrivingMode::Automatic ? "Automatic" : "Manual");
+
 	if (newMode == DrivingMode::Automatic) {
 		m_serverObject->setJoystickStatus(false);
 	}

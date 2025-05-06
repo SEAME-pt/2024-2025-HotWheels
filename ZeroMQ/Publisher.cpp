@@ -15,6 +15,8 @@ Publisher::~Publisher() {
 }
 
 void Publisher::publish(const std::string& topic, const std::string& message) {
+	std::cout << "[Publisher] Full message: " << topic << " " << message << std::endl;
+
 	std::string full_message = topic + " " + message;
 	zmq::message_t zmq_message(full_message.begin(), full_message.end());
 
@@ -22,6 +24,8 @@ void Publisher::publish(const std::string& topic, const std::string& message) {
 }
 
 void Publisher::setJoystickStatus(bool new_joytstick_value) {
+	std::cout << "[Publisher] Publishing joystick_value: " << (joytstick_value ? "true" : "false") << std::endl;
+
 	std::lock_guard<std::mutex> lock(joystick_mtx);  // Ensure thread safety
 	if (new_joytstick_value != joytstick_value) {
 		joytstick_value = new_joytstick_value;
