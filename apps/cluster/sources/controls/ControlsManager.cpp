@@ -33,10 +33,11 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 		m_serverThread(nullptr) {
 
 	// **Client Middleware Interface Thread**
-	m_serverThread = QThread::create([this, argc, argv]() {
+/* 	m_serverThread = QThread::create([this, argc, argv]() {
 			m_serverObject = new Publisher(5555);
 	});
-	m_serverThread->start();
+	m_serverThread->start(); */
+	m_serverObject = new Publisher(5555);
 }
 
 /*!
