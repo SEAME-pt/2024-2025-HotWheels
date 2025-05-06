@@ -32,23 +32,31 @@ CameraStreamer::~CameraStreamer() {
         cuda_resource = nullptr;
     }
 
-    std::cout << "[~CameraStreamer] Releasing GPU textures..." << std::endl;
+/*     std::cout << "[~CameraStreamer] Releasing GPU textures..." << std::endl;
     if (textureID) {
         if (window) {
             glfwMakeContextCurrent(window);  // ✅ Ensure OpenGL context is current
         }
         glDeleteTextures(1, &textureID);  // Delete OpenGL texture
         textureID = 0;
-    }
+    } */
 
     std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
-    if (window) {
+/*     if (window) {
         glfwDestroyWindow(window);  // Destroy OpenGL window
         window = nullptr;
+    } */
+
+    if (window)
+    {
+        glfwMakeContextCurrent(window);  // ✅ Ensure valid context
+        glDeleteTextures(1, &textureID); // ✅ Clean texture
+        glfwDestroyWindow(window);       // ✅ Then destroy
+        std::cout << "[~CameraStreamer] Terminating GLFW..." << std::endl;
+        glfwTerminate();
     }
 
-    std::cout << "[~CameraStreamer] Terminating GLFW..." << std::endl;
-    glfwTerminate();  // Shutdown GLFW
+    //glfwTerminate();  // Shutdown GLFW
 
     std::cout << "[~CameraStreamer] Destructor done." << std::endl;
 }
