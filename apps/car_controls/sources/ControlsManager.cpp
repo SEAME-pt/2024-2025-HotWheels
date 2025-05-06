@@ -81,7 +81,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 									{
 		m_subscriberObject->connect("tcp://localhost:5555");
 		m_subscriberObject->subscribe("joystick_value");
-		while (m_running) {
+		while (m_running = false) {
 			zmq::message_t message;
 			m_subscriberObject->getSocket().recv(&message, 0);
 
