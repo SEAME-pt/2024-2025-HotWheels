@@ -50,7 +50,9 @@ void handleSigint(int) {
 
  int main(int argc, char *argv[]) {
 	QCoreApplication a(argc, argv);
+	//to handle Ctrl+C
 	std::signal(SIGINT, handleSigint);
+	//to handle when service shuts down, as it gives a SIGTERM signal
 	std::signal(SIGTERM, handleSigint);
 
 	try {
