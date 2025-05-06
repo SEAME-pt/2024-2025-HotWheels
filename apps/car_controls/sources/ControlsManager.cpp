@@ -82,30 +82,37 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 		m_subscriberObject->connect("tcp://localhost:5555");
 		m_subscriberObject->subscribe("joystick_value");
 		while (m_running) {
-			zmq::pollitem_t items[] = {
-				{ static_cast<void*>(m_subscriberObject->getSocket()), 0, ZMQ_POLLIN, 0 }
-			};
+			try {
+				zmq::pollitem_t items[] = {
+					{ static_cast<void*>(m_subscriberObject->getSocket()), 0, ZMQ_POLLIN, 0 }
+				};
 
-			// Wait up to 100ms for a message
-			zmq::poll(items, 1, 100);
+				// Wait up to 100ms for a message
+				zmq::poll(items, 1, 100);
 
-			if (items[0].revents & ZMQ_POLLIN) {
-				zmq::message_t message;
-				m_subscriberObject->getSocket().recv(&message, 0);
+				if (items[0].revents & ZMQ_POLLIN) {
+					zmq::message_t message;
+					if (!m_subscriberObject->getSocket().recv(&message, zmq::recv_flags::none)) {
+						continue;  // failed to receive
+					}
 
-				std::string received_msg(static_cast<char*>(message.data()), message.size());
-				std::cout << "[Subscriber] Raw message: " << received_msg << std::endl;
+					std::string received_msg(static_cast<char*>(message.data()), message.size());
+					std::cout << "[Subscriber] Raw message: " << received_msg << std::endl;
 
-				if (received_msg.find("joystick_value") == 0) {
-					std::string value = received_msg.substr(std::string("joystick_value ").length());
-					if (value == "true") {
-						setMode(DrivingMode::Manual);
-						std::cout << "[Subscriber] Mode updated to: Manual" << std::endl;
-					} else if (value == "false") {
-						setMode(DrivingMode::Automatic);
-						std::cout << "[Subscriber] Mode updated to: Automatic" << std::endl;
+					if (received_msg.find("joystick_value") == 0) {
+						std::string value = received_msg.substr(std::string("joystick_value ").length());
+						if (value == "true") {
+							setMode(DrivingMode::Manual);
+							std::cout << "[Subscriber] Mode updated to: Manual" << std::endl;
+						} else if (value == "false") {
+							setMode(DrivingMode::Automatic);
+							std::cout << "[Subscriber] Mode updated to: Automatic" << std::endl;
+						}
 					}
 				}
+			} catch (const zmq::error_t& e) {
+				std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
+				break;  // exit safely if socket is closed
 			}
 		}
 	});
@@ -154,6 +161,9 @@ ControlsManager::~ControlsManager()
 		}
 		m_subscriberThread->quit();
 		m_subscriberThread->wait();
+
+		m_subscriberObject->getSocket().close();
+
 		delete m_subscriberThread;
 		m_subscriberThread = nullptr;
 	}

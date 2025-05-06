@@ -118,5 +118,5 @@ void Subscriber::reconnect(const std::string& address) {
 
 void Subscriber::stop() {
     running = false;
-    subscriber.close();  // Close the socket gracefully
+    //subscriber.close();  // Close the socket gracefully
 }
