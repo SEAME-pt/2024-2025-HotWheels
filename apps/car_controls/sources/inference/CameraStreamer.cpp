@@ -19,25 +19,35 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 CameraStreamer::~CameraStreamer() {
     stop();  // Stop the camera stream
 
-    cap.release();  // Release camera
-    cv::destroyAllWindows();  // Close OpenCV windows
+    if (cap.isOpened()) {
+        cap.release(); // Release camera
+    }
+    //cv::destroyAllWindows();  // Close OpenCV windows
+
+    std::cout << "[~CameraStreamer] Calling cudaDeviceSynchronize..." << std::endl;
+    cudaDeviceSynchronize();  // Ensure all CUDA operations are complete
 
     if (cuda_resource) {
         cudaGraphicsUnregisterResource(cuda_resource);  // Unregister CUDA graphics resource
         cuda_resource = nullptr;
     }
 
+    std::cout << "[~CameraStreamer] Releasing GPU textures..." << std::endl;
     if (textureID) {
         glDeleteTextures(1, &textureID);  // Delete OpenGL texture
         textureID = 0;
     }
 
+    std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
     if (window) {
         glfwDestroyWindow(window);  // Destroy OpenGL window
         window = nullptr;
     }
 
+    std::cout << "[~CameraStreamer] Terminating GLFW..." << std::endl;
     glfwTerminate();  // Shutdown GLFW
+
+    std::cout << "[~CameraStreamer] Destructor done." << std::endl;
 }
 
 // Initialize OpenGL context and prepare a texture for CUDA interop
