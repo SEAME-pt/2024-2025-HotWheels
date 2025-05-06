@@ -1,6 +1,6 @@
 #include "Publisher.hpp"
 
-Publisher::Publisher() : context(1), publisher(context, ZMQ_PUB), joytstick_value(true), running(false) {
+Publisher::Publisher(int port) : context(1), publisher(context, ZMQ_PUB), joytstick_value(true), running(false) {
 	boundAddress = "tcp://*:" + std::to_string(port);
 	publisher.bind(boundAddress);  // Dynamic port binding
 }
