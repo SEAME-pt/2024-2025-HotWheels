@@ -213,7 +213,23 @@ void CameraStreamer::start() {
 }
 
 void CameraStreamer::stop() {
+    if (!m_running) return;
     m_running = false;
+
+    // Wait for any CUDA operations to finish
+    try {
+        stream.waitForCompletion();
+        cudaDeviceSynchronize();
+    } catch (const std::exception& e) {
+        std::cerr << "CUDA sync error in stop(): " << e.what() << std::endl;
+    }
+
+    // Explicitly release camera
+    if (cap.isOpened()) {
+        cap.release();
+    }
+
+    std::cout << "[CameraStreamer] Shutdown complete." << std::endl;
 }
 
 /* void CameraStreamer::run() {
