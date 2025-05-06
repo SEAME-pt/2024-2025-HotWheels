@@ -92,7 +92,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 				if (items[0].revents & ZMQ_POLLIN) {
 					zmq::message_t message;
-					if (!m_subscriberObject->getSocket().recv(&message, zmq::recv_flags::none)) {
+					if (!m_subscriberObject->getSocket().recv(&message, 0)) {
 						continue;  // failed to receive
 					}
 
