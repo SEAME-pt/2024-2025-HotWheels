@@ -123,10 +123,12 @@ void CameraStreamer::renderTexture() {
 void CameraStreamer::initUndistortMaps() {
     cv::Mat cameraMatrix, distCoeffs;
     cv::FileStorage fs("camera_calibration.yml", cv::FileStorage::READ);  // Open calibration file
+
     if (!fs.isOpened()) {
         std::cerr << "[Error] Failed to open camera_calibration.yml" << std::endl;
-        return;  // or throw, exit, etc.
+        return;  // Handle file opening error
     }
+
     fs["camera_matrix"] >> cameraMatrix;  // Read camera matrix
     fs["distortion_coefficients"] >> distCoeffs;  // Read distortion coefficients
     fs.release();  // Close file
@@ -145,7 +147,7 @@ void CameraStreamer::initUndistortMaps() {
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
     initUndistortMaps();  // Initialize camera undistortion maps
-    //initOpenGL();  // Initialize OpenGL and CUDA interop
+    initOpenGL();  // Initialize OpenGL and CUDA interop
 
     cv::Mat frame;
     cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
@@ -200,14 +202,14 @@ void CameraStreamer::start() {
                          0, 0, cv::INTER_LINEAR, stream);  // Resize for display
         stream.waitForCompletion();  // Synchronize
 
-        //uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
-        //renderTexture();  // Render it
+        uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
+        renderTexture();  // Render it
 
         std::this_thread::sleep_for(std::chrono::milliseconds(33));  // Frame delay (~30 FPS)
     }
 
-    //glfwDestroyWindow(window);  // Clean up window
-    //glfwTerminate();  // Terminate GLFW
+    glfwDestroyWindow(window);  // Clean up window
+    glfwTerminate();  // Terminate GLFW
 }
 
 void CameraStreamer::run() {
