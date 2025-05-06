@@ -137,6 +137,8 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 ControlsManager::~ControlsManager()
 {
+	m_running = false;
+
 	// Stop the client thread safely
 	if (m_subscriberThread) {
 		if (m_subscriberObject) {
