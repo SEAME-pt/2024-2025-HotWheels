@@ -81,25 +81,32 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 									{
 		m_subscriberObject->connect("tcp://localhost:5555");
 		m_subscriberObject->subscribe("joystick_value");
-		while (m_running = false) {
-			zmq::message_t message;
-			m_subscriberObject->getSocket().recv(&message, 0);
+		while (m_running) {
+			zmq::pollitem_t items[] = {
+				{ static_cast<void*>(m_subscriberObject->getSocket()), 0, ZMQ_POLLIN, 0 }
+			};
 
-			std::string received_msg(static_cast<char*>(message.data()), message.size());
-			std::cout << "[Subscriber] Raw message: " << received_msg << std::endl;
+			// Wait up to 100ms for a message
+			zmq::poll(items, 1, 100);
 
-			if (received_msg.find("joystick_value") == 0) {
-				std::string value = received_msg.substr(std::string("joystick_value ").length());
-				if (value == "true") {
-					setMode(DrivingMode::Manual);
-					std::cout << "[Subscriber] Mode updated to: " << (value == "true" ? "Manual" : "Automatic") << std::endl;
-				}
-				else if (value == "false") {
-					setMode(DrivingMode::Automatic);
-					std::cout << "[Subscriber] Mode updated to: " << (value == "true" ? "Manual" : "Automatic") << std::endl;
+			if (items[0].revents & ZMQ_POLLIN) {
+				zmq::message_t message;
+				m_subscriberObject->getSocket().recv(&message, 0);
+
+				std::string received_msg(static_cast<char*>(message.data()), message.size());
+				std::cout << "[Subscriber] Raw message: " << received_msg << std::endl;
+
+				if (received_msg.find("joystick_value") == 0) {
+					std::string value = received_msg.substr(std::string("joystick_value ").length());
+					if (value == "true") {
+						setMode(DrivingMode::Manual);
+						std::cout << "[Subscriber] Mode updated to: Manual" << std::endl;
+					} else if (value == "false") {
+						setMode(DrivingMode::Automatic);
+						std::cout << "[Subscriber] Mode updated to: Automatic" << std::endl;
+					}
 				}
 			}
-		}
 	});
 	m_subscriberThread->start();
 
