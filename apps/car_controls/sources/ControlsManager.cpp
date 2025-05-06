@@ -164,25 +164,30 @@ ControlsManager::~ControlsManager()
 	}
 
 	// Stop camera streamer thread
+	qDebug() << "[Shutdown] Stopping camera streamer thread...";
 	if (m_cameraStreamerThread) {
 		if (m_cameraStreamerObject)
-			m_cameraStreamerObject->stop();  // sets m_running = false in loop
+			m_cameraStreamerObject->stop();
 
 		m_cameraStreamerThread->quit();
 		m_cameraStreamerThread->wait();
 		delete m_cameraStreamerThread;
 		m_cameraStreamerThread = nullptr;
 	}
-
 	// Clean up objects
+	qDebug() << "[Shutdown] Deleting m_cameraStreamerObject...";
 	delete m_cameraStreamerObject;
 	m_cameraStreamerObject = nullptr;
 
+	qDebug() << "[Shutdown] Deleting m_manualController...";
 	delete m_manualController;
 	m_manualController = nullptr;
 
+	qDebug() << "[Shutdown] Deleting m_subscriberObject...";
 	delete m_subscriberObject;
 	m_subscriberObject = nullptr;
+
+	qDebug() << "[Shutdown] Cleanup complete.";
 }
 
 /*!
