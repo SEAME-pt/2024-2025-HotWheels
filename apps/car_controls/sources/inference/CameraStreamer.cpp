@@ -22,7 +22,6 @@ CameraStreamer::~CameraStreamer() {
     if (cap.isOpened()) {
         cap.release(); // Release camera
     }
-    //cv::destroyAllWindows();  // Close OpenCV windows
 
     std::cout << "[~CameraStreamer] Calling cudaDeviceSynchronize..." << std::endl;
     cudaDeviceSynchronize();  // Ensure all CUDA operations are complete
@@ -32,32 +31,15 @@ CameraStreamer::~CameraStreamer() {
         cuda_resource = nullptr;
     }
 
-/*     std::cout << "[~CameraStreamer] Releasing GPU textures..." << std::endl;
-    if (textureID) {
-        if (window) {
-            glfwMakeContextCurrent(window);  // ✅ Ensure OpenGL context is current
-        }
-        glDeleteTextures(1, &textureID);  // Delete OpenGL texture
-        textureID = 0;
-    } */
-
     std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
-/*     if (window) {
-        glfwDestroyWindow(window);  // Destroy OpenGL window
-        window = nullptr;
-    } */
-
     if (window)
     {
-        glfwMakeContextCurrent(window);  // ✅ Ensure valid context
-        glDeleteTextures(1, &textureID); // ✅ Clean texture
-        glfwDestroyWindow(window);       // ✅ Then destroy
+        glfwMakeContextCurrent(window);  // Ensure valid context
+        glDeleteTextures(1, &textureID); // Clean texture
+        glfwDestroyWindow(window);       // Destroy window
         std::cout << "[~CameraStreamer] Terminating GLFW..." << std::endl;
         glfwTerminate();
     }
-
-    //glfwTerminate();  // Shutdown GLFW
-
     std::cout << "[~CameraStreamer] Destructor done." << std::endl;
 }
 
@@ -230,9 +212,6 @@ void CameraStreamer::start() {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(33));  // Frame delay (~30 FPS)
     }
-
-    //glfwDestroyWindow(window);  // Clean up window
-    //glfwTerminate();  // Terminate GLFW
 }
 
 void CameraStreamer::stop() {

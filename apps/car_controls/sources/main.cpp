@@ -51,6 +51,7 @@ void handleSigint(int) {
  int main(int argc, char *argv[]) {
 	QCoreApplication a(argc, argv);
 	std::signal(SIGINT, handleSigint);
+	std::signal(SIGTERM, handleSigint);
 
 	try {
 		g_controlsManager = new ControlsManager(argc, argv);
