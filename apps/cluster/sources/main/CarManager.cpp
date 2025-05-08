@@ -46,41 +46,81 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     m_inferenceSubscriberThread = QThread::create([this]() {
         // 1. Connect before subscribing
         m_inferenceSubscriber->connect("tcp://localhost:5556");
+        qDebug() << "[Subscriber] Connected to publisher";
 
-        // 2. Subscribe to exact topic
+        // 2. Subscribe to exact topic - make sure there's no whitespace or hidden characters
         const std::string topic = "inference_frame";
         m_inferenceSubscriber->subscribe(topic);
-        qDebug() << "[Subscriber] Subscribed to topic:" << QString::fromStdString(topic);
+        qDebug() << "[Subscriber] Subscribed to topic with length:" << topic.length()
+                 << "Topic bytes:" << QString::fromStdString(topic);
+
+        // Get and set socket options for debugging
+        int hwm;
+        size_t hwm_size = sizeof(hwm);
+        zmq_getsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, &hwm_size);
+        qDebug() << "[Subscriber] Current HWM setting:" << hwm;
+
+        // Increase HWM if needed
+        hwm = 1000;  // Higher value to store more messages
+        zmq_setsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, sizeof(hwm));
+        qDebug() << "[Subscriber] Updated HWM setting to:" << hwm;
 
         // 3. Give some time for the subscription to register
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
         while (m_running) {
             zmq::message_t topic_msg;
 
             // Poll with timeout to avoid blocking indefinitely
+            // Ensure we're using the socket correctly
+            void* socket_ptr = static_cast<void*>(m_inferenceSubscriber->getSocketHandle());
             zmq::pollitem_t items[] = {
-                { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
+                { socket_ptr, 0, ZMQ_POLLIN, 0 }
             };
+
+            // Debug message to show we're polling
+            static int poll_count = 0;
+            if (++poll_count % 10 == 0) {  // Only print every 10th time to avoid flooding
+                qDebug() << "[Subscriber] Polling for messages...";
 
             // Poll with timeout of 100ms
             zmq::poll(items, 1, 100);
 
             if (items[0].revents & ZMQ_POLLIN) {
+                qDebug() << "[Subscriber] Detected incoming message!";
+
                 // Receive the topic (first part of the message)
                 try {
-                    // Using older ZeroMQ API style
-                    if (!m_inferenceSubscriber->getSocket().recv(&topic_msg)) {
-                        qDebug() << "[Subscriber] Failed to receive topic";
+                    zmq::message_t topic_msg;
+                    bool received = false;
+
+                    // Try with timeout to avoid hanging
+                    try {
+                        received = m_inferenceSubscriber->getSocket().recv(&topic_msg, ZMQ_DONTWAIT);
+                        if (!received) {
+                            qDebug() << "[Subscriber] No message available (EAGAIN)";
+                            continue;
+                        }
+                    } catch (const zmq::error_t& e) {
+                        qDebug() << "[Subscriber] Error receiving topic:" << e.what();
                         continue;
                     }
 
+                    // Successfully received topic
                     std::string topic_str(static_cast<char*>(topic_msg.data()), topic_msg.size());
+                    qDebug() << "[Subscriber] Topic received:" << QString::fromStdString(topic_str)
+                             << "(length:" << topic_str.length() << ")";
 
                     // Topic received, now get the data part
                     zmq::message_t image_msg;
-                    if (!m_inferenceSubscriber->getSocket().recv(&image_msg)) {
-                        qDebug() << "[Subscriber] Failed to receive image data";
+                    try {
+                        received = m_inferenceSubscriber->getSocket().recv(&image_msg, ZMQ_DONTWAIT);
+                        if (!received) {
+                            qDebug() << "[Subscriber] No image part available";
+                            continue;
+                        }
+                    } catch (const zmq::error_t& e) {
+                        qDebug() << "[Subscriber] Error receiving image:" << e.what();
                         continue;
                     }
 
