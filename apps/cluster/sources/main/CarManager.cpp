@@ -57,12 +57,12 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
         // Get and set socket options for debugging
         int hwm;
         size_t hwm_size = sizeof(hwm);
-        zmq_getsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, &hwm_size);
+        zmq_getsockopt(m_inferenceSubscriber->getSocket(), ZMQ_RCVHWM, &hwm, &hwm_size);
         qDebug() << "[Subscriber] Current HWM setting:" << hwm;
 
         // Increase HWM if needed
         hwm = 1000;  // Higher value to store more messages
-        zmq_setsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, sizeof(hwm));
+        zmq_setsockopt(m_inferenceSubscriber->getSocket(), ZMQ_RCVHWM, &hwm, sizeof(hwm));
         qDebug() << "[Subscriber] Updated HWM setting to:" << hwm;
 
         // 3. Give some time for the subscription to register
@@ -73,7 +73,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
 
             // Poll with timeout to avoid blocking indefinitely
             // Ensure we're using the socket correctly
-            void* socket_ptr = static_cast<void*>(m_inferenceSubscriber->getSocketHandle());
+            void* socket_ptr = static_cast<void*>(m_inferenceSubscriber->getSocket());
             zmq::pollitem_t items[] = {
                 { socket_ptr, 0, ZMQ_POLLIN, 0 }
             };
