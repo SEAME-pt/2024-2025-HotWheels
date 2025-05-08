@@ -59,11 +59,14 @@ void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& g
 		zmq::message_t image_msg(encoded.size());
 		memcpy(image_msg.data(), encoded.data(), encoded.size());
 
+		std::cout << "[Publisher DEBUG] topic.length() = " << topic.length()
+          << ", encoded.size() = " << encoded.size() << std::endl;
+
 		// Send multipart message
 		publisher.send(&topic_msg, ZMQ_SNDMORE);
 		publisher.send(&image_msg, 0);
 
-		std::cout << "[Publisher] Image sent. Topic: " << topic << ", Size: " << encoded.size() << std::endl;
+		//std::cout << "[Publisher] Image sent. Topic: " << topic << ", Size: " << encoded.size() << std::endl;
 
 	} catch (const std::exception& e) {
 		std::cerr << "[Publisher] Failed to publish image: " << e.what() << std::endl;
