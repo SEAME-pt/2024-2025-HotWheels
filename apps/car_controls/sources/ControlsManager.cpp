@@ -38,7 +38,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  m_subscriberObject(nullptr), m_manualControllerThread(nullptr),
 	  m_subscriberThread(nullptr), m_joystickControlThread(nullptr),
 	  m_cameraStreamerThread(nullptr), m_cameraStreamerObject(nullptr),
-	  m_publisherObject(nullptr), m_running(true)
+	  m_running(true)
 {
 
 	// Initialize the joystick controller with callbacks
@@ -74,9 +74,6 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			m_manualControllerThread, &QThread::quit);
 
 	m_manualControllerThread->start();
-
-	// Start publisher to pass frames to the cluster
-	m_publisherObject = new Publisher(5556);
 
 	// **Client Middleware Interface Thread**
 	m_subscriberObject = new Subscriber();
@@ -203,9 +200,6 @@ ControlsManager::~ControlsManager()
 
 	delete m_subscriberObject;
 	m_subscriberObject = nullptr;
-
-	delete m_publisherObject;
-	m_publisherObject = nullptr;
 }
 
 /*!

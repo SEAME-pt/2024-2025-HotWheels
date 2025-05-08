@@ -2,7 +2,10 @@
 
 // Constructor: initializes camera capture, inference reference, and settings
 CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)
-	: scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_running(true) {
+	: scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_publisherObject(nullptr), m_running(true) {
+
+	// Start publisher to pass frames to the cluster
+	m_publisherObject = new Publisher(5556);
 
 	// Define GStreamer pipeline for CSI camera
 	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
@@ -17,6 +20,9 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 
 // Destructor: clean up resources
 CameraStreamer::~CameraStreamer() {
+	delete m_publisherObject;
+	m_publisherObject = nullptr;
+
 	stop();  // Stop the camera stream
 
 	if (cap.isOpened()) {

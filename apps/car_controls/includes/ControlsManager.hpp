@@ -38,7 +38,6 @@ private:
 	DrivingMode m_currentMode;
 	Subscriber *m_subscriberObject;
 	CameraStreamer *m_cameraStreamerObject;
-	Publisher *m_publisherObject;
 
 	std::atomic<bool> m_running;
 
