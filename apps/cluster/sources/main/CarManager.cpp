@@ -60,6 +60,9 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
               m_inferenceSubscriber->getSocket().recv(&topic_msg, 0);
               m_inferenceSubscriber->getSocket().recv(&image_msg, 0);
 
+              qDebug() << "[Subscriber] Topic: " << static_cast<char*>(topic_msg.data())
+                      << ", Image size: " << image_msg.size();
+
               // Pass raw JPEG data directly to DataManager
               std::vector<uchar> jpegData(
                   static_cast<uchar*>(image_msg.data()),
