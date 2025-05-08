@@ -20,6 +20,7 @@
 #include <QObject>
 #include <QString>
 #include <QTimer>
+#include <QImage>
 #include "ClusterSettingsManager.hpp"
 #include "SystemDataManager.hpp"
 #include "VehicleDataManager.hpp"
