@@ -64,13 +64,13 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
             };
 
             // Poll with timeout of 100ms
-            int rc = zmq::poll(items, 1, 100);
+            zmq::poll(items, 1, 100);
 
             if (items[0].revents & ZMQ_POLLIN) {
                 // Receive the topic (first part of the message)
                 try {
-                    // Use the recv method with proper flags
-                    if (!m_inferenceSubscriber->getSocket().recv(topic_msg, zmq::recv_flags::none)) {
+                    // Using older ZeroMQ API style
+                    if (!m_inferenceSubscriber->getSocket().recv(&topic_msg)) {
                         qDebug() << "[Subscriber] Failed to receive topic";
                         continue;
                     }
@@ -79,7 +79,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
 
                     // Topic received, now get the data part
                     zmq::message_t image_msg;
-                    if (!m_inferenceSubscriber->getSocket().recv(image_msg, zmq::recv_flags::none)) {
+                    if (!m_inferenceSubscriber->getSocket().recv(&image_msg)) {
                         qDebug() << "[Subscriber] Failed to receive image data";
                         continue;
                     }
