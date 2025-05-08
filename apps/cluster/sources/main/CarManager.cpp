@@ -45,35 +45,42 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     m_running = true;
     m_inferenceSubscriber = new Subscriber();
     m_inferenceSubscriberThread = QThread::create([this]() {
-        m_inferenceSubscriber->connect("tcp://localhost:5555");
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        m_inferenceSubscriber->subscribe("inference_frame");
+        // 1. Connect before subscribing
+        m_inferenceSubscriber->connect("tcp://localhost:5556");
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+        // 2. Subscribe to exact topic
+        const std::string topic = "inference_frame";
+        m_inferenceSubscriber->subscribe(topic);
+        qDebug() << "[Subscriber] Subscribed to topic:" << QString::fromStdString(topic);
 
         while (m_running) {
-          zmq::message_t topic_msg, image_msg;
+            zmq::message_t topic_msg, image_msg;
 
-          // Poll for incoming messages (non-blocking with timeout)
-          zmq::pollitem_t items[] = {
-              { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
-          };
-          zmq::poll(items, 1, 100);  // Timeout: 100 ms
+            zmq::pollitem_t items[] = {
+                { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
+            };
+            zmq::poll(items, 1, 100);  // 100 ms timeout
 
-          if (items[0].revents & ZMQ_POLLIN) {
-              m_inferenceSubscriber->getSocket().recv(&topic_msg, 0);
-              m_inferenceSubscriber->getSocket().recv(&image_msg, 0);
+            if (items[0].revents & ZMQ_POLLIN) {
+                if (!m_inferenceSubscriber->getSocket().recv(&topic_msg, 0)) continue;
+                if (!m_inferenceSubscriber->getSocket().recv(&image_msg, 0)) continue;
 
-              qDebug() << "[Subscriber] Topic: " << static_cast<char*>(topic_msg.data())
-                      << ", Image size: " << image_msg.size();
+                std::string topic_str(static_cast<char*>(topic_msg.data()), topic_msg.size());
 
-              // Pass raw JPEG data directly to DataManager
-              std::vector<uchar> jpegData(
-                  static_cast<uchar*>(image_msg.data()),
-                  static_cast<uchar*>(image_msg.data()) + image_msg.size()
-              );
+                qDebug() << "[Subscriber] Received topic:" << QString::fromStdString(topic_str)
+                         << ", size:" << image_msg.size();
 
-              m_dataManager->handleInferenceFrame(jpegData);  // This emits the signal
-          }
-      }
+                if (topic_str == "inference_frame" && image_msg.size() > 0) {
+                    std::vector<uchar> jpegData(
+                        static_cast<uchar*>(image_msg.data()),
+                        static_cast<uchar*>(image_msg.data()) + image_msg.size()
+                    );
+
+                    m_dataManager->handleInferenceFrame(jpegData);  // Emits QImage to GUI
+                }
+            }
+        }
     });
     m_inferenceSubscriberThread->start();
 }
