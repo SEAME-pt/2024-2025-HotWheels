@@ -46,60 +46,37 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     m_inferenceSubscriberThread = QThread::create([this]() {
         // 1. Connect before subscribing
         m_inferenceSubscriber->connect("tcp://localhost:5556");
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
         // 2. Subscribe to exact topic
         const std::string topic = "inference_frame";
         m_inferenceSubscriber->subscribe(topic);
         qDebug() << "[Subscriber] Subscribed to topic:" << QString::fromStdString(topic);
 
-        // 3. Give some time for the subscription to register
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
         while (m_running) {
-            zmq::message_t topic_msg;
+            zmq::message_t topic_msg, image_msg;
 
-            // Poll with timeout to avoid blocking indefinitely
             zmq::pollitem_t items[] = {
                 { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
             };
-
-            // Poll with timeout of 100ms
-            int rc = zmq::poll(items, 1, 100);
+            zmq::poll(items, 1, 100);  // 100 ms timeout
 
             if (items[0].revents & ZMQ_POLLIN) {
-                // Receive the topic (first part of the message)
-                try {
-                    // Use the recv method with proper flags
-                    if (!m_inferenceSubscriber->getSocket().recv(topic_msg, 0)) {
-                        qDebug() << "[Subscriber] Failed to receive topic";
-                        continue;
-                    }
+                if (!m_inferenceSubscriber->getSocket().recv(&topic_msg, 0)) continue;
+                if (!m_inferenceSubscriber->getSocket().recv(&image_msg, 0)) continue;
 
-                    std::string topic_str(static_cast<char*>(topic_msg.data()), topic_msg.size());
+                std::string topic_str(static_cast<char*>(topic_msg.data()), topic_msg.size());
 
-                    // Topic received, now get the data part
-                    zmq::message_t image_msg;
-                    if (!m_inferenceSubscriber->getSocket().recv(image_msg, 0)) {
-                        qDebug() << "[Subscriber] Failed to receive image data";
-                        continue;
-                    }
+                qDebug() << "[Subscriber] Received topic:" << QString::fromStdString(topic_str)
+                         << ", size:" << image_msg.size();
 
-                    qDebug() << "[Subscriber] Received topic:" << QString::fromStdString(topic_str)
-                             << ", size:" << image_msg.size();
+                if (topic_str == "inference_frame" && image_msg.size() > 0) {
+                    std::vector<uchar> jpegData(
+                        static_cast<uchar*>(image_msg.data()),
+                        static_cast<uchar*>(image_msg.data()) + image_msg.size()
+                    );
 
-                    if (topic_str == "inference_frame" && image_msg.size() > 0) {
-                        std::vector<uchar> jpegData(
-                            static_cast<uchar*>(image_msg.data()),
-                            static_cast<uchar*>(image_msg.data()) + image_msg.size()
-                        );
-
-                        // Process the received image data
-                        QMetaObject::invokeMethod(this, [this, jpegData]() {
-                            m_dataManager->handleInferenceFrame(jpegData);
-                        }, Qt::QueuedConnection);
-                    }
-                } catch (const zmq::error_t& e) {
-                    qDebug() << "[Subscriber] ZMQ error: " << e.what();
+                    m_dataManager->handleInferenceFrame(jpegData);  // Emits QImage to GUI
                 }
             }
         }
