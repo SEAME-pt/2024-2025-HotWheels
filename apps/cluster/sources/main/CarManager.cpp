@@ -42,7 +42,6 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     ui->setupUi(this);
     initializeComponents();
 
-    m_running = true;
     m_inferenceSubscriber = new Subscriber();
     m_inferenceSubscriberThread = QThread::create([this]() {
         // 1. Connect before subscribing
