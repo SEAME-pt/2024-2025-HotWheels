@@ -20,6 +20,7 @@
 #include "CameraStreamer.hpp"
 #include "TensorRTInferencer.hpp"
 #include "../../ZeroMQ/Subscriber.hpp"
+#include "../../ZeroMQ/Publisher.hpp"
 #include <QObject>
 #include <QThread>
 #include <QProcess>
@@ -37,6 +38,7 @@ private:
 	DrivingMode m_currentMode;
 	Subscriber *m_subscriberObject;
 	CameraStreamer *m_cameraStreamerObject;
+	Publisher *m_serverObject;
 
 	std::atomic<bool> m_running;
 

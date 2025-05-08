@@ -75,6 +75,9 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 	m_manualControllerThread->start();
 
+	// Start publisher to pass frames to the cluster
+	m_publisherObject = new Publisher(5556);
+
 	// **Client Middleware Interface Thread**
 	m_subscriberObject = new Subscriber();
 	m_subscriberThread = QThread::create([this, argc, argv]()
@@ -200,6 +203,9 @@ ControlsManager::~ControlsManager()
 
 	delete m_subscriberObject;
 	m_subscriberObject = nullptr;
+
+	delete m_publisherObject;
+	m_publisherObject = nullptr;
 }
 
 /*!

@@ -207,6 +207,10 @@ void CameraStreamer::start() {
 						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
 		stream.waitForCompletion();  // Synchronize
 
+		if (m_publisherObject) {
+			m_publisherObject->publishFrame("inference_result", d_resized_mask);  // Publish the frame
+		}
+
 		uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
 		renderTexture();  // Render it
 
