@@ -22,7 +22,11 @@
 #include "DisplayManager.hpp"
 #include "MileageManager.hpp"
 #include "SystemManager.hpp"
+#include "Subscriber.hpp"
+#include "../../ZeroMQ/Publisher.hpp"
+#include "../../ZeroMQ/Subscriber.hpp"
 #include <QMainWindow>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 /*!
