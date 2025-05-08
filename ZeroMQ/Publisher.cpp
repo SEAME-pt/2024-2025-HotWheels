@@ -66,7 +66,7 @@ void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& g
 		publisher.send(&topic_msg, ZMQ_SNDMORE);
 		publisher.send(&image_msg, 0);
 
-		//std::cout << "[Publisher] Image sent. Topic: " << topic << ", Size: " << encoded.size() << std::endl;
+		std::cout << "[Publisher] Image sent. Topic: " << topic << ", Size: " << encoded.size() << std::endl;
 
 	} catch (const std::exception& e) {
 		std::cerr << "[Publisher] Failed to publish image: " << e.what() << std::endl;
