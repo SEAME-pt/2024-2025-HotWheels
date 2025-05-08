@@ -36,22 +36,34 @@ void Publisher::setJoystickStatus(bool new_joytstick_value) {
 
 void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image) {
 	try {
-		// Download from GPU to CPU
+		// Download GPU image to CPU
 		cv::Mat cpu_image;
-		gpu_image.download(cpu_image);  // Minimal CPU usage
+		gpu_image.download(cpu_image);
 
-		// Encode as JPEG
+		if (cpu_image.empty()) {
+			std::cerr << "[Publisher] Skipped: empty CPU image." << std::endl;
+			return;
+		}
+
+		// Encode to JPEG
 		std::vector<uchar> encoded;
-		cv::imencode(".jpg", cpu_image, encoded);
+		if (!cv::imencode(".jpg", cpu_image, encoded)) {
+			std::cerr << "[Publisher] Encoding failed." << std::endl;
+			return;
+		}
 
-		// Create ZeroMQ multipart message: [topic][JPEG image]
-		zmq::message_t topic_msg(topic.data(), topic.size());
-		zmq::message_t image_msg(encoded.data(), encoded.size());
+		// Construct message with deep copy (safe for legacy API)
+		zmq::message_t topic_msg(topic.size());
+		memcpy(topic_msg.data(), topic.data(), topic.size());
 
+		zmq::message_t image_msg(encoded.size());
+		memcpy(image_msg.data(), encoded.data(), encoded.size());
+
+		// Send multipart message
 		publisher.send(&topic_msg, ZMQ_SNDMORE);
 		publisher.send(&image_msg, 0);
 
-		std::cout << "[Publisher] Image sent" << std::endl;
+		std::cout << "[Publisher] Image sent. Topic: " << topic << ", Size: " << encoded.size() << std::endl;
 
 	} catch (const std::exception& e) {
 		std::cerr << "[Publisher] Failed to publish image: " << e.what() << std::endl;
