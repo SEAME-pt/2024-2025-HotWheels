@@ -57,6 +57,7 @@ public slots:
 	void toggleDrivingMode();
 	void toggleClusterTheme();
 	void toggleClusterMetrics();
+	void handleInferenceFrame(const std::vector<uchar> &jpegData);
 
 signals:
 	// Forwarded signals from subclasses
@@ -73,6 +74,7 @@ signals:
 	void drivingModeUpdated(DrivingMode newMode);
 	void clusterThemeUpdated(ClusterTheme newTheme);
 	void clusterMetricsUpdated(ClusterMetrics newMetrics);
+	void inferenceImageReceived(const QImage &image);
 
 private:
 	VehicleDataManager *m_vehicleDataManager;

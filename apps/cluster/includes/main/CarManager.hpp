@@ -60,6 +60,12 @@ private:
 	SystemManager *m_systemManager;
 	/*! @brief Pointer to the MileageManager instance. */
 	MileageManager *m_mileageManager;
+	/*! @brief Pointer to the frame subscriber. */
+	Subscriber *m_inferenceSubscriber;
+	/*! @brief Pointer to the thread for the frame subscriber. */
+	QThread *m_inferenceSubscriberThread;
+	/*! @brief Flag to indicate if the subscriber is running. */
+	bool m_running;
 
 	void initializeComponents();
 	void initializeDataManager();

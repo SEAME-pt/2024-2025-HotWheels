@@ -83,6 +83,11 @@ DataManager::DataManager(QObject *parent)
 			&ClusterSettingsManager::clusterMetricsUpdated,
 			this,
 			&DataManager::clusterMetricsUpdated);
+
+	connect(m_clusterSettingsManager,
+			&ClusterSettingsManager::handleInferenceFrame,
+			this,
+			&DataManager::handleInferenceFrame);
 }
 
 /*!
@@ -237,4 +242,10 @@ void DataManager::toggleClusterTheme()
 void DataManager::toggleClusterMetrics()
 {
 	m_clusterSettingsManager->toggleClusterMetrics();
+}
+
+void DataManager::handleInferenceFrame(const std::vector<uchar> &jpegData) {
+    QImage image;
+    image.loadFromData(jpegData.data(), static_cast<int>(jpegData.size()), "JPG");
+    emit inferenceImageReceived(image);
 }

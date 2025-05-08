@@ -797,6 +797,22 @@ background-color: rgb(134, 227, 253);</string>
          </property>
         </widget>
        </widget>
+       <widget class="QLabel" name="inferenceLabel">
+        <property name="geometry">
+         <rect>
+          <x>725</x>
+          <y>436</y>
+          <width>261</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>

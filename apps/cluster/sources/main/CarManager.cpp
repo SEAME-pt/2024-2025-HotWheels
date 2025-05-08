@@ -29,19 +29,63 @@
 CarManager::CarManager(int argc, char **argv, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CarManager)
+    , m_running(true)
     , m_dataManager(new DataManager())
     , m_canBusManager(new CanBusManager("/dev/spidev0.0"))
     , m_controlsManager(new ControlsManager(argc, argv))
     , m_displayManager(nullptr)
     , m_systemManager(new SystemManager())
     , m_mileageManager(new MileageManager("/home/hotweels/app_data/mileage.json"))
+    , m_inferenceSubscriber(nullptr)
+    , m_inferenceSubscriberThread(nullptr)
 {
     ui->setupUi(this);
     initializeComponents();
+
+    m_inferenceSubscriber = new Subscriber();
+    m_inferenceSubscriberThread = QThread::create([this]() {
+        m_inferenceSubscriber->connect("tcp://localhost:5556");  // example port
+        m_inferenceSubscriber->subscribe("inference_frame");
+
+        while (m_running) {
+          zmq::message_t topic_msg, image_msg;
+
+          // Poll for incoming messages (non-blocking with timeout)
+          zmq::pollitem_t items[] = {
+              { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
+          };
+          zmq::poll(items, 1, 100);  // Timeout: 100 ms
+
+          if (items[0].revents & ZMQ_POLLIN) {
+              m_inferenceSubscriber->getSocket().recv(&topic_msg, 0);
+              m_inferenceSubscriber->getSocket().recv(&image_msg, 0);
+
+              // Pass raw JPEG data directly to DataManager
+              std::vector<uchar> jpegData(
+                  static_cast<uchar*>(image_msg.data()),
+                  static_cast<uchar*>(image_msg.data()) + image_msg.size()
+              );
+
+              m_dataManager->handleInferenceFrame(jpegData);  // This emits the signal
+          }
+      }
+    });
+    m_inferenceSubscriberThread->start();
 }
 
 CarManager::~CarManager()
 {
+    m_running = false;
+    if (m_inferenceSubscriberThread) {
+        m_inferenceSubscriber->stop();
+        m_inferenceSubscriberThread->quit();
+        m_inferenceSubscriberThread->wait();
+        delete m_inferenceSubscriberThread;
+        m_inferenceSubscriberThread = nullptr;
+    }
+    delete m_inferenceSubscriber;
+    m_inferenceSubscriber = nullptr;
+
     delete m_displayManager;
     delete m_controlsManager;
     delete m_canBusManager;
@@ -160,6 +204,9 @@ void CarManager::initializeDisplayManager() {
 
     connect(m_displayManager, &DisplayManager::clusterMetricsToggled,
 	    m_dataManager, &DataManager::toggleClusterMetrics);
+
+    connect(m_dataManager, &DataManager::inferenceImageReceived,
+      m_displayManager, &DisplayManager::displayInferenceImage);
   }
 }
 

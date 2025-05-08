@@ -261,3 +261,9 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 
 	m_ui->speedMetricsLabel->setText(metricsText.toUpper());
 }
+
+void DisplayManager::displayInferenceImage(const QImage &image) {
+	if (m_ui->inferenceLabel) {
+		m_ui->inferenceImageLabel->setPixmap(QPixmap::fromImage(image));
+	}
+}

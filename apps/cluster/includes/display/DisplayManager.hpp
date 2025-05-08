@@ -44,6 +44,7 @@ public slots:
 	void updateDrivingMode(DrivingMode newMode);
 	void updateClusterTheme(ClusterTheme newTheme);
 	void updateClusterMetrics(ClusterMetrics newMetrics);
+	void displayInferenceImage(const QImage &image);
 
 signals:
 	/*! @brief Signal emitted when the driving mode is toggled. */
