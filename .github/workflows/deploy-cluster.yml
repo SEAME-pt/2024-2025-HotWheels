@@ -6,11 +6,13 @@ on:
       - model-on-cluster
     paths:
       - 'apps/cluster/**'
+      - 'ZeroMQ/**'
   pull_request:
     branches:
       - model-on-cluster
     paths:
       - 'apps/cluster/**'
+      - 'ZeroMQ/**'
 
 env:
   DIR: apps/cluster
