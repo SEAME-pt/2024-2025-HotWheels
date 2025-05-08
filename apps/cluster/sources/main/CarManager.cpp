@@ -44,7 +44,8 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
 
     m_inferenceSubscriber = new Subscriber();
     m_inferenceSubscriberThread = QThread::create([this]() {
-        m_inferenceSubscriber->connect("tcp://localhost:5556");  // example port
+        m_inferenceSubscriber->connect("tcp://localhost:5556");
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
         m_inferenceSubscriber->subscribe("inference_frame");
 
         while (m_running) {
