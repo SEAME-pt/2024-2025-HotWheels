@@ -43,32 +43,32 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     initializeComponents();
 
     m_inferenceSubscriber = new Subscriber();
-    m_inferenceSubscriberThread = QThread::create([this]() {
-        // 1. Connect before subscribing
-        m_inferenceSubscriber->connect("tcp://localhost:5556");
-        qDebug() << "[Subscriber] Connected to publisher";
+  m_inferenceSubscriberThread = QThread::create([this]() {
+      // 1. Connect before subscribing
+      m_inferenceSubscriber->connect("tcp://localhost:5556");
+      qDebug() << "[Subscriber] Connected to publisher";
 
-        // 2. Subscribe to exact topic - make sure there's no whitespace or hidden characters
-        const std::string topic = "inference_frame";
-        m_inferenceSubscriber->subscribe(topic);
-        qDebug() << "[Subscriber] Subscribed to topic with length:" << topic.length()
-                 << "Topic bytes:" << QString::fromStdString(topic);
+      // 2. Subscribe to exact topic - make sure there's no whitespace or hidden characters
+      const std::string topic = "inference_frame";
+      m_inferenceSubscriber->subscribe(topic);
+      qDebug() << "[Subscriber] Subscribed to topic with length:" << topic.length()
+              << "Topic bytes:" << QString::fromStdString(topic);
 
-        // Get and set socket options for debugging
-        int hwm;
-        size_t hwm_size = sizeof(hwm);
-        zmq_getsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, &hwm_size);
-        qDebug() << "[Subscriber] Current HWM setting:" << hwm;
+      // Get and set socket options for debugging
+      int hwm;
+      size_t hwm_size = sizeof(hwm);
+      zmq_getsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, &hwm_size);
+      qDebug() << "[Subscriber] Current HWM setting:" << hwm;
 
-        // Increase HWM if needed
-        hwm = 1000;  // Higher value to store more messages
-        zmq_setsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, sizeof(hwm));
-        qDebug() << "[Subscriber] Updated HWM setting to:" << hwm;
+      // Increase HWM if needed
+      hwm = 1000;  // Higher value to store more messages
+      zmq_setsockopt(m_inferenceSubscriber->getSocketHandle(), ZMQ_RCVHWM, &hwm, sizeof(hwm));
+      qDebug() << "[Subscriber] Updated HWM setting to:" << hwm;
 
-        // 3. Give some time for the subscription to register
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      // 3. Give some time for the subscription to register
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-        while (m_running) {
+      while (m_running) {
             zmq::message_t topic_msg;
 
             // Poll with timeout to avoid blocking indefinitely
@@ -109,7 +109,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
                     // Successfully received topic
                     std::string topic_str(static_cast<char*>(topic_msg.data()), topic_msg.size());
                     qDebug() << "[Subscriber] Topic received:" << QString::fromStdString(topic_str)
-                             << "(length:" << topic_str.length() << ")";
+                            << "(length:" << topic_str.length() << ")";
 
                     // Topic received, now get the data part
                     zmq::message_t image_msg;
@@ -125,7 +125,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
                     }
 
                     qDebug() << "[Subscriber] Received topic:" << QString::fromStdString(topic_str)
-                             << ", size:" << image_msg.size();
+                            << ", size:" << image_msg.size();
 
                     if (topic_str == "inference_frame" && image_msg.size() > 0) {
                         std::vector<uchar> jpegData(
@@ -143,8 +143,9 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
                 }
             }
         }
-    });
-    m_inferenceSubscriberThread->start();
+      }
+  });
+  m_inferenceSubscriberThread->start();
 }
 
 CarManager::~CarManager()
