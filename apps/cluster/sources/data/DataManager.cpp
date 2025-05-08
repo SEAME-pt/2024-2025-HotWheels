@@ -84,10 +84,10 @@ DataManager::DataManager(QObject *parent)
 			this,
 			&DataManager::clusterMetricsUpdated);
 
-	connect(m_clusterSettingsManager,
+/* 	connect(m_clusterSettingsManager,
 			&ClusterSettingsManager::handleInferenceFrame,
 			this,
-			&DataManager::handleInferenceFrame);
+			&DataManager::handleInferenceFrame); */
 }
 
 /*!

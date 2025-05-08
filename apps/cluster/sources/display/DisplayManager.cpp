@@ -264,6 +264,6 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 
 void DisplayManager::displayInferenceImage(const QImage &image) {
 	if (m_ui->inferenceLabel) {
-		m_ui->inferenceImageLabel->setPixmap(QPixmap::fromImage(image));
+		m_ui->inferenceLabel->setPixmap(QPixmap::fromImage(image));
 	}
 }
