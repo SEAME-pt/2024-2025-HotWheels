@@ -83,41 +83,44 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     });
     m_inferenceSubscriberThread->start(); */
 
-  // **Client Middleware Interface Thread**
-	m_inferenceSubscriber = new Subscriber();
-	m_inferenceSubscriberThread = QThread::create([this, argc, argv]()
-									{
-		m_inferenceSubscriber->connect("tcp://localhost:5556");
-		m_inferenceSubscriber->subscribe("inference_frame");
-		while (m_running) {
-			try {
-				zmq::pollitem_t items[] = {
-					{ static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
-				};
+    m_inferenceSubscriber = new Subscriber();
+    m_inferenceSubscriberThread = QThread::create([this]() {
+      m_inferenceSubscriber->connect("tcp://localhost:5556");  // Your image port
+      m_inferenceSubscriber->subscribe("inference_frame");
 
-				// Wait up to 100ms for a message
-				zmq::poll(items, 1, 100);
+      while (m_running) {
+        try {
+          zmq::pollitem_t items[] = {
+            { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
+          };
 
-				if (items[0].revents & ZMQ_POLLIN) {
-					zmq::message_t message;
-					if (!m_inferenceSubscriber->getSocket().recv(&message, 0)) {
-						continue;  // failed to receive
-					}
+          zmq::poll(items, 1, 100);  // Timeout: 100 ms
 
-					std::string received_msg(static_cast<char*>(message.data()), message.size());
-					std::cout << "[Subscriber] Raw message: " << received_msg << std::endl;
+          if (items[0].revents & ZMQ_POLLIN) {
+            zmq::message_t message;
+            if (!m_inferenceSubscriber->getSocket().recv(&message, 0)) {
+              continue;
+            }
 
-					if (received_msg.find("inference_frame") == 0) {
-						std::string value = received_msg.substr(std::string("inference_frame ").length());
-					}
-				}
-			} catch (const zmq::error_t& e) {
-				std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
-				break;  // exit safely if socket is closed
-			}
-		}
-	});
-	m_inferenceSubscriberThread->start();
+            std::string received_msg(static_cast<char*>(message.data()), message.size());
+            std::cout << "[Subscriber] Raw message: " << received_msg.substr(0, 30) << "... (" << message.size() << " bytes)" << std::endl;
+
+            const std::string topic = "inference_frame ";
+            if (received_msg.find(topic) == 0) {
+              std::vector<uchar> jpegData(
+                received_msg.begin() + topic.size(),
+                received_msg.end()
+              );
+              m_dataManager->handleInferenceFrame(jpegData);
+            }
+          }
+        } catch (const zmq::error_t& e) {
+          std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
+          break;
+        }
+      }
+    });
+    m_inferenceSubscriberThread->start();
 }
 
 CarManager::~CarManager()

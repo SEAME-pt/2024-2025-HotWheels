@@ -214,8 +214,7 @@ void CameraStreamer::start() {
 		stream.waitForCompletion();  // Synchronize
 
 		if (m_publisherObject) {
-			//m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
-			m_publisherObject->publish("inference_frame", "frame");  // Publish the raw frame
+			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
 		}
 
 		uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
