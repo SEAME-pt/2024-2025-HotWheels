@@ -35,6 +35,7 @@ void Publisher::setJoystickStatus(bool new_joytstick_value) {
 }
 
 void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image) {
+	std::lock_guard<std::mutex> lock(frame_mtx);  // Ensure thread safety
 	try {
 		// Download GPU image to CPU
 		cv::Mat cpu_image;

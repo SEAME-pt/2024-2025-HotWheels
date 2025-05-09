@@ -217,8 +217,8 @@ void CameraStreamer::start() {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
 		}
 
-		uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
-		renderTexture();  // Render it
+		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
+		//renderTexture();  // Render it
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(33));  // Frame delay (~30 FPS)
 	}

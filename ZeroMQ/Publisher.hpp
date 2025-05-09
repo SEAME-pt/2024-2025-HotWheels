@@ -16,6 +16,7 @@ private:
 	zmq::socket_t publisher;
 	bool joytstick_value;
 	std::mutex joystick_mtx;
+	std::mutex frame_mtx;
 	std::string boundAddress;
 	bool running;
 
