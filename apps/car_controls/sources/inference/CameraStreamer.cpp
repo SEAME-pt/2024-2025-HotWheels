@@ -158,7 +158,7 @@ void CameraStreamer::initUndistortMaps() {
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
 	initUndistortMaps();  // Initialize camera undistortion maps
-	initOpenGL();  // Initialize OpenGL and CUDA interop
+	//initOpenGL();  // Initialize OpenGL and CUDA interop
 
 	cv::Mat frame;
 	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
