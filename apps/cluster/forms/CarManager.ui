@@ -53,7 +53,8 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">border: none;</string>
+         <string notr="true">background-color: rgba(255, 255, 255, 0.05);
+border-radius: 12px;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::StyledPanel</enum>
@@ -77,8 +78,8 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
-</string>
+          <string notr="true">color: white;
+background: transparent;</string>
          </property>
          <property name="text">
           <string>Jan 20th</string>
@@ -103,7 +104,8 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -129,7 +131,8 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background: transparent;
+         <string notr="true">background-color: rgba(255, 255, 255, 0.05);
+border-radius: 12px;
 </string>
         </property>
         <property name="frameShape">
@@ -149,12 +152,14 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu</family>
-           <pointsize>85</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>40</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -168,7 +173,7 @@
          <property name="geometry">
           <rect>
            <x>160</x>
-           <y>210</y>
+           <y>190</y>
            <width>71</width>
            <height>41</height>
           </rect>
@@ -180,7 +185,8 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -201,12 +207,14 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>40</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -232,7 +240,8 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -253,12 +262,14 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -279,12 +290,14 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>26</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>30</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: white; background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -305,8 +318,9 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>26</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>30</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -331,8 +345,9 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>26</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>30</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -357,8 +372,9 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>26</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>30</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -388,7 +404,8 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -420,7 +437,8 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -447,12 +465,14 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -473,12 +493,14 @@
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -493,19 +515,14 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>140</y>
+          <y>190</y>
           <width>230</width>
-          <height>415</height>
+          <height>271</height>
          </rect>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>230</width>
-          <height>415</height>
-         </size>
-        </property>
         <property name="styleSheet">
-         <string notr="true">background: transparent;
+         <string notr="true">background-color: rgba(255, 255, 255, 0.05);
+border-radius: 12px;
 </string>
         </property>
         <property name="frameShape">
@@ -514,48 +531,25 @@
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
-        <widget class="QLabel" name="label_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>20</y>
-           <width>211</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>16</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="text">
-          <string>System info:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
         <widget class="QLabel" name="drivingModeLabel">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>280</y>
+           <x>10</x>
+           <y>220</y>
            <width>211</width>
            <height>41</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -568,20 +562,22 @@
         <widget class="QLabel" name="wifiLabel">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>110</y>
+           <x>10</x>
+           <y>50</y>
            <width>211</width>
            <height>31</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -594,20 +590,22 @@
         <widget class="QLabel" name="ipAddressLabel">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>190</y>
+           <x>10</x>
+           <y>130</y>
            <width>211</width>
            <height>41</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -620,20 +618,22 @@
         <widget class="QLabel" name="textLabel1">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>160</y>
+           <x>10</x>
+           <y>100</y>
            <width>211</width>
            <height>41</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -646,20 +646,22 @@
         <widget class="QLabel" name="textLabel2">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>70</y>
+           <x>10</x>
+           <y>10</y>
            <width>211</width>
            <height>41</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -672,20 +674,22 @@
         <widget class="QLabel" name="textLabel3">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>250</y>
+           <x>10</x>
+           <y>190</y>
            <width>211</width>
            <height>41</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
+           <family>SF Pro Display</family>
            <pointsize>14</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); background: transparent;
+          <string notr="true">color: white;
+background: transparent;
 </string>
          </property>
          <property name="text">
@@ -699,14 +703,15 @@
        <widget class="QFrame" name="frame_2">
         <property name="geometry">
          <rect>
-          <x>750</x>
-          <y>130</y>
+          <x>740</x>
+          <y>180</y>
           <width>221</width>
-          <height>291</height>
+          <height>111</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background: transparent;</string>
+         <string notr="true">background-color: rgba(255, 255, 255, 0.05);
+border-radius: 12px;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::StyledPanel</enum>
@@ -714,44 +719,20 @@
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
-        <widget class="QLabel" name="label_8">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>30</y>
-           <width>201</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>16</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="text">
-          <string>Settings:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
         <widget class="QPushButton" name="toggleDrivingModeButton">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>80</y>
+           <y>10</y>
            <width>201</width>
            <height>41</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>14</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>13</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="acceptDrops">
@@ -765,8 +746,11 @@
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius: 20px;
-color: rgb(24, 46, 78);
-background-color: rgb(134, 227, 253);</string>
+border-radius: 10px;
+padding: 8px;
+color: white;
+background-color: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);</string>
          </property>
          <property name="text">
           <string>Toggle driving mode</string>
@@ -776,21 +760,25 @@ background-color: rgb(134, 227, 253);</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>130</y>
+           <y>60</y>
            <width>201</width>
            <height>41</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>14</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>13</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">border-radius: 20px;
-color: rgb(24, 46, 78);
-background-color: rgb(134, 227, 253);</string>
+border-radius: 10px;
+padding: 8px;
+color: white;
+background-color: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);</string>
          </property>
          <property name="text">
           <string>Toggle metrics</string>
@@ -800,17 +788,74 @@ background-color: rgb(134, 227, 253);</string>
        <widget class="QLabel" name="inferenceLabel">
         <property name="geometry">
          <rect>
-          <x>725</x>
-          <y>436</y>
+          <x>720</x>
+          <y>330</y>
           <width>261</width>
           <height>151</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 16px;
+border: 1px solid rgba(255, 255, 255, 0.2);</string>
         </property>
         <property name="text">
          <string>TextLabel</string>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>140</y>
+          <width>211</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>SF Pro Display</family>
+          <pointsize>16</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: white;
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>System info:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>750</x>
+          <y>140</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Ubuntu Condensed</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: white;
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>Settings:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
       </widget>

@@ -29,7 +29,6 @@ CameraStreamer::~CameraStreamer() {
 		cap.release(); // Release camera
 	}
 
-	std::cout << "[~CameraStreamer] Calling cudaDeviceSynchronize..." << std::endl;
 	cudaDeviceSynchronize();  // Ensure all CUDA operations are complete
 
 	if (cuda_resource) {
@@ -37,9 +36,9 @@ CameraStreamer::~CameraStreamer() {
 		cuda_resource = nullptr;
 	}
 
-	std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
 	if (window)
 	{
+		std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
 		glfwMakeContextCurrent(window);  // Ensure valid context
 		glDeleteTextures(1, &textureID); // Clean texture
 		glfwDestroyWindow(window);       // Destroy window
