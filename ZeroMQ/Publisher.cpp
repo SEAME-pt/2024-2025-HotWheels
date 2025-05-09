@@ -34,42 +34,6 @@ void Publisher::setJoystickStatus(bool new_joytstick_value) {
 	}
 }
 
-/* void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image) {
-	try {
-		// Download GPU image to CPU
-		cv::Mat cpu_image;
-		gpu_image.download(cpu_image);
-
-		if (cpu_image.empty()) {
-			std::cerr << "[Publisher] Skipped: empty CPU image." << std::endl;
-			return;
-		}
-
-		// Encode to JPEG
-		std::vector<uchar> encoded;
-		if (!cv::imencode(".jpg", cpu_image, encoded)) {
-			std::cerr << "[Publisher] Encoding failed." << std::endl;
-			return;
-		}
-
-		// Construct message with deep copy (safe for legacy API)
-		zmq::message_t topic_msg(topic.size());
-		memcpy(topic_msg.data(), topic.data(), topic.size());
-
-		zmq::message_t image_msg(encoded.size());
-		memcpy(image_msg.data(), encoded.data(), encoded.size());
-
-		// Send multipart message
-		publisher.send(&topic_msg, ZMQ_SNDMORE);
-		publisher.send(&image_msg, 0);
-
-		//change the implementation of the publisher, try to send the image with the topic behind it, like the other publisher
-
-	} catch (const std::exception& e) {
-		std::cerr << "[Publisher] Failed to publish image: " << e.what() << std::endl;
-	}
-} */
-
 void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image) {
 	try {
 		// Download GPU image to CPU

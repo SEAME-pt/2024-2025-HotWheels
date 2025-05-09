@@ -42,47 +42,6 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     ui->setupUi(this);
     initializeComponents();
 
-/*     m_inferenceSubscriber = new Subscriber();
-    m_inferenceSubscriberThread = QThread::create([this]() {
-        // 1. Connect before subscribing
-        m_inferenceSubscriber->connect("tcp://localhost:5556");
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-
-        // 2. Subscribe to exact topic
-        const std::string topic = "inference_frame";
-        m_inferenceSubscriber->subscribe(topic);
-        qDebug() << "[Subscriber] Subscribed to topic:" << QString::fromStdString(topic);
-
-        while (m_running) {
-            zmq::message_t topic_msg, image_msg;
-
-            zmq::pollitem_t items[] = {
-                { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
-            };
-            zmq::poll(items, 1, 100);  // 100 ms timeout
-
-            if (items[0].revents & ZMQ_POLLIN) {
-                if (!m_inferenceSubscriber->getSocket().recv(&topic_msg, 0)) continue;
-                if (!m_inferenceSubscriber->getSocket().recv(&image_msg, 0)) continue;
-
-                std::string topic_str(static_cast<char*>(topic_msg.data()), topic_msg.size());
-
-                qDebug() << "[Subscriber] Received topic:" << QString::fromStdString(topic_str)
-                         << ", size:" << image_msg.size();
-
-                if (topic_str == "inference_frame" && image_msg.size() > 0) {
-                    std::vector<uchar> jpegData(
-                        static_cast<uchar*>(image_msg.data()),
-                        static_cast<uchar*>(image_msg.data()) + image_msg.size()
-                    );
-
-                    m_dataManager->handleInferenceFrame(jpegData);  // Emits QImage to GUI
-                }
-            }
-        }
-    });
-    m_inferenceSubscriberThread->start(); */
-
     m_inferenceSubscriber = new Subscriber();
     m_inferenceSubscriberThread = QThread::create([this]() {
       m_inferenceSubscriber->connect("tcp://localhost:5556");  // Your image port
