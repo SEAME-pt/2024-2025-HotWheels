@@ -182,8 +182,9 @@ background: transparent;
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>20</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>18</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -237,8 +238,9 @@ background: transparent;
          </property>
          <property name="font">
           <font>
-           <family>Ubuntu Condensed</family>
-           <pointsize>14</pointsize>
+           <family>SF Pro Display</family>
+           <pointsize>13</pointsize>
+           <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -545,7 +547,7 @@ border-radius: 12px;
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -573,7 +575,7 @@ background: transparent;
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -601,7 +603,7 @@ background: transparent;
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -629,7 +631,7 @@ background: transparent;
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -657,7 +659,7 @@ background: transparent;
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -685,7 +687,7 @@ background: transparent;
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -733,7 +735,7 @@ border-radius: 12px;</string>
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -770,7 +772,7 @@ border: 1px solid rgba(255, 255, 255, 0.2);</string>
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>13</pointsize>
+           <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
          </property>
