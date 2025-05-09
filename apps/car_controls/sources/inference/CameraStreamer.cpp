@@ -37,7 +37,7 @@ CameraStreamer::~CameraStreamer() {
 		cuda_resource = nullptr;
 	}
 
-	std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
+/* 	std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
 	if (window)
 	{
 		glfwMakeContextCurrent(window);  // Ensure valid context
@@ -45,7 +45,7 @@ CameraStreamer::~CameraStreamer() {
 		glfwDestroyWindow(window);       // Destroy window
 		std::cout << "[~CameraStreamer] Terminating GLFW..." << std::endl;
 		glfwTerminate();
-	}
+	} */
 	std::cout << "[~CameraStreamer] Destructor done." << std::endl;
 }
 
