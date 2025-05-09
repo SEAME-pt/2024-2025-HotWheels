@@ -62,7 +62,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
             }
 
             std::string received_msg(static_cast<char*>(message.data()), message.size());
-            std::cout << "[Subscriber] Raw message: " << received_msg.substr(0, 30) << "... (" << message.size() << " bytes)" << std::endl;
+            //std::cout << "[Subscriber] Raw message: " << received_msg.substr(0, 30) << "... (" << message.size() << " bytes)" << std::endl;
 
             const std::string topic = "inference_frame ";
             if (received_msg.find(topic) == 0) {

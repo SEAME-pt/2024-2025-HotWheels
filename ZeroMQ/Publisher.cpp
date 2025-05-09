@@ -63,7 +63,7 @@ void Publisher::publishFrame(const std::string& topic, const cv::cuda::GpuMat& g
 		zmq::message_t zmq_message(messageData.data(), messageData.size());
 		publisher.send(zmq_message);
 
-		std::cout << "[Publisher] Sent image as single-part message. Size: " << messageData.size() << std::endl;
+		//std::cout << "[Publisher] Sent image as single-part message. Size: " << messageData.size() << std::endl;
 
 	} catch (const std::exception& e) {
 		std::cerr << "[Publisher] Failed to publish image: " << e.what() << std::endl;
