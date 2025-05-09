@@ -166,7 +166,7 @@ void CameraStreamer::start() {
 	const int framesToSkip = 2;  // Skip frames to reduce processing load
 
 	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
-	while (m_running && !glfwWindowShouldClose(window)) {  // Main loop until stop signal
+	while (m_running) {  // Main loop until stop signal
 		for (int i = 0; i < framesToSkip; ++i) {
 			cap.grab();  // Grab frames without decoding
 		}
