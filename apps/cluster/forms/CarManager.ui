@@ -505,9 +505,9 @@ background: transparent;
        <widget class="QLabel" name="batteryLabel">
         <property name="geometry">
          <rect>
-          <x>760</x>
+          <x>720</x>
           <y>6</y>
-          <width>61</width>
+          <width>101</width>
           <height>21</height>
          </rect>
         </property>
