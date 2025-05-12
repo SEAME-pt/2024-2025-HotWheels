@@ -46,7 +46,7 @@ public slots:
 	void setupWifiDropdown();
 	void updateTemperature(const QString &temperature);
 	void updateBatteryPercentage(float batteryPercentage);
-	void updateIpAddress(const QString &ipAddress);
+	//void updateIpAddress(const QString &ipAddress);
 	void updateMileage(double mileage);
 	void updateDrivingMode(DrivingMode newMode);
 	void updateClusterTheme(ClusterTheme newTheme);

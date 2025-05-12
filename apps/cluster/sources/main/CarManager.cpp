@@ -189,8 +189,8 @@ void CarManager::initializeDisplayManager() {
     connect(m_dataManager, &DataManager::batteryPercentageUpdated,
 	    m_displayManager, &DisplayManager::updateBatteryPercentage);
 
-    connect(m_dataManager, &DataManager::ipAddressUpdated, m_displayManager,
-	    &DisplayManager::updateIpAddress);
+/*     connect(m_dataManager, &DataManager::ipAddressUpdated, m_displayManager,
+	    &DisplayManager::updateIpAddress); */
 
     connect(m_dataManager, &DataManager::drivingModeUpdated, m_displayManager,
 	    &DisplayManager::updateDrivingMode);

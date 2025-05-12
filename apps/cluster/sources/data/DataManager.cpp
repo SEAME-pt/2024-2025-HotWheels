@@ -61,10 +61,10 @@ DataManager::DataManager(QObject *parent)
 			&SystemDataManager::systemTemperatureUpdated,
 			this,
 			&DataManager::systemTemperatureUpdated);
-	connect(m_systemDataManager,
+/* 	connect(m_systemDataManager,
 			&SystemDataManager::ipAddressUpdated,
 			this,
-			&DataManager::ipAddressUpdated);
+			&DataManager::ipAddressUpdated); */
 	connect(m_systemDataManager,
 			&SystemDataManager::batteryPercentageUpdated,
 			this,

@@ -42,7 +42,7 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	m_ui->speedLabel->setText("0");
 	m_ui->rpmLabel->setText("0.00");
 	m_ui->timeLabel->setText("--:--:--");
-	m_ui->wifiLabel->setText("📶 Disconnected");
+	//m_ui->wifiLabel->setText("📶 Disconnected");
 	m_ui->temperatureLabel->setText("🌡️ N/A");
 	m_ui->batteryLabel->setText("--% 🔋");
 	m_ui->speedMetricsLabel->setText("KM/H");
@@ -247,9 +247,9 @@ void DisplayManager::updateMileage(double mileage) {
  * address.
  * @param ipAddress The current IP address.
  */
-void DisplayManager::updateIpAddress(const QString &ipAddress) {
+/* void DisplayManager::updateIpAddress(const QString &ipAddress) {
 	m_ui->ipAddressLabel->setText(ipAddress);
-}
+} */
 
 /*!
  * @brief Updates the driving mode on the display.

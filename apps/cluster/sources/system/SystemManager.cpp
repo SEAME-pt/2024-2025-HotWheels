@@ -96,7 +96,7 @@ void SystemManager::shutdown()
 
 /*!
  * @brief Updates the current time.
- * @details This function retrieves the current date and time and emits the 
+ * @details This function retrieves the current date and time and emits the
  * timeUpdated signal with the formatted date, time, and weekday.
  */
 void SystemManager::updateTime()
@@ -120,5 +120,5 @@ void SystemManager::updateSystemStatus()
 	emit wifiStatusUpdated(m_systemInfoProvider->getWifiStatus(wifiName), wifiName);
 	emit temperatureUpdated(m_systemInfoProvider->getTemperature());
 	emit batteryPercentageUpdated(m_batteryController->getBatteryPercentage());
-	emit ipAddressUpdated(m_systemInfoProvider->getIpAddress());
+	//emit ipAddressUpdated(m_systemInfoProvider->getIpAddress());
 }
