@@ -246,12 +246,6 @@ void CarManager::initializeSystemManager()
 		&SystemManager::batteryPercentageUpdated,
 		m_dataManager,
 		&DataManager::handleBatteryPercentage);
-
-	connect(m_systemManager,
-		&SystemManager::ipAddressUpdated,
-		m_dataManager,
-		&DataManager::handleIpAddressData);
-    }
 }
 
 /*!
