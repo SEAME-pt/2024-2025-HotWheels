@@ -799,8 +799,9 @@ border: 1px solid rgba(255, 255, 255, 0.2);</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-radius: 16px;
-border: 1px solid rgba(255, 255, 255, 0.2);</string>
+         <string notr="true">border-radius: 20px;
+border: 2px solid rgba(255, 255, 255, 0.2);
+background-color: rgba(255, 255, 255, 0.03);</string>
         </property>
         <property name="text">
          <string>TextLabel</string>
