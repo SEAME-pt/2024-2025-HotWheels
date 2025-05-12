@@ -799,7 +799,7 @@ border: 1px solid rgba(255, 255, 255, 0.2);</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-radius: 20px;
+         <string notr="true">border-radius: 16px;
 border: 2px solid rgb(255, 255, 255);
 background-color: rgba(255, 255, 255, 0.03);</string>
         </property>
