@@ -24,6 +24,8 @@
 #include <QPainterPath>
 #include <QMenu>
 #include <QToolButton>
+#include <QProcess>
+#include <QNetworkInterface>
 
 /*!
  * @brief Class that manages the display of the car manager.

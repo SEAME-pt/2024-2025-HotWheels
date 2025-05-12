@@ -165,26 +165,45 @@ void DisplayManager::updateWifiStatus(const QString &status,
 	m_ui->wifiLabel->setText("📶 " + wifiName);
 }
 
+QString getWifiSSID() {
+    // Linux: read active SSID using shell command
+    QProcess proc;
+    proc.start("iwgetid -r");  // Gets current SSID
+    proc.waitForFinished();
+    QString output = proc.readAllStandardOutput().trimmed();
+    return output.isEmpty() ? "Not connected" : output;
+}
+
+QString getLocalIPAddress() {
+    const QList<QHostAddress> &addresses = QNetworkInterface::allAddresses();
+    for (const QHostAddress &address : addresses) {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && !address.isLoopback())
+            return address.toString();
+    }
+    return "No IP";
+}
+
 void DisplayManager::setupWifiDropdown() {
-    QMenu* wifiMenu = new QMenu(m_ui->wifiToggleButton);
-
-    // Add network info
-    wifiMenu->addAction("Connected to: SEA:ME");
-    wifiMenu->addAction("IP: 10.21.221.78");
-
-    // Style it (optional)
-    wifiMenu->setStyleSheet(
-        "QMenu {"
-        " background-color: rgba(30, 30, 30, 0.9);"
-        " color: white;"
-        " border: 1px solid rgba(255, 255, 255, 0.2);"
-        " border-radius: 6px;"
-        " padding: 6px;"
-        " }"
-    );
-
-    // Show the menu below the button on click
     connect(m_ui->wifiToggleButton, &QToolButton::clicked, this, [=]() {
+        QMenu* wifiMenu = new QMenu(m_ui->wifiToggleButton);
+
+        // Fetch current data
+        QString ssidText = getWifiSSID();
+        QString ipText = getLocalIPAddress();
+
+        wifiMenu->addAction("Connected to: " + ssidText);
+        wifiMenu->addAction("IP Address: " + ipText);
+
+        wifiMenu->setStyleSheet(
+            "QMenu {"
+            " background-color: rgba(30, 30, 30, 0.9);"
+            " color: white;"
+            " border: 1px solid rgba(255, 255, 255, 0.2);"
+            " border-radius: 6px;"
+            " padding: 6px;"
+            " }"
+        );
+
         QPoint pos = m_ui->wifiToggleButton->mapToGlobal(QPoint(0, m_ui->wifiToggleButton->height()));
         wifiMenu->exec(pos);
     });
