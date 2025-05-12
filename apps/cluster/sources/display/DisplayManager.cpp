@@ -49,6 +49,8 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	m_ui->leftBlinkerLabel->setVisible(false);
 	m_ui->rightBlinkerLabel->setVisible(false);
 
+	setupWifiDropdown();
+
 	// Directly connect button clicks to signals
 	connect(m_ui->toggleDrivingModeButton, &QPushButton::clicked, this,
 					&DisplayManager::drivingModeToggled);
@@ -161,6 +163,31 @@ void DisplayManager::updateWifiStatus(const QString &status,
 		wifiDisplay += " (" + wifiName + ")";
 	}
 	m_ui->wifiLabel->setText("📶 " + wifiName);
+}
+
+void DisplayManager::setupWifiDropdown() {
+    QMenu* wifiMenu = new QMenu(m_ui->wifiToggleButton);
+
+    // Add network info
+    wifiMenu->addAction("Connected to: SEA:ME");
+    wifiMenu->addAction("IP: 10.21.221.78");
+
+    // Style it (optional)
+    wifiMenu->setStyleSheet(
+        "QMenu {"
+        " background-color: rgba(30, 30, 30, 0.9);"
+        " color: white;"
+        " border: 1px solid rgba(255, 255, 255, 0.2);"
+        " border-radius: 6px;"
+        " padding: 6px;"
+        " }"
+    );
+
+    // Show the menu below the button on click
+    connect(m_ui->wifiToggleButton, &QToolButton::clicked, this, [=]() {
+        QPoint pos = m_ui->wifiToggleButton->mapToGlobal(QPoint(0, m_ui->wifiToggleButton->height()));
+        wifiMenu->exec(pos);
+    });
 }
 
 /*!
