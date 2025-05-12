@@ -274,7 +274,7 @@ void DisplayManager::displayInferenceImage(const QImage &image) {
 	painter.setRenderHint(QPainter::Antialiasing, true);
 
 	QPainterPath path;
-	path.addRoundedRect(original.rect(), 16, 16);  // radius 16px
+	path.addRoundedRect(original.rect(), 20, 20);  // radius 16px
 	painter.setClipPath(path);
 	painter.drawPixmap(0, 0, original);
 
