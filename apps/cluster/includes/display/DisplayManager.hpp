@@ -20,6 +20,8 @@
 #include "ui_CarManager.h"
 #include <QObject>
 #include <QString>
+#include <QPainter>
+#include <QPainterPath>
 
 /*!
  * @brief Class that manages the display of the car manager.
