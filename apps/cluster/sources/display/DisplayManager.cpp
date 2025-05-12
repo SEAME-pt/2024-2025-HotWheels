@@ -32,7 +32,7 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 		: QObject(parent), m_ui(ui) {
 	// Ensure the labels are initialized
     if (!m_ui->speedLabel || !m_ui->rpmLabel ||
-			!m_ui->timeLabel || !m_ui->wifiLabel || !m_ui->temperatureLabel ||
+			!m_ui->timeLabel || !m_ui->temperatureLabel ||
 			!m_ui->batteryLabel) {
 		qDebug() << "Error: Labels not initialized in the UI form!";
 		return;
@@ -42,7 +42,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	m_ui->speedLabel->setText("0");
 	m_ui->rpmLabel->setText("0.00");
 	m_ui->timeLabel->setText("--:--:--");
-	//m_ui->wifiLabel->setText("📶 Disconnected");
 	m_ui->temperatureLabel->setText("🌡️ N/A");
 	m_ui->batteryLabel->setText("--% 🔋");
 	m_ui->speedMetricsLabel->setText("KM/H");
@@ -147,22 +146,6 @@ void DisplayManager::updateSystemTime(const QString &currentDate,
                                                                             const QString &currentDay) {
 	m_ui->dateLabel->setText(currentDate);
 	m_ui->timeLabel->setText(currentTime);
-}
-
-/*!
- * @brief Updates the WiFi status on the display.
- * @details This function updates the WiFi status label based on the current
- * WiFi status and name.
- * @param status The current WiFi status.
- * @param wifiName The name of the connected WiFi network.
- */
-void DisplayManager::updateWifiStatus(const QString &status,
-																			const QString &wifiName) {
-	QString wifiDisplay = status;
-	if (!wifiName.isEmpty()) {
-		wifiDisplay += " (" + wifiName + ")";
-	}
-	m_ui->wifiLabel->setText("📶 " + wifiName);
 }
 
 QString getWifiSSID() {

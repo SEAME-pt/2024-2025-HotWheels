@@ -48,7 +48,6 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 	if (m_wifiStatus != status || m_wifiName != wifiName) {
 		m_wifiStatus = status;
 		m_wifiName = wifiName;
-		emit systemWifiUpdated(status, wifiName);
 
         QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
         QString apiBaseUrl = env.value("API_KEY");

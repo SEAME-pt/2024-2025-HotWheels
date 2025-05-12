@@ -180,9 +180,6 @@ void CarManager::initializeDisplayManager() {
     connect(m_dataManager, &DataManager::systemTimeUpdated, m_displayManager,
 	    &DisplayManager::updateSystemTime);
 
-    connect(m_dataManager, &DataManager::systemWifiUpdated, m_displayManager,
-	    &DisplayManager::updateWifiStatus);
-
     connect(m_dataManager, &DataManager::systemTemperatureUpdated,
 	    m_displayManager, &DisplayManager::updateTemperature);
 

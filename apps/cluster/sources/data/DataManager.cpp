@@ -54,10 +54,6 @@ DataManager::DataManager(QObject *parent)
 			this,
 			&DataManager::systemTimeUpdated);
 	connect(m_systemDataManager,
-			&SystemDataManager::systemWifiUpdated,
-			this,
-			&DataManager::systemWifiUpdated);
-	connect(m_systemDataManager,
 			&SystemDataManager::systemTemperatureUpdated,
 			this,
 			&DataManager::systemTemperatureUpdated);

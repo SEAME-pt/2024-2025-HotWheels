@@ -530,7 +530,7 @@ background: transparent;
 </string>
          </property>
          <property name="text">
-          <string>🛜 42 Porto | SEA:ME</string>
+          <string>0</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>

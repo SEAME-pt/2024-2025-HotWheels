@@ -67,7 +67,6 @@ signals:
 	void systemTimeUpdated(const QString &currentDate,
 						   const QString &currentTime,
 						   const QString &currentDay);
-	void systemWifiUpdated(const QString &status, const QString &wifiName);
 	void systemTemperatureUpdated(const QString &temperature);
 	void batteryPercentageUpdated(float batteryPercentage);
 	void mileageUpdated(double mileage);
