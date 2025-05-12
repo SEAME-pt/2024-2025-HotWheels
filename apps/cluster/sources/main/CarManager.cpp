@@ -246,6 +246,7 @@ void CarManager::initializeSystemManager()
 		&SystemManager::batteryPercentageUpdated,
 		m_dataManager,
 		&DataManager::handleBatteryPercentage);
+    }
 }
 
 /*!
