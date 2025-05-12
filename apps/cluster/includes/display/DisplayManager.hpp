@@ -39,6 +39,7 @@ public slots:
 	void updateSystemTime(const QString &currentDate, const QString &currentTime,
 												const QString &currentDay);
 	void updateWifiStatus(const QString &status, const QString &wifiName);
+	void setupWifiDropdown();
 	void updateTemperature(const QString &temperature);
 	void updateBatteryPercentage(float batteryPercentage);
 	void updateIpAddress(const QString &ipAddress);
