@@ -74,7 +74,7 @@ border-radius: 12px;</string>
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>16</pointsize>
+           <pointsize>14</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -101,7 +101,7 @@ background: transparent;</string>
          <property name="font">
           <font>
            <family>SF Pro Display</family>
-           <pointsize>16</pointsize>
+           <pointsize>14</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -800,7 +800,7 @@ border: 1px solid rgba(255, 255, 255, 0.2);</string>
         </property>
         <property name="styleSheet">
          <string notr="true">border-radius: 20px;
-border: 2px solid rgba(255, 255, 255, 0.2);
+border: 2px solid rgb(255, 255, 255);
 background-color: rgba(255, 255, 255, 0.03);</string>
         </property>
         <property name="text">
