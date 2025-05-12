@@ -263,7 +263,21 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 }
 
 void DisplayManager::displayInferenceImage(const QImage &image) {
-	if (m_ui->inferenceLabel) {
-		m_ui->inferenceLabel->setPixmap(QPixmap::fromImage(image));
-	}
+	if (!m_ui->inferenceLabel)
+		return;
+
+	QPixmap original = QPixmap::fromImage(image);
+	QPixmap rounded(original.size());
+	rounded.fill(Qt::transparent);
+
+	QPainter painter(&rounded);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+
+	QPainterPath path;
+	path.addRoundedRect(original.rect(), 16, 16);  // radius 16px
+	painter.setClipPath(path);
+	painter.drawPixmap(0, 0, original);
+
+	//m_ui->inferenceLabel->setPixmap(QPixmap::fromImage(image));
+	m_ui->inferenceLabel->setPixmap(rounded);
 }
