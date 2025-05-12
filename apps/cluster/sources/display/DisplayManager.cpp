@@ -43,8 +43,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	m_ui->temperatureLabel->setText("🌡️ N/A");
 	m_ui->batteryLabel->setText("--% 🔋");
 	m_ui->speedMetricsLabel->setText("KM/H");
-	m_ui->leftBlinkerLabel->setVisible(false);
-	m_ui->rightBlinkerLabel->setVisible(false);
 
 	setupWifiDropdown();
 
@@ -114,18 +112,6 @@ void DisplayManager::updateEngineData(CarDirection direction,
 		m_ui->directionNeutralLabel->update();
 		m_ui->directionDriveLabel->update();
 		break;
-	}
-
-	//m_ui->directionLabel->setText(directionText);
-	if (steeringAngle > 0) {
-		m_ui->leftBlinkerLabel->setVisible(false);
-		m_ui->rightBlinkerLabel->setVisible(true);
-	} else if (steeringAngle < 0) {
-		m_ui->rightBlinkerLabel->setVisible(false);
-		m_ui->leftBlinkerLabel->setVisible(true);
-	} else {
-		m_ui->leftBlinkerLabel->setVisible(false);
-		m_ui->rightBlinkerLabel->setVisible(false);
 	}
 }
 
