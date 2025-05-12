@@ -242,16 +242,6 @@ void DisplayManager::updateMileage(double mileage) {
 }
 
 /*!
- * @brief Updates the IP address on the display.
- * @details This function updates the IP address label based on the current IP
- * address.
- * @param ipAddress The current IP address.
- */
-/* void DisplayManager::updateIpAddress(const QString &ipAddress) {
-	m_ui->ipAddressLabel->setText(ipAddress);
-} */
-
-/*!
  * @brief Updates the driving mode on the display.
  * @details This function updates the driving mode label based on the current
  * driving mode.

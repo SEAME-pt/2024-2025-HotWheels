@@ -61,10 +61,6 @@ DataManager::DataManager(QObject *parent)
 			&SystemDataManager::systemTemperatureUpdated,
 			this,
 			&DataManager::systemTemperatureUpdated);
-/* 	connect(m_systemDataManager,
-			&SystemDataManager::ipAddressUpdated,
-			this,
-			&DataManager::ipAddressUpdated); */
 	connect(m_systemDataManager,
 			&SystemDataManager::batteryPercentageUpdated,
 			this,
@@ -83,11 +79,6 @@ DataManager::DataManager(QObject *parent)
 			&ClusterSettingsManager::clusterMetricsUpdated,
 			this,
 			&DataManager::clusterMetricsUpdated);
-
-/* 	connect(m_clusterSettingsManager,
-			&ClusterSettingsManager::handleInferenceFrame,
-			this,
-			&DataManager::handleInferenceFrame); */
 }
 
 /*!

@@ -112,7 +112,6 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 {
 	if (m_ipAddress != ipAddress) {
 		m_ipAddress = ipAddress;
-		//emit ipAddressUpdated(ipAddress);
 
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		QString apiBaseUrl = env.value("API_KEY");

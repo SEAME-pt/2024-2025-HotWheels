@@ -120,5 +120,4 @@ void SystemManager::updateSystemStatus()
 	emit wifiStatusUpdated(m_systemInfoProvider->getWifiStatus(wifiName), wifiName);
 	emit temperatureUpdated(m_systemInfoProvider->getTemperature());
 	emit batteryPercentageUpdated(m_batteryController->getBatteryPercentage());
-	//emit ipAddressUpdated(m_systemInfoProvider->getIpAddress());
 }
