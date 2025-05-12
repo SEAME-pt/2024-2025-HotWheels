@@ -31,16 +31,14 @@
 DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 		: QObject(parent), m_ui(ui) {
 	// Ensure the labels are initialized
-    if (!m_ui->speedLabel || !m_ui->rpmLabel ||
-			!m_ui->timeLabel || !m_ui->temperatureLabel ||
-			!m_ui->batteryLabel) {
+    if (!m_ui->speedLabel || !m_ui->timeLabel ||
+			!m_ui->temperatureLabel || !m_ui->batteryLabel) {
 		qDebug() << "Error: Labels not initialized in the UI form!";
 		return;
 	}
 
 	// Set initial values for the labels
 	m_ui->speedLabel->setText("0");
-	m_ui->rpmLabel->setText("0.00");
 	m_ui->timeLabel->setText("--:--:--");
 	m_ui->temperatureLabel->setText("🌡️ N/A");
 	m_ui->batteryLabel->setText("--% 🔋");
@@ -66,8 +64,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
  */
 void DisplayManager::updateCanBusData(float speed, int rpm) {
 	m_ui->speedLabel->setText(QString::number(static_cast<int>(speed)));
-	m_ui->rpmLabel->setText(
-			QString::number(static_cast<double>(rpm) / 1000, 'f', 2));
 }
 
 /*!
