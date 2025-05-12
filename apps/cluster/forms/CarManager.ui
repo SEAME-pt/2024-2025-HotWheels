@@ -558,7 +558,7 @@ background: transparent;
 </string>
          </property>
          <property name="text">
-          <string>10.21.221.78</string>
+          <string>0</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
