@@ -20,6 +20,7 @@
 #include "SystemManager.hpp"
 #include <QDateTime>
 #include <QDebug>
+#include <QLocale>
 #include "BatteryController.hpp"
 #include "SystemCommandExecutor.hpp"
 #include "SystemInfoProvider.hpp"
@@ -102,11 +103,12 @@ void SystemManager::shutdown()
 void SystemManager::updateTime()
 {
 	QDateTime currentDateTime = QDateTime::currentDateTime();
-	QString shortMonth = currentDateTime.toString("MMMM").left(3);
+	QLocale english(QLocale::English);
+	QString currentMonth = english.toString(currentDateTime, "MMMM").left(3);
 
-	emit timeUpdated(shortMonth,
+	emit timeUpdated(currentMonth,
 					 currentDateTime.toString("HH:mm"),
-					 currentDateTime.toString("dddd"));
+					 currentDateTime.toString("d"));
 }
 
 /*!

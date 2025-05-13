@@ -26,6 +26,7 @@
 #include <QToolButton>
 #include <QProcess>
 #include <QNetworkInterface>
+#include <QLocale>
 
 /*!
  * @brief Class that manages the display of the car manager.
