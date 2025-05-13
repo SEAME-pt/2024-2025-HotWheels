@@ -126,7 +126,7 @@ void DisplayManager::updateEngineData(CarDirection direction,
 void DisplayManager::updateSystemTime(const QString &currentDate,
 																			const QString &currentTime,
                                                                             const QString &currentDay) {
-	m_ui->dateLabel->setText(currentDate);
+	m_ui->dateLabel->setText(currentDate + " " + currentDay);
 	m_ui->timeLabel->setText(currentTime);
 }
 

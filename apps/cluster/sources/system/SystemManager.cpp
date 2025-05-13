@@ -102,7 +102,9 @@ void SystemManager::shutdown()
 void SystemManager::updateTime()
 {
 	QDateTime currentDateTime = QDateTime::currentDateTime();
-	emit timeUpdated(currentDateTime.toString("MMM"),
+	QString shortMonth = currentDateTime.toString("MMMM").left(3);
+
+	emit timeUpdated(shortMonth,
 					 currentDateTime.toString("HH:mm"),
 					 currentDateTime.toString("dddd"));
 }
