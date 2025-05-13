@@ -47,7 +47,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
           background-image: url(:/images/background.jpg);
           background-repeat: no-repeat;
           background-position: center;
-          background-size: 110% 110%;
+          background-size: 120% 120%;
       }
     )";
     this->setStyleSheet(style);
