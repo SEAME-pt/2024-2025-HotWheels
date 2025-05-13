@@ -514,7 +514,7 @@ background: transparent;
         <property name="font">
          <font>
           <family>SF Pro Display</family>
-          <pointsize>12</pointsize>
+          <pointsize>11</pointsize>
           <bold>true</bold>
          </font>
         </property>
@@ -542,7 +542,7 @@ background: transparent;
         <property name="font">
          <font>
           <family>SF Pro Display</family>
-          <pointsize>12</pointsize>
+          <pointsize>11</pointsize>
           <bold>true</bold>
          </font>
         </property>
