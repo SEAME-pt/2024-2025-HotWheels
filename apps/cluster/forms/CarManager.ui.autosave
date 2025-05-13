@@ -10,6 +10,9 @@
     <height>601</height>
    </rect>
   </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>CarManager</string>
   </property>
@@ -23,8 +26,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(&quot;:/images/background.jpg&quot;);
-background-repeat: no-repeat;</string>
+   <string notr="true">background-image: url(&quot;:/images/background.jpg&quot;);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
