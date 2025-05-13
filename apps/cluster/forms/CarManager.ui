@@ -505,7 +505,7 @@ background: transparent;
        <widget class="QLabel" name="batteryLabel">
         <property name="geometry">
          <rect>
-          <x>800</x>
+          <x>790</x>
           <y>6</y>
           <width>51</width>
           <height>21</height>
@@ -533,7 +533,7 @@ background: transparent;
        <widget class="QLabel" name="temperatureLabel">
         <property name="geometry">
          <rect>
-          <x>905</x>
+          <x>900</x>
           <y>6</y>
           <width>51</width>
           <height>21</height>
@@ -589,7 +589,7 @@ background: transparent;
        <widget class="QLabel" name="batteryIconLabel">
         <property name="geometry">
          <rect>
-          <x>860</x>
+          <x>850</x>
           <y>0</y>
           <width>31</width>
           <height>31</height>
