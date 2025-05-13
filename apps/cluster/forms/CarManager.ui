@@ -254,7 +254,7 @@ background: transparent;
        <widget class="QLabel" name="dateLabel">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>90</x>
           <y>0</y>
           <width>100</width>
           <height>31</height>
