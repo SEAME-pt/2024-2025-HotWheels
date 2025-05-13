@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>998</width>
+    <width>1030</width>
     <height>601</height>
    </rect>
   </property>
@@ -14,11 +14,15 @@
    <string>CarManager</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #FF5733;</string>
+   <string notr="true">background-image: url(&quot;:/images/background.jpg&quot;);
+background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;
+background-size: cover;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-image: url(&quot;:/images/background.jpg&quot;);</string>
+    <string notr="true"/>
    </property>
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
@@ -35,27 +39,9 @@
        <property name="enabled">
         <bool>true</bool>
        </property>
-       <widget class="QFrame" name="frame">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>190</y>
-          <width>230</width>
-          <height>271</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgba(255, 255, 255, 0.05);
-border-radius: 12px;
-</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-       </widget>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
        <widget class="QFrame" name="frame_2">
         <property name="geometry">
          <rect>
@@ -162,7 +148,7 @@ background-color: rgba(255, 255, 255, 0.03);</string>
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="label_8">
+       <widget class="QLabel" name="settingsLabel">
         <property name="geometry">
          <rect>
           <x>750</x>
@@ -309,7 +295,7 @@ background: transparent;
          <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="textLabel3">
+       <widget class="QLabel" name="drivingModeLabel_2">
         <property name="geometry">
          <rect>
           <x>750</x>
@@ -449,9 +435,9 @@ background: transparent;
        <widget class="QLabel" name="speedMetricsLabel">
         <property name="geometry">
          <rect>
-          <x>470</x>
-          <y>310</y>
-          <width>71</width>
+          <x>410</x>
+          <y>320</y>
+          <width>181</width>
           <height>41</height>
          </rect>
         </property>
@@ -477,9 +463,9 @@ background: transparent;
        <widget class="QLabel" name="speedLabel">
         <property name="geometry">
          <rect>
-          <x>470</x>
+          <x>410</x>
           <y>270</y>
-          <width>61</width>
+          <width>181</width>
           <height>41</height>
          </rect>
         </property>
@@ -561,9 +547,9 @@ background: transparent;
        <widget class="QLabel" name="mileageLabel">
         <property name="geometry">
          <rect>
-          <x>450</x>
+          <x>410</x>
           <y>430</y>
-          <width>91</width>
+          <width>181</width>
           <height>21</height>
          </rect>
         </property>
