@@ -40,8 +40,8 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 	// Set initial values for the labels
 	m_ui->speedLabel->setText("0");
 	m_ui->timeLabel->setText("--:--:--");
-	m_ui->temperatureLabel->setText("🌡️ N/A");
-	m_ui->batteryLabel->setText("--% 🔋");
+	m_ui->temperatureLabel->setText("N/A");
+	m_ui->batteryLabel->setText("--%");
 	m_ui->speedMetricsLabel->setText("KM/H");
 
 	setupWifiDropdown();
@@ -181,7 +181,7 @@ void DisplayManager::setupWifiDropdown() {
  * @param temperature The current temperature.
  */
 void DisplayManager::updateTemperature(const QString &temperature) {
-	m_ui->temperatureLabel->setText("🌡️ " + temperature);
+	m_ui->temperatureLabel->setText(temperature);
 }
 
 /*!
@@ -191,8 +191,9 @@ void DisplayManager::updateTemperature(const QString &temperature) {
  * @param batteryPercentage The current battery percentage.
  */
 void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
-	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) +
-															"% " + (batteryPercentage > 20.0 ? "🔋" : "🪫"));
+/* 	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) +
+															"% " + (batteryPercentage > 20.0 ? "🔋" : "🪫")); */
+	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) + " %");
 }
 
 /*!

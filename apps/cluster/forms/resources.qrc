@@ -5,5 +5,7 @@
         <file>left-blinker.png</file>
         <file>background.jpg</file>
         <file>wifi.png</file>
+        <file>temperature.png</file>
+        <file>battery.png</file>
     </qresource>
 </RCC>
