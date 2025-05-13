@@ -193,7 +193,7 @@ void DisplayManager::updateTemperature(const QString &temperature) {
 void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
 /* 	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) +
 															"% " + (batteryPercentage > 20.0 ? "🔋" : "🪫")); */
-	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) + " %");
+	m_ui->batteryLabel->setText(QString::number(static_cast<int>(batteryPercentage)) + "%";);
 }
 
 /*!
