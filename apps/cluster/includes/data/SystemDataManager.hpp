@@ -39,7 +39,7 @@ public:
 	~SystemDataManager();
 
 public slots:
-	void handleTimeData(const QString &currentDate,
+	void handleTimeData(const QString &currentMonth,
 						const QString &currentTime,
 						const QString &currentDay);
 	void handleWifiData(const QString &status, const QString &wifiName);
@@ -48,7 +48,7 @@ public slots:
 	void handleBatteryPercentage(float batteryPercentage);
 
 signals:
-	void systemTimeUpdated(const QString &currentDate,
+	void systemTimeUpdated(const QString &currentMonth,
 						   const QString &currentTime,
 						   const QString &currentDay);
 	void systemTemperatureUpdated(const QString &temperature);

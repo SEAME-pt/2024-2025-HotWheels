@@ -64,7 +64,7 @@ signals:
 	// Forwarded signals from subclasses
 	void canDataProcessed(float processedSpeed, int processedRpm);
 	void engineDataProcessed(CarDirection processedDirection, int processedAngle);
-	void systemTimeUpdated(const QString &currentDate,
+	void systemTimeUpdated(const QString &currentMonth,
 						   const QString &currentTime,
 						   const QString &currentDay);
 	void systemTemperatureUpdated(const QString &temperature);

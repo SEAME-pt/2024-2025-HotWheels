@@ -29,12 +29,12 @@ SystemDataManager::~SystemDataManager() {}
  * @param currentDay The current day.
  * @details This function processes the time data.
  */
-void SystemDataManager::handleTimeData(const QString &currentDate,
+void SystemDataManager::handleTimeData(const QString &currentMonth,
 									   const QString &currentTime,
 									   const QString &currentDay)
 {
 	m_time = currentTime;
-	emit systemTimeUpdated(currentDate, currentTime, currentDay);
+	emit systemTimeUpdated(currentMonth, currentTime, currentDay);
 }
 
 /*!

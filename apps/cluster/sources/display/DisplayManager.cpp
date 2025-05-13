@@ -119,14 +119,14 @@ void DisplayManager::updateEngineData(CarDirection direction,
  * @brief Updates the system time on the display.
  * @details This function updates the date, time, and weekday labels based on
  * the current system time.
- * @param currentDate The current date.
+ * @param currentMonth The current month.
  * @param currentTime The current time.
  * @param currentDay The current day of the week.
  */
-void DisplayManager::updateSystemTime(const QString &currentDate,
+void DisplayManager::updateSystemTime(const QString &currentMonth,
 																			const QString &currentTime,
                                                                             const QString &currentDay) {
-	m_ui->dateLabel->setText(currentDate + " " + currentDay);
+	m_ui->dateLabel->setText(currentMonth + " " + currentDay);
 	m_ui->timeLabel->setText(currentTime);
 }
 
