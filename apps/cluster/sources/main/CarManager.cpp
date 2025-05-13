@@ -19,6 +19,7 @@
 #include "CarManager.hpp"
 #include "ui_CarManager.h"
 #include <QDebug>
+#include <QString>
 
 /*!
  * @brief Construct a new CarManager object.
@@ -40,6 +41,17 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     , m_inferenceSubscriberThread(nullptr)
 {
     ui->setupUi(this);
+
+    QString style = R"(
+      QMainWindow {
+          background-image: url(:/images/background.jpg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 120% 120%;
+      }
+    )";
+    this->setStyleSheet(style);
+
     initializeComponents();
 
     m_inferenceSubscriber = new Subscriber();
