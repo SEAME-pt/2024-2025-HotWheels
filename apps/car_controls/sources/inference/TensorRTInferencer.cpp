@@ -169,7 +169,7 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	cv::cuda::resize(gpuGray, gpuResized, inputSize, 0, 0, cv::INTER_LINEAR); // Resize to network input size
 
 	cv::cuda::GpuMat gpuFloat;
-	gpuResized.convertTo(gpuFloat, CV_32F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
+	gpuResized.convertTo(gpuFloat, CV_16F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
 
 	return gpuFloat;  // Return preprocessed image (still on GPU)
 }
