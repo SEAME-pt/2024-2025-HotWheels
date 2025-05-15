@@ -217,6 +217,11 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 		}
 	}
 
+	std::cout << "[DEBUG] outputMaskGpu: rows = " << outputMaskGpu.rows
+			<< ", cols = " << outputMaskGpu.cols
+			<< ", step = " << outputMaskGpu.step
+			<< ", expected = " << width * sizeof(__half) << std::endl;
+
 	// Copy the raw prediction output from TensorRT device memory to `outputMaskGpu`
 	// - Assumes output is already in device memory (deviceOutput)
 	// - No CPU-GPU transfer, all device-to-device
