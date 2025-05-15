@@ -184,7 +184,7 @@ void CameraStreamer::start() {
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
 		// Convert to 8-bit (0 or 255) in a new GpuMat
-		cv::cuda::GpuMat d_mask_u8;
+/* 		cv::cuda::GpuMat d_mask_u8;
 		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255
 
 		cv::Mat binary_mask_cpu;
@@ -198,7 +198,6 @@ void CameraStreamer::start() {
 
 		cv::cuda::GpuMat d_resized_mask;
 
-		//in case of red mask usage, change d_vizualization to d_colorized_mask
 		cv::cuda::resize(d_visualization, d_resized_mask,
 						 cv::Size(frame.cols * scale_factor, frame.rows * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
@@ -206,7 +205,7 @@ void CameraStreamer::start() {
 
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
-		}
+		} */
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
