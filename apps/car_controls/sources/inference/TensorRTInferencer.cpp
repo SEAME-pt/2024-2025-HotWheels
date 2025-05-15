@@ -76,13 +76,13 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 	for (int i = 0; i < inputDims.nbDims; i++) {  // Multiply all input dimensions
 		inputElementCount *= static_cast<size_t>(inputDims.d[i]);
 	}
-	inputByteSize = inputElementCount * sizeof(float);  // Calculate input buffer size in bytes
+	inputByteSize = inputElementCount * sizeof(__half);  // Calculate input buffer size in bytes
 
 	outputElementCount = 1;  // Initialize output element count
 	for (int i = 0; i < outputDims.nbDims; i++) {  // Multiply all output dimensions
 		outputElementCount *= static_cast<size_t>(outputDims.d[i]);
 	}
-	outputByteSize = outputElementCount * sizeof(float);  // Calculate output buffer size in bytes
+	outputByteSize = outputElementCount * sizeof(__half);  // Calculate output buffer size in bytes
 
 	cudaError_t status;  // Define variable for checking CUDA errors
 
@@ -169,7 +169,7 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	cv::cuda::resize(gpuGray, gpuResized, inputSize, 0, 0, cv::INTER_LINEAR); // Resize to network input size
 
 	cv::cuda::GpuMat gpuFloat;
-	gpuResized.convertTo(gpuFloat, CV_32F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
+	gpuResized.convertTo(gpuFloat, CV_16F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
 
 	return gpuFloat;  // Return preprocessed image (still on GPU)
 }
@@ -182,10 +182,10 @@ void TensorRTInferencer::runInference(const cv::cuda::GpuMat& gpuInput) {
 
 	cudaError_t err = cudaMemcpy2DAsync(
 		deviceInput,                          // Destination: TensorRT input buffer
-		inputSize.width * sizeof(float),      // Destination row stride
-		gpuInput.ptr<float>(),                // Source pointer: GpuMat data
+		inputSize.width * sizeof(__half),      // Destination row stride
+		gpuInput.ptr<__half>(),                // Source pointer: GpuMat data
 		gpuInput.step,                        // Source stride
-		inputSize.width * sizeof(float),      // Width to copy in bytes
+		inputSize.width * sizeof(__half),      // Width to copy in bytes
 		inputSize.height,                     // Height to copy (rows)
 		cudaMemcpyDeviceToDevice,             // Type of copy: GPU to GPU
 		stream                                // Use CUDA stream
@@ -211,16 +211,16 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 
 	// Allocate or resize the output mask on GPU if it's not allocated or has wrong size
 	if (outputMaskGpu.empty() || outputMaskGpu.rows != height || outputMaskGpu.cols != width) {
-		outputMaskGpu = cv::cuda::GpuMat(height, width, CV_32F);
+		outputMaskGpu = cv::cuda::GpuMat(height, width, CV_16F);
 	}
 
 	// Copy the raw prediction output from TensorRT device memory to `outputMaskGpu`
 	// - Assumes output is already in device memory (deviceOutput)
 	// - No CPU-GPU transfer, all device-to-device
 	cudaMemcpy2DAsync(
-		outputMaskGpu.ptr<float>(), outputMaskGpu.step,
-		deviceOutput, width * sizeof(float),
-		width * sizeof(float), height,
+		outputMaskGpu.ptr<__half>(), outputMaskGpu.step,
+		deviceOutput, width * sizeof(__half),
+		width * sizeof(__half), height,
 		cudaMemcpyDeviceToDevice, stream
 	);
 
