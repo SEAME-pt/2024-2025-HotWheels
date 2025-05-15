@@ -221,7 +221,7 @@ void CameraStreamer::start() {
 		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
 		//renderTexture();  // Render it
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(33));  // Frame delay (~30 FPS)
+		//std::this_thread::sleep_for(std::chrono::milliseconds(33));  // Frame delay (~30 FPS)
 	}
 }
 
