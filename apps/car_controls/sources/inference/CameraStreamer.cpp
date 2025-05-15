@@ -181,7 +181,7 @@ void CameraStreamer::start() {
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
-		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
+		//cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
 		// Convert to 8-bit (0 or 255) in a new GpuMat
 /* 		cv::cuda::GpuMat d_mask_u8;
