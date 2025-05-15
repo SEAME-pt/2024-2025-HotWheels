@@ -3,13 +3,13 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - model-on-cluster
+      - main
     paths:
       - 'apps/cluster/**'
       - 'ZeroMQ/**'
   pull_request:
     branches:
-      - model-on-cluster
+      - main
     paths:
       - 'apps/cluster/**'
       - 'ZeroMQ/**'
@@ -51,4 +51,4 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/test
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps
