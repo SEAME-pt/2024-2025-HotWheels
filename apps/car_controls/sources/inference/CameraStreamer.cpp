@@ -163,9 +163,13 @@ void CameraStreamer::start() {
 	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
 	const int framesToSkip = 2;  // Skip frames to reduce processing load
+	auto start_time = std::chrono::high_resolution_clock::now();
+	int frame_count = 0;
 
 	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
 	while (m_running) {  // Main loop until stop signal
+		auto frame_start = std::chrono::high_resolution_clock::now();
+
 		for (int i = 0; i < framesToSkip; ++i) {
 			cap.grab();  // Grab frames without decoding
 		}
@@ -188,18 +192,6 @@ void CameraStreamer::start() {
 		cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
 		stream.waitForCompletion();  // Ensure async operations are complete
 
-/*         LaneAnalyzer analyzer;
-
-        LaneMetrics metrics = analyzer.computeMetrics(binary_mask_cpu);
-
-        if (metrics.valid) {
-            std::cout << "[Lane] Offset: " << metrics.lateralOffsetMeters << " m, "
-                      << "Heading: " << metrics.headingAngleDeg << "°, "
-                      << "Position: " << metrics.positionStatus << std::endl;
-        } else {
-            std::cout << "[Lane] No lanes detected!" << std::endl;
-        } */
-
         // Convert model output to 8-bit binary mask on GPU
 		cv::cuda::GpuMat d_visualization;
 		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
@@ -214,6 +206,16 @@ void CameraStreamer::start() {
 
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
+		}
+
+		frame_count++;
+		auto now = std::chrono::high_resolution_clock::now();
+		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start_time).count();
+
+		if (elapsed >= 1) {
+			std::cout << "Average FPS: " << frame_count / static_cast<double>(elapsed) << std::endl;
+			start_time = now;
+			frame_count = 0;
 		}
 
 		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
