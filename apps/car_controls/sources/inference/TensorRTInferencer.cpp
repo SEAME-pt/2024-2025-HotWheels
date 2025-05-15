@@ -234,12 +234,23 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 		throw std::runtime_error("[CRITICAL] outputMaskGpu.data is null!");
 	}
 
-	cudaMemcpy2DAsync(
+/* 	cudaMemcpy2DAsync(
 		outputMaskGpu.ptr<__half>(), width * sizeof(__half),
 		deviceOutput, width * sizeof(__half),
 		width * sizeof(__half), height,
 		cudaMemcpyDeviceToDevice, stream
+	); */
+
+	cudaError_t err = cudaMemcpy(
+	outputMaskGpu.ptr<__half>(),  // dest
+	deviceOutput,                 // src
+	width * height * sizeof(__half),  // bytes
+		cudaMemcpyDeviceToDevice
 	);
+
+	if (err != cudaSuccess) {
+		throw std::runtime_error("cudaMemcpy failed: " + std::string(cudaGetErrorString(err)));
+	}
 
 	return outputMaskGpu;  // GPU mask only, no sync
 }
