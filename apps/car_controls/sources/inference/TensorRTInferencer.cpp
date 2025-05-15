@@ -241,6 +241,11 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 		cudaMemcpyDeviceToDevice, stream
 	); */
 
+	std::cout << "[DEBUG] Copying from deviceOutput to outputMaskGpu..." << std::endl;
+	std::cout << "deviceOutput: " << deviceOutput << std::endl;
+	std::cout << "outputMaskGpu.ptr<__half>(): " << static_cast<void*>(outputMaskGpu.ptr<__half>()) << std::endl;
+	std::cout << "Total bytes: " << (width * height * sizeof(__half)) << std::endl;
+
 	cudaError_t err = cudaMemcpy(
 	outputMaskGpu.ptr<__half>(),  // dest
 	deviceOutput,                 // src
