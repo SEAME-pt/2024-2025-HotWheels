@@ -225,6 +225,15 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 	// Copy the raw prediction output from TensorRT device memory to `outputMaskGpu`
 	// - Assumes output is already in device memory (deviceOutput)
 	// - No CPU-GPU transfer, all device-to-device
+
+	if (!deviceOutput) {
+		throw std::runtime_error("[CRITICAL] deviceOutput is null!");
+	}
+
+	if (!outputMaskGpu.data) {
+		throw std::runtime_error("[CRITICAL] outputMaskGpu.data is null!");
+	}
+
 	cudaMemcpy2DAsync(
 		outputMaskGpu.ptr<__half>(), width * sizeof(__half),
 		deviceOutput, width * sizeof(__half),
