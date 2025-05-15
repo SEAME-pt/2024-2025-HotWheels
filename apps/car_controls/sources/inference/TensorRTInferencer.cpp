@@ -212,13 +212,16 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 	// Allocate or resize the output mask on GPU if it's not allocated or has wrong size
 	if (outputMaskGpu.empty() || outputMaskGpu.rows != height || outputMaskGpu.cols != width) {
 		outputMaskGpu = cv::cuda::GpuMat(height, width, CV_16F);
+		if (outputMaskGpu.step != width * sizeof(__half)) {
+			std::cerr << "Warning: outputMaskGpu.step != expected row size" << std::endl;
+		}
 	}
 
 	// Copy the raw prediction output from TensorRT device memory to `outputMaskGpu`
 	// - Assumes output is already in device memory (deviceOutput)
 	// - No CPU-GPU transfer, all device-to-device
 	cudaMemcpy2DAsync(
-		outputMaskGpu.ptr<__half>(), outputMaskGpu.step,
+		outputMaskGpu.ptr<__half>(), width * sizeof(__half),
 		deviceOutput, width * sizeof(__half),
 		width * sizeof(__half), height,
 		cudaMemcpyDeviceToDevice, stream
