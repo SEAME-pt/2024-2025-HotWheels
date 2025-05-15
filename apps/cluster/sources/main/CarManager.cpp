@@ -19,6 +19,7 @@
 #include "CarManager.hpp"
 #include "ui_CarManager.h"
 #include <QDebug>
+#include <QString>
 
 /*!
  * @brief Construct a new CarManager object.
@@ -29,19 +30,82 @@
 CarManager::CarManager(int argc, char **argv, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CarManager)
+    , m_running(true)
     , m_dataManager(new DataManager())
     , m_canBusManager(new CanBusManager("/dev/spidev0.0"))
     , m_controlsManager(new ControlsManager(argc, argv))
     , m_displayManager(nullptr)
     , m_systemManager(new SystemManager())
     , m_mileageManager(new MileageManager("/home/hotweels/app_data/mileage.json"))
+    , m_inferenceSubscriber(nullptr)
+    , m_inferenceSubscriberThread(nullptr)
 {
     ui->setupUi(this);
+
+    QString style = R"(
+      QMainWindow {
+          background-image: url(:/images/background.jpg);
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+    )";
+    this->setStyleSheet(style);
+
     initializeComponents();
+
+    m_inferenceSubscriber = new Subscriber();
+    m_inferenceSubscriberThread = QThread::create([this]() {
+      m_inferenceSubscriber->connect("tcp://localhost:5556");  // Your image port
+      m_inferenceSubscriber->subscribe("inference_frame");
+
+      while (m_running) {
+        try {
+          zmq::pollitem_t items[] = {
+            { static_cast<void*>(m_inferenceSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
+          };
+
+          zmq::poll(items, 1, 100);  // Timeout: 100 ms
+
+          if (items[0].revents & ZMQ_POLLIN) {
+            zmq::message_t message;
+            if (!m_inferenceSubscriber->getSocket().recv(&message, 0)) {
+              continue;
+            }
+
+            std::string received_msg(static_cast<char*>(message.data()), message.size());
+            //std::cout << "[Subscriber] Raw message: " << received_msg.substr(0, 30) << "... (" << message.size() << " bytes)" << std::endl;
+
+            const std::string topic = "inference_frame ";
+            if (received_msg.find(topic) == 0) {
+              std::vector<uchar> jpegData(
+                received_msg.begin() + topic.size(),
+                received_msg.end()
+              );
+              m_dataManager->handleInferenceFrame(jpegData);
+            }
+          }
+        } catch (const zmq::error_t& e) {
+          std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
+          break;
+        }
+      }
+    });
+    m_inferenceSubscriberThread->start();
 }
 
 CarManager::~CarManager()
 {
+    m_running = false;
+    if (m_inferenceSubscriberThread) {
+        m_inferenceSubscriber->stop();
+        m_inferenceSubscriberThread->quit();
+        m_inferenceSubscriberThread->wait();
+        delete m_inferenceSubscriberThread;
+        m_inferenceSubscriberThread = nullptr;
+    }
+    delete m_inferenceSubscriber;
+    m_inferenceSubscriber = nullptr;
+
     delete m_displayManager;
     delete m_controlsManager;
     delete m_canBusManager;
@@ -127,17 +191,11 @@ void CarManager::initializeDisplayManager() {
     connect(m_dataManager, &DataManager::systemTimeUpdated, m_displayManager,
 	    &DisplayManager::updateSystemTime);
 
-    connect(m_dataManager, &DataManager::systemWifiUpdated, m_displayManager,
-	    &DisplayManager::updateWifiStatus);
-
     connect(m_dataManager, &DataManager::systemTemperatureUpdated,
 	    m_displayManager, &DisplayManager::updateTemperature);
 
     connect(m_dataManager, &DataManager::batteryPercentageUpdated,
 	    m_displayManager, &DisplayManager::updateBatteryPercentage);
-
-    connect(m_dataManager, &DataManager::ipAddressUpdated, m_displayManager,
-	    &DisplayManager::updateIpAddress);
 
     connect(m_dataManager, &DataManager::drivingModeUpdated, m_displayManager,
 	    &DisplayManager::updateDrivingMode);
@@ -160,6 +218,9 @@ void CarManager::initializeDisplayManager() {
 
     connect(m_displayManager, &DisplayManager::clusterMetricsToggled,
 	    m_dataManager, &DataManager::toggleClusterMetrics);
+
+    connect(m_dataManager, &DataManager::inferenceImageReceived,
+      m_displayManager, &DisplayManager::displayInferenceImage);
   }
 }
 
@@ -193,11 +254,6 @@ void CarManager::initializeSystemManager()
 		&SystemManager::batteryPercentageUpdated,
 		m_dataManager,
 		&DataManager::handleBatteryPercentage);
-
-	connect(m_systemManager,
-		&SystemManager::ipAddressUpdated,
-		m_dataManager,
-		&DataManager::handleIpAddressData);
     }
 }
 

@@ -55,5 +55,9 @@ HEADERS += \
 	includes/data/ClusterSettingsManager.hpp \
 	includes/data/VehicleDataManager.hpp
 
-# Link GTest and GMock
-LIBS += -lgmock_main -lgtest_main -lpthread -lgmock -lgtest
+# Define paths for Jetson cross-compilation
+JETSON_SYSROOT = /home/michel/qtjetson/sysroot
+
+GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+LIBS += -L$${GMOCK_LIBDIR} \
+        -lgmock_main -lgtest_main -lgmock -lgtest -lpthread

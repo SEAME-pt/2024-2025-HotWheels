@@ -50,7 +50,6 @@ signals:
 	void wifiStatusUpdated(const QString &status, const QString &wifiName);
 	void temperatureUpdated(const QString &temperature);
 	void batteryPercentageUpdated(float batteryPercentage);
-	void ipAddressUpdated(const QString &ipAddress);
 
 public slots:
 	void updateTime();

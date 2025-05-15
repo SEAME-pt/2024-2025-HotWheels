@@ -55,6 +55,45 @@ void Subscriber::listen() {
     std::cout << "Listener stopped." << std::endl;
 }
 
+void Subscriber::listenFrames() {
+    running = true;
+
+    while (running) {
+        try {
+            zmq::message_t topic_msg;
+            zmq::message_t image_msg;
+
+            subscriber.recv(&topic_msg, 0);
+            subscriber.recv(&image_msg, 0);
+
+            std::string topic(static_cast<char*>(topic_msg.data()), topic_msg.size());
+
+            if (topic != "inference_frame") {
+                std::cerr << "[Subscriber] Unexpected topic: " << topic << std::endl;
+                continue;
+            }
+
+            std::vector<uchar> jpeg_data(
+                static_cast<uchar*>(image_msg.data()),
+                static_cast<uchar*>(image_msg.data()) + image_msg.size());
+
+            cv::Mat decoded = cv::imdecode(jpeg_data, cv::IMREAD_COLOR);
+            if (!decoded.empty()) {
+                std::cout << "[Subscriber] Received and decoded image.\n";
+                // 👉 You can emit a Qt signal, process it, display, etc.
+            } else {
+                std::cerr << "[Subscriber] Failed to decode JPEG image." << std::endl;
+            }
+
+        } catch (const zmq::error_t& e) {
+            std::cerr << "[Subscriber] Error while receiving image: " << e.what() << std::endl;
+            if (running) reconnect("tcp://localhost:5555");
+        }
+    }
+
+    std::cout << "[Subscriber] Image listener stopped." << std::endl;
+}
+
 void Subscriber::reconnect(const std::string& address) {
     bool connected = false;
 
@@ -79,5 +118,5 @@ void Subscriber::reconnect(const std::string& address) {
 
 void Subscriber::stop() {
     running = false;
-    subscriber.close();  // Close the socket gracefully
+    //subscriber.close();  // Close the socket gracefully
 }

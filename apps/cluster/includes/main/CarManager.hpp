@@ -22,7 +22,10 @@
 #include "DisplayManager.hpp"
 #include "MileageManager.hpp"
 #include "SystemManager.hpp"
+#include "../../ZeroMQ/Publisher.hpp"
+#include "../../ZeroMQ/Subscriber.hpp"
 #include <QMainWindow>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 /*!
@@ -46,6 +49,8 @@ public:
 	~CarManager();
 
 private:
+	/*! @brief Flag to indicate if the subscriber is running. */
+	bool m_running;
 	/*! @brief Pointer to the user interface for the car manager. */
 	Ui::CarManager *ui;
 	/*! @brief Pointer to the DataManager instance. */
@@ -60,6 +65,10 @@ private:
 	SystemManager *m_systemManager;
 	/*! @brief Pointer to the MileageManager instance. */
 	MileageManager *m_mileageManager;
+	/*! @brief Pointer to the frame subscriber. */
+	Subscriber *m_inferenceSubscriber;
+	/*! @brief Pointer to the thread for the frame subscriber. */
+	QThread *m_inferenceSubscriberThread;
 
 	void initializeComponents();
 	void initializeDataManager();

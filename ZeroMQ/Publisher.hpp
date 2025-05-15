@@ -6,6 +6,9 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
+#include <opencv2/core/cuda.hpp>
+#include <cuda_runtime.h>
+#include <opencv2/opencv.hpp>
 
 class Publisher {
 private:
@@ -13,14 +16,17 @@ private:
 	zmq::socket_t publisher;
 	bool joytstick_value;
 	std::mutex joystick_mtx;
+	std::mutex frame_mtx;
+	std::string boundAddress;
 	bool running;
 
 public:
-	Publisher();
+	Publisher(int port);
 	~Publisher();
 
 	void publish(const std::string& topic, const std::string& message);
 	void setJoystickStatus(bool new_joytstick_value);
+	void publishFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image);
 };
 
 #endif // PUBLISHER_HPP

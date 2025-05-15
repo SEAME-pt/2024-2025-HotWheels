@@ -36,8 +36,9 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	: QObject(parent), m_engineController(0x40, 0x60, this),
 	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
 	  m_subscriberObject(nullptr), m_manualControllerThread(nullptr),
-	  m_processMonitorThread(nullptr), m_subscriberThread(nullptr),
-	  m_joystickControlThread(nullptr), m_threadRunning(true)
+	  m_subscriberThread(nullptr), m_joystickControlThread(nullptr),
+	  m_cameraStreamerThread(nullptr), m_cameraStreamerObject(nullptr),
+	  m_running(true)
 {
 
 	// Initialize the joystick controller with callbacks
@@ -80,38 +81,60 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 									{
 		m_subscriberObject->connect("tcp://localhost:5555");
 		m_subscriberObject->subscribe("joystick_value");
-		while (true) {
-			zmq::message_t message;
-			m_subscriberObject->getSocket().recv(&message, 0);
+		while (m_running) {
+			try {
+				zmq::pollitem_t items[] = {
+					{ static_cast<void*>(m_subscriberObject->getSocket()), 0, ZMQ_POLLIN, 0 }
+				};
 
-			std::string received_msg(static_cast<char*>(message.data()), message.size());
+				// Wait up to 100ms for a message
+				zmq::poll(items, 1, 100);
 
-			if (received_msg.find("joystick_value") == 0) {
-				std::string value = received_msg.substr(std::string("joystick_value ").length());
-				if (value == "true") {
-					setMode(DrivingMode::Manual);
+				if (items[0].revents & ZMQ_POLLIN) {
+					zmq::message_t message;
+					if (!m_subscriberObject->getSocket().recv(&message, 0)) {
+						continue;  // failed to receive
+					}
+
+					std::string received_msg(static_cast<char*>(message.data()), message.size());
+
+					if (received_msg.find("joystick_value") == 0) {
+						std::string value = received_msg.substr(std::string("joystick_value ").length());
+						if (value == "true") {
+							setMode(DrivingMode::Manual);
+						} else if (value == "false") {
+							setMode(DrivingMode::Automatic);
+						}
+					}
 				}
-				else if (value == "false") {
-					setMode(DrivingMode::Automatic);
-				}
+			} catch (const zmq::error_t& e) {
+				std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
+				break;  // exit safely if socket is closed
 			}
 		}
 	});
 	m_subscriberThread->start();
 
-	// **Process Monitoring Thread**
-	m_processMonitorThread = QThread::create([this]()
-											 {
-	QString targetProcessName = "HotWheels-app"; // Change this to actual process name
+	// **Running inference Thread**
+	m_cameraStreamerThread = QThread::create([this, argc, argv]()
+									{
+		try {
+			// Path to your TensorRT engine file - adjust path as needed for Jetson
+			std::string enginePath = "/home/hotweels/dev/model_loader/models/model.engine";
 
-	while (m_threadRunning) {
-	  if (!isProcessRunning(targetProcessName)) {
-		if (m_currentMode == DrivingMode::Automatic)
-				setMode(DrivingMode::Manual);
-	  }
-	  QThread::sleep(1);
-	} });
-	m_processMonitorThread->start();
+			// Create the TensorRT inferencer
+			auto inferencer = std::make_shared<TensorRTInferencer>(enginePath);
+
+			// Create the camera streamer with the inferencer
+			std::cout << "Initializing CSI camera..." << std::endl;
+			m_cameraStreamerObject = new CameraStreamer(inferencer, 0.5, "Jetson Camera Inference", true);
+			m_cameraStreamerObject->start();
+		} catch (const std::exception& e) {
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+	});
+	connect(m_cameraStreamerThread, &QThread::finished, m_cameraStreamerThread, &QObject::deleteLater);
+	m_cameraStreamerThread->start();
 }
 
 
@@ -126,58 +149,54 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 ControlsManager::~ControlsManager()
 {
+	m_running = false;
+
 	// Stop the client thread safely
-	if (m_subscriberThread)
-	{
-		m_subscriberObject->stop();
+	if (m_subscriberThread) {
+		if (m_subscriberObject) {
+			m_subscriberObject->stop();
+		}
 		m_subscriberThread->quit();
 		m_subscriberThread->wait();
+
+		m_subscriberObject->getSocket().close();
+
 		delete m_subscriberThread;
+		m_subscriberThread = nullptr;
 	}
 
-	// Stop the process monitoring thread safely
-	if (m_processMonitorThread)
-	{
-		m_threadRunning = false;
-		m_processMonitorThread->quit();
-		m_processMonitorThread->wait();
-		delete m_processMonitorThread;
-	}
 
-	// Stop the controller thread safely
-	if (m_manualControllerThread)
-	{
-		m_manualController->requestStop();
+	// Stop manual controller thread
+	if (m_manualControllerThread) {
+		if (m_manualController)
+			m_manualController->requestStop();
+
 		m_manualControllerThread->quit();
 		m_manualControllerThread->wait();
 		delete m_manualControllerThread;
+		m_manualControllerThread = nullptr;
 	}
 
-	// Stop the joystick control thread safely
-	if (m_joystickControlThread)
-	{
-		m_joystickControlThread->quit();
-		m_joystickControlThread->wait();
-		delete m_joystickControlThread;
+	// Stop camera streamer thread
+	if (m_cameraStreamerThread) {
+		if (m_cameraStreamerObject)
+			m_cameraStreamerObject->stop();
+
+		m_cameraStreamerThread->quit();
+		m_cameraStreamerThread->wait();
+		delete m_cameraStreamerThread;
+		m_cameraStreamerThread = nullptr;
 	}
 
-	delete m_subscriberThread;
+	// Clean up objects
+	delete m_cameraStreamerObject;
+	m_cameraStreamerObject = nullptr;
+
 	delete m_manualController;
-}
+	m_manualController = nullptr;
 
-/*!
- * @brief Check if a process is running.
- * @param processName The name of the process to check.
- * @return True if the process is running, false otherwise.
- * @details Uses the `pgrep` command to determine if a given process is active.
- */
-bool ControlsManager::isProcessRunning(const QString &processName)
-{
-	QProcess process;
-	process.start("pgrep", QStringList() << processName);
-	process.waitForFinished();
-
-	return !process.readAllStandardOutput().isEmpty();
+	delete m_subscriberObject;
+	m_subscriberObject = nullptr;
 }
 
 /*!

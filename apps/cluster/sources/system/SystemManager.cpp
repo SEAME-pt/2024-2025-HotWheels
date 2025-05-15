@@ -20,6 +20,7 @@
 #include "SystemManager.hpp"
 #include <QDateTime>
 #include <QDebug>
+#include <QLocale>
 #include "BatteryController.hpp"
 #include "SystemCommandExecutor.hpp"
 #include "SystemInfoProvider.hpp"
@@ -96,15 +97,18 @@ void SystemManager::shutdown()
 
 /*!
  * @brief Updates the current time.
- * @details This function retrieves the current date and time and emits the 
+ * @details This function retrieves the current date and time and emits the
  * timeUpdated signal with the formatted date, time, and weekday.
  */
 void SystemManager::updateTime()
 {
 	QDateTime currentDateTime = QDateTime::currentDateTime();
-	emit timeUpdated(currentDateTime.toString("dd-MM-yy"),
+	QLocale english(QLocale::English);
+	QString currentMonth = english.toString(currentDateTime, "MMMM").left(3);
+
+	emit timeUpdated(currentMonth,
 					 currentDateTime.toString("HH:mm"),
-					 currentDateTime.toString("dddd"));
+					 currentDateTime.toString("d"));
 }
 
 /*!
@@ -120,5 +124,4 @@ void SystemManager::updateSystemStatus()
 	emit wifiStatusUpdated(m_systemInfoProvider->getWifiStatus(wifiName), wifiName);
 	emit temperatureUpdated(m_systemInfoProvider->getTemperature());
 	emit batteryPercentageUpdated(m_batteryController->getBatteryPercentage());
-	emit ipAddressUpdated(m_systemInfoProvider->getIpAddress());
 }

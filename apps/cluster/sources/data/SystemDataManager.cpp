@@ -29,12 +29,12 @@ SystemDataManager::~SystemDataManager() {}
  * @param currentDay The current day.
  * @details This function processes the time data.
  */
-void SystemDataManager::handleTimeData(const QString &currentDate,
+void SystemDataManager::handleTimeData(const QString &currentMonth,
 									   const QString &currentTime,
 									   const QString &currentDay)
 {
 	m_time = currentTime;
-	emit systemTimeUpdated(currentDate, currentTime, currentDay);
+	emit systemTimeUpdated(currentMonth, currentTime, currentDay);
 }
 
 /*!
@@ -48,7 +48,6 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 	if (m_wifiStatus != status || m_wifiName != wifiName) {
 		m_wifiStatus = status;
 		m_wifiName = wifiName;
-		emit systemWifiUpdated(status, wifiName);
 
         QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
         QString apiBaseUrl = env.value("API_KEY");
@@ -112,7 +111,6 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 {
 	if (m_ipAddress != ipAddress) {
 		m_ipAddress = ipAddress;
-		emit ipAddressUpdated(ipAddress);
 
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 		QString apiBaseUrl = env.value("API_KEY");

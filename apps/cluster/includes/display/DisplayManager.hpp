@@ -20,6 +20,13 @@
 #include "ui_CarManager.h"
 #include <QObject>
 #include <QString>
+#include <QPainter>
+#include <QPainterPath>
+#include <QMenu>
+#include <QToolButton>
+#include <QProcess>
+#include <QNetworkInterface>
+#include <QLocale>
 
 /*!
  * @brief Class that manages the display of the car manager.
@@ -36,14 +43,14 @@ public slots:
 	void updateEngineData(CarDirection direction, int steeringAngle);
 	void updateSystemTime(const QString &currentDate, const QString &currentTime,
 												const QString &currentDay);
-	void updateWifiStatus(const QString &status, const QString &wifiName);
+	void setupWifiDropdown();
 	void updateTemperature(const QString &temperature);
 	void updateBatteryPercentage(float batteryPercentage);
-	void updateIpAddress(const QString &ipAddress);
 	void updateMileage(double mileage);
 	void updateDrivingMode(DrivingMode newMode);
 	void updateClusterTheme(ClusterTheme newTheme);
 	void updateClusterMetrics(ClusterMetrics newMetrics);
+	void displayInferenceImage(const QImage &image);
 
 signals:
 	/*! @brief Signal emitted when the driving mode is toggled. */

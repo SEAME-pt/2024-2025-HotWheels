@@ -54,17 +54,9 @@ DataManager::DataManager(QObject *parent)
 			this,
 			&DataManager::systemTimeUpdated);
 	connect(m_systemDataManager,
-			&SystemDataManager::systemWifiUpdated,
-			this,
-			&DataManager::systemWifiUpdated);
-	connect(m_systemDataManager,
 			&SystemDataManager::systemTemperatureUpdated,
 			this,
 			&DataManager::systemTemperatureUpdated);
-	connect(m_systemDataManager,
-			&SystemDataManager::ipAddressUpdated,
-			this,
-			&DataManager::ipAddressUpdated);
 	connect(m_systemDataManager,
 			&SystemDataManager::batteryPercentageUpdated,
 			this,
@@ -237,4 +229,10 @@ void DataManager::toggleClusterTheme()
 void DataManager::toggleClusterMetrics()
 {
 	m_clusterSettingsManager->toggleClusterMetrics();
+}
+
+void DataManager::handleInferenceFrame(const std::vector<uchar> &jpegData) {
+    QImage image;
+    image.loadFromData(jpegData.data(), static_cast<int>(jpegData.size()), "JPG");
+    emit inferenceImageReceived(image);
 }

@@ -6,18 +6,20 @@ on:
       - main
     paths:
       - 'apps/cluster/**'
+      - 'ZeroMQ/**'
   pull_request:
     branches:
       - main
     paths:
       - 'apps/cluster/**'
+      - 'ZeroMQ/**'
 
 env:
   DIR: apps/cluster
 
 jobs:
   run-on-self-hosted:
-    runs-on: [self-hosted, seame-computer-2]
+    runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -27,7 +29,7 @@ jobs:
           cd $DIR
           mkdir build
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../root.pro
+          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
           make -j$(nproc)
 
       - name: Build x86 executable for testing
@@ -49,4 +51,4 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps

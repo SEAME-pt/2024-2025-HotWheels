@@ -33,10 +33,11 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 		m_serverThread(nullptr) {
 
 	// **Client Middleware Interface Thread**
-	m_serverThread = QThread::create([this, argc, argv]() {
-			m_serverObject = new Publisher();
+/* 	m_serverThread = QThread::create([this, argc, argv]() {
+			m_serverObject = new Publisher(5555);
 	});
-	m_serverThread->start();
+	m_serverThread->start(); */
+	m_serverObject = new Publisher(5555);
 }
 
 /*!
@@ -61,6 +62,8 @@ ControlsManager::~ControlsManager()
  *          It updates the current driving mode by calling the setMode() method.
  */
 void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
+	qDebug() << "[ControlsManager] drivingModeUpdated called with : " << (newMode == DrivingMode::Automatic ? "Automatic" : "Manual");
+
 	if (newMode == DrivingMode::Automatic) {
 		m_serverObject->setJoystickStatus(false);
 	}

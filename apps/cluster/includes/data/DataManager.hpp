@@ -20,6 +20,7 @@
 #include <QObject>
 #include <QString>
 #include <QTimer>
+#include <QImage>
 #include "ClusterSettingsManager.hpp"
 #include "SystemDataManager.hpp"
 #include "VehicleDataManager.hpp"
@@ -57,22 +58,22 @@ public slots:
 	void toggleDrivingMode();
 	void toggleClusterTheme();
 	void toggleClusterMetrics();
+	void handleInferenceFrame(const std::vector<uchar> &jpegData);
 
 signals:
 	// Forwarded signals from subclasses
 	void canDataProcessed(float processedSpeed, int processedRpm);
 	void engineDataProcessed(CarDirection processedDirection, int processedAngle);
-	void systemTimeUpdated(const QString &currentDate,
+	void systemTimeUpdated(const QString &currentMonth,
 						   const QString &currentTime,
 						   const QString &currentDay);
-	void systemWifiUpdated(const QString &status, const QString &wifiName);
 	void systemTemperatureUpdated(const QString &temperature);
-	void ipAddressUpdated(const QString &ipAddress);
 	void batteryPercentageUpdated(float batteryPercentage);
 	void mileageUpdated(double mileage);
 	void drivingModeUpdated(DrivingMode newMode);
 	void clusterThemeUpdated(ClusterTheme newTheme);
 	void clusterMetricsUpdated(ClusterMetrics newMetrics);
+	void inferenceImageReceived(const QImage &image);
 
 private:
 	VehicleDataManager *m_vehicleDataManager;

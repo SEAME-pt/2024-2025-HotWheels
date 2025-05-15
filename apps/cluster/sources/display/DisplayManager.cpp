@@ -31,23 +31,20 @@
 DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 		: QObject(parent), m_ui(ui) {
 	// Ensure the labels are initialized
-    if (!m_ui->speedLabel || !m_ui->rpmLabel ||
-			!m_ui->timeLabel || !m_ui->wifiLabel || !m_ui->temperatureLabel ||
-			!m_ui->batteryLabel) {
+    if (!m_ui->speedLabel || !m_ui->timeLabel ||
+			!m_ui->temperatureLabel || !m_ui->batteryLabel) {
 		qDebug() << "Error: Labels not initialized in the UI form!";
 		return;
 	}
 
 	// Set initial values for the labels
 	m_ui->speedLabel->setText("0");
-	m_ui->rpmLabel->setText("0.00");
 	m_ui->timeLabel->setText("--:--:--");
-	m_ui->wifiLabel->setText("📶 Disconnected");
-	m_ui->temperatureLabel->setText("🌡️ N/A");
-	m_ui->batteryLabel->setText("--% 🔋");
+	m_ui->temperatureLabel->setText("N/A");
+	m_ui->batteryLabel->setText("--%");
 	m_ui->speedMetricsLabel->setText("KM/H");
-	m_ui->leftBlinkerLabel->setVisible(false);
-	m_ui->rightBlinkerLabel->setVisible(false);
+
+	setupWifiDropdown();
 
 	// Directly connect button clicks to signals
 	connect(m_ui->toggleDrivingModeButton, &QPushButton::clicked, this,
@@ -65,8 +62,6 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
  */
 void DisplayManager::updateCanBusData(float speed, int rpm) {
 	m_ui->speedLabel->setText(QString::number(static_cast<int>(speed)));
-	m_ui->rpmLabel->setText(
-			QString::number(static_cast<double>(rpm) / 1000, 'f', 2));
 }
 
 /*!
@@ -118,49 +113,65 @@ void DisplayManager::updateEngineData(CarDirection direction,
 		m_ui->directionDriveLabel->update();
 		break;
 	}
-
-	//m_ui->directionLabel->setText(directionText);
-	if (steeringAngle > 0) {
-		m_ui->leftBlinkerLabel->setVisible(false);
-		m_ui->rightBlinkerLabel->setVisible(true);
-	} else if (steeringAngle < 0) {
-		m_ui->rightBlinkerLabel->setVisible(false);
-		m_ui->leftBlinkerLabel->setVisible(true);
-	} else {
-		m_ui->leftBlinkerLabel->setVisible(false);
-		m_ui->rightBlinkerLabel->setVisible(false);
-	}
 }
 
 /*!
  * @brief Updates the system time on the display.
  * @details This function updates the date, time, and weekday labels based on
  * the current system time.
- * @param currentDate The current date.
+ * @param currentMonth The current month.
  * @param currentTime The current time.
  * @param currentDay The current day of the week.
  */
-void DisplayManager::updateSystemTime(const QString &currentDate,
+void DisplayManager::updateSystemTime(const QString &currentMonth,
 																			const QString &currentTime,
                                                                             const QString &currentDay) {
-	m_ui->dateLabel->setText(currentDate);
+	m_ui->dateLabel->setText(currentMonth + " " + currentDay);
 	m_ui->timeLabel->setText(currentTime);
 }
 
-/*!
- * @brief Updates the WiFi status on the display.
- * @details This function updates the WiFi status label based on the current
- * WiFi status and name.
- * @param status The current WiFi status.
- * @param wifiName The name of the connected WiFi network.
- */
-void DisplayManager::updateWifiStatus(const QString &status,
-																			const QString &wifiName) {
-	QString wifiDisplay = status;
-	if (!wifiName.isEmpty()) {
-		wifiDisplay += " (" + wifiName + ")";
-	}
-	m_ui->wifiLabel->setText("📶 " + wifiName);
+QString getWifiSSID() {
+    // Linux: read active SSID using shell command
+    QProcess proc;
+    proc.start("iwgetid -r");  // Gets current SSID
+    proc.waitForFinished();
+    QString output = proc.readAllStandardOutput().trimmed();
+    return output.isEmpty() ? "Not connected" : output;
+}
+
+QString getLocalIPAddress() {
+    const QList<QHostAddress> &addresses = QNetworkInterface::allAddresses();
+    for (const QHostAddress &address : addresses) {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol && !address.isLoopback())
+            return address.toString();
+    }
+    return "No IP";
+}
+
+void DisplayManager::setupWifiDropdown() {
+    connect(m_ui->wifiToggleButton, &QToolButton::clicked, this, [=]() {
+        QMenu* wifiMenu = new QMenu(m_ui->wifiToggleButton);
+
+        // Fetch current data
+        QString ssidText = getWifiSSID();
+        QString ipText = getLocalIPAddress();
+
+        wifiMenu->addAction("Connected to: " + ssidText);
+        wifiMenu->addAction("IP Address: " + ipText);
+
+        wifiMenu->setStyleSheet(
+            "QMenu {"
+            " background-color: rgba(30, 30, 30, 0.9);"
+            " color: white;"
+            " border: 1px solid rgba(255, 255, 255, 0.2);"
+            " border-radius: 6px;"
+            " padding: 6px;"
+            " }"
+        );
+
+        QPoint pos = m_ui->wifiToggleButton->mapToGlobal(QPoint(0, m_ui->wifiToggleButton->height()));
+        wifiMenu->exec(pos);
+    });
 }
 
 /*!
@@ -170,7 +181,7 @@ void DisplayManager::updateWifiStatus(const QString &status,
  * @param temperature The current temperature.
  */
 void DisplayManager::updateTemperature(const QString &temperature) {
-	m_ui->temperatureLabel->setText("🌡️ " + temperature);
+	m_ui->temperatureLabel->setText(temperature);
 }
 
 /*!
@@ -180,8 +191,7 @@ void DisplayManager::updateTemperature(const QString &temperature) {
  * @param batteryPercentage The current battery percentage.
  */
 void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
-	m_ui->batteryLabel->setText(QString::number(batteryPercentage, 'f', 1) +
-															"% " + (batteryPercentage > 20.0 ? "🔋" : "🪫"));
+	m_ui->batteryLabel->setText(QString::number(static_cast<int>(batteryPercentage)) + "%");
 }
 
 /*!
@@ -193,16 +203,6 @@ void DisplayManager::updateBatteryPercentage(float batteryPercentage) {
 void DisplayManager::updateMileage(double mileage) {
 	m_ui->mileageLabel->setText(QString::number(static_cast<int>(mileage)) +
 															" m");
-}
-
-/*!
- * @brief Updates the IP address on the display.
- * @details This function updates the IP address label based on the current IP
- * address.
- * @param ipAddress The current IP address.
- */
-void DisplayManager::updateIpAddress(const QString &ipAddress) {
-	m_ui->ipAddressLabel->setText(ipAddress);
 }
 
 /*!
@@ -260,4 +260,24 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 	}
 
 	m_ui->speedMetricsLabel->setText(metricsText.toUpper());
+}
+
+void DisplayManager::displayInferenceImage(const QImage &image) {
+	if (!m_ui->inferenceLabel)
+		return;
+
+	QPixmap original = QPixmap::fromImage(image);
+	QPixmap rounded(original.size());
+	rounded.fill(Qt::transparent);
+
+	QPainter painter(&rounded);
+	painter.setRenderHint(QPainter::Antialiasing, true);
+
+	QPainterPath path;
+	path.addRoundedRect(original.rect(), 34, 34);
+	painter.setClipPath(path);
+	painter.drawPixmap(0, 0, original);
+
+	//m_ui->inferenceLabel->setPixmap(QPixmap::fromImage(image));
+	m_ui->inferenceLabel->setPixmap(rounded);
 }
