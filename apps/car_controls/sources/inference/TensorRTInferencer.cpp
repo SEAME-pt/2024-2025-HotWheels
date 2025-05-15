@@ -224,5 +224,5 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 		cudaMemcpyDeviceToDevice, stream
 	);
 
-	return outputMaskGpu;  // GPU mask only, no syncc
+	return outputMaskGpu;  // GPU mask only, no sync
 }
