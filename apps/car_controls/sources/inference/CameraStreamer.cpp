@@ -132,7 +132,7 @@ void CameraStreamer::renderTexture() {
 // Load camera calibration file and initialize undistortion maps (upload to GPU)
 void CameraStreamer::initUndistortMaps() {
 	cv::Mat cameraMatrix, distCoeffs;
-	cv::FileStorage fs("camera_calibration.yml", cv::FileStorage::READ);  // Open calibration file
+	cv::FileStorage fs("/home/hotweels/apps/camera_calibration.yml", cv::FileStorage::READ);  // Open calibration file
 
 	if (!fs.isOpened()) {
 		std::cerr << "[Error] Failed to open camera_calibration.yml" << std::endl;
