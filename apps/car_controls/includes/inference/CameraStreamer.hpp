@@ -7,6 +7,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/cudawarping.hpp>
+#include <opencv2/cudacodec.hpp>
 #include "TensorRTInferencer.hpp"
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"
@@ -28,7 +29,8 @@ public:
 	void stop();
 
 private:
-	cv::VideoCapture cap;
+	//cv::VideoCapture cap;
+	cv::Ptr<cv::cudacodec::VideoReader> reader;
 	double scale_factor;
 	std::string window_name;
 	bool show_original;
