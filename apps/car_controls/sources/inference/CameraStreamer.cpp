@@ -10,8 +10,8 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	// Define GStreamer pipeline for CSI camera
 	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 
-	cv::cudacodec::VideoReaderInitParams params;
-	reader = cv::cudacodec::createVideoReader(pipeline, params);
+	//cv::cudacodec::VideoReaderInitParams params;
+	reader = cv::cudacodec::createVideoReader(pipeline);
 
 	if (!reader) {
 		std::cerr << "Error: Failed to create GPU video reader" << std::endl;
@@ -147,7 +147,7 @@ void CameraStreamer::initUndistortMaps() {
 	cv::Mat mapx, mapy;
 	cv::initUndistortRectifyMap(
 		cameraMatrix, distCoeffs, cv::Mat(), cameraMatrix,
-		cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH), cap.get(cv::CAP_PROP_FRAME_HEIGHT)),
+		cv::Size(1280, 720),
 		CV_32FC1, mapx, mapy
 	);  // Compute undistortion mapping
 
@@ -204,7 +204,7 @@ void CameraStreamer::start() {
 		cv::cuda::GpuMat d_resized_mask;
 
 		cv::cuda::resize(d_visualization, d_resized_mask,
-						 cv::Size(frame.cols * scale_factor, frame.rows * scale_factor),
+						 cv::Size(gpuFrame.cols * scale_factor, gpuFrame.rows * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
 		stream.waitForCompletion();  // Synchronize
 
