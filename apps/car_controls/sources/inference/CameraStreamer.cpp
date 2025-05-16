@@ -10,12 +10,11 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	// Define GStreamer pipeline for CSI camera
 	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 
-	//cv::cudacodec::VideoReaderInitParams params;
-	reader = cv::cudacodec::createVideoReader(pipeline);
+	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
 
-	if (!reader) {
-		std::cerr << "Error: Failed to create GPU video reader" << std::endl;
-		exit(-1);
+	if (!cap.isOpened()) {  // Check if camera opened successfully
+		std::cerr << "Error: Could not open CSI camera" << std::endl;
+		exit(-1);  // Terminate if failed
 	}
 }
 
@@ -26,8 +25,8 @@ CameraStreamer::~CameraStreamer() {
 
 	stop();  // Stop the camera stream
 
-	if (reader) {
-		reader.release();  // Properly release GPU video reader
+	if (cap.isOpened()) {
+		cap.release(); // Release camera
 	}
 
 	cudaDeviceSynchronize();  // Ensure all CUDA operations are complete
@@ -147,7 +146,7 @@ void CameraStreamer::initUndistortMaps() {
 	cv::Mat mapx, mapy;
 	cv::initUndistortRectifyMap(
 		cameraMatrix, distCoeffs, cv::Mat(), cameraMatrix,
-		cv::Size(1280, 720),
+		cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH), cap.get(cv::CAP_PROP_FRAME_HEIGHT)),
 		CV_32FC1, mapx, mapy
 	);  // Compute undistortion mapping
 
@@ -160,8 +159,7 @@ void CameraStreamer::start() {
 	initUndistortMaps();  // Initialize camera undistortion maps
 	//initOpenGL();  // Initialize OpenGL and CUDA interop
 
-	//cv::Mat frame;
-	cv::cuda::GpuMat gpuFrame;
+	cv::Mat frame;
 	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
 	const int framesToSkip = 2;  // Skip frames to reduce processing load
@@ -173,18 +171,15 @@ void CameraStreamer::start() {
 		auto frame_start = std::chrono::high_resolution_clock::now();
 
 		for (int i = 0; i < framesToSkip; ++i) {
-			if (!reader->nextFrame(gpuFrame)) {
-				break;  // Failed to grab frame
-			}
+			cap.grab();  // Grab frames without decoding
 		}
+		cap >> frame;  // Read one frame (decoded)
 
-		if (!reader->nextFrame(gpuFrame)) {
-			break;  // Stop if frame is invalid
-		}
+		if (frame.empty()) break;  // Stop if frame is invalid
 
-		//cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
+		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(gpuFrame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
+		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
@@ -204,7 +199,7 @@ void CameraStreamer::start() {
 		cv::cuda::GpuMat d_resized_mask;
 
 		cv::cuda::resize(d_visualization, d_resized_mask,
-						 cv::Size(gpuFrame.cols * scale_factor, gpuFrame.rows * scale_factor),
+						 cv::Size(frame.cols * scale_factor, frame.rows * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
 		stream.waitForCompletion();  // Synchronize
 
