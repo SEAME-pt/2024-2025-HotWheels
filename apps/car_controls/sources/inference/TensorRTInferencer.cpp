@@ -17,7 +17,7 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 	context(nullptr),        // Initialize execution context pointer to nullptr
 	inputBindingIndex(-1),   // Initialize input binding index
 	outputBindingIndex(-1),  // Initialize output binding index
-	inputSize(256, 256),     // Set default input image size
+	inputSize(192, 192),     // Set default input image size
 	deviceInput(nullptr),    // Initialize device input pointer to nullptr
 	deviceOutput(nullptr),   // Initialize device output pointer to nullptr
 	stream(nullptr),         // Initialize CUDA stream pointer to nullptr
