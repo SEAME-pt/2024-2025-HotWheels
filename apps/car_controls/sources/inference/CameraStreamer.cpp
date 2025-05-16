@@ -157,55 +157,54 @@ void CameraStreamer::initUndistortMaps() {
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
 	initUndistortMaps();  // Initialize camera undistortion maps
+	//initOpenGL();  // Initialize OpenGL and CUDA interop
 
 	cv::Mat frame;
 	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
-	const int framesToSkip = 2;
+	const int framesToSkip = 2;  // Skip frames to reduce processing load
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int frame_count = 0;
 
-	while (m_running) {
+	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
+	while (m_running) {  // Main loop until stop signal
 		auto frame_start = std::chrono::high_resolution_clock::now();
 
 		for (int i = 0; i < framesToSkip; ++i) {
-			cap.grab();
+			cap.grab();  // Grab frames without decoding
 		}
-		cap >> frame;
+		cap >> frame;  // Read one frame (decoded)
 
-		if (frame.empty()) break;
+		if (frame.empty()) break;  // Stop if frame is invalid
 
-		cv::cuda::GpuMat d_frame(frame);
+		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
+		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
-		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);
+		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
-		// Step 1: FP16 → FP32
-		cv::cuda::GpuMat d_mask_f32;
-		d_prediction_mask.convertTo(d_mask_f32, CV_32F, 1.0, 0, stream);
-
-		// Step 2: FP32 → 8-bit for binary mask
+		// Convert to 8-bit (0 or 255) in a new GpuMat
 		cv::cuda::GpuMat d_mask_u8;
-		d_mask_f32.convertTo(d_mask_u8, CV_8U, 255.0, 0, stream);
+		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255
 
-		// Threshold on CPU (download mask first)
 		cv::Mat binary_mask_cpu;
 		d_mask_u8.download(binary_mask_cpu, stream);
 		cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
+		stream.waitForCompletion();  // Ensure async operations are complete
 
-		stream.waitForCompletion();  // Ensure async operations are done
+		// Convert model output to 8-bit binary mask on GPU
+		cv::cuda::GpuMat d_visualization;
+		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
 
-		// Visualization (resize for display)
 		cv::cuda::GpuMat d_resized_mask;
-		cv::cuda::resize(d_mask_u8, d_resized_mask,
-						 cv::Size(frame.cols * scale_factor, frame.rows * scale_factor),
-						 0, 0, cv::INTER_LINEAR, stream);
 
-		stream.waitForCompletion();
+		cv::cuda::resize(d_visualization, d_resized_mask,
+						 cv::Size(frame.cols * scale_factor, frame.rows * scale_factor),
+						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
+		stream.waitForCompletion();  // Synchronize
 
 		if (m_publisherObject) {
-			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
+			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
 		}
 
 		frame_count++;
@@ -217,6 +216,9 @@ void CameraStreamer::start() {
 			start_time = now;
 			frame_count = 0;
 		}
+
+		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
+		//renderTexture();  // Render it
 	}
 }
 
