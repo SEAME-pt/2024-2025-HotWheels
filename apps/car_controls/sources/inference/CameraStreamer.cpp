@@ -162,7 +162,7 @@ void CameraStreamer::start() {
 	cv::Mat frame;
 	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
-	const int framesToSkip = 2;  // Skip frames to reduce processing load
+	//const int framesToSkip = 2;  // Skip frames to reduce processing load
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int frame_count = 0;
 
@@ -170,9 +170,9 @@ void CameraStreamer::start() {
 	while (m_running) {  // Main loop until stop signal
 		auto frame_start = std::chrono::high_resolution_clock::now();
 
-		for (int i = 0; i < framesToSkip; ++i) {
+		/* for (int i = 0; i < framesToSkip; ++i) {
 			cap.grab();  // Grab frames without decoding
-		}
+		} */
 		cap >> frame;  // Read one frame (decoded)
 
 		if (frame.empty()) break;  // Stop if frame is invalid
