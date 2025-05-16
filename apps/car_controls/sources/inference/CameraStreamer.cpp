@@ -177,7 +177,7 @@ void CameraStreamer::start() {
 
 		if (frame.empty()) break;  // Stop if frame is invalid
 
-		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
+/* 		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
@@ -205,7 +205,7 @@ void CameraStreamer::start() {
 
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
-		}
+		} */
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
