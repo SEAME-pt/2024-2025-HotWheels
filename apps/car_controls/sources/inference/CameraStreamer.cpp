@@ -207,7 +207,7 @@ void CameraStreamer::start() {
 		}
 
 		// Wrap the GPU memory in a GpuMat directly
-		cv::cuda::GpuMat d_frame(height, width, CV_8UC4, map.data);
+		cv::cuda::GpuMat d_frame(height, width, CV_8UC3, map.data);
 
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
