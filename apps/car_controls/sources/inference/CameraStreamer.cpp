@@ -191,19 +191,38 @@ void CameraStreamer::start() {
 
 	while (m_running) {
 		sample = gst_app_sink_try_pull_sample(GST_APP_SINK(sink), GST_SECOND / 30);
-		if (!sample) continue;
+		if (!sample) {
+			std::cout << "[WARN] Failed to pull sample" << std::endl;
+			continue;
+		}
+
+		std::cout << "[INFO] Pulled sample successfully" << std::endl;
 
 		GstBuffer* buffer = gst_sample_get_buffer(sample);
 		GstCaps* caps = gst_sample_get_caps(sample);
-		GstStructure* s = gst_caps_get_structure(caps, 0);
-		int width, height;
-		gst_structure_get_int(s, "width", &width);
-		gst_structure_get_int(s, "height", &height);
-
-		if (!gst_buffer_map(buffer, &map, GST_MAP_READ)) {
+		if (!caps) {
+			std::cout << "[ERROR] Failed to get caps from sample" << std::endl;
 			gst_sample_unref(sample);
 			continue;
 		}
+
+		GstStructure* s = gst_caps_get_structure(caps, 0);
+		int width = 0, height = 0;
+		if (!gst_structure_get_int(s, "width", &width) || !gst_structure_get_int(s, "height", &height)) {
+			std::cout << "[ERROR] Failed to extract width/height from caps" << std::endl;
+			gst_sample_unref(sample);
+			continue;
+		}
+
+		std::cout << "[INFO] Frame size: " << width << "x" << height << std::endl;
+
+		if (!gst_buffer_map(buffer, &map, GST_MAP_READ)) {
+			std::cout << "[ERROR] Failed to map buffer" << std::endl;
+			gst_sample_unref(sample);
+			continue;
+		}
+
+std::cout << "[INFO] Buffer mapped successfully" << std::endl;
 
 		// Wrap the GPU memory in a GpuMat directly
 		cv::cuda::GpuMat d_frame(height, width, CV_8UC3, map.data);
