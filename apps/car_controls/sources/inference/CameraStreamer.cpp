@@ -255,3 +255,18 @@ void CameraStreamer::start() {
 	gst_object_unref(sink);
 	gst_object_unref(pipeline);
 }
+
+void CameraStreamer::stop() {
+	if (!m_running) return;
+	m_running = false;
+
+	// Wait for any CUDA operations to finish
+	try {
+		cudaDeviceSynchronize();
+	} catch (const std::exception& e) {
+		std::cerr << "CUDA sync error in stop(): " << e.what() << std::endl;
+	}
+	std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+	std::cout << "[CameraStreamer] Shutdown complete." << std::endl;
+}
