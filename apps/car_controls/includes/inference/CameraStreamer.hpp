@@ -38,7 +38,6 @@
 
 using namespace Argus;
 using namespace EGLStream;
-using namespace nvmm;
 
 class CameraStreamer {
 public:
