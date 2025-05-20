@@ -181,7 +181,6 @@ void CameraStreamer::start() {
 		"video/x-raw, format=BGR ! "
 		"appsink name=sink sync=false max-buffers=1 drop=true";
 
-
 	GstElement* pipeline = gst_parse_launch(pipelineStr.c_str(), nullptr);
 	GstElement* sink = gst_bin_get_by_name(GST_BIN(pipeline), "sink");
 
@@ -209,7 +208,12 @@ void CameraStreamer::start() {
 		}
 
 		// Wrap the GPU memory in a GpuMat directly
-		cv::cuda::GpuMat d_frame(height, width, CV_8UC3, map.data);
+
+		cv::Mat frame_cpu(height, width, CV_8UC3, map.data);
+
+		cv::cuda::GpuMat d_frame;
+		d_frame.upload(frame_cpu);
+		//cv::cuda::GpuMat d_frame(height, width, CV_8UC3, map.data);
 
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
