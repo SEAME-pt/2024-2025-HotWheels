@@ -230,10 +230,6 @@ void CameraStreamer::start() {
 		return;
 	}
 
-	// Setup decoder — assume you are feeding H.264 stream or live CSI
-	// For CSI directly, you may need NvArgusCameraCapture instead.
-	// Here we assume dmabuf_fd is obtained from capture loop
-
 	int frame_count = 0;
 	auto start_time = std::chrono::high_resolution_clock::now();
 
