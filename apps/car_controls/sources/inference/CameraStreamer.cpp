@@ -252,7 +252,7 @@ void CameraStreamer::start() {
 		}
 
 		// Get the EGLImage
-		EGLImageKHR eglImage = iImage->getImage();
+		EGLImageKHR eglImage = iImage->getEGLImage();
 		if (eglImage == EGL_NO_IMAGE_KHR) {
 			std::cerr << "Failed to get EGLImage." << std::endl;
 			continue;
