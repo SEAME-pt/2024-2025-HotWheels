@@ -159,7 +159,12 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	}
 
 	cv::cuda::GpuMat gpuGray;
-	if (gpuImage.channels() > 1) {   // If input has multiple channels (color)
+
+	if (gpuImage.channels() == 3) {
+		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGR2GRAY);
+	} else if (gpuImage.channels() == 4) {
+		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGRA2GRAY);  // RGBA or BGRA
+	} else if (gpuImage.channels() == 1) {   // If input has multiple channels (color)
 		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGR2GRAY); // Convert to grayscale
 	} else {
 		gpuGray = gpuImage;  // Already grayscale, no conversion needed
