@@ -10,12 +10,13 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	// Define GStreamer pipeline for CSI camera
 	//std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 	std::string pipeline =
-		"nvarguscamerasrc sensor-mode=4 ! "
+		"nvarguscamerasrc sensor-mode=0 ! "
 		"video/x-raw(memory:NVMM), width=1280, height=720, format=NV12, framerate=30/1 ! "
-		"nvvidconv ! "
-		"video/x-raw(memory:NVMM), format=RGBA ! "
+		"nvvidconv flip-method=0 ! "
+		"video/x-raw, format=BGRx ! "
+		"videoconvert ! "
+		"video/x-raw, format=BGR ! "
 		"appsink drop=true sync=false";
-
 
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
 
