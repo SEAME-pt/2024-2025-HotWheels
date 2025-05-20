@@ -232,7 +232,7 @@ void CameraStreamer::start() {
 						 0, 0, cv::INTER_LINEAR, stream);
 		stream.waitForCompletion();
 
-		std::cout << "Frame processed" << std::endl;
+		//std::cout << "Frame processed" << std::endl;
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
 		}

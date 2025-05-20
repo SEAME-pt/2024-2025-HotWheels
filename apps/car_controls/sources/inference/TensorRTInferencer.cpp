@@ -209,8 +209,6 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 
 	runInference(gpuInputFloat);  // Run inference
 
-	std::cout << "im here 5" << std::endl;
-
 	int height = outputDims.d[1];
 	int width  = outputDims.d[2];
 
