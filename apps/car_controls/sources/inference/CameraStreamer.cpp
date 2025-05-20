@@ -169,120 +169,74 @@ void CameraStreamer::start() {
 
 	cv::cuda::Stream stream;
 
+	// Setup EGL display
+	EGLDisplay eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+	eglInitialize(eglDisplay, nullptr, nullptr);
+
 	// Initialize Argus camera provider
 	UniqueObj<CameraProvider> cameraProvider(CameraProvider::create());
 	ICameraProvider* iCameraProvider = interface_cast<ICameraProvider>(cameraProvider);
-	if (!iCameraProvider) {
-		std::cerr << "Failed to get ICameraProvider interface." << std::endl;
-		return;
-	}
 
-	// Get available camera devices
-	std::vector<CameraDevice*> cameraDevices;
-	iCameraProvider->getCameraDevices(&cameraDevices);
-	if (cameraDevices.empty()) {
-		std::cerr << "No camera devices available." << std::endl;
-		return;
-	}
+	std::vector<CameraDevice*> devices;
+	iCameraProvider->getCameraDevices(&devices);
+	CameraDevice* device = devices[0];
 
 	// Create capture session
-	UniqueObj<CaptureSession> captureSession(iCameraProvider->createCaptureSession(cameraDevices[0]));
-	ICaptureSession* iCaptureSession = interface_cast<ICaptureSession>(captureSession);
-	if (!iCaptureSession) {
-		std::cerr << "Failed to create capture session." << std::endl;
-		return;
-	}
+	UniqueObj<CaptureSession> session(iCameraProvider->createCaptureSession(device));
+	ICaptureSession* iSession = interface_cast<ICaptureSession>(session);
 
-	// Configure output stream settings
-	UniqueObj<OutputStreamSettings> streamSettings(iCaptureSession->createOutputStreamSettings(STREAM_TYPE_EGL));
-	IEGLOutputStreamSettings* iEglStreamSettings = interface_cast<IEGLOutputStreamSettings>(streamSettings);
-	if (!iEglStreamSettings) {
-		std::cerr << "Failed to get EGL stream settings interface." << std::endl;
-		return;
-	}
-	iEglStreamSettings->setPixelFormat(PIXEL_FMT_YCbCr_420_888);
-	iEglStreamSettings->setResolution(Size2D<uint32_t>(1280, 720));
-	iEglStreamSettings->setMode(EGL_STREAM_MODE_MAILBOX);
+	// Create output stream (EGLStream)
+	UniqueObj<OutputStreamSettings> streamSettings(iSession->createOutputStreamSettings());
+	IOutputStreamSettings* iSettings = interface_cast<IOutputStreamSettings>(streamSettings);
+	iSettings->setPixelFormat(PIXEL_FMT_YCbCr_420_888);
+	iSettings->setResolution(Size(1280, 720));
+	iSettings->setEGLDisplay(eglDisplay);
 
-	// Create output stream
-	UniqueObj<OutputStream> outputStream(iCaptureSession->createOutputStream(streamSettings.get()));
-	if (!outputStream) {
-		std::cerr << "Failed to create output stream." << std::endl;
-		return;
-	}
+	UniqueObj<OutputStream> stream(iSession->createOutputStream(streamSettings));
+	IStream* iStream = interface_cast<IStream>(stream);
+
+	// Create request
+	UniqueObj<Request> request(iSession->createRequest());
+	IRequest* iRequest = interface_cast<IRequest>(request);
+	iRequest->enableOutputStream(stream.get());
+
+	// Start repeat capture
+	iSession->repeat(request);
 
 	// Create frame consumer
-	UniqueObj<FrameConsumer> consumer(FrameConsumer::create(outputStream.get()));
-	IFrameConsumer* iFrameConsumer = interface_cast<IFrameConsumer>(consumer);
-	if (!iFrameConsumer) {
-		std::cerr << "Failed to create frame consumer." << std::endl;
-		return;
-	}
+	UniqueObj<EGLStream::FrameConsumer> consumer(EGLStream::FrameConsumer::create(stream.get()));
+	EGLStream::IFrameConsumer* iConsumer = interface_cast<EGLStream::IFrameConsumer>(consumer);
 
-	// Create and submit capture request
-	UniqueObj<Request> request(iCaptureSession->createRequest());
-	IRequest* iRequest = interface_cast<IRequest>(request);
-	if (!iRequest) {
-		std::cerr << "Failed to create capture request." << std::endl;
-		return;
-	}
-	iRequest->enableOutputStream(outputStream.get());
-	if (iCaptureSession->repeat(request.get()) != STATUS_OK) {
-		std::cerr << "Failed to start capture session." << std::endl;
-		return;
-	}
+	std::cout << "[CameraStreamer] Starting capture loop..." << std::endl;
 
 	int frame_count = 0;
 	auto start_time = std::chrono::high_resolution_clock::now();
 
 	while (m_running) {
-		UniqueObj<Frame> frame(iFrameConsumer->acquireFrame());
-		IFrame* iFrame = interface_cast<IFrame>(frame);
-		if (!iFrame) {
-			std::cerr << "Failed to acquire frame." << std::endl;
-			continue;
-		}
+		UniqueObj<EGLStream::Frame> frame(iConsumer->acquireFrame());
+        EGLStream::IFrame* iFrame = interface_cast<EGLStream::IFrame>(frame);
+        UniqueObj<EGLStream::Image> image(iFrame->getImage());
+        EGLStream::IImage* iImage = interface_cast<EGLStream::IImage>(image);
 
-		// Get the image from the frame
-		Image* image = iFrame->getImage();
-		EGLStream::IImage* iImage = interface_cast<EGLStream::IImage>(image);
-		if (!iImage) {
-			std::cerr << "Failed to get IImage interface." << std::endl;
-			continue;
-		}
+		// Get EGLImage
+        EGLImageKHR eglImage = iImage->getEGLImage();
 
-		// Get the EGLImage
-		EGLImageKHR eglImage = iImage->getEGLImage();
-		if (eglImage == EGL_NO_IMAGE_KHR) {
-			std::cerr << "Failed to get EGLImage." << std::endl;
-			continue;
-		}
+        // Map to CUDA
+        CUgraphicsResource cudaResource;
+        cuGraphicsEGLRegisterImage(&cudaResource, eglImage, CU_GRAPHICS_MAP_RESOURCE_FLAGS_NONE);
+        cuGraphicsMapResources(1, &cudaResource, 0);
 
-		// Map EGLImage to CUDA
-		CUgraphicsResource cudaResource;
-		CUresult cuResult = cuGraphicsEGLRegisterImage(&cudaResource, eglImage, CU_GRAPHICS_MAP_RESOURCE_FLAGS_NONE);
-		if (cuResult != CUDA_SUCCESS) {
-			std::cerr << "Failed to register EGLImage with CUDA." << std::endl;
-			continue;
-		}
+        CUarray cuArray;
+        cuGraphicsSubResourceGetMappedArray(&cuArray, cudaResource, 0, 0);
 
-		cuResult = cuGraphicsMapResources(1, &cudaResource, 0);
-		if (cuResult != CUDA_SUCCESS) {
-			std::cerr << "Failed to map CUDA resources." << std::endl;
-			cuGraphicsUnregisterResource(cudaResource);
-			continue;
-		}
+		cv::cuda::GpuMat d_frame(720, 1280, CV_8UC4);
 
-		CUeglFrame eglFrame;
-		cuResult = cuGraphicsResourceGetMappedEglFrame(&eglFrame, cudaResource, 0, 0);
-		if (cuResult != CUDA_SUCCESS) {
-			std::cerr << "Failed to get mapped EGL frame." << std::endl;
-			cuGraphicsUnmapResources(1, &cudaResource, 0);
-			cuGraphicsUnregisterResource(cudaResource);
-			continue;
-		}
+		cudaMemcpy2DFromArray(d_frame.data, d_frame.step, cuArray, 0, 0,
+                              d_frame.cols * 4, d_frame.rows, cudaMemcpyDeviceToDevice);
 
-		cv::cuda::GpuMat d_frame(eglFrame.height, eglFrame.width, CV_8UC4, eglFrame.frame.pPitch[0]);
+        cuGraphicsUnmapResources(1, &cudaResource, 0);
+        cuGraphicsUnregisterResource(cudaResource);
+
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
 
