@@ -8,13 +8,7 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	m_publisherObject = new Publisher(5556);
 
 	// Define GStreamer pipeline for CSI camera
-	//std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
-	std::string pipeline =
-		"nvarguscamerasrc sensor-mode=4 ! "
-		"video/x-raw(memory:NVMM), width=1280, height=720, format=NV12, framerate=30/1 ! "
-		"nvvidconv ! "
-		"video/x-raw(memory:NVMM), format=RGBA ! "
-		"appsink drop=true sync=false";
+	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
 
@@ -183,12 +177,9 @@ void CameraStreamer::start() {
 
 		if (frame.empty()) break;  // Stop if frame is invalid
 
-		cv::cuda::GpuMat gpuRGBA;
-		gpuRGBA.upload(frame);
-
-		//cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
+		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(gpuRGBA, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
+		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
@@ -212,9 +203,9 @@ void CameraStreamer::start() {
 						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
 		stream.waitForCompletion();  // Synchronize
 
-/* 		if (m_publisherObject) {
+		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
-		} */
+		}
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
