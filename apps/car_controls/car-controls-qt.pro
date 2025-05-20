@@ -64,14 +64,15 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     INCLUDEPATH += /usr/include/GL
     INCLUDEPATH += /usr/include/GLFW
 
+    # Jetson Multimedia API
+    INCLUDEPATH += /usr/src/jetson_multimedia_api/include/
+
     # Library paths
     LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
     LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
-    LIBS += -L$${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/include/Argus
-    LIBS += -L$${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/argus/include/Argus
     LIBS += -L/usr/local/lib  # <- Add this for GLEW/GLFW libs
 
     # Eigen libraries
