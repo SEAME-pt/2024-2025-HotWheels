@@ -9,6 +9,8 @@
 #include <opencv2/cudawarping.hpp>
 #include <gst/gst.h>
 #include <gst/app/gstappsink.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
 #include "TensorRTInferencer.hpp"
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"
