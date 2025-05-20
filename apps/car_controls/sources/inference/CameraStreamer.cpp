@@ -166,19 +166,15 @@ void CameraStreamer::initUndistortMaps() {
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
 	initUndistortMaps();
-
 	cv::cuda::Stream stream;
-	const int input_width = 1280;
-	const int input_height = 720;
 
-	// GStreamer pipeline for GPU-native capture
 	std::string pipelineStr =
 		"nvarguscamerasrc sensor-mode=4 ! "
 		"video/x-raw(memory:NVMM), width=1280, height=720, format=NV12, framerate=30/1 ! "
 		"nvvidconv ! "
-		"video/x-raw, format=RGBA ! "
-		"videoconvert ! "
-		"video/x-raw, format=BGR ! "
+		"video/x-raw(memory:NVMM), format=RGBA ! "
+		"nvvideoconvert ! "
+		"video/x-raw(memory:CUDA), format=RGBA ! "
 		"appsink name=sink sync=false max-buffers=1 drop=true";
 
 	GstElement* pipeline = gst_parse_launch(pipelineStr.c_str(), nullptr);
@@ -207,12 +203,12 @@ void CameraStreamer::start() {
 			continue;
 		}
 
-		// Wrap the GPU memory in a GpuMat directly
-		cv::Mat frame_cpu(height, width, CV_8UC3, map.data); // CPU memory
-		cv::cuda::GpuMat d_frame;
+		// Cast mapped data to NvBufSurface
+		NvBufSurface* surface = reinterpret_cast<NvBufSurface*>(map.data);
+		NvBufSurfaceSyncForDevice(surface, 0, 0);
+		NvBufSurfaceParams& params = surface->surfaceList[0];
 
-		d_frame.upload(frame_cpu);
-		//cv::cuda::GpuMat d_frame(height, width, CV_8UC3, map.data);
+		cv::cuda::GpuMat d_frame(params.height, params.width, CV_8UC4, params.dataPtr, params.pitch);
 
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
