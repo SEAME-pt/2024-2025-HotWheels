@@ -210,13 +210,10 @@ void CameraStreamer::start() {
 
 		std::cout << "im here" << std::endl;
 
-		if (d_frame.empty()) {
-			std::cerr << "ERROR: Grabbed empty frame from GPU" << std::endl;
-			break;
-		}
-
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
+
+		std::cout << "im here 2" << std::endl;
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);
 

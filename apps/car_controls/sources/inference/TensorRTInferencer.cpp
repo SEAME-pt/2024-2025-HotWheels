@@ -176,6 +176,8 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	cv::cuda::GpuMat gpuFloat;
 	gpuResized.convertTo(gpuFloat, CV_32F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
 
+	std::cout << "im here 4" << std::endl;
+
 	return gpuFloat;  // Return preprocessed image (still on GPU)
 }
 
@@ -207,9 +209,12 @@ void TensorRTInferencer::runInference(const cv::cuda::GpuMat& gpuInput) {
 
 // Perform full prediction pipeline: preprocess, inference, and extract output
 cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuImage) {
+	std::cout << "im here 3" << std::endl;
 	cv::cuda::GpuMat gpuInputFloat = preprocessImage(gpuImage);  // Preprocess input image on GPU
 
 	runInference(gpuInputFloat);  // Run inference
+
+	std::cout << "im here 5" << std::endl;
 
 	int height = outputDims.d[1];
 	int width  = outputDims.d[2];
