@@ -280,13 +280,13 @@ void CameraStreamer::start() {
 			continue;
 		}
 
-		cv::cuda::GpuMat d_frame(eglFrame.heigh, eglFrame.width, CV_8UC4, eglFrame.frame.pPitch[0]);
+		cv::cuda::GpuMat d_frame(eglFrame.height, eglFrame.width, CV_8UC4, eglFrame.frame.pPitch[0]);
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);
 
-		cv::cuda::GpuMat d_mask_u8;
+		/* cv::cuda::GpuMat d_mask_u8;
 		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0, 0, stream);
 
 		cv::cuda::GpuMat d_visualization;
@@ -296,7 +296,7 @@ void CameraStreamer::start() {
 		cv::cuda::resize(d_visualization, d_resized_mask,
 						 cv::Size(input_width * scale_factor, input_height * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);
-		stream.waitForCompletion();
+		stream.waitForCompletion(); */
 
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
