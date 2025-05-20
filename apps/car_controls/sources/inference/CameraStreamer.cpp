@@ -190,6 +190,7 @@ void CameraStreamer::start() {
 	auto start_time = std::chrono::high_resolution_clock::now();
 
 	while (m_running) {
+		std::cout << "[start] Entered main loop" << std::endl;
 		sample = gst_app_sink_try_pull_sample(GST_APP_SINK(sink), GST_SECOND / 30);
 		if (!sample) continue;
 
