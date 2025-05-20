@@ -158,16 +158,23 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 		throw std::runtime_error("Input image is empty");
 	}
 
+	std::cout << "[preprocessImage] Input size: " << gpuImage.cols << "x" << gpuImage.rows
+		<< ", type: " << gpuImage.type()
+		<< ", channels: " << gpuImage.channels() << std::endl;
+
 	cv::cuda::GpuMat gpuGray;
 
 	if (gpuImage.channels() == 3) {
 		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGR2GRAY);
+		std::cout << "[preprocessImage] Converted BGR to GRAY" << std::endl;
 	} else if (gpuImage.channels() == 4) {
 		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGRA2GRAY);  // RGBA or BGRA
+		std::cout << "[preprocessImage] Converted BGR to GRAY" << std::endl;
 	} else if (gpuImage.channels() == 1) {   // If input has multiple channels (color)
-		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGR2GRAY); // Convert to grayscale
+		gpuGray = gpuImage; // Already grayscale, no conversion needed
+		std::cout << "[preprocessImage] Converted BGR to GRAY" << std::endl;
 	} else {
-		gpuGray = gpuImage;  // Already grayscale, no conversion needed
+		throw std::runtime_error("[preprocessImage] Unsupported number of channels");  // Already grayscale, no conversion needed
 	}
 
 	cv::cuda::GpuMat gpuResized;
@@ -175,8 +182,6 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 
 	cv::cuda::GpuMat gpuFloat;
 	gpuResized.convertTo(gpuFloat, CV_32F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
-
-	std::cout << "im here 4" << std::endl;
 
 	return gpuFloat;  // Return preprocessed image (still on GPU)
 }
@@ -209,7 +214,6 @@ void TensorRTInferencer::runInference(const cv::cuda::GpuMat& gpuInput) {
 
 // Perform full prediction pipeline: preprocess, inference, and extract output
 cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuImage) {
-	std::cout << "im here 3" << std::endl;
 	cv::cuda::GpuMat gpuInputFloat = preprocessImage(gpuImage);  // Preprocess input image on GPU
 
 	runInference(gpuInputFloat);  // Run inference
