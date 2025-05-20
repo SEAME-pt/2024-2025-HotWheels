@@ -21,10 +21,10 @@
 #include <EGLStream/EGLStream.h>
 #include <EGLStream/NV/ImageNativeBuffer.h>
 #include <EGLStream/FrameConsumer.h>
+#include <NvEglRenderer.h>
 #include <cudaEGL.h>
 
 #undef None  // Remove conflicting macro definition
-
 
 #include <cuda_runtime_api.h>
 #include <nvbuf_utils.h>
