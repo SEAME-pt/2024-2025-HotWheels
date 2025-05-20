@@ -233,9 +233,9 @@ void CameraStreamer::start() {
 		stream.waitForCompletion();
 
 		//std::cout << "Frame processed" << std::endl;
-		/* if (m_publisherObject) {
+		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
-		} */
+		}
 
 		gst_buffer_unmap(buffer, &map);
 		gst_sample_unref(sample);
