@@ -12,10 +12,8 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	std::string pipeline =
 		"nvarguscamerasrc sensor-mode=4 ! "
 		"video/x-raw(memory:NVMM), width=1280, height=720, format=NV12, framerate=30/1 ! "
-		"nvvidconv flip-method=0 ! "
-		"video/x-raw, format=BGRx ! "
-		"videoconvert ! "
-		"video/x-raw, format=BGR ! "
+		"nvvidconv ! "
+		"video/x-raw(memory:NVMM), format=RGBA ! "
 		"appsink drop=true sync=false";
 
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
@@ -185,9 +183,12 @@ void CameraStreamer::start() {
 
 		if (frame.empty()) break;  // Stop if frame is invalid
 
-		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
+		cv::cuda::GpuMat gpuRGBA;
+		gpuRGBA.upload(frame);
+
+		//cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
+		cv::cuda::remap(gpuRGBA, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
