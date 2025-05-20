@@ -21,18 +21,6 @@
 #include <cudaEGL.h>
 
 #include <Argus/Argus.h>
-#include <Argus/CameraProvider.h>
-#include <Argus/ICameraProvider.h>
-#include <Argus/ICaptureSession.h>
-#include <Argus/ICameraDevice.h>
-#include <Argus/OutputStreamSettings.h>
-#include <Argus/IOutputStream.h>
-#include <Argus/StreamSettings.h>
-#include <Argus/CaptureRequest.h>
-#include <Argus/ICaptureSession.h>
-#include <Argus/IRequest.h>
-#include <Argus/IFrame.h>
-
 #include <EGL/egl.h>
 #include <EGLStream/EGLStream.h>
 #include <EGLStream/NV/ImageNativeBuffer.h>
