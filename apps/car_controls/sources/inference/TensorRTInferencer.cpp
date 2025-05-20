@@ -158,23 +158,14 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 		throw std::runtime_error("Input image is empty");
 	}
 
-	std::cout << "[preprocessImage] Input size: " << gpuImage.cols << "x" << gpuImage.rows
-		<< ", type: " << gpuImage.type()
-		<< ", channels: " << gpuImage.channels() << std::endl;
-
 	cv::cuda::GpuMat gpuGray;
 
 	if (gpuImage.channels() == 3) {
 		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGR2GRAY);
-		std::cout << "[preprocessImage] Converted BGR to GRAY" << std::endl;
 	} else if (gpuImage.channels() == 4) {
 		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGRA2GRAY);  // RGBA or BGRA
-		std::cout << "[preprocessImage] Converted BGR to GRAY" << std::endl;
 	} else if (gpuImage.channels() == 1) {   // If input has multiple channels (color)
 		gpuGray = gpuImage; // Already grayscale, no conversion needed
-		std::cout << "[preprocessImage] Converted BGR to GRAY" << std::endl;
-	} else {
-		throw std::runtime_error("[preprocessImage] Unsupported number of channels");  // Already grayscale, no conversion needed
 	}
 
 	cv::cuda::GpuMat gpuResized;
