@@ -190,7 +190,6 @@ void CameraStreamer::start() {
 	auto start_time = std::chrono::high_resolution_clock::now();
 
 	while (m_running) {
-		std::cout << "[start] Entered main loop" << std::endl;
 		sample = gst_app_sink_try_pull_sample(GST_APP_SINK(sink), GST_SECOND / 30);
 		if (!sample) continue;
 
@@ -226,6 +225,7 @@ void CameraStreamer::start() {
 						 0, 0, cv::INTER_LINEAR, stream);
 		stream.waitForCompletion();
 
+		std::cout << "Frame processed" << std::endl;
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
 		}
