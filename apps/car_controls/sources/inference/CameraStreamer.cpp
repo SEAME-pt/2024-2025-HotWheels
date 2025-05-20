@@ -167,6 +167,8 @@ void CameraStreamer::initUndistortMaps() {
 void CameraStreamer::start() {
 	initUndistortMaps();
 
+	cv::cuda::Stream stream;
+
 	// Initialize Argus camera provider
 	UniqueObj<CameraProvider> cameraProvider(CameraProvider::create());
 	ICameraProvider* iCameraProvider = interface_cast<ICameraProvider>(cameraProvider);
@@ -250,7 +252,7 @@ void CameraStreamer::start() {
 		}
 
 		// Get the EGLImage
-		EGLImageKHR eglImage = iImage->getEGLImage();
+		EGLImageKHR eglImage = iImage->getImage();
 		if (eglImage == EGL_NO_IMAGE_KHR) {
 			std::cerr << "Failed to get EGLImage." << std::endl;
 			continue;
