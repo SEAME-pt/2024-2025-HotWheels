@@ -208,10 +208,9 @@ void CameraStreamer::start() {
 		}
 
 		// Wrap the GPU memory in a GpuMat directly
-
-		cv::Mat frame_cpu(height, width, CV_8UC3, map.data);
-
+		cv::Mat frame_cpu(height, width, CV_8UC3, map.data); // CPU memory
 		cv::cuda::GpuMat d_frame;
+
 		d_frame.upload(frame_cpu);
 		//cv::cuda::GpuMat d_frame(height, width, CV_8UC3, map.data);
 
@@ -232,7 +231,6 @@ void CameraStreamer::start() {
 						 0, 0, cv::INTER_LINEAR, stream);
 		stream.waitForCompletion();
 
-		//std::cout << "Frame processed" << std::endl;
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
 		}
