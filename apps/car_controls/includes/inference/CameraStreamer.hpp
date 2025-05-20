@@ -21,10 +21,10 @@
 #include <cudaEGL.h>
 
 #include <Argus/Argus.h>
-#include <EGL/egl.h>
-#include <EGLStream/EGLStream.h>
-#include <EGLStream/NV/ImageNativeBuffer.h>
-#include <EGLStream/NV/FrameConsumer.h>
+#include <egl.h>
+#include <EGLStream.h>
+#include <NV/ImageNativeBuffer.h>
+#include <NV/FrameConsumer.h>
 
 #include <cuda_runtime_api.h>
 #include <nvbuf_utils.h>
