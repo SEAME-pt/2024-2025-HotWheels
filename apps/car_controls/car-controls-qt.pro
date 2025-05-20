@@ -82,6 +82,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     LIBS += -l:libopencv_cudaarithm.so.405 -l:libopencv_cudawarping.so.405 -l:libopencv_cudaimgproc.so.405 -l:libopencv_cudacodec.so.405
     LIBS += -lcublasLt -llapack -lblas
     LIBS += -lnvmedia -lnvdla_compiler
+    LIBS += -lEGL -lGL -lcuda -lcudaEGL -lnvbuf_utils
 
     # GStreamer libraries
     LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstapp-1.0

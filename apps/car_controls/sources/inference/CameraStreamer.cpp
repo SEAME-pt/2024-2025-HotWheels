@@ -166,50 +166,125 @@ void CameraStreamer::initUndistortMaps() {
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
 	initUndistortMaps();
-	cv::cuda::Stream stream;
 
-	std::string pipelineStr =
-		"nvarguscamerasrc sensor-mode=4 ! "
-		"video/x-raw(memory:NVMM), width=1280, height=720, format=NV12, framerate=30/1 ! "
-		"nvvidconv ! "
-		"video/x-raw(memory:NVMM), format=RGBA ! "
-		"nvvideoconvert ! "
-		"video/x-raw(memory:CUDA), format=RGBA ! "
-		"appsink name=sink sync=false max-buffers=1 drop=true";
+	// Initialize Argus camera provider
+	UniqueObj<CameraProvider> cameraProvider(CameraProvider::create());
+	ICameraProvider* iCameraProvider = interface_cast<ICameraProvider>(cameraProvider);
+	if (!iCameraProvider) {
+		std::cerr << "Failed to get ICameraProvider interface." << std::endl;
+		return;
+	}
 
-	GstElement* pipeline = gst_parse_launch(pipelineStr.c_str(), nullptr);
-	GstElement* sink = gst_bin_get_by_name(GST_BIN(pipeline), "sink");
+	// Get available camera devices
+	std::vector<CameraDevice*> cameraDevices;
+	iCameraProvider->getCameraDevices(&cameraDevices);
+	if (cameraDevices.empty()) {
+		std::cerr << "No camera devices available." << std::endl;
+		return;
+	}
 
-	gst_element_set_state(pipeline, GST_STATE_PLAYING);
+	// Create capture session
+	UniqueObj<CaptureSession> captureSession(iCameraProvider->createCaptureSession(cameraDevices[0]));
+	ICaptureSession* iCaptureSession = interface_cast<ICaptureSession>(captureSession);
+	if (!iCaptureSession) {
+		std::cerr << "Failed to create capture session." << std::endl;
+		return;
+	}
 
-	GstSample* sample = nullptr;
-	GstMapInfo map;
+	// Configure output stream settings
+	UniqueObj<OutputStreamSettings> streamSettings(iCaptureSession->createOutputStreamSettings(STREAM_TYPE_EGL));
+	IEGLOutputStreamSettings* iEglStreamSettings = interface_cast<IEGLOutputStreamSettings>(streamSettings);
+	if (!iEglStreamSettings) {
+		std::cerr << "Failed to get EGL stream settings interface." << std::endl;
+		return;
+	}
+	iEglStreamSettings->setPixelFormat(PIXEL_FMT_YCbCr_420_888);
+	iEglStreamSettings->setResolution(Size2D<uint32_t>(1280, 720));
+	iEglStreamSettings->setMode(EGL_STREAM_MODE_MAILBOX);
+
+	// Create output stream
+	UniqueObj<OutputStream> outputStream(iCaptureSession->createOutputStream(streamSettings.get()));
+	if (!outputStream) {
+		std::cerr << "Failed to create output stream." << std::endl;
+		return;
+	}
+
+	// Create frame consumer
+	UniqueObj<FrameConsumer> consumer(FrameConsumer::create(outputStream.get()));
+	IFrameConsumer* iFrameConsumer = interface_cast<IFrameConsumer>(consumer);
+	if (!iFrameConsumer) {
+		std::cerr << "Failed to create frame consumer." << std::endl;
+		return;
+	}
+
+	// Create and submit capture request
+	UniqueObj<Request> request(iCaptureSession->createRequest());
+	IRequest* iRequest = interface_cast<IRequest>(request);
+	if (!iRequest) {
+		std::cerr << "Failed to create capture request." << std::endl;
+		return;
+	}
+	iRequest->enableOutputStream(outputStream.get());
+	if (iCaptureSession->repeat(request.get()) != STATUS_OK) {
+		std::cerr << "Failed to start capture session." << std::endl;
+		return;
+	}
+
+	// Setup decoder — assume you are feeding H.264 stream or live CSI
+	// For CSI directly, you may need NvArgusCameraCapture instead.
+	// Here we assume dmabuf_fd is obtained from capture loop
+
 	int frame_count = 0;
 	auto start_time = std::chrono::high_resolution_clock::now();
 
 	while (m_running) {
-		sample = gst_app_sink_try_pull_sample(GST_APP_SINK(sink), GST_SECOND / 30);
-		if (!sample) continue;
-
-		GstBuffer* buffer = gst_sample_get_buffer(sample);
-		GstCaps* caps = gst_sample_get_caps(sample);
-		GstStructure* s = gst_caps_get_structure(caps, 0);
-		int width, height;
-		gst_structure_get_int(s, "width", &width);
-		gst_structure_get_int(s, "height", &height);
-
-		if (!gst_buffer_map(buffer, &map, GST_MAP_READ)) {
-			gst_sample_unref(sample);
+		UniqueObj<Frame> frame(iFrameConsumer->acquireFrame());
+		IFrame* iFrame = interface_cast<IFrame>(frame);
+		if (!iFrame) {
+			std::cerr << "Failed to acquire frame." << std::endl;
 			continue;
 		}
 
-		// Cast mapped data to NvBufSurface
-		NvBufSurface* surface = reinterpret_cast<NvBufSurface*>(map.data);
-		NvBufSurfaceSyncForDevice(surface, 0, 0);
-		NvBufSurfaceParams& params = surface->surfaceList[0];
+		// Get the image from the frame
+		Image* image = iFrame->getImage();
+		EGLStream::IImage* iImage = interface_cast<EGLStream::IImage>(image);
+		if (!iImage) {
+			std::cerr << "Failed to get IImage interface." << std::endl;
+			continue;
+		}
 
-		cv::cuda::GpuMat d_frame(params.height, params.width, CV_8UC4, params.dataPtr, params.pitch);
+		// Get the EGLImage
+		EGLImageKHR eglImage = iImage->getEGLImage();
+		if (eglImage == EGL_NO_IMAGE_KHR) {
+			std::cerr << "Failed to get EGLImage." << std::endl;
+			continue;
+		}
 
+		// Map EGLImage to CUDA
+		CUgraphicsResource cudaResource;
+		CUresult cuResult = cuGraphicsEGLRegisterImage(&cudaResource, eglImage, CU_GRAPHICS_MAP_RESOURCE_FLAGS_NONE);
+		if (cuResult != CUDA_SUCCESS) {
+			std::cerr << "Failed to register EGLImage with CUDA." << std::endl;
+			continue;
+		}
+
+		cuResult = cuGraphicsMapResources(1, &cudaResource, 0);
+		if (cuResult != CUDA_SUCCESS) {
+			std::cerr << "Failed to map CUDA resources." << std::endl;
+			cuGraphicsUnregisterResource(cudaResource);
+			continue;
+		}
+
+		CUeglFrame eglFrame;
+		cuResult = cuGraphicsResourceGetMappedEglFrame(&eglFrame, cudaResource, 0, 0);
+		if (cuResult != CUDA_SUCCESS) {
+			std::cerr << "Failed to get mapped EGL frame." << std::endl;
+			cuGraphicsUnmapResources(1, &cudaResource, 0);
+			cuGraphicsUnregisterResource(cudaResource);
+			continue;
+		}
+
+		cv::cuda::GpuMat d_frame(eglFrame.heigh, eglFrame.width, CV_8UC4, eglFrame.frame.pPitch[0]);
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
 
@@ -223,7 +298,7 @@ void CameraStreamer::start() {
 
 		cv::cuda::GpuMat d_resized_mask;
 		cv::cuda::resize(d_visualization, d_resized_mask,
-						 cv::Size(width * scale_factor, height * scale_factor),
+						 cv::Size(input_width * scale_factor, input_height * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);
 		stream.waitForCompletion();
 
@@ -231,8 +306,9 @@ void CameraStreamer::start() {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
 		}
 
-		gst_buffer_unmap(buffer, &map);
-		gst_sample_unref(sample);
+		// Unmap and unregister CUDA resources
+		cuGraphicsUnmapResources(1, &cudaResource, 0);
+		cuGraphicsUnregisterResource(cudaResource);
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
@@ -245,9 +321,9 @@ void CameraStreamer::start() {
 		}
 	}
 
-	gst_element_set_state(pipeline, GST_STATE_NULL);
-	gst_object_unref(sink);
-	gst_object_unref(pipeline);
+	// Stop the capture session
+	iCaptureSession->stopRepeat();
+	iCaptureSession->waitForIdle();
 }
 
 void CameraStreamer::stop() {
