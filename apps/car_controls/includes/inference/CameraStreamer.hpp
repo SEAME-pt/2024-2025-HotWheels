@@ -6,24 +6,54 @@
 #include <chrono>
 #include <memory>
 #include <vector>
+#include <unistd.h>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/cudawarping.hpp>
+
 #include <gst/gst.h>
 #include <gst/app/gstappsink.h>
+
 #include <Argus/Argus.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 #include <cudaEGL.h>
+
+#include <Argus/Argus.h>
+#include <Argus/CameraProvider.h>
+#include <Argus/ICameraProvider.h>
+#include <Argus/ICaptureSession.h>
+#include <Argus/ICameraDevice.h>
+#include <Argus/OutputStreamSettings.h>
+#include <Argus/IOutputStream.h>
+#include <Argus/StreamSettings.h>
+#include <Argus/CaptureRequest.h>
+#include <Argus/ICaptureSession.h>
+#include <Argus/IRequest.h>
+#include <Argus/IFrame.h>
+
+#include <EGL/egl.h>
+#include <EGLStream/EGLStream.h>
+#include <EGLStream/NV/ImageNativeBuffer.h>
+#include <EGLStream/NV/FrameConsumer.h>
+
 #include <cuda_runtime_api.h>
 #include <nvbuf_utils.h>
+#include <NvBuffer.h>
 #include <opencv2/core/cuda.hpp>
 #include "TensorRTInferencer.hpp"
+
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <cuda_gl_interop.h>
+
+using namespace Argus;
+using namespace EGLStream;
+using namespace nvmm;
 
 class CameraStreamer {
 public:

@@ -1,9 +1,5 @@
 #include "CameraStreamer.hpp"
 
-using namespace Argus;
-using namespace EGLStream;
-using namespace nvmm;  // sometimes needed, depending on usage
-
 // Constructor: initializes camera capture, inference reference, and settings
 CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)
 	: scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_publisherObject(nullptr), m_running(true) {
