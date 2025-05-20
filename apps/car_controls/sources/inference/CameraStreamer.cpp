@@ -209,7 +209,7 @@ void CameraStreamer::start() {
 		cv::cuda::GpuMat d_frame(height, width, CV_8UC4, map.data);
 
 		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
+		//cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);
 
