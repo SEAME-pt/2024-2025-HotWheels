@@ -205,55 +205,32 @@ void CameraStreamer::start() {
 			continue;
 		}
 
-		cudaError_t err = cudaGetLastError();
-		if (err != cudaSuccess) {
-			std::cerr << "[CUDA ERROR] " << cudaGetErrorString(err) << std::endl;
-			break;
-		}
-
 		// Wrap the GPU memory in a GpuMat directly
 		cv::cuda::GpuMat d_frame(height, width, CV_8UC4, map.data);
 
-		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
+		std::cout << "im here" << std::endl;
 
-		err = cudaGetLastError();
-		if (err != cudaSuccess) {
-			std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
+		if (d_frame.empty()) {
+			std::cerr << "ERROR: Grabbed empty frame from GPU" << std::endl;
 			break;
 		}
+
+		cv::cuda::GpuMat d_undistorted;
+		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);
 
 		cv::cuda::GpuMat d_mask_u8;
 		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0, 0, stream);
 
-		err = cudaGetLastError();
-		if (err != cudaSuccess) {
-			std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-			break;
-		}
-
 		cv::cuda::GpuMat d_visualization;
 		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
-
-		err = cudaGetLastError();
-		if (err != cudaSuccess) {
-			std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-			break;
-		}
 
 		cv::cuda::GpuMat d_resized_mask;
 		cv::cuda::resize(d_visualization, d_resized_mask,
 						 cv::Size(width * scale_factor, height * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);
 		stream.waitForCompletion();
-
-		err = cudaGetLastError();
-		if (err != cudaSuccess) {
-			std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-			break;
-		}
 
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);

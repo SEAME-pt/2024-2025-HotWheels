@@ -170,26 +170,11 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 		gpuGray = gpuImage;  // Already grayscale, no conversion needed
 	}
 
-	cudaError_t err = cudaGetLastError();
-	if (err != cudaSuccess) {
-		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-	}
-
 	cv::cuda::GpuMat gpuResized;
 	cv::cuda::resize(gpuGray, gpuResized, inputSize, 0, 0, cv::INTER_LINEAR); // Resize to network input size
 
-	err = cudaGetLastError();
-	if (err != cudaSuccess) {
-		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-	}
-
 	cv::cuda::GpuMat gpuFloat;
 	gpuResized.convertTo(gpuFloat, CV_32F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
-
-	err = cudaGetLastError();
-	if (err != cudaSuccess) {
-		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-	}
 
 	return gpuFloat;  // Return preprocessed image (still on GPU)
 }
