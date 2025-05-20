@@ -179,7 +179,7 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	cv::cuda::GpuMat gpuResized;
 	cv::cuda::resize(gpuGray, gpuResized, inputSize, 0, 0, cv::INTER_LINEAR); // Resize to network input size
 
-	cudaError_t err = cudaGetLastError();
+	err = cudaGetLastError();
 	if (err != cudaSuccess) {
 		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
 		break;
@@ -188,7 +188,7 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	cv::cuda::GpuMat gpuFloat;
 	gpuResized.convertTo(gpuFloat, CV_32F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
 
-	cudaError_t err = cudaGetLastError();
+	err = cudaGetLastError();
 	if (err != cudaSuccess) {
 		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
 		break;
