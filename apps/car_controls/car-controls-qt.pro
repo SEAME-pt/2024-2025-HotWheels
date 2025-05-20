@@ -71,6 +71,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     INCLUDEPATH += $${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/argus/include
     INCLUDEPATH += $${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/argus/include/Argus
     INCLUDEPATH += $${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/include/EGLStream
+    INCLUDEPATH += $${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/include/EGLStream/NV
 
     # Library paths
     LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
