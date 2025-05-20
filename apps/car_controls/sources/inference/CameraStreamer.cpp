@@ -216,24 +216,24 @@ void CameraStreamer::start() {
 		cv::cuda::GpuMat d_mask_u8;
 		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0, 0, stream);
 
-		if (gpuMat.empty()) {
-			std::cerr << "[ERROR] 1 GpuMat is empty before processing!" << std::endl;
+		if (d_mask_u8.empty()) {
+			std::cerr << "[ERROR] 1 d_mask_u8 is empty before processing!" << std::endl;
 			std::exit(1);
 		}
-		std::cout << "[INFO] GpuMat: " << gpuMat.cols << "x" << gpuMat.rows
-				<< " type: " << gpuMat.type()
-				<< " channels: " << gpuMat.channels() << std::endl;
+		std::cout << "[INFO] GpuMat: " << d_mask_u8.cols << "x" << d_mask_u8.rows
+				<< " type: " << d_mask_u8.type()
+				<< " channels: " << d_mask_u8.channels() << std::endl;
 
 		cv::cuda::GpuMat d_visualization;
 		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
 
-		if (gpuMat.empty()) {
-			std::cerr << "[ERROR] 2 GpuMat is empty before processing!" << std::endl;
+		if (d_visualization.empty()) {
+			std::cerr << "[ERROR] 2 d_visualization is empty before processing!" << std::endl;
 			std::exit(1);
 		}
-		std::cout << "[INFO] GpuMat: " << gpuMat.cols << "x" << gpuMat.rows
-				<< " type: " << gpuMat.type()
-				<< " channels: " << gpuMat.channels() << std::endl;
+		std::cout << "[INFO] d_visualization: " << d_visualization.cols << "x" << d_visualization.rows
+				<< " type: " << d_visualization.type()
+				<< " channels: " << d_visualization.channels() << std::endl;
 
 		cv::cuda::GpuMat d_resized_mask;
 		cv::cuda::resize(d_visualization, d_resized_mask,
