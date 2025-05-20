@@ -70,7 +70,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
-    LIBS += -L$${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/include
+    LIBS += -L$${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/include/Argus
     LIBS += -L$${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/argus/include/Argus
     LIBS += -L/usr/local/lib  # <- Add this for GLEW/GLFW libs
 
