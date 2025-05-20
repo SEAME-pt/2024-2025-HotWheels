@@ -7,6 +7,8 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	// Start publisher to pass frames to the cluster
 	m_publisherObject = new Publisher(5556);
 
+	gst_init(nullptr, nullptr);  // Initialize GStreamer
+
 	// Define GStreamer pipeline for CSI camera
 	//std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 
