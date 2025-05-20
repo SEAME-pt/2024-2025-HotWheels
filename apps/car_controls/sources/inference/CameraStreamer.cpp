@@ -205,6 +205,12 @@ void CameraStreamer::start() {
 			continue;
 		}
 
+		cudaError_t err = cudaGetLastError();
+		if (err != cudaSuccess) {
+			std::cerr << "[CUDA ERROR] " << cudaGetErrorString(err) << std::endl;
+			break;
+		}
+
 		// Wrap the GPU memory in a GpuMat directly
 		cv::cuda::GpuMat d_frame(height, width, CV_8UC4, map.data);
 

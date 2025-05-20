@@ -173,24 +173,8 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	cv::cuda::GpuMat gpuResized;
 	cv::cuda::resize(gpuGray, gpuResized, inputSize, 0, 0, cv::INTER_LINEAR); // Resize to network input size
 
-	if (gpuResized.empty()) {
-		std::cerr << "[ERROR] 2 gpuResized is empty before processing!" << std::endl;
-		std::exit(1);
-	}
-	std::cout << "[INFO] gpuResized: " << gpuResized.cols << "x" << gpuResized.rows
-			<< " type: " << gpuResized.type()
-			<< " channels: " << gpuResized.channels() << std::endl;
-
 	cv::cuda::GpuMat gpuFloat;
 	gpuResized.convertTo(gpuFloat, CV_32F, 1.0 / 255.0); // Normalize to [0,1] and convert to float32
-
-	if (gpuFloat.empty()) {
-		std::cerr << "[ERROR] 2 gpuFloat is empty before processing!" << std::endl;
-		std::exit(1);
-	}
-	std::cout << "[INFO] gpuFloat: " << gpuFloat.cols << "x" << gpuFloat.rows
-			<< " type: " << gpuFloat.type()
-			<< " channels: " << gpuFloat.channels() << std::endl;
 
 	return gpuFloat;  // Return preprocessed image (still on GPU)
 }
