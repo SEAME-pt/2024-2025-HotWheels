@@ -298,9 +298,9 @@ void CameraStreamer::start() {
 						 0, 0, cv::INTER_LINEAR, stream);
 		stream.waitForCompletion(); */
 
-		if (m_publisherObject) {
+/* 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
-		}
+		} */
 
 		// Unmap and unregister CUDA resources
 		cuGraphicsUnmapResources(1, &cudaResource, 0);
