@@ -173,7 +173,6 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	cudaError_t err = cudaGetLastError();
 	if (err != cudaSuccess) {
 		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-		break;
 	}
 
 	cv::cuda::GpuMat gpuResized;
@@ -182,7 +181,6 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	err = cudaGetLastError();
 	if (err != cudaSuccess) {
 		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-		break;
 	}
 
 	cv::cuda::GpuMat gpuFloat;
@@ -191,7 +189,6 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 	err = cudaGetLastError();
 	if (err != cudaSuccess) {
 		std::cerr << "CUDA ERROR after <step>: " << cudaGetErrorString(err) << std::endl;
-		break;
 	}
 
 	return gpuFloat;  // Return preprocessed image (still on GPU)
