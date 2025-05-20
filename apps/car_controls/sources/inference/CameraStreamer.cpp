@@ -203,9 +203,9 @@ void CameraStreamer::start() {
 						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
 		stream.waitForCompletion();  // Synchronize
 
-		if (m_publisherObject) {
+/* 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
-		}
+		} */
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
