@@ -65,7 +65,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     INCLUDEPATH += /usr/include/GLFW
 
     # Jetson Multimedia API
-    INCLUDEPATH += /usr/src/jetson_multimedia_api/include/
+    INCLUDEPATH += $${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/include/
 
     # Library paths
     LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
