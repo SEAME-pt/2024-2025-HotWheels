@@ -83,7 +83,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     LIBS += -lnvmedia -lnvdla_compiler
 
     # GStreamer libraries
-    LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
+    LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstapp-1.0
 
     # OpenGL, GLEW, GLFW libraries (ORDER MATTERS!)
     LIBS += -lGLEW -lglfw -lGL
