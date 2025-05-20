@@ -11,7 +11,7 @@
 #include <opencv2/cudawarping.hpp>
 #include <gst/gst.h>
 #include <gst/app/gstappsink.h>
-#include <Argus.h>
+#include <Argus/Argus.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 #include <cudaEGL.h>
