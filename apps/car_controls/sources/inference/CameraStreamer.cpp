@@ -168,81 +168,58 @@ void CameraStreamer::start() {
 	initUndistortMaps();
 
 	cv::cuda::Stream stream;
+	const int input_width = 1280;
+	const int input_height = 720;
 
-	// Setup EGL display
-	EGLDisplay eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-	eglInitialize(eglDisplay, nullptr, nullptr);
+	// GStreamer pipeline for GPU-native capture
+	std::string pipelineStr =
+		"nvarguscamerasrc sensor-mode=4 ! "
+		"video/x-raw(memory:NVMM), width=1280, height=720, format=NV12, framerate=30/1 ! "
+		"nvvidconv ! "
+		"video/x-raw, format=RGBA ! "
+		"videoconvert ! "
+		"video/x-raw, format=BGR ! "
+		"appsink name=sink sync=false max-buffers=1 drop=true";
 
-	// Initialize Argus camera provider
-	UniqueObj<CameraProvider> cameraProvider(CameraProvider::create());
-	ICameraProvider* iCameraProvider = interface_cast<ICameraProvider>(cameraProvider);
+	GstElement* pipeline = gst_parse_launch(pipelineStr.c_str(), nullptr);
+	GstElement* sink = gst_bin_get_by_name(GST_BIN(pipeline), "sink");
 
-	std::vector<CameraDevice*> devices;
-	iCameraProvider->getCameraDevices(&devices);
-	CameraDevice* device = devices[0];
+	gst_element_set_state(pipeline, GST_STATE_PLAYING);
 
-	// Create capture session
-	UniqueObj<CaptureSession> session(iCameraProvider->createCaptureSession(device));
-	ICaptureSession* iSession = interface_cast<ICaptureSession>(session);
-
-	// Create output stream (EGLStream)
-	UniqueObj<OutputStreamSettings> streamSettings(iSession->createOutputStreamSettings());
-	IOutputStreamSettings* iSettings = interface_cast<IOutputStreamSettings>(streamSettings);
-	iSettings->setPixelFormat(PIXEL_FMT_YCbCr_420_888);
-	iSettings->setResolution(Size(1280, 720));
-	iSettings->setEGLDisplay(eglDisplay);
-
-	UniqueObj<OutputStream> stream(iSession->createOutputStream(streamSettings));
-	IStream* iStream = interface_cast<IStream>(stream);
-
-	// Create request
-	UniqueObj<Request> request(iSession->createRequest());
-	IRequest* iRequest = interface_cast<IRequest>(request);
-	iRequest->enableOutputStream(stream.get());
-
-	// Start repeat capture
-	iSession->repeat(request);
-
-	// Create frame consumer
-	UniqueObj<EGLStream::FrameConsumer> consumer(EGLStream::FrameConsumer::create(stream.get()));
-	EGLStream::IFrameConsumer* iConsumer = interface_cast<EGLStream::IFrameConsumer>(consumer);
-
-	std::cout << "[CameraStreamer] Starting capture loop..." << std::endl;
-
+	GstSample* sample = nullptr;
+	GstMapInfo map;
 	int frame_count = 0;
 	auto start_time = std::chrono::high_resolution_clock::now();
 
 	while (m_running) {
-		UniqueObj<EGLStream::Frame> frame(iConsumer->acquireFrame());
-        EGLStream::IFrame* iFrame = interface_cast<EGLStream::IFrame>(frame);
-        UniqueObj<EGLStream::Image> image(iFrame->getImage());
-        EGLStream::IImage* iImage = interface_cast<EGLStream::IImage>(image);
+		sample = gst_app_sink_try_pull_sample(GST_APP_SINK(sink), GST_SECOND / 30);
+		if (!sample) continue;
 
-		// Get EGLImage
-        EGLImageKHR eglImage = iImage->getEGLImage();
+		GstBuffer* buffer = gst_sample_get_buffer(sample);
+		GstCaps* caps = gst_sample_get_caps(sample);
+		GstStructure* s = gst_caps_get_structure(caps, 0);
+		int width, height;
+		gst_structure_get_int(s, "width", &width);
+		gst_structure_get_int(s, "height", &height);
 
-        // Map to CUDA
-        CUgraphicsResource cudaResource;
-        cuGraphicsEGLRegisterImage(&cudaResource, eglImage, CU_GRAPHICS_MAP_RESOURCE_FLAGS_NONE);
-        cuGraphicsMapResources(1, &cudaResource, 0);
+		if (!gst_buffer_map(buffer, &map, GST_MAP_READ)) {
+			gst_sample_unref(sample);
+			continue;
+		}
 
-        CUarray cuArray;
-        cuGraphicsSubResourceGetMappedArray(&cuArray, cudaResource, 0, 0);
+		// Wrap the GPU memory in a GpuMat directly
+		cv::Mat frame_cpu(height, width, CV_8UC3, map.data); // CPU memory
+		cv::cuda::GpuMat d_frame;
 
-		cv::cuda::GpuMat d_frame(720, 1280, CV_8UC4);
-
-		cudaMemcpy2DFromArray(d_frame.data, d_frame.step, cuArray, 0, 0,
-                              d_frame.cols * 4, d_frame.rows, cudaMemcpyDeviceToDevice);
-
-        cuGraphicsUnmapResources(1, &cudaResource, 0);
-        cuGraphicsUnregisterResource(cudaResource);
+		d_frame.upload(frame_cpu);
+		//cv::cuda::GpuMat d_frame(height, width, CV_8UC3, map.data);
 
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);
 
-		/* cv::cuda::GpuMat d_mask_u8;
+		cv::cuda::GpuMat d_mask_u8;
 		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0, 0, stream);
 
 		cv::cuda::GpuMat d_visualization;
@@ -250,17 +227,16 @@ void CameraStreamer::start() {
 
 		cv::cuda::GpuMat d_resized_mask;
 		cv::cuda::resize(d_visualization, d_resized_mask,
-						 cv::Size(input_width * scale_factor, input_height * scale_factor),
+						 cv::Size(width * scale_factor, height * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);
-		stream.waitForCompletion(); */
+		stream.waitForCompletion();
 
-/* 		if (m_publisherObject) {
+		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
-		} */
+		}
 
-		// Unmap and unregister CUDA resources
-		cuGraphicsUnmapResources(1, &cudaResource, 0);
-		cuGraphicsUnregisterResource(cudaResource);
+		gst_buffer_unmap(buffer, &map);
+		gst_sample_unref(sample);
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
@@ -273,22 +249,7 @@ void CameraStreamer::start() {
 		}
 	}
 
-	// Stop the capture session
-	iCaptureSession->stopRepeat();
-	iCaptureSession->waitForIdle();
-}
-
-void CameraStreamer::stop() {
-	if (!m_running) return;
-	m_running = false;
-
-	// Wait for any CUDA operations to finish
-	try {
-		cudaDeviceSynchronize();
-	} catch (const std::exception& e) {
-		std::cerr << "CUDA sync error in stop(): " << e.what() << std::endl;
-	}
-	std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-	std::cout << "[CameraStreamer] Shutdown complete." << std::endl;
+	gst_element_set_state(pipeline, GST_STATE_NULL);
+	gst_object_unref(sink);
+	gst_object_unref(pipeline);
 }
