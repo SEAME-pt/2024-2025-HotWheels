@@ -209,6 +209,7 @@ void CameraStreamer::start() {
 
 		// Allocate GPU memory
 		unsigned char* d_ptr;
+		size_t size = width * height * 3; // Assuming BGR format (3 channels)
 		cudaMalloc(&d_ptr, size);
 
 		// Copy from CPU to GPU manually (less efficient, but GPU-resident)
