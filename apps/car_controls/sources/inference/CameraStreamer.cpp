@@ -155,7 +155,7 @@ void CameraStreamer::initUndistortMaps() {
 	cv::Mat mapx, mapy;
 	cv::initUndistortRectifyMap(
 		cameraMatrix, distCoeffs, cv::Mat(), cameraMatrix,
-		cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH), cap.get(cv::CAP_PROP_FRAME_HEIGHT)),
+		cv::Size(1280, 720),
 		CV_32FC1, mapx, mapy
 	);  // Compute undistortion mapping
 
