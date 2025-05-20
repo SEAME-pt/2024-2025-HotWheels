@@ -208,15 +208,13 @@ void CameraStreamer::start() {
 		}
 
 		// Allocate GPU memory
-		CUdeviceptr d_ptr;
-		size_t size = width * height * 3; // Assuming BGR format (3 channels)
+		unsigned char* d_ptr;
 		cudaMalloc(&d_ptr, size);
-
 
 		// Copy from CPU to GPU manually (less efficient, but GPU-resident)
 		cudaMemcpy(d_ptr, map.data, size, cudaMemcpyHostToDevice);
 
-		cv::cuda::GpuMat d_frame(height, width, CV_8UC3, (void*)d_ptr);
+		cv::cuda::GpuMat d_frame(height, width, CV_8UC3, d_ptr);
 
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
