@@ -14,13 +14,14 @@
 
 #include <gst/gst.h>
 #include <gst/app/gstappsink.h>
-#include <cudaEGL.h>
 
 #include <Argus/Argus.h>
-#include <egl.h>
-#include <EGLStream.h>
-#include <NV/ImageNativeBuffer.h>
-#include <NV/FrameConsumer.h>
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
+#include <EGLStream/EGLStream.h>
+#include <EGLStream/NV/ImageNativeBuffer.h>
+#include <EGLStream/FrameConsumer.h>
+#include <cudaEGL.h>
 
 #include <cuda_runtime_api.h>
 #include <nvbuf_utils.h>
