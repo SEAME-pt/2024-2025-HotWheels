@@ -160,7 +160,7 @@ void CameraStreamer::start() {
 	//initOpenGL();  // Initialize OpenGL and CUDA interop
 
 	const char* device = "/dev/video0";
-	int cam_fd = open(device, O_RDWR);
+	int cam_fd = open(device, O_RDWR | O_NONBLOCK);
 	if (cam_fd < 0) {
 		perror("Failed to open camera");
 		return;
@@ -234,8 +234,14 @@ void CameraStreamer::start() {
 		std::cout << "Buffer queued." << std::endl;
 
 		if (ioctl(cam_fd, VIDIOC_DQBUF, &buf) == -1) {
-			perror("VIDIOC_DQBUF");
-			break;
+			if (ret == -1) {
+				if (errno == EAGAIN) {
+					// No frame yet, continue loop
+					continue;
+				}
+				std::cerr << "VIDIOC_DQBUF failed: " << strerror(errno) << std::endl;
+				break;
+			}
 		}
 
 		std::cout << "Buffer dequeued." << std::endl;
