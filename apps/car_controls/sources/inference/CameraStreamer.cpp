@@ -7,7 +7,7 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	// Start publisher to pass frames to the cluster
 	m_publisherObject = new Publisher(5556);
 
-	// Define GStreamer pipeline for CSI camera
+/* 	// Define GStreamer pipeline for CSI camera
 	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
@@ -15,7 +15,7 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	if (!cap.isOpened()) {  // Check if camera opened successfully
 		std::cerr << "Error: Could not open CSI camera" << std::endl;
 		exit(-1);  // Terminate if failed
-	}
+	} */
 }
 
 // Destructor: clean up resources
@@ -254,7 +254,7 @@ void CameraStreamer::start() {
 		cv::cuda::GpuMat d_resized_mask;
 
 		cv::cuda::resize(d_visualization, d_resized_mask,
-						 cv::Size(frame.cols * scale_factor, frame.rows * scale_factor),
+						 cv::Size(width * scale_factor, height * scale_factor),
 						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
 		stream.waitForCompletion();  // Synchronize
 
