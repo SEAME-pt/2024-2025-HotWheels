@@ -159,54 +159,82 @@ void CameraStreamer::start() {
 	initUndistortMaps();  // Initialize camera undistortion maps
 	//initOpenGL();  // Initialize OpenGL and CUDA interop
 
-	cv::Mat frame;
-	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
-
-	const int input_width = 1280;
-	const int input_height = 720;
-
-	NvVideoCapture *capture = NvVideoCapture::createVideoCapture("0");
-	if (!capture) {
-		std::cerr << "Failed to create NvVideoCapture" << std::endl;
+	const char* device = "/dev/video0";
+	int cam_fd = open(device, O_RDWR);
+	if (cam_fd < 0) {
+		perror("Failed to open camera");
 		return;
 	}
 
-	// Set capture format
-	if (capture->setCaptureFormat(input_width, input_height, V4L2_PIX_FMT_NV12) < 0) {
-		std::cerr << "Failed to set capture format" << std::endl;
+	// Request buffer
+	v4l2_requestbuffers req = {};
+	req.count = 1;
+	req.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+	req.memory = V4L2_MEMORY_MMAP;
+	if (ioctl(cam_fd, VIDIOC_REQBUFS, &req) == -1) {
+		perror("VIDIOC_REQBUFS");
+		close(cam_fd);
 		return;
 	}
 
-	if (capture->prepareBuffers() < 0 || capture->startStream() < 0) {
-		std::cerr << "Failed to prepare or start camera stream" << std::endl;
+	// Query buffer
+	v4l2_buffer buf = {};
+	buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+	buf.memory = V4L2_MEMORY_MMAP;
+	buf.index = 0;
+	if (ioctl(cam_fd, VIDIOC_QUERYBUF, &buf) == -1) {
+		perror("VIDIOC_QUERYBUF");
+		close(cam_fd);
 		return;
 	}
+
+	void* buffer = mmap(NULL, buf.length, PROT_READ | PROT_WRITE, MAP_SHARED, cam_fd, buf.m.offset);
+	if (buffer == MAP_FAILED) {
+		perror("mmap");
+		close(cam_fd);
+		return;
+	}
+
+	// Start streaming
+	v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+	if (ioctl(cam_fd, VIDIOC_STREAMON, &type) == -1) {
+		perror("VIDIOC_STREAMON");
+		munmap(buffer, buf.length);
+		close(cam_fd);
+		return;
+	}
+
+	cv::cuda::Stream stream;
+	size_t width = 1280, height = 720;
+	size_t size = width * height * 2; // YUYV = 2 bytes per pixel
+	unsigned char* d_yuyv;
+	cudaMalloc(&d_yuyv, size);
 
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int frame_count = 0;
 
 	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
 	while (m_running) {  // Main loop until stop signal
-		NvBuffer *buffer = nullptr;
-		if (capture->captureFrame(&buffer, 1000) < 0 || !buffer) {
-			std::cerr << "Failed to capture frame" << std::endl;
-			continue;
+		if (ioctl(cam_fd, VIDIOC_QBUF, &buf) == -1) {
+			perror("VIDIOC_QBUF");
+			break;
 		}
 
-		// Map buffer to CUDA pointer
-		void *dev_ptr = nullptr;
-		int fd = buffer->getFd();
+		if (ioctl(cam_fd, VIDIOC_DQBUF, &buf) == -1) {
+			perror("VIDIOC_DQBUF");
+			break;
+		}
 
-		NvBufferParams params;
-		NvBufferGetParams(fd, &params);
+		// Copy YUYV data to GPU
+		cudaMemcpy(d_yuyv, buffer, size, cudaMemcpyHostToDevice);
 
-		NvBufferMemMap(fd, 0, NvBufferMem_Read_Write, &dev_ptr);
-		NvBufferMemSyncForCpu(fd, 0, &params);
-		NvBufferMemSyncForDevice(fd, 0, &params);
+		// Convert YUYV to BGR using OpenCV CUDA
+		cv::cuda::GpuMat yuyv(height, width, CV_8UC2, d_yuyv);
+		cv::cuda::GpuMat bgr;
+		cv::cuda::cvtColor(yuyv, bgr, cv::COLOR_YUV2BGR_YUY2, 0, stream);
 
-		cv::cuda::GpuMat d_frame(input_height, input_width, CV_8UC1, dev_ptr);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
+		cv::cuda::remap(bgr, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
@@ -248,8 +276,9 @@ void CameraStreamer::start() {
 		//renderTexture();  // Render it
 	}
 
-	capture->stopStream();
-	delete capture;  // Clean up capture object
+	cudaFree(d_yuyv);
+	munmap(buffer, buf.length);
+	close(cam_fd);
 }
 
 void CameraStreamer::stop() {

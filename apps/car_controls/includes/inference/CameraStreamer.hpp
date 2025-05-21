@@ -4,13 +4,20 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <fcntl.h>
+#include <linux/videodev2.h>
+#include <sys/ioctl.h>
+#include <sys/mman.h>
+#include <unistd.h>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/cudawarping.hpp>
+#include <opencv2/core/cuda.hpp>
 
-#include <cuda.h>
 #include <cuda_runtime_api.h>
 #include <cuda_runtime.h>
+#include <cuda.h>
 
 #include <nvbuf_utils.h>
 #include <NvEglRenderer.h>
