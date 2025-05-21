@@ -166,6 +166,8 @@ void CameraStreamer::start() {
 		return;
 	}
 
+	std::cout << "Camera opened successfully." << std::endl;
+
 	// Request buffer
 	v4l2_requestbuffers req = {};
 	req.count = 1;
@@ -176,6 +178,8 @@ void CameraStreamer::start() {
 		close(cam_fd);
 		return;
 	}
+
+	std::cout << "Buffer requested." << std::endl;
 
 	// Query buffer
 	v4l2_buffer buf = {};
@@ -188,12 +192,16 @@ void CameraStreamer::start() {
 		return;
 	}
 
+	std::cout << "Buffer queried." << std::endl;
+
 	void* buffer = mmap(NULL, buf.length, PROT_READ | PROT_WRITE, MAP_SHARED, cam_fd, buf.m.offset);
 	if (buffer == MAP_FAILED) {
 		perror("mmap");
 		close(cam_fd);
 		return;
 	}
+
+	std::cout << "Buffer memory mapped." << std::endl;
 
 	// Start streaming
 	v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -203,6 +211,8 @@ void CameraStreamer::start() {
 		close(cam_fd);
 		return;
 	}
+
+	std::cout << "Streaming started." << std::endl;
 
 	cv::cuda::Stream stream;
 	size_t width = 1280, height = 720;
@@ -215,6 +225,7 @@ void CameraStreamer::start() {
 
 	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
 	while (m_running) {  // Main loop until stop signal
+		std::cout << "Waiting for frame..." << std::endl;
 		if (ioctl(cam_fd, VIDIOC_QBUF, &buf) == -1) {
 			perror("VIDIOC_QBUF");
 			break;
