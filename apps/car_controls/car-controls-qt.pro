@@ -64,10 +64,6 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     INCLUDEPATH += /usr/include/GL
     INCLUDEPATH += /usr/include/GLFW
 
-    #Jetson Multimedia API
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/src/jetson_multimedia_api
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/src/jetson_multimedia_api/include
-
     # Library paths
     LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
     LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
@@ -75,7 +71,6 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
     LIBS += -L/usr/local/lib  # <- Add this for GLEW/GLFW libs
-    LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda/lib64
 
     # Eigen libraries
     INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/eigen3
@@ -86,10 +81,9 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     LIBS += -l:libopencv_cudaarithm.so.405 -l:libopencv_cudawarping.so.405 -l:libopencv_cudaimgproc.so.405 -l:libopencv_cudacodec.so.405
     LIBS += -lcublasLt -llapack -lblas
     LIBS += -lnvmedia -lnvdla_compiler
-    LIBS += -lnvbuf_utils -lnvcamerautils -lcuda -ldl -lv4l2
 
     # GStreamer libraries
-    LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 -lgstapp-1.0
+    LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
 
     # OpenGL, GLEW, GLFW libraries (ORDER MATTERS!)
     LIBS += -lGLEW -lglfw -lGL

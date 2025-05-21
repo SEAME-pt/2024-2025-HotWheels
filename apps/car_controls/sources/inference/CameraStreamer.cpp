@@ -154,56 +154,13 @@ void CameraStreamer::initUndistortMaps() {
 	d_mapy.upload(mapy);  // Upload Y map to GPU
 }
 
-// Helper function to convert NV_FRAME to GpuMat without copying
-cv::cuda::GpuMat CameraStreamer::NvFrameToGpuMat(NV_FRAME* frame) {
-	// Create a GpuMat header around the existing GPU memory
-	// No memory copying happens here
-	int width = frame->width;
-	int height = frame->height;
-
-	// Get the CUDA device pointer
-	void* devicePtr = frame->devicePtr;
-
-	// Create GpuMat header that references the existing memory
-	cv::cuda::GpuMat mat(height, width, CV_8UC4, devicePtr, frame->pitch);
-
-	return mat;
-}
-
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
 	initUndistortMaps();  // Initialize camera undistortion maps
 	//initOpenGL();  // Initialize OpenGL and CUDA interop
 
-	// Initialize NVIDIA Video Codec SDK for direct GPU frame capture
-	// This uses NVDEC to acquire frames directly on the GPU
-
-	// Create NvDecoder instance for direct GPU capture
-	NvDecoder* nvDecoder = nullptr;
-
-	// Replace OpenCV's VideoCapture with direct GPU capture
-	// This uses NVIDIA's Video SDK - no CPU frame processing needed
-	cudaStream_t cudaStream;
-	cudaStreamCreate(&cudaStream);
-
-	// Setup camera with NVIDIA's Video Codec SDK
-	int deviceID = 0; // Use first CUDA device
-	NvVideoDecoderCuda* videoDecoder = NvVideoDecoderCuda::CreateInstance(deviceID);
-
-	// Set camera parameters
-	int camera_id = 0; // Camera index
-	videoDecoder->SetCameraSource(camera_id);
-
-	// Create and keep GPU buffers persistent
-	cv::cuda::GpuMat d_frame;
-	cv::cuda::GpuMat d_undistorted;
-	cv::cuda::GpuMat d_prediction_mask;
-	cv::cuda::GpuMat d_mask_u8;
-	cv::cuda::GpuMat d_visualization;
-	cv::cuda::GpuMat d_resized_mask;
-
-	// Create a CUDA stream for processing
-	cv::cuda::Stream cvStream = cv::cuda::StreamAccessor::wrapStream(cudaStream);
+	cv::Mat frame;
+	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
 	const int framesToSkip = 1;  // Skip frames to reduce processing load
 	auto start_time = std::chrono::high_resolution_clock::now();
@@ -211,32 +168,33 @@ void CameraStreamer::start() {
 
 	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
 	while (m_running) {  // Main loop until stop signal
-		// Capture frame directly to GPU memory using NVDEC
-		// This returns a CUDA device pointer
-		NV_FRAME* frame = nullptr;
-		bool got_frame = videoDecoder->GetNextFrame(&frame, cudaStream);
+		auto frame_start = std::chrono::high_resolution_clock::now();
 
-		if (!got_frame || !frame) {
-			// Handle error
-			std::cerr << "Failed to get frame from GPU decoder" << std::endl;
-			continue;
+		for (int i = 0; i < framesToSkip; ++i) {
+			cap.grab();  // Grab frames without decoding
 		}
+		cap >> frame;  // Read one frame (decoded)
 
-		// Create GpuMat wrapper around the CUDA frame memory
-		// No copy needed - directly referencing GPU memory
-		cv::cuda::GpuMat d_frame = NvFrameToGpuMat(frame);
+		if (frame.empty()) break;  // Stop if frame is invalid
 
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), cvStream);  // Undistort frame
+		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
+		cv::cuda::GpuMat d_undistorted;
+		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
 		// Convert to 8-bit (0 or 255) in a new GpuMat
+		cv::cuda::GpuMat d_mask_u8;
 		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255
 
-		//cv::Mat binary_mask_cpu;
-		//d_mask_u8.download(binary_mask_cpu, stream);
-		cv::threshold(d_mask_u8, d_visualization, 128, 255, cv::THRESH_BINARY);
-		//stream.waitForCompletion();  // Ensure async operations are complete
+		cv::Mat binary_mask_cpu;
+		d_mask_u8.download(binary_mask_cpu, stream);
+		cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
+		stream.waitForCompletion();  // Ensure async operations are complete
+
+		// Convert model output to 8-bit binary mask on GPU
+		cv::cuda::GpuMat d_visualization;
+		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
 
 		cv::cuda::GpuMat d_resized_mask;
 
@@ -248,9 +206,6 @@ void CameraStreamer::start() {
 		if (m_publisherObject) {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
 		}
-
-		// Release the GPU frame back to the decoder
-		videoDecoder->ReleaseFrame(frame);
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
@@ -265,10 +220,6 @@ void CameraStreamer::start() {
 		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
 		//renderTexture();  // Render it
 	}
-
-	// Cleanup
-	cudaStreamDestroy(cudaStream);
-	delete videoDecoder;
 }
 
 void CameraStreamer::stop() {

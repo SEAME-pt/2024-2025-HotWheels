@@ -1,33 +1,12 @@
 #ifndef CAMERA_STREAMER_HPP
 #define CAMERA_STREAMER_HPP
 
-#pragma once
-
-
-// Prevent macro conflicts
-#undef None
-#undef Bool
-#undef Status
-#undef KeyPress
-
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include <fcntl.h>
-#include <linux/videodev2.h>
-#include <sys/ioctl.h>
-#include <sys/mman.h>
-#include <unistd.h>
-
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/cudawarping.hpp>
-#include <opencv2/core/cuda.hpp>
-
-#include <cuda_runtime_api.h>
-#include <cuda_runtime.h>
-#include <cuda.h>
-
 #include "TensorRTInferencer.hpp"
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"
@@ -44,7 +23,6 @@ public:
 	void initUndistortMaps();
 	void uploadFrameToTexture(const cv::cuda::GpuMat& gpuFrame);
 	void renderTexture();
-	cv::cuda::GpuMat NvFrameToGpuMat(NV_FRAME* frame);
 
 	void start();
 	void stop();
