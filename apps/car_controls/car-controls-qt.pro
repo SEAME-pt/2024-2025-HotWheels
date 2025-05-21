@@ -75,7 +75,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
     LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
     LIBS += -L/usr/local/lib  # <- Add this for GLEW/GLFW libs
-    LIBS += -$${JETSON_SYSROOT}L/usr/local/cuda/lib64
+    LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda/lib64
 
     # Eigen libraries
     INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/eigen3
