@@ -177,8 +177,6 @@ void CameraStreamer::start() {
 		"video/x-raw(memory:NVMM), width=1280, height=720, format=NV12, framerate=30/1 ! "
 		"nvvidconv ! "
 		"video/x-raw, format=RGBA ! "
-		"videoconvert ! "
-		"video/x-raw, format=BGR ! "
 		"appsink name=sink sync=false max-buffers=1 drop=true";
 
 	GstElement* pipeline = gst_parse_launch(pipelineStr.c_str(), nullptr);
@@ -215,7 +213,7 @@ void CameraStreamer::start() {
 		// Copy from CPU to GPU manually (less efficient, but GPU-resident)
 		cudaMemcpy(d_ptr, map.data, size, cudaMemcpyHostToDevice);
 
-		cv::cuda::GpuMat d_frame(height, width, CV_8UC3, d_ptr);
+		cv::cuda::GpuMat d_frame(height, width, CV_8UC4, d_ptr);
 
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
