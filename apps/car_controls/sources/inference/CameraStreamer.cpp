@@ -7,7 +7,7 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	// Start publisher to pass frames to the cluster
 	m_publisherObject = new Publisher(5556);
 
-/* 	// Define GStreamer pipeline for CSI camera
+	// Define GStreamer pipeline for CSI camera
 	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
 
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
@@ -15,7 +15,7 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	if (!cap.isOpened()) {  // Check if camera opened successfully
 		std::cerr << "Error: Could not open CSI camera" << std::endl;
 		exit(-1);  // Terminate if failed
-	} */
+	}
 }
 
 // Destructor: clean up resources
@@ -155,153 +155,94 @@ void CameraStreamer::initUndistortMaps() {
 }
 
 // Main loop: capture, undistort, predict, visualize and render frames
+
 void CameraStreamer::start() {
-	initUndistortMaps();  // Initialize camera undistortion maps
-	//initOpenGL();  // Initialize OpenGL and CUDA interop
+    initUndistortMaps();  // Initialize camera undistortion maps
 
-	const char* device = "/dev/video0";
-	int cam_fd = open(device, O_RDWR | O_NONBLOCK);
-	if (cam_fd < 0) {
-		perror("Failed to open camera");
-		return;
-	}
+    // Create and keep GPU buffers persistent
+    cv::cuda::GpuMat d_frame;
+    cv::cuda::GpuMat d_undistorted;
+    cv::cuda::GpuMat d_prediction_mask;
+    cv::cuda::GpuMat d_mask_u8;
+    cv::cuda::GpuMat d_visualization;
+    cv::cuda::GpuMat d_resized_mask;
 
-	std::cout << "Camera opened successfully." << std::endl;
+    // Create a CUDA stream for asynchronous operations
+    cv::cuda::Stream stream;
 
-	// Request buffer
-	v4l2_requestbuffers req = {};
-	req.count = 1;
-	req.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-	req.memory = V4L2_MEMORY_MMAP;
-	if (ioctl(cam_fd, VIDIOC_REQBUFS, &req) == -1) {
-		perror("VIDIOC_REQBUFS");
-		close(cam_fd);
-		return;
-	}
+    // Create a VideoCapture interface that uses GPU acceleration if available
+    // OpenCV 4.x supports CUDA-accelerated video capture for some hardware
+    if (cv::cuda::getCudaEnabledDeviceCount() > 0) {
+        // Use CUDA video decoder if available
+        cap.set(cv::CAP_PROP_BACKEND, cv::CAP_CUDA);
+        cap.set(cv::CAP_PROP_CUDA_DEVICE, 0); // Use first CUDA device
+    }
 
-	std::cout << "Buffer requested." << std::endl;
+    const int framesToSkip = 1;  // Skip frames to reduce processing load
+    auto start_time = std::chrono::high_resolution_clock::now();
+    int frame_count = 0;
 
-	// Query buffer
-	v4l2_buffer buf = {};
-	buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-	buf.memory = V4L2_MEMORY_MMAP;
-	buf.index = 0;
-	if (ioctl(cam_fd, VIDIOC_QUERYBUF, &buf) == -1) {
-		perror("VIDIOC_QUERYBUF");
-		close(cam_fd);
-		return;
-	}
+    // Allocate pinned memory for faster CPU-GPU transfers
+    cv::Mat frame;
+    cv::cuda::registerPageLocked(frame);
 
-	std::cout << "Buffer queried." << std::endl;
+    // Prepare a buffer for asynchronous frame grabbing
+    cv::cuda::HostMem hostFrame(cv::cuda::HostMem::PAGE_LOCKED);
 
-	void* buffer = mmap(NULL, buf.length, PROT_READ | PROT_WRITE, MAP_SHARED, cam_fd, buf.m.offset);
-	if (buffer == MAP_FAILED) {
-		perror("mmap");
-		close(cam_fd);
-		return;
-	}
+    while (m_running) {
+        auto frame_start = std::chrono::high_resolution_clock::now();
 
-	std::cout << "Buffer memory mapped." << std::endl;
+        // Skip frames if needed
+        for (int i = 0; i < framesToSkip; ++i) {
+            cap.grab();
+        }
 
-	// Start streaming
-	v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-	if (ioctl(cam_fd, VIDIOC_STREAMON, &type) == -1) {
-		perror("VIDIOC_STREAMON");
-		munmap(buffer, buf.length);
-		close(cam_fd);
-		return;
-	}
+        // Use zero-copy upload if possible (depends on hardware support)
+        bool frameReady = cap.read(hostFrame);
+        if (!frameReady) break;
 
-	std::cout << "Streaming started." << std::endl;
+        // Upload frame to GPU - this is a zero-copy operation with pinned memory
+        d_frame.upload(hostFrame.createMatHeader(), stream);
 
-	cv::cuda::Stream stream;
-	size_t width = 1280, height = 720;
-	size_t size = width * height * 2; // YUYV = 2 bytes per pixel
-	unsigned char* d_yuyv;
-	cudaMalloc(&d_yuyv, size);
+        // Launch all GPU operations asynchronously in the stream
 
-	auto start_time = std::chrono::high_resolution_clock::now();
-	int frame_count = 0;
+        // Undistort frame
+        cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);
 
-	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
-	while (m_running) {  // Main loop until stop signal
-		std::cout << "Waiting for frame..." << std::endl;
-		if (ioctl(cam_fd, VIDIOC_QBUF, &buf) == -1) {
-			perror("VIDIOC_QBUF");
-			break;
-		}
+        // Run model inference (asynchronously if supported by the inferencer)
+        d_prediction_mask = m_inferencer->makePrediction(d_undistorted, stream);
 
-		std::cout << "Buffer queued." << std::endl;
+        // Convert to 8-bit (0 or 255) without downloading to CPU
+        d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0, 0, stream);
 
-		if (ioctl(cam_fd, VIDIOC_DQBUF, &buf) == -1) {
-			if (ret == -1) {
-				if (errno == EAGAIN) {
-					// No frame yet, continue loop
-					continue;
-				}
-				std::cerr << "VIDIOC_DQBUF failed: " << strerror(errno) << std::endl;
-				break;
-			}
-		}
+        // Apply threshold on GPU
+        cv::cuda::threshold(d_mask_u8, d_visualization, 128, 255, cv::THRESH_BINARY, stream);
 
-		std::cout << "Buffer dequeued." << std::endl;
+        // Resize for display on GPU
+        cv::cuda::resize(d_visualization, d_resized_mask,
+                       cv::Size(hostFrame.size().width * scale_factor,
+                                hostFrame.size().height * scale_factor),
+                       0, 0, cv::INTER_LINEAR, stream);
 
-		// Copy YUYV data to GPU
-		cudaMemcpy(d_yuyv, buffer, size, cudaMemcpyHostToDevice);
+        // Only synchronize if we need to publish the frame
+        if (m_publisherObject) {
+            // No need to download to CPU if the publisher can accept GpuMat directly
+            m_publisherObject->publishFrame("inference_frame", d_resized_mask, stream);
+        }
 
-		std::cout << "YUYV data copied to GPU." << std::endl;
+        frame_count++;
+        auto now = std::chrono::high_resolution_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start_time).count();
 
-		// Convert YUYV to BGR using OpenCV CUDA
-		cv::cuda::GpuMat yuyv(height, width, CV_8UC2, d_yuyv);
-		cv::cuda::GpuMat bgr;
-		cv::cuda::cvtColor(yuyv, bgr, cv::COLOR_YUV2BGR_YUY2, 0, stream);
+        if (elapsed >= 1) {
+            std::cout << "Average FPS: " << frame_count / static_cast<double>(elapsed) << std::endl;
+            start_time = now;
+            frame_count = 0;
+        }
+    }
 
-		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(bgr, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
-
-		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
-
-		// Convert to 8-bit (0 or 255) in a new GpuMat
-		cv::cuda::GpuMat d_mask_u8;
-		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255
-
-		cv::Mat binary_mask_cpu;
-		d_mask_u8.download(binary_mask_cpu, stream);
-		cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
-		stream.waitForCompletion();  // Ensure async operations are complete
-
-		// Convert model output to 8-bit binary mask on GPU
-		cv::cuda::GpuMat d_visualization;
-		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
-
-		cv::cuda::GpuMat d_resized_mask;
-
-		cv::cuda::resize(d_visualization, d_resized_mask,
-						 cv::Size(width * scale_factor, height * scale_factor),
-						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
-		stream.waitForCompletion();  // Synchronize
-
-		if (m_publisherObject) {
-			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
-		}
-
-		frame_count++;
-		auto now = std::chrono::high_resolution_clock::now();
-		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start_time).count();
-
-		if (elapsed >= 1) {
-			std::cout << "Average FPS: " << frame_count / static_cast<double>(elapsed) << std::endl;
-			start_time = now;
-			frame_count = 0;
-		}
-
-		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
-		//renderTexture();  // Render it
-	}
-
-	cudaFree(d_yuyv);
-	munmap(buffer, buf.length);
-	close(cam_fd);
+    // Clean up pinned memory
+    cv::cuda::unregisterPageLocked(frame);
 }
 
 void CameraStreamer::stop() {
