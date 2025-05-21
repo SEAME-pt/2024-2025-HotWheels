@@ -162,22 +162,49 @@ void CameraStreamer::start() {
 	cv::Mat frame;
 	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
-	const int framesToSkip = 1;  // Skip frames to reduce processing load
+	const int input_width = 1280;
+	const int input_height = 720;
+
+	NvVideoCapture *capture = NvVideoCapture::createVideoCapture("0");
+	if (!capture) {
+		std::cerr << "Failed to create NvVideoCapture" << std::endl;
+		return;
+	}
+
+	// Set capture format
+	if (capture->setCaptureFormat(input_width, input_height, V4L2_PIX_FMT_NV12) < 0) {
+		std::cerr << "Failed to set capture format" << std::endl;
+		return;
+	}
+
+	if (capture->prepareBuffers() < 0 || capture->startStream() < 0) {
+		std::cerr << "Failed to prepare or start camera stream" << std::endl;
+		return;
+	}
+
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int frame_count = 0;
 
 	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
 	while (m_running) {  // Main loop until stop signal
-		auto frame_start = std::chrono::high_resolution_clock::now();
-
-		for (int i = 0; i < framesToSkip; ++i) {
-			cap.grab();  // Grab frames without decoding
+		NvBuffer *buffer = nullptr;
+		if (capture->captureFrame(&buffer, 1000) < 0 || !buffer) {
+			std::cerr << "Failed to capture frame" << std::endl;
+			continue;
 		}
-		cap >> frame;  // Read one frame (decoded)
 
-		if (frame.empty()) break;  // Stop if frame is invalid
+		// Map buffer to CUDA pointer
+		void *dev_ptr = nullptr;
+		int fd = buffer->getFd();
 
-		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
+		NvBufferParams params;
+		NvBufferGetParams(fd, &params);
+
+		NvBufferMemMap(fd, 0, NvBufferMem_Read_Write, &dev_ptr);
+		NvBufferMemSyncForCpu(fd, 0, &params);
+		NvBufferMemSyncForDevice(fd, 0, &params);
+
+		cv::cuda::GpuMat d_frame(input_height, input_width, CV_8UC1, dev_ptr);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
 
@@ -220,6 +247,9 @@ void CameraStreamer::start() {
 		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
 		//renderTexture();  // Render it
 	}
+
+	capture->stopStream();
+	delete capture;  // Clean up capture object
 }
 
 void CameraStreamer::stop() {
