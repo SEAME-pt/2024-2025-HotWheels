@@ -19,10 +19,6 @@
 #include <cuda_runtime.h>
 #include <cuda.h>
 
-#include <nvbuf_utils.h>
-#include <NvEglRenderer.h>
-#include <NvVideoCapture.h>
-
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 #include <EGL/eglplatform.h>
