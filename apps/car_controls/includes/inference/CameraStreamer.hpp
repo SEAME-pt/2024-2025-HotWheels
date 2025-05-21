@@ -44,6 +44,7 @@ public:
 	void initUndistortMaps();
 	void uploadFrameToTexture(const cv::cuda::GpuMat& gpuFrame);
 	void renderTexture();
+	cv::cuda::GpuMat NvFrameToGpuMat(NV_FRAME* frame);
 
 	void start();
 	void stop();

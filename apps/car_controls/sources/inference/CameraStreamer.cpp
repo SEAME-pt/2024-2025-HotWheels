@@ -154,10 +154,45 @@ void CameraStreamer::initUndistortMaps() {
 	d_mapy.upload(mapy);  // Upload Y map to GPU
 }
 
+// Helper function to convert NV_FRAME to GpuMat without copying
+cv::cuda::GpuMat CameraStreamer::NvFrameToGpuMat(NV_FRAME* frame) {
+	// Create a GpuMat header around the existing GPU memory
+	// No memory copying happens here
+	int width = frame->width;
+	int height = frame->height;
+
+	// Get the CUDA device pointer
+	void* devicePtr = frame->devicePtr;
+
+	// Create GpuMat header that references the existing memory
+	cv::cuda::GpuMat mat(height, width, CV_8UC4, devicePtr, frame->pitch);
+
+	return mat;
+}
+
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
 	initUndistortMaps();  // Initialize camera undistortion maps
 	//initOpenGL();  // Initialize OpenGL and CUDA interop
+
+	// Initialize NVIDIA Video Codec SDK for direct GPU frame capture
+	// This uses NVDEC to acquire frames directly on the GPU
+
+	// Create NvDecoder instance for direct GPU capture
+	NvDecoder* nvDecoder = nullptr;
+
+	// Replace OpenCV's VideoCapture with direct GPU capture
+	// This uses NVIDIA's Video SDK - no CPU frame processing needed
+	cudaStream_t cudaStream;
+	cudaStreamCreate(&cudaStream);
+
+	// Setup camera with NVIDIA's Video Codec SDK
+	int deviceID = 0; // Use first CUDA device
+	NvVideoDecoderCuda* videoDecoder = NvVideoDecoderCuda::CreateInstance(deviceID);
+
+	// Set camera parameters
+	int camera_id = 0; // Camera index
+	videoDecoder->SetCameraSource(camera_id);
 
 	// Create and keep GPU buffers persistent
 	cv::cuda::GpuMat d_frame;
@@ -167,46 +202,31 @@ void CameraStreamer::start() {
 	cv::cuda::GpuMat d_visualization;
 	cv::cuda::GpuMat d_resized_mask;
 
-	// Create a CUDA stream for asynchronous operations
-	cv::cuda::Stream stream;
-
-	// Create a VideoCapture interface that uses GPU acceleration if available
-	// OpenCV 4.x supports CUDA-accelerated video capture for some hardware
-	if (cv::cuda::getCudaEnabledDeviceCount() > 0) {
-		// Use CUDA video decoder if available
-		cap.set(cv::CAP_PROP_BACKEND, cv::CAP_UEYE);
-		cap.set(cv::CAP_PROP_HW_DEVICE, 0); // Use first CUDA device
-	}
+	// Create a CUDA stream for processing
+	cv::cuda::Stream cvStream = cv::cuda::StreamAccessor::wrapStream(cudaStream);
 
 	const int framesToSkip = 1;  // Skip frames to reduce processing load
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int frame_count = 0;
 
-	// Allocate pinned memory for faster CPU-GPU transfers
-	cv::Mat frame;
-	cv::cuda::registerPageLocked(frame);
-
-	// Prepare a buffer for asynchronous frame grabbing
-	cv::cuda::HostMem hostFrame(cv::cuda::HostMem::PAGE_LOCKED);
-
 	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
 	while (m_running) {  // Main loop until stop signal
-		auto frame_start = std::chrono::high_resolution_clock::now();
+		// Capture frame directly to GPU memory using NVDEC
+		// This returns a CUDA device pointer
+		NV_FRAME* frame = nullptr;
+		bool got_frame = videoDecoder->GetNextFrame(&frame, cudaStream);
 
-		for (int i = 0; i < framesToSkip; ++i) {
-			cap.grab();  // Grab frames without decoding
+		if (!got_frame || !frame) {
+			// Handle error
+			std::cerr << "Failed to get frame from GPU decoder" << std::endl;
+			continue;
 		}
-		cap >> frame;  // Read one frame (decoded)
 
-		if (frame.empty()) break;  // Stop if frame is invalid
+		// Create GpuMat wrapper around the CUDA frame memory
+		// No copy needed - directly referencing GPU memory
+		cv::cuda::GpuMat d_frame = NvFrameToGpuMat(frame);
 
-		// Use zero-copy upload if possible (depends on hardware support)
-        bool frameReady = cap.read(hostFrame);
-        if (!frameReady) break;
-
-		d_frame.upload(hostFrame.createMatHeader(), stream);  // Upload to GPU with async stream
-
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
+		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), cvStream);  // Undistort frame
 
 		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
 
@@ -229,6 +249,9 @@ void CameraStreamer::start() {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
 		}
 
+		// Release the GPU frame back to the decoder
+		videoDecoder->ReleaseFrame(frame);
+
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
 		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start_time).count();
@@ -243,8 +266,9 @@ void CameraStreamer::start() {
 		//renderTexture();  // Render it
 	}
 
-	// Clean up pinned memory
-	cv::cuda::unregisterPageLocked(frame);
+	// Cleanup
+	cudaStreamDestroy(cudaStream);
+	delete videoDecoder;
 }
 
 void CameraStreamer::stop() {
