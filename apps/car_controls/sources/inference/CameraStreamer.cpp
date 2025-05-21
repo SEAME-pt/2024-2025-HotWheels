@@ -239,6 +239,8 @@ void CameraStreamer::start() {
 			m_publisherObject->publishFrame("inference_frame", d_resized_mask);
 		}
 
+		cudaFree(d_ptr);
+
 		gst_buffer_unmap(buffer, &map);
 		gst_sample_unref(sample);
 
