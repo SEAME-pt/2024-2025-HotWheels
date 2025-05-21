@@ -231,13 +231,19 @@ void CameraStreamer::start() {
 			break;
 		}
 
+		std::cout << "Buffer queued." << std::endl;
+
 		if (ioctl(cam_fd, VIDIOC_DQBUF, &buf) == -1) {
 			perror("VIDIOC_DQBUF");
 			break;
 		}
 
+		std::cout << "Buffer dequeued." << std::endl;
+
 		// Copy YUYV data to GPU
 		cudaMemcpy(d_yuyv, buffer, size, cudaMemcpyHostToDevice);
+
+		std::cout << "YUYV data copied to GPU." << std::endl;
 
 		// Convert YUYV to BGR using OpenCV CUDA
 		cv::cuda::GpuMat yuyv(height, width, CV_8UC2, d_yuyv);
