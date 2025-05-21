@@ -28,10 +28,6 @@
 #include <cuda_runtime.h>
 #include <cuda.h>
 
-#include <EGL/egl.h>
-#include <EGL/eglext.h>
-#include <EGL/eglplatform.h>
-
 #include "TensorRTInferencer.hpp"
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"
