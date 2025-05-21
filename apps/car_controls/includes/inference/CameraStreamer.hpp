@@ -1,6 +1,15 @@
 #ifndef CAMERA_STREAMER_HPP
 #define CAMERA_STREAMER_HPP
 
+#pragma once
+
+
+// Prevent macro conflicts
+#undef None
+#undef Bool
+#undef Status
+#undef KeyPress
+
 #include <iostream>
 #include <thread>
 #include <chrono>
