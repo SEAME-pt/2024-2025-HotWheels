@@ -174,8 +174,8 @@ void CameraStreamer::start() {
 	// OpenCV 4.x supports CUDA-accelerated video capture for some hardware
 	if (cv::cuda::getCudaEnabledDeviceCount() > 0) {
 		// Use CUDA video decoder if available
-		cap.set(cv::CAP_PROP_BACKEND, cv::CAP_CUDA);
-		cap.set(cv::CAP_PROP_CUDA_DEVICE, 0); // Use first CUDA device
+		cap.set(cv::CAP_PROP_BACKEND, cv::CAP_UEYE);
+		cap.set(cv::CAP_PROP_HW_DEVICE, 0); // Use first CUDA device
 	}
 
 	const int framesToSkip = 1;  // Skip frames to reduce processing load
@@ -215,12 +215,8 @@ void CameraStreamer::start() {
 
 		//cv::Mat binary_mask_cpu;
 		//d_mask_u8.download(binary_mask_cpu, stream);
-		cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
+		cv::threshold(d_mask_u8, d_visualization, 128, 255, cv::THRESH_BINARY);
 		//stream.waitForCompletion();  // Ensure async operations are complete
-
-		// Convert model output to 8-bit binary mask on GPU
-		cv::cuda::GpuMat d_visualization;
-		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
 
 		cv::cuda::GpuMat d_resized_mask;
 
