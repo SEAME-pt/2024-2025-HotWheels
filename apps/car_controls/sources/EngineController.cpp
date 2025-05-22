@@ -59,7 +59,7 @@ EngineController::EngineController(int servo_addr, int motor_addr,
 
 /*!
  * @brief Destructor for the EngineController class.
- * 
+ *
  * @details Stops the engine and deletes the peripheral controller.
  */
 EngineController::~EngineController() {
@@ -69,14 +69,14 @@ EngineController::~EngineController() {
 
 /*!
  * @brief Starts the engine.
- * 
+ *
  * @details Sets the m_running flag to true.
  */
 void EngineController::start() { m_running = true; }
 
 /*!
  * @brief Stops the engine.
- * 
+ *
  * @details Sets the m_running flag to false and sets both speed and steering to 0.
  */
 void EngineController::stop() {
@@ -100,9 +100,9 @@ void EngineController::setDirection(CarDirection newDirection) {
 
 /*!
  * @brief Sets the speed of the car.
- * 
+ *
  * @param speed The desired speed value, ranging from -100 to 100.
- * 
+ *
  * @details This function adjusts the motor PWM signals based on the input speed value.
  * Positive values set the car to move in reverse due to joystick reversal, while negative
  * values move it forward. A speed of zero stops the car. The function also updates the
@@ -114,7 +114,7 @@ void EngineController::set_speed(int speed) {
 	speed = clamp(speed, -100, 100);
 	int pwm_value = static_cast<int>(std::abs(speed) / 100.0 * 4096);
 
-	if (speed >
+	if (speed <
 			0) { // Forward (but actually backward because joysticks are reversed)
 		pcontrol->set_motor_pwm(0, pwm_value);
 		pcontrol->set_motor_pwm(1, 0);
@@ -123,7 +123,7 @@ void EngineController::set_speed(int speed) {
 		pcontrol->set_motor_pwm(6, 0);
 		pcontrol->set_motor_pwm(7, pwm_value);
 		setDirection(CarDirection::Reverse);
-	} else if (speed < 0) { // Backwards
+	} else if (speed > 0) { // Backwards
 		pcontrol->set_motor_pwm(0, pwm_value);
 		pcontrol->set_motor_pwm(1, pwm_value);
 		pcontrol->set_motor_pwm(2, 0);
@@ -141,9 +141,9 @@ void EngineController::set_speed(int speed) {
 
 	/*!
 	 * @brief Sets the steering angle of the car.
-	 * 
+	 *
 	 * @param angle The desired steering angle in degrees, ranging from -MAX_ANGLE to MAX_ANGLE.
-	 * 
+	 *
 	 * @details This function adjusts the servo PWM signal based on the input angle value.
 	 * The function clamps the angle to ensure it is within the valid range and calculates the
 	 * corresponding PWM value. The function also updates the internal steering angle and emits
