@@ -8,8 +8,8 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 	m_publisherObject = new Publisher(5556);
 
 	// Define GStreamer pipeline for CSI camera
-	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=60/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink";
-
+	// width 640, height 360
+	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink drop=1 buffers=1";
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
 
 	if (!cap.isOpened()) {  // Check if camera opened successfully
@@ -162,7 +162,7 @@ void CameraStreamer::start() {
 	cv::Mat frame;
 	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
 
-	const int framesToSkip = 2;  // Skip frames to reduce processing load
+	const int framesToSkip = 0;  // Skip frames to reduce processing load
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int frame_count = 0;
 

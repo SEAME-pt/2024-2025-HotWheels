@@ -7,6 +7,7 @@
 #include <opencv2/cudawarping.hpp>
 #include <NvInfer.h>
 #include <cuda_runtime_api.h>
+#include <cuda_fp16.h>
 
 class TensorRTInferencer {
 private:

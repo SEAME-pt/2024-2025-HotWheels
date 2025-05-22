@@ -124,9 +124,6 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 			// Create the TensorRT inferencer
 			auto inferencer = std::make_shared<TensorRTInferencer>(enginePath);
-
-			// Create the camera streamer with the inferencer
-			std::cout << "Initializing CSI camera..." << std::endl;
 			m_cameraStreamerObject = new CameraStreamer(inferencer, 0.5, "Jetson Camera Inference", true);
 			m_cameraStreamerObject->start();
 		} catch (const std::exception& e) {
