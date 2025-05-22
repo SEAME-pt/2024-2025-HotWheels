@@ -115,7 +115,7 @@ void EngineController::set_speed(int speed) {
 	int pwm_value = static_cast<int>(std::abs(speed) / 100.0 * 4096);
 
 	if (speed <
-			0) { // Forward (but actually backward because joysticks are reversed)
+			0) { // Forward
 		pcontrol->set_motor_pwm(0, pwm_value);
 		pcontrol->set_motor_pwm(1, 0);
 		pcontrol->set_motor_pwm(2, pwm_value);
