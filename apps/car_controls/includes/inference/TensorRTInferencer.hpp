@@ -2,14 +2,18 @@
 
 #include <string>
 #include <vector>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/cudaimgproc.hpp>
 #include <opencv2/cudawarping.hpp>
+
 #include <NvInfer.h>
 #include <cuda_runtime_api.h>
 #include <cuda_fp16.h>
 
-class TensorRTInferencer {
+#include "IInferencer.hpp"
+
+class TensorRTInferencer : public IInferencer {
 private:
 	class Logger : public nvinfer1::ILogger {
 	public:
@@ -54,5 +58,5 @@ public:
 
 	cv::cuda::GpuMat preprocessImage(const cv::cuda::GpuMat& gpuImage);
 	void runInference(const cv::cuda::GpuMat& gpuInput);
-	cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage);
+	cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage) override;
 };

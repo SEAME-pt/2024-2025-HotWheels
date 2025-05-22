@@ -123,7 +123,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			std::string enginePath = "/home/hotweels/dev/model_loader/models/model.engine";
 
 			// Create the TensorRT inferencer
-			auto inferencer = std::make_shared<TensorRTInferencer>(enginePath);
+			std::shared_ptr<IInferencer> inferencer = std::make_shared<TensorRTInferencer>(enginePath);
 			m_cameraStreamerObject = new CameraStreamer(inferencer, 0.5, "Jetson Camera Inference", true);
 			m_cameraStreamerObject->start();
 		} catch (const std::exception& e) {
