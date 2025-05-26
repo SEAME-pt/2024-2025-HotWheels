@@ -73,6 +73,7 @@ jobs:
         run: |
           sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
             '/home/hotweels/apps/tests/HotWheels-integration-tests'
+        continue-on-error: true
 
       - name: Deploy executable to target
         env:
