@@ -12,6 +12,8 @@
 #include <cuda_fp16.h>
 
 #include "IInferencer.hpp"
+#include "LanePostProcessor.hpp"
+#include "LaneCurveFitter.hpp"
 
 class TensorRTInferencer : public IInferencer {
 private:
@@ -46,6 +48,9 @@ private:
 	// Pinned host memory
 	float* hostInput;
 	float* hostOutput;
+
+	LanePostProcessor* lanePostProcessor;
+	LaneCurveFitter* laneCurveFitter;
 
 	cv::cuda::GpuMat outputMaskGpu;
 

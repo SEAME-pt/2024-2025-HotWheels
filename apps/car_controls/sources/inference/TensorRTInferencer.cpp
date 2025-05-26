@@ -43,6 +43,9 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 		throw std::runtime_error("Failed to create execution context");
 	}
 
+	lanePostProcessor = new LanePostProcessor(350, 260, 10.0f, 10.0f);  // Initialize lane post-processor with parameters
+	laneCurveFitter = new LaneCurveFitter(5.0f, 20, 20, 300); // Initialize lane curve fitter with parameters
+
 	for (int i = 0; i < engine->getNbBindings(); i++) {  // Loop through all bindings
 		if (engine->bindingIsInput(i)) {  // If binding is input
 			inputBindingIndex = i;  // Save input binding index
@@ -112,6 +115,8 @@ void TensorRTInferencer::cleanupResources() {
 	if (deviceInput) cudaFree(deviceInput);   // Free input buffer if allocated
 	if (deviceOutput) cudaFree(deviceOutput); // Free output buffer if allocated
 	if (stream) cudaStreamDestroy(stream);    // Destroy CUDA stream if created
+	if (lanePostProcessor) delete lanePostProcessor; // Delete post-processor object
+	if (laneCurveFitter) delete laneCurveFitter; // Delete post-processor and curve fitter objects
 	deviceInput = nullptr;    // Set pointers to nullptr after freeing
 	deviceOutput = nullptr;
 	stream = nullptr;
@@ -224,5 +229,36 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 		cudaMemcpyDeviceToDevice, stream
 	);
 
-	return outputMaskGpu;  // GPU mask only, no sync
+	//post-process starts here
+/* 	cv::cuda::GpuMat postProcessedMaskGpu = lanePostProcessor->process(outputMaskGpu);
+
+	// Download post-processed binary mask for polyfitting
+	cv::Mat maskCpu;
+	postProcessedMaskGpu.download(maskCpu);
+
+	// Fit lanes and compute centerline
+	std::vector<LaneCurveFitter::LaneCurve> lanes = laneCurveFitter->fitLanes(maskCpu);
+	std::cout << "[DEBUG] Number of fitted lanes: " << lanes.size() << std::endl;
+	auto centerlineOpt = laneCurveFitter->computeVirtualCenterline(lanes, maskCpu.cols, maskCpu.rows);
+	if (!centerlineOpt.has_value()) {
+		std::cout << "[DEBUG] No centerline could be computed." << std::endl;
+	}
+
+	// Draw centerline on CPU
+	if (centerlineOpt.has_value()) {
+		const auto& centerline = centerlineOpt.value().blended;
+		for (size_t i = 1; i < centerline.size(); ++i) {
+			cv::line(maskCpu,
+					centerline[i - 1],
+					centerline[i],
+					cv::Scalar(255), // White
+					2,               // Thickness
+					cv::LINE_AA);
+		}
+	}
+
+	// Upload mask with centerline back to GPU
+	postProcessedMaskGpu.upload(maskCpu); */
+
+	return outputMaskGpu;
 }

@@ -14,6 +14,8 @@ SOURCES += \
 	../../ZeroMQ/Subscriber.cpp \
 	sources/inference/CameraStreamer.cpp \
 	sources/inference/TensorRTInferencer.cpp \
+	sources/inference/LanePostProcessor.cpp \
+	sources/inference/LaneCurveFitter.cpp \
 	sources/ControlsManager.cpp \
 	sources/JoysticksController.cpp \
 	sources/EngineController.cpp \
@@ -26,6 +28,8 @@ HEADERS += \
 	includes/inference/CameraStreamer.hpp \
 	includes/inference/TensorRTInferencer.hpp \
 	includes/inference/IInferencer.hpp \
+	includes/inference/LanePostProcessor.hpp \
+	includes/inference/LaneCurveFitter.hpp \
 	includes/ControlsManager.hpp \
 	includes/JoysticksController.hpp \
 	includes/EngineController.hpp \

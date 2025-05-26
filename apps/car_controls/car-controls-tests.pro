@@ -22,11 +22,15 @@ SOURCES += \
     $$TESTS_PATH/unit/test_PeripheralController.cpp \
     $$TESTS_PATH/unit/test_TensorRTInferencer.cpp \
     sources/PeripheralController.cpp \
-    sources/inference/TensorRTInferencer.cpp
+    sources/inference/TensorRTInferencer.cpp \
+    sources/inference/LanePostProcessor.cpp \
+    sources/inference/LaneCurveFitter.cpp \
 
 HEADERS += \
     $$TESTS_PATH/mocks/MockPeripheralController.hpp \
     includes/inference/TensorRTInferencer.hpp \
+    includes/inference/LanePostProcessor.hpp \
+	includes/inference/LaneCurveFitter.hpp \
     includes/inference/IInferencer.hpp
 
 # CUDA includes
