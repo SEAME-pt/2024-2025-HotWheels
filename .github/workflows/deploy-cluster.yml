@@ -40,6 +40,12 @@ jobs:
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-unit-tests.pro
           make -j$(nproc)
 
+      - name: Deploy unit test to Jetson
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
+
       - name: Build executable for integration testing
         run: |
           cd $DIR
@@ -47,12 +53,6 @@ jobs:
           rm -rf *
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-integration-tests.pro
           make -j$(nproc)
-
-      - name: Deploy unit test to Jetson
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
 
       - name: Deploy integration test to Jetson
         env:
