@@ -219,7 +219,6 @@ void CameraStreamer::start() {
 
 		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
 		//renderTexture();  // Render it
-		//nada
 	}
 }
 

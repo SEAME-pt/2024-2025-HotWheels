@@ -36,7 +36,7 @@ jobs:
         run: |
           cd $DIR
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../car-controls-test.pro
+          ~/qtjetson/qt5.15/bin/qmake ../car-controls-tests.pro
           make -j$(nproc)
         continue-on-error: true
 
