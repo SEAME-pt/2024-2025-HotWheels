@@ -35,8 +35,8 @@ jobs:
       - name: Build executable for unit testing
         run: |
           cd $DIR
-          mkdir build
           cd build
+          rm -rf *
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-unit-tests.pro
           make -j$(nproc)
 
