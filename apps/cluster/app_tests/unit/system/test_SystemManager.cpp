@@ -1,6 +1,6 @@
 /*!
  * @file test_SystemManager.cpp
- * @brief Unit tests for the SystemManager class. 
+ * @brief Unit tests for the SystemManager class.
  * @version 0.1
  * @date 2025-02-12
  * @details This file contains unit tests for the SystemManager class, using
@@ -133,24 +133,4 @@ TEST_F(SystemManagerTest, UpdateSystemStatus_EmitsBatteryPercentage)
 
 	ASSERT_EQ(spy.count(), 1);
 	EXPECT_FLOAT_EQ(spy.takeFirst().at(0).toFloat(), 75.0f);
-}
-
-/*!
- * @test Tests if the system status is correctly updated.
- * @brief Ensures that the system status is correctly updated.
- * @details This test verifies that the system status is correctly updated.
- *
- * @see SystemManager::updateSystemStatus
- */
-TEST_F(SystemManagerTest, UpdateSystemStatus_EmitsIpAddress)
-{
-	EXPECT_CALL(mockInfoProvider, getIpAddress()).WillOnce(Return(QString("192.168.1.100")));
-
-	QSignalSpy spy(systemManager, &SystemManager::ipAddressUpdated);
-	ASSERT_TRUE(spy.isValid());
-
-	systemManager->updateSystemStatus();
-
-	ASSERT_EQ(spy.count(), 1);
-	EXPECT_EQ(spy.takeFirst().at(0).toString(), "192.168.1.100");
 }

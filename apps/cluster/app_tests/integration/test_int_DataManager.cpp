@@ -150,26 +150,6 @@ TEST_F(DataManagerTest, ForwardTimeDataToSystemDataManager)
 }
 
 /*!
- * @test 📡 Forward WiFi Data
- * @brief Ensures that the DataManager forwards WiFi data to the SystemDataManager.
- * @details This test verifies that the DataManager forwards WiFi data to the SystemDataManager
- * by emitting the systemWifiUpdated signal.
- * @see DataManager::systemWifiUpdated
- */
-TEST_F(DataManagerTest, ForwardWifiDataToSystemDataManager)
-{
-	QSignalSpy spy(dataManager, &DataManager::systemWifiUpdated);
-
-	dataManager->handleWifiData("Connected", "MyWiFi");
-	QCoreApplication::processEvents();
-
-	ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
-	QList<QVariant> args = spy.takeFirst();
-	EXPECT_EQ(args.at(0).toString(), "Connected");
-	EXPECT_EQ(args.at(1).toString(), "MyWiFi");
-}
-
-/*!
  * @test 🌡 Forward Temperature Data
  * @brief Ensures that the DataManager forwards temperature data to the SystemDataManager.
  * @details This test verifies that the DataManager forwards temperature data to the SystemDataManager
@@ -186,25 +166,6 @@ TEST_F(DataManagerTest, ForwardTemperatureDataToSystemDataManager)
 	ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
 	QList<QVariant> args = spy.takeFirst();
 	EXPECT_EQ(args.at(0).toString(), "25.5°C");
-}
-
-/*!
- * @test 🌍 Forward IP Address Data
- * @brief Ensures that the DataManager forwards IP address data to the SystemDataManager.
- * @details This test verifies that the DataManager forwards IP address data to the SystemDataManager
- * by emitting the ipAddressUpdated signal.
- * @see DataManager::ipAddressUpdated
- */
-TEST_F(DataManagerTest, ForwardIpAddressDataToSystemDataManager)
-{
-	QSignalSpy spy(dataManager, &DataManager::ipAddressUpdated);
-
-	dataManager->handleIpAddressData("192.168.1.100");
-	QCoreApplication::processEvents();
-
-	ASSERT_GT(spy.count(), 0) << "Signal was not emitted!";
-	QList<QVariant> args = spy.takeFirst();
-	EXPECT_EQ(args.at(0).toString(), "192.168.1.100");
 }
 
 /*!

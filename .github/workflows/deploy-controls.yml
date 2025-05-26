@@ -3,13 +3,13 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - test-coverage
+      - main
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
   pull_request:
     branches:
-      - test-coverage
+      - main
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
@@ -38,23 +38,22 @@ jobs:
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-tests.pro
           make -j$(nproc)
-        continue-on-error: true
 
       - name: Deploy tests on Jetson
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/test
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
 
       - name: Run tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
-            '/home/hotweels/apps/test/car-controls-tests'
+            '/home/hotweels/apps/tests/car-controls-tests'
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/test
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps

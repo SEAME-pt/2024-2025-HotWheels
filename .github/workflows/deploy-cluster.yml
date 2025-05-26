@@ -3,16 +3,16 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'apps/cluster/**'
-      - 'ZeroMQ/**'
+      - test-coverage
+    #paths:
+      #- 'apps/cluster/**'
+      #- 'ZeroMQ/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'apps/cluster/**'
-      - 'ZeroMQ/**'
+      - test-coverage
+    #paths:
+      #- 'apps/cluster/**'
+      #- 'ZeroMQ/**'
 
 env:
   DIR: apps/cluster
@@ -32,23 +32,38 @@ jobs:
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
           make -j$(nproc)
 
-      - name: Build x86 executable for testing
+      - name: Build executable for unit testing
         run: |
           cd $DIR
-          mkdir build-x86
-          cd build-x86
-          qmake ../root.pro
+          mkdir build
+          cd build
+          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-unit-tests.pro
           make -j$(nproc)
-        continue-on-error: true
 
-      - name: Run tests
+      - name: Build executable for integration testing
         run: |
-          cd $DIR/build-x86
-          ./HotWheels-unit-tests
-        continue-on-error: true
+          cd $DIR
+          cd build
+          rm -rf *
+          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-integration-tests.pro
+          make -j$(nproc)
+
+      - name: Run unit tests
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
+            '/home/hotweels/apps/tests/HotWheels-unit-tests'
+
+      - name: Run integration tests
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
+            '/home/hotweels/apps/tests/HotWheels-integration-tests'
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps/test
