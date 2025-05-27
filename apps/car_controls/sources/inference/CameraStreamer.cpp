@@ -1,4 +1,4 @@
-#include "CameraStreamer.hpp"
+#include "../../includes/inference/CameraStreamer.hpp"
 
 // Constructor: initializes camera capture, inference reference, and settings
 CameraStreamer::CameraStreamer(std::shared_ptr<IInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)

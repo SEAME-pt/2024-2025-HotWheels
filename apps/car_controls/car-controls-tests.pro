@@ -21,13 +21,21 @@ TESTS_PATH = tests
 SOURCES += \
     $$TESTS_PATH/unit/test_PeripheralController.cpp \
     $$TESTS_PATH/unit/test_TensorRTInferencer.cpp \
+    $$TESTS_PATH/unit/test_CameraStreamer.cpp \
+    ../../ZeroMQ/Publisher.cpp \
+    ../../ZeroMQ/Subscriber.cpp \
     sources/PeripheralController.cpp \
+    sources/inference/CameraStreamer.cpp \
     sources/inference/TensorRTInferencer.cpp \
     sources/inference/LanePostProcessor.cpp \
     sources/inference/LaneCurveFitter.cpp \
 
 HEADERS += \
     $$TESTS_PATH/mocks/MockPeripheralController.hpp \
+    $$TESTS_PATH/mocks/MockInferencer.hpp \
+    ../../ZeroMQ/Publisher.hpp \
+    ../../ZeroMQ/Subscriber.hpp \
+    includes/inference/CameraStreamer.hpp \
     includes/inference/TensorRTInferencer.hpp \
     includes/inference/LanePostProcessor.hpp \
 	includes/inference/LaneCurveFitter.hpp \
@@ -49,7 +57,7 @@ INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/glib-2.0
 INCLUDEPATH += $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/glib-2.0/include
 
 # Link GTest and GMock
-LIBS += -lgtest_main -lpthread -lgmock -lgtest
+LIBS += -lgtest_main -lpthread -lgmock -lgtest -lzmq
 
 # Library paths
 LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
