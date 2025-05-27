@@ -263,7 +263,7 @@ TEST(TensorRTInferencerTest, MakePredictionReturnsCorrectSize) {
 
     cv::cuda::GpuMat result = inferencer.makePrediction(gpuInput);
 
-    // Make sure this matches the model’s actual outputDimss
+    // Make sure this matches the model’s actual outputDims
     EXPECT_EQ(result.size(), cv::Size(208, 208));
     EXPECT_EQ(result.type(), CV_32F);
 }
