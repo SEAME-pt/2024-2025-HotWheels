@@ -43,7 +43,7 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/test
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
 
       - name: Run tests
         env:
