@@ -3,13 +3,13 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - test-coverage
+      - main
     paths:
       - 'apps/cluster/**'
       - 'ZeroMQ/**'
   pull_request:
     branches:
-      - test-coverage
+      - main
     paths:
       - 'apps/cluster/**'
       - 'ZeroMQ/**'
