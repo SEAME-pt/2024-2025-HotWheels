@@ -163,6 +163,10 @@ cv::cuda::GpuMat TensorRTInferencer::preprocessImage(const cv::cuda::GpuMat& gpu
 		throw std::runtime_error("Input image is empty");
 	}
 
+	if (gpuImage.type() != CV_8UC3 && gpuImage.type() != CV_8UC1) {  // Check if input image is in expected format
+		throw std::runtime_error("Input image must be CV_8UC3 (color) or CV_8UC1 (grayscale)");
+	}
+
 	cv::cuda::GpuMat gpuGray;
 	if (gpuImage.channels() > 1) {   // If input has multiple channels (color)
 		cv::cuda::cvtColor(gpuImage, gpuGray, cv::COLOR_BGR2GRAY); // Convert to grayscale

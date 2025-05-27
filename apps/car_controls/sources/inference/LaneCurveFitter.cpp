@@ -1,4 +1,4 @@
-#include "LaneCurveFitter.hpp"
+#include "../../includes/inference/LaneCurveFitter.hpp"
 #include <numeric>
 #include <cmath>
 #include <map>

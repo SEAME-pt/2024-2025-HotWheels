@@ -64,4 +64,14 @@ public:
 	cv::cuda::GpuMat preprocessImage(const cv::cuda::GpuMat& gpuImage);
 	void runInference(const cv::cuda::GpuMat& gpuInput);
 	cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage) override;
+
+	void*	getDeviceInputPtr() const {
+		return deviceInput;
+	}
+	void*	getDeviceOutputPtr() const {
+		return deviceOutput;
+	}
+	cv::cuda::GpuMat getOutputMaskGpu() const {
+		return outputMaskGpu;
+	}
 };
