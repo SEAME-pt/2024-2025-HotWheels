@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_ClusterSettingsManager.cpp` for the `ClusterSettingsManager` class, which handles user-configurable cluster settings such as driving mode, theme, and metric units.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - Proper toggling logic for driving mode, cluster theme, and metric units
@@ -34,7 +34,7 @@ Test frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - These tests assume default initial values:
   - Driving Mode: `Manual`

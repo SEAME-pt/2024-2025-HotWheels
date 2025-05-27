@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_MileageFileHandler.cpp` for the `MileageFileHandler` class.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - File existence and creation logic
@@ -48,7 +48,7 @@ Frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - `MileageFileHandler` is injected with custom lambdas for file operations, allowing complete control via `MockFileController`.
 - File I/O is mocked entirely to isolate and test logic without real file system dependencies.

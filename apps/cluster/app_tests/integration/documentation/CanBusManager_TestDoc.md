@@ -2,7 +2,7 @@
 
 This document provides an overview of the integration tests defined in `test_int_CanBusManager.cpp` for the `CanBusManager` class, which interfaces with the MCP2515 CAN controller.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Signal forwarding from the controller to the manager
@@ -42,7 +42,7 @@ Test framework used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The test class uses a custom `SetUpTestSuite()` and `TearDownTestSuite()` to manage a static `QCoreApplication`, needed for Qt signal processing.
 - Real hardware access is abstracted behind the `IMCP2515Controller` interface.

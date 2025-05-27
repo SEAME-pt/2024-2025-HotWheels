@@ -14,7 +14,7 @@ app_tests/
 
 ---
 
-## 🧷 Testing Categories
+## Testing Categories
 
 ### 1. Unit Tests (`unit/`)
 

@@ -2,7 +2,7 @@
 
 This document describes the unit tests defined in `test_VehicleDataManager.cpp` for the `VehicleDataManager` class, responsible for processing and emitting vehicle-related data signals.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Signal emission for RPM, speed, mileage, direction, and steering
@@ -56,7 +56,7 @@ Frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - This suite ensures optimal signal efficiency, avoiding unnecessary UI updates.
 - Tests rely on `QSignalSpy` to introspect Qt signal payloads.

@@ -15,7 +15,7 @@ This test suite verifies the correct behavior of the `PeripheralController` clas
 
 ---
 
-## 🧪 Test Descriptions
+## Test Descriptions
 
 ### PWM Functionality
 
@@ -68,7 +68,7 @@ This allows complete validation of:
 
 ---
 
-## 🛠 Requirements
+## Requirements
 
 - Google Test and Google Mock
 - A `MockPeripheralController.hpp` header that mocks all tested methods

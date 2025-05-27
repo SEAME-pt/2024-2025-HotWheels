@@ -15,7 +15,7 @@ This test suite verifies the correctness, robustness, and stability of the `Tens
 
 ---
 
-## 🧪 Test Descriptions
+## Test Descriptions
 
 ### Engine Initialization
 - `CanReadEngineFile`
@@ -101,7 +101,7 @@ This test suite verifies the correctness, robustness, and stability of the `Tens
 
 ---
 
-## 🛠 Requirements
+## Requirements
 
 - CUDA-compatible GPU
 - OpenCV with CUDA support

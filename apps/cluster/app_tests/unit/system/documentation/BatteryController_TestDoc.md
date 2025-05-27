@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_BatteryController.cpp` for the `BatteryController` class.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - Proper initialization behavior
@@ -38,7 +38,7 @@ Frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The test class uses `NiceMock` to suppress uninteresting mock warnings.
 - `BatteryController` depends on an `I2CController` interface to abstract hardware.

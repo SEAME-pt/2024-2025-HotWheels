@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_MileageCalculator.cpp` for the `MileageCalculator` class.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - The robustness of the mileage calculation logic under different speed inputs
@@ -52,7 +52,7 @@ Frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - Test accuracy depends on timing precision using `QElapsedTimer` and `QTest::qWait`.
 - Speeds are converted from km/h to m/s internally via division by 3.6.

@@ -2,7 +2,7 @@
 
 This document outlines the unit tests implemented in `test_SystemDataManager.cpp` for the `SystemDataManager` class, which handles system-related UI data such as time, temperature, and battery percentage.
 
-## 🧪 Overview
+## Overview
 
 These tests ensure:
 - Correct signal emission when data changes
@@ -38,7 +38,7 @@ Test frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - These tests help prevent unnecessary UI updates by ensuring signal emission occurs only when values actually change.
 - Tests rely on `QSignalSpy` to observe emitted Qt signals in real-time.

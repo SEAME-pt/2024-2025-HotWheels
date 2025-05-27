@@ -2,7 +2,7 @@
 
 This document outlines the integration tests defined in `test_int_DataManager.cpp` for the `DataManager` class, which orchestrates data flow between system components like `SystemDataManager`, `VehicleDataManager`, and `ClusterSettingsManager`.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Correct forwarding of CAN and engine-related data
@@ -63,7 +63,7 @@ Test frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - A static `QCoreApplication` is used for enabling Qt event loop functionality (`processEvents()`).
 - Tests use `QSignalSpy` to capture and analyze emitted Qt signals.

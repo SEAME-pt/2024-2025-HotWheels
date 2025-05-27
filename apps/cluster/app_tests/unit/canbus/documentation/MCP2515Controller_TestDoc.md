@@ -2,7 +2,7 @@
 
 This document summarizes the unit tests defined in `test_MCP2515Controller.cpp` for the `MCP2515Controller` class, which handles CAN communication via SPI using the MCP2515 chip.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - Initialization success and failure
@@ -77,7 +77,7 @@ Test frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - Tests are fully isolated using `MockSPIController`.
 - Signal verification is done using Qt's `QSignalSpy`.

@@ -2,7 +2,7 @@
 
 This document outlines the integration tests found in `test_int_SystemManager.cpp` for the `SystemManager` class, which integrates battery monitoring, system information, and system command execution.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Correct signal emission from system monitoring
@@ -41,7 +41,7 @@ Test framework used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The test suite uses a real instance of `BatteryController`, `SystemInfoProvider`, and `SystemCommandExecutor` (not mocked).
 - A static `QCoreApplication` is created to allow Qt signals to function properly.

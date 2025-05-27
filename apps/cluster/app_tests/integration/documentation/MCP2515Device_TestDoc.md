@@ -2,7 +2,7 @@
 
 This document outlines the integration tests defined in `test_MCP2515Controller.cpp` for validating the `MCP2515Configurator` class. This class manages communication with the MCP2515 CAN controller via SPI using the `SPIController` interface.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Frame transmission and reception over the CAN bus
@@ -56,7 +56,7 @@ Test framework used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - These are integration-level tests assuming real hardware or a properly mocked bus layer.
 - CRC and ACK validations are not explicitly performed but assumed handled by hardware.

@@ -2,7 +2,7 @@
 
 This document outlines the unit tests defined in `test_MCP2515Configurator.cpp` for the `MCP2515Configurator` class, which configures the MCP2515 CAN controller via SPI.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Correct configuration of chip registers
@@ -87,7 +87,7 @@ Test frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - All SPI interactions are mocked via `MockSPIController`, allowing isolation of logic.
 - Tests use the `CANINTF`, `RXB0SIDH`, `RXB0SIDL`, and data registers directly.

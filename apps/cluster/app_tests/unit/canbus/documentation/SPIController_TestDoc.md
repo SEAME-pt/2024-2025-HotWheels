@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_SPIController.cpp` for the `SPIController` class, which handles low-level SPI communication using custom system call injection for testability.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - Device opening and closing
@@ -74,7 +74,7 @@ The `MockSysCalls` utility is used to simulate system-level behavior (`open`, `c
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The tests rely on `MockSysCalls`, which replaces standard `open`, `close`, and `ioctl` calls to simulate device I/O.
 - `SPI_IOC_MESSAGE(n)` is mocked directly to test read/write transactions.

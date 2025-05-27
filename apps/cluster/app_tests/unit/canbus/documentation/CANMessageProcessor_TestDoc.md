@@ -2,7 +2,7 @@
 
 This document outlines the unit tests defined in `test_CANMessageProcessor.cpp` for the `CANMessageProcessor` class, which manages dynamic registration and invocation of message handlers for specific CAN frame IDs.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - Handler registration
@@ -47,7 +47,7 @@ Test framework used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The tests use `std::vector<uint8_t>` to simulate CAN message payloads.
 - Frame ID `0x123` is commonly used as a testable example across tests.

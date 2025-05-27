@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_MileageManager.cpp` for the `MileageManager` class.
 
-## 🧪 Overview
+## Overview
 
 These tests validate:
 - Initialization behavior and data loading
@@ -50,7 +50,7 @@ Frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - Mocks are injected through constructor dependency injection.
 - The `NiceMock` wrapper is used to ignore uninteresting calls.

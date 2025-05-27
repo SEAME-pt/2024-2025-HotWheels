@@ -2,7 +2,7 @@
 
 This document summarizes the integration tests in `test_int_MileageManager.cpp` for the `MileageManager` class, which is responsible for tracking and managing mileage updates using the `MileageCalculator` and `MileageFileHandler`.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Signal emissions on state updates
@@ -43,7 +43,7 @@ Test framework used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The test fixture allocates `MileageCalculator` and `MileageFileHandler` directly.
 - Uses a local test JSON file path for file-backed mileage persistence.

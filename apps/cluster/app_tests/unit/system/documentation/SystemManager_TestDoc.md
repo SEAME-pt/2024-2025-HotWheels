@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_SystemManager.cpp` for the `SystemManager` class.
 
-## 🧪 Overview
+## Overview
 
 These tests validate the behavior of `SystemManager`, which is responsible for aggregating and emitting system-related signals such as:
 - Date and time
@@ -57,7 +57,7 @@ Mock dependencies:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - `QSignalSpy` is used in all tests to capture and inspect emitted signals.
 - Each signal is emitted as a result of calling the appropriate update method on the `SystemManager`.

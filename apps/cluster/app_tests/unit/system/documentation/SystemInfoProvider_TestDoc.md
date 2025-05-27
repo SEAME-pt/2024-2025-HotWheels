@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_SystemInfoProvider.cpp` for the `SystemInfoProvider` class.
 
-## 🧪 Overview
+## Overview
 
 These tests validate the functionality of the `SystemInfoProvider`, which is responsible for retrieving system-level data such as:
 - WiFi status and network name
@@ -71,7 +71,7 @@ Dependencies are mocked using a custom `MockSystemCommandExecutor`.
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - Command execution and file reads are mocked to isolate the `SystemInfoProvider` from real hardware.
 - Network and temperature interfaces rely on Linux utilities and sysfs paths.

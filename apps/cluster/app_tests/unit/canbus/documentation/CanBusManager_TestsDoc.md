@@ -2,7 +2,7 @@
 
 This document provides an overview of the unit tests defined in `test_CanBusManager.cpp` for the `CanBusManager` class, using a mocked `MCP2515Controller`.
 
-## 🧪 Overview
+## Overview
 
 These tests verify:
 - Signal forwarding (speed, RPM)
@@ -48,7 +48,7 @@ Test frameworks used:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The `CanBusManagerTest` fixture owns both the manager and its mock controller.
 - All interactions with the controller are handled through the interface `IMCP2515Controller`.
