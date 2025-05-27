@@ -12,6 +12,18 @@ TEST(TensorRTInferencerTest, CanReadEngineFile) {
     ASSERT_TRUE(true);  // If it didn't throw, it's OK for this smoke test
 }
 
+TEST(TensorRTInferencerTest, WrongEngineFile) {
+    try {
+        TensorRTInferencer inferencer("/invalid/path/to/engine.engine");
+        FAIL() << "Expected std::runtime_error but none was thrown.";
+    } catch (const std::runtime_error& e) {
+        std::cout << "[INFO] Caught std::runtime_error: " << e.what() << std::endl;
+        SUCCEED();
+    } catch (...) {
+        FAIL() << "Caught unknown exception type.";
+    }
+}
+
 TEST(TensorRTInferencerTest, PreprocessImageGrayscale) {
     cv::Mat cpuImg(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
     cv::cuda::GpuMat gpuImg;
@@ -105,19 +117,6 @@ TEST(TensorRTInferencerTest, OutputHasNonZeroValuesAfterInference) {
 
     float sum = cv::sum(outputCpu)[0];
     EXPECT_GT(sum, 0.0);
-}
-
-TEST(TensorRTInferencerTest, MakePredictionReturnsGpuMat) {
-    TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
-
-    cv::Mat cpuImg(208, 208, CV_8UC3, cv::Scalar(120, 120, 120));
-    cv::cuda::GpuMat gpuImg;
-    gpuImg.upload(cpuImg);
-
-    cv::cuda::GpuMat result = inferencer.makePrediction(gpuImg);
-
-    EXPECT_FALSE(result.empty());
-    EXPECT_EQ(result.type(), CV_32F);
 }
 
 TEST(TensorRTInferencerTest, PreprocessGrayscaleNoConvert) {
@@ -243,4 +242,80 @@ TEST(TensorRTInferencerTest, PreprocessImageWithValidSizeAndInvalidType) {
     } catch (...) {
         FAIL() << "Caught unknown exception type.";
     }
+}
+
+TEST(TensorRTInferencerTest, MakePredictionDoesNotThrowOnValidInput) {
+    TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
+
+    cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
+    cv::cuda::GpuMat gpuInput;
+    gpuInput.upload(input);
+
+    EXPECT_NO_THROW(inferencer.makePrediction(gpuInput));
+}
+
+TEST(TensorRTInferencerTest, MakePredictionReturnsCorrectSize) {
+    TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
+
+    cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
+    cv::cuda::GpuMat gpuInput;
+    gpuInput.upload(input);
+
+    cv::cuda::GpuMat result = inferencer.makePrediction(gpuInput);
+
+    // Make sure this matches the model’s actual outputDims
+    EXPECT_EQ(result.size(), cv::Size(208, 208));
+    EXPECT_EQ(result.type(), CV_32F);
+}
+
+TEST(TensorRTInferencerTest, MakePredictionOutputNotAllZero) {
+    TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
+
+    cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
+    cv::cuda::GpuMat gpuInput;
+    gpuInput.upload(input);
+
+    cv::cuda::GpuMat result = inferencer.makePrediction(gpuInput);
+
+    // Download to CPU for inspection
+    cv::Mat resultCpu;
+    result.download(resultCpu);
+    float sum = cv::sum(resultCpu)[0];
+
+    EXPECT_GT(sum, 0.0);  // should not be all zeros
+}
+
+TEST(TensorRTInferencerTest, MakePredictionReturnsGpuMat) {
+    TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
+
+    cv::Mat cpuImg(208, 208, CV_8UC3, cv::Scalar(120, 120, 120));
+    cv::cuda::GpuMat gpuImg;
+    gpuImg.upload(cpuImg);
+
+    cv::cuda::GpuMat result = inferencer.makePrediction(gpuImg);
+
+    EXPECT_FALSE(result.empty());
+    EXPECT_EQ(result.type(), CV_32F);
+}
+
+TEST(TensorRTInferencerTest, MakePredictionIsDeterministic) {
+    TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
+
+    cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
+    cv::cuda::GpuMat gpuInput;
+    gpuInput.upload(input);
+
+    auto res1 = inferencer.makePrediction(gpuInput);
+    auto res2 = inferencer.makePrediction(gpuInput);
+
+    cv::Mat cpu1, cpu2;
+    res1.download(cpu1);
+    res2.download(cpu2);
+
+    cv::Mat diff;
+    cv::absdiff(cpu1, cpu2, diff);
+    double maxDiff;
+    cv::minMaxLoc(diff, nullptr, &maxDiff);
+
+    EXPECT_LT(maxDiff, 1e-4);  // very small difference
 }

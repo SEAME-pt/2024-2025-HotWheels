@@ -3,13 +3,13 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - main
+      - test-coverage
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
   pull_request:
     branches:
-      - main
+      - test-coverage
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
@@ -43,7 +43,7 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/test
 
       - name: Run tests
         env:
@@ -56,4 +56,4 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/test
