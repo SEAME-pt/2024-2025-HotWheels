@@ -2,14 +2,20 @@
 
 #include <string>
 #include <vector>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/cudaimgproc.hpp>
 #include <opencv2/cudawarping.hpp>
+
 #include <NvInfer.h>
 #include <cuda_runtime_api.h>
 #include <cuda_fp16.h>
 
-class TensorRTInferencer {
+#include "IInferencer.hpp"
+#include "LanePostProcessor.hpp"
+#include "LaneCurveFitter.hpp"
+
+class TensorRTInferencer : public IInferencer {
 private:
 	class Logger : public nvinfer1::ILogger {
 	public:
@@ -43,6 +49,9 @@ private:
 	float* hostInput;
 	float* hostOutput;
 
+	LanePostProcessor* lanePostProcessor;
+	LaneCurveFitter* laneCurveFitter;
+
 	cv::cuda::GpuMat outputMaskGpu;
 
 	std::vector<char> readEngineFile(const std::string& enginePath);
@@ -54,5 +63,15 @@ public:
 
 	cv::cuda::GpuMat preprocessImage(const cv::cuda::GpuMat& gpuImage);
 	void runInference(const cv::cuda::GpuMat& gpuInput);
-	cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage);
+	cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage) override;
+
+	void*	getDeviceInputPtr() const {
+		return deviceInput;
+	}
+	void*	getDeviceOutputPtr() const {
+		return deviceOutput;
+	}
+	cv::cuda::GpuMat getOutputMaskGpu() const {
+		return outputMaskGpu;
+	}
 };

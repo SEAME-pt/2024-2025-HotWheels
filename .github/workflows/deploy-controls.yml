@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build arm64 executable
+      - name: Build arm64 executable and tests executable
         run: |
           cd $DIR
           mkdir build
@@ -32,20 +32,25 @@ jobs:
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
 
-      - name: Build x86 executable for testing
+      - name: Build arm64 executable for testing
         run: |
           cd $DIR
-          mkdir build-x86
-          cd build-x86
-          qmake ../root.pro
+          cd build
+          ~/qtjetson/qt5.15/bin/qmake ../car-controls-tests.pro
           make -j$(nproc)
-        continue-on-error: true
+
+      - name: Deploy tests on Jetson
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
 
       - name: Run tests
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          cd $DIR/build-x86
-          ./car-controls-tests
-        continue-on-error: true
+          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
+            '/home/hotweels/apps/tests/car-controls-tests'
 
       - name: Deploy executable to target
         env:

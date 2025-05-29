@@ -1,15 +1,22 @@
-#include "CameraStreamer.hpp"
+#include "../../includes/inference/CameraStreamer.hpp"
 
 // Constructor: initializes camera capture, inference reference, and settings
-CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)
+CameraStreamer::CameraStreamer(std::shared_ptr<IInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)
 	: scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_publisherObject(nullptr), m_running(true) {
 
 	// Start publisher to pass frames to the cluster
 	m_publisherObject = new Publisher(5556);
 
+	std::cout << "[CameraStreamer] Initializing camera..." << std::endl;
+
 	// Define GStreamer pipeline for CSI camera
-	// width 640, height 360
-	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink drop=1 buffers=1";
+	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! "
+			"video/x-raw(memory:NVMM), width=1280, height=720, "
+			"format=(string)NV12, framerate=30/1 ! "
+			"nvvidconv ! video/x-raw, format=(string)BGRx ! "
+			"videoconvert ! video/x-raw, format=(string)BGR ! "
+			"appsink drop=1 buffers=1";
+
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
 
 	if (!cap.isOpened()) {  // Check if camera opened successfully
@@ -22,7 +29,6 @@ CameraStreamer::CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, d
 CameraStreamer::~CameraStreamer() {
 	delete m_publisherObject;
 	m_publisherObject = nullptr;
-
 	stop();  // Stop the camera stream
 
 	if (cap.isOpened()) {
@@ -36,97 +42,7 @@ CameraStreamer::~CameraStreamer() {
 		cuda_resource = nullptr;
 	}
 
-	if (window)
-	{
-		std::cout << "[~CameraStreamer] Destroying window..." << std::endl;
-		glfwMakeContextCurrent(window);  // Ensure valid context
-		glDeleteTextures(1, &textureID); // Clean texture
-		glfwDestroyWindow(window);       // Destroy window
-		std::cout << "[~CameraStreamer] Terminating GLFW..." << std::endl;
-		glfwTerminate();
-	}
 	std::cout << "[~CameraStreamer] Destructor done." << std::endl;
-}
-
-// Initialize OpenGL context and prepare a texture for CUDA interop
-void CameraStreamer::initOpenGL() {
-	if (!glfwInit()) {  // Initialize GLFW library
-		std::cerr << "Failed to initialize GLFW!" << std::endl;
-		exit(-1);
-	}
-
-	window_width = static_cast<int>(1280 * scale_factor);  // Calculate scaled window width
-	window_height = static_cast<int>(720 * scale_factor);  // Calculate scaled window height
-
-	window = glfwCreateWindow(window_width, window_height, window_name.c_str(), NULL, NULL);  // Create OpenGL window
-	if (!window) {  // Check if window creation failed
-		std::cerr << "Failed to create GLFW window!" << std::endl;
-		glfwTerminate();
-		exit(-1);
-	}
-
-	glfwMakeContextCurrent(window);  // Make window's OpenGL context current
-	glewInit();  // Initialize GLEW (needed to manage OpenGL extensions)
-
-	glGenTextures(1, &textureID);  // Generate OpenGL texture ID
-	glBindTexture(GL_TEXTURE_2D, textureID);  // Bind the texture
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  // Set texture minification filter
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);  // Set texture magnification filter
-
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, window_width, window_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);  // Allocate empty texture (RGBA8 format)
-
-	// Register the OpenGL texture with CUDA
-	cudaError_t err = cudaGraphicsGLRegisterImage(&cuda_resource, textureID, GL_TEXTURE_2D, cudaGraphicsRegisterFlagsWriteDiscard);
-	if (err != cudaSuccess) {  // Check CUDA-OpenGL interop registration
-		std::cerr << "Failed to register OpenGL texture with CUDA: " << cudaGetErrorString(err) << std::endl;
-		exit(-1);
-	}
-}
-
-// Upload a GpuMat frame (on GPU) directly into an OpenGL texture using CUDA interop
-void CameraStreamer::uploadFrameToTexture(const cv::cuda::GpuMat& gpuFrame) {
-	cv::cuda::GpuMat d_rgba_frame;
-	if (gpuFrame.channels() == 3) {  // If input is BGR
-		cv::cuda::cvtColor(gpuFrame, d_rgba_frame, cv::COLOR_BGR2RGBA);  // Convert BGR to RGBA
-	} else if (gpuFrame.channels() == 1) {  // If grayscale
-		cv::cuda::cvtColor(gpuFrame, d_rgba_frame, cv::COLOR_GRAY2RGBA);  // Convert grayscale to RGBA
-	} else {
-		d_rgba_frame = gpuFrame;  // Already RGBA
-	}
-
-	cudaGraphicsMapResources(1, &cuda_resource, 0);  // Map OpenGL texture for CUDA access
-
-	cudaArray_t texture_ptr;
-	cudaGraphicsSubResourceGetMappedArray(&texture_ptr, cuda_resource, 0, 0);  // Get CUDA array pointer linked to OpenGL texture
-
-	cudaMemcpy2DToArray(
-		texture_ptr,
-		0, 0,
-		d_rgba_frame.ptr(),      // Source pointer (GPU memory)
-		d_rgba_frame.step,       // Source stride
-		d_rgba_frame.cols * d_rgba_frame.elemSize(), // Width in bytes
-		d_rgba_frame.rows,       // Height in rows
-		cudaMemcpyDeviceToDevice // GPU-to-GPU memory copy
-	);
-
-	cudaGraphicsUnmapResources(1, &cuda_resource, 0);  // Unmap resource after copy
-}
-
-// Render the current OpenGL texture to the screen
-void CameraStreamer::renderTexture() {
-	glClear(GL_COLOR_BUFFER_BIT);  // Clear the screen
-	glEnable(GL_TEXTURE_2D);  // Enable 2D texturing
-	glBindTexture(GL_TEXTURE_2D, textureID);  // Bind the texture to use
-
-	glBegin(GL_QUADS);  // Start drawing a rectangle
-	glTexCoord2f(0, 1); glVertex2f(-1.0f, -1.0f);  // Bottom-left
-	glTexCoord2f(1, 1); glVertex2f(1.0f, -1.0f);   // Bottom-right
-	glTexCoord2f(1, 0); glVertex2f(1.0f, 1.0f);    // Top-right
-	glTexCoord2f(0, 0); glVertex2f(-1.0f, 1.0f);   // Top-left
-	glEnd();  // End drawing rectangle
-
-	glfwSwapBuffers(window);  // Swap front and back buffers (double buffering)
-	glfwPollEvents();  // Process window events
 }
 
 // Load camera calibration file and initialize undistortion maps (upload to GPU)
@@ -166,7 +82,6 @@ void CameraStreamer::start() {
 	auto start_time = std::chrono::high_resolution_clock::now();
 	int frame_count = 0;
 
-	//while (!glfwWindowShouldClose(window)) {  // Main loop until window closed
 	while (m_running) {  // Main loop until stop signal
 		auto frame_start = std::chrono::high_resolution_clock::now();
 
@@ -216,9 +131,6 @@ void CameraStreamer::start() {
 			start_time = now;
 			frame_count = 0;
 		}
-
-		//uploadFrameToTexture(d_resized_mask);  // Upload final result to OpenGL
-		//renderTexture();  // Render it
 	}
 }
 

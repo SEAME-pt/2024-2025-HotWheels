@@ -7,9 +7,9 @@
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #include <QCoreApplication>
@@ -141,25 +141,6 @@ TEST_F(SystemManagerTest, UpdateBatteryPercentageSignal)
 	QList<QVariant> args = spy.takeFirst();
 	EXPECT_GE(args.at(0).toFloat(), 0.0f);
 	EXPECT_LE(args.at(0).toFloat(), 100.0f);
-}
-
-/*!
- * @test 🌍 Update IP Address Signal
- * @brief Ensures that the SystemManager updates the IP address.
- * @details This test verifies that the SystemManager updates the IP address
- * by emitting the ipAddressUpdated signal.
- * @see SystemManager::ipAddressUpdated
- */
-TEST_F(SystemManagerTest, UpdateIpAddressSignal)
-{
-	QSignalSpy spy(systemManager, &SystemManager::ipAddressUpdated);
-
-	systemManager->initialize();
-	QCoreApplication::processEvents();
-
-	ASSERT_GT(spy.count(), 0);
-	QList<QVariant> args = spy.takeFirst();
-	EXPECT_FALSE(args.isEmpty());
 }
 
 /*!

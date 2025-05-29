@@ -17,8 +17,9 @@
 
 #include "EngineController.hpp"
 #include "JoysticksController.hpp"
-#include "CameraStreamer.hpp"
-#include "TensorRTInferencer.hpp"
+#include "inference/CameraStreamer.hpp"
+#include "inference/TensorRTInferencer.hpp"
+#include "inference/IInferencer.hpp"
 #include "../../ZeroMQ/Subscriber.hpp"
 #include "../../ZeroMQ/Publisher.hpp"
 #include <QObject>

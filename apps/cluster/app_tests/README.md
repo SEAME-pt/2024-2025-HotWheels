@@ -1,7 +1,10 @@
-app_tests
+# Application Test Suite
 
-This directory contains tests for the application, categorized to ensure clarity and maintainability.
-Directory Structure
+This directory contains all automated tests for the application, categorized to support clarity, scalability, and maintainability.
+
+---
+
+## 📁 Directory Structure
 
 app_tests/
 ├── unit/           # Tests for individual classes or functions
@@ -9,22 +12,39 @@ app_tests/
 ├── mocks/          # Mock files for simulating dependencies
 ├── functional/     # High-level tests for application-wide behavior
 
-Testing Categories
-1. Unit Tests
+---
 
-    Focus on testing individual classes or functions in isolation.
-    Mock dependencies when required.
+## Testing Categories
 
-2. Integration Tests
+### 1. Unit Tests (`unit/`)
 
-    Verify that multiple components work together as expected.
-    Typically involve real implementations of the components.
+- Test individual functions or classes in isolation.
+- Dependencies are mocked to avoid side effects.
+- Typically written using [Google Test](https://github.com/google/googletest) and [Google Mock](https://github.com/google/googletest/tree/main/googlemock).
 
-3. Mock Files
+### 2. Integration Tests (`integration/`)
 
-    Provide mock classes or functions for isolating dependencies in unit tests.
+- Verify correct interactions between multiple real components.
+- Help detect interface mismatches, threading issues, and signal/slot integration (especially with Qt).
 
-4. Functional Tests
+### 3. Functional Tests (`functional/`)
 
-    Test high-level application behavior.
-    Includes scripts like test_entry_point.sh for validating overall functionality.
+- Validate the application from a black-box perspective.
+- Focus on user workflows and overall system functionality.
+- Includes test scripts like `test_entry_point.sh`.
+
+### 4. Mock Implementations (`mocks/`)
+
+- Provide test doubles for system-level or external dependencies.
+- Used primarily in unit tests to isolate logic under test.
+
+---
+
+## Test Documentation
+
+Every test file is accompanied by a `.md` file that documents:
+
+- What the test covers
+- How it works internally
+- Related signals, slots, or classes
+- Edge cases or failure expectations

@@ -7,22 +7,23 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/cudawarping.hpp>
+
 #include "TensorRTInferencer.hpp"
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <cuda_gl_interop.h>
 
+#include "IInferencer.hpp"
+
 class CameraStreamer {
 public:
-	CameraStreamer(std::shared_ptr<TensorRTInferencer> inferencer, double scale = 0.5, const std::string& win_name = "CSI Camera", bool show_orig = false);
+	CameraStreamer(std::shared_ptr<IInferencer> inferencer, double scale = 0.5, const std::string& win_name = "CSI Camera", bool show_orig = false);
 	~CameraStreamer();
 
-	void initOpenGL();
 	void initUndistortMaps();
-	void uploadFrameToTexture(const cv::cuda::GpuMat& gpuFrame);
-	void renderTexture();
 
 	void start();
 	void stop();
@@ -36,12 +37,8 @@ private:
 	cv::cuda::GpuMat d_mapx, d_mapy;
 	cudaGraphicsResource* cuda_resource;
 
-	GLFWwindow* window;
-	GLuint textureID;
-	int window_width, window_height;
-
 	bool m_running;
-	std::shared_ptr<TensorRTInferencer> m_inferencer;
+	std::shared_ptr<IInferencer> m_inferencer;
 
 	Publisher *m_publisherObject;
 };

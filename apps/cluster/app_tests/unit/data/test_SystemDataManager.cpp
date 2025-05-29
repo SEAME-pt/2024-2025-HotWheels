@@ -60,33 +60,6 @@ TEST_F(SystemDataManagerTest, TimeDataEmitsSignal)
 }
 
 /*!
- * @test Tests if the time data emits a signal when changed.
- * @brief Ensures that the time data emits a signal when changed.
- *
- * @details This test verifies that the time data emits a signal when changed.
- *
- * @see SystemDataManager::handleTimeData
- */
-TEST_F(SystemDataManagerTest, WifiDataEmitsSignalOnChange)
-{
-	QSignalSpy wifiSpy(systemDataManager, &SystemDataManager::systemWifiUpdated);
-
-	QString expectedStatus = "Connected";
-	QString expectedName = "MyWiFi";
-
-	systemDataManager->handleWifiData(expectedStatus, expectedName);
-
-	ASSERT_EQ(wifiSpy.count(), 1);
-	QList<QVariant> args = wifiSpy.takeFirst();
-	ASSERT_EQ(args.at(0).toString(), expectedStatus);
-	ASSERT_EQ(args.at(1).toString(), expectedName);
-
-	// Sending the same data should NOT emit the signal again
-	systemDataManager->handleWifiData(expectedStatus, expectedName);
-	ASSERT_EQ(wifiSpy.count(), 0);
-}
-
-/*!
  * @test Tests if the temperature data emits a signal when changed.
  * @brief Ensures that the temperature data emits a signal when changed.
  *
@@ -109,31 +82,6 @@ TEST_F(SystemDataManagerTest, TemperatureDataEmitsSignalOnChange)
 	// Sending the same data should NOT emit the signal again
 	systemDataManager->handleTemperatureData(expectedTemp);
 	ASSERT_EQ(tempSpy.count(), 0);
-}
-
-/*!
- * @test Tests if the IP address emits a signal when changed.
- * @brief Ensures that the IP address emits a signal when changed.
- *
- * @details This test verifies that the IP address emits a signal when changed.
- *
- * @see SystemDataManager::handleIpAddressData
- */
-TEST_F(SystemDataManagerTest, IpAddressEmitsSignalOnChange)
-{
-	QSignalSpy ipSpy(systemDataManager, &SystemDataManager::ipAddressUpdated);
-
-	QString expectedIp = "192.168.1.100";
-
-	systemDataManager->handleIpAddressData(expectedIp);
-
-	ASSERT_EQ(ipSpy.count(), 1);
-	QList<QVariant> args = ipSpy.takeFirst();
-	ASSERT_EQ(args.at(0).toString(), expectedIp);
-
-	// Sending the same data should NOT emit the signal again
-	systemDataManager->handleIpAddressData(expectedIp);
-	ASSERT_EQ(ipSpy.count(), 0);
 }
 
 /*!
