@@ -44,6 +44,7 @@ jobs:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/*.gcno hotweels@10.21.221.78:/home/hotweels/apps/tests
 
       - name: Run tests
         env:
@@ -58,9 +59,14 @@ jobs:
         run: |
           sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 '
           cd /home/hotweels/apps/tests &&
-          chmod +x scripts/generate_coverage.sh &&
-          ./car-controls-tests &&
-          ./scripts/generate_coverage.sh'
+          chmod +x generate_coverage.sh &&
+          ./generate_coverage.sh'
+
+      - name: Download coverage report from Jetson
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -e rsync -avz --delete hotweels@10.21.221.78:/home/hotweels/apps/tests/coverage-report ./apps/car_controls/
 
       - name: Deploy executable to target
         env:
