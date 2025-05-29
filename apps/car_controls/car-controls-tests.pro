@@ -2,10 +2,6 @@ QT       += core testlib
 CONFIG   += c++17
 TARGET   = car-controls-tests
 
-# Enable code coverage
-QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
-QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
-
 JETSON_SYSROOT = /home/seame/qtjetson/sysroot
 
 # Include Paths

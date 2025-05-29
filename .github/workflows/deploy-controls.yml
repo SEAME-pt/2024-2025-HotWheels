@@ -4,15 +4,15 @@ on:
   push:
     branches:
       - test-coverage
-    #paths:
-      #- 'apps/car_controls/**'
-      #- 'ZeroMQ/**'
+    paths:
+      - 'apps/car_controls/**'
+      - 'ZeroMQ/**'
   pull_request:
     branches:
       - test-coverage
-    #paths:
-      #- 'apps/car_controls/**'
-      #- 'ZeroMQ/**'
+    paths:
+      - 'apps/car_controls/**'
+      - 'ZeroMQ/**'
 
 env:
   DIR: apps/car_controls
@@ -44,29 +44,13 @@ jobs:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/*.gcno hotweels@10.21.221.78:/tmp/gcov
 
       - name: Run tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
-            'GCOV_PREFIX=/tmp/gcov GCOV_PREFIX_STRIP=10 /home/hotweels/apps/tests/car-controls-tests'
-
-      - name: Run coverage report
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 '
-          cd /home/hotweels/apps/tests &&
-          chmod +x generate_coverage.sh &&
-          ./generate_coverage.sh'
-
-      - name: Download coverage report from Jetson
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -e rsync -avz --delete hotweels@10.21.221.78:/home/hotweels/apps/tests/coverage-report ./apps/car_controls/
+            '/home/hotweels/apps/tests/car-controls-tests'
 
       - name: Deploy executable to target
         env:
