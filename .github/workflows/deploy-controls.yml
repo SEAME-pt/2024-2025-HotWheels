@@ -51,7 +51,7 @@ jobs:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
-            'GCOV_PREFIX=/tmp/gcov GCOV_PREFIX_STRIP=6 /home/hotweels/apps/tests/car-controls-tests'
+            'GCOV_PREFIX=/tmp/gcov GCOV_PREFIX_STRIP=10 /home/hotweels/apps/tests/car-controls-tests'
 
       - name: Run coverage report
         env:
