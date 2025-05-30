@@ -3,13 +3,13 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - fps-rate-change
+      - main
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
   pull_request:
     branches:
-      - fps-rate-change
+      - main
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
@@ -56,4 +56,4 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps/test
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps
