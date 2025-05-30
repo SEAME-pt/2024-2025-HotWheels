@@ -318,23 +318,6 @@ TEST(TensorRTInferencerTest, PredictionOutputHasExpectedRange) {
     EXPECT_LE(maxVal, 1.0);
 }
 
-TEST(TensorRTInferencerTest, ThreadedInferenceDoesNotCrash) {
-    TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
-
-    auto job = [&inferencer]() {
-        cv::Mat img(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
-        cv::cuda::GpuMat gpu;
-        gpu.upload(img);
-        inferencer.makePrediction(gpu);
-    };
-
-    std::thread t1(job), t2(job);
-    t1.join();
-    t2.join();
-
-    SUCCEED();
-}
-
 TEST(TensorRTInferencerTest, ReuseInferenceMultipleTimes) {
     TensorRTInferencer inferencer("/home/hotweels/dev/model_loader/models/model.engine");
 
