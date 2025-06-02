@@ -26,6 +26,19 @@ YOLOv5TRT::~YOLOv5TRT() {
 	cudaFree(outputDevice);
 }
 
+/**
+ * @brief Calcula o volume (número total de elementos) de um tensor dado suas dimensões.
+ * @param dims Dimensões do tensor.
+ * @return Volume total.
+ */
+size_t YOLOv5TRT::calculateVolume(const nvinfer1::Dims& dims) {
+	size_t volume = 1;
+	for (int i = 0; i < dims.nbDims; ++i) {
+		volume *= dims.d[i];
+	}
+	return volume;
+}
+
 void YOLOv5TRT::loadEngine(const std::string& enginePath) {
 	std::ifstream file(enginePath, std::ios::binary);
 	if (!file) {

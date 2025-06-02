@@ -56,6 +56,7 @@ private:
 	size_t outputSize{0};
 	std::vector<void*> bindings;
 
+	size_t calculateVolume(const nvinfer1::Dims& dims);
 	void loadEngine(const std::string& enginePath);
 	void allocateBuffers();
 	std::vector<float> infer(const cv::Mat& image);
