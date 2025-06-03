@@ -35,10 +35,11 @@
 ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	: QObject(parent), m_engineController(0x40, 0x60, this),
 	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
-	  m_subscriberObject(nullptr), m_manualControllerThread(nullptr),
-	  m_subscriberThread(nullptr), m_joystickControlThread(nullptr),
+	  m_subscriberJoystickObject(nullptr), m_subscriberCameraFrameObject(nullptr),
+	  m_manualControllerThread(nullptr), m_subscriberCameraFrameThread(nullptr),
+	  m_subscriberJoystickThread(nullptr), m_joystickControlThread(nullptr),
 	  m_cameraStreamerThread(nullptr), m_cameraStreamerObject(nullptr),
-	  m_running(true)
+	  m_yoloObject(nullptr), m_running(true)
 {
 
 	// Initialize the joystick controller with callbacks
@@ -76,15 +77,15 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	m_manualControllerThread->start();
 
 	// **Client Middleware Interface Thread**
-	m_subscriberObject = new Subscriber();
-	m_subscriberThread = QThread::create([this, argc, argv]()
+	m_subscriberJoystickObject = new Subscriber();
+	m_subscriberJoystickThread = QThread::create([this, argc, argv]()
 									{
-		m_subscriberObject->connect("tcp://localhost:5555");
-		m_subscriberObject->subscribe("joystick_value");
+		m_subscriberJoystickObject->connect("tcp://localhost:5555");
+		m_subscriberJoystickObject->subscribe("joystick_value");
 		while (m_running) {
 			try {
 				zmq::pollitem_t items[] = {
-					{ static_cast<void*>(m_subscriberObject->getSocket()), 0, ZMQ_POLLIN, 0 }
+					{ static_cast<void*>(m_subscriberJoystickObject->getSocket()), 0, ZMQ_POLLIN, 0 }
 				};
 
 				// Wait up to 100ms for a message
@@ -92,7 +93,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 				if (items[0].revents & ZMQ_POLLIN) {
 					zmq::message_t message;
-					if (!m_subscriberObject->getSocket().recv(&message, 0)) {
+					if (!m_subscriberJoystickObject->getSocket().recv(&message, 0)) {
 						continue;  // failed to receive
 					}
 
@@ -113,7 +114,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			}
 		}
 	});
-	m_subscriberThread->start();
+	m_subscriberJoystickThread->start();
 
 	// **Running inference Thread**
 	m_cameraStreamerThread = QThread::create([this, argc, argv]()
@@ -132,6 +133,56 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	});
 	connect(m_cameraStreamerThread, &QThread::finished, m_cameraStreamerThread, &QObject::deleteLater);
 	m_cameraStreamerThread->start();
+
+	// **Running Object Detection Thread**
+	m_subscriberCameraFrameObject = new Subscriber();
+	m_subscriberCameraFrameThread = QThread::create([this]()
+										{
+		m_subscriberCameraFrameObject->connect("tcp://localhost:5557");  // Your image port
+		m_subscriberCameraFrameObject->subscribe("camera_frame");
+
+		YOLOv5TRT model("/home/hotweels/cam_calib/models/yolov5m_updated.engine", "/home/hotweels/cam_calib/models/labels.txt");
+
+		while (m_running) {
+			try {
+			zmq::pollitem_t items[] = {
+				{ static_cast<void*>(m_subscriberCameraFrameObject->getSocket()), 0, ZMQ_POLLIN, 0 }
+			};
+
+			zmq::poll(items, 1, 100);  // Timeout: 100 ms
+
+			if (items[0].revents & ZMQ_POLLIN) {
+				zmq::message_t message;
+				if (!m_subscriberCameraFrameObject->getSocket().recv(&message, 0)) {
+				continue;
+				}
+
+				std::string received_msg(static_cast<char*>(message.data()), message.size());
+				//std::cout << "[Subscriber] Raw message: " << received_msg.substr(0, 30) << "... (" << message.size() << " bytes)" << std::endl;
+
+				const std::string topic = "camera_frame ";
+				if (received_msg.find(topic) == 0) {
+					std::vector<uchar> jpegData(
+						received_msg.begin() + topic.size(),
+						received_msg.end()
+					);
+
+					cv::Mat frame = cv::imdecode(jpegData, cv::IMREAD_COLOR);
+
+					if (frame.empty()) {
+						std::cerr << "Failed to decode JPEG image." << std::endl;
+						continue;
+					}
+					model.process_image(frame);
+				}
+			}
+			} catch (const zmq::error_t& e) {
+				std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
+				break;
+			}
+		}
+	});
+	m_subscriberCameraFrameThread->start();
 }
 
 
@@ -141,7 +192,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
  *          with the ControlsManager. This includes stopping the client,
  *          shared memory, process monitoring, joystick control, and manual
  *          controller threads. It also deletes associated objects such as
- *          m_carDataObject, m_subscriberThread, and m_manualController.
+ *          m_carDataObject, m_subscriberJoystickThread, and m_manualController.
  */
 
 ControlsManager::~ControlsManager()
@@ -149,17 +200,17 @@ ControlsManager::~ControlsManager()
 	m_running = false;
 
 	// Stop the client thread safely
-	if (m_subscriberThread) {
-		if (m_subscriberObject) {
-			m_subscriberObject->stop();
+	if (m_subscriberJoystickThread) {
+		if (m_subscriberJoystickObject) {
+			m_subscriberJoystickObject->stop();
 		}
-		m_subscriberThread->quit();
-		m_subscriberThread->wait();
+		m_subscriberJoystickThread->quit();
+		m_subscriberJoystickThread->wait();
 
-		m_subscriberObject->getSocket().close();
+		m_subscriberJoystickObject->getSocket().close();
 
-		delete m_subscriberThread;
-		m_subscriberThread = nullptr;
+		delete m_subscriberJoystickThread;
+		m_subscriberJoystickThread = nullptr;
 	}
 
 
@@ -192,8 +243,8 @@ ControlsManager::~ControlsManager()
 	delete m_manualController;
 	m_manualController = nullptr;
 
-	delete m_subscriberObject;
-	m_subscriberObject = nullptr;
+	delete m_subscriberJoystickObject;
+	m_subscriberJoystickObject = nullptr;
 }
 
 /*!

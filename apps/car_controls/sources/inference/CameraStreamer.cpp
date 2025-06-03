@@ -2,10 +2,12 @@
 
 // Constructor: initializes camera capture, inference reference, and settings
 CameraStreamer::CameraStreamer(std::shared_ptr<IInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)
-	: scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_publisherObject(nullptr), m_running(true) {
+	: scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_publisherObject(nullptr),
+	m_publisherFrameObject(nullptr), m_running(true) {
 
 	// Start publisher to pass frames to the cluster
 	m_publisherObject = new Publisher(5556);
+	m_publisherFrameObject = new Publisher(5557);
 
 	std::cout << "[CameraStreamer] Initializing camera..." << std::endl;
 
@@ -92,6 +94,10 @@ void CameraStreamer::start() {
 
 		if (frame.empty()) break;  // Stop if frame is invalid
 
+		if (m_publisherFrameObject) {
+			m_publisherFrameObject->publishCameraFrame("camera_frame", resizedFrame);  // Publish the frame
+		}
+
 		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
 		cv::cuda::GpuMat d_undistorted;
 		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
@@ -119,7 +125,7 @@ void CameraStreamer::start() {
 		stream.waitForCompletion();  // Synchronize
 
 		if (m_publisherObject) {
-			m_publisherObject->publishFrame("inference_frame", d_resized_mask);  // Publish the frame
+			m_publisherObject->publishInferenceFrame("inference_frame", d_resized_mask);  // Publish the frame
 		}
 
 		frame_count++;

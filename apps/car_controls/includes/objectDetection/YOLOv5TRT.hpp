@@ -12,6 +12,17 @@
 #include <chrono>
 #include "LabelManager.hpp"
 
+using namespace nvinfer1;
+
+/**
+ * @struct Detection
+ * @brief Estrutura para armazenar uma detecção (bounding box, confiança e classe).
+ */
+struct Detection {
+	float x, y, w, h, conf; ///< Coordenadas e confiança
+	int class_id; ///< Índice da classe
+};
+
 /**
  * @class YOLOv5TRT
  * @brief Gerencia o engine TensorRT e executa inferência do modelo YOLOv5.
@@ -22,19 +33,21 @@ public:
 	 * @brief Construtor. Carrega o engine e aloca buffers.
 	 * @param enginePath Caminho para o arquivo do engine TensorRT.
 	 */
-	YOLOv5TRT(const std::string& enginePath);
+	YOLOv5TRT(const std::string& enginePath, const std::string& labelPath);
 
 	/**
 	 * @brief Destrutor. Libera recursos.
 	 */
 	~YOLOv5TRT();
 
+	void process_image(const cv::Mat& frame);
+
 private:
 	class Logger : public ILogger {
 	public:
 		void log(Severity severity, const char* msg) noexcept override {
 			if (severity <= Severity::kWARNING) {
-				cout << "[TensorRT] " << msg << endl;
+				std::cout << "[TensorRT] " << msg << std::endl;
 			}
 		}
 	} logger;
@@ -56,10 +69,14 @@ private:
 	size_t outputSize{0};
 	std::vector<void*> bindings;
 
+	LabelManager labelManager;
+	float conf_thresh = 0.25f;
+	float nms_thresh = 0.45f;
+	int num_classes;
+
 	size_t calculateVolume(const nvinfer1::Dims& dims);
 	void loadEngine(const std::string& enginePath);
 	void allocateBuffers();
 	std::vector<float> infer(const cv::Mat& image);
 	std::vector<Detection> postprocess(const std::vector<float>& output, int num_classes, float conf_thresh, float nms_thresh);
-	void YOLOv5TRT::process_image(const cv::Mat& frame);
 };

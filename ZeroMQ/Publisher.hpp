@@ -26,7 +26,8 @@ public:
 
 	void publish(const std::string& topic, const std::string& message);
 	void setJoystickStatus(bool new_joytstick_value);
-	void publishFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image);
+	void publishInferenceFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image);
+	void publishCameraFrame(const std::string& topic, const cv::Mat& frame);
 };
 
 #endif // PUBLISHER_HPP

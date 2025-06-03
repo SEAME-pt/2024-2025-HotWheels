@@ -16,6 +16,8 @@ SOURCES += \
 	sources/inference/TensorRTInferencer.cpp \
 	sources/inference/LanePostProcessor.cpp \
 	sources/inference/LaneCurveFitter.cpp \
+	sources/objectDetection/LabelManager.cpp \
+	sources/objectDetection/YOLOv5TRT.cpp \
 	sources/ControlsManager.cpp \
 	sources/JoysticksController.cpp \
 	sources/EngineController.cpp \
@@ -30,6 +32,8 @@ HEADERS += \
 	includes/inference/IInferencer.hpp \
 	includes/inference/LanePostProcessor.hpp \
 	includes/inference/LaneCurveFitter.hpp \
+	includes/objectDetection/LabelManager.hpp \
+	includes/objectDetection/YOLOv5TRT.hpp \
 	includes/ControlsManager.hpp \
 	includes/JoysticksController.hpp \
 	includes/EngineController.hpp \

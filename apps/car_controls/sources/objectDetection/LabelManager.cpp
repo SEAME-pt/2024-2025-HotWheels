@@ -1,4 +1,4 @@
-#include "LabelManager.hpp"
+#include "../../includes/objectDetection/LabelManager.hpp"
 
 /**
  * @brief Construtor que carrega as labels de um arquivo.
@@ -15,7 +15,7 @@ LabelManager::LabelManager(const std::string& labelPath) {
 void LabelManager::loadLabels(const std::string& labelPath) {
 	std::ifstream file(labelPath);
 	if (!file.is_open()) {
-		cerr << "[ERRO] Não foi possível abrir o arquivo de labels: " << labelPath << endl;
+		std::cerr << "[ERRO] Não foi possível abrir o arquivo de labels: " << labelPath << std::endl;
 		return;
 	}
 
@@ -27,25 +27,7 @@ void LabelManager::loadLabels(const std::string& labelPath) {
 	}
 	file.close();
 
-	cout << "[INFO] Carregadas " << labels.size() << " labels." << endl;
-}
-
-void LabelManager::loadLabels(const std::string& labelPath) {
-	std::ifstream file(labelPath);
-	if (!file.is_open()) {
-		cerr << "[ERRO] Não foi possível abrir o arquivo de labels: " << labelPath << endl;
-		return;
-	}
-
-	std::string line;
-	while (std::getline(file, line)) {
-		line.erase(0, line.find_first_not_of(" \t\r\n"));
-		line.erase(line.find_last_not_of(" \t\r\n") + 1);
-		labels.push_back(line);
-	}
-	file.close();
-
-	cout << "[INFO] Carregadas " << labels.size() << " labels." << endl;
+	std::cout << "[INFO] Carregadas " << labels.size() << " labels." << std::endl;
 }
 
 /**

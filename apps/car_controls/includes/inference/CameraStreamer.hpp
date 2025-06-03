@@ -41,6 +41,7 @@ private:
 	std::shared_ptr<IInferencer> m_inferencer;
 
 	Publisher *m_publisherObject;
+	Publisher *m_publisherFrameObject;
 };
 
 #endif // CAMERA_STREAMER_HPP

@@ -1,21 +1,28 @@
-#include "YOLOv5TRT.hpp"
+#include "../../includes/objectDetection/YOLOv5TRT.hpp"
 
-/**
- * @struct Detection
- * @brief Estrutura para armazenar uma detecção (bounding box, confiança e classe).
- */
-struct Detection {
-	float x, y, w, h, conf; ///< Coordenadas e confiança
-	int class_id; ///< Índice da classe
-};
+YOLOv5TRT::YOLOv5TRT(const std::string& enginePath, const std::string& labelPath)
+	: labelManager(labelPath) {
+	// Correção: verificar valores de retorno do system()
+	int result1 = system("sudo nvpmodel -m 0");
+	if (result1 != 0) {
+		std::cerr << "[AVISO] Falha ao configurar nvpmodel" << std::endl;
+	}
 
-YOLOv5TRT::YOLOv5TRT(const std::string& enginePath) {
+	int result2 = system("sudo jetson_clocks");
+	if (result2 != 0) {
+		std::cerr << "[AVISO] Falha ao configurar jetson_clocks" << std::endl;
+	}
+
+	// Configurar OpenCV para usar CUDA
+	cv::cuda::setDevice(0);
 	loadEngine(enginePath);
 	allocateBuffers();
 
 	// Pré-alocar buffers reutilizáveis
 	channels.resize(3);
 	hostDataBuffer = new float[3*640*640];
+
+	num_classes = static_cast<int>(labelManager.getNumClasses());
 }
 
 YOLOv5TRT::~YOLOv5TRT() {
@@ -42,7 +49,7 @@ size_t YOLOv5TRT::calculateVolume(const nvinfer1::Dims& dims) {
 void YOLOv5TRT::loadEngine(const std::string& enginePath) {
 	std::ifstream file(enginePath, std::ios::binary);
 	if (!file) {
-		cerr << "[ERRO] Falha ao carregar o engine TensorRT!" << endl;
+		std::cerr << "[ERRO] Falha ao carregar o engine TensorRT!" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 
@@ -55,7 +62,7 @@ void YOLOv5TRT::loadEngine(const std::string& enginePath) {
 	runtime = createInferRuntime(logger);
 	engine = runtime->deserializeCudaEngine(engineData.data(), size);
 	if (!engine) {
-		cerr << "[ERRO] Falha ao desserializar o engine TensorRT!" << endl;
+		std::cerr << "[ERRO] Falha ao desserializar o engine TensorRT!" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 
@@ -184,34 +191,7 @@ std::vector<Detection> YOLOv5TRT::postprocess(const std::vector<float>& output, 
  * @return 0 em caso de sucesso.
  */
 void YOLOv5TRT::process_image(const cv::Mat& frame) {
-	// Correção: verificar valores de retorno do system()
-	int result1 = system("sudo nvpmodel -m 0");
-	if (result1 != 0) {
-		cerr << "[AVISO] Falha ao configurar nvpmodel" << endl;
-	}
-
-	int result2 = system("sudo jetson_clocks");
-	if (result2 != 0) {
-		cerr << "[AVISO] Falha ao configurar jetson_clocks" << endl;
-	}
-
-	// Configurar OpenCV para usar CUDA
-	cv::cuda::setDevice(0);
-
-	// Carregar labels
-	LabelManager labelManager("labels.txt");
-
-	YOLOv5TRT model(MODEL);
-
-	int num_classes = static_cast<int>(labelManager.getNumClasses());
-	float conf_thresh = 0.25f;
-	float nms_thresh = 0.45f;
-
-	// Variáveis para FPS
-	auto start_time = std::chrono::high_resolution_clock::now();
-	int frame_count = 0;
-
-	auto output = model.infer(frame);
+	auto output = infer(frame);
 	std::vector<Detection> dets = postprocess(output, num_classes, conf_thresh, nms_thresh);
 
 	for (const auto& det : dets) {
@@ -237,7 +217,7 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 		// Verificar se o retângulo é válido
 		if (x2 > x1 && y2 > y1) {
 			std::string className = labelManager.getLabel(det.class_id);
-			cout << "Object found: " << className << " at (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << endl;
+			std::cout << "Object found: " << className << " at (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << std::endl;
 
 			// Desenhar retângulo usando coordenadas Point
 			cv::rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 3);
@@ -260,14 +240,15 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 						cv::FONT_HERSHEY_SIMPLEX, 0.6,
 						cv::Scalar(0, 0, 0), 2);
 		} else {
-			cout << "Invalid rectangle coordinates for detection: "
+			std::cout << "Invalid rectangle coordinates for detection: "
 					<< "x1=" << x1 << ", y1=" << y1
 					<< ", x2=" << x2 << ", y2=" << y2
 					<< ", width=" << width << ", height=" << height
 					<< ", det.x=" << det.x << ", det.y=" << det.y
 					<< ", det.w=" << det.w << ", det.h=" << det.h
-					<< ", class_id=" << det.class_id << ", conf=" << det.conf << endl;
+					<< ", class_id=" << det.class_id << ", conf=" << det.conf << std::endl;
 		}
 	}
-	return 0;
+
+	std::cout << "I was here" << std::endl;
 }
