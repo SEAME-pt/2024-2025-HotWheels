@@ -74,9 +74,11 @@ private:
 	float nms_thresh = 0.45f;
 	int num_classes;
 
-	size_t calculateVolume(const nvinfer1::Dims& dims);
 	void loadEngine(const std::string& enginePath);
 	void allocateBuffers();
 	std::vector<float> infer(const cv::Mat& image);
+
+protected:
+	size_t calculateVolume(const nvinfer1::Dims& dims);
 	std::vector<Detection> postprocess(const std::vector<float>& output, int num_classes, float conf_thresh, float nms_thresh);
 };

@@ -22,6 +22,8 @@ SOURCES += \
     $$TESTS_PATH/unit/test_PeripheralController.cpp \
     $$TESTS_PATH/unit/test_TensorRTInferencer.cpp \
     $$TESTS_PATH/unit/test_CameraStreamer.cpp \
+    $$TESTS_PATH/unit/test_LabelManager.cpp \
+    $$TESTS_PATH/unit/test_YOLOv5TRT.cpp \
     ../../ZeroMQ/Publisher.cpp \
     ../../ZeroMQ/Subscriber.cpp \
     sources/PeripheralController.cpp \
@@ -29,6 +31,8 @@ SOURCES += \
     sources/inference/TensorRTInferencer.cpp \
     sources/inference/LanePostProcessor.cpp \
     sources/inference/LaneCurveFitter.cpp \
+    sources/objectDetection/LabelManager.cpp \
+    sources/objectDetection/YOLOv5TRT.cpp
 
 HEADERS += \
     $$TESTS_PATH/mocks/MockPeripheralController.hpp \
@@ -39,7 +43,9 @@ HEADERS += \
     includes/inference/TensorRTInferencer.hpp \
     includes/inference/LanePostProcessor.hpp \
 	includes/inference/LaneCurveFitter.hpp \
-    includes/inference/IInferencer.hpp
+    includes/inference/IInferencer.hpp \
+    includes/objectDetection/LabelManager.hpp \
+    includes/objectDetection/YOLOv5TRT.hpp
 
 # CUDA includes
 INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include

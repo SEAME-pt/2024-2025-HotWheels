@@ -1,15 +1,15 @@
 #include "../../includes/inference/CameraStreamer.hpp"
 
-// Constructor: initializes camera capture, inference reference, and settings
-CameraStreamer::CameraStreamer(std::shared_ptr<IInferencer> inferencer, double scale, const std::string& win_name, bool show_orig)
-	: scale_factor(scale), window_name(win_name), show_original(show_orig), m_inferencer(std::move(inferencer)), m_publisherObject(nullptr),
-	m_publisherFrameObject(nullptr), m_running(true) {
 
-	// Start publisher to pass frames to the cluster
-	m_publisherObject = new Publisher(5556);
+// Constructor: initializes camera capture, inference reference, and settings
+CameraStreamer::CameraStreamer(double scale)
+	: scale_factor(scale), m_publisherFrameObject(nullptr), m_running(true) {
+
+	// Start publisher to pass frames to lane detection and object detection
 	m_publisherFrameObject = new Publisher(5557);
 
-	std::cout << "[CameraStreamer] Initializing camera..." << std::endl;
+	segmentationInferencer = std::make_shared<TensorRTInferencer>("/home/hotweels/dev/model_loader/models/model.engine");
+	yoloInferencer = std::make_shared<YOLOv5TRT>("/home/hotweels/cam_calib/models/yolov5m_updated.engine", "/home/hotweels/cam_calib/models/labels.txt");
 
 	// Define GStreamer pipeline for CSI camera
 	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! "
@@ -19,7 +19,11 @@ CameraStreamer::CameraStreamer(std::shared_ptr<IInferencer> inferencer, double s
 			"videoconvert ! video/x-raw, format=(string)BGR ! "
 			"appsink drop=1 buffers=1";
 
+	std::cout << "[CameraStreamer] Using GStreamer pipeline: " << pipeline << std::endl;
+
 	cap.open(pipeline, cv::CAP_GSTREAMER); // Open camera stream with GStreamer
+
+	std::cout << "[CameraStreamer] Camera opened." << std::endl;
 
 	if (!cap.isOpened()) {  // Check if camera opened successfully
 		std::cerr << "Error: Could not open CSI camera" << std::endl;
@@ -29,9 +33,12 @@ CameraStreamer::CameraStreamer(std::shared_ptr<IInferencer> inferencer, double s
 
 // Destructor: clean up resources
 CameraStreamer::~CameraStreamer() {
-	delete m_publisherObject;
-	m_publisherObject = nullptr;
 	stop();  // Stop the camera stream
+
+	// Join all threads safely
+	if (captureThread.joinable()) captureThread.join();
+	if (segmentationThread.joinable()) segmentationThread.join();
+	if (detectionThread.joinable()) detectionThread.join();
 
 	if (cap.isOpened()) {
 		cap.release(); // Release camera
@@ -44,98 +51,76 @@ CameraStreamer::~CameraStreamer() {
 		cuda_resource = nullptr;
 	}
 
+	delete m_publisherFrameObject;
+	m_publisherFrameObject = nullptr;
+
 	std::cout << "[~CameraStreamer] Destructor done." << std::endl;
 }
 
-// Load camera calibration file and initialize undistortion maps (upload to GPU)
-void CameraStreamer::initUndistortMaps() {
-	cv::Mat cameraMatrix, distCoeffs;
-	cv::FileStorage fs("/home/hotweels/apps/camera_calibration.yml", cv::FileStorage::READ);  // Open calibration file
+void CameraStreamer::segmentationWorker() {
+	while (m_running) {
+		cv::Mat frame;
+		if (segmentationBuffer.getFrame(frame)) {
+			auto start = std::chrono::high_resolution_clock::now();
 
-	if (!fs.isOpened()) {
-		std::cerr << "[Error] Failed to open camera_calibration.yml" << std::endl;
-		return;  // Handle file opening error
+			segmentationInferencer->doInference(frame);
+
+			auto end = std::chrono::high_resolution_clock::now();
+			auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+			std::cout << "[Segmentation] Inference time: " << duration_ms << " ms" << std::endl;
+		} else {
+			std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		}
 	}
+}
 
-	fs["camera_matrix"] >> cameraMatrix;  // Read camera matrix
-	fs["distortion_coefficients"] >> distCoeffs;  // Read distortion coefficients
-	fs.release();  // Close file
-
-	cv::Mat mapx, mapy;
-	cv::initUndistortRectifyMap(
-		cameraMatrix, distCoeffs, cv::Mat(), cameraMatrix,
-		cv::Size(cap.get(cv::CAP_PROP_FRAME_WIDTH), cap.get(cv::CAP_PROP_FRAME_HEIGHT)),
-		CV_32FC1, mapx, mapy
-	);  // Compute undistortion mapping
-
-	d_mapx.upload(mapx);  // Upload X map to GPU
-	d_mapy.upload(mapy);  // Upload Y map to GPU
+void CameraStreamer::detectionWorker() {
+	while (m_running) {
+		cv::Mat frame;
+		if (detectionBuffer.getFrame(frame)) {
+			yoloInferencer->process_image(frame);
+		} else {
+			std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		}
+	}
 }
 
 // Main loop: capture, undistort, predict, visualize and render frames
 void CameraStreamer::start() {
-	initUndistortMaps();  // Initialize camera undistortion maps
-	//initOpenGL();  // Initialize OpenGL and CUDA interop
+	m_running = true;
 
-	cv::Mat frame;
-	cv::cuda::Stream stream;  // CUDA stream for asynchronous operations
+	captureThread = std::thread(&CameraStreamer::captureLoop, this);
+	segmentationThread = std::thread(&CameraStreamer::segmentationWorker, this);
+	detectionThread = std::thread(&CameraStreamer::detectionWorker, this);
 
-	const int framesToSkip = 1;  // Skip frames to reduce processing loadd
-	auto start_time = std::chrono::high_resolution_clock::now();
-	int frame_count = 0;
+	captureThread.join();
+	segmentationThread.join();
+	detectionThread.join();
+}
 
-	while (m_running) {  // Main loop until stop signal
-		auto frame_start = std::chrono::high_resolution_clock::now();
+void CameraStreamer::captureLoop() {
+	const int target_fps = 15;
+	const int frame_interval_ms = 1000 / target_fps;
 
-		for (int i = 0; i < framesToSkip; ++i) {
-			cap.grab();  // Grab frames without decoding
-		}
-		cap >> frame;  // Read one frame (decoded)
+	while (m_running) {
+		auto start_time = std::chrono::steady_clock::now();
 
-		if (frame.empty()) break;  // Stop if frame is invalid
+		cv::Mat frame;
+		cap >> frame;
 
-		if (m_publisherFrameObject) {
-			m_publisherFrameObject->publishCameraFrame("camera_frame", resizedFrame);  // Publish the frame
-		}
-
-		cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
-		cv::cuda::GpuMat d_undistorted;
-		cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), stream);  // Undistort frame
-
-		cv::cuda::GpuMat d_prediction_mask = m_inferencer->makePrediction(d_undistorted);  // Run model inference
-
-		// Convert to 8-bit (0 or 255) in a new GpuMat
-		cv::cuda::GpuMat d_mask_u8;
-		d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255
-
-		cv::Mat binary_mask_cpu;
-		d_mask_u8.download(binary_mask_cpu, stream);
-		cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
-		stream.waitForCompletion();  // Ensure async operations are complete
-
-		// Convert model output to 8-bit binary mask on GPU
-		cv::cuda::GpuMat d_visualization;
-		d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, stream);
-
-		cv::cuda::GpuMat d_resized_mask;
-
-		cv::cuda::resize(d_visualization, d_resized_mask,
-						 cv::Size(frame.cols * scale_factor, frame.rows * scale_factor),
-						 0, 0, cv::INTER_LINEAR, stream);  // Resize for display
-		stream.waitForCompletion();  // Synchronize
-
-		if (m_publisherObject) {
-			m_publisherObject->publishInferenceFrame("inference_frame", d_resized_mask);  // Publish the frame
+		if (frame.empty()) {
+			std::cerr << "Empty frame, exiting" << std::endl;
+			break;
 		}
 
-		frame_count++;
-		auto now = std::chrono::high_resolution_clock::now();
-		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start_time).count();
+		segmentationBuffer.update(frame);
+		detectionBuffer.update(frame);
 
-		if (elapsed >= 1) {
-			std::cout << "Average FPS: " << frame_count / static_cast<double>(elapsed) << std::endl;
-			start_time = now;
-			frame_count = 0;
+		auto end_time = std::chrono::steady_clock::now();
+		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+		if (elapsed < frame_interval_ms) {
+			std::this_thread::sleep_for(std::chrono::milliseconds(frame_interval_ms - elapsed));
 		}
 	}
 }

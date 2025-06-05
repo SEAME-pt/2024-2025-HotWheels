@@ -18,9 +18,6 @@
 #include "EngineController.hpp"
 #include "JoysticksController.hpp"
 #include "inference/CameraStreamer.hpp"
-#include "inference/TensorRTInferencer.hpp"
-#include "inference/IInferencer.hpp"
-#include "objectDetection/YOLOv5TRT.hpp"
 #include "../../ZeroMQ/Subscriber.hpp"
 #include "../../ZeroMQ/Publisher.hpp"
 #include <QObject>
@@ -38,19 +35,23 @@ private:
 	EngineController m_engineController;
 	JoysticksController *m_manualController;
 	DrivingMode m_currentMode;
+
 	Subscriber *m_subscriberJoystickObject;
-	Subscriber *m_subscriberCameraFrameObject;
+	//Subscriber *m_subscriberInferenceThreadObject;
+	//Subscriber *m_subscriberODThreadObject;
+
 	CameraStreamer *m_cameraStreamerObject;
-	YOLOv5TRT *m_yoloObject;
+	//YOLOv5TRT *m_yoloObject;
+
+	//std::shared_ptr<IInferencer> inferencer;
 
 	std::atomic<bool> m_running;
 
 	QThread *m_manualControllerThread;
 	QThread *m_joystickControlThread;
-	QThread *m_cameraStreamerThread;
 
 	QThread *m_subscriberJoystickThread;
-	QThread *m_subscriberCameraFrameThread;
+	QThread *m_cameraStreamerThread;
 
 public:
 	explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);

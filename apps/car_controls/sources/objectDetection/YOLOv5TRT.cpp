@@ -220,7 +220,7 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 			std::cout << "Object found: " << className << " at (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << std::endl;
 
 			// Desenhar retângulo usando coordenadas Point
-			cv::rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 3);
+			/* cv::rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 3);
 
 			// Desenhar label
 			std::string label = className + " (" + std::to_string(int(det.conf * 100)) + "%)";
@@ -238,8 +238,8 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 			cv::putText(frame, label,
 						cv::Point(x1, y1 - 5),
 						cv::FONT_HERSHEY_SIMPLEX, 0.6,
-						cv::Scalar(0, 0, 0), 2);
-		} else {
+						cv::Scalar(0, 0, 0), 2); */
+		} /* else {
 			std::cout << "Invalid rectangle coordinates for detection: "
 					<< "x1=" << x1 << ", y1=" << y1
 					<< ", x2=" << x2 << ", y2=" << y2
@@ -247,8 +247,6 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 					<< ", det.x=" << det.x << ", det.y=" << det.y
 					<< ", det.w=" << det.w << ", det.h=" << det.h
 					<< ", class_id=" << det.class_id << ", conf=" << det.conf << std::endl;
-		}
+		} */
 	}
-
-	std::cout << "I was here" << std::endl;
 }

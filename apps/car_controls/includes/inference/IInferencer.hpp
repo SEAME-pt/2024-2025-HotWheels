@@ -10,6 +10,7 @@ public:
 
 	// The main method your dependent code will use
 	virtual cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage) = 0;
+	virtual void doInference(const cv::Mat& frame) = 0; // Run inference on a given frame
 };
 
 #endif // IINFERENCER_HPP

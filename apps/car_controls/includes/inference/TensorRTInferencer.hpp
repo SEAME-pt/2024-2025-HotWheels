@@ -15,6 +15,9 @@
 #include "LanePostProcessor.hpp"
 #include "LaneCurveFitter.hpp"
 
+#include "../../../ZeroMQ/Subscriber.hpp"
+#include "../../../ZeroMQ/Publisher.hpp"
+
 class TensorRTInferencer : public IInferencer {
 private:
 	class Logger : public nvinfer1::ILogger {
@@ -52,7 +55,11 @@ private:
 	LanePostProcessor* lanePostProcessor;
 	LaneCurveFitter* laneCurveFitter;
 
+	cv::cuda::GpuMat d_mapx, d_mapy;
 	cv::cuda::GpuMat outputMaskGpu;
+	cv::cuda::Stream cudaStream;
+
+	Publisher *m_publisherObject;
 
 	std::vector<char> readEngineFile(const std::string& enginePath);
 	void cleanupResources();
@@ -64,6 +71,8 @@ public:
 	cv::cuda::GpuMat preprocessImage(const cv::cuda::GpuMat& gpuImage);
 	void runInference(const cv::cuda::GpuMat& gpuInput);
 	cv::cuda::GpuMat makePrediction(const cv::cuda::GpuMat& gpuImage) override;
+	void initUndistortMaps();
+	void doInference(const cv::Mat& frame) override;
 
 	void*	getDeviceInputPtr() const {
 		return deviceInput;
