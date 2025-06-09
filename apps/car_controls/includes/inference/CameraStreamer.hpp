@@ -23,7 +23,29 @@
 #include "IInferencer.hpp"
 #include "../objectDetection/YOLOv5TRT.hpp"
 
-class SharedFrameBuffer {
+class FrameBufferSegmentation {
+public:
+	void update(const cv::Mat& frame) {
+		std::lock_guard<std::mutex> lock(mutex_);
+		frame_ = frame.clone(); // deep copy
+		has_new_frame_ = true;
+	}
+
+	bool getFrame(cv::Mat& out) {
+		std::lock_guard<std::mutex> lock(mutex_);
+		if (!has_new_frame_) return false;
+		out = frame_.clone();
+		has_new_frame_ = false;
+		return true;
+	}
+
+private:
+	cv::Mat frame_;
+	bool has_new_frame_ = false;
+	std::mutex mutex_;
+};
+
+class FrameBufferDetection {
 public:
 	void update(const cv::Mat& frame) {
 		std::lock_guard<std::mutex> lock(mutex_);
@@ -66,8 +88,8 @@ private:
 	std::shared_ptr<TensorRTInferencer> segmentationInferencer;
 	std::shared_ptr<YOLOv5TRT> yoloInferencer;
 
-	SharedFrameBuffer segmentationBuffer;
-	SharedFrameBuffer detectionBuffer;
+	FrameBufferSegmentation segmentationBuffer;
+	FrameBufferDetection detectionBuffer;
 
 	void segmentationWorker();
 	void detectionWorker();

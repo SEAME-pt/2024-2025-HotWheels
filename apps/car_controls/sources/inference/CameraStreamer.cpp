@@ -5,9 +5,6 @@
 CameraStreamer::CameraStreamer(double scale)
 	: scale_factor(scale), m_publisherFrameObject(nullptr), m_running(true) {
 
-	// Start publisher to pass frames to lane detection and object detection
-	m_publisherFrameObject = new Publisher(5557);
-
 	segmentationInferencer = std::make_shared<TensorRTInferencer>("/home/hotweels/dev/model_loader/models/model.engine");
 	yoloInferencer = std::make_shared<YOLOv5TRT>("/home/hotweels/cam_calib/models/yolov5m_updated.engine", "/home/hotweels/cam_calib/models/labels.txt");
 
@@ -61,14 +58,14 @@ void CameraStreamer::segmentationWorker() {
 	while (m_running) {
 		cv::Mat frame;
 		if (segmentationBuffer.getFrame(frame)) {
-			auto start = std::chrono::high_resolution_clock::now();
+			// auto start = std::chrono::high_resolution_clock::now();
 
 			segmentationInferencer->doInference(frame);
 
-			auto end = std::chrono::high_resolution_clock::now();
-			auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+			// auto end = std::chrono::high_resolution_clock::now();
+			// auto duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
-			std::cout << "[Segmentation] Inference time: " << duration_ms << " ms" << std::endl;
+			// std::cout << "[Segmentation] Inference time: " << duration_ms << " ms" << std::endl;
 		} else {
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 		}
@@ -93,21 +90,21 @@ void CameraStreamer::start() {
 	captureThread = std::thread(&CameraStreamer::captureLoop, this);
 	segmentationThread = std::thread(&CameraStreamer::segmentationWorker, this);
 	detectionThread = std::thread(&CameraStreamer::detectionWorker, this);
-
-	captureThread.join();
-	segmentationThread.join();
-	detectionThread.join();
 }
 
 void CameraStreamer::captureLoop() {
-	const int target_fps = 15;
-	const int frame_interval_ms = 1000 / target_fps;
+	auto start_time = std::chrono::high_resolution_clock::now();
+	int frame_count = 0;
+	const int framesToSkip = 1;  // Skip frames to reduce processing load
+	cv::Mat frame;
 
 	while (m_running) {
-		auto start_time = std::chrono::steady_clock::now();
+		auto frame_start = std::chrono::high_resolution_clock::now();
 
-		cv::Mat frame;
-		cap >> frame;
+		for (int i = 0; i < framesToSkip; ++i) {
+			cap.grab();  // Grab frames without decoding
+		}
+		cap >> frame;  // Read one frame (decoded)
 
 		if (frame.empty()) {
 			std::cerr << "Empty frame, exiting" << std::endl;
@@ -117,10 +114,14 @@ void CameraStreamer::captureLoop() {
 		segmentationBuffer.update(frame);
 		detectionBuffer.update(frame);
 
-		auto end_time = std::chrono::steady_clock::now();
-		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
-		if (elapsed < frame_interval_ms) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(frame_interval_ms - elapsed));
+		frame_count++;
+		auto now = std::chrono::high_resolution_clock::now();
+		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start_time).count();
+
+		if (elapsed >= 1) {
+			std::cout << "Average FPS: " << frame_count / static_cast<double>(elapsed) << std::endl;
+			start_time = now;
+			frame_count = 0;
 		}
 	}
 }
