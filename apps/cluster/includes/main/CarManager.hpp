@@ -22,6 +22,7 @@
 #include "DisplayManager.hpp"
 #include "MileageManager.hpp"
 #include "SystemManager.hpp"
+#include "NotificationOverlay.hpp"
 #include "../../ZeroMQ/Publisher.hpp"
 #include "../../ZeroMQ/Subscriber.hpp"
 #include <QMainWindow>
@@ -69,6 +70,8 @@ private:
 	Subscriber *m_inferenceSubscriber;
 	/*! @brief Pointer to the thread for the frame subscriber. */
 	QThread *m_inferenceSubscriberThread;
+
+	NotificationOverlay* m_notificationOverlay;
 
 	void initializeComponents();
 	void initializeDataManager();

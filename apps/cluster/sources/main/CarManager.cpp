@@ -18,6 +18,8 @@
 
 #include "CarManager.hpp"
 #include "ui_CarManager.h"
+#include "NotificationOverlay.hpp"
+#include "NotificationManager.hpp"
 #include <QDebug>
 #include <QString>
 
@@ -52,6 +54,9 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     this->setStyleSheet(style);
 
     initializeComponents();
+
+    m_notificationOverlay = new NotificationOverlay(this);
+    NotificationManager::instance()->initialize(m_notificationOverlay);
 
     m_inferenceSubscriber = new Subscriber();
     m_inferenceSubscriberThread = QThread::create([this]() {

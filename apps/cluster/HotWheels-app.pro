@@ -31,6 +31,8 @@ SOURCES += \
 	sources/canbus/CANMessageProcessor.cpp \
 	sources/controls/ControlsManager.cpp \
 	sources/display/DisplayManager.cpp \
+	sources/display/NotificationOverlay.cpp \
+	sources/display/NotificationManager.cpp \
 	sources/system/SystemManager.cpp \
 	sources/system/SystemCommandExecutor.cpp \
 	sources/system/SystemInfoProvider.cpp \
@@ -59,6 +61,8 @@ HEADERS += \
 	includes/canbus/CANMessageProcessor.hpp \
 	includes/controls/ControlsManager.hpp \
 	includes/display/DisplayManager.hpp \
+	includes/display/NotificationOverlay.hpp \
+	includes/display/NotificationManager.hpp \
 	includes/system/SystemManager.hpp \
 	includes/system/BatteryController.hpp \
 	includes/system/IBatteryController.hpp \

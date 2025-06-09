@@ -7,5 +7,7 @@
         <file>wifi.png</file>
         <file>temperature.png</file>
         <file>battery.png</file>
+        <file>info.png</file>
+        <file>warning.png</file>
     </qresource>
 </RCC>

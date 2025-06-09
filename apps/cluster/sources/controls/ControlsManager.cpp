@@ -21,7 +21,9 @@
  */
 
 #include "ControlsManager.hpp"
+#include "NotificationManager.hpp"
 #include <QDebug>
+#include <QString>
 
 /*!
  * @brief Construct a new ControlsManager object.
@@ -66,8 +68,12 @@ void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
 
 	if (newMode == DrivingMode::Automatic) {
 		m_serverObject->setJoystickStatus(false);
+		QString message = QString("Set to Automatic Mode");
+		NotificationManager::instance()->enqueueNotification(message, NotificationLevel::Info, 3000);
 	}
 	else {
 		m_serverObject->setJoystickStatus(true);
+		QString message = QString("Set to Manual Mode");
+		NotificationManager::instance()->enqueueNotification(message, NotificationLevel::Info, 3000);
 	}
 }
