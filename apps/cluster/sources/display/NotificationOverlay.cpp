@@ -19,6 +19,10 @@ void NotificationOverlay::showNotification(const QString& text, NotificationLeve
 {
 	message = text;
 	level = notificationLevel;
+
+	fadeAnimation->stop();
+	disconnect(fadeAnimation, nullptr, nullptr, nullptr);
+
 	show();
 	update();
 

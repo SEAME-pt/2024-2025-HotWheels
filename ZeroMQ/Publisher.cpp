@@ -1,5 +1,7 @@
 #include "Publisher.hpp"
 
+std::unordered_map<int, Publisher*> Publisher::instances;
+
 Publisher::Publisher(int port) : context(1), publisher(context, ZMQ_PUB), joytstick_value(true), running(false) {
 	boundAddress = "tcp://*:" + std::to_string(port);
 	publisher.bind(boundAddress);  // Dynamic port binding
@@ -8,10 +10,28 @@ Publisher::Publisher(int port) : context(1), publisher(context, ZMQ_PUB), joytst
 Publisher::~Publisher() {
 	try {
 		publisher.unbind(boundAddress);  // Use stored address
+		publisher.close();
+		context.close();
 		std::cout << "[Publisher] Unbound from " << boundAddress << std::endl;
 	} catch (const zmq::error_t& e) {
 		std::cerr << "[Publisher] Failed to unbind: " << e.what() << std::endl;
 	}
+}
+
+Publisher* Publisher::m_instance = nullptr;
+
+Publisher* Publisher::instance(int port) {
+	if (instances.find(port) == instances.end()) {
+		instances[port] = new Publisher(port);
+	}
+	return instances[port];
+}
+
+void Publisher::destroyAll() {
+	for (auto& pair : instances) {
+		delete pair.second;
+	}
+	instances.clear();
 }
 
 void Publisher::publish(const std::string& topic, const std::string& message) {
@@ -70,7 +90,7 @@ void Publisher::publishInferenceFrame(const std::string& topic, const cv::cuda::
 	}
 }
 
-void Publisher::publishCameraFrame(const std::string& topic, const cv::Mat& frame) {
+/* void Publisher::publishCameraFrame(const std::string& topic, const cv::Mat& frame) {
 	std::lock_guard<std::mutex> lock(frame_mtx);  // Ensure thread safety
 	try {
 		if (frame.empty()) {
@@ -100,4 +120,4 @@ void Publisher::publishCameraFrame(const std::string& topic, const cv::Mat& fram
 	} catch (const std::exception& e) {
 		std::cerr << "[Publisher] Failed to publish image: " << e.what() << std::endl;
 	}
-}
+} */

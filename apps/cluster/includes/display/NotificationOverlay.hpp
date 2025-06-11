@@ -19,7 +19,7 @@ class NotificationOverlay : public QWidget {
 
 public:
 	explicit NotificationOverlay(QWidget* parent = nullptr);
-	void showNotification(const QString& text, NotificationLevel notificationLevel, int durationMs = 3000);
+	void showNotification(const QString& text, NotificationLevel notificationLevel, int durationMs = 2000);
 
 protected:
 	void paintEvent(QPaintEvent* event) override;

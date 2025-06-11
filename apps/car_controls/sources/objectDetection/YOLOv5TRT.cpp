@@ -23,6 +23,8 @@ YOLOv5TRT::YOLOv5TRT(const std::string& enginePath, const std::string& labelPath
 	hostDataBuffer = new float[3*640*640];
 
 	num_classes = static_cast<int>(labelManager.getNumClasses());
+
+	Publisher::instance(5557); //Initialize publisher
 }
 
 YOLOv5TRT::~YOLOv5TRT() {
@@ -218,6 +220,8 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 		if (x2 > x1 && y2 > y1) {
 			std::string className = labelManager.getLabel(det.class_id);
 			std::cout << "Object found: " << className << " at (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << std::endl;
+
+			Publisher::instance(5557)->publish("notification", className);
 
 			// Desenhar retângulo usando coordenadas Point
 			/* cv::rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 3);

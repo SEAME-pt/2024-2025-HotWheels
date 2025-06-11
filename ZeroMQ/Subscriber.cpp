@@ -6,36 +6,36 @@
 Subscriber::Subscriber() : context(1), subscriber(context, ZMQ_SUB), running(false) {}
 
 Subscriber::~Subscriber() {
-    stop();  // Ensure that the subscriber stops when destroyed
+	stop();  // Ensure that the subscriber stops when destroyed
 }
 
 void Subscriber::connect(const std::string& address) {
-    bool connected = false;
+	bool connected = false;
 
-    // Attempt to connect until successful
-    while (!connected) {
-        try {
-            subscriber.connect(address);  // Attempt to connect to the publisher
-            std::cout << "Subscriber connected to " << address << std::endl;
-            connected = true; // Exit the loop once the connection is successful
-        }
-        catch (const zmq::error_t& e) {
-            std::cout << "Connection failed, retrying in 1 second..." << std::endl;
-            std::this_thread::sleep_for(std::chrono::seconds(1));  // Wait before retrying
-        }
-    }
+	// Attempt to connect until successful
+	while (!connected) {
+		try {
+			subscriber.connect(address);  // Attempt to connect to the publisher
+			std::cout << "Subscriber connected to " << address << std::endl;
+			connected = true; // Exit the loop once the connection is successful
+		}
+		catch (const zmq::error_t& e) {
+			std::cout << "Connection failed, retrying in 1 second..." << std::endl;
+			std::this_thread::sleep_for(std::chrono::seconds(1));  // Wait before retrying
+		}
+	}
 }
 
 zmq::socket_t& Subscriber::getSocket() {
-    return subscriber;
+	return subscriber;
 }
 
 void Subscriber::subscribe(const std::string& topic) {
-    // Subscribe to a topic only after successfully connecting
-    subscriber.setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.size());
+	// Subscribe to a topic only after successfully connecting
+	subscriber.setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.size());
 }
 
-void Subscriber::listen() {
+/* void Subscriber::listen() {
     running = true;  // Mark the subscriber as running
 
     while (running) {
@@ -53,9 +53,9 @@ void Subscriber::listen() {
     }
 
     std::cout << "Listener stopped." << std::endl;
-}
+} */
 
-void Subscriber::listenFrames() {
+/* void Subscriber::listenFrames() {
     running = true;
 
     while (running) {
@@ -80,7 +80,6 @@ void Subscriber::listenFrames() {
             cv::Mat decoded = cv::imdecode(jpeg_data, cv::IMREAD_COLOR);
             if (!decoded.empty()) {
                 std::cout << "[Subscriber] Received and decoded image.\n";
-                // 👉 You can emit a Qt signal, process it, display, etc.
             } else {
                 std::cerr << "[Subscriber] Failed to decode JPEG image." << std::endl;
             }
@@ -92,9 +91,9 @@ void Subscriber::listenFrames() {
     }
 
     std::cout << "[Subscriber] Image listener stopped." << std::endl;
-}
+} */
 
-void Subscriber::reconnect(const std::string& address) {
+/* void Subscriber::reconnect(const std::string& address) {
     bool connected = false;
 
     // Retry the connection until successful
@@ -114,9 +113,9 @@ void Subscriber::reconnect(const std::string& address) {
     if (connected) {
         listen();  // Recurse into listen after reconnecting
     }
-}
+} */
 
 void Subscriber::stop() {
-    running = false;
-    //subscriber.close();  // Close the socket gracefully
+	running = false;
+	//subscriber.close();  // Close the socket gracefully
 }

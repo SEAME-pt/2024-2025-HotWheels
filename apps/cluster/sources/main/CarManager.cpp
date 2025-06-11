@@ -41,6 +41,8 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     , m_mileageManager(new MileageManager("/home/hotweels/app_data/mileage.json"))
     , m_inferenceSubscriber(nullptr)
     , m_inferenceSubscriberThread(nullptr)
+    , m_subscriberNotification(nullptr)
+    , m_subscriberNotificationThread(nullptr)
 {
     ui->setupUi(this);
 
@@ -57,6 +59,43 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
 
     m_notificationOverlay = new NotificationOverlay(this);
     NotificationManager::instance()->initialize(m_notificationOverlay);
+
+    	// **Client Middleware Interface Thread**
+    m_subscriberNotification = new Subscriber();
+    m_subscriberNotificationThread = QThread::create([this, argc, argv]()
+                    {
+      m_subscriberNotification->connect("tcp://localhost:5557");
+      m_subscriberNotification->subscribe("notification");
+      while (m_running) {
+        try {
+          zmq::pollitem_t items[] = {
+            { static_cast<void*>(m_subscriberNotification->getSocket()), 0, ZMQ_POLLIN, 0 }
+          };
+
+          // Wait up to 100ms for a message
+          zmq::poll(items, 1, 100);
+
+          if (items[0].revents & ZMQ_POLLIN) {
+            zmq::message_t message;
+            if (!m_subscriberNotification->getSocket().recv(&message, 0)) {
+              continue;  // failed to receive
+            }
+
+            std::string received_msg(static_cast<char*>(message.data()), message.size());
+
+            if (received_msg.find("notification") == 0) {
+              std::string value = "Object found: ";
+              value += received_msg.substr(std::string("notification ").length());
+              NotificationManager::instance()->enqueueNotification(QString::fromStdString(value),NotificationLevel::Info, 2000);
+            }
+          }
+        } catch (const zmq::error_t& e) {
+          std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
+          break;  // exit safely if socket is closed
+        }
+      }
+    });
+    m_subscriberNotificationThread->start();
 
     m_inferenceSubscriber = new Subscriber();
     m_inferenceSubscriberThread = QThread::create([this]() {

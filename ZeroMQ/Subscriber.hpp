@@ -11,7 +11,7 @@ class Subscriber {
 private:
 	zmq::context_t context;
 	zmq::socket_t subscriber;
-    bool running;
+	bool running;
 
 public:
 	Subscriber();
@@ -20,10 +20,10 @@ public:
 	zmq::socket_t& getSocket();
 
 	void subscribe(const std::string& topic);
-	void listen();
-	void listenFrames();
+	//void listen();
+	//void listenFrames();
 	void connect(const std::string& address);
-	void reconnect(const std::string& address);
+	//void reconnect(const std::string& address);
 	void stop();
 };
 

@@ -15,7 +15,7 @@ public:
 	static NotificationManager* instance();
 
 	void initialize(NotificationOverlay* overlay);
-	void enqueueNotification(const QString& text, NotificationLevel level = NotificationLevel::Info, int durationMs = 3000);
+	void enqueueNotification(const QString& text, NotificationLevel level = NotificationLevel::Info, int durationMs = 2000);
 
 private:
 	explicit NotificationManager(QObject* parent = nullptr);

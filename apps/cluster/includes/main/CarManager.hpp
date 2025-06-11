@@ -70,6 +70,10 @@ private:
 	Subscriber *m_inferenceSubscriber;
 	/*! @brief Pointer to the thread for the frame subscriber. */
 	QThread *m_inferenceSubscriberThread;
+	/*! @brief Pointer to the notification subscriber. */
+	Subscriber *m_subscriberNotification;
+	/*! @brief Pointer to the thread for the notification subscriber. */
+	QThread *m_subscriberNotificationThread;
 
 	NotificationOverlay* m_notificationOverlay;
 

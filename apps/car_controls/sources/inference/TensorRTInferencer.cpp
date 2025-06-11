@@ -109,7 +109,7 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 	bindings[inputBindingIndex] = deviceInput;  // Assign device input buffer
 	bindings[outputBindingIndex] = deviceOutput;  // Assign device output buffer
 
-	m_publisherObject = new Publisher(5556); // Initialize publisher for inference results
+	Publisher::instance(5556); // Initialize publisher for inference results
 
 	initUndistortMaps();  // Initialize undistortion maps for camera calibration
 	cudaStream = cv::cuda::Stream();  // CUDA stream for asynchronous operations
@@ -330,7 +330,5 @@ void TensorRTInferencer::doInference(const cv::Mat& frame) {
 						0, 0, cv::INTER_LINEAR, cudaStream);  // Resize for display
 	cudaStream.waitForCompletion();  // Synchronize
 
-	if (m_publisherObject) {
-		m_publisherObject->publishInferenceFrame("inference_frame", d_resized_mask);  // Publish the frame
-	}
+	Publisher::instance(5556)->publishInferenceFrame("inference_frame", d_resized_mask); //Publish frame to ZeroMQ publisher
 }
