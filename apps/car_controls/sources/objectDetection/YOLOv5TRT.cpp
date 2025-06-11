@@ -1,5 +1,8 @@
 #include "../../includes/objectDetection/YOLOv5TRT.hpp"
 
+std::string YOLOv5TRT::lastClassName = "";
+std::chrono::steady_clock::time_point YOLOv5TRT::lastNotificationTime = std::chrono::steady_clock::now();
+
 YOLOv5TRT::YOLOv5TRT(const std::string& enginePath, const std::string& labelPath)
 	: labelManager(labelPath) {
 	// Correção: verificar valores de retorno do system()
@@ -221,8 +224,21 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 			std::string className = labelManager.getLabel(det.class_id);
 			std::cout << "Object found: " << className << " at (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << std::endl;
 
-			Publisher::instance(5557)->publish("notification", className);
+			auto now = std::chrono::steady_clock::now();
+			auto elapsedMs = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastNotificationTime).count();
 
+			if (className != lastClassName || elapsedMs > 2000) {  // Only notify again if different or 2s passed
+				lastClassName = className;
+				lastNotificationTime = now;
+				Publisher::instance(5557)->publish("notification", className);
+			}
+
+			/* if (className != lastClassName)
+			{
+				lastClassName = className;
+				std::lock_guard<std::mutex> lock(pubMutex);
+				Publisher::instance(5557)->publish("notification", className);
+			} */
 			// Desenhar retângulo usando coordenadas Point
 			/* cv::rectangle(frame, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 3);
 

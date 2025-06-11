@@ -80,7 +80,12 @@ private:
 	void allocateBuffers();
 	std::vector<float> infer(const cv::Mat& image);
 
+	static std::string lastClassName;
+	static std::chrono::steady_clock::time_point lastNotificationTime;
+
 protected:
 	size_t calculateVolume(const nvinfer1::Dims& dims);
 	std::vector<Detection> postprocess(const std::vector<float>& output, int num_classes, float conf_thresh, float nms_thresh);
+
+public:
 };
