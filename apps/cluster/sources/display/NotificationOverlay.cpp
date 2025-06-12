@@ -13,6 +13,9 @@ NotificationOverlay::NotificationOverlay(QWidget* parent)
 
 	fadeAnimation = new QPropertyAnimation(opacityEffect, "opacity");
 	fadeAnimation->setDuration(500);  // 500ms fade duration
+
+	fadeOutTimer = new QTimer(this);
+	fadeOutTimer->setSingleShot(true);
 }
 
 void NotificationOverlay::showNotification(const QString& text, NotificationLevel notificationLevel, int durationMs)
@@ -22,24 +25,27 @@ void NotificationOverlay::showNotification(const QString& text, NotificationLeve
 
 	fadeAnimation->stop();
 	disconnect(fadeAnimation, nullptr, nullptr, nullptr);
+	QMetaObject::invokeMethod(this, [this, durationMs]() {
+		fadeOutTimer->stop();
+		fadeOutTimer->start(durationMs);
+	}, Qt::QueuedConnection);
 
 	show();
 	update();
 
 	// Fade in
-	fadeAnimation->stop();
 	fadeAnimation->setStartValue(0.0);
 	fadeAnimation->setEndValue(1.0);
 	fadeAnimation->start();
 
-	// Schedule fade out after duration
-	QTimer::singleShot(durationMs, this, [this]() {
+	connect(fadeOutTimer, &QTimer::timeout, this, [this]() {
 		fadeAnimation->stop();
+		disconnect(fadeAnimation, nullptr, nullptr, nullptr);
+
 		fadeAnimation->setStartValue(1.0);
 		fadeAnimation->setEndValue(0.0);
 		fadeAnimation->start();
 
-		// Fully hide after fade out completes
 		connect(fadeAnimation, &QPropertyAnimation::finished, this, [this]() {
 			if (opacityEffect->opacity() == 0.0)
 				hide();

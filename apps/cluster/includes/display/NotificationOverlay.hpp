@@ -29,6 +29,7 @@ private:
 	QString message;
 	QGraphicsOpacityEffect* opacityEffect;
 	QPropertyAnimation* fadeAnimation;
+	QTimer* fadeOutTimer;
 };
 
 #endif // NOTIFICATIONOVERLAY_HPP
