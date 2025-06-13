@@ -11,5 +11,7 @@
         <file>warning.png</file>
         <file>lane-departure.png</file>
         <file>lane-keeping-off.png</file>
+        <file>speed-limit-50.png</file>
+        <file>speed-limit-80.png</file>
     </qresource>
 </RCC>
