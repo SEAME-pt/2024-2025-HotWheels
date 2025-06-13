@@ -48,17 +48,17 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@hotweels-car.local:/home/hotweels/apps/tests
 
       - name: Run tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
+          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@hotweels-car.local \
             '/home/hotweels/apps/tests/car-controls-tests'
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@10.21.221.78:/home/hotweels/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@hotweels-car.local:/home/hotweels/apps

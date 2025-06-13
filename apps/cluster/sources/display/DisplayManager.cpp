@@ -278,6 +278,5 @@ void DisplayManager::displayInferenceImage(const QImage &image) {
 	painter.setClipPath(path);
 	painter.drawPixmap(0, 0, original);
 
-	//m_ui->inferenceLabel->setPixmap(QPixmap::fromImage(image));
 	m_ui->inferenceLabel->setPixmap(rounded);
 }

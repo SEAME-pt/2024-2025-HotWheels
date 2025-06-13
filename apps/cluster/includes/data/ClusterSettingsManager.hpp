@@ -18,6 +18,7 @@
 
 #include <QObject>
 #include "enums.hpp"
+#include "NotificationManager.hpp"
 
 /*!
  * @brief Class that manages the cluster settings.
