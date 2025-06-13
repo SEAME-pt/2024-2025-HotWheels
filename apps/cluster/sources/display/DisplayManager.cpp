@@ -37,6 +37,9 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 		return;
 	}
 
+	m_ui->speedLimit50Label->hide();
+	m_ui->speedLimit80Label->hide();
+
 	// Set initial values for the labels
 	m_ui->speedLabel->setText("0");
 	m_ui->timeLabel->setText("--:--:--");
@@ -218,6 +221,8 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 		modeText = "Manual";
 		m_ui->laneKeepingAssistLabel->show();
 		m_ui->laneDepartureWarningLabel->show();
+		m_ui->speedLimit80Label->hide();
+		m_ui->speedLimit50Label->show();
 		// Stop blinking if active
 		if (m_blinkTimer) {
 			m_blinkTimer->stop();
@@ -228,6 +233,8 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 	case DrivingMode::Automatic:
 		modeText = "Automatic";
 		m_ui->laneKeepingAssistLabel->hide();
+		m_ui->speedLimit50Label->hide();
+		m_ui->speedLimit80Label->show();
 		if (!m_blinkTimer) {
 			m_blinkTimer = new QTimer(this);
 			connect(m_blinkTimer, &QTimer::timeout, this, [=]() {
@@ -275,7 +282,6 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 		metricsText = "mph";
 		break;
 	}
-
 	m_ui->speedMetricsLabel->setText(metricsText.toUpper());
 }
 
