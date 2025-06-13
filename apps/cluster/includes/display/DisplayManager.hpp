@@ -27,6 +27,7 @@
 #include <QProcess>
 #include <QNetworkInterface>
 #include <QLocale>
+#include <QTimer>
 
 /*!
  * @brief Class that manages the display of the car manager.
@@ -63,6 +64,7 @@ signals:
 private:
 	/*! @brief Pointer to the UI object. */
 	Ui::CarManager *m_ui;
+	QTimer* m_blinkTimer = nullptr;
 };
 
 #endif // DISPLAYMANAGER_HPP

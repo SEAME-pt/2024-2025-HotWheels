@@ -54,13 +54,13 @@ void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
 	if (newMode == DrivingMode::Automatic) {
 		//m_serverObject->setJoystickStatus(false);
 		Publisher::instance(5555)->setJoystickStatus(false);
-		QString message = QString("Set to Automatic Mode");
+		QString message = QString("Driving set to Automatic Mode");
 		NotificationManager::instance()->enqueueNotification(message, NotificationLevel::Info, 2000);
 	}
 	else {
 		//m_serverObject->setJoystickStatus(true);
 		Publisher::instance(5555)->setJoystickStatus(true);
-		QString message = QString("Set to Manual Mode");
+		QString message = QString("Driving set to Manual Mode");
 		NotificationManager::instance()->enqueueNotification(message, NotificationLevel::Info, 2000);
 	}
 }

@@ -58,14 +58,31 @@ void NotificationOverlay::paintEvent(QPaintEvent*)
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing);
 
-	int boxWidth = width() * 0.3;
+	// Setup font
+	QFont font = painter.font();
+	font.setPointSize(12);
+	painter.setFont(font);
+
+	// Measure text width
+	QFontMetrics metrics(font);
+	int textWidth = metrics.horizontalAdvance(message);
+
+	// Icon parameters
+	int iconSize = 30;
+	int iconMargin = 20;
+
+	// Compute box width based on text and icon
+	int boxWidth = iconMargin + iconSize + 10 + textWidth + 20;  // iconMargin + icon + spacing + text + right margin
+	int maxWidth = width() * 0.8;
+	boxWidth = std::min(boxWidth, maxWidth);
+
 	int boxHeight = 80;
 	int boxX = (width() - boxWidth) / 2;
 	int boxY = 50;
 
 	QRect rect(boxX, boxY, boxWidth, boxHeight);
 
-	// Background only (no shadow to avoid nested effect)
+	// Background
 	QColor backgroundColor(1, 32, 44, 255);
 	painter.setBrush(backgroundColor);
 	painter.setPen(Qt::NoPen);
@@ -73,7 +90,6 @@ void NotificationOverlay::paintEvent(QPaintEvent*)
 
 	// Icon
 	QString iconPath;
-
 	switch (level) {
 		case NotificationLevel::Info:
 			iconPath = ":/images/info.png";
@@ -82,10 +98,7 @@ void NotificationOverlay::paintEvent(QPaintEvent*)
 			iconPath = ":/images/warning.png";
 			break;
 	}
-
 	QPixmap icon(iconPath);
-	int iconSize = 40;
-	int iconMargin = 20;
 	int iconX = rect.left() + iconMargin;
 	int iconY = rect.top() + (rect.height() - iconSize) / 2;
 	painter.drawPixmap(iconX, iconY, iconSize, iconSize, icon);
@@ -93,8 +106,5 @@ void NotificationOverlay::paintEvent(QPaintEvent*)
 	// Text
 	QRect textRect = rect.adjusted(iconMargin + iconSize + 10, 0, -20, 0);
 	painter.setPen(Qt::white);
-	QFont font = painter.font();
-	font.setPointSize(14);
-	painter.setFont(font);
 	painter.drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft, message);
 }
