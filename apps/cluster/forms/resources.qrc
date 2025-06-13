@@ -9,5 +9,7 @@
         <file>battery.png</file>
         <file>info.png</file>
         <file>warning.png</file>
+        <file>lane-departure.png</file>
+        <file>lane-keeping-off.png</file>
     </qresource>
 </RCC>
