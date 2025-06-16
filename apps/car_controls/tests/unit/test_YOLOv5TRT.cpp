@@ -3,7 +3,7 @@
 
 class YOLOv5TRT_Testable : public YOLOv5TRT {
 public:
-    YOLOv5TRT_Testable() : YOLOv5TRT("/home/hotweels/cam_calib/models/yolov5m_updated.engine", "/home/hotweels/cam_calib/models/labels.txt") {}
+    YOLOv5TRT_Testable() : YOLOv5TRT("/home/jetson/models/object-detection/yolov5m_updated.engine", "/home/jetson/models/object-detection/labels.txt") {}
 
     using YOLOv5TRT::calculateVolume;
     using YOLOv5TRT::postprocess;

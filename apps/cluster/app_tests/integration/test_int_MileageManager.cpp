@@ -7,9 +7,9 @@
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Ricardo Melo (@reomelo)
  * @author Tiago Pereira (@t-pereira06)
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #include <QCoreApplication>
@@ -44,8 +44,8 @@ protected:
 	void SetUp() override
 	{
 		calculator = new MileageCalculator();
-		fileHandler = new MileageFileHandler("/home/hotweels/app_data/test_mileage.json");
-		mileageManager = new MileageManager("/home/hotweels/app_data/test_mileage.json",
+		fileHandler = new MileageFileHandler("/home/jetson/app_data/test_mileage.json");
+		mileageManager = new MileageManager("/home/jetson/app_data/test_mileage.json",
 											calculator,
 											fileHandler);
 	}
@@ -61,7 +61,7 @@ protected:
 /*! @brief Initialize static member */
 QCoreApplication *MileageManagerTest::app = nullptr;
 
-/*! 
+/*!
  * @test 🔄 Forward Mileage Data
  * @brief Ensures that the MileageManager forwards mileage data.
  * @details This test verifies that the MileageManager forwards mileage data
@@ -80,7 +80,7 @@ TEST_F(MileageManagerTest, ForwardMileageData)
 	EXPECT_DOUBLE_EQ(args.at(0).toDouble(), 10.0);
 }
 
-/*! 
+/*!
  * @test 🚗 Initialize Mileage Manager
  * @brief Ensures that the MileageManager initializes successfully.
  * @details This test verifies that the MileageManager initializes successfully
@@ -98,7 +98,7 @@ TEST_F(MileageManagerTest, InitializeMileageManager)
 	EXPECT_DOUBLE_EQ(args.at(0).toDouble(), 0.0);
 }
 
-/*! 
+/*!
  * @test 🏎️💨 Update Mileage on Speed Update
  * @brief Ensures that the MileageManager updates the mileage on speed update.
  * @details This test verifies that the MileageManager updates the mileage on
@@ -117,7 +117,7 @@ TEST_F(MileageManagerTest, UpdateMileageOnSpeedUpdate)
 	EXPECT_DOUBLE_EQ(args.at(0).toDouble(), 10.0);
 }
 
-/*! 
+/*!
  * @test 💾 Save Mileage
  * @brief Ensures that the MileageManager saves the mileage.
  * @details This test verifies that the MileageManager saves the mileage by
@@ -136,7 +136,7 @@ TEST_F(MileageManagerTest, SaveMileage)
 	EXPECT_DOUBLE_EQ(savedMileage, 5.0);
 }
 
-/*! 
+/*!
  * @test ⏱ Update Timer Interval
  * @brief Ensures that the MileageManager updates the timer interval.
  * @details This test verifies that the MileageManager updates the timer interval
@@ -154,7 +154,7 @@ TEST_F(MileageManagerTest, UpdateTimerInterval)
 	ASSERT_GT(spy.count(), 0);
 }
 
-/*! 
+/*!
  * @test ⏻ Shutdown Mileage Manager
  * @brief Ensures that the MileageManager shuts down successfully.
  * @details This test verifies that the MileageManager shuts down successfully
