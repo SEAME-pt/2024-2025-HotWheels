@@ -3,16 +3,16 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - object-detection-integration
-    # paths:
-      # - 'apps/cluster/**'
-      # - 'ZeroMQ/**'
+      - main
+    paths:
+      - 'apps/cluster/**'
+      - 'ZeroMQ/**'
   pull_request:
     branches:
-      - object-detection-integration
-    # paths:
-      # - 'apps/cluster/**'
-      # - 'ZeroMQ/**'
+      - main
+    paths:
+      - 'apps/cluster/**'
+      - 'ZeroMQ/**'
 
 env:
   DIR: apps/cluster
