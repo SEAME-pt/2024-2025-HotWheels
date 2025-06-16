@@ -43,7 +43,7 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests jetson@hotwheels-car.local:/home/jetson/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests jetson@100.108.203.64:/home/jetson/apps/tests
 
       - name: Build executable for integration testing
         run: |
@@ -56,20 +56,20 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-integration-tests jetson@hotwheels-car.local:/home/jetson/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-integration-tests jetson@100.108.203.64:/home/jetson/apps/tests
 
       - name: Run unit tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no jetson@hotwheels-car.local \
+          sshpass -e ssh -o StrictHostKeyChecking=no jetson@100.108.203.64 \
             '/home/jetson/apps/tests/HotWheels-unit-tests'
 
       - name: Run integration tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no jetson@hotwheels-car.local \
+          sshpass -e ssh -o StrictHostKeyChecking=no jetson@100.108.203.64 \
             '/home/jetson/apps/tests/HotWheels-integration-tests'
         continue-on-error: true
 
@@ -77,4 +77,4 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@hotwheels-car.local:/home/jetson/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@100.108.203.64:/home/jetson/apps
