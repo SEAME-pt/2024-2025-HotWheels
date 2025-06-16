@@ -54,7 +54,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
       }
     )";
     this->setStyleSheet(style);
-    this->setAttribute(Qt::WA_StyledBackground, true);
+    this->centralWidget()->setStyleSheet("background-color: darkblue;");
 
     initializeComponents();
 
