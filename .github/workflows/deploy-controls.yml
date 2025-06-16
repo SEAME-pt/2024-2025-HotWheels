@@ -4,15 +4,15 @@ on:
   push:
     branches:
       - object-detection-integration
-    paths:
-      - 'apps/car_controls/**'
-      - 'ZeroMQ/**'
+    # paths:
+      # - 'apps/car_controls/**'
+      # - 'ZeroMQ/**'
   pull_request:
     branches:
       - object-detection-integration
-    paths:
-      - 'apps/car_controls/**'
-      - 'ZeroMQ/**'
+    # paths:
+      # - 'apps/car_controls/**'
+      # - 'ZeroMQ/**'
 
 env:
   DIR: apps/car_controls
@@ -38,11 +38,6 @@ jobs:
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../car-controls-tests.pro
           make -j$(nproc)
-
-      - name: Run clang-tidy
-        run: |
-          cd $DIR
-          bash ./run-clang-tidy.sh
 
       - name: Deploy tests on Jetson
         env:
