@@ -9,10 +9,10 @@
 
 #include <thread>
 
-/* TEST(TensorRTInferencerTest, CanReadEngineFile) {
+TEST(TensorRTInferencerTest, CanReadEngineFile) {
     TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
     ASSERT_TRUE(true);  // If it didn't throw, it's OK for this smoke test
-} */
+}
 
 TEST(TensorRTInferencerTest, WrongEngineFile) {
     try {
