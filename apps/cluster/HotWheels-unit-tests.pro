@@ -1,4 +1,4 @@
-QT       += core testlib network
+QT       += core testlib network widgets
 CONFIG   += c++17
 
 # ====== Unit Tests Target ======
@@ -12,6 +12,7 @@ INCLUDEPATH += \
 	$$PWD/includes/mileage \
 	$$PWD/includes/utils \
 	$$PWD/includes/system \
+	$$PWD/includes/display \
 	$$PWD/app_tests/mocks
 
 # Unit Test Sources
@@ -63,7 +64,10 @@ SOURCES += \
 	sources/canbus/CanBusManager.cpp \
 	sources/data/SystemDataManager.cpp \
 	sources/data/ClusterSettingsManager.cpp \
-	sources/data/VehicleDataManager.cpp
+	sources/data/VehicleDataManager.cpp \
+	sources/display/DisplayManager.cpp \
+	sources/display/NotificationManager.cpp \
+	sources/display/NotificationOverlay.cpp
 
 # Sytem includes Required for Tests
 HEADERS += \
@@ -75,7 +79,11 @@ HEADERS += \
 	includes/canbus/CanBusManager.hpp \
 	includes/data/SystemDataManager.hpp \
 	includes/data/ClusterSettingsManager.hpp \
-	includes/data/VehicleDataManager.hpp
+	includes/data/VehicleDataManager.hpp \
+	includes/display/DisplayManager.hpp \
+	includes/display/NotificationManager.hpp \
+	includes/display/NotificationOverlay.hpp
+
 
 # Define paths for Jetson cross-compilation
 JETSON_SYSROOT = /home/seame/qtjetson/sysroot

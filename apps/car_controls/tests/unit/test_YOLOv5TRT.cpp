@@ -11,7 +11,7 @@ public:
 
 TEST(YOLOv5TRTTest, CalculateVolume) {
     YOLOv5TRT_Testable yolo;
-    nvinfer1::Dims dims;ls
+    nvinfer1::Dims dims;
     dims.nbDims = 3;
     dims.d[0] = 3;
     dims.d[1] = 640;

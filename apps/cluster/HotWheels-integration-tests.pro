@@ -1,4 +1,4 @@
-QT       += core testlib network
+QT       += core testlib network widgets
 CONFIG   += c++17
 
 # ====== Integration Tests Target ======
@@ -11,7 +11,8 @@ INCLUDEPATH += \
 	$$PWD/includes/mileage \
 	$$PWD/includes/utils \
 	$$PWD/includes/system \
-	$$PWD/includes/canbus
+	$$PWD/includes/canbus \
+	$$PWD/includes/display
 
 # Integration Test Sources
 INTEGRATION_TESTS_PATH = app_tests/integration
@@ -41,7 +42,10 @@ SOURCES += \
 	sources/data/DataManager.cpp \
 	sources/data/SystemDataManager.cpp \
 	sources/data/ClusterSettingsManager.cpp \
-	sources/data/VehicleDataManager.cpp
+	sources/data/VehicleDataManager.cpp \
+	sources/display/DisplayManager.cpp \
+	sources/display/NotificationManager.cpp \
+	sources/display/NotificationOverlay.cpp
 
 # Sytem includes Required for Tests
 HEADERS += \
@@ -53,7 +57,10 @@ HEADERS += \
 	includes/data/DataManager.hpp \
 	includes/data/SystemDataManager.hpp \
 	includes/data/ClusterSettingsManager.hpp \
-	includes/data/VehicleDataManager.hpp
+	includes/data/VehicleDataManager.hpp \
+	includes/display/DisplayManager.hpp \
+	includes/display/NotificationManager.hpp \
+	includes/display/NotificationOverlay.hpp
 
 # Define paths for Jetson cross-compilation
 JETSON_SYSROOT = /home/michel/qtjetson/sysroot
