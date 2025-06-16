@@ -3,13 +3,13 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - main
+      - object-detection-integration
     paths:
       - 'apps/cluster/**'
       - 'ZeroMQ/**'
   pull_request:
     branches:
-      - main
+      - object-detection-integration
     paths:
       - 'apps/cluster/**'
       - 'ZeroMQ/**'
@@ -36,7 +36,7 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests hotweels@hotweels-car.local:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests jetson@hotwheels-car.local:/home/jetson/apps/tests
 
       - name: Build executable for integration testing
         run: |
@@ -50,21 +50,21 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-integration-tests hotweels@hotweels-car.local:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-integration-tests jetson@hotwheels-car.local:/home/jetson/apps/tests
 
       - name: Run unit tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@hotweels-car.local \
-            '/home/hotweels/apps/tests/HotWheels-unit-tests'
+          sshpass -e ssh -o StrictHostKeyChecking=no jetson@hotwheels-car.local \
+            '/home/jetson/apps/tests/HotWheels-unit-tests'
 
       - name: Run integration tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@hotweels-car.local \
-            '/home/hotweels/apps/tests/HotWheels-integration-tests'
+          sshpass -e ssh -o StrictHostKeyChecking=no jetson@hotwheels-car.local \
+            '/home/jetson/apps/tests/HotWheels-integration-tests'
         continue-on-error: true
 
       - name: Build arm64 executable
@@ -79,4 +79,4 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@hotweels-car.local:/home/hotweels/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@hotwheels-car.local:/home/jetson/apps

@@ -223,7 +223,7 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 		m_ui->laneDepartureWarningLabel->show();
 		m_ui->speedLimit80Label->hide();
 		m_ui->speedLimit50Label->show();
-		// Stop blinking if active
+		// Stop blinking if activee
 		if (m_blinkTimer) {
 			m_blinkTimer->stop();
 			m_blinkTimer->deleteLater();

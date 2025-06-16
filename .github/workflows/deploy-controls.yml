@@ -3,13 +3,13 @@ name: Cross-Compile Car Controls to aarch64
 on:
   push:
     branches:
-      - main
+      - object-detection-integration
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
   pull_request:
     branches:
-      - main
+      - object-detection-integration
     paths:
       - 'apps/car_controls/**'
       - 'ZeroMQ/**'
@@ -48,17 +48,17 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests hotweels@hotweels-car.local:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests jetson@hotwheels-car.local:/home/jetson/apps/tests
 
       - name: Run tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@hotweels-car.local \
-            '/home/hotweels/apps/tests/car-controls-tests'
+          sshpass -e ssh -o StrictHostKeyChecking=no jetson@hotwheels-car.local \
+            '/home/jetson/apps/tests/car-controls-tests'
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt hotweels@hotweels-car.local:/home/hotweels/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@hotwheels-car.local:/home/jetson/apps

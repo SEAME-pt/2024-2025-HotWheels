@@ -37,13 +37,7 @@ private:
 	DrivingMode m_currentMode;
 
 	Subscriber *m_subscriberJoystickObject;
-	//Subscriber *m_subscriberInferenceThreadObject;
-	//Subscriber *m_subscriberODThreadObject;
-
 	CameraStreamer *m_cameraStreamerObject;
-	//YOLOv5TRT *m_yoloObject;
-
-	//std::shared_ptr<IInferencer> inferencer;
 
 	std::atomic<bool> m_running;
 
