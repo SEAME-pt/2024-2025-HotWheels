@@ -27,6 +27,7 @@ jobs:
       - name: Build arm64 executable
         run: |
           cd $DIR
+          mkdir build
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
           make -j$(nproc)
@@ -34,7 +35,6 @@ jobs:
       - name: Build executable for unit testing
         run: |
           cd $DIR
-          mkdir build
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-unit-tests.pro
           make -j$(nproc)
