@@ -55,6 +55,7 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     )";
     this->setStyleSheet(style);
     //this->centralWidget()->setStyleSheet("background-color: darkblue;");
+    this->centralWidget()->setStyleSheet("background-color: rgba(4, 36, 49, 255);");  // semi-transparent
 
     QPixmap test(":/images/background.jpg");
     qDebug() << "Image loaded from Qt resource?" << !test.isNull();
