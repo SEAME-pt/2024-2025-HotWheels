@@ -54,6 +54,14 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 					&DisplayManager::drivingModeToggled);
 	connect(m_ui->toggleMetricsButton, &QPushButton::clicked, this,
 					&DisplayManager::clusterMetricsToggled);
+
+	m_speed50Timer = new QTimer(this);
+	m_speed50Timer->setSingleShot(true);
+	connect(m_speed50Timer, &QTimer::timeout, m_ui->speedLimit50Label, &QWidget::hide);
+
+	m_speed80Timer = new QTimer(this);
+	m_speed80Timer->setSingleShot(true);
+	connect(m_speed80Timer, &QTimer::timeout, m_ui->speedLimit80Label, &QWidget::hide);
 }
 
 /*!
@@ -285,11 +293,11 @@ void DisplayManager::updateSpeedLimitLabels(int speed) {
 	if (speed == 50) {
 		m_ui->speedLimit80Label->hide();
 		m_ui->speedLimit50Label->show();
-		QTimer::singleShot(3000, m_ui->speedLimit50Label, &QWidget::hide);
+		m_speed50Timer->start(3000);
 	} else if (speed == 80) {
 		m_ui->speedLimit50Label->hide();
 		m_ui->speedLimit80Label->show();
-		QTimer::singleShot(3000, m_ui->speedLimit80Label, &QWidget::hide);
+		m_speed80Timer->start(3000);
 	}
 }
 
