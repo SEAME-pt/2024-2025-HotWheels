@@ -285,9 +285,11 @@ void DisplayManager::updateSpeedLimitLabels(int speed) {
 	if (speed == 50) {
 		m_ui->speedLimit80Label->hide();
 		m_ui->speedLimit50Label->show();
+		QTimer::singleShot(3000, m_ui->speedLimit50Label, &QWidget::hide);
 	} else if (speed == 80) {
 		m_ui->speedLimit50Label->hide();
 		m_ui->speedLimit80Label->show();
+		QTimer::singleShot(3000, m_ui->speedLimit80Label, &QWidget::hide);
 	}
 }
 
