@@ -56,10 +56,6 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
     this->setStyleSheet(style);
     this->centralWidget()->setStyleSheet("background-color: rgba(4, 36, 49, 255);");
 
-    QPixmap test(":/images/background.jpg");
-    qDebug() << "Image loaded from Qt resource?" << !test.isNull();
-
-
     initializeComponents();
 
     m_notificationOverlay = new NotificationOverlay(this);
@@ -89,9 +85,19 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
             std::string received_msg(static_cast<char*>(message.data()), message.size());
 
             if (received_msg.find("notification") == 0) {
-              std::string value = "Object found: ";
+              if (received_msg.find("50"))
+              {
+                ui->speedLimit80Label->hide();
+                ui->speedLimit50Label->show();
+              }
+              else if (received_msg.find("80"))
+              {
+                ui->speedLimit50Label->hide();
+                ui->speedLimit80Label->show();
+              }
+              /* std::string value = "Object found: ";
               value += received_msg.substr(std::string("notification ").length());
-              NotificationManager::instance()->enqueueNotification(QString::fromStdString(value),NotificationLevel::Info, 2000);
+              NotificationManager::instance()->enqueueNotification(QString::fromStdString(value),NotificationLevel::Info, 2000); */
             }
           }
         } catch (const zmq::error_t& e) {
