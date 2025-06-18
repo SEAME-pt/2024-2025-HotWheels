@@ -20,10 +20,10 @@
 
 class TensorRTInferencer : public IInferencer {
 private:
-	class Logger : public nvinfer1::ILogger {
+	/* class Logger : public nvinfer1::ILogger {
 	public:
 		void log(Severity severity, const char* msg) noexcept override;
-	} logger;
+	} logger; */
 
 	std::vector<char> engineData;
 	nvinfer1::IRuntime* runtime;

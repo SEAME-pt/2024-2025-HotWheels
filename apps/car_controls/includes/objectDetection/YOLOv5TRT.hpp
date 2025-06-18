@@ -45,14 +45,14 @@ public:
 	void process_image(const cv::Mat& frame);
 
 private:
-	class Logger : public ILogger {
+/* 	class Logger : public ILogger {
 	public:
 		void log(Severity severity, const char* msg) noexcept override {
 			if (severity <= Severity::kWARNING) {
 				std::cout << "[TensorRT] " << msg << std::endl;
 			}
 		}
-	} logger;
+	} logger; */
 
 	// Buffers reutilizáveis
 	cv::cuda::GpuMat gpu_image, gpu_resized, gpu_float;
