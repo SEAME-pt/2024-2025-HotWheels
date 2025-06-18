@@ -89,7 +89,7 @@ void CameraStreamer::start() {
 
 	captureThread = std::thread(&CameraStreamer::captureLoop, this);
 	segmentationThread = std::thread(&CameraStreamer::segmentationWorker, this);
-	//detectionThread = std::thread(&CameraStreamer::detectionWorker, this);
+	detectionThread = std::thread(&CameraStreamer::detectionWorker, this);
 }
 
 void CameraStreamer::captureLoop() {
@@ -112,7 +112,7 @@ void CameraStreamer::captureLoop() {
 		}
 
 		segmentationBuffer.update(frame);
-		//detectionBuffer.update(frame);
+		detectionBuffer.update(frame);
 
 		frame_count++;
 		auto now = std::chrono::high_resolution_clock::now();
