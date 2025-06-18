@@ -293,11 +293,11 @@ void DisplayManager::updateSpeedLimitLabels(int speed) {
 	if (speed == 50) {
 		m_ui->speedLimit80Label->hide();
 		m_ui->speedLimit50Label->show();
-		m_speed50Timer->start(3000);
+		m_speed50Timer->start(5000);
 	} else if (speed == 80) {
 		m_ui->speedLimit50Label->hide();
 		m_ui->speedLimit80Label->show();
-		m_speed80Timer->start(3000);
+		m_speed80Timer->start(5000);
 	}
 }
 
