@@ -85,14 +85,14 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
             std::string received_msg(static_cast<char*>(message.data()), message.size());
 
             if (received_msg.find("notification") == 0) {
-              if ((received_msg.find("50") != std::string::npos) || (received_msg.find("stop") != std::string::npos))
+              if ((received_msg.find("50") != std::string::npos))
               {
                 QMetaObject::invokeMethod(this, [this]() {
                   if (m_displayManager)
                     m_displayManager->updateSpeedLimitLabels(50);
                 }, Qt::QueuedConnection);
               }
-              else if ((received_msg.find("80") != std::string::npos) || (received_msg.find("crosswalk") != std::string::npos))
+              else if ((received_msg.find("80") != std::string::npos) || (received_msg.find("stop") != std::string::npos))
               {
                 QMetaObject::invokeMethod(this, [this]() {
                   if (m_displayManager)
