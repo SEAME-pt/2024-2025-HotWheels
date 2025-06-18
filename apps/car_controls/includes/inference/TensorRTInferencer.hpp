@@ -21,11 +21,6 @@
 
 class TensorRTInferencer : public IInferencer {
 private:
-	/* class Logger : public nvinfer1::ILogger {
-	public:
-		void log(Severity severity, const char* msg) noexcept override;
-	} logger; */
-
 	std::vector<char> engineData;
 	nvinfer1::IRuntime* runtime;
 	nvinfer1::ICudaEngine* engine;

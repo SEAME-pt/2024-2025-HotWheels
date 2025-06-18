@@ -32,6 +32,7 @@ HEADERS += \
 	includes/inference/IInferencer.hpp \
 	includes/inference/LanePostProcessor.hpp \
 	includes/inference/LaneCurveFitter.hpp \
+	includes/inference/Logger.hpp \
 	includes/objectDetection/LabelManager.hpp \
 	includes/objectDetection/YOLOv5TRT.hpp \
 	includes/ControlsManager.hpp \

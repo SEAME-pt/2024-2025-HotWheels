@@ -4,12 +4,6 @@
 #include <stdexcept>
 #include <numeric>
 
-// Logger callback for TensorRT to print warnings and errors
-/* void TensorRTInferencer::Logger::log(Severity severity, const char* msg) noexcept {
-	if (severity <= Severity::kWARNING)  // Only log warnings or more severe messages
-		std::cout << msg << std::endl;   // Print the message to the console
-} */
-
 // Constructor: loads TensorRT engine, allocates memory and sets up execution context
 TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 	runtime(nullptr),        // Initialize runtime pointer to nullptr
