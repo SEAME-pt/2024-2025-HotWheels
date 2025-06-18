@@ -219,7 +219,7 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 	switch (newMode) {
 	case DrivingMode::Manual:
 		modeText = "Manual";
-		m_ui->laneKeepingAssistLabel->show();
+		/* m_ui->laneKeepingAssistLabel->show();
 		m_ui->laneDepartureWarningLabel->show();
 		m_ui->speedLimit80Label->hide();
 		m_ui->speedLimit50Label->show();
@@ -228,11 +228,11 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 			m_blinkTimer->stop();
 			m_blinkTimer->deleteLater();
 			m_blinkTimer = nullptr;
-		}
+		} */
 		break;
 	case DrivingMode::Automatic:
 		modeText = "Automatic";
-		m_ui->laneKeepingAssistLabel->hide();
+		/* m_ui->laneKeepingAssistLabel->hide();
 		m_ui->speedLimit50Label->hide();
 		m_ui->speedLimit80Label->show();
 		if (!m_blinkTimer) {
@@ -242,7 +242,7 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 				m_ui->laneDepartureWarningLabel->setVisible(!currentlyVisible);
 			});
 			m_blinkTimer->start(150);  // Blink every 150ms
-		}
+		} */
 		break;
 	}
 	m_ui->drivingModeLabel->setText(modeText);
