@@ -14,6 +14,7 @@
 #include "IInferencer.hpp"
 #include "LanePostProcessor.hpp"
 #include "LaneCurveFitter.hpp"
+#include "Logger.hpp"
 
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"

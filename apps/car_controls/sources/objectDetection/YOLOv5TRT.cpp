@@ -64,7 +64,7 @@ void YOLOv5TRT::loadEngine(const std::string& enginePath) {
 	std::vector<char> engineData(size);
 	file.read(engineData.data(), size);
 
-	runtime = createInferRuntime(nvinfer1::getLogger());
+	runtime = createInferRuntime(Logger::instance());
 	engine = runtime->deserializeCudaEngine(engineData.data(), size);
 	if (!engine) {
 		std::cerr << "[ERRO] Falha ao desserializar o engine TensorRT!" << std::endl;

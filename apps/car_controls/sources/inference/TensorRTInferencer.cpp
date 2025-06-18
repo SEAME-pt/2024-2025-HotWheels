@@ -28,7 +28,7 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 
 	engineData = readEngineFile(enginePath);  // Load serialized engine file into memory
 
-	runtime = nvinfer1::createInferRuntime(nvinfer1::getLogger());  // Create TensorRT runtime with logger
+	runtime = nvinfer1::createInferRuntime(Logger::instance());  // Create TensorRT runtime with logger
 	if (!runtime) {  // Check if runtime creation failed
 		throw std::runtime_error("Failed to create TensorRT Runtime");
 	}

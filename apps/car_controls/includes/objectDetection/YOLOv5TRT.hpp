@@ -11,6 +11,7 @@
 #include <NvInfer.h>
 #include <chrono>
 #include "LabelManager.hpp"
+#include "../inference/Logger.hpp"
 #include "../../../ZeroMQ/Subscriber.hpp"
 #include "../../../ZeroMQ/Publisher.hpp"
 
