@@ -221,8 +221,6 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 		modeText = "Manual";
 		m_ui->laneKeepingAssistLabel->show();
 		m_ui->laneDepartureWarningLabel->show();
-		/* m_ui->speedLimit80Label->hide();
-		m_ui->speedLimit50Label->show(); */
 		// Stop blinking if active
 		if (m_blinkTimer) {
 			m_blinkTimer->stop();
@@ -233,8 +231,6 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 	case DrivingMode::Automatic:
 		modeText = "Automatic";
 		m_ui->laneKeepingAssistLabel->hide();
-		/* m_ui->speedLimit50Label->hide();
-		m_ui->speedLimit80Label->show(); */
 		if (!m_blinkTimer) {
 			m_blinkTimer = new QTimer(this);
 			connect(m_blinkTimer, &QTimer::timeout, this, [=]() {
@@ -283,6 +279,16 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 		break;
 	}
 	m_ui->speedMetricsLabel->setText(metricsText.toUpper());
+}
+
+void DisplayManager::updateSpeedLimitLabels(int speed) {
+	if (speed == 50) {
+		m_ui->speedLimit80Label->hide();
+		m_ui->speedLimit50Label->show();
+	} else if (speed == 80) {
+		m_ui->speedLimit50Label->hide();
+		m_ui->speedLimit80Label->show();
+	}
 }
 
 void DisplayManager::displayInferenceImage(const QImage &image) {

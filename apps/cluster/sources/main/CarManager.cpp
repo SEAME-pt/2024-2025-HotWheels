@@ -87,13 +87,17 @@ CarManager::CarManager(int argc, char **argv, QWidget *parent)
             if (received_msg.find("notification") == 0) {
               if (received_msg.find("50"))
               {
-                ui->speedLimit80Label->hide();
-                ui->speedLimit50Label->show();
+                QMetaObject::invokeMethod(this, [this]() {
+                  if (m_displayManager)
+                    m_displayManager->updateSpeedLimitLabels(50);
+                }, Qt::QueuedConnection);
               }
               else if (received_msg.find("80"))
               {
-                ui->speedLimit50Label->hide();
-                ui->speedLimit80Label->show();
+                QMetaObject::invokeMethod(this, [this]() {
+                  if (m_displayManager)
+                    m_displayManager->updateSpeedLimitLabels(80);
+                }, Qt::QueuedConnection);
               }
               /* std::string value = "Object found: ";
               value += received_msg.substr(std::string("notification ").length());

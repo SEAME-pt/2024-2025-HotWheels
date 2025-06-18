@@ -51,6 +51,7 @@ public slots:
 	void updateDrivingMode(DrivingMode newMode);
 	void updateClusterTheme(ClusterTheme newTheme);
 	void updateClusterMetrics(ClusterMetrics newMetrics);
+	void updateSpeedLimitLabels(int speed);
 	void displayInferenceImage(const QImage &image);
 
 signals:
