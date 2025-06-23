@@ -7,7 +7,6 @@ INCLUDEPATH += \
 	$$PWD/includes \
 	$$PWD/includes/inference
 
-
 # Application Sources
 SOURCES += \
 	../../ZeroMQ/Publisher.cpp \
