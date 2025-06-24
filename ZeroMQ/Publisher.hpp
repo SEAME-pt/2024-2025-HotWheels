@@ -12,6 +12,8 @@
 
 class Publisher {
 private:
+	explicit Publisher(int port);
+
 	zmq::context_t context;
 	zmq::socket_t publisher;
 	bool joytstick_value;
@@ -20,13 +22,21 @@ private:
 	std::string boundAddress;
 	bool running;
 
+	static std::unordered_map<int, Publisher*> instances;
+
 public:
-	Publisher(int port);
+	//Publisher(int port);
 	~Publisher();
+	static Publisher* m_instance;
+	static void destroyAll();
+
+	// Singleton accessor
+	static Publisher* instance(int port);  // default port
 
 	void publish(const std::string& topic, const std::string& message);
 	void setJoystickStatus(bool new_joytstick_value);
-	void publishFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image);
+	void publishInferenceFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image);
+	//void publishCameraFrame(const std::string& topic, const cv::Mat& frame);
 };
 
 #endif // PUBLISHER_HPP

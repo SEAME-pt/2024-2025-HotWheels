@@ -104,7 +104,9 @@ void ClusterSettingsManager::toggleClusterMetrics()
 {
 	if (m_clusterMetrics == ClusterMetrics::Kilometers) {
 		setClusterMetrics(ClusterMetrics::Miles);
+		NotificationManager::instance()->enqueueNotification("Metrics set to MPH", NotificationLevel::Info, 2000);
 	} else {
 		setClusterMetrics(ClusterMetrics::Kilometers);
+		NotificationManager::instance()->enqueueNotification("Metrics set to KMH", NotificationLevel::Info, 2000);
 	}
 }

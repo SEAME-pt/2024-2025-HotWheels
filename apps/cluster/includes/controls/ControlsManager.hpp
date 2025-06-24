@@ -41,11 +41,6 @@ public slots:
 signals:
 	void directionChanged(CarDirection newDirection);
 	void steeringChanged(int newAngle);
-
-private:
-	Publisher *m_serverObject;
-
-	QThread* m_serverThread;
 };
 
 #endif // CONTROLSMANAGER_HPP

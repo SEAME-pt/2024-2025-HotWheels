@@ -62,9 +62,6 @@ HEADERS += \
 	includes/display/NotificationManager.hpp \
 	includes/display/NotificationOverlay.hpp
 
-# Define paths for Jetson cross-compilation
-JETSON_SYSROOT = /home/michel/qtjetson/sysroot
-
-GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+GMOCK_LIBDIR = /usr/lib/aarch64-linux-gnu
 LIBS += -L$${GMOCK_LIBDIR} \
         -lgmock_main -lgtest_main -lgmock -lgtest -lpthread

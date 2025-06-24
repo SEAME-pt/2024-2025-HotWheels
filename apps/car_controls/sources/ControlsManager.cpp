@@ -35,10 +35,9 @@
 ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	: QObject(parent), m_engineController(0x40, 0x60, this),
 	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
-	  m_subscriberObject(nullptr), m_manualControllerThread(nullptr),
-	  m_subscriberThread(nullptr), m_joystickControlThread(nullptr),
-	  m_cameraStreamerThread(nullptr), m_cameraStreamerObject(nullptr),
-	  m_running(true)
+	  m_subscriberJoystickObject(nullptr), m_manualControllerThread(nullptr),
+	  m_joystickControlThread(nullptr), m_subscriberJoystickThread(nullptr),
+	  m_cameraStreamerThread(nullptr), m_running(true)
 {
 
 	// Initialize the joystick controller with callbacks
@@ -75,16 +74,28 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 	m_manualControllerThread->start();
 
+	// **Running camera streamer**
+	m_cameraStreamerThread = QThread::create([this, argc, argv]()
+								{
+		try {
+			m_cameraStreamerObject = new CameraStreamer(0.5);
+			m_cameraStreamerObject->start();
+		} catch (const std::exception& e) {
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+	});
+	m_cameraStreamerThread->start();
+
 	// **Client Middleware Interface Thread**
-	m_subscriberObject = new Subscriber();
-	m_subscriberThread = QThread::create([this, argc, argv]()
+	m_subscriberJoystickObject = new Subscriber();
+	m_subscriberJoystickThread = QThread::create([this, argc, argv]()
 									{
-		m_subscriberObject->connect("tcp://localhost:5555");
-		m_subscriberObject->subscribe("joystick_value");
+		m_subscriberJoystickObject->connect("tcp://localhost:5555");
+		m_subscriberJoystickObject->subscribe("joystick_value");
 		while (m_running) {
 			try {
 				zmq::pollitem_t items[] = {
-					{ static_cast<void*>(m_subscriberObject->getSocket()), 0, ZMQ_POLLIN, 0 }
+					{ static_cast<void*>(m_subscriberJoystickObject->getSocket()), 0, ZMQ_POLLIN, 0 }
 				};
 
 				// Wait up to 100ms for a message
@@ -92,7 +103,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 
 				if (items[0].revents & ZMQ_POLLIN) {
 					zmq::message_t message;
-					if (!m_subscriberObject->getSocket().recv(&message, 0)) {
+					if (!m_subscriberJoystickObject->getSocket().recv(&message, 0)) {
 						continue;  // failed to receive
 					}
 
@@ -113,27 +124,8 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 			}
 		}
 	});
-	m_subscriberThread->start();
-
-	// **Running inference Thread**
-	m_cameraStreamerThread = QThread::create([this, argc, argv]()
-									{
-		try {
-			// Path to your TensorRT engine file - adjust path as needed for Jetson
-			std::string enginePath = "/home/hotweels/dev/model_loader/models/model.engine";
-
-			// Create the TensorRT inferencer
-			std::shared_ptr<IInferencer> inferencer = std::make_shared<TensorRTInferencer>(enginePath);
-			m_cameraStreamerObject = new CameraStreamer(inferencer, 0.5, "Jetson Camera Inference", true);
-			m_cameraStreamerObject->start();
-		} catch (const std::exception& e) {
-			std::cerr << "Error: " << e.what() << std::endl;
-		}
-	});
-	connect(m_cameraStreamerThread, &QThread::finished, m_cameraStreamerThread, &QObject::deleteLater);
-	m_cameraStreamerThread->start();
+	m_subscriberJoystickThread->start();
 }
-
 
 /*!
  * @brief Destructor for the ControlsManager class.
@@ -141,7 +133,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
  *          with the ControlsManager. This includes stopping the client,
  *          shared memory, process monitoring, joystick control, and manual
  *          controller threads. It also deletes associated objects such as
- *          m_carDataObject, m_subscriberThread, and m_manualController.
+ *          m_carDataObject, m_subscriberJoystickThread, and m_manualController.
  */
 
 ControlsManager::~ControlsManager()
@@ -149,17 +141,17 @@ ControlsManager::~ControlsManager()
 	m_running = false;
 
 	// Stop the client thread safely
-	if (m_subscriberThread) {
-		if (m_subscriberObject) {
-			m_subscriberObject->stop();
+	if (m_subscriberJoystickThread) {
+		if (m_subscriberJoystickObject) {
+			m_subscriberJoystickObject->stop();
 		}
-		m_subscriberThread->quit();
-		m_subscriberThread->wait();
+		m_subscriberJoystickThread->quit();
+		m_subscriberJoystickThread->wait();
 
-		m_subscriberObject->getSocket().close();
+		m_subscriberJoystickObject->getSocket().close();
 
-		delete m_subscriberThread;
-		m_subscriberThread = nullptr;
+		delete m_subscriberJoystickThread;
+		m_subscriberJoystickThread = nullptr;
 	}
 
 
@@ -174,7 +166,7 @@ ControlsManager::~ControlsManager()
 		m_manualControllerThread = nullptr;
 	}
 
-	// Stop camera streamer thread
+	//Stop camera streamer thread
 	if (m_cameraStreamerThread) {
 		if (m_cameraStreamerObject)
 			m_cameraStreamerObject->stop();
@@ -192,8 +184,8 @@ ControlsManager::~ControlsManager()
 	delete m_manualController;
 	m_manualController = nullptr;
 
-	delete m_subscriberObject;
-	m_subscriberObject = nullptr;
+	delete m_subscriberJoystickObject;
+	m_subscriberJoystickObject = nullptr;
 }
 
 /*!

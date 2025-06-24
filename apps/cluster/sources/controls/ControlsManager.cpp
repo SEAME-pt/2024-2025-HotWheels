@@ -21,7 +21,9 @@
  */
 
 #include "ControlsManager.hpp"
+#include "NotificationManager.hpp"
 #include <QDebug>
+#include <QString>
 
 /*!
  * @brief Construct a new ControlsManager object.
@@ -29,15 +31,8 @@
  * @details This constructor initializes the ControlsManager object.
  */
 ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
-		: QObject(parent), m_serverObject(nullptr),
-		m_serverThread(nullptr) {
-
-	// **Client Middleware Interface Thread**
-/* 	m_serverThread = QThread::create([this, argc, argv]() {
-			m_serverObject = new Publisher(5555);
-	});
-	m_serverThread->start(); */
-	m_serverObject = new Publisher(5555);
+		: QObject(parent) {
+	Publisher::instance(5555);
 }
 
 /*!
@@ -45,15 +40,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
  * @details This destructor stops the joystick controller and waits for the
  * thread to finish.
  */
-ControlsManager::~ControlsManager()
-{
-	if (m_serverThread) {
-		m_serverThread->quit();
-		m_serverThread->wait();
-		delete m_serverThread;
-	}
-	delete m_serverObject;
-}
+ControlsManager::~ControlsManager() {}
 
 /*!
  * @brief Update the driving mode of the vehicle.
@@ -65,9 +52,15 @@ void ControlsManager::drivingModeUpdated(DrivingMode newMode) {
 	qDebug() << "[ControlsManager] drivingModeUpdated called with : " << (newMode == DrivingMode::Automatic ? "Automatic" : "Manual");
 
 	if (newMode == DrivingMode::Automatic) {
-		m_serverObject->setJoystickStatus(false);
+		//m_serverObject->setJoystickStatus(false);
+		Publisher::instance(5555)->setJoystickStatus(false);
+		QString message = QString("Driving set to Automatic Mode");
+		NotificationManager::instance()->enqueueNotification(message, NotificationLevel::Info, 2000);
 	}
 	else {
-		m_serverObject->setJoystickStatus(true);
+		//m_serverObject->setJoystickStatus(true);
+		Publisher::instance(5555)->setJoystickStatus(true);
+		QString message = QString("Driving set to Manual Mode");
+		NotificationManager::instance()->enqueueNotification(message, NotificationLevel::Info, 2000);
 	}
 }

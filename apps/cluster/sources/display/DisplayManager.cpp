@@ -37,6 +37,9 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 		return;
 	}
 
+	m_ui->speedLimit50Label->hide();
+	m_ui->speedLimit80Label->hide();
+
 	// Set initial values for the labels
 	m_ui->speedLabel->setText("0");
 	m_ui->timeLabel->setText("--:--:--");
@@ -51,6 +54,14 @@ DisplayManager::DisplayManager(Ui::CarManager *ui, QObject *parent)
 					&DisplayManager::drivingModeToggled);
 	connect(m_ui->toggleMetricsButton, &QPushButton::clicked, this,
 					&DisplayManager::clusterMetricsToggled);
+
+	m_speed50Timer = new QTimer(this);
+	m_speed50Timer->setSingleShot(true);
+	connect(m_speed50Timer, &QTimer::timeout, m_ui->speedLimit50Label, &QWidget::hide);
+
+	m_speed80Timer = new QTimer(this);
+	m_speed80Timer->setSingleShot(true);
+	connect(m_speed80Timer, &QTimer::timeout, m_ui->speedLimit80Label, &QWidget::hide);
 }
 
 /*!
@@ -216,9 +227,26 @@ void DisplayManager::updateDrivingMode(DrivingMode newMode) {
 	switch (newMode) {
 	case DrivingMode::Manual:
 		modeText = "Manual";
+		m_ui->laneKeepingAssistLabel->show();
+		m_ui->laneDepartureWarningLabel->show();
+		// Stop blinking if active
+		if (m_blinkTimer) {
+			m_blinkTimer->stop();
+			m_blinkTimer->deleteLater();
+			m_blinkTimer = nullptr;
+		}
 		break;
 	case DrivingMode::Automatic:
 		modeText = "Automatic";
+		m_ui->laneKeepingAssistLabel->hide();
+		if (!m_blinkTimer) {
+			m_blinkTimer = new QTimer(this);
+			connect(m_blinkTimer, &QTimer::timeout, this, [=]() {
+				bool currentlyVisible = m_ui->laneDepartureWarningLabel->isVisible();
+				m_ui->laneDepartureWarningLabel->setVisible(!currentlyVisible);
+			});
+			m_blinkTimer->start(150);  // Blink every 150ms
+		}
 		break;
 	}
 	m_ui->drivingModeLabel->setText(modeText);
@@ -258,8 +286,19 @@ void DisplayManager::updateClusterMetrics(ClusterMetrics newMetrics) {
 		metricsText = "mph";
 		break;
 	}
-
 	m_ui->speedMetricsLabel->setText(metricsText.toUpper());
+}
+
+void DisplayManager::updateSpeedLimitLabels(int speed) {
+	if (speed == 50) {
+		m_ui->speedLimit80Label->hide();
+		m_ui->speedLimit50Label->show();
+		m_speed50Timer->start(3000);
+	} else if (speed == 80) {
+		m_ui->speedLimit50Label->hide();
+		m_ui->speedLimit80Label->show();
+		m_speed80Timer->start(3000);
+	}
 }
 
 void DisplayManager::displayInferenceImage(const QImage &image) {
@@ -278,6 +317,5 @@ void DisplayManager::displayInferenceImage(const QImage &image) {
 	painter.setClipPath(path);
 	painter.drawPixmap(0, 0, original);
 
-	//m_ui->inferenceLabel->setPixmap(QPixmap::fromImage(image));
 	m_ui->inferenceLabel->setPixmap(rounded);
 }

@@ -1,9 +1,9 @@
 /*!
  * @file FileController.cpp
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-02-12
- * @details 
+ * @details
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)
@@ -67,7 +67,7 @@ namespace FileController {
 	bool write(QFile &file, const QString &data)
 	{
 		QTextStream out(&file);
-		out << data << Qt::endl;
+		out << data << endl;
 		return true;
 	}
 

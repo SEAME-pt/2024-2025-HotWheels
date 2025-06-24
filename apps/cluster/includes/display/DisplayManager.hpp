@@ -27,6 +27,7 @@
 #include <QProcess>
 #include <QNetworkInterface>
 #include <QLocale>
+#include <QTimer>
 
 /*!
  * @brief Class that manages the display of the car manager.
@@ -50,6 +51,7 @@ public slots:
 	void updateDrivingMode(DrivingMode newMode);
 	void updateClusterTheme(ClusterTheme newTheme);
 	void updateClusterMetrics(ClusterMetrics newMetrics);
+	void updateSpeedLimitLabels(int speed);
 	void displayInferenceImage(const QImage &image);
 
 signals:
@@ -63,6 +65,10 @@ signals:
 private:
 	/*! @brief Pointer to the UI object. */
 	Ui::CarManager *m_ui;
+	QTimer* m_blinkTimer = nullptr;
+
+	QTimer* m_speed50Timer;
+	QTimer* m_speed80Timer;
 };
 
 #endif // DISPLAYMANAGER_HPP

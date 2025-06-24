@@ -4,12 +4,6 @@
 #include <stdexcept>
 #include <numeric>
 
-// Logger callback for TensorRT to print warnings and errors
-void TensorRTInferencer::Logger::log(Severity severity, const char* msg) noexcept {
-	if (severity <= Severity::kWARNING)  // Only log warnings or more severe messages
-		std::cout << msg << std::endl;   // Print the message to the console
-}
-
 // Constructor: loads TensorRT engine, allocates memory and sets up execution context
 TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 	runtime(nullptr),        // Initialize runtime pointer to nullptr
@@ -28,7 +22,7 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 
 	engineData = readEngineFile(enginePath);  // Load serialized engine file into memory
 
-	runtime = nvinfer1::createInferRuntime(logger);  // Create TensorRT runtime with logger
+	runtime = nvinfer1::createInferRuntime(Logger::instance());  // Create TensorRT runtime with logger
 	if (!runtime) {  // Check if runtime creation failed
 		throw std::runtime_error("Failed to create TensorRT Runtime");
 	}
@@ -108,6 +102,11 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 	bindings.resize(engine->getNbBindings());  // Resize bindings array to number of bindings
 	bindings[inputBindingIndex] = deviceInput;  // Assign device input buffer
 	bindings[outputBindingIndex] = deviceOutput;  // Assign device output buffer
+
+	Publisher::instance(5556); // Initialize publisher for inference results
+
+	initUndistortMaps();  // Initialize undistortion maps for camera calibration
+	cudaStream = cv::cuda::Stream();  // CUDA stream for asynchronous operations
 }
 
 // Clean up allocated GPU resources (device memory, streams)
@@ -124,6 +123,9 @@ void TensorRTInferencer::cleanupResources() {
 
 // Destructor: free all allocated resources
 TensorRTInferencer::~TensorRTInferencer() {
+	delete m_publisherObject;
+	m_publisherObject = nullptr;
+
 	if (hostInput) cudaFreeHost(hostInput);   // Free pinned host memory for input
 	if (hostOutput) cudaFreeHost(hostOutput); // Free pinned host memory for output
 	cleanupResources();  // Free GPU resources
@@ -265,4 +267,62 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 	postProcessedMaskGpu.upload(maskCpu); */
 
 	return outputMaskGpu;
+}
+
+void TensorRTInferencer::initUndistortMaps() {
+	cv::Mat cameraMatrix, distCoeffs;
+	cv::FileStorage fs("/home/jetson/models/lane-detection/camera_calibration.yml", cv::FileStorage::READ);  // Open calibration file
+
+	if (!fs.isOpened()) {
+		std::cerr << "[Error] Failed to open camera_calibration.yml" << std::endl;
+		return;  // Handle file opening error
+	}
+
+	fs["camera_matrix"] >> cameraMatrix;  // Read camera matrix
+	fs["distortion_coefficients"] >> distCoeffs;  // Read distortion coefficients
+	fs.release();  // Close file
+
+	cv::Mat mapx, mapy;
+	cv::initUndistortRectifyMap(
+		cameraMatrix, distCoeffs, cv::Mat(), cameraMatrix,
+		cv::Size(1280, 720),
+		CV_32FC1, mapx, mapy
+	);  // Compute undistortion mapping
+
+	d_mapx.upload(mapx);  // Upload X map to GPU
+	d_mapy.upload(mapy);  // Upload Y map to GPU
+}
+
+void TensorRTInferencer::doInference(const cv::Mat& frame) {
+	if (frame.empty()) {
+		throw std::runtime_error("Input frame is empty");
+	}
+
+	cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU
+	cv::cuda::GpuMat d_undistorted;
+	cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), cudaStream);  // Undistort frame
+
+	cv::cuda::GpuMat d_prediction_mask = makePrediction(d_undistorted);  // Run model inference
+
+	// Convert to 8-bit (0 or 255) in a new GpuMat
+	cv::cuda::GpuMat d_mask_u8;
+	d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255
+
+	cv::Mat binary_mask_cpu;
+	d_mask_u8.download(binary_mask_cpu, cudaStream);
+	cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
+	cudaStream.waitForCompletion();  // Ensure async operations are complete
+
+	// Convert model output to 8-bit binary mask on GPU
+	cv::cuda::GpuMat d_visualization;
+	d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, cudaStream);
+
+	cv::cuda::GpuMat d_resized_mask;
+
+	cv::cuda::resize(d_visualization, d_resized_mask,
+						cv::Size(frame.cols * 0.5, frame.rows * 0.5),
+						0, 0, cv::INTER_LINEAR, cudaStream);  // Resize for display
+	cudaStream.waitForCompletion();  // Synchronize
+
+	Publisher::instance(5556)->publishInferenceFrame("inference_frame", d_resized_mask); //Publish frame to ZeroMQ publisher
 }

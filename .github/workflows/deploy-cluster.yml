@@ -1,18 +1,18 @@
 name: Cross-Compile Cluster to aarch64
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'apps/cluster/**'
-      - 'ZeroMQ/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'apps/cluster/**'
-      - 'ZeroMQ/**'
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'apps/cluster/**'
+#       - 'ZeroMQ/**'
+#   pull_request:
+#     branches:
+#       - main
+#     paths:
+#       - 'apps/cluster/**'
+#       - 'ZeroMQ/**'
 
 env:
   DIR: apps/cluster
@@ -24,10 +24,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build executable for unit testing
+      - name: Build arm64 executable
         run: |
           cd $DIR
           mkdir build
+          cd build
+          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
+          make -j$(nproc)
+
+      - name: Build executable for unit testing
+        run: |
+          cd $DIR
           cd build
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-unit-tests.pro
           make -j$(nproc)
@@ -36,13 +43,12 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests jetson@100.108.203.64:/home/jetson/apps/tests
 
       - name: Build executable for integration testing
         run: |
           cd $DIR
           cd build
-          rm -rf *
           ~/qtjetson/qt5.15/bin/qmake ../HotWheels-integration-tests.pro
           make -j$(nproc)
 
@@ -50,33 +56,25 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-integration-tests hotweels@10.21.221.78:/home/hotweels/apps/tests
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-integration-tests jetson@100.108.203.64:/home/jetson/apps/tests
 
       - name: Run unit tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
-            '/home/hotweels/apps/tests/HotWheels-unit-tests'
+          sshpass -e ssh -o StrictHostKeyChecking=no jetson@100.108.203.64 \
+            '/home/jetson/apps/tests/HotWheels-unit-tests'
 
       - name: Run integration tests
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no hotweels@10.21.221.78 \
-            '/home/hotweels/apps/tests/HotWheels-integration-tests'
+          sshpass -e ssh -o StrictHostKeyChecking=no jetson@100.108.203.64 \
+            '/home/jetson/apps/tests/HotWheels-integration-tests'
         continue-on-error: true
-
-      - name: Build arm64 executable
-        run: |
-          cd $DIR
-          cd build
-          rm -rf *
-          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
-          make -j$(nproc)
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app hotweels@10.21.221.78:/home/hotweels/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@100.108.203.64:/home/jetson/apps

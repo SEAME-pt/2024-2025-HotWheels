@@ -16,14 +16,61 @@
 #include <GLFW/glfw3.h>
 #include <cuda_gl_interop.h>
 
+#include <condition_variable>
+#include <mutex>
+#include <queue>
+
 #include "IInferencer.hpp"
+#include "../objectDetection/YOLOv5TRT.hpp"
+
+class FrameBufferSegmentation {
+public:
+	void update(const cv::Mat& frame) {
+		std::lock_guard<std::mutex> lock(mutex_);
+		frame_ = frame.clone(); // deep copy
+		has_new_frame_ = true;
+	}
+
+	bool getFrame(cv::Mat& out) {
+		std::lock_guard<std::mutex> lock(mutex_);
+		if (!has_new_frame_) return false;
+		out = frame_.clone();
+		has_new_frame_ = false;
+		return true;
+	}
+
+private:
+	cv::Mat frame_;
+	bool has_new_frame_ = false;
+	std::mutex mutex_;
+};
+
+class FrameBufferDetection {
+public:
+	void update(const cv::Mat& frame) {
+		std::lock_guard<std::mutex> lock(mutex_);
+		frame_ = frame.clone(); // deep copy
+		has_new_frame_ = true;
+	}
+
+	bool getFrame(cv::Mat& out) {
+		std::lock_guard<std::mutex> lock(mutex_);
+		if (!has_new_frame_) return false;
+		out = frame_.clone();
+		has_new_frame_ = false;
+		return true;
+	}
+
+private:
+	cv::Mat frame_;
+	bool has_new_frame_ = false;
+	std::mutex mutex_;
+};
 
 class CameraStreamer {
 public:
-	CameraStreamer(std::shared_ptr<IInferencer> inferencer, double scale = 0.5, const std::string& win_name = "CSI Camera", bool show_orig = false);
+	CameraStreamer(double scale = 0.5);
 	~CameraStreamer();
-
-	void initUndistortMaps();
 
 	void start();
 	void stop();
@@ -31,16 +78,26 @@ public:
 private:
 	cv::VideoCapture cap;
 	double scale_factor;
-	std::string window_name;
-	bool show_original;
 
-	cv::cuda::GpuMat d_mapx, d_mapy;
 	cudaGraphicsResource* cuda_resource;
 
 	bool m_running;
-	std::shared_ptr<IInferencer> m_inferencer;
 
-	Publisher *m_publisherObject;
+	Publisher *m_publisherFrameObject;
+
+	std::shared_ptr<TensorRTInferencer> segmentationInferencer;
+	std::shared_ptr<YOLOv5TRT> yoloInferencer;
+
+	FrameBufferSegmentation segmentationBuffer;
+	FrameBufferDetection detectionBuffer;
+
+	void segmentationWorker();
+	void detectionWorker();
+	void captureLoop();
+
+	std::thread captureThread;
+	std::thread segmentationThread;
+	std::thread detectionThread;
 };
 
 #endif // CAMERA_STREAMER_HPP
