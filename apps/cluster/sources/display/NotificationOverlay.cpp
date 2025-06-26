@@ -18,6 +18,8 @@ NotificationOverlay::NotificationOverlay(QWidget* parent)
 	fadeOutTimer->setSingleShot(true);
 }
 
+NotificationOverlay::~NotificationOverlay() = default;
+
 void NotificationOverlay::showNotification(const QString& text, NotificationLevel notificationLevel, int durationMs)
 {
 	message = text;
