@@ -11,6 +11,7 @@ public:
 	FakeUI() {
 		speedLabel = new QLabel;
 		timeLabel = new QLabel;
+		dateLabel = new QLabel;
 		temperatureLabel = new QLabel;
 		batteryLabel = new QLabel;
 		mileageLabel = new QLabel;
@@ -38,6 +39,7 @@ public:
 	~FakeUI() {
 		delete speedLabel;
 		delete timeLabel;
+		delete dateLabel;
 		delete temperatureLabel;
 		delete batteryLabel;
 		delete mileageLabel;
