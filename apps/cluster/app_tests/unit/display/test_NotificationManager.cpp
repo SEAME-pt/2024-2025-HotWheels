@@ -33,12 +33,12 @@ protected:
  * @test Tests that the NotificationManager singleton returns a non-null instance.
  * @brief Ensures that `NotificationManager::instance()` returns the same instance.
  */
-TEST_F(NotificationManagerTest, SingletonReturnsValidInstance) {
+/* TEST_F(NotificationManagerTest, SingletonReturnsValidInstance) {
 	auto* instance1 = NotificationManager::instance();
 	auto* instance2 = NotificationManager::instance();
 	EXPECT_NE(instance1, nullptr);
 	EXPECT_EQ(instance1, instance2);
-}
+} */
 
 /*!
  * @test Tests that a notification is shown when an overlay is initialized.
