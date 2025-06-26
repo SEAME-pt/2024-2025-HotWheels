@@ -148,7 +148,7 @@ TEST_F(MileageCalculatorTest, CalculateDistance_MultipleSpeeds)
 	EXPECT_NEAR(distance, expected, 0.1);
 }
 
-TEST(MileageCalculatorTest, InterfaceUsage_CoversIMileageCalculator)
+TEST_F(MileageCalculatorTest, InterfaceUsage_CoversIMileageCalculator)
 {
 	IMileageCalculator* interface = new MileageCalculator();
 
