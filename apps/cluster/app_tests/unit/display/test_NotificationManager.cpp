@@ -62,7 +62,7 @@ TEST_F(NotificationManagerTest, SingletonReturnsValidInstance) {
  * @brief Ensures that `showNotification()` is called with correct parameters.
  */
 TEST_F(NotificationManagerTest, EnqueueNotification_CallsOverlay) {
-	EXPECT_CALL(*mockOverlay, showNotification(StrEq("Test message"), NotificationLevel::Info, Eq(500)))
+	EXPECT_CALL(*mockOverlay, showNotification(QString("Test message"), NotificationLevel::Info, Eq(500)))
 		.Times(1);
 
 	manager->enqueueNotification("Test message", NotificationLevel::Info, 500);
