@@ -77,7 +77,7 @@ TEST(NotificationManagerStandaloneTest, EnqueueNotification_WithoutInitializatio
 	mgr->initialize(nullptr);  // Remove overlay
 
 	EXPECT_NO_FATAL_FAILURE({
-		mgr->enqueueNotification("Should not crash", NotificationLevel::Warning, 300);
+		mgr->enqueueNotification(QString("Warning!"), NotificationLevel::Warning, 300);
 	});
 }
 
