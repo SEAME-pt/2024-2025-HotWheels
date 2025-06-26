@@ -7,6 +7,8 @@ class MockNotificationOverlay : public NotificationOverlay {
 	Q_OBJECT
 
 public:
+	using NotificationOverlay::NotificationOverlay;
+
 	explicit MockNotificationOverlay(QWidget* parent = nullptr);
 	~MockNotificationOverlay() override = default;
 

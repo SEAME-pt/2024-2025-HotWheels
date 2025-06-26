@@ -19,6 +19,7 @@ class NotificationOverlay : public QWidget {
 
 public:
 	explicit NotificationOverlay(QWidget* parent = nullptr);
+	virtual ~NotificationOverlay();
 	virtual void showNotification(const QString& text, NotificationLevel notificationLevel, int durationMs = 2000);
 
 protected:
