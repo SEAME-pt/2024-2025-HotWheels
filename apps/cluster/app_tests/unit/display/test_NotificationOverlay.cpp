@@ -5,13 +5,10 @@
 
 class NotificationOverlayTest : public ::testing::Test {
 protected:
-	QApplication* app;
 	QWidget* parentWidget;
 	NotificationOverlay* overlay;
 
 	void SetUp() override {
-		int argc = 0;
-		app = new QApplication(argc, nullptr);  // Needed for widgets
 		parentWidget = new QWidget();
 		parentWidget->resize(800, 600);
 		overlay = new NotificationOverlay(parentWidget);
@@ -21,7 +18,6 @@ protected:
 	void TearDown() override {
 		delete overlay;
 		delete parentWidget;
-		delete app;
 	}
 };
 
