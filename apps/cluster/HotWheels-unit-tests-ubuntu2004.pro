@@ -38,7 +38,7 @@ SOURCES += \
 	$$UNIT_TESTS_PATH/system/test_BatteryController.cpp \
 	$$UNIT_TESTS_PATH/system/test_SystemInfoProvider.cpp \
 	$$UNIT_TESTS_PATH/system/test_SystemManager.cpp \
-	$$UNIT_TESTS_PATH/display/test_Displaymanager.cpp \
+	$$UNIT_TESTS_PATH/display/test_DisplayManager.cpp \
 	$$UNIT_TESTS_PATH/display/test_NotificationManager.cpp \
 	$$UNIT_TESTS_PATH/display/test_NotificationOverlay.cpp
 
