@@ -91,4 +91,3 @@ HEADERS += \
 GMOCK_LIBDIR = /usr/lib/aarch64-linux-gnu
 LIBS += -L$${GMOCK_LIBDIR} \
         -lgmock_main -lgtest_main -lgmock -lgtest -lpthread
-

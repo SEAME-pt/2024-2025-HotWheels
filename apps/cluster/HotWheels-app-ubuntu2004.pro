@@ -2,10 +2,6 @@ QT	   += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++17
 
-CONFIG += debug
-QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
-QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
-
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
 	$$PWD/includes/main \
