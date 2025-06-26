@@ -41,7 +41,8 @@ SOURCES += \
 	$$UNIT_TESTS_PATH/display/test_DisplayManager.cpp \
 	$$UNIT_TESTS_PATH/display/test_NotificationManager.cpp \
 	$$UNIT_TESTS_PATH/display/test_NotificationOverlay.cpp \
-	$$UNIT_TESTS_PATH/display/MockNotificationOverlay.cpp
+	$$UNIT_TESTS_PATH/display/MockNotificationOverlay.cpp \
+	$$UNIT_TESTS_PATH/main.cpp
 
 # Unit Test Headers (Mocks)
 HEADERS += \
