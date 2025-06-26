@@ -1,6 +1,10 @@
 QT       += core testlib network widgets
 CONFIG   += c++17
 
+CONFIG += debug
+QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
+QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
+
 # ====== Unit Tests Target ======
 TEMPLATE = app
 TARGET = HotWheels-unit-tests
