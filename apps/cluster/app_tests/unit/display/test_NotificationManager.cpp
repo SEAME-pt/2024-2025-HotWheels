@@ -2,27 +2,12 @@
 #include <gmock/gmock.h>
 #include <QApplication>
 #include "NotificationManager.hpp"
+#include "MockNotificationOverlay.hpp"
 
 using ::testing::_;
 using ::testing::StrEq;
 using ::testing::Eq;
 using ::testing::Gt;
-
-/*!
- * @class MockNotificationOverlay
- * @brief A mock class for NotificationOverlay.
- *
- * @details Allows interception of `showNotification` calls for test validation.
- */
-class MockNotificationOverlay : public NotificationOverlay {
-	Q_OBJECT
-public:
-	MockNotificationOverlay(QWidget* parent = nullptr) : NotificationOverlay(parent) {}
-
-	MOCK_METHOD(void, showNotification, (const QString& text, NotificationLevel level, int durationMs), (override));
-
-	~MockNotificationOverlay() override = default;
-};
 
 /*!
  * @class NotificationManagerTest
