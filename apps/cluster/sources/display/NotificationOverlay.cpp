@@ -7,7 +7,9 @@ NotificationOverlay::NotificationOverlay(QWidget* parent)
 	setAttribute(Qt::WA_NoSystemBackground);
 	setAttribute(Qt::WA_TranslucentBackground);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::ToolTip);
-	resize(parent->size());
+	if (parent)
+		resize(parent->size());
+	//resize(parent->size());
 	opacityEffect = new QGraphicsOpacityEffect(this);
 	setGraphicsEffect(opacityEffect);
 
