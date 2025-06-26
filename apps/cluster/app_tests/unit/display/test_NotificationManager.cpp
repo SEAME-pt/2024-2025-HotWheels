@@ -15,7 +15,6 @@ using ::testing::Gt;
  * @details Allows interception of `showNotification` calls for test validation.
  */
 class MockNotificationOverlay : public NotificationOverlay {
-	Q_OBJECT
 public:
 	MockNotificationOverlay(QWidget* parent = nullptr) : NotificationOverlay(parent) {}
 
