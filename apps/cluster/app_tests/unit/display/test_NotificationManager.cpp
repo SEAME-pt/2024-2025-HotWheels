@@ -20,6 +20,8 @@ public:
 	MockNotificationOverlay(QWidget* parent = nullptr) : NotificationOverlay(parent) {}
 
 	MOCK_METHOD(void, showNotification, (const QString& text, NotificationLevel level, int durationMs), (override));
+
+	~MockNotificationOverlay() override = default;
 };
 
 /*!
