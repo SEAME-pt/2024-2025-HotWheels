@@ -15,13 +15,10 @@ using ::testing::Gt;
  */
 class NotificationManagerTest : public ::testing::Test {
 protected:
-	QApplication* app = nullptr;
 	MockNotificationOverlay* mockOverlay = nullptr;
 	NotificationManager* manager = nullptr;
 
 	void SetUp() override {
-		int argc = 0;
-		app = new QApplication(argc, nullptr);  // Required for Qt widgets
 		mockOverlay = new MockNotificationOverlay();
 		manager = NotificationManager::instance();
 		manager->initialize(mockOverlay);
