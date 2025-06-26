@@ -26,7 +26,6 @@ protected:
 
 	void TearDown() override {
 		delete mockOverlay;
-		delete app;
 	}
 };
 
