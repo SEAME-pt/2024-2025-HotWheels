@@ -39,9 +39,6 @@ SOURCES += \
 	$$UNIT_TESTS_PATH/system/test_SystemInfoProvider.cpp \
 	$$UNIT_TESTS_PATH/system/test_SystemManager.cpp \
 	$$UNIT_TESTS_PATH/display/test_DisplayManager.cpp \
-	$$UNIT_TESTS_PATH/display/test_NotificationManager.cpp \
-	$$UNIT_TESTS_PATH/display/test_NotificationOverlay.cpp \
-	$$UNIT_TESTS_PATH/display/MockNotificationOverlay.cpp \
 	$$UNIT_TESTS_PATH/main.cpp
 
 # Unit Test Headers (Mocks)
@@ -54,7 +51,6 @@ HEADERS += \
 	$$MOCKS_PATH/MockSystemCommandExecutor.hpp \
 	$$MOCKS_PATH/MockSystemInfoProvider.hpp \
 	$$MOCKS_PATH/MockBatteryController.hpp \
-	$$MOCKS_PATH/MockNotificationOverlay.hpp
 
 # System Sources Required for Tests
 SOURCES += \
