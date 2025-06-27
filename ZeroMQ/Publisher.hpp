@@ -12,19 +12,19 @@
 
 class Publisher {
 private:
-	explicit Publisher(int port);
 
-	zmq::context_t context;
-	zmq::socket_t publisher;
-	bool joytstick_value;
-	std::mutex joystick_mtx;
-	std::mutex frame_mtx;
-	std::string boundAddress;
-	bool running;
+zmq::context_t context;
+zmq::socket_t publisher;
+bool joytstick_value;
+std::mutex joystick_mtx;
+std::mutex frame_mtx;
+std::string boundAddress;
+bool running;
 
-	static std::unordered_map<int, std::shared_ptr<Publisher>> instances;
+static std::unordered_map<int, std::shared_ptr<Publisher>> instances;
 
 public:
+	explicit Publisher(int port);
 	//Publisher(int port);
 	~Publisher();
 	//static std::shared_ptr<Publisher> m_instance;
