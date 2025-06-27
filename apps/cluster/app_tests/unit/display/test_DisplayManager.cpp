@@ -62,13 +62,13 @@ public:
 
 class DisplayManagerTest : public ::testing::Test {
 protected:
-	QApplication* app;
+	//QApplication* app;
 	FakeUI* fakeUI;
 	DisplayManager* displayManager;
 
 	void SetUp() override {
-		int argc = 0;
-		app = new QApplication(argc, nullptr);
+		//int argc = 0;
+		//app = new QApplication(argc, nullptr);
 		fakeUI = new FakeUI;
 		displayManager = new DisplayManager(fakeUI);
 	}
@@ -76,7 +76,7 @@ protected:
 	void TearDown() override {
 		delete displayManager;
 		delete fakeUI;
-		delete app;
+		//delete app;
 	}
 };
 
