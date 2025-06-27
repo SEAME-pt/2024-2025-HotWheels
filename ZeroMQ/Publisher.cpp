@@ -31,9 +31,9 @@ std::shared_ptr<Publisher> Publisher::instance(int port) {
 }
 
 void Publisher::destroyAll() {
-	for (auto& pair : instances) {
+	/* for (auto& pair : instances) {
 		delete pair.second;
-	}
+	} */
 	instances.clear();
 }
 
