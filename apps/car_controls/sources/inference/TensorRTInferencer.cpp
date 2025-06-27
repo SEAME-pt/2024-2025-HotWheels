@@ -103,7 +103,7 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 	bindings[inputBindingIndex] = deviceInput;  // Assign device input buffer
 	bindings[outputBindingIndex] = deviceOutput;  // Assign device output buffer
 
-	Publisher::instance(5556); // Initialize publisher for inference results
+	//Publisher::instance(5556); // Initialize publisher for inference results
 
 	initUndistortMaps();  // Initialize undistortion maps for camera calibration
 	cudaStream = cv::cuda::Stream();  // CUDA stream for asynchronous operations
