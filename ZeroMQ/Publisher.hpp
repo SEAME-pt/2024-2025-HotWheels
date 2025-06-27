@@ -22,16 +22,16 @@ private:
 	std::string boundAddress;
 	bool running;
 
-	static std::unordered_map<int, Publisher*> instances;
+	static std::unordered_map<int, std::shared_ptr<Publisher>> instances;
 
 public:
 	//Publisher(int port);
 	~Publisher();
-	static Publisher* m_instance;
+	//static std::shared_ptr<Publisher> m_instance;
 	static void destroyAll();
 
 	// Singleton accessor
-	static Publisher* instance(int port);  // default port
+	static std::shared_ptr<Publisher> instance(int port);  // default port
 
 	void publish(const std::string& topic, const std::string& message);
 	void setJoystickStatus(bool new_joytstick_value);
