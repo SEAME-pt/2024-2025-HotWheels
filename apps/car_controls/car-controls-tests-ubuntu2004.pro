@@ -2,6 +2,10 @@ QT       += core testlib
 CONFIG   += c++17
 TARGET   = car-controls-tests
 
+CONFIG += debug
+QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
+QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
+
 # Include Paths
 INCLUDEPATH += \
     $$PWD/includes \
