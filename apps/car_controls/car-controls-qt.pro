@@ -54,6 +54,8 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	JETSON_SYSROOT = /home/seame/qtjetson/sysroot
 
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
+
 	# CUDA includes
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
 
