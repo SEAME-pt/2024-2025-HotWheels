@@ -1,6 +1,6 @@
 #include "Publisher.hpp"
 
-std::unordered_map<int, std::shared_ptr<Publisher>> Publisher::instances;
+std::unordered_map<int, Publisher*> Publisher::instances;
 
 Publisher::Publisher(int port) : context(1), publisher(context, ZMQ_PUB), joytstick_value(true), running(false) {
 	boundAddress = "tcp://*:" + std::to_string(port);
@@ -18,22 +18,19 @@ Publisher::~Publisher() {
 	}
 }
 
-//std::shared_ptr<Publisher> Publisher::m_instance = nullptr;
+Publisher* Publisher::m_instance = nullptr;
 
-std::shared_ptr<Publisher> Publisher::instance(int port) {
-	auto it = instances.find(port);
-	if (it == instances.end()) {
-		auto publisher = std::make_shared<Publisher>(port);
-		instances[port] = publisher;
-		return publisher;
+Publisher* Publisher::instance(int port) {
+	if (instances.find(port) == instances.end()) {
+		instances[port] = new Publisher(port);
 	}
-	return it->second;
+	return instances[port];
 }
 
 void Publisher::destroyAll() {
-	/* for (auto& pair : instances) {
+	for (auto& pair : instances) {
 		delete pair.second;
-	} */
+	}
 	instances.clear();
 }
 
