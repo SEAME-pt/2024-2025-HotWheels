@@ -4,8 +4,9 @@
 # Exceto a pasta docs
 !/docs/
 !/coverage-cluster/
-!index.html
+!/root/
 
 # Exceto o conteúdo da pasta docs
 !/docs/**
 !/coverage-cluster/**
+!/root/**
