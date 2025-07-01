@@ -3,6 +3,8 @@
 
 # Exceto a pasta docs
 !/docs/
+!/coverage-cluster/
 
 # Exceto o conteúdo da pasta docs
 !/docs/**
+!/coverage-cluster/**
