@@ -92,7 +92,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
 
 	# Define paths for Jetson cross-compilation
-	JETSON_SYSROOT = /home/seame/qtjetson/sysroot
+	JETSON_SYSROOT = /home/seame/qtjetson2/sysroot
 
 	# CUDA includes - use the exact path found on Jetson
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include

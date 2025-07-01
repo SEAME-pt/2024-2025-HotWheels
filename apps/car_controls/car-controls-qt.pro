@@ -52,7 +52,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	message("Building for ARM architecture")
 
-	JETSON_SYSROOT = /home/seame/qtjetson/sysroot
+	JETSON_SYSROOT = /home/seame/qtjetson2/sysroot
 
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
 
@@ -78,6 +78,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	# Library paths
 	LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
+	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/lib64
 	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
 	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
 	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
@@ -88,8 +89,8 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	# TensorRT, CUDA, OpenCV
 	LIBS += -lcudart -lnvinfer
-	LIBS += -l:libopencv_core.so.405 -l:libopencv_imgproc.so.405 -l:libopencv_imgcodecs.so.405 -l:libopencv_videoio.so.405 -l:libopencv_highgui.so.405 -l:libopencv_calib3d.so.405
-	LIBS += -l:libopencv_cudaarithm.so.405 -l:libopencv_cudawarping.so.405 -l:libopencv_cudaimgproc.so.405 -l:libopencv_cudacodec.so.405
+	LIBS += -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_highgui -lopencv_calib3d
+	LIBS += -lopencv_cudaarithm -lopencv_cudawarping -lopencv_cudaimgproc -lopencv_cudacodec
 	LIBS += -lcublasLt -llapack -lblas
 	LIBS += -lnvmedia -lnvdla_compiler
 
@@ -102,4 +103,6 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	# RPath for custom OpenCV runtime
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/lib
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/cuda-10.2/lib64
 }
