@@ -5,6 +5,10 @@ CONFIG   += c++17
 TEMPLATE = app
 TARGET = HotWheels-unit-tests
 
+# Define Clang toolchain (host-installed cross-compiler)
+CLANG_BIN = /usr/bin
+CLANG_VER = 15
+
 # Include Paths
 INCLUDEPATH += \
 	$$PWD/includes/canbus \
@@ -106,6 +110,15 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	# Add static libstdc++ to avoid GLIBCXX version issues
 	QMAKE_LFLAGS += -static-libstdc++
+
+	# Coverage flags - only enable when explicitly requested
+	coverage {
+		QMAKE_CC = /home/seame/new_qtjetson/tools/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc
+		QMAKE_CXX = /home/seame/new_qtjetson/tools/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++
+		QMAKE_CFLAGS   += -fprofile-arcs -ftest-coverage -O0
+		QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
+		QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
+	}
 }
 
 GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu

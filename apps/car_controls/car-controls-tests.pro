@@ -2,7 +2,7 @@ QT       += core testlib
 CONFIG   += c++17
 TARGET   = car-controls-tests
 
-JETSON_SYSROOT = /home/seame/qtjetson/sysroot
+JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
 
 # Include Paths
 INCLUDEPATH += \
@@ -12,8 +12,12 @@ INCLUDEPATH += \
     $${JETSON_SYSROOT}/usr/local/include/opencv4 \
     $${JETSON_SYSROOT}/usr/include/opencv4 \
     $${JETSON_SYSROOT}/usr/local/cuda/include \
-    $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
-    $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu
+    $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include \
+    $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu \
+    $${JETSON_SYSROOT}/usr/include/gstreamer-1.0 \
+    $${JETSON_SYSROOT}/usr/include/glib-2.0 \
+    $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/glib-2.0/include \
+    $${JETSON_SYSROOT}/usr/include/eigen3
 
 # Test Sources
 TESTS_PATH = tests
@@ -42,28 +46,10 @@ HEADERS += \
     includes/inference/CameraStreamer.hpp \
     includes/inference/TensorRTInferencer.hpp \
     includes/inference/LanePostProcessor.hpp \
-	includes/inference/LaneCurveFitter.hpp \
+    includes/inference/LaneCurveFitter.hpp \
     includes/inference/IInferencer.hpp \
     includes/objectDetection/LabelManager.hpp \
     includes/objectDetection/YOLOv5TRT.hpp
-
-# CUDA includes
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
-
-# TensorRT includes
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu
-
-# OpenCV includes
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/include/opencv4
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4
-
-# GStreamer includes
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/gstreamer-1.0
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/glib-2.0
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/glib-2.0/include
-
-# Link GTest and GMock
-LIBS += -lgtest_main -lpthread -lgmock -lgtest -lzmq
 
 # Library paths
 LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
@@ -71,24 +57,35 @@ LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
 LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/
 LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
 LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
-LIBS += -L/usr/local/lib  # <- Add this for GLEW/GLFW libs
+LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+LIBS += -L/usr/local/lib  # For GLEW/GLFW
 
-# Eigen libraries
-INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/eigen3
+# GTest and GMock
+GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+LIBS += -L$${GMOCK_LIBDIR} \
+        -lgmock_main -lgtest_main -lgmock -lgtest -lpthread -lzmq
 
 # TensorRT, CUDA, OpenCV
 LIBS += -lcudart -lnvinfer
-LIBS += -l:libopencv_core.so.405 -l:libopencv_imgproc.so.405 -l:libopencv_imgcodecs.so.405 -l:libopencv_videoio.so.405 -l:libopencv_highgui.so.405 -l:libopencv_calib3d.so.405
-LIBS += -l:libopencv_cudaarithm.so.405 -l:libopencv_cudawarping.so.405 -l:libopencv_cudaimgproc.so.405 -l:libopencv_cudacodec.so.405
-LIBS += -lcublasLt -llapack -lblas
-LIBS += -lnvmedia -lnvdla_compiler
+LIBS += -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_highgui -lopencv_calib3d
+LIBS += -lopencv_cudaarithm -lopencv_cudawarping -lopencv_cudaimgproc -lopencv_cudacodec
+LIBS += -lcublasLt -lnvmedia -lnvdla_compiler
 
 # GStreamer libraries
 LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
 
-# OpenGL, GLEW, GLFW libraries (ORDER MATTERS!)
+# OpenGL, GLEW, GLFW
 LIBS += -lGLEW -lglfw -lGL
 
-# RPath for custom OpenCV runtime
+LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas  # Add ATLAS BLAS/LAPACK path
+LIBS += -llapack -lcblas -lblas -ltbb
+
+# Linker flags for rpath and static stdlib
 QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/lib
+QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
 QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
+QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
+QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/9
+QMAKE_LFLAGS += -static-libstdc++
