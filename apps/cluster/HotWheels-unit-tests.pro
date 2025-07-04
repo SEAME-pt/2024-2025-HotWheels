@@ -1,4 +1,4 @@
-QT       += core testlib network widgets
+QT	   += core testlib network widgets
 CONFIG   += c++17
 
 # ====== Unit Tests Target ======
@@ -86,9 +86,29 @@ HEADERS += \
 
 
 # Define paths for Jetson cross-compilation
-JETSON_SYSROOT = /home/seame/qtjetson/sysroot
+JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
+
+# Conditionally add cross-compilation settings for ARM platforms
+contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
+	# Library paths for ARM
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+	LIBS += -L$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+
+	# Add rpath to help find libraries at runtime
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+
+	# Add runtime paths for target system
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/9
+
+	# Add static libstdc++ to avoid GLIBCXX version issues
+	QMAKE_LFLAGS += -static-libstdc++
+}
 
 GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
 LIBS += -L$${GMOCK_LIBDIR} \
-        -lgmock_main -lgtest_main -lgmock -lgtest -lpthread
+		-lgmock_main -lgtest_main -lgmock -lgtest -lpthread
 

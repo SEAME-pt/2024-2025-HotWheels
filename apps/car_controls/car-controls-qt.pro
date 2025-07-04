@@ -52,7 +52,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	message("Building for ARM architecture")
 
-	JETSON_SYSROOT = /home/seame/qtjetson2/sysroot
+	JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
 
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
 
@@ -103,6 +103,4 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	# RPath for custom OpenCV runtime
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/lib
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/cuda-10.2/lib64
 }
