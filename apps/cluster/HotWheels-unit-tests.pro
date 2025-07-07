@@ -107,6 +107,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	# Add runtime paths for target system
 	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
 	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/9
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/local/qt5.15/lib
 
 	# Add static libstdc++ to avoid GLIBCXX version issues
 	QMAKE_LFLAGS += -static-libstdc++

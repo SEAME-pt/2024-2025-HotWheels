@@ -88,4 +88,5 @@ QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
 QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
 QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
 QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/9
+QMAKE_LFLAGS += -Wl,-rpath,/usr/local/qt5.15/lib
 QMAKE_LFLAGS += -static-libstdc++
