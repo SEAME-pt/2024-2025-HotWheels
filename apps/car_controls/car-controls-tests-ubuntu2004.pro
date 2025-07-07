@@ -13,9 +13,12 @@ INCLUDEPATH += \
     $$PWD/sources \
     /usr/local/include/opencv4 \
     /usr/include/opencv4 \
-    /usr/local/cuda/include \
-    /usr/local/cuda-10.2/targets/aarch64-linux/include
-    /usr/include/aarch64-linux-gnu
+    /usr/local/include \
+    /usr/include \
+    /usr/include/eigen3 \
+    /usr/include/gstreamer-1.0 \
+    /usr/include/glib-2.0 \
+    /usr/lib/x86_64-linux-gnu/glib-2.0/include \
 
 # Test Sources
 TESTS_PATH = tests
@@ -44,53 +47,31 @@ HEADERS += \
     includes/inference/CameraStreamer.hpp \
     includes/inference/TensorRTInferencer.hpp \
     includes/inference/LanePostProcessor.hpp \
-	includes/inference/LaneCurveFitter.hpp \
+    includes/inference/LaneCurveFitter.hpp \
     includes/inference/IInferencer.hpp \
     includes/objectDetection/LabelManager.hpp \
     includes/objectDetection/YOLOv5TRT.hpp
 
-# CUDA includes
-INCLUDEPATH += /usr/local/cuda-10.2/targets/aarch64-linux/include
-
-# TensorRT includes
-INCLUDEPATH += /usr/include/aarch64-linux-gnu
-
-# OpenCV includes
-INCLUDEPATH += /usr/local/include/opencv4
-INCLUDEPATH += /usr/include/opencv4
-
-# GStreamer includes
-INCLUDEPATH += /usr/include/gstreamer-1.0
-INCLUDEPATH += /usr/include/glib-2.0
-INCLUDEPATH += /usr/lib/aarch64-linux-gnu/glib-2.0/include
-
-# Link GTest and GMock
-LIBS += -lgtest_main -lpthread -lgmock -lgtest -lzmq
-
 # Library paths
 LIBS += -L/usr/local/lib
-LIBS += -L/usr/local/cuda-10.2/targets/aarch64-linux/lib
-LIBS += -L/usr/lib/aarch64-linux-gnu/
-LIBS += -L/usr/lib/aarch64-linux-gnu/tegra
-LIBS += -L/usr/lib/aarch64-linux-gnu/openblas
-LIBS += -L/usr/local/lib  # <- Add this for GLEW/GLFW libs
+LIBS += -L/usr/lib/x86_64-linux-gnu
+LIBS += -L/usr/local/cuda/lib64
 
-# Eigen libraries
-INCLUDEPATH += /usr/include/eigen3
+# GTest and GMock
+LIBS += -lgmock_main -lgtest_main -lgmock -lgtest -lpthread -lzmq
 
-# TensorRT, CUDA, OpenCV
-LIBS += -lcudart -lnvinfer
+# TensorRT and CUDA
+LIBS += -lnvinfer -lcudart -lcublas -lcublasLt
+
+# OpenCV + CUDA
 LIBS += -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_highgui -lopencv_calib3d
-LIBS += -lopencv_cudaarithm -lopencv_cudawarping -lopencv_cudaimgproc -lopencv_cudacodec
-LIBS += -lcublasLt -llapack -lblas
-LIBS += -lnvmedia -lnvdla_compiler
+LIBS += -lopencv_cudaarithm -lopencv_cudawarping -lopencv_cudaimgproc
 
-# GStreamer libraries
+# GStreamer
 LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
 
-# OpenGL, GLEW, GLFW libraries (ORDER MATTERS!)
+# OpenGL, GLEW, GLFW
 LIBS += -lGLEW -lglfw -lGL
 
-# RPath for custom OpenCV runtime
-QMAKE_LFLAGS += -Wl,-rpath-link,/usr/local/lib
-QMAKE_LFLAGS += -Wl,-rpath-link,/usr/lib/aarch64-linux-gnu/tegra
+# BLAS/LAPACK
+LIBS += -ltbb -llapack -lblas

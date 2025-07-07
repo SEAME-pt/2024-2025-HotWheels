@@ -2,7 +2,26 @@ QT       += core testlib
 CONFIG   += c++17
 TARGET   = car-controls-tests
 
+CONFIG += debug
+QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
+QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
+
 JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
+
+# Path to custom Linaro GCC 7.5 toolchain
+LINARO_GCC7 = /home/seame/new_qtjetson/tools/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu
+
+QMAKE_CC  = $$LINARO_GCC7/bin/aarch64-linux-gnu-gcc
+QMAKE_CXX = $$LINARO_GCC7/bin/aarch64-linux-gnu-g++
+QMAKE_LINK = $$QMAKE_CXX
+QMAKE_LINK_SHLIB = $$QMAKE_CXX
+
+# Use the Jetson sysroot headers and libraries
+QMAKE_CFLAGS   += --sysroot=$${JETSON_SYSROOT}
+QMAKE_CXXFLAGS += --sysroot=$${JETSON_SYSROOT}
+QMAKE_LFLAGS   += --sysroot=$${JETSON_SYSROOT}
+
+QMAKE_CXXFLAGS += -fdebug-prefix-map=/home/seame/repos/cluster/apps=/home/jetson/apps/test
 
 # Include Paths
 INCLUDEPATH += \
@@ -57,7 +76,7 @@ LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
 LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/
 LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
 LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
-LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/7
 LIBS += -L/usr/local/lib  # For GLEW/GLFW
 
 # GTest and GMock
@@ -85,8 +104,7 @@ QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/lib
 QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
 QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
 QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
-QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/7
 QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
-QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/9
+QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/7
 QMAKE_LFLAGS += -Wl,-rpath,/usr/local/qt5.15/lib
-QMAKE_LFLAGS += -static-libstdc++
