@@ -4,8 +4,10 @@
 # Exceto a pasta docs
 !/docs/
 !/coverage-cluster/
+!/coverage-car-controls/
 !index.html
 
 # Exceto o conteúdo da pasta docs
 !/docs/**
 !/coverage-cluster/**
+!/coverage-car-controls/**

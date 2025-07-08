@@ -1,0 +1,1415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - full.info - /usr/local/include/opencv4/opencv2/core/cuda.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">usr/local/include/opencv4/opencv2/core</a> - cuda.hpp<span style="font-size: 80%;"> (source / <a href="cuda.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">full.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2025-07-08 20:29:13</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*M///////////////////////////////////////////////////////////////////////////////////////</a>
+<a name="2"><span class="lineNum">       2 </span>            : //</a>
+<a name="3"><span class="lineNum">       3 </span>            : //  IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.</a>
+<a name="4"><span class="lineNum">       4 </span>            : //</a>
+<a name="5"><span class="lineNum">       5 </span>            : //  By downloading, copying, installing or using the software you agree to this license.</a>
+<a name="6"><span class="lineNum">       6 </span>            : //  If you do not agree to this license, do not download, install,</a>
+<a name="7"><span class="lineNum">       7 </span>            : //  copy or use the software.</a>
+<a name="8"><span class="lineNum">       8 </span>            : //</a>
+<a name="9"><span class="lineNum">       9 </span>            : //</a>
+<a name="10"><span class="lineNum">      10 </span>            : //                          License Agreement</a>
+<a name="11"><span class="lineNum">      11 </span>            : //                For Open Source Computer Vision Library</a>
+<a name="12"><span class="lineNum">      12 </span>            : //</a>
+<a name="13"><span class="lineNum">      13 </span>            : // Copyright (C) 2000-2008, Intel Corporation, all rights reserved.</a>
+<a name="14"><span class="lineNum">      14 </span>            : // Copyright (C) 2009, Willow Garage Inc., all rights reserved.</a>
+<a name="15"><span class="lineNum">      15 </span>            : // Copyright (C) 2013, OpenCV Foundation, all rights reserved.</a>
+<a name="16"><span class="lineNum">      16 </span>            : // Third party copyrights are property of their respective owners.</a>
+<a name="17"><span class="lineNum">      17 </span>            : //</a>
+<a name="18"><span class="lineNum">      18 </span>            : // Redistribution and use in source and binary forms, with or without modification,</a>
+<a name="19"><span class="lineNum">      19 </span>            : // are permitted provided that the following conditions are met:</a>
+<a name="20"><span class="lineNum">      20 </span>            : //</a>
+<a name="21"><span class="lineNum">      21 </span>            : //   * Redistribution's of source code must retain the above copyright notice,</a>
+<a name="22"><span class="lineNum">      22 </span>            : //     this list of conditions and the following disclaimer.</a>
+<a name="23"><span class="lineNum">      23 </span>            : //</a>
+<a name="24"><span class="lineNum">      24 </span>            : //   * Redistribution's in binary form must reproduce the above copyright notice,</a>
+<a name="25"><span class="lineNum">      25 </span>            : //     this list of conditions and the following disclaimer in the documentation</a>
+<a name="26"><span class="lineNum">      26 </span>            : //     and/or other materials provided with the distribution.</a>
+<a name="27"><span class="lineNum">      27 </span>            : //</a>
+<a name="28"><span class="lineNum">      28 </span>            : //   * The name of the copyright holders may not be used to endorse or promote products</a>
+<a name="29"><span class="lineNum">      29 </span>            : //     derived from this software without specific prior written permission.</a>
+<a name="30"><span class="lineNum">      30 </span>            : //</a>
+<a name="31"><span class="lineNum">      31 </span>            : // This software is provided by the copyright holders and contributors &quot;as is&quot; and</a>
+<a name="32"><span class="lineNum">      32 </span>            : // any express or implied warranties, including, but not limited to, the implied</a>
+<a name="33"><span class="lineNum">      33 </span>            : // warranties of merchantability and fitness for a particular purpose are disclaimed.</a>
+<a name="34"><span class="lineNum">      34 </span>            : // In no event shall the Intel Corporation or contributors be liable for any direct,</a>
+<a name="35"><span class="lineNum">      35 </span>            : // indirect, incidental, special, exemplary, or consequential damages</a>
+<a name="36"><span class="lineNum">      36 </span>            : // (including, but not limited to, procurement of substitute goods or services;</a>
+<a name="37"><span class="lineNum">      37 </span>            : // loss of use, data, or profits; or business interruption) however caused</a>
+<a name="38"><span class="lineNum">      38 </span>            : // and on any theory of liability, whether in contract, strict liability,</a>
+<a name="39"><span class="lineNum">      39 </span>            : // or tort (including negligence or otherwise) arising in any way out of</a>
+<a name="40"><span class="lineNum">      40 </span>            : // the use of this software, even if advised of the possibility of such damage.</a>
+<a name="41"><span class="lineNum">      41 </span>            : //</a>
+<a name="42"><span class="lineNum">      42 </span>            : //M*/</a>
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<a name="44"><span class="lineNum">      44 </span>            : #ifndef OPENCV_CORE_CUDA_HPP</a>
+<a name="45"><span class="lineNum">      45 </span>            : #define OPENCV_CORE_CUDA_HPP</a>
+<a name="46"><span class="lineNum">      46 </span>            : </a>
+<a name="47"><span class="lineNum">      47 </span>            : #ifndef __cplusplus</a>
+<a name="48"><span class="lineNum">      48 </span>            : #  error cuda.hpp header must be compiled as C++</a>
+<a name="49"><span class="lineNum">      49 </span>            : #endif</a>
+<a name="50"><span class="lineNum">      50 </span>            : </a>
+<a name="51"><span class="lineNum">      51 </span>            : #include &quot;opencv2/core.hpp&quot;</a>
+<a name="52"><span class="lineNum">      52 </span>            : #include &quot;opencv2/core/cuda_types.hpp&quot;</a>
+<a name="53"><span class="lineNum">      53 </span>            : </a>
+<a name="54"><span class="lineNum">      54 </span>            : /**</a>
+<a name="55"><span class="lineNum">      55 </span>            :   @defgroup cuda CUDA-accelerated Computer Vision</a>
+<a name="56"><span class="lineNum">      56 </span>            :   @{</a>
+<a name="57"><span class="lineNum">      57 </span>            :     @defgroup cudacore Core part</a>
+<a name="58"><span class="lineNum">      58 </span>            :     @{</a>
+<a name="59"><span class="lineNum">      59 </span>            :       @defgroup cudacore_init Initialization and Information</a>
+<a name="60"><span class="lineNum">      60 </span>            :       @defgroup cudacore_struct Data Structures</a>
+<a name="61"><span class="lineNum">      61 </span>            :     @}</a>
+<a name="62"><span class="lineNum">      62 </span>            :   @}</a>
+<a name="63"><span class="lineNum">      63 </span>            :  */</a>
+<a name="64"><span class="lineNum">      64 </span>            : </a>
+<a name="65"><span class="lineNum">      65 </span>            : namespace cv { namespace cuda {</a>
+<a name="66"><span class="lineNum">      66 </span>            : </a>
+<a name="67"><span class="lineNum">      67 </span>            : //! @addtogroup cudacore_struct</a>
+<a name="68"><span class="lineNum">      68 </span>            : //! @{</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span>            : //===================================================================================</a>
+<a name="71"><span class="lineNum">      71 </span>            : // GpuMat</a>
+<a name="72"><span class="lineNum">      72 </span>            : //===================================================================================</a>
+<a name="73"><span class="lineNum">      73 </span>            : </a>
+<a name="74"><span class="lineNum">      74 </span>            : /** @brief Base storage class for GPU memory with reference counting.</a>
+<a name="75"><span class="lineNum">      75 </span>            : </a>
+<a name="76"><span class="lineNum">      76 </span>            : Its interface matches the Mat interface with the following limitations:</a>
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<a name="78"><span class="lineNum">      78 </span>            : -   no arbitrary dimensions support (only 2D)</a>
+<a name="79"><span class="lineNum">      79 </span>            : -   no functions that return references to their data (because references on GPU are not valid for</a>
+<a name="80"><span class="lineNum">      80 </span>            :     CPU)</a>
+<a name="81"><span class="lineNum">      81 </span>            : -   no expression templates technique support</a>
+<a name="82"><span class="lineNum">      82 </span>            : </a>
+<a name="83"><span class="lineNum">      83 </span>            : Beware that the latter limitation may lead to overloaded matrix operators that cause memory</a>
+<a name="84"><span class="lineNum">      84 </span>            : allocations. The GpuMat class is convertible to cuda::PtrStepSz and cuda::PtrStep so it can be</a>
+<a name="85"><span class="lineNum">      85 </span>            : passed directly to the kernel.</a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span>            : @note In contrast with Mat, in most cases GpuMat::isContinuous() == false . This means that rows are</a>
+<a name="88"><span class="lineNum">      88 </span>            : aligned to a size depending on the hardware. Single-row GpuMat is always a continuous matrix.</a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span>            : @note You are not recommended to leave static or global GpuMat variables allocated, that is, to rely</a>
+<a name="91"><span class="lineNum">      91 </span>            : on its destructor. The destruction order of such variables and CUDA context is undefined. GPU memory</a>
+<a name="92"><span class="lineNum">      92 </span>            : release function returns error if the CUDA context has been destroyed before.</a>
+<a name="93"><span class="lineNum">      93 </span>            : </a>
+<a name="94"><span class="lineNum">      94 </span>            : Some member functions are described as a &quot;Blocking Call&quot; while some are described as a</a>
+<a name="95"><span class="lineNum">      95 </span>            : &quot;Non-Blocking Call&quot;. Blocking functions are synchronous to host. It is guaranteed that the GPU</a>
+<a name="96"><span class="lineNum">      96 </span>            : operation is finished when the function returns. However, non-blocking functions are asynchronous to</a>
+<a name="97"><span class="lineNum">      97 </span>            : host. Those functions may return even if the GPU operation is not finished.</a>
+<a name="98"><span class="lineNum">      98 </span>            : </a>
+<a name="99"><span class="lineNum">      99 </span>            : Compared to their blocking counterpart, non-blocking functions accept Stream as an additional</a>
+<a name="100"><span class="lineNum">     100 </span>            : argument. If a non-default stream is passed, the GPU operation may overlap with operations in other</a>
+<a name="101"><span class="lineNum">     101 </span>            : streams.</a>
+<a name="102"><span class="lineNum">     102 </span>            : </a>
+<a name="103"><span class="lineNum">     103 </span>            : @sa Mat</a>
+<a name="104"><span class="lineNum">     104 </span>            :  */</a>
+<a name="105"><span class="lineNum">     105 </span>            : class CV_EXPORTS_W GpuMat</a>
+<a name="106"><span class="lineNum">     106 </span>            : {</a>
+<a name="107"><span class="lineNum">     107 </span>            : public:</a>
+<a name="108"><span class="lineNum">     108 </span>            :     class CV_EXPORTS_W Allocator</a>
+<a name="109"><span class="lineNum">     109 </span>            :     {</a>
+<a name="110"><span class="lineNum">     110 </span>            :     public:</a>
+<a name="111"><span class="lineNum">     111 </span>            :         virtual ~Allocator() {}</a>
+<a name="112"><span class="lineNum">     112 </span>            : </a>
+<a name="113"><span class="lineNum">     113 </span>            :         // allocator must fill data, step and refcount fields</a>
+<a name="114"><span class="lineNum">     114 </span>            :         virtual bool allocate(GpuMat* mat, int rows, int cols, size_t elemSize) = 0;</a>
+<a name="115"><span class="lineNum">     115 </span>            :         virtual void free(GpuMat* mat) = 0;</a>
+<a name="116"><span class="lineNum">     116 </span>            :     };</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span>            :     //! default allocator</a>
+<a name="119"><span class="lineNum">     119 </span>            :     CV_WRAP static GpuMat::Allocator* defaultAllocator();</a>
+<a name="120"><span class="lineNum">     120 </span>            :     CV_WRAP static void setDefaultAllocator(GpuMat::Allocator* allocator);</a>
+<a name="121"><span class="lineNum">     121 </span>            :     CV_WRAP static GpuMat::Allocator* getStdAllocator();</a>
+<a name="122"><span class="lineNum">     122 </span>            : </a>
+<a name="123"><span class="lineNum">     123 </span>            :     //! default constructor</a>
+<a name="124"><span class="lineNum">     124 </span>            :     CV_WRAP explicit GpuMat(GpuMat::Allocator* allocator = GpuMat::defaultAllocator());</a>
+<a name="125"><span class="lineNum">     125 </span>            : </a>
+<a name="126"><span class="lineNum">     126 </span>            :     //! constructs GpuMat of the specified size and type</a>
+<a name="127"><span class="lineNum">     127 </span>            :     CV_WRAP GpuMat(int rows, int cols, int type, GpuMat::Allocator* allocator = GpuMat::defaultAllocator());</a>
+<a name="128"><span class="lineNum">     128 </span>            :     CV_WRAP GpuMat(Size size, int type, GpuMat::Allocator* allocator = GpuMat::defaultAllocator());</a>
+<a name="129"><span class="lineNum">     129 </span>            : </a>
+<a name="130"><span class="lineNum">     130 </span>            :     //! constructs GpuMat and fills it with the specified value _s</a>
+<a name="131"><span class="lineNum">     131 </span>            :     CV_WRAP GpuMat(int rows, int cols, int type, Scalar s, GpuMat::Allocator* allocator = GpuMat::defaultAllocator());</a>
+<a name="132"><span class="lineNum">     132 </span>            :     CV_WRAP GpuMat(Size size, int type, Scalar s, GpuMat::Allocator* allocator = GpuMat::defaultAllocator());</a>
+<a name="133"><span class="lineNum">     133 </span>            : </a>
+<a name="134"><span class="lineNum">     134 </span>            :     //! copy constructor</a>
+<a name="135"><span class="lineNum">     135 </span>            :     CV_WRAP GpuMat(const GpuMat&amp; m);</a>
+<a name="136"><span class="lineNum">     136 </span>            : </a>
+<a name="137"><span class="lineNum">     137 </span>            :     //! constructor for GpuMat headers pointing to user-allocated data</a>
+<a name="138"><span class="lineNum">     138 </span>            :     GpuMat(int rows, int cols, int type, void* data, size_t step = Mat::AUTO_STEP);</a>
+<a name="139"><span class="lineNum">     139 </span>            :     GpuMat(Size size, int type, void* data, size_t step = Mat::AUTO_STEP);</a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span>            :     //! creates a GpuMat header for a part of the bigger matrix</a>
+<a name="142"><span class="lineNum">     142 </span>            :     CV_WRAP GpuMat(const GpuMat&amp; m, Range rowRange, Range colRange);</a>
+<a name="143"><span class="lineNum">     143 </span>            :     CV_WRAP GpuMat(const GpuMat&amp; m, Rect roi);</a>
+<a name="144"><span class="lineNum">     144 </span>            : </a>
+<a name="145"><span class="lineNum">     145 </span>            :     //! builds GpuMat from host memory (Blocking call)</a>
+<a name="146"><span class="lineNum">     146 </span>            :     CV_WRAP explicit GpuMat(InputArray arr, GpuMat::Allocator* allocator = GpuMat::defaultAllocator());</a>
+<a name="147"><span class="lineNum">     147 </span>            : </a>
+<a name="148"><span class="lineNum">     148 </span>            :     //! destructor - calls release()</a>
+<a name="149"><span class="lineNum">     149 </span>            :     ~GpuMat();</a>
+<a name="150"><span class="lineNum">     150 </span>            : </a>
+<a name="151"><span class="lineNum">     151 </span>            :     //! assignment operators</a>
+<a name="152"><span class="lineNum">     152 </span>            :     GpuMat&amp; operator =(const GpuMat&amp; m);</a>
+<a name="153"><span class="lineNum">     153 </span>            : </a>
+<a name="154"><span class="lineNum">     154 </span>            :     //! allocates new GpuMat data unless the GpuMat already has specified size and type</a>
+<a name="155"><span class="lineNum">     155 </span>            :     CV_WRAP void create(int rows, int cols, int type);</a>
+<a name="156"><span class="lineNum">     156 </span>            :     CV_WRAP void create(Size size, int type);</a>
+<a name="157"><span class="lineNum">     157 </span>            : </a>
+<a name="158"><span class="lineNum">     158 </span>            :     //! decreases reference counter, deallocate the data when reference counter reaches 0</a>
+<a name="159"><span class="lineNum">     159 </span>            :     CV_WRAP void release();</a>
+<a name="160"><span class="lineNum">     160 </span>            : </a>
+<a name="161"><span class="lineNum">     161 </span>            :     //! swaps with other smart pointer</a>
+<a name="162"><span class="lineNum">     162 </span>            :     CV_WRAP void swap(GpuMat&amp; mat);</a>
+<a name="163"><span class="lineNum">     163 </span>            : </a>
+<a name="164"><span class="lineNum">     164 </span>            :     /** @brief Performs data upload to GpuMat (Blocking call)</a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span>            :     This function copies data from host memory to device memory. As being a blocking call, it is</a>
+<a name="167"><span class="lineNum">     167 </span>            :     guaranteed that the copy operation is finished when this function returns.</a>
+<a name="168"><span class="lineNum">     168 </span>            :     */</a>
+<a name="169"><span class="lineNum">     169 </span>            :     CV_WRAP void upload(InputArray arr);</a>
+<a name="170"><span class="lineNum">     170 </span>            : </a>
+<a name="171"><span class="lineNum">     171 </span>            :     /** @brief Performs data upload to GpuMat (Non-Blocking call)</a>
+<a name="172"><span class="lineNum">     172 </span>            : </a>
+<a name="173"><span class="lineNum">     173 </span>            :     This function copies data from host memory to device memory. As being a non-blocking call, this</a>
+<a name="174"><span class="lineNum">     174 </span>            :     function may return even if the copy operation is not finished.</a>
+<a name="175"><span class="lineNum">     175 </span>            : </a>
+<a name="176"><span class="lineNum">     176 </span>            :     The copy operation may be overlapped with operations in other non-default streams if \p stream is</a>
+<a name="177"><span class="lineNum">     177 </span>            :     not the default stream and \p dst is HostMem allocated with HostMem::PAGE_LOCKED option.</a>
+<a name="178"><span class="lineNum">     178 </span>            :     */</a>
+<a name="179"><span class="lineNum">     179 </span>            :     CV_WRAP void upload(InputArray arr, Stream&amp; stream);</a>
+<a name="180"><span class="lineNum">     180 </span>            : </a>
+<a name="181"><span class="lineNum">     181 </span>            :     /** @brief Performs data download from GpuMat (Blocking call)</a>
+<a name="182"><span class="lineNum">     182 </span>            : </a>
+<a name="183"><span class="lineNum">     183 </span>            :     This function copies data from device memory to host memory. As being a blocking call, it is</a>
+<a name="184"><span class="lineNum">     184 </span>            :     guaranteed that the copy operation is finished when this function returns.</a>
+<a name="185"><span class="lineNum">     185 </span>            :     */</a>
+<a name="186"><span class="lineNum">     186 </span>            :     CV_WRAP void download(OutputArray dst) const;</a>
+<a name="187"><span class="lineNum">     187 </span>            : </a>
+<a name="188"><span class="lineNum">     188 </span>            :     /** @brief Performs data download from GpuMat (Non-Blocking call)</a>
+<a name="189"><span class="lineNum">     189 </span>            : </a>
+<a name="190"><span class="lineNum">     190 </span>            :     This function copies data from device memory to host memory. As being a non-blocking call, this</a>
+<a name="191"><span class="lineNum">     191 </span>            :     function may return even if the copy operation is not finished.</a>
+<a name="192"><span class="lineNum">     192 </span>            : </a>
+<a name="193"><span class="lineNum">     193 </span>            :     The copy operation may be overlapped with operations in other non-default streams if \p stream is</a>
+<a name="194"><span class="lineNum">     194 </span>            :     not the default stream and \p dst is HostMem allocated with HostMem::PAGE_LOCKED option.</a>
+<a name="195"><span class="lineNum">     195 </span>            :     */</a>
+<a name="196"><span class="lineNum">     196 </span>            :     CV_WRAP void download(OutputArray dst, Stream&amp; stream) const;</a>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<a name="198"><span class="lineNum">     198 </span>            :     //! returns deep copy of the GpuMat, i.e. the data is copied</a>
+<a name="199"><span class="lineNum">     199 </span>            :     CV_WRAP GpuMat clone() const;</a>
+<a name="200"><span class="lineNum">     200 </span>            : </a>
+<a name="201"><span class="lineNum">     201 </span>            :     //! copies the GpuMat content to device memory (Blocking call)</a>
+<a name="202"><span class="lineNum">     202 </span>            :     void copyTo(OutputArray dst) const;</a>
+<a name="203"><span class="lineNum">     203 </span>            :     //! bindings overload which copies the GpuMat content to device memory (Blocking call)</a>
+<a name="204"><span class="lineNum">     204 </span>            :     CV_WRAP void copyTo(CV_OUT GpuMat&amp; dst) const {</a>
+<a name="205"><span class="lineNum">     205 </span>            :         copyTo(static_cast&lt;OutputArray&gt;(dst));</a>
+<a name="206"><span class="lineNum">     206 </span>            :     }</a>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<a name="208"><span class="lineNum">     208 </span>            :     //! copies the GpuMat content to device memory (Non-Blocking call)</a>
+<a name="209"><span class="lineNum">     209 </span>            :     void copyTo(OutputArray dst, Stream&amp; stream) const;</a>
+<a name="210"><span class="lineNum">     210 </span>            :     //! bindings overload which copies the GpuMat content to device memory (Non-Blocking call)</a>
+<a name="211"><span class="lineNum">     211 </span>            :     CV_WRAP void copyTo(CV_OUT GpuMat&amp; dst, Stream&amp; stream) const {</a>
+<a name="212"><span class="lineNum">     212 </span>            :         copyTo(static_cast&lt;OutputArray&gt;(dst), stream);</a>
+<a name="213"><span class="lineNum">     213 </span>            :     }</a>
+<a name="214"><span class="lineNum">     214 </span>            : </a>
+<a name="215"><span class="lineNum">     215 </span>            :     //! copies those GpuMat elements to &quot;m&quot; that are marked with non-zero mask elements (Blocking call)</a>
+<a name="216"><span class="lineNum">     216 </span>            :     void copyTo(OutputArray dst, InputArray mask) const;</a>
+<a name="217"><span class="lineNum">     217 </span>            :     //! bindings overload which copies those GpuMat elements to &quot;m&quot; that are marked with non-zero mask elements (Blocking call)</a>
+<a name="218"><span class="lineNum">     218 </span>            :     CV_WRAP void copyTo(CV_OUT GpuMat&amp; dst, GpuMat&amp; mask) const {</a>
+<a name="219"><span class="lineNum">     219 </span>            :         copyTo(static_cast&lt;OutputArray&gt;(dst), static_cast&lt;InputArray&gt;(mask));</a>
+<a name="220"><span class="lineNum">     220 </span>            :     }</a>
+<a name="221"><span class="lineNum">     221 </span>            : </a>
+<a name="222"><span class="lineNum">     222 </span>            :     //! copies those GpuMat elements to &quot;m&quot; that are marked with non-zero mask elements (Non-Blocking call)</a>
+<a name="223"><span class="lineNum">     223 </span>            :     void copyTo(OutputArray dst, InputArray mask, Stream&amp; stream) const;</a>
+<a name="224"><span class="lineNum">     224 </span>            :     //! bindings overload which copies those GpuMat elements to &quot;m&quot; that are marked with non-zero mask elements (Non-Blocking call)</a>
+<a name="225"><span class="lineNum">     225 </span>            :     CV_WRAP void copyTo(CV_OUT GpuMat&amp; dst, GpuMat&amp; mask, Stream&amp; stream) const {</a>
+<a name="226"><span class="lineNum">     226 </span>            :         copyTo(static_cast&lt;OutputArray&gt;(dst), static_cast&lt;InputArray&gt;(mask), stream);</a>
+<a name="227"><span class="lineNum">     227 </span>            :     }</a>
+<a name="228"><span class="lineNum">     228 </span>            : </a>
+<a name="229"><span class="lineNum">     229 </span>            :     //! sets some of the GpuMat elements to s (Blocking call)</a>
+<a name="230"><span class="lineNum">     230 </span>            :     CV_WRAP GpuMat&amp; setTo(Scalar s);</a>
+<a name="231"><span class="lineNum">     231 </span>            : </a>
+<a name="232"><span class="lineNum">     232 </span>            :     //! sets some of the GpuMat elements to s (Non-Blocking call)</a>
+<a name="233"><span class="lineNum">     233 </span>            :     CV_WRAP GpuMat&amp; setTo(Scalar s, Stream&amp; stream);</a>
+<a name="234"><span class="lineNum">     234 </span>            : </a>
+<a name="235"><span class="lineNum">     235 </span>            :     //! sets some of the GpuMat elements to s, according to the mask (Blocking call)</a>
+<a name="236"><span class="lineNum">     236 </span>            :     CV_WRAP GpuMat&amp; setTo(Scalar s, InputArray mask);</a>
+<a name="237"><span class="lineNum">     237 </span>            : </a>
+<a name="238"><span class="lineNum">     238 </span>            :     //! sets some of the GpuMat elements to s, according to the mask (Non-Blocking call)</a>
+<a name="239"><span class="lineNum">     239 </span>            :     CV_WRAP GpuMat&amp; setTo(Scalar s, InputArray mask, Stream&amp; stream);</a>
+<a name="240"><span class="lineNum">     240 </span>            : </a>
+<a name="241"><span class="lineNum">     241 </span>            :     //! converts GpuMat to another datatype (Blocking call)</a>
+<a name="242"><span class="lineNum">     242 </span>            :     void convertTo(OutputArray dst, int rtype) const;</a>
+<a name="243"><span class="lineNum">     243 </span>            : </a>
+<a name="244"><span class="lineNum">     244 </span>            :     //! converts GpuMat to another datatype (Non-Blocking call)</a>
+<a name="245"><span class="lineNum">     245 </span>            :     void convertTo(OutputArray dst, int rtype, Stream&amp; stream) const;</a>
+<a name="246"><span class="lineNum">     246 </span>            :     //! bindings overload which converts GpuMat to another datatype (Non-Blocking call)</a>
+<a name="247"><span class="lineNum">     247 </span>            :     CV_WRAP void convertTo(CV_OUT GpuMat&amp; dst, int rtype, Stream&amp; stream) const {</a>
+<a name="248"><span class="lineNum">     248 </span>            :         convertTo(static_cast&lt;OutputArray&gt;(dst), rtype, stream);</a>
+<a name="249"><span class="lineNum">     249 </span>            :     }</a>
+<a name="250"><span class="lineNum">     250 </span>            : </a>
+<a name="251"><span class="lineNum">     251 </span>            :     //! converts GpuMat to another datatype with scaling (Blocking call)</a>
+<a name="252"><span class="lineNum">     252 </span>            :     void convertTo(OutputArray dst, int rtype, double alpha, double beta = 0.0) const;</a>
+<a name="253"><span class="lineNum">     253 </span>            :     //! bindings overload which converts GpuMat to another datatype with scaling(Blocking call)</a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :     CV_WRAP void convertTo(CV_OUT GpuMat&amp; dst, int rtype, double alpha = 1.0, double beta = 0.0) const {</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :         convertTo(static_cast&lt;OutputArray&gt;(dst), rtype, alpha, beta);</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :     }</span></a>
+<a name="257"><span class="lineNum">     257 </span>            : </a>
+<a name="258"><span class="lineNum">     258 </span>            :     //! converts GpuMat to another datatype with scaling (Non-Blocking call)</a>
+<a name="259"><span class="lineNum">     259 </span>            :     void convertTo(OutputArray dst, int rtype, double alpha, Stream&amp; stream) const;</a>
+<a name="260"><span class="lineNum">     260 </span>            : </a>
+<a name="261"><span class="lineNum">     261 </span>            :     //! converts GpuMat to another datatype with scaling (Non-Blocking call)</a>
+<a name="262"><span class="lineNum">     262 </span>            :     void convertTo(OutputArray dst, int rtype, double alpha, double beta, Stream&amp; stream) const;</a>
+<a name="263"><span class="lineNum">     263 </span>            :     //! bindings overload which converts GpuMat to another datatype with scaling (Non-Blocking call)</a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :     CV_WRAP void convertTo(CV_OUT GpuMat&amp; dst, int rtype, double alpha, double beta, Stream&amp; stream) const {</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :         convertTo(static_cast&lt;OutputArray&gt;(dst), rtype, alpha, beta, stream);</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :     }</span></a>
+<a name="267"><span class="lineNum">     267 </span>            : </a>
+<a name="268"><span class="lineNum">     268 </span>            :     CV_WRAP void assignTo(GpuMat&amp; m, int type = -1) const;</a>
+<a name="269"><span class="lineNum">     269 </span>            : </a>
+<a name="270"><span class="lineNum">     270 </span>            :     //! returns pointer to y-th row</a>
+<a name="271"><span class="lineNum">     271 </span>            :     uchar* ptr(int y = 0);</a>
+<a name="272"><span class="lineNum">     272 </span>            :     const uchar* ptr(int y = 0) const;</a>
+<a name="273"><span class="lineNum">     273 </span>            : </a>
+<a name="274"><span class="lineNum">     274 </span>            :     //! template version of the above method</a>
+<a name="275"><span class="lineNum">     275 </span>            :     template&lt;typename _Tp&gt; _Tp* ptr(int y = 0);</a>
+<a name="276"><span class="lineNum">     276 </span>            :     template&lt;typename _Tp&gt; const _Tp* ptr(int y = 0) const;</a>
+<a name="277"><span class="lineNum">     277 </span>            : </a>
+<a name="278"><span class="lineNum">     278 </span>            :     template &lt;typename _Tp&gt; operator PtrStepSz&lt;_Tp&gt;() const;</a>
+<a name="279"><span class="lineNum">     279 </span>            :     template &lt;typename _Tp&gt; operator PtrStep&lt;_Tp&gt;() const;</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span>            :     //! returns a new GpuMat header for the specified row</a>
+<a name="282"><span class="lineNum">     282 </span>            :     CV_WRAP GpuMat row(int y) const;</a>
+<a name="283"><span class="lineNum">     283 </span>            : </a>
+<a name="284"><span class="lineNum">     284 </span>            :     //! returns a new GpuMat header for the specified column</a>
+<a name="285"><span class="lineNum">     285 </span>            :     CV_WRAP GpuMat col(int x) const;</a>
+<a name="286"><span class="lineNum">     286 </span>            : </a>
+<a name="287"><span class="lineNum">     287 </span>            :     //! ... for the specified row span</a>
+<a name="288"><span class="lineNum">     288 </span>            :     CV_WRAP GpuMat rowRange(int startrow, int endrow) const;</a>
+<a name="289"><span class="lineNum">     289 </span>            :     CV_WRAP GpuMat rowRange(Range r) const;</a>
+<a name="290"><span class="lineNum">     290 </span>            : </a>
+<a name="291"><span class="lineNum">     291 </span>            :     //! ... for the specified column span</a>
+<a name="292"><span class="lineNum">     292 </span>            :     CV_WRAP GpuMat colRange(int startcol, int endcol) const;</a>
+<a name="293"><span class="lineNum">     293 </span>            :     CV_WRAP GpuMat colRange(Range r) const;</a>
+<a name="294"><span class="lineNum">     294 </span>            : </a>
+<a name="295"><span class="lineNum">     295 </span>            :     //! extracts a rectangular sub-GpuMat (this is a generalized form of row, rowRange etc.)</a>
+<a name="296"><span class="lineNum">     296 </span>            :     GpuMat operator ()(Range rowRange, Range colRange) const;</a>
+<a name="297"><span class="lineNum">     297 </span>            :     GpuMat operator ()(Rect roi) const;</a>
+<a name="298"><span class="lineNum">     298 </span>            : </a>
+<a name="299"><span class="lineNum">     299 </span>            :     //! creates alternative GpuMat header for the same data, with different</a>
+<a name="300"><span class="lineNum">     300 </span>            :     //! number of channels and/or different number of rows</a>
+<a name="301"><span class="lineNum">     301 </span>            :     CV_WRAP GpuMat reshape(int cn, int rows = 0) const;</a>
+<a name="302"><span class="lineNum">     302 </span>            : </a>
+<a name="303"><span class="lineNum">     303 </span>            :     //! locates GpuMat header within a parent GpuMat</a>
+<a name="304"><span class="lineNum">     304 </span>            :     CV_WRAP void locateROI(Size&amp; wholeSize, Point&amp; ofs) const;</a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span>            :     //! moves/resizes the current GpuMat ROI inside the parent GpuMat</a>
+<a name="307"><span class="lineNum">     307 </span>            :     CV_WRAP GpuMat&amp; adjustROI(int dtop, int dbottom, int dleft, int dright);</a>
+<a name="308"><span class="lineNum">     308 </span>            : </a>
+<a name="309"><span class="lineNum">     309 </span>            :     //! returns true iff the GpuMat data is continuous</a>
+<a name="310"><span class="lineNum">     310 </span>            :     //! (i.e. when there are no gaps between successive rows)</a>
+<a name="311"><span class="lineNum">     311 </span>            :     CV_WRAP bool isContinuous() const;</a>
+<a name="312"><span class="lineNum">     312 </span>            : </a>
+<a name="313"><span class="lineNum">     313 </span>            :     //! returns element size in bytes</a>
+<a name="314"><span class="lineNum">     314 </span>            :     CV_WRAP size_t elemSize() const;</a>
+<a name="315"><span class="lineNum">     315 </span>            : </a>
+<a name="316"><span class="lineNum">     316 </span>            :     //! returns the size of element channel in bytes</a>
+<a name="317"><span class="lineNum">     317 </span>            :     CV_WRAP size_t elemSize1() const;</a>
+<a name="318"><span class="lineNum">     318 </span>            : </a>
+<a name="319"><span class="lineNum">     319 </span>            :     //! returns element type</a>
+<a name="320"><span class="lineNum">     320 </span>            :     CV_WRAP int type() const;</a>
+<a name="321"><span class="lineNum">     321 </span>            : </a>
+<a name="322"><span class="lineNum">     322 </span>            :     //! returns element type</a>
+<a name="323"><span class="lineNum">     323 </span>            :     CV_WRAP int depth() const;</a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span>            :     //! returns number of channels</a>
+<a name="326"><span class="lineNum">     326 </span>            :     CV_WRAP int channels() const;</a>
+<a name="327"><span class="lineNum">     327 </span>            : </a>
+<a name="328"><span class="lineNum">     328 </span>            :     //! returns step/elemSize1()</a>
+<a name="329"><span class="lineNum">     329 </span>            :     CV_WRAP size_t step1() const;</a>
+<a name="330"><span class="lineNum">     330 </span>            : </a>
+<a name="331"><span class="lineNum">     331 </span>            :     //! returns GpuMat size : width == number of columns, height == number of rows</a>
+<a name="332"><span class="lineNum">     332 </span>            :     CV_WRAP Size size() const;</a>
+<a name="333"><span class="lineNum">     333 </span>            : </a>
+<a name="334"><span class="lineNum">     334 </span>            :     //! returns true if GpuMat data is NULL</a>
+<a name="335"><span class="lineNum">     335 </span>            :     CV_WRAP bool empty() const;</a>
+<a name="336"><span class="lineNum">     336 </span>            : </a>
+<a name="337"><span class="lineNum">     337 </span>            :     // returns pointer to cuda memory</a>
+<a name="338"><span class="lineNum">     338 </span>            :     CV_WRAP void* cudaPtr() const;</a>
+<a name="339"><span class="lineNum">     339 </span>            : </a>
+<a name="340"><span class="lineNum">     340 </span>            :     //! internal use method: updates the continuity flag</a>
+<a name="341"><span class="lineNum">     341 </span>            :     CV_WRAP void updateContinuityFlag();</a>
+<a name="342"><span class="lineNum">     342 </span>            : </a>
+<a name="343"><span class="lineNum">     343 </span>            :     /*! includes several bit-fields:</a>
+<a name="344"><span class="lineNum">     344 </span>            :     - the magic signature</a>
+<a name="345"><span class="lineNum">     345 </span>            :     - continuity flag</a>
+<a name="346"><span class="lineNum">     346 </span>            :     - depth</a>
+<a name="347"><span class="lineNum">     347 </span>            :     - number of channels</a>
+<a name="348"><span class="lineNum">     348 </span>            :     */</a>
+<a name="349"><span class="lineNum">     349 </span>            :     int flags;</a>
+<a name="350"><span class="lineNum">     350 </span>            : </a>
+<a name="351"><span class="lineNum">     351 </span>            :     //! the number of rows and columns</a>
+<a name="352"><span class="lineNum">     352 </span>            :     int rows, cols;</a>
+<a name="353"><span class="lineNum">     353 </span>            : </a>
+<a name="354"><span class="lineNum">     354 </span>            :     //! a distance between successive rows in bytes; includes the gap if any</a>
+<a name="355"><span class="lineNum">     355 </span>            :     CV_PROP size_t step;</a>
+<a name="356"><span class="lineNum">     356 </span>            : </a>
+<a name="357"><span class="lineNum">     357 </span>            :     //! pointer to the data</a>
+<a name="358"><span class="lineNum">     358 </span>            :     uchar* data;</a>
+<a name="359"><span class="lineNum">     359 </span>            : </a>
+<a name="360"><span class="lineNum">     360 </span>            :     //! pointer to the reference counter;</a>
+<a name="361"><span class="lineNum">     361 </span>            :     //! when GpuMat points to user-allocated data, the pointer is NULL</a>
+<a name="362"><span class="lineNum">     362 </span>            :     int* refcount;</a>
+<a name="363"><span class="lineNum">     363 </span>            : </a>
+<a name="364"><span class="lineNum">     364 </span>            :     //! helper fields used in locateROI and adjustROI</a>
+<a name="365"><span class="lineNum">     365 </span>            :     uchar* datastart;</a>
+<a name="366"><span class="lineNum">     366 </span>            :     const uchar* dataend;</a>
+<a name="367"><span class="lineNum">     367 </span>            : </a>
+<a name="368"><span class="lineNum">     368 </span>            :     //! allocator</a>
+<a name="369"><span class="lineNum">     369 </span>            :     Allocator* allocator;</a>
+<a name="370"><span class="lineNum">     370 </span>            : };</a>
+<a name="371"><span class="lineNum">     371 </span>            : </a>
+<a name="372"><span class="lineNum">     372 </span>            : struct CV_EXPORTS_W GpuData</a>
+<a name="373"><span class="lineNum">     373 </span>            : {</a>
+<a name="374"><span class="lineNum">     374 </span>            :     explicit GpuData(size_t _size);</a>
+<a name="375"><span class="lineNum">     375 </span>            :      ~GpuData();</a>
+<a name="376"><span class="lineNum">     376 </span>            : </a>
+<a name="377"><span class="lineNum">     377 </span>            :     GpuData(const GpuData&amp;) = delete;</a>
+<a name="378"><span class="lineNum">     378 </span>            :     GpuData&amp; operator=(const GpuData&amp;) = delete;</a>
+<a name="379"><span class="lineNum">     379 </span>            : </a>
+<a name="380"><span class="lineNum">     380 </span>            :     GpuData(GpuData&amp;&amp;) = delete;</a>
+<a name="381"><span class="lineNum">     381 </span>            :     GpuData&amp; operator=(GpuData&amp;&amp;) = delete;</a>
+<a name="382"><span class="lineNum">     382 </span>            : </a>
+<a name="383"><span class="lineNum">     383 </span>            :     uchar* data;</a>
+<a name="384"><span class="lineNum">     384 </span>            :     size_t size;</a>
+<a name="385"><span class="lineNum">     385 </span>            : };</a>
+<a name="386"><span class="lineNum">     386 </span>            : </a>
+<a name="387"><span class="lineNum">     387 </span>            : class CV_EXPORTS_W GpuMatND</a>
+<a name="388"><span class="lineNum">     388 </span>            : {</a>
+<a name="389"><span class="lineNum">     389 </span>            : public:</a>
+<a name="390"><span class="lineNum">     390 </span>            :     using SizeArray = std::vector&lt;int&gt;;</a>
+<a name="391"><span class="lineNum">     391 </span>            :     using StepArray = std::vector&lt;size_t&gt;;</a>
+<a name="392"><span class="lineNum">     392 </span>            :     using IndexArray = std::vector&lt;int&gt;;</a>
+<a name="393"><span class="lineNum">     393 </span>            : </a>
+<a name="394"><span class="lineNum">     394 </span>            :     //! destructor</a>
+<a name="395"><span class="lineNum">     395 </span>            :     ~GpuMatND();</a>
+<a name="396"><span class="lineNum">     396 </span>            : </a>
+<a name="397"><span class="lineNum">     397 </span>            :     //! default constructor</a>
+<a name="398"><span class="lineNum">     398 </span>            :     GpuMatND();</a>
+<a name="399"><span class="lineNum">     399 </span>            : </a>
+<a name="400"><span class="lineNum">     400 </span>            :     /** @overload</a>
+<a name="401"><span class="lineNum">     401 </span>            :     @param size Array of integers specifying an n-dimensional array shape.</a>
+<a name="402"><span class="lineNum">     402 </span>            :     @param type Array type. Use CV_8UC1, ..., CV_16FC4 to create 1-4 channel matrices, or</a>
+<a name="403"><span class="lineNum">     403 </span>            :     CV_8UC(n), ..., CV_64FC(n) to create multi-channel (up to CV_CN_MAX channels) matrices.</a>
+<a name="404"><span class="lineNum">     404 </span>            :     */</a>
+<a name="405"><span class="lineNum">     405 </span>            :     GpuMatND(SizeArray size, int type);</a>
+<a name="406"><span class="lineNum">     406 </span>            : </a>
+<a name="407"><span class="lineNum">     407 </span>            :     /** @overload</a>
+<a name="408"><span class="lineNum">     408 </span>            :     @param size Array of integers specifying an n-dimensional array shape.</a>
+<a name="409"><span class="lineNum">     409 </span>            :     @param type Array type. Use CV_8UC1, ..., CV_16FC4 to create 1-4 channel matrices, or</a>
+<a name="410"><span class="lineNum">     410 </span>            :     CV_8UC(n), ..., CV_64FC(n) to create multi-channel (up to CV_CN_MAX channels) matrices.</a>
+<a name="411"><span class="lineNum">     411 </span>            :     @param data Pointer to the user data. Matrix constructors that take data and step parameters do not</a>
+<a name="412"><span class="lineNum">     412 </span>            :     allocate matrix data. Instead, they just initialize the matrix header that points to the specified</a>
+<a name="413"><span class="lineNum">     413 </span>            :     data, which means that no data is copied. This operation is very efficient and can be used to</a>
+<a name="414"><span class="lineNum">     414 </span>            :     process external data using OpenCV functions. The external data is not automatically deallocated, so</a>
+<a name="415"><span class="lineNum">     415 </span>            :     you should take care of it.</a>
+<a name="416"><span class="lineNum">     416 </span>            :     @param step Array of _size.size() or _size.size()-1 steps in case of a multi-dimensional array</a>
+<a name="417"><span class="lineNum">     417 </span>            :     (if specified, the last step must be equal to the element size, otherwise it will be added as such).</a>
+<a name="418"><span class="lineNum">     418 </span>            :     If not specified, the matrix is assumed to be continuous.</a>
+<a name="419"><span class="lineNum">     419 </span>            :     */</a>
+<a name="420"><span class="lineNum">     420 </span>            :     GpuMatND(SizeArray size, int type, void* data, StepArray step = StepArray());</a>
+<a name="421"><span class="lineNum">     421 </span>            : </a>
+<a name="422"><span class="lineNum">     422 </span>            :     /** @brief Allocates GPU memory.</a>
+<a name="423"><span class="lineNum">     423 </span>            :     Suppose there is some GPU memory already allocated. In that case, this method may choose to reuse that</a>
+<a name="424"><span class="lineNum">     424 </span>            :     GPU memory under the specific condition: it must be of the same size and type, not externally allocated,</a>
+<a name="425"><span class="lineNum">     425 </span>            :     the GPU memory is continuous(i.e., isContinuous() is true), and is not a sub-matrix of another GpuMatND</a>
+<a name="426"><span class="lineNum">     426 </span>            :     (i.e., isSubmatrix() is false). In other words, this method guarantees that the GPU memory allocated by</a>
+<a name="427"><span class="lineNum">     427 </span>            :     this method is always continuous and is not a sub-region of another GpuMatND.</a>
+<a name="428"><span class="lineNum">     428 </span>            :     */</a>
+<a name="429"><span class="lineNum">     429 </span>            :     void create(SizeArray size, int type);</a>
+<a name="430"><span class="lineNum">     430 </span>            : </a>
+<a name="431"><span class="lineNum">     431 </span>            :     void release();</a>
+<a name="432"><span class="lineNum">     432 </span>            : </a>
+<a name="433"><span class="lineNum">     433 </span>            :     void swap(GpuMatND&amp; m) noexcept;</a>
+<a name="434"><span class="lineNum">     434 </span>            : </a>
+<a name="435"><span class="lineNum">     435 </span>            :     /** @brief Creates a full copy of the array and the underlying data.</a>
+<a name="436"><span class="lineNum">     436 </span>            :     The method creates a full copy of the array. It mimics the behavior of Mat::clone(), i.e.</a>
+<a name="437"><span class="lineNum">     437 </span>            :     the original step is not taken into account. So, the array copy is a continuous array</a>
+<a name="438"><span class="lineNum">     438 </span>            :     occupying total()\*elemSize() bytes.</a>
+<a name="439"><span class="lineNum">     439 </span>            :     */</a>
+<a name="440"><span class="lineNum">     440 </span>            :     GpuMatND clone() const;</a>
+<a name="441"><span class="lineNum">     441 </span>            : </a>
+<a name="442"><span class="lineNum">     442 </span>            :     /** @overload</a>
+<a name="443"><span class="lineNum">     443 </span>            :     This overload is non-blocking, so it may return even if the copy operation is not finished.</a>
+<a name="444"><span class="lineNum">     444 </span>            :     */</a>
+<a name="445"><span class="lineNum">     445 </span>            :     GpuMatND clone(Stream&amp; stream) const;</a>
+<a name="446"><span class="lineNum">     446 </span>            : </a>
+<a name="447"><span class="lineNum">     447 </span>            :     /** @brief Extracts a sub-matrix.</a>
+<a name="448"><span class="lineNum">     448 </span>            :     The operator makes a new header for the specified sub-array of \*this.</a>
+<a name="449"><span class="lineNum">     449 </span>            :     The operator is an O(1) operation, that is, no matrix data is copied.</a>
+<a name="450"><span class="lineNum">     450 </span>            :     @param ranges Array of selected ranges along each dimension.</a>
+<a name="451"><span class="lineNum">     451 </span>            :     */</a>
+<a name="452"><span class="lineNum">     452 </span>            :     GpuMatND operator()(const std::vector&lt;Range&gt;&amp; ranges) const;</a>
+<a name="453"><span class="lineNum">     453 </span>            : </a>
+<a name="454"><span class="lineNum">     454 </span>            :     /** @brief Creates a GpuMat header for a 2D plane part of an n-dim matrix.</a>
+<a name="455"><span class="lineNum">     455 </span>            :     @note The returned GpuMat is constructed with the constructor for user-allocated data.</a>
+<a name="456"><span class="lineNum">     456 </span>            :     That is, It does not perform reference counting.</a>
+<a name="457"><span class="lineNum">     457 </span>            :     @note This function does not increment this GpuMatND's reference counter.</a>
+<a name="458"><span class="lineNum">     458 </span>            :     */</a>
+<a name="459"><span class="lineNum">     459 </span>            :     GpuMat createGpuMatHeader(IndexArray idx, Range rowRange, Range colRange) const;</a>
+<a name="460"><span class="lineNum">     460 </span>            : </a>
+<a name="461"><span class="lineNum">     461 </span>            :     /** @overload</a>
+<a name="462"><span class="lineNum">     462 </span>            :     Creates a GpuMat header if this GpuMatND is effectively 2D.</a>
+<a name="463"><span class="lineNum">     463 </span>            :     @note The returned GpuMat is constructed with the constructor for user-allocated data.</a>
+<a name="464"><span class="lineNum">     464 </span>            :     That is, It does not perform reference counting.</a>
+<a name="465"><span class="lineNum">     465 </span>            :     @note This function does not increment this GpuMatND's reference counter.</a>
+<a name="466"><span class="lineNum">     466 </span>            :     */</a>
+<a name="467"><span class="lineNum">     467 </span>            :     GpuMat createGpuMatHeader() const;</a>
+<a name="468"><span class="lineNum">     468 </span>            : </a>
+<a name="469"><span class="lineNum">     469 </span>            :     /** @brief Extracts a 2D plane part of an n-dim matrix.</a>
+<a name="470"><span class="lineNum">     470 </span>            :     It differs from createGpuMatHeader(IndexArray, Range, Range) in that it clones a part of this</a>
+<a name="471"><span class="lineNum">     471 </span>            :     GpuMatND to the returned GpuMat.</a>
+<a name="472"><span class="lineNum">     472 </span>            :     @note This operator does not increment this GpuMatND's reference counter;</a>
+<a name="473"><span class="lineNum">     473 </span>            :     */</a>
+<a name="474"><span class="lineNum">     474 </span>            :     GpuMat operator()(IndexArray idx, Range rowRange, Range colRange) const;</a>
+<a name="475"><span class="lineNum">     475 </span>            : </a>
+<a name="476"><span class="lineNum">     476 </span>            :     /** @brief Extracts a 2D plane part of an n-dim matrix if this GpuMatND is effectively 2D.</a>
+<a name="477"><span class="lineNum">     477 </span>            :     It differs from createGpuMatHeader() in that it clones a part of this GpuMatND.</a>
+<a name="478"><span class="lineNum">     478 </span>            :     @note This operator does not increment this GpuMatND's reference counter;</a>
+<a name="479"><span class="lineNum">     479 </span>            :     */</a>
+<a name="480"><span class="lineNum">     480 </span>            :     operator GpuMat() const;</a>
+<a name="481"><span class="lineNum">     481 </span>            : </a>
+<a name="482"><span class="lineNum">     482 </span>            :     GpuMatND(const GpuMatND&amp;) = default;</a>
+<a name="483"><span class="lineNum">     483 </span>            :     GpuMatND&amp; operator=(const GpuMatND&amp;) = default;</a>
+<a name="484"><span class="lineNum">     484 </span>            : </a>
+<a name="485"><span class="lineNum">     485 </span>            : #if defined(__GNUC__) &amp;&amp; __GNUC__ &lt; 5</a>
+<a name="486"><span class="lineNum">     486 </span>            :     // error: function '...' defaulted on its first declaration with an exception-specification</a>
+<a name="487"><span class="lineNum">     487 </span>            :     // that differs from the implicit declaration '...'</a>
+<a name="488"><span class="lineNum">     488 </span>            : </a>
+<a name="489"><span class="lineNum">     489 </span>            :     GpuMatND(GpuMatND&amp;&amp;) = default;</a>
+<a name="490"><span class="lineNum">     490 </span>            :     GpuMatND&amp; operator=(GpuMatND&amp;&amp;) = default;</a>
+<a name="491"><span class="lineNum">     491 </span>            : #else</a>
+<a name="492"><span class="lineNum">     492 </span>            :     GpuMatND(GpuMatND&amp;&amp;) noexcept = default;</a>
+<a name="493"><span class="lineNum">     493 </span>            :     GpuMatND&amp; operator=(GpuMatND&amp;&amp;) noexcept = default;</a>
+<a name="494"><span class="lineNum">     494 </span>            : #endif</a>
+<a name="495"><span class="lineNum">     495 </span>            : </a>
+<a name="496"><span class="lineNum">     496 </span>            :     void upload(InputArray src);</a>
+<a name="497"><span class="lineNum">     497 </span>            :     void upload(InputArray src, Stream&amp; stream);</a>
+<a name="498"><span class="lineNum">     498 </span>            :     void download(OutputArray dst) const;</a>
+<a name="499"><span class="lineNum">     499 </span>            :     void download(OutputArray dst, Stream&amp; stream) const;</a>
+<a name="500"><span class="lineNum">     500 </span>            : </a>
+<a name="501"><span class="lineNum">     501 </span>            :     //! returns true iff the GpuMatND data is continuous</a>
+<a name="502"><span class="lineNum">     502 </span>            :     //! (i.e. when there are no gaps between successive rows)</a>
+<a name="503"><span class="lineNum">     503 </span>            :     bool isContinuous() const;</a>
+<a name="504"><span class="lineNum">     504 </span>            : </a>
+<a name="505"><span class="lineNum">     505 </span>            :     //! returns true if the matrix is a sub-matrix of another matrix</a>
+<a name="506"><span class="lineNum">     506 </span>            :     bool isSubmatrix() const;</a>
+<a name="507"><span class="lineNum">     507 </span>            : </a>
+<a name="508"><span class="lineNum">     508 </span>            :     //! returns element size in bytes</a>
+<a name="509"><span class="lineNum">     509 </span>            :     size_t elemSize() const;</a>
+<a name="510"><span class="lineNum">     510 </span>            : </a>
+<a name="511"><span class="lineNum">     511 </span>            :     //! returns the size of element channel in bytes</a>
+<a name="512"><span class="lineNum">     512 </span>            :     size_t elemSize1() const;</a>
+<a name="513"><span class="lineNum">     513 </span>            : </a>
+<a name="514"><span class="lineNum">     514 </span>            :     //! returns true if data is null</a>
+<a name="515"><span class="lineNum">     515 </span>            :     bool empty() const;</a>
+<a name="516"><span class="lineNum">     516 </span>            : </a>
+<a name="517"><span class="lineNum">     517 </span>            :     //! returns true if not empty and points to external(user-allocated) gpu memory</a>
+<a name="518"><span class="lineNum">     518 </span>            :     bool external() const;</a>
+<a name="519"><span class="lineNum">     519 </span>            : </a>
+<a name="520"><span class="lineNum">     520 </span>            :     //! returns pointer to the first byte of the GPU memory</a>
+<a name="521"><span class="lineNum">     521 </span>            :     uchar* getDevicePtr() const;</a>
+<a name="522"><span class="lineNum">     522 </span>            : </a>
+<a name="523"><span class="lineNum">     523 </span>            :     //! returns the total number of array elements</a>
+<a name="524"><span class="lineNum">     524 </span>            :     size_t total() const;</a>
+<a name="525"><span class="lineNum">     525 </span>            : </a>
+<a name="526"><span class="lineNum">     526 </span>            :     //! returns the size of underlying memory in bytes</a>
+<a name="527"><span class="lineNum">     527 </span>            :     size_t totalMemSize() const;</a>
+<a name="528"><span class="lineNum">     528 </span>            : </a>
+<a name="529"><span class="lineNum">     529 </span>            :     //! returns element type</a>
+<a name="530"><span class="lineNum">     530 </span>            :     int type() const;</a>
+<a name="531"><span class="lineNum">     531 </span>            : </a>
+<a name="532"><span class="lineNum">     532 </span>            : private:</a>
+<a name="533"><span class="lineNum">     533 </span>            :     //! internal use</a>
+<a name="534"><span class="lineNum">     534 </span>            :     void setFields(SizeArray size, int type, StepArray step = StepArray());</a>
+<a name="535"><span class="lineNum">     535 </span>            : </a>
+<a name="536"><span class="lineNum">     536 </span>            : public:</a>
+<a name="537"><span class="lineNum">     537 </span>            :     /*! includes several bit-fields:</a>
+<a name="538"><span class="lineNum">     538 </span>            :     - the magic signature</a>
+<a name="539"><span class="lineNum">     539 </span>            :     - continuity flag</a>
+<a name="540"><span class="lineNum">     540 </span>            :     - depth</a>
+<a name="541"><span class="lineNum">     541 </span>            :     - number of channels</a>
+<a name="542"><span class="lineNum">     542 </span>            :     */</a>
+<a name="543"><span class="lineNum">     543 </span>            :     int flags;</a>
+<a name="544"><span class="lineNum">     544 </span>            : </a>
+<a name="545"><span class="lineNum">     545 </span>            :     //! matrix dimensionality</a>
+<a name="546"><span class="lineNum">     546 </span>            :     int dims;</a>
+<a name="547"><span class="lineNum">     547 </span>            : </a>
+<a name="548"><span class="lineNum">     548 </span>            :     //! shape of this array</a>
+<a name="549"><span class="lineNum">     549 </span>            :     SizeArray size;</a>
+<a name="550"><span class="lineNum">     550 </span>            : </a>
+<a name="551"><span class="lineNum">     551 </span>            :     /*! step values</a>
+<a name="552"><span class="lineNum">     552 </span>            :     Their semantics is identical to the semantics of step for Mat.</a>
+<a name="553"><span class="lineNum">     553 </span>            :     */</a>
+<a name="554"><span class="lineNum">     554 </span>            :     StepArray step;</a>
+<a name="555"><span class="lineNum">     555 </span>            : </a>
+<a name="556"><span class="lineNum">     556 </span>            : private:</a>
+<a name="557"><span class="lineNum">     557 </span>            :     /*! internal use</a>
+<a name="558"><span class="lineNum">     558 </span>            :     If this GpuMatND holds external memory, this is empty.</a>
+<a name="559"><span class="lineNum">     559 </span>            :     */</a>
+<a name="560"><span class="lineNum">     560 </span>            :     std::shared_ptr&lt;GpuData&gt; data_;</a>
+<a name="561"><span class="lineNum">     561 </span>            : </a>
+<a name="562"><span class="lineNum">     562 </span>            :     /*! internal use</a>
+<a name="563"><span class="lineNum">     563 </span>            :     If this GpuMatND manages memory with reference counting, this value is</a>
+<a name="564"><span class="lineNum">     564 </span>            :     always equal to data_-&gt;data. If this GpuMatND holds external memory,</a>
+<a name="565"><span class="lineNum">     565 </span>            :     data_ is empty and data points to the external memory.</a>
+<a name="566"><span class="lineNum">     566 </span>            :     */</a>
+<a name="567"><span class="lineNum">     567 </span>            :     uchar* data;</a>
+<a name="568"><span class="lineNum">     568 </span>            : </a>
+<a name="569"><span class="lineNum">     569 </span>            :     /*! internal use</a>
+<a name="570"><span class="lineNum">     570 </span>            :     If this GpuMatND is a sub-matrix of a larger matrix, this value is the</a>
+<a name="571"><span class="lineNum">     571 </span>            :     difference of the first byte between the sub-matrix and the whole matrix.</a>
+<a name="572"><span class="lineNum">     572 </span>            :     */</a>
+<a name="573"><span class="lineNum">     573 </span>            :     size_t offset;</a>
+<a name="574"><span class="lineNum">     574 </span>            : };</a>
+<a name="575"><span class="lineNum">     575 </span>            : </a>
+<a name="576"><span class="lineNum">     576 </span>            : /** @brief Creates a continuous matrix.</a>
+<a name="577"><span class="lineNum">     577 </span>            : </a>
+<a name="578"><span class="lineNum">     578 </span>            : @param rows Row count.</a>
+<a name="579"><span class="lineNum">     579 </span>            : @param cols Column count.</a>
+<a name="580"><span class="lineNum">     580 </span>            : @param type Type of the matrix.</a>
+<a name="581"><span class="lineNum">     581 </span>            : @param arr Destination matrix. This parameter changes only if it has a proper type and area (</a>
+<a name="582"><span class="lineNum">     582 </span>            : \f$\texttt{rows} \times \texttt{cols}\f$ ).</a>
+<a name="583"><span class="lineNum">     583 </span>            : </a>
+<a name="584"><span class="lineNum">     584 </span>            : Matrix is called continuous if its elements are stored continuously, that is, without gaps at the</a>
+<a name="585"><span class="lineNum">     585 </span>            : end of each row.</a>
+<a name="586"><span class="lineNum">     586 </span>            :  */</a>
+<a name="587"><span class="lineNum">     587 </span>            : CV_EXPORTS_W void createContinuous(int rows, int cols, int type, OutputArray arr);</a>
+<a name="588"><span class="lineNum">     588 </span>            : </a>
+<a name="589"><span class="lineNum">     589 </span>            : /** @brief Ensures that the size of a matrix is big enough and the matrix has a proper type.</a>
+<a name="590"><span class="lineNum">     590 </span>            : </a>
+<a name="591"><span class="lineNum">     591 </span>            : @param rows Minimum desired number of rows.</a>
+<a name="592"><span class="lineNum">     592 </span>            : @param cols Minimum desired number of columns.</a>
+<a name="593"><span class="lineNum">     593 </span>            : @param type Desired matrix type.</a>
+<a name="594"><span class="lineNum">     594 </span>            : @param arr Destination matrix.</a>
+<a name="595"><span class="lineNum">     595 </span>            : </a>
+<a name="596"><span class="lineNum">     596 </span>            : The function does not reallocate memory if the matrix has proper attributes already.</a>
+<a name="597"><span class="lineNum">     597 </span>            :  */</a>
+<a name="598"><span class="lineNum">     598 </span>            : CV_EXPORTS_W void ensureSizeIsEnough(int rows, int cols, int type, OutputArray arr);</a>
+<a name="599"><span class="lineNum">     599 </span>            : </a>
+<a name="600"><span class="lineNum">     600 </span>            : /** @brief Bindings overload to create a GpuMat from existing GPU memory.</a>
+<a name="601"><span class="lineNum">     601 </span>            : @param rows Row count.</a>
+<a name="602"><span class="lineNum">     602 </span>            : @param cols Column count.</a>
+<a name="603"><span class="lineNum">     603 </span>            : @param type Type of the matrix.</a>
+<a name="604"><span class="lineNum">     604 </span>            : @param cudaMemoryAddress Address of the allocated GPU memory on the device. This does not allocate matrix data. Instead, it just initializes the matrix header that points to the specified \a cudaMemoryAddress, which means that no data is copied. This operation is very efficient and can be used to process external data using OpenCV functions. The external data is not automatically deallocated, so you should take care of it.</a>
+<a name="605"><span class="lineNum">     605 </span>            : @param step Number of bytes each matrix row occupies. The value should include the padding bytes at the end of each row, if any. If the parameter is missing (set to Mat::AUTO_STEP ), no padding is assumed and the actual step is calculated as cols*elemSize(). See GpuMat::elemSize.</a>
+<a name="606"><span class="lineNum">     606 </span>            : @note Overload for generation of bindings only, not exported or intended for use internally from C++.</a>
+<a name="607"><span class="lineNum">     607 </span>            :  */</a>
+<a name="608"><span class="lineNum">     608 </span>            : CV_EXPORTS_W GpuMat inline createGpuMatFromCudaMemory(int rows, int cols, int type, size_t cudaMemoryAddress, size_t step = Mat::AUTO_STEP) {</a>
+<a name="609"><span class="lineNum">     609 </span>            :     return GpuMat(rows, cols, type, reinterpret_cast&lt;void*&gt;(cudaMemoryAddress), step);</a>
+<a name="610"><span class="lineNum">     610 </span>            : }</a>
+<a name="611"><span class="lineNum">     611 </span>            : </a>
+<a name="612"><span class="lineNum">     612 </span>            :  /** @overload</a>
+<a name="613"><span class="lineNum">     613 </span>            : @param size 2D array size: Size(cols, rows). In the Size() constructor, the number of rows and the number of columns go in the reverse order.</a>
+<a name="614"><span class="lineNum">     614 </span>            : @param type Type of the matrix.</a>
+<a name="615"><span class="lineNum">     615 </span>            : @param cudaMemoryAddress Address of the allocated GPU memory on the device. This does not allocate matrix data. Instead, it just initializes the matrix header that points to the specified \a cudaMemoryAddress, which means that no data is copied. This operation is very efficient and can be used to process external data using OpenCV functions. The external data is not automatically deallocated, so you should take care of it.</a>
+<a name="616"><span class="lineNum">     616 </span>            : @param step Number of bytes each matrix row occupies. The value should include the padding bytes at the end of each row, if any. If the parameter is missing (set to Mat::AUTO_STEP ), no padding is assumed and the actual step is calculated as cols*elemSize(). See GpuMat::elemSize.</a>
+<a name="617"><span class="lineNum">     617 </span>            : @note Overload for generation of bindings only, not exported or intended for use internally from C++.</a>
+<a name="618"><span class="lineNum">     618 </span>            :  */</a>
+<a name="619"><span class="lineNum">     619 </span>            : CV_EXPORTS_W inline GpuMat createGpuMatFromCudaMemory(Size size, int type, size_t cudaMemoryAddress, size_t step = Mat::AUTO_STEP) {</a>
+<a name="620"><span class="lineNum">     620 </span>            :     return GpuMat(size, type, reinterpret_cast&lt;void*&gt;(cudaMemoryAddress), step);</a>
+<a name="621"><span class="lineNum">     621 </span>            : }</a>
+<a name="622"><span class="lineNum">     622 </span>            : </a>
+<a name="623"><span class="lineNum">     623 </span>            : /** @brief BufferPool for use with CUDA streams</a>
+<a name="624"><span class="lineNum">     624 </span>            : </a>
+<a name="625"><span class="lineNum">     625 </span>            : BufferPool utilizes Stream's allocator to create new buffers for GpuMat's. It is</a>
+<a name="626"><span class="lineNum">     626 </span>            : only useful when enabled with #setBufferPoolUsage.</a>
+<a name="627"><span class="lineNum">     627 </span>            : </a>
+<a name="628"><span class="lineNum">     628 </span>            : @code</a>
+<a name="629"><span class="lineNum">     629 </span>            :     setBufferPoolUsage(true);</a>
+<a name="630"><span class="lineNum">     630 </span>            : @endcode</a>
+<a name="631"><span class="lineNum">     631 </span>            : </a>
+<a name="632"><span class="lineNum">     632 </span>            : @note #setBufferPoolUsage must be called \em before any Stream declaration.</a>
+<a name="633"><span class="lineNum">     633 </span>            : </a>
+<a name="634"><span class="lineNum">     634 </span>            : Users may specify custom allocator for Stream and may implement their own stream based</a>
+<a name="635"><span class="lineNum">     635 </span>            : functions utilizing the same underlying GPU memory management.</a>
+<a name="636"><span class="lineNum">     636 </span>            : </a>
+<a name="637"><span class="lineNum">     637 </span>            : If custom allocator is not specified, BufferPool utilizes StackAllocator by</a>
+<a name="638"><span class="lineNum">     638 </span>            : default. StackAllocator allocates a chunk of GPU device memory beforehand,</a>
+<a name="639"><span class="lineNum">     639 </span>            : and when GpuMat is declared later on, it is given the pre-allocated memory.</a>
+<a name="640"><span class="lineNum">     640 </span>            : This kind of strategy reduces the number of calls for memory allocating APIs</a>
+<a name="641"><span class="lineNum">     641 </span>            : such as cudaMalloc or cudaMallocPitch.</a>
+<a name="642"><span class="lineNum">     642 </span>            : </a>
+<a name="643"><span class="lineNum">     643 </span>            : Below is an example that utilizes BufferPool with StackAllocator:</a>
+<a name="644"><span class="lineNum">     644 </span>            : </a>
+<a name="645"><span class="lineNum">     645 </span>            : @code</a>
+<a name="646"><span class="lineNum">     646 </span>            :     #include &lt;opencv2/opencv.hpp&gt;</a>
+<a name="647"><span class="lineNum">     647 </span>            : </a>
+<a name="648"><span class="lineNum">     648 </span>            :     using namespace cv;</a>
+<a name="649"><span class="lineNum">     649 </span>            :     using namespace cv::cuda</a>
+<a name="650"><span class="lineNum">     650 </span>            : </a>
+<a name="651"><span class="lineNum">     651 </span>            :     int main()</a>
+<a name="652"><span class="lineNum">     652 </span>            :     {</a>
+<a name="653"><span class="lineNum">     653 </span>            :         setBufferPoolUsage(true);                               // Tell OpenCV that we are going to utilize BufferPool</a>
+<a name="654"><span class="lineNum">     654 </span>            :         setBufferPoolConfig(getDevice(), 1024 * 1024 * 64, 2);  // Allocate 64 MB, 2 stacks (default is 10 MB, 5 stacks)</a>
+<a name="655"><span class="lineNum">     655 </span>            : </a>
+<a name="656"><span class="lineNum">     656 </span>            :         Stream stream1, stream2;                                // Each stream uses 1 stack</a>
+<a name="657"><span class="lineNum">     657 </span>            :         BufferPool pool1(stream1), pool2(stream2);</a>
+<a name="658"><span class="lineNum">     658 </span>            : </a>
+<a name="659"><span class="lineNum">     659 </span>            :         GpuMat d_src1 = pool1.getBuffer(4096, 4096, CV_8UC1);   // 16MB</a>
+<a name="660"><span class="lineNum">     660 </span>            :         GpuMat d_dst1 = pool1.getBuffer(4096, 4096, CV_8UC3);   // 48MB, pool1 is now full</a>
+<a name="661"><span class="lineNum">     661 </span>            : </a>
+<a name="662"><span class="lineNum">     662 </span>            :         GpuMat d_src2 = pool2.getBuffer(1024, 1024, CV_8UC1);   // 1MB</a>
+<a name="663"><span class="lineNum">     663 </span>            :         GpuMat d_dst2 = pool2.getBuffer(1024, 1024, CV_8UC3);   // 3MB</a>
+<a name="664"><span class="lineNum">     664 </span>            : </a>
+<a name="665"><span class="lineNum">     665 </span>            :         cvtColor(d_src1, d_dst1, cv::COLOR_GRAY2BGR, 0, stream1);</a>
+<a name="666"><span class="lineNum">     666 </span>            :         cvtColor(d_src2, d_dst2, cv::COLOR_GRAY2BGR, 0, stream2);</a>
+<a name="667"><span class="lineNum">     667 </span>            :     }</a>
+<a name="668"><span class="lineNum">     668 </span>            : @endcode</a>
+<a name="669"><span class="lineNum">     669 </span>            : </a>
+<a name="670"><span class="lineNum">     670 </span>            : If we allocate another GpuMat on pool1 in the above example, it will be carried out by</a>
+<a name="671"><span class="lineNum">     671 </span>            : the DefaultAllocator since the stack for pool1 is full.</a>
+<a name="672"><span class="lineNum">     672 </span>            : </a>
+<a name="673"><span class="lineNum">     673 </span>            : @code</a>
+<a name="674"><span class="lineNum">     674 </span>            :     GpuMat d_add1 = pool1.getBuffer(1024, 1024, CV_8UC1);   // Stack for pool1 is full, memory is allocated with DefaultAllocator</a>
+<a name="675"><span class="lineNum">     675 </span>            : @endcode</a>
+<a name="676"><span class="lineNum">     676 </span>            : </a>
+<a name="677"><span class="lineNum">     677 </span>            : If a third stream is declared in the above example, allocating with #getBuffer</a>
+<a name="678"><span class="lineNum">     678 </span>            : within that stream will also be carried out by the DefaultAllocator because we've run out of</a>
+<a name="679"><span class="lineNum">     679 </span>            : stacks.</a>
+<a name="680"><span class="lineNum">     680 </span>            : </a>
+<a name="681"><span class="lineNum">     681 </span>            : @code</a>
+<a name="682"><span class="lineNum">     682 </span>            :     Stream stream3;                                         // Only 2 stacks were allocated, we've run out of stacks</a>
+<a name="683"><span class="lineNum">     683 </span>            :     BufferPool pool3(stream3);</a>
+<a name="684"><span class="lineNum">     684 </span>            :     GpuMat d_src3 = pool3.getBuffer(1024, 1024, CV_8UC1);   // Memory is allocated with DefaultAllocator</a>
+<a name="685"><span class="lineNum">     685 </span>            : @endcode</a>
+<a name="686"><span class="lineNum">     686 </span>            : </a>
+<a name="687"><span class="lineNum">     687 </span>            : @warning When utilizing StackAllocator, deallocation order is important.</a>
+<a name="688"><span class="lineNum">     688 </span>            : </a>
+<a name="689"><span class="lineNum">     689 </span>            : Just like a stack, deallocation must be done in LIFO order. Below is an example of</a>
+<a name="690"><span class="lineNum">     690 </span>            : erroneous usage that violates LIFO rule. If OpenCV is compiled in Debug mode, this</a>
+<a name="691"><span class="lineNum">     691 </span>            : sample code will emit CV_Assert error.</a>
+<a name="692"><span class="lineNum">     692 </span>            : </a>
+<a name="693"><span class="lineNum">     693 </span>            : @code</a>
+<a name="694"><span class="lineNum">     694 </span>            :     int main()</a>
+<a name="695"><span class="lineNum">     695 </span>            :     {</a>
+<a name="696"><span class="lineNum">     696 </span>            :         setBufferPoolUsage(true);                               // Tell OpenCV that we are going to utilize BufferPool</a>
+<a name="697"><span class="lineNum">     697 </span>            :         Stream stream;                                          // A default size (10 MB) stack is allocated to this stream</a>
+<a name="698"><span class="lineNum">     698 </span>            :         BufferPool pool(stream);</a>
+<a name="699"><span class="lineNum">     699 </span>            : </a>
+<a name="700"><span class="lineNum">     700 </span>            :         GpuMat mat1 = pool.getBuffer(1024, 1024, CV_8UC1);      // Allocate mat1 (1MB)</a>
+<a name="701"><span class="lineNum">     701 </span>            :         GpuMat mat2 = pool.getBuffer(1024, 1024, CV_8UC1);      // Allocate mat2 (1MB)</a>
+<a name="702"><span class="lineNum">     702 </span>            : </a>
+<a name="703"><span class="lineNum">     703 </span>            :         mat1.release();                                         // erroneous usage : mat2 must be deallocated before mat1</a>
+<a name="704"><span class="lineNum">     704 </span>            :     }</a>
+<a name="705"><span class="lineNum">     705 </span>            : @endcode</a>
+<a name="706"><span class="lineNum">     706 </span>            : </a>
+<a name="707"><span class="lineNum">     707 </span>            : Since C++ local variables are destroyed in the reverse order of construction,</a>
+<a name="708"><span class="lineNum">     708 </span>            : the code sample below satisfies the LIFO rule. Local GpuMat's are deallocated</a>
+<a name="709"><span class="lineNum">     709 </span>            : and the corresponding memory is automatically returned to the pool for later usage.</a>
+<a name="710"><span class="lineNum">     710 </span>            : </a>
+<a name="711"><span class="lineNum">     711 </span>            : @code</a>
+<a name="712"><span class="lineNum">     712 </span>            :     int main()</a>
+<a name="713"><span class="lineNum">     713 </span>            :     {</a>
+<a name="714"><span class="lineNum">     714 </span>            :         setBufferPoolUsage(true);                               // Tell OpenCV that we are going to utilize BufferPool</a>
+<a name="715"><span class="lineNum">     715 </span>            :         setBufferPoolConfig(getDevice(), 1024 * 1024 * 64, 2);  // Allocate 64 MB, 2 stacks (default is 10 MB, 5 stacks)</a>
+<a name="716"><span class="lineNum">     716 </span>            : </a>
+<a name="717"><span class="lineNum">     717 </span>            :         Stream stream1, stream2;                                // Each stream uses 1 stack</a>
+<a name="718"><span class="lineNum">     718 </span>            :         BufferPool pool1(stream1), pool2(stream2);</a>
+<a name="719"><span class="lineNum">     719 </span>            : </a>
+<a name="720"><span class="lineNum">     720 </span>            :         for (int i = 0; i &lt; 10; i++)</a>
+<a name="721"><span class="lineNum">     721 </span>            :         {</a>
+<a name="722"><span class="lineNum">     722 </span>            :             GpuMat d_src1 = pool1.getBuffer(4096, 4096, CV_8UC1);   // 16MB</a>
+<a name="723"><span class="lineNum">     723 </span>            :             GpuMat d_dst1 = pool1.getBuffer(4096, 4096, CV_8UC3);   // 48MB, pool1 is now full</a>
+<a name="724"><span class="lineNum">     724 </span>            : </a>
+<a name="725"><span class="lineNum">     725 </span>            :             GpuMat d_src2 = pool2.getBuffer(1024, 1024, CV_8UC1);   // 1MB</a>
+<a name="726"><span class="lineNum">     726 </span>            :             GpuMat d_dst2 = pool2.getBuffer(1024, 1024, CV_8UC3);   // 3MB</a>
+<a name="727"><span class="lineNum">     727 </span>            : </a>
+<a name="728"><span class="lineNum">     728 </span>            :             d_src1.setTo(Scalar(i), stream1);</a>
+<a name="729"><span class="lineNum">     729 </span>            :             d_src2.setTo(Scalar(i), stream2);</a>
+<a name="730"><span class="lineNum">     730 </span>            : </a>
+<a name="731"><span class="lineNum">     731 </span>            :             cvtColor(d_src1, d_dst1, cv::COLOR_GRAY2BGR, 0, stream1);</a>
+<a name="732"><span class="lineNum">     732 </span>            :             cvtColor(d_src2, d_dst2, cv::COLOR_GRAY2BGR, 0, stream2);</a>
+<a name="733"><span class="lineNum">     733 </span>            :                                                                     // The order of destruction of the local variables is:</a>
+<a name="734"><span class="lineNum">     734 </span>            :                                                                     //   d_dst2 =&gt; d_src2 =&gt; d_dst1 =&gt; d_src1</a>
+<a name="735"><span class="lineNum">     735 </span>            :                                                                     // LIFO rule is satisfied, this code runs without error</a>
+<a name="736"><span class="lineNum">     736 </span>            :         }</a>
+<a name="737"><span class="lineNum">     737 </span>            :     }</a>
+<a name="738"><span class="lineNum">     738 </span>            : @endcode</a>
+<a name="739"><span class="lineNum">     739 </span>            :  */</a>
+<a name="740"><span class="lineNum">     740 </span>            : class CV_EXPORTS_W BufferPool</a>
+<a name="741"><span class="lineNum">     741 </span>            : {</a>
+<a name="742"><span class="lineNum">     742 </span>            : public:</a>
+<a name="743"><span class="lineNum">     743 </span>            : </a>
+<a name="744"><span class="lineNum">     744 </span>            :     //! Gets the BufferPool for the given stream.</a>
+<a name="745"><span class="lineNum">     745 </span>            :     CV_WRAP explicit BufferPool(Stream&amp; stream);</a>
+<a name="746"><span class="lineNum">     746 </span>            : </a>
+<a name="747"><span class="lineNum">     747 </span>            :     //! Allocates a new GpuMat of given size and type.</a>
+<a name="748"><span class="lineNum">     748 </span>            :     CV_WRAP GpuMat getBuffer(int rows, int cols, int type);</a>
+<a name="749"><span class="lineNum">     749 </span>            : </a>
+<a name="750"><span class="lineNum">     750 </span>            : // WARNING: unreachable code using Ninja</a>
+<a name="751"><span class="lineNum">     751 </span>            : #if defined _MSC_VER &amp;&amp; _MSC_VER &gt;= 1920</a>
+<a name="752"><span class="lineNum">     752 </span>            : #pragma warning(push)</a>
+<a name="753"><span class="lineNum">     753 </span>            : #pragma warning(disable: 4702)</a>
+<a name="754"><span class="lineNum">     754 </span>            : #endif</a>
+<a name="755"><span class="lineNum">     755 </span>            :     //! Allocates a new GpuMat of given size and type.</a>
+<a name="756"><span class="lineNum">     756 </span>            :     CV_WRAP GpuMat getBuffer(Size size, int type) { return getBuffer(size.height, size.width, type); }</a>
+<a name="757"><span class="lineNum">     757 </span>            : #if defined _MSC_VER &amp;&amp; _MSC_VER &gt;= 1920</a>
+<a name="758"><span class="lineNum">     758 </span>            : #pragma warning(pop)</a>
+<a name="759"><span class="lineNum">     759 </span>            : #endif</a>
+<a name="760"><span class="lineNum">     760 </span>            : </a>
+<a name="761"><span class="lineNum">     761 </span>            :     //! Returns the allocator associated with the stream.</a>
+<a name="762"><span class="lineNum">     762 </span>            :     CV_WRAP Ptr&lt;GpuMat::Allocator&gt; getAllocator() const { return allocator_; }</a>
+<a name="763"><span class="lineNum">     763 </span>            : </a>
+<a name="764"><span class="lineNum">     764 </span>            : private:</a>
+<a name="765"><span class="lineNum">     765 </span>            :     Ptr&lt;GpuMat::Allocator&gt; allocator_;</a>
+<a name="766"><span class="lineNum">     766 </span>            : };</a>
+<a name="767"><span class="lineNum">     767 </span>            : </a>
+<a name="768"><span class="lineNum">     768 </span>            : //! BufferPool management (must be called before Stream creation)</a>
+<a name="769"><span class="lineNum">     769 </span>            : CV_EXPORTS_W void setBufferPoolUsage(bool on);</a>
+<a name="770"><span class="lineNum">     770 </span>            : CV_EXPORTS_W void setBufferPoolConfig(int deviceId, size_t stackSize, int stackCount);</a>
+<a name="771"><span class="lineNum">     771 </span>            : </a>
+<a name="772"><span class="lineNum">     772 </span>            : //===================================================================================</a>
+<a name="773"><span class="lineNum">     773 </span>            : // HostMem</a>
+<a name="774"><span class="lineNum">     774 </span>            : //===================================================================================</a>
+<a name="775"><span class="lineNum">     775 </span>            : </a>
+<a name="776"><span class="lineNum">     776 </span>            : /** @brief Class with reference counting wrapping special memory type allocation functions from CUDA.</a>
+<a name="777"><span class="lineNum">     777 </span>            : </a>
+<a name="778"><span class="lineNum">     778 </span>            : Its interface is also Mat-like but with additional memory type parameters.</a>
+<a name="779"><span class="lineNum">     779 </span>            : </a>
+<a name="780"><span class="lineNum">     780 </span>            : -   **PAGE_LOCKED** sets a page locked memory type used commonly for fast and asynchronous</a>
+<a name="781"><span class="lineNum">     781 </span>            :     uploading/downloading data from/to GPU.</a>
+<a name="782"><span class="lineNum">     782 </span>            : -   **SHARED** specifies a zero copy memory allocation that enables mapping the host memory to GPU</a>
+<a name="783"><span class="lineNum">     783 </span>            :     address space, if supported.</a>
+<a name="784"><span class="lineNum">     784 </span>            : -   **WRITE_COMBINED** sets the write combined buffer that is not cached by CPU. Such buffers are</a>
+<a name="785"><span class="lineNum">     785 </span>            :     used to supply GPU with data when GPU only reads it. The advantage is a better CPU cache</a>
+<a name="786"><span class="lineNum">     786 </span>            :     utilization.</a>
+<a name="787"><span class="lineNum">     787 </span>            : </a>
+<a name="788"><span class="lineNum">     788 </span>            : @note Allocation size of such memory types is usually limited. For more details, see *CUDA 2.2</a>
+<a name="789"><span class="lineNum">     789 </span>            : Pinned Memory APIs* document or *CUDA C Programming Guide*.</a>
+<a name="790"><span class="lineNum">     790 </span>            :  */</a>
+<a name="791"><span class="lineNum">     791 </span>            : class CV_EXPORTS_W HostMem</a>
+<a name="792"><span class="lineNum">     792 </span>            : {</a>
+<a name="793"><span class="lineNum">     793 </span>            : public:</a>
+<a name="794"><span class="lineNum">     794 </span>            :     enum AllocType { PAGE_LOCKED = 1, SHARED = 2, WRITE_COMBINED = 4 };</a>
+<a name="795"><span class="lineNum">     795 </span>            : </a>
+<a name="796"><span class="lineNum">     796 </span>            :     static MatAllocator* getAllocator(HostMem::AllocType alloc_type = HostMem::AllocType::PAGE_LOCKED);</a>
+<a name="797"><span class="lineNum">     797 </span>            : </a>
+<a name="798"><span class="lineNum">     798 </span>            :     CV_WRAP explicit HostMem(HostMem::AllocType alloc_type = HostMem::AllocType::PAGE_LOCKED);</a>
+<a name="799"><span class="lineNum">     799 </span>            : </a>
+<a name="800"><span class="lineNum">     800 </span>            :     HostMem(const HostMem&amp; m);</a>
+<a name="801"><span class="lineNum">     801 </span>            : </a>
+<a name="802"><span class="lineNum">     802 </span>            :     CV_WRAP HostMem(int rows, int cols, int type, HostMem::AllocType alloc_type = HostMem::AllocType::PAGE_LOCKED);</a>
+<a name="803"><span class="lineNum">     803 </span>            :     CV_WRAP HostMem(Size size, int type, HostMem::AllocType alloc_type = HostMem::AllocType::PAGE_LOCKED);</a>
+<a name="804"><span class="lineNum">     804 </span>            : </a>
+<a name="805"><span class="lineNum">     805 </span>            :     //! creates from host memory with coping data</a>
+<a name="806"><span class="lineNum">     806 </span>            :     CV_WRAP explicit HostMem(InputArray arr, HostMem::AllocType alloc_type = HostMem::AllocType::PAGE_LOCKED);</a>
+<a name="807"><span class="lineNum">     807 </span>            : </a>
+<a name="808"><span class="lineNum">     808 </span>            :     ~HostMem();</a>
+<a name="809"><span class="lineNum">     809 </span>            : </a>
+<a name="810"><span class="lineNum">     810 </span>            :     HostMem&amp; operator =(const HostMem&amp; m);</a>
+<a name="811"><span class="lineNum">     811 </span>            : </a>
+<a name="812"><span class="lineNum">     812 </span>            :     //! swaps with other smart pointer</a>
+<a name="813"><span class="lineNum">     813 </span>            :     CV_WRAP void swap(HostMem&amp; b);</a>
+<a name="814"><span class="lineNum">     814 </span>            : </a>
+<a name="815"><span class="lineNum">     815 </span>            :     //! returns deep copy of the matrix, i.e. the data is copied</a>
+<a name="816"><span class="lineNum">     816 </span>            :     CV_WRAP HostMem clone() const;</a>
+<a name="817"><span class="lineNum">     817 </span>            : </a>
+<a name="818"><span class="lineNum">     818 </span>            :     //! allocates new matrix data unless the matrix already has specified size and type.</a>
+<a name="819"><span class="lineNum">     819 </span>            :     CV_WRAP void create(int rows, int cols, int type);</a>
+<a name="820"><span class="lineNum">     820 </span>            :     void create(Size size, int type);</a>
+<a name="821"><span class="lineNum">     821 </span>            : </a>
+<a name="822"><span class="lineNum">     822 </span>            :     //! creates alternative HostMem header for the same data, with different</a>
+<a name="823"><span class="lineNum">     823 </span>            :     //! number of channels and/or different number of rows</a>
+<a name="824"><span class="lineNum">     824 </span>            :     CV_WRAP HostMem reshape(int cn, int rows = 0) const;</a>
+<a name="825"><span class="lineNum">     825 </span>            : </a>
+<a name="826"><span class="lineNum">     826 </span>            :     //! decrements reference counter and released memory if needed.</a>
+<a name="827"><span class="lineNum">     827 </span>            :     void release();</a>
+<a name="828"><span class="lineNum">     828 </span>            : </a>
+<a name="829"><span class="lineNum">     829 </span>            :     //! returns matrix header with disabled reference counting for HostMem data.</a>
+<a name="830"><span class="lineNum">     830 </span>            :     CV_WRAP Mat createMatHeader() const;</a>
+<a name="831"><span class="lineNum">     831 </span>            : </a>
+<a name="832"><span class="lineNum">     832 </span>            :     /** @brief Maps CPU memory to GPU address space and creates the cuda::GpuMat header without reference counting</a>
+<a name="833"><span class="lineNum">     833 </span>            :     for it.</a>
+<a name="834"><span class="lineNum">     834 </span>            : </a>
+<a name="835"><span class="lineNum">     835 </span>            :     This can be done only if memory was allocated with the SHARED flag and if it is supported by the</a>
+<a name="836"><span class="lineNum">     836 </span>            :     hardware. Laptops often share video and CPU memory, so address spaces can be mapped, which</a>
+<a name="837"><span class="lineNum">     837 </span>            :     eliminates an extra copy.</a>
+<a name="838"><span class="lineNum">     838 </span>            :      */</a>
+<a name="839"><span class="lineNum">     839 </span>            :     GpuMat createGpuMatHeader() const;</a>
+<a name="840"><span class="lineNum">     840 </span>            : </a>
+<a name="841"><span class="lineNum">     841 </span>            :     // Please see cv::Mat for descriptions</a>
+<a name="842"><span class="lineNum">     842 </span>            :     CV_WRAP bool isContinuous() const;</a>
+<a name="843"><span class="lineNum">     843 </span>            :     CV_WRAP size_t elemSize() const;</a>
+<a name="844"><span class="lineNum">     844 </span>            :     CV_WRAP size_t elemSize1() const;</a>
+<a name="845"><span class="lineNum">     845 </span>            :     CV_WRAP int type() const;</a>
+<a name="846"><span class="lineNum">     846 </span>            :     CV_WRAP int depth() const;</a>
+<a name="847"><span class="lineNum">     847 </span>            :     CV_WRAP int channels() const;</a>
+<a name="848"><span class="lineNum">     848 </span>            :     CV_WRAP size_t step1() const;</a>
+<a name="849"><span class="lineNum">     849 </span>            :     CV_WRAP Size size() const;</a>
+<a name="850"><span class="lineNum">     850 </span>            :     CV_WRAP bool empty() const;</a>
+<a name="851"><span class="lineNum">     851 </span>            : </a>
+<a name="852"><span class="lineNum">     852 </span>            :     // Please see cv::Mat for descriptions</a>
+<a name="853"><span class="lineNum">     853 </span>            :     int flags;</a>
+<a name="854"><span class="lineNum">     854 </span>            :     int rows, cols;</a>
+<a name="855"><span class="lineNum">     855 </span>            :     CV_PROP size_t step;</a>
+<a name="856"><span class="lineNum">     856 </span>            : </a>
+<a name="857"><span class="lineNum">     857 </span>            :     uchar* data;</a>
+<a name="858"><span class="lineNum">     858 </span>            :     int* refcount;</a>
+<a name="859"><span class="lineNum">     859 </span>            : </a>
+<a name="860"><span class="lineNum">     860 </span>            :     uchar* datastart;</a>
+<a name="861"><span class="lineNum">     861 </span>            :     const uchar* dataend;</a>
+<a name="862"><span class="lineNum">     862 </span>            : </a>
+<a name="863"><span class="lineNum">     863 </span>            :     AllocType alloc_type;</a>
+<a name="864"><span class="lineNum">     864 </span>            : };</a>
+<a name="865"><span class="lineNum">     865 </span>            : </a>
+<a name="866"><span class="lineNum">     866 </span>            : /** @brief Page-locks the memory of matrix and maps it for the device(s).</a>
+<a name="867"><span class="lineNum">     867 </span>            : </a>
+<a name="868"><span class="lineNum">     868 </span>            : @param m Input matrix.</a>
+<a name="869"><span class="lineNum">     869 </span>            :  */</a>
+<a name="870"><span class="lineNum">     870 </span>            : CV_EXPORTS_W void registerPageLocked(Mat&amp; m);</a>
+<a name="871"><span class="lineNum">     871 </span>            : </a>
+<a name="872"><span class="lineNum">     872 </span>            : /** @brief Unmaps the memory of matrix and makes it pageable again.</a>
+<a name="873"><span class="lineNum">     873 </span>            : </a>
+<a name="874"><span class="lineNum">     874 </span>            : @param m Input matrix.</a>
+<a name="875"><span class="lineNum">     875 </span>            :  */</a>
+<a name="876"><span class="lineNum">     876 </span>            : CV_EXPORTS_W void unregisterPageLocked(Mat&amp; m);</a>
+<a name="877"><span class="lineNum">     877 </span>            : </a>
+<a name="878"><span class="lineNum">     878 </span>            : //===================================================================================</a>
+<a name="879"><span class="lineNum">     879 </span>            : // Stream</a>
+<a name="880"><span class="lineNum">     880 </span>            : //===================================================================================</a>
+<a name="881"><span class="lineNum">     881 </span>            : </a>
+<a name="882"><span class="lineNum">     882 </span>            : /** @brief This class encapsulates a queue of asynchronous calls.</a>
+<a name="883"><span class="lineNum">     883 </span>            : </a>
+<a name="884"><span class="lineNum">     884 </span>            : @note Currently, you may face problems if an operation is enqueued twice with different data. Some</a>
+<a name="885"><span class="lineNum">     885 </span>            : functions use the constant GPU memory, and next call may update the memory before the previous one</a>
+<a name="886"><span class="lineNum">     886 </span>            : has been finished. But calling different operations asynchronously is safe because each operation</a>
+<a name="887"><span class="lineNum">     887 </span>            : has its own constant buffer. Memory copy/upload/download/set operations to the buffers you hold are</a>
+<a name="888"><span class="lineNum">     888 </span>            : also safe.</a>
+<a name="889"><span class="lineNum">     889 </span>            : </a>
+<a name="890"><span class="lineNum">     890 </span>            : @note The Stream class is not thread-safe. Please use different Stream objects for different CPU threads.</a>
+<a name="891"><span class="lineNum">     891 </span>            : </a>
+<a name="892"><span class="lineNum">     892 </span>            : @code</a>
+<a name="893"><span class="lineNum">     893 </span>            : void thread1()</a>
+<a name="894"><span class="lineNum">     894 </span>            : {</a>
+<a name="895"><span class="lineNum">     895 </span>            :     cv::cuda::Stream stream1;</a>
+<a name="896"><span class="lineNum">     896 </span>            :     cv::cuda::func1(..., stream1);</a>
+<a name="897"><span class="lineNum">     897 </span>            : }</a>
+<a name="898"><span class="lineNum">     898 </span>            : </a>
+<a name="899"><span class="lineNum">     899 </span>            : void thread2()</a>
+<a name="900"><span class="lineNum">     900 </span>            : {</a>
+<a name="901"><span class="lineNum">     901 </span>            :     cv::cuda::Stream stream2;</a>
+<a name="902"><span class="lineNum">     902 </span>            :     cv::cuda::func2(..., stream2);</a>
+<a name="903"><span class="lineNum">     903 </span>            : }</a>
+<a name="904"><span class="lineNum">     904 </span>            : @endcode</a>
+<a name="905"><span class="lineNum">     905 </span>            : </a>
+<a name="906"><span class="lineNum">     906 </span>            : @note By default all CUDA routines are launched in Stream::Null() object, if the stream is not specified by user.</a>
+<a name="907"><span class="lineNum">     907 </span>            : In multi-threading environment the stream objects must be passed explicitly (see previous note).</a>
+<a name="908"><span class="lineNum">     908 </span>            :  */</a>
+<a name="909"><span class="lineNum">     909 </span>            : class CV_EXPORTS_W Stream</a>
+<a name="910"><span class="lineNum">     910 </span>            : {</a>
+<a name="911"><span class="lineNum">     911 </span>            :     typedef void (Stream::*bool_type)() const;</a>
+<a name="912"><span class="lineNum">     912 </span>            :     void this_type_does_not_support_comparisons() const {}</a>
+<a name="913"><span class="lineNum">     913 </span>            : </a>
+<a name="914"><span class="lineNum">     914 </span>            : public:</a>
+<a name="915"><span class="lineNum">     915 </span>            :     typedef void (*StreamCallback)(int status, void* userData);</a>
+<a name="916"><span class="lineNum">     916 </span>            : </a>
+<a name="917"><span class="lineNum">     917 </span>            :     //! creates a new asynchronous stream</a>
+<a name="918"><span class="lineNum">     918 </span>            :     CV_WRAP Stream();</a>
+<a name="919"><span class="lineNum">     919 </span>            : </a>
+<a name="920"><span class="lineNum">     920 </span>            :     //! creates a new asynchronous stream with custom allocator</a>
+<a name="921"><span class="lineNum">     921 </span>            :     CV_WRAP Stream(const Ptr&lt;GpuMat::Allocator&gt;&amp; allocator);</a>
+<a name="922"><span class="lineNum">     922 </span>            : </a>
+<a name="923"><span class="lineNum">     923 </span>            :     /** @brief creates a new Stream using the cudaFlags argument to determine the behaviors of the stream</a>
+<a name="924"><span class="lineNum">     924 </span>            : </a>
+<a name="925"><span class="lineNum">     925 </span>            :     @note The cudaFlags parameter is passed to the underlying api cudaStreamCreateWithFlags() and</a>
+<a name="926"><span class="lineNum">     926 </span>            :     supports the same parameter values.</a>
+<a name="927"><span class="lineNum">     927 </span>            :     @code</a>
+<a name="928"><span class="lineNum">     928 </span>            :         // creates an OpenCV cuda::Stream that manages an asynchronous, non-blocking,</a>
+<a name="929"><span class="lineNum">     929 </span>            :         // non-default CUDA stream</a>
+<a name="930"><span class="lineNum">     930 </span>            :         cv::cuda::Stream cvStream(cudaStreamNonBlocking);</a>
+<a name="931"><span class="lineNum">     931 </span>            :     @endcode</a>
+<a name="932"><span class="lineNum">     932 </span>            :      */</a>
+<a name="933"><span class="lineNum">     933 </span>            :     CV_WRAP Stream(const size_t cudaFlags);</a>
+<a name="934"><span class="lineNum">     934 </span>            : </a>
+<a name="935"><span class="lineNum">     935 </span>            :     /** @brief Returns true if the current stream queue is finished. Otherwise, it returns false.</a>
+<a name="936"><span class="lineNum">     936 </span>            :     */</a>
+<a name="937"><span class="lineNum">     937 </span>            :     CV_WRAP bool queryIfComplete() const;</a>
+<a name="938"><span class="lineNum">     938 </span>            : </a>
+<a name="939"><span class="lineNum">     939 </span>            :     /** @brief Blocks the current CPU thread until all operations in the stream are complete.</a>
+<a name="940"><span class="lineNum">     940 </span>            :     */</a>
+<a name="941"><span class="lineNum">     941 </span>            :     CV_WRAP void waitForCompletion();</a>
+<a name="942"><span class="lineNum">     942 </span>            : </a>
+<a name="943"><span class="lineNum">     943 </span>            :     /** @brief Makes a compute stream wait on an event.</a>
+<a name="944"><span class="lineNum">     944 </span>            :     */</a>
+<a name="945"><span class="lineNum">     945 </span>            :     CV_WRAP void waitEvent(const Event&amp; event);</a>
+<a name="946"><span class="lineNum">     946 </span>            : </a>
+<a name="947"><span class="lineNum">     947 </span>            :     /** @brief Adds a callback to be called on the host after all currently enqueued items in the stream have</a>
+<a name="948"><span class="lineNum">     948 </span>            :     completed.</a>
+<a name="949"><span class="lineNum">     949 </span>            : </a>
+<a name="950"><span class="lineNum">     950 </span>            :     @note Callbacks must not make any CUDA API calls. Callbacks must not perform any synchronization</a>
+<a name="951"><span class="lineNum">     951 </span>            :     that may depend on outstanding device work or other callbacks that are not mandated to run earlier.</a>
+<a name="952"><span class="lineNum">     952 </span>            :     Callbacks without a mandated order (in independent streams) execute in undefined order and may be</a>
+<a name="953"><span class="lineNum">     953 </span>            :     serialized.</a>
+<a name="954"><span class="lineNum">     954 </span>            :      */</a>
+<a name="955"><span class="lineNum">     955 </span>            :     void enqueueHostCallback(StreamCallback callback, void* userData);</a>
+<a name="956"><span class="lineNum">     956 </span>            : </a>
+<a name="957"><span class="lineNum">     957 </span>            :     //! return Stream object for default CUDA stream</a>
+<a name="958"><span class="lineNum">     958 </span>            :     CV_WRAP static Stream&amp; Null();</a>
+<a name="959"><span class="lineNum">     959 </span>            : </a>
+<a name="960"><span class="lineNum">     960 </span>            :     //! returns true if stream object is not default (!= 0)</a>
+<a name="961"><span class="lineNum">     961 </span>            :     operator bool_type() const;</a>
+<a name="962"><span class="lineNum">     962 </span>            : </a>
+<a name="963"><span class="lineNum">     963 </span>            :     //! return Pointer to CUDA stream</a>
+<a name="964"><span class="lineNum">     964 </span>            :     CV_WRAP void* cudaPtr() const;</a>
+<a name="965"><span class="lineNum">     965 </span>            : </a>
+<a name="966"><span class="lineNum">     966 </span>            :     class Impl;</a>
+<a name="967"><span class="lineNum">     967 </span>            : </a>
+<a name="968"><span class="lineNum">     968 </span>            : private:</a>
+<a name="969"><span class="lineNum">     969 </span>            :     Ptr&lt;Impl&gt; impl_;</a>
+<a name="970"><span class="lineNum">     970 </span>            :     Stream(const Ptr&lt;Impl&gt;&amp; impl);</a>
+<a name="971"><span class="lineNum">     971 </span>            : </a>
+<a name="972"><span class="lineNum">     972 </span>            :     friend struct StreamAccessor;</a>
+<a name="973"><span class="lineNum">     973 </span>            :     friend class BufferPool;</a>
+<a name="974"><span class="lineNum">     974 </span>            :     friend class DefaultDeviceInitializer;</a>
+<a name="975"><span class="lineNum">     975 </span>            : };</a>
+<a name="976"><span class="lineNum">     976 </span>            : </a>
+<a name="977"><span class="lineNum">     977 </span>            : </a>
+<a name="978"><span class="lineNum">     978 </span>            : /** @brief Bindings overload to create a Stream object from the address stored in an existing CUDA Runtime API stream pointer (cudaStream_t).</a>
+<a name="979"><span class="lineNum">     979 </span>            : @param cudaStreamMemoryAddress Memory address stored in a CUDA Runtime API stream pointer (cudaStream_t). The created Stream object does not perform any allocation or deallocation and simply wraps existing raw CUDA Runtime API stream pointer.</a>
+<a name="980"><span class="lineNum">     980 </span>            : @note Overload for generation of bindings only, not exported or intended for use internally from C++.</a>
+<a name="981"><span class="lineNum">     981 </span>            :  */</a>
+<a name="982"><span class="lineNum">     982 </span>            : CV_EXPORTS_W Stream wrapStream(size_t cudaStreamMemoryAddress);</a>
+<a name="983"><span class="lineNum">     983 </span>            : </a>
+<a name="984"><span class="lineNum">     984 </span>            : class CV_EXPORTS_W Event</a>
+<a name="985"><span class="lineNum">     985 </span>            : {</a>
+<a name="986"><span class="lineNum">     986 </span>            : public:</a>
+<a name="987"><span class="lineNum">     987 </span>            :     enum CreateFlags</a>
+<a name="988"><span class="lineNum">     988 </span>            :     {</a>
+<a name="989"><span class="lineNum">     989 </span>            :         DEFAULT        = 0x00,  /**&lt; Default event flag */</a>
+<a name="990"><span class="lineNum">     990 </span>            :         BLOCKING_SYNC  = 0x01,  /**&lt; Event uses blocking synchronization */</a>
+<a name="991"><span class="lineNum">     991 </span>            :         DISABLE_TIMING = 0x02,  /**&lt; Event will not record timing data */</a>
+<a name="992"><span class="lineNum">     992 </span>            :         INTERPROCESS   = 0x04   /**&lt; Event is suitable for interprocess use. DisableTiming must be set */</a>
+<a name="993"><span class="lineNum">     993 </span>            :     };</a>
+<a name="994"><span class="lineNum">     994 </span>            : </a>
+<a name="995"><span class="lineNum">     995 </span>            :     CV_WRAP explicit Event(const Event::CreateFlags flags = Event::CreateFlags::DEFAULT);</a>
+<a name="996"><span class="lineNum">     996 </span>            : </a>
+<a name="997"><span class="lineNum">     997 </span>            :     //! records an event</a>
+<a name="998"><span class="lineNum">     998 </span>            :     CV_WRAP void record(Stream&amp; stream = Stream::Null());</a>
+<a name="999"><span class="lineNum">     999 </span>            : </a>
+<a name="1000"><span class="lineNum">    1000 </span>            :     //! queries an event's status</a>
+<a name="1001"><span class="lineNum">    1001 </span>            :     CV_WRAP bool queryIfComplete() const;</a>
+<a name="1002"><span class="lineNum">    1002 </span>            : </a>
+<a name="1003"><span class="lineNum">    1003 </span>            :     //! waits for an event to complete</a>
+<a name="1004"><span class="lineNum">    1004 </span>            :     CV_WRAP void waitForCompletion();</a>
+<a name="1005"><span class="lineNum">    1005 </span>            : </a>
+<a name="1006"><span class="lineNum">    1006 </span>            :     //! computes the elapsed time between events</a>
+<a name="1007"><span class="lineNum">    1007 </span>            :     CV_WRAP static float elapsedTime(const Event&amp; start, const Event&amp; end);</a>
+<a name="1008"><span class="lineNum">    1008 </span>            : </a>
+<a name="1009"><span class="lineNum">    1009 </span>            :     class Impl;</a>
+<a name="1010"><span class="lineNum">    1010 </span>            : </a>
+<a name="1011"><span class="lineNum">    1011 </span>            : private:</a>
+<a name="1012"><span class="lineNum">    1012 </span>            :     Ptr&lt;Impl&gt; impl_;</a>
+<a name="1013"><span class="lineNum">    1013 </span>            :     Event(const Ptr&lt;Impl&gt;&amp; impl);</a>
+<a name="1014"><span class="lineNum">    1014 </span>            : </a>
+<a name="1015"><span class="lineNum">    1015 </span>            :     friend struct EventAccessor;</a>
+<a name="1016"><span class="lineNum">    1016 </span>            : };</a>
+<a name="1017"><span class="lineNum">    1017 </span>            : CV_ENUM_FLAGS(Event::CreateFlags)</a>
+<a name="1018"><span class="lineNum">    1018 </span>            : </a>
+<a name="1019"><span class="lineNum">    1019 </span>            : //! @} cudacore_struct</a>
+<a name="1020"><span class="lineNum">    1020 </span>            : </a>
+<a name="1021"><span class="lineNum">    1021 </span>            : //===================================================================================</a>
+<a name="1022"><span class="lineNum">    1022 </span>            : // Initialization &amp; Info</a>
+<a name="1023"><span class="lineNum">    1023 </span>            : //===================================================================================</a>
+<a name="1024"><span class="lineNum">    1024 </span>            : </a>
+<a name="1025"><span class="lineNum">    1025 </span>            : //! @addtogroup cudacore_init</a>
+<a name="1026"><span class="lineNum">    1026 </span>            : //! @{</a>
+<a name="1027"><span class="lineNum">    1027 </span>            : </a>
+<a name="1028"><span class="lineNum">    1028 </span>            : /** @brief Returns the number of installed CUDA-enabled devices.</a>
+<a name="1029"><span class="lineNum">    1029 </span>            : </a>
+<a name="1030"><span class="lineNum">    1030 </span>            : Use this function before any other CUDA functions calls. If OpenCV is compiled without CUDA support,</a>
+<a name="1031"><span class="lineNum">    1031 </span>            : this function returns 0. If the CUDA driver is not installed, or is incompatible, this function</a>
+<a name="1032"><span class="lineNum">    1032 </span>            : returns -1.</a>
+<a name="1033"><span class="lineNum">    1033 </span>            :  */</a>
+<a name="1034"><span class="lineNum">    1034 </span>            : CV_EXPORTS_W int getCudaEnabledDeviceCount();</a>
+<a name="1035"><span class="lineNum">    1035 </span>            : </a>
+<a name="1036"><span class="lineNum">    1036 </span>            : /** @brief Sets a device and initializes it for the current thread.</a>
+<a name="1037"><span class="lineNum">    1037 </span>            : </a>
+<a name="1038"><span class="lineNum">    1038 </span>            : @param device System index of a CUDA device starting with 0.</a>
+<a name="1039"><span class="lineNum">    1039 </span>            : </a>
+<a name="1040"><span class="lineNum">    1040 </span>            : If the call of this function is omitted, a default device is initialized at the fist CUDA usage.</a>
+<a name="1041"><span class="lineNum">    1041 </span>            :  */</a>
+<a name="1042"><span class="lineNum">    1042 </span>            : CV_EXPORTS_W void setDevice(int device);</a>
+<a name="1043"><span class="lineNum">    1043 </span>            : </a>
+<a name="1044"><span class="lineNum">    1044 </span>            : /** @brief Returns the current device index set by cuda::setDevice or initialized by default.</a>
+<a name="1045"><span class="lineNum">    1045 </span>            :  */</a>
+<a name="1046"><span class="lineNum">    1046 </span>            : CV_EXPORTS_W int getDevice();</a>
+<a name="1047"><span class="lineNum">    1047 </span>            : </a>
+<a name="1048"><span class="lineNum">    1048 </span>            : /** @brief Explicitly destroys and cleans up all resources associated with the current device in the current</a>
+<a name="1049"><span class="lineNum">    1049 </span>            : process.</a>
+<a name="1050"><span class="lineNum">    1050 </span>            : </a>
+<a name="1051"><span class="lineNum">    1051 </span>            : Any subsequent API call to this device will reinitialize the device.</a>
+<a name="1052"><span class="lineNum">    1052 </span>            :  */</a>
+<a name="1053"><span class="lineNum">    1053 </span>            : CV_EXPORTS_W void resetDevice();</a>
+<a name="1054"><span class="lineNum">    1054 </span>            : </a>
+<a name="1055"><span class="lineNum">    1055 </span>            : /** @brief Enumeration providing CUDA computing features.</a>
+<a name="1056"><span class="lineNum">    1056 </span>            :  */</a>
+<a name="1057"><span class="lineNum">    1057 </span>            : enum FeatureSet</a>
+<a name="1058"><span class="lineNum">    1058 </span>            : {</a>
+<a name="1059"><span class="lineNum">    1059 </span>            :     FEATURE_SET_COMPUTE_10 = 10,</a>
+<a name="1060"><span class="lineNum">    1060 </span>            :     FEATURE_SET_COMPUTE_11 = 11,</a>
+<a name="1061"><span class="lineNum">    1061 </span>            :     FEATURE_SET_COMPUTE_12 = 12,</a>
+<a name="1062"><span class="lineNum">    1062 </span>            :     FEATURE_SET_COMPUTE_13 = 13,</a>
+<a name="1063"><span class="lineNum">    1063 </span>            :     FEATURE_SET_COMPUTE_20 = 20,</a>
+<a name="1064"><span class="lineNum">    1064 </span>            :     FEATURE_SET_COMPUTE_21 = 21,</a>
+<a name="1065"><span class="lineNum">    1065 </span>            :     FEATURE_SET_COMPUTE_30 = 30,</a>
+<a name="1066"><span class="lineNum">    1066 </span>            :     FEATURE_SET_COMPUTE_32 = 32,</a>
+<a name="1067"><span class="lineNum">    1067 </span>            :     FEATURE_SET_COMPUTE_35 = 35,</a>
+<a name="1068"><span class="lineNum">    1068 </span>            :     FEATURE_SET_COMPUTE_50 = 50,</a>
+<a name="1069"><span class="lineNum">    1069 </span>            : </a>
+<a name="1070"><span class="lineNum">    1070 </span>            :     GLOBAL_ATOMICS = FEATURE_SET_COMPUTE_11,</a>
+<a name="1071"><span class="lineNum">    1071 </span>            :     SHARED_ATOMICS = FEATURE_SET_COMPUTE_12,</a>
+<a name="1072"><span class="lineNum">    1072 </span>            :     NATIVE_DOUBLE = FEATURE_SET_COMPUTE_13,</a>
+<a name="1073"><span class="lineNum">    1073 </span>            :     WARP_SHUFFLE_FUNCTIONS = FEATURE_SET_COMPUTE_30,</a>
+<a name="1074"><span class="lineNum">    1074 </span>            :     DYNAMIC_PARALLELISM = FEATURE_SET_COMPUTE_35</a>
+<a name="1075"><span class="lineNum">    1075 </span>            : };</a>
+<a name="1076"><span class="lineNum">    1076 </span>            : </a>
+<a name="1077"><span class="lineNum">    1077 </span>            : //! checks whether current device supports the given feature</a>
+<a name="1078"><span class="lineNum">    1078 </span>            : CV_EXPORTS bool deviceSupports(FeatureSet feature_set);</a>
+<a name="1079"><span class="lineNum">    1079 </span>            : </a>
+<a name="1080"><span class="lineNum">    1080 </span>            : /** @brief Class providing a set of static methods to check what NVIDIA\* card architecture the CUDA module was</a>
+<a name="1081"><span class="lineNum">    1081 </span>            : built for.</a>
+<a name="1082"><span class="lineNum">    1082 </span>            : </a>
+<a name="1083"><span class="lineNum">    1083 </span>            : According to the CUDA C Programming Guide Version 3.2: &quot;PTX code produced for some specific compute</a>
+<a name="1084"><span class="lineNum">    1084 </span>            : capability can always be compiled to binary code of greater or equal compute capability&quot;.</a>
+<a name="1085"><span class="lineNum">    1085 </span>            :  */</a>
+<a name="1086"><span class="lineNum">    1086 </span>            : class CV_EXPORTS_W TargetArchs</a>
+<a name="1087"><span class="lineNum">    1087 </span>            : {</a>
+<a name="1088"><span class="lineNum">    1088 </span>            : public:</a>
+<a name="1089"><span class="lineNum">    1089 </span>            :     /** @brief The following method checks whether the module was built with the support of the given feature:</a>
+<a name="1090"><span class="lineNum">    1090 </span>            : </a>
+<a name="1091"><span class="lineNum">    1091 </span>            :     @param feature_set Features to be checked. See :ocvcuda::FeatureSet.</a>
+<a name="1092"><span class="lineNum">    1092 </span>            :      */</a>
+<a name="1093"><span class="lineNum">    1093 </span>            :     static bool builtWith(FeatureSet feature_set);</a>
+<a name="1094"><span class="lineNum">    1094 </span>            : </a>
+<a name="1095"><span class="lineNum">    1095 </span>            :     /** @brief There is a set of methods to check whether the module contains intermediate (PTX) or binary CUDA</a>
+<a name="1096"><span class="lineNum">    1096 </span>            :     code for the given architecture(s):</a>
+<a name="1097"><span class="lineNum">    1097 </span>            : </a>
+<a name="1098"><span class="lineNum">    1098 </span>            :     @param major Major compute capability version.</a>
+<a name="1099"><span class="lineNum">    1099 </span>            :     @param minor Minor compute capability version.</a>
+<a name="1100"><span class="lineNum">    1100 </span>            :      */</a>
+<a name="1101"><span class="lineNum">    1101 </span>            :     CV_WRAP static bool has(int major, int minor);</a>
+<a name="1102"><span class="lineNum">    1102 </span>            :     CV_WRAP static bool hasPtx(int major, int minor);</a>
+<a name="1103"><span class="lineNum">    1103 </span>            :     CV_WRAP static bool hasBin(int major, int minor);</a>
+<a name="1104"><span class="lineNum">    1104 </span>            : </a>
+<a name="1105"><span class="lineNum">    1105 </span>            :     CV_WRAP static bool hasEqualOrLessPtx(int major, int minor);</a>
+<a name="1106"><span class="lineNum">    1106 </span>            :     CV_WRAP static bool hasEqualOrGreater(int major, int minor);</a>
+<a name="1107"><span class="lineNum">    1107 </span>            :     CV_WRAP static bool hasEqualOrGreaterPtx(int major, int minor);</a>
+<a name="1108"><span class="lineNum">    1108 </span>            :     CV_WRAP static bool hasEqualOrGreaterBin(int major, int minor);</a>
+<a name="1109"><span class="lineNum">    1109 </span>            : };</a>
+<a name="1110"><span class="lineNum">    1110 </span>            : </a>
+<a name="1111"><span class="lineNum">    1111 </span>            : /** @brief Class providing functionality for querying the specified GPU properties.</a>
+<a name="1112"><span class="lineNum">    1112 </span>            :  */</a>
+<a name="1113"><span class="lineNum">    1113 </span>            : class CV_EXPORTS_W DeviceInfo</a>
+<a name="1114"><span class="lineNum">    1114 </span>            : {</a>
+<a name="1115"><span class="lineNum">    1115 </span>            : public:</a>
+<a name="1116"><span class="lineNum">    1116 </span>            :     //! creates DeviceInfo object for the current GPU</a>
+<a name="1117"><span class="lineNum">    1117 </span>            :     CV_WRAP DeviceInfo();</a>
+<a name="1118"><span class="lineNum">    1118 </span>            : </a>
+<a name="1119"><span class="lineNum">    1119 </span>            :     /** @brief The constructors.</a>
+<a name="1120"><span class="lineNum">    1120 </span>            : </a>
+<a name="1121"><span class="lineNum">    1121 </span>            :     @param device_id System index of the CUDA device starting with 0.</a>
+<a name="1122"><span class="lineNum">    1122 </span>            : </a>
+<a name="1123"><span class="lineNum">    1123 </span>            :     Constructs the DeviceInfo object for the specified device. If device_id parameter is missed, it</a>
+<a name="1124"><span class="lineNum">    1124 </span>            :     constructs an object for the current device.</a>
+<a name="1125"><span class="lineNum">    1125 </span>            :      */</a>
+<a name="1126"><span class="lineNum">    1126 </span>            :     CV_WRAP DeviceInfo(int device_id);</a>
+<a name="1127"><span class="lineNum">    1127 </span>            : </a>
+<a name="1128"><span class="lineNum">    1128 </span>            :     /** @brief Returns system index of the CUDA device starting with 0.</a>
+<a name="1129"><span class="lineNum">    1129 </span>            :     */</a>
+<a name="1130"><span class="lineNum">    1130 </span>            :     CV_WRAP int deviceID() const;</a>
+<a name="1131"><span class="lineNum">    1131 </span>            : </a>
+<a name="1132"><span class="lineNum">    1132 </span>            :     //! ASCII string identifying device</a>
+<a name="1133"><span class="lineNum">    1133 </span>            :     const char* name() const;</a>
+<a name="1134"><span class="lineNum">    1134 </span>            : </a>
+<a name="1135"><span class="lineNum">    1135 </span>            :     //! global memory available on device in bytes</a>
+<a name="1136"><span class="lineNum">    1136 </span>            :     CV_WRAP size_t totalGlobalMem() const;</a>
+<a name="1137"><span class="lineNum">    1137 </span>            : </a>
+<a name="1138"><span class="lineNum">    1138 </span>            :     //! shared memory available per block in bytes</a>
+<a name="1139"><span class="lineNum">    1139 </span>            :     CV_WRAP size_t sharedMemPerBlock() const;</a>
+<a name="1140"><span class="lineNum">    1140 </span>            : </a>
+<a name="1141"><span class="lineNum">    1141 </span>            :     //! 32-bit registers available per block</a>
+<a name="1142"><span class="lineNum">    1142 </span>            :     CV_WRAP int regsPerBlock() const;</a>
+<a name="1143"><span class="lineNum">    1143 </span>            : </a>
+<a name="1144"><span class="lineNum">    1144 </span>            :     //! warp size in threads</a>
+<a name="1145"><span class="lineNum">    1145 </span>            :     CV_WRAP int warpSize() const;</a>
+<a name="1146"><span class="lineNum">    1146 </span>            : </a>
+<a name="1147"><span class="lineNum">    1147 </span>            :     //! maximum pitch in bytes allowed by memory copies</a>
+<a name="1148"><span class="lineNum">    1148 </span>            :     CV_WRAP size_t memPitch() const;</a>
+<a name="1149"><span class="lineNum">    1149 </span>            : </a>
+<a name="1150"><span class="lineNum">    1150 </span>            :     //! maximum number of threads per block</a>
+<a name="1151"><span class="lineNum">    1151 </span>            :     CV_WRAP int maxThreadsPerBlock() const;</a>
+<a name="1152"><span class="lineNum">    1152 </span>            : </a>
+<a name="1153"><span class="lineNum">    1153 </span>            :     //! maximum size of each dimension of a block</a>
+<a name="1154"><span class="lineNum">    1154 </span>            :     CV_WRAP Vec3i maxThreadsDim() const;</a>
+<a name="1155"><span class="lineNum">    1155 </span>            : </a>
+<a name="1156"><span class="lineNum">    1156 </span>            :     //! maximum size of each dimension of a grid</a>
+<a name="1157"><span class="lineNum">    1157 </span>            :     CV_WRAP Vec3i maxGridSize() const;</a>
+<a name="1158"><span class="lineNum">    1158 </span>            : </a>
+<a name="1159"><span class="lineNum">    1159 </span>            :     //! clock frequency in kilohertz</a>
+<a name="1160"><span class="lineNum">    1160 </span>            :     CV_WRAP int clockRate() const;</a>
+<a name="1161"><span class="lineNum">    1161 </span>            : </a>
+<a name="1162"><span class="lineNum">    1162 </span>            :     //! constant memory available on device in bytes</a>
+<a name="1163"><span class="lineNum">    1163 </span>            :     CV_WRAP size_t totalConstMem() const;</a>
+<a name="1164"><span class="lineNum">    1164 </span>            : </a>
+<a name="1165"><span class="lineNum">    1165 </span>            :     //! major compute capability</a>
+<a name="1166"><span class="lineNum">    1166 </span>            :     CV_WRAP int majorVersion() const;</a>
+<a name="1167"><span class="lineNum">    1167 </span>            : </a>
+<a name="1168"><span class="lineNum">    1168 </span>            :     //! minor compute capability</a>
+<a name="1169"><span class="lineNum">    1169 </span>            :     CV_WRAP int minorVersion() const;</a>
+<a name="1170"><span class="lineNum">    1170 </span>            : </a>
+<a name="1171"><span class="lineNum">    1171 </span>            :     //! alignment requirement for textures</a>
+<a name="1172"><span class="lineNum">    1172 </span>            :     CV_WRAP size_t textureAlignment() const;</a>
+<a name="1173"><span class="lineNum">    1173 </span>            : </a>
+<a name="1174"><span class="lineNum">    1174 </span>            :     //! pitch alignment requirement for texture references bound to pitched memory</a>
+<a name="1175"><span class="lineNum">    1175 </span>            :     CV_WRAP size_t texturePitchAlignment() const;</a>
+<a name="1176"><span class="lineNum">    1176 </span>            : </a>
+<a name="1177"><span class="lineNum">    1177 </span>            :     //! number of multiprocessors on device</a>
+<a name="1178"><span class="lineNum">    1178 </span>            :     CV_WRAP int multiProcessorCount() const;</a>
+<a name="1179"><span class="lineNum">    1179 </span>            : </a>
+<a name="1180"><span class="lineNum">    1180 </span>            :     //! specified whether there is a run time limit on kernels</a>
+<a name="1181"><span class="lineNum">    1181 </span>            :     CV_WRAP bool kernelExecTimeoutEnabled() const;</a>
+<a name="1182"><span class="lineNum">    1182 </span>            : </a>
+<a name="1183"><span class="lineNum">    1183 </span>            :     //! device is integrated as opposed to discrete</a>
+<a name="1184"><span class="lineNum">    1184 </span>            :     CV_WRAP bool integrated() const;</a>
+<a name="1185"><span class="lineNum">    1185 </span>            : </a>
+<a name="1186"><span class="lineNum">    1186 </span>            :     //! device can map host memory with cudaHostAlloc/cudaHostGetDevicePointer</a>
+<a name="1187"><span class="lineNum">    1187 </span>            :     CV_WRAP bool canMapHostMemory() const;</a>
+<a name="1188"><span class="lineNum">    1188 </span>            : </a>
+<a name="1189"><span class="lineNum">    1189 </span>            :     enum ComputeMode</a>
+<a name="1190"><span class="lineNum">    1190 </span>            :     {</a>
+<a name="1191"><span class="lineNum">    1191 </span>            :         ComputeModeDefault,         /**&lt; default compute mode (Multiple threads can use cudaSetDevice with this device) */</a>
+<a name="1192"><span class="lineNum">    1192 </span>            :         ComputeModeExclusive,       /**&lt; compute-exclusive-thread mode (Only one thread in one process will be able to use cudaSetDevice with this device) */</a>
+<a name="1193"><span class="lineNum">    1193 </span>            :         ComputeModeProhibited,      /**&lt; compute-prohibited mode (No threads can use cudaSetDevice with this device) */</a>
+<a name="1194"><span class="lineNum">    1194 </span>            :         ComputeModeExclusiveProcess /**&lt; compute-exclusive-process mode (Many threads in one process will be able to use cudaSetDevice with this device) */</a>
+<a name="1195"><span class="lineNum">    1195 </span>            :     };</a>
+<a name="1196"><span class="lineNum">    1196 </span>            : </a>
+<a name="1197"><span class="lineNum">    1197 </span>            :     //! compute mode</a>
+<a name="1198"><span class="lineNum">    1198 </span>            :     CV_WRAP DeviceInfo::ComputeMode computeMode() const;</a>
+<a name="1199"><span class="lineNum">    1199 </span>            : </a>
+<a name="1200"><span class="lineNum">    1200 </span>            :     //! maximum 1D texture size</a>
+<a name="1201"><span class="lineNum">    1201 </span>            :     CV_WRAP int maxTexture1D() const;</a>
+<a name="1202"><span class="lineNum">    1202 </span>            : </a>
+<a name="1203"><span class="lineNum">    1203 </span>            :     //! maximum 1D mipmapped texture size</a>
+<a name="1204"><span class="lineNum">    1204 </span>            :     CV_WRAP int maxTexture1DMipmap() const;</a>
+<a name="1205"><span class="lineNum">    1205 </span>            : </a>
+<a name="1206"><span class="lineNum">    1206 </span>            :     //! maximum size for 1D textures bound to linear memory</a>
+<a name="1207"><span class="lineNum">    1207 </span>            :     CV_WRAP int maxTexture1DLinear() const;</a>
+<a name="1208"><span class="lineNum">    1208 </span>            : </a>
+<a name="1209"><span class="lineNum">    1209 </span>            :     //! maximum 2D texture dimensions</a>
+<a name="1210"><span class="lineNum">    1210 </span>            :     CV_WRAP Vec2i maxTexture2D() const;</a>
+<a name="1211"><span class="lineNum">    1211 </span>            : </a>
+<a name="1212"><span class="lineNum">    1212 </span>            :     //! maximum 2D mipmapped texture dimensions</a>
+<a name="1213"><span class="lineNum">    1213 </span>            :     CV_WRAP Vec2i maxTexture2DMipmap() const;</a>
+<a name="1214"><span class="lineNum">    1214 </span>            : </a>
+<a name="1215"><span class="lineNum">    1215 </span>            :     //! maximum dimensions (width, height, pitch) for 2D textures bound to pitched memory</a>
+<a name="1216"><span class="lineNum">    1216 </span>            :     CV_WRAP Vec3i maxTexture2DLinear() const;</a>
+<a name="1217"><span class="lineNum">    1217 </span>            : </a>
+<a name="1218"><span class="lineNum">    1218 </span>            :     //! maximum 2D texture dimensions if texture gather operations have to be performed</a>
+<a name="1219"><span class="lineNum">    1219 </span>            :     CV_WRAP Vec2i maxTexture2DGather() const;</a>
+<a name="1220"><span class="lineNum">    1220 </span>            : </a>
+<a name="1221"><span class="lineNum">    1221 </span>            :     //! maximum 3D texture dimensions</a>
+<a name="1222"><span class="lineNum">    1222 </span>            :     CV_WRAP Vec3i maxTexture3D() const;</a>
+<a name="1223"><span class="lineNum">    1223 </span>            : </a>
+<a name="1224"><span class="lineNum">    1224 </span>            :     //! maximum Cubemap texture dimensions</a>
+<a name="1225"><span class="lineNum">    1225 </span>            :     CV_WRAP int maxTextureCubemap() const;</a>
+<a name="1226"><span class="lineNum">    1226 </span>            : </a>
+<a name="1227"><span class="lineNum">    1227 </span>            :     //! maximum 1D layered texture dimensions</a>
+<a name="1228"><span class="lineNum">    1228 </span>            :     CV_WRAP Vec2i maxTexture1DLayered() const;</a>
+<a name="1229"><span class="lineNum">    1229 </span>            : </a>
+<a name="1230"><span class="lineNum">    1230 </span>            :     //! maximum 2D layered texture dimensions</a>
+<a name="1231"><span class="lineNum">    1231 </span>            :     CV_WRAP Vec3i maxTexture2DLayered() const;</a>
+<a name="1232"><span class="lineNum">    1232 </span>            : </a>
+<a name="1233"><span class="lineNum">    1233 </span>            :     //! maximum Cubemap layered texture dimensions</a>
+<a name="1234"><span class="lineNum">    1234 </span>            :     CV_WRAP Vec2i maxTextureCubemapLayered() const;</a>
+<a name="1235"><span class="lineNum">    1235 </span>            : </a>
+<a name="1236"><span class="lineNum">    1236 </span>            :     //! maximum 1D surface size</a>
+<a name="1237"><span class="lineNum">    1237 </span>            :     CV_WRAP int maxSurface1D() const;</a>
+<a name="1238"><span class="lineNum">    1238 </span>            : </a>
+<a name="1239"><span class="lineNum">    1239 </span>            :     //! maximum 2D surface dimensions</a>
+<a name="1240"><span class="lineNum">    1240 </span>            :     CV_WRAP Vec2i maxSurface2D() const;</a>
+<a name="1241"><span class="lineNum">    1241 </span>            : </a>
+<a name="1242"><span class="lineNum">    1242 </span>            :     //! maximum 3D surface dimensions</a>
+<a name="1243"><span class="lineNum">    1243 </span>            :     CV_WRAP Vec3i maxSurface3D() const;</a>
+<a name="1244"><span class="lineNum">    1244 </span>            : </a>
+<a name="1245"><span class="lineNum">    1245 </span>            :     //! maximum 1D layered surface dimensions</a>
+<a name="1246"><span class="lineNum">    1246 </span>            :     CV_WRAP Vec2i maxSurface1DLayered() const;</a>
+<a name="1247"><span class="lineNum">    1247 </span>            : </a>
+<a name="1248"><span class="lineNum">    1248 </span>            :     //! maximum 2D layered surface dimensions</a>
+<a name="1249"><span class="lineNum">    1249 </span>            :     CV_WRAP Vec3i maxSurface2DLayered() const;</a>
+<a name="1250"><span class="lineNum">    1250 </span>            : </a>
+<a name="1251"><span class="lineNum">    1251 </span>            :     //! maximum Cubemap surface dimensions</a>
+<a name="1252"><span class="lineNum">    1252 </span>            :     CV_WRAP int maxSurfaceCubemap() const;</a>
+<a name="1253"><span class="lineNum">    1253 </span>            : </a>
+<a name="1254"><span class="lineNum">    1254 </span>            :     //! maximum Cubemap layered surface dimensions</a>
+<a name="1255"><span class="lineNum">    1255 </span>            :     CV_WRAP Vec2i maxSurfaceCubemapLayered() const;</a>
+<a name="1256"><span class="lineNum">    1256 </span>            : </a>
+<a name="1257"><span class="lineNum">    1257 </span>            :     //! alignment requirements for surfaces</a>
+<a name="1258"><span class="lineNum">    1258 </span>            :     CV_WRAP size_t surfaceAlignment() const;</a>
+<a name="1259"><span class="lineNum">    1259 </span>            : </a>
+<a name="1260"><span class="lineNum">    1260 </span>            :     //! device can possibly execute multiple kernels concurrently</a>
+<a name="1261"><span class="lineNum">    1261 </span>            :     CV_WRAP bool concurrentKernels() const;</a>
+<a name="1262"><span class="lineNum">    1262 </span>            : </a>
+<a name="1263"><span class="lineNum">    1263 </span>            :     //! device has ECC support enabled</a>
+<a name="1264"><span class="lineNum">    1264 </span>            :     CV_WRAP bool ECCEnabled() const;</a>
+<a name="1265"><span class="lineNum">    1265 </span>            : </a>
+<a name="1266"><span class="lineNum">    1266 </span>            :     //! PCI bus ID of the device</a>
+<a name="1267"><span class="lineNum">    1267 </span>            :     CV_WRAP int pciBusID() const;</a>
+<a name="1268"><span class="lineNum">    1268 </span>            : </a>
+<a name="1269"><span class="lineNum">    1269 </span>            :     //! PCI device ID of the device</a>
+<a name="1270"><span class="lineNum">    1270 </span>            :     CV_WRAP int pciDeviceID() const;</a>
+<a name="1271"><span class="lineNum">    1271 </span>            : </a>
+<a name="1272"><span class="lineNum">    1272 </span>            :     //! PCI domain ID of the device</a>
+<a name="1273"><span class="lineNum">    1273 </span>            :     CV_WRAP int pciDomainID() const;</a>
+<a name="1274"><span class="lineNum">    1274 </span>            : </a>
+<a name="1275"><span class="lineNum">    1275 </span>            :     //! true if device is a Tesla device using TCC driver, false otherwise</a>
+<a name="1276"><span class="lineNum">    1276 </span>            :     CV_WRAP bool tccDriver() const;</a>
+<a name="1277"><span class="lineNum">    1277 </span>            : </a>
+<a name="1278"><span class="lineNum">    1278 </span>            :     //! number of asynchronous engines</a>
+<a name="1279"><span class="lineNum">    1279 </span>            :     CV_WRAP int asyncEngineCount() const;</a>
+<a name="1280"><span class="lineNum">    1280 </span>            : </a>
+<a name="1281"><span class="lineNum">    1281 </span>            :     //! device shares a unified address space with the host</a>
+<a name="1282"><span class="lineNum">    1282 </span>            :     CV_WRAP bool unifiedAddressing() const;</a>
+<a name="1283"><span class="lineNum">    1283 </span>            : </a>
+<a name="1284"><span class="lineNum">    1284 </span>            :     //! peak memory clock frequency in kilohertz</a>
+<a name="1285"><span class="lineNum">    1285 </span>            :     CV_WRAP int memoryClockRate() const;</a>
+<a name="1286"><span class="lineNum">    1286 </span>            : </a>
+<a name="1287"><span class="lineNum">    1287 </span>            :     //! global memory bus width in bits</a>
+<a name="1288"><span class="lineNum">    1288 </span>            :     CV_WRAP int memoryBusWidth() const;</a>
+<a name="1289"><span class="lineNum">    1289 </span>            : </a>
+<a name="1290"><span class="lineNum">    1290 </span>            :     //! size of L2 cache in bytes</a>
+<a name="1291"><span class="lineNum">    1291 </span>            :     CV_WRAP int l2CacheSize() const;</a>
+<a name="1292"><span class="lineNum">    1292 </span>            : </a>
+<a name="1293"><span class="lineNum">    1293 </span>            :     //! maximum resident threads per multiprocessor</a>
+<a name="1294"><span class="lineNum">    1294 </span>            :     CV_WRAP int maxThreadsPerMultiProcessor() const;</a>
+<a name="1295"><span class="lineNum">    1295 </span>            : </a>
+<a name="1296"><span class="lineNum">    1296 </span>            :     //! gets free and total device memory</a>
+<a name="1297"><span class="lineNum">    1297 </span>            :     CV_WRAP void queryMemory(size_t&amp; totalMemory, size_t&amp; freeMemory) const;</a>
+<a name="1298"><span class="lineNum">    1298 </span>            :     CV_WRAP size_t freeMemory() const;</a>
+<a name="1299"><span class="lineNum">    1299 </span>            :     CV_WRAP size_t totalMemory() const;</a>
+<a name="1300"><span class="lineNum">    1300 </span>            : </a>
+<a name="1301"><span class="lineNum">    1301 </span>            :     /** @brief Provides information on CUDA feature support.</a>
+<a name="1302"><span class="lineNum">    1302 </span>            : </a>
+<a name="1303"><span class="lineNum">    1303 </span>            :     @param feature_set Features to be checked. See cuda::FeatureSet.</a>
+<a name="1304"><span class="lineNum">    1304 </span>            : </a>
+<a name="1305"><span class="lineNum">    1305 </span>            :     This function returns true if the device has the specified CUDA feature. Otherwise, it returns false</a>
+<a name="1306"><span class="lineNum">    1306 </span>            :      */</a>
+<a name="1307"><span class="lineNum">    1307 </span>            :     bool supports(FeatureSet feature_set) const;</a>
+<a name="1308"><span class="lineNum">    1308 </span>            : </a>
+<a name="1309"><span class="lineNum">    1309 </span>            :     /** @brief Checks the CUDA module and device compatibility.</a>
+<a name="1310"><span class="lineNum">    1310 </span>            : </a>
+<a name="1311"><span class="lineNum">    1311 </span>            :     This function returns true if the CUDA module can be run on the specified device. Otherwise, it</a>
+<a name="1312"><span class="lineNum">    1312 </span>            :     returns false .</a>
+<a name="1313"><span class="lineNum">    1313 </span>            :      */</a>
+<a name="1314"><span class="lineNum">    1314 </span>            :     CV_WRAP bool isCompatible() const;</a>
+<a name="1315"><span class="lineNum">    1315 </span>            : </a>
+<a name="1316"><span class="lineNum">    1316 </span>            : private:</a>
+<a name="1317"><span class="lineNum">    1317 </span>            :     int device_id_;</a>
+<a name="1318"><span class="lineNum">    1318 </span>            : };</a>
+<a name="1319"><span class="lineNum">    1319 </span>            : </a>
+<a name="1320"><span class="lineNum">    1320 </span>            : CV_EXPORTS_W void printCudaDeviceInfo(int device);</a>
+<a name="1321"><span class="lineNum">    1321 </span>            : CV_EXPORTS_W void printShortCudaDeviceInfo(int device);</a>
+<a name="1322"><span class="lineNum">    1322 </span>            : </a>
+<a name="1323"><span class="lineNum">    1323 </span>            : /** @brief Converts an array to half precision floating number.</a>
+<a name="1324"><span class="lineNum">    1324 </span>            : </a>
+<a name="1325"><span class="lineNum">    1325 </span>            : @param _src input array.</a>
+<a name="1326"><span class="lineNum">    1326 </span>            : @param _dst output array.</a>
+<a name="1327"><span class="lineNum">    1327 </span>            : @param stream Stream for the asynchronous version.</a>
+<a name="1328"><span class="lineNum">    1328 </span>            : @sa convertFp16</a>
+<a name="1329"><span class="lineNum">    1329 </span>            : */</a>
+<a name="1330"><span class="lineNum">    1330 </span>            : CV_EXPORTS void convertFp16(InputArray _src, OutputArray _dst, Stream&amp; stream = Stream::Null());</a>
+<a name="1331"><span class="lineNum">    1331 </span>            : </a>
+<a name="1332"><span class="lineNum">    1332 </span>            : //! @} cudacore_init</a>
+<a name="1333"><span class="lineNum">    1333 </span>            : </a>
+<a name="1334"><span class="lineNum">    1334 </span>            : }} // namespace cv { namespace cuda {</a>
+<a name="1335"><span class="lineNum">    1335 </span>            : </a>
+<a name="1336"><span class="lineNum">    1336 </span>            : </a>
+<a name="1337"><span class="lineNum">    1337 </span>            : #include &quot;opencv2/core/cuda.inl.hpp&quot;</a>
+<a name="1338"><span class="lineNum">    1338 </span>            : </a>
+<a name="1339"><span class="lineNum">    1339 </span>            : #endif /* OPENCV_CORE_CUDA_HPP */</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
