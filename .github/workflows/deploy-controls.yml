@@ -18,7 +18,7 @@ env:
   DIR: apps/car_controls
 
 jobs:
-  compile-and-test:
+  compile-test-and-coverage:
     runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout code
@@ -50,10 +50,6 @@ jobs:
         run: |
           sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps/test
 
-  coverage-report:
-    needs: compile-and-test
-    runs-on: [self-hosted, seame-computer-1]
-    steps:
       - name: Generate coverage report
         run: |
           cd $DIR/build

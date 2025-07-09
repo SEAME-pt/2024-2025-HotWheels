@@ -18,7 +18,7 @@ env:
   DIR: apps/cluster
 
 jobs:
-  compile-and-test:
+  compile-test-and-coverage:
     runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout code
@@ -52,7 +52,7 @@ jobs:
           ./HotWheels-integration-tests
         continue-on-error: true
 
-      - name: Run integration tests
+      - name: Run unit tests
         run: |
           cd $DIR/build
            QT_QPA_PLATFORM=offscreen ./HotWheels-unit-tests
@@ -63,10 +63,6 @@ jobs:
         run: |
           sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@100.108.203.64:/home/jetson/apps/test
 
-  coverage-report:
-    needs: compile-and-test
-    runs-on: [self-hosted, seame-computer-1]
-    steps:
       - name: Generate coverage report
         run: |
           cd $DIR/build
