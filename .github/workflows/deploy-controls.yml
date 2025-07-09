@@ -60,3 +60,23 @@ jobs:
           lcov --capture --directory . --output-file full.info
           lcov --remove full.info     '*/moc_*.cpp'     '*/moc_*.gcda'     '*/moc_*.gcno'     '*/tests*' '*/tensorrt-8.6.1.6*'     '*/Mock*'     '*/usr/*'     '*/Qt*'     --output-file filtered.info
           genhtml filtered.info --output-directory coverage-car-controls
+
+      - name: Push coverage report to docPage branch
+        run: |
+          # Create a temporary working directory
+          mkdir temp-docs
+          cd temp-docs
+
+          # Clone the docPage branch
+          git clone --branch docPage https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} .
+
+          # Optional: clear existing folder if you want to fully overwrite it
+          rm -rf coverage-car-controls
+
+          # Copy in the new coverage report
+          cp -r ../$DIR/build/coverage-car-controls ./coverage-car-controls
+
+          # Commit and push
+          git add .
+          git commit -m "Update coverage report from $GITHUB_SHA" || echo "No changes to commit"
+          git push
