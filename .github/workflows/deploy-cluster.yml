@@ -55,7 +55,7 @@ jobs:
       - name: Run integration tests
         run: |
           cd $DIR/build
-          ./HotWheels-unit-tests
+           QT_QPA_PLATFORM=offscreen ./HotWheels-unit-tests
 
       - name: Deploy executable to target
         env:
