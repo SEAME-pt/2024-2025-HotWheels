@@ -6,37 +6,21 @@ CONFIG += debug
 QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
 QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
 
-JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
-
-# Path to custom Linaro GCC 7.5 toolchain
-LINARO_GCC7 = /home/seame/new_qtjetson/tools/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu
-
-QMAKE_CC  = $$LINARO_GCC7/bin/aarch64-linux-gnu-gcc
-QMAKE_CXX = $$LINARO_GCC7/bin/aarch64-linux-gnu-g++
-QMAKE_LINK = $$QMAKE_CXX
-QMAKE_LINK_SHLIB = $$QMAKE_CXX
-
-# Use the Jetson sysroot headers and libraries
-QMAKE_CFLAGS   += --sysroot=$${JETSON_SYSROOT}
-QMAKE_CXXFLAGS += --sysroot=$${JETSON_SYSROOT}
-QMAKE_LFLAGS   += --sysroot=$${JETSON_SYSROOT}
-
-QMAKE_CXXFLAGS += -fdebug-prefix-map=/home/seame/repos/cluster/apps=/home/jetson/apps/test
-
 # Include Paths
 INCLUDEPATH += \
     $$PWD/includes \
     $$PWD/tests/mocks \
     $$PWD/sources \
-    $${JETSON_SYSROOT}/usr/local/include/opencv4 \
-    $${JETSON_SYSROOT}/usr/include/opencv4 \
-    $${JETSON_SYSROOT}/usr/local/cuda/include \
-    $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include \
-    $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu \
-    $${JETSON_SYSROOT}/usr/include/gstreamer-1.0 \
-    $${JETSON_SYSROOT}/usr/include/glib-2.0 \
-    $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/glib-2.0/include \
-    $${JETSON_SYSROOT}/usr/include/eigen3
+    /usr/local/include/opencv4 \
+    /usr/include/opencv4 \
+    /usr/local/include \
+    /usr/include \
+    /usr/include/eigen3 \
+    /usr/include/gstreamer-1.0 \
+    /usr/include/glib-2.0 \
+    /usr/lib/x86_64-linux-gnu/glib-2.0/include \
+    /usr/local/cuda-12.4/targets/x86_64-linux/include/ \
+    /home/seame/tensorrt-8.6.1.6/include
 
 # Test Sources
 TESTS_PATH = tests
@@ -71,40 +55,27 @@ HEADERS += \
     includes/objectDetection/YOLOv5TRT.hpp
 
 # Library paths
-LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
-LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
-LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/
-LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
-LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
-LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/7
-LIBS += -L/usr/local/lib  # For GLEW/GLFW
+LIBS += -L/usr/local/lib
+LIBS += -L/usr/lib/x86_64-linux-gnu
+LIBS += -L/usr/local/cuda/lib64
 
 # GTest and GMock
-GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
-LIBS += -L$${GMOCK_LIBDIR} \
-        -lgmock_main -lgtest_main -lgmock -lgtest -lpthread -lzmq
+LIBS += -lgmock_main -lgtest_main -lgmock -lgtest -lpthread -lzmq
 
-# TensorRT, CUDA, OpenCV
-LIBS += -lcudart -lnvinfer
+# TensorRT and CUDA
+LIBS += -lnvinfer -lcudart -lcublas -lcublasLt
+
+# OpenCV + CUDA
 LIBS += -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_highgui -lopencv_calib3d
-LIBS += -lopencv_cudaarithm -lopencv_cudawarping -lopencv_cudaimgproc -lopencv_cudacodec
-LIBS += -lcublasLt -lnvmedia -lnvdla_compiler
+LIBS += -lopencv_cudaarithm -lopencv_cudawarping -lopencv_cudaimgproc
 
-# GStreamer libraries
+# GStreamer
 LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
 
 # OpenGL, GLEW, GLFW
 LIBS += -lGLEW -lglfw -lGL
 
-LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas  # Add ATLAS BLAS/LAPACK path
-LIBS += -llapack -lcblas -lblas -ltbb
+# BLAS/LAPACK
+LIBS += -ltbb -llapack -lblas
 
-# Linker flags for rpath and static stdlib
-QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/lib
-QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
-QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
-QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
-QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/7
-QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
-QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/7
-QMAKE_LFLAGS += -Wl,-rpath,/usr/local/qt5.15/lib
+QMAKE_LFLAGS += -Wl,-rpath,/home/seame/tensorrt-8.6.1.6/lib
