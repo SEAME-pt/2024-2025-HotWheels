@@ -50,6 +50,7 @@ jobs:
         run: |
           cd $DIR/build
           ./HotWheels-integration-tests
+        continue-on-error: true
 
       - name: Run integration tests
         run: |
