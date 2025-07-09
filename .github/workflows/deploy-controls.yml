@@ -4,15 +4,15 @@ on:
   push:
     branches:
       - test-coverage
-    paths:
-      - 'apps/car_controls/**'
-      - 'ZeroMQ/**'
+    # paths:
+    #   - 'apps/car_controls/**'
+    #   - 'ZeroMQ/**'
   pull_request:
     branches:
       - test-coverage
-    paths:
-      - 'apps/car_controls/**'
-      - 'ZeroMQ/**'
+    # paths:
+    #   - 'apps/car_controls/**'
+    #   - 'ZeroMQ/**'
 
 env:
   DIR: apps/car_controls
