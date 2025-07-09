@@ -3,78 +3,72 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'apps/cluster/**'
-      - 'ZeroMQ/**'
+      - test-coverage
+    # paths:
+    #   - 'apps/cluster/**'
+    #   - 'ZeroMQ/**'
   pull_request:
     branches:
-      - main
-    paths:
-      - 'apps/cluster/**'
-      - 'ZeroMQ/**'
+      - test-coverage
+    # paths:
+    #   - 'apps/cluster/**'
+    #   - 'ZeroMQ/**'
 
 env:
   DIR: apps/cluster
 
 jobs:
-  run-on-self-hosted:
+  compile-and-test:
     runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build arm64 executable
+      - name: Build executable
         run: |
           cd $DIR
           mkdir build
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
+          ~/new_qtjetson/qt5.15/bin/qmake ../HotWheels-app.pro
           make -j$(nproc)
-
-      - name: Build executable for unit testing
-        run: |
-          cd $DIR
-          cd build
-          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-unit-tests.pro
-          make -j$(nproc)
-
-      - name: Deploy unit test to Jetson
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-unit-tests jetson@100.108.203.64:/home/jetson/apps/tests
+          rm -rf *.o
 
       - name: Build executable for integration testing
         run: |
-          cd $DIR
-          cd build
-          ~/qtjetson/qt5.15/bin/qmake ../HotWheels-integration-tests.pro
+          cd $DIR/build
+          qmake ../HotWheels-integration-tests.pro
+          make -j$(nproc)
+          rm -rf *.o
+
+      - name: Build executable for unit testing
+        run: |
+          cd $DIR/build
+          qmake ../HotWheels-unit-tests.pro
           make -j$(nproc)
 
-      - name: Deploy integration test to Jetson
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+      - name: Run integration tests
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-integration-tests jetson@100.108.203.64:/home/jetson/apps/tests
-
-      - name: Run unit tests
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no jetson@100.108.203.64 \
-            '/home/jetson/apps/tests/HotWheels-unit-tests'
+          cd $DIR/build
+          ./HotWheels-integration-tests
 
       - name: Run integration tests
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no jetson@100.108.203.64 \
-            '/home/jetson/apps/tests/HotWheels-integration-tests'
-        continue-on-error: true
+          cd $DIR/build
+          ./HotWheels-unit-tests
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@100.108.203.64:/home/jetson/apps
+
+  coverage-report:
+    needs: compile-and-test
+    runs-on: [self-hosted, seame-computer-1]
+    steps:
+      - name: Generate coverage report
+        run: |
+          cd $DIR/build
+          lcov --capture --directory . --output-file full.info
+          lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/test_*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
+          genhtml filtered.info --output-directory coverage-cluster
