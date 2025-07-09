@@ -19,6 +19,7 @@ INCLUDEPATH += \
     /usr/include/gstreamer-1.0 \
     /usr/include/glib-2.0 \
     /usr/lib/x86_64-linux-gnu/glib-2.0/include \
+    /usr/local/cuda-12.4/targets/x86_64-linux/include/ \
     /home/seame/tensorrt-8.6.1.6/include
 
 # Test Sources

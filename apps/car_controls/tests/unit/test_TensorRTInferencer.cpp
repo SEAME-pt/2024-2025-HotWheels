@@ -8,9 +8,22 @@
 #include <opencv2/imgproc.hpp>
 
 #include <thread>
+#include <unistd.h>     // for readlink
+#include <limits.h>     // for PATH_MAX
+#include <filesystem>   // C++17
+#include <iostream>
+
+/* std::string getExecutableDir() {
+    char result[PATH_MAX];
+    ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
+    std::filesystem::path exePath = std::string(result, (count > 0) ? count : 0);
+    return exePath.parent_path().string();
+}
 
 TEST(TensorRTInferencerTest, CanReadEngineFile) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    ASSERT_TRUE(fileExists(modelPath)) << "Model file not found: " << modelPath;
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
     ASSERT_TRUE(true);  // If it didn't throw, it's OK for this smoke test
 }
 
@@ -31,7 +44,8 @@ TEST(TensorRTInferencerTest, PreprocessImageGrayscale) {
     cv::cuda::GpuMat gpuImg;
     gpuImg.upload(cpuImg);
 
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::cuda::GpuMat processed = inferencer.preprocessImage(gpuImg);
 
@@ -42,7 +56,8 @@ TEST(TensorRTInferencerTest, PreprocessImageGrayscale) {
 TEST(TensorRTInferencerTest, ThrowsOnEmptyImage) {
     cv::cuda::GpuMat emptyImg;
 
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     //EXPECT_THROW(inferencer.preprocessImage(emptyImg), std::runtime_error);
 
@@ -58,7 +73,8 @@ TEST(TensorRTInferencerTest, ThrowsOnEmptyImage) {
 }
 
 TEST(TensorRTInferencerTest, RunInferenceThrowsOnWrongSize) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat smallImg(100, 100, CV_32FC1, cv::Scalar(1.0f));
     cv::cuda::GpuMat gpuInput;
@@ -78,7 +94,8 @@ TEST(TensorRTInferencerTest, RunInferenceThrowsOnWrongSize) {
 }
 
 TEST(TensorRTInferencerTest, RunInferenceSucceedsOnValidInput) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat validImg(208, 208, CV_32FC1, cv::Scalar(1.0f));
     cv::cuda::GpuMat gpuInput;
@@ -88,7 +105,8 @@ TEST(TensorRTInferencerTest, RunInferenceSucceedsOnValidInput) {
 }
 
 TEST(TensorRTInferencerTest, RunInferenceFailsOnNullInput) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::cuda::GpuMat nullInput;  // uninitialized
     //EXPECT_THROW(inferencer.runInference(nullInput), std::runtime_error);
@@ -105,7 +123,8 @@ TEST(TensorRTInferencerTest, RunInferenceFailsOnNullInput) {
 }
 
 TEST(TensorRTInferencerTest, OutputHasNonZeroValuesAfterInference) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat validImg(208, 208, CV_32FC1, cv::Scalar(1.0f));
     cv::cuda::GpuMat gpuInput;
@@ -122,7 +141,8 @@ TEST(TensorRTInferencerTest, OutputHasNonZeroValuesAfterInference) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessGrayscaleNoConvert) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat gray(208, 208, CV_8UC1, cv::Scalar(100));
     cv::cuda::GpuMat gpuGray;
@@ -134,7 +154,8 @@ TEST(TensorRTInferencerTest, PreprocessGrayscaleNoConvert) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessGrayscaleWithConvert) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+        std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat gray(208, 208, CV_8UC1, cv::Scalar(100));
     cv::cuda::GpuMat gpuGray;
@@ -146,7 +167,8 @@ TEST(TensorRTInferencerTest, PreprocessGrayscaleWithConvert) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessColorImage) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat colorImg(208, 208, CV_8UC3, cv::Scalar(100, 150, 200));
     cv::cuda::GpuMat gpuColorImg;
@@ -159,7 +181,8 @@ TEST(TensorRTInferencerTest, PreprocessColorImage) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessImageWithInvalidType) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat invalidImg(208, 208, CV_8UC4, cv::Scalar(100, 150, 200, 255));
     cv::cuda::GpuMat gpuInvalidImg;
@@ -179,7 +202,8 @@ TEST(TensorRTInferencerTest, PreprocessImageWithInvalidType) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessImageWithEmptyGpuMat) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::cuda::GpuMat emptyGpuMat;
 
@@ -197,7 +221,8 @@ TEST(TensorRTInferencerTest, PreprocessImageWithEmptyGpuMat) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessImageWithWrongSize) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat smallImg(100, 100, CV_8UC3, cv::Scalar(100, 150, 200));
     cv::cuda::GpuMat gpuSmallImg;
@@ -207,7 +232,8 @@ TEST(TensorRTInferencerTest, PreprocessImageWithWrongSize) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessImageWithValidSize) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat validImg(208, 208, CV_8UC3, cv::Scalar(100, 150, 200));
     cv::cuda::GpuMat gpuValidImg;
@@ -217,7 +243,8 @@ TEST(TensorRTInferencerTest, PreprocessImageWithValidSize) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessImageWithValidSizeAndType) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat validImg(208, 208, CV_8UC3, cv::Scalar(100, 150, 200));
     cv::cuda::GpuMat gpuValidImg;
@@ -227,7 +254,8 @@ TEST(TensorRTInferencerTest, PreprocessImageWithValidSizeAndType) {
 }
 
 TEST(TensorRTInferencerTest, PreprocessImageWithValidSizeAndInvalidType) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat validImg(208, 208, CV_32FC1, cv::Scalar(0.5f));
     cv::cuda::GpuMat gpuValidImg;
@@ -247,7 +275,8 @@ TEST(TensorRTInferencerTest, PreprocessImageWithValidSizeAndInvalidType) {
 }
 
 TEST(TensorRTInferencerTest, MakePredictionDoesNotThrowOnValidInput) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
     cv::cuda::GpuMat gpuInput;
@@ -257,7 +286,8 @@ TEST(TensorRTInferencerTest, MakePredictionDoesNotThrowOnValidInput) {
 }
 
 TEST(TensorRTInferencerTest, MakePredictionReturnsCorrectSize) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
     cv::cuda::GpuMat gpuInput;
@@ -271,7 +301,8 @@ TEST(TensorRTInferencerTest, MakePredictionReturnsCorrectSize) {
 }
 
 TEST(TensorRTInferencerTest, MakePredictionOutputNotAllZero) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
     cv::cuda::GpuMat gpuInput;
@@ -288,7 +319,8 @@ TEST(TensorRTInferencerTest, MakePredictionOutputNotAllZero) {
 }
 
 TEST(TensorRTInferencerTest, MakePredictionReturnsGpuMat) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat cpuImg(208, 208, CV_8UC3, cv::Scalar(120, 120, 120));
     cv::cuda::GpuMat gpuImg;
@@ -301,7 +333,8 @@ TEST(TensorRTInferencerTest, MakePredictionReturnsGpuMat) {
 }
 
 TEST(TensorRTInferencerTest, PredictionOutputHasExpectedRange) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat input(208, 208, CV_8UC3, cv::Scalar(120, 120, 120));
     cv::cuda::GpuMat gpuInput;
@@ -319,7 +352,8 @@ TEST(TensorRTInferencerTest, PredictionOutputHasExpectedRange) {
 }
 
 TEST(TensorRTInferencerTest, ReuseInferenceMultipleTimes) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     for (int i = 0; i < 10; ++i) {
         cv::Mat img(208, 208, CV_8UC3, cv::Scalar(i * 25, i * 25, i * 25));
@@ -330,7 +364,8 @@ TEST(TensorRTInferencerTest, ReuseInferenceMultipleTimes) {
 }
 
 TEST(TensorRTInferencerTest, MakePredictionIsDeterministic) {
-    TensorRTInferencer inferencer("/home/jetson/models/lane-detection/model.engine");
+    std::string modelPath = getExecutableDir() + "/model.engine";
+    TensorRTInferencer inferencer(modelPath);
 
     cv::Mat input(208, 208, CV_8UC3, cv::Scalar(128, 128, 128));
     cv::cuda::GpuMat gpuInput;
@@ -350,3 +385,4 @@ TEST(TensorRTInferencerTest, MakePredictionIsDeterministic) {
 
     EXPECT_LT(maxDiff, 1e-4);  // very small difference
 }
+ */
