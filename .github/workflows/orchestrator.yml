@@ -28,22 +28,30 @@ jobs:
         run: |
           REPO="${{ github.repository }}"
           BRANCH="${{ github.event.workflow_run.head_branch }}"
+          SHA="${{ github.event.workflow_run.head_sha }}"
 
-          echo "Checking workflow runs for $REPO on branch $BRANCH"
+          echo "Checking workflow runs for $REPO on branch $BRANCH and commit $SHA"
 
-          # Get last successful runs of both workflows
-          CONTROLS=$(gh api -H "Accept: application/vnd.github+json" /repos/$REPO/actions/workflows/deploy-controls.yml/runs?branch=$BRANCH\&status=success\&per_page=1 --jq '.workflow_runs[0].updated_at')
-          CLUSTER=$(gh api -H "Accept: application/vnd.github+json" /repos/$REPO/actions/workflows/deploy-cluster.yml/runs?branch=$BRANCH\&status=success\&per_page=1 --jq '.workflow_runs[0].updated_at')
+          # Get successful run of deploy-controls.yml on the same commit
+          CONTROLS=$(gh api -H "Accept: application/vnd.github+json" \
+            /repos/$REPO/actions/workflows/deploy-controls.yml/runs \
+            --jq ".workflow_runs[] | select(.head_sha == \"$SHA\" and .conclusion == \"success\") | .id" | head -n 1)
 
-          echo "Car controls workflow finished at: $CONTROLS"
-          echo "Cluster workflow finished at: $CLUSTER"
+          # Get successful run of deploy-cluster.yml on the same commit
+          CLUSTER=$(gh api -H "Accept: application/vnd.github+json" \
+            /repos/$REPO/actions/workflows/deploy-cluster.yml/runs \
+            --jq ".workflow_runs[] | select(.head_sha == \"$SHA\" and .conclusion == \"success\") | .id" | head -n 1)
+
+          echo "Car controls workflow run ID on commit $SHA: $CONTROLS"
+          echo "Cluster workflow run ID on commit $SHA: $CLUSTER"
 
           if [[ -z "$CONTROLS" || -z "$CLUSTER" ]]; then
-            echo "One or both workflows haven't succeeded yet."
+            echo "One or both workflows haven't succeeded on this commit."
             echo "trigger_docs=false" >> $GITHUB_OUTPUT
             exit 0
           fi
 
+          echo "Both workflows succeeded on the same commit."
           echo "trigger_docs=true" >> $GITHUB_OUTPUT
 
       - name: Trigger documentation workflow
