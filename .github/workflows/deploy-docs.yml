@@ -22,6 +22,7 @@ jobs:
       - name: Copy documentation
         run: |
           cp -r $GITHUB_WORKSPACE/docs ~/Documents/documentation-branch/docs
+          pwd
 
       - name: Execute script to update documentation and coverage reports
         run: |
