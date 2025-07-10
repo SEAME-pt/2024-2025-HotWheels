@@ -3,10 +3,10 @@ name: Build Documentation
 on:
   push:
     branches:
-      - test-coverage
+      - main
   pull_request:
     branches:
-      - test-coverage
+      - main
 
 jobs:
   run-on-self-hosted:
@@ -28,10 +28,22 @@ jobs:
         run: |
           cp -r $GITHUB_WORKSPACE/docs ~/Documents/documentation-branch/docs
 
+      - name: Download car controls coverage
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-car-controls
+          path: coverage/car_controls
+
+      - name: Download cluster coverage
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-cluster
+          path: coverage/cluster
+
       - name: Copy coverage reports
         run: |
-          cp -r ~/dev/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/car_controls/build/coverage-car-controls ~/Documents/documentation-branch
-          cp -r ~/dev/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/cluster/build/coverage-cluster ~/Documents/documentation-branch
+          cp -r coverage/car_controls ~/Documents/documentation-branch/coverage-car-controls
+          cp -r coverage/cluster ~/Documents/documentation-branch/coverage-cluster
 
       - name: Execute script to update documentation
         run: |

@@ -53,6 +53,13 @@ jobs:
       - name: Generate coverage report
         run: |
           cd $DIR/build
+          pwd
           lcov --capture --directory . --output-file full.info
           lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/tests*' '*/tensorrt-8.6.1.6*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
           genhtml filtered.info --output-directory coverage-car-controls
+
+      - name: Upload car_controls coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-car-controls
+          path: apps/car_controls/build/coverage-car-controls
