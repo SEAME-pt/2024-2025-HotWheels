@@ -29,13 +29,13 @@ jobs:
           cp -r $GITHUB_WORKSPACE/docs ~/Documents/documentation-branch/docs
 
       - name: Download car controls coverage
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: coverage-car-controls
           path: coverage/car_controls
 
       - name: Download cluster coverage
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: coverage-cluster
           path: coverage/cluster

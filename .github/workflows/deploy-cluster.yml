@@ -71,7 +71,7 @@ jobs:
           genhtml filtered.info --output-directory coverage-cluster
 
       - name: Upload cluster coverage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-cluster
           path: apps/cluster/build/coverage-cluster

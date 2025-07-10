@@ -59,7 +59,7 @@ jobs:
           genhtml filtered.info --output-directory coverage-car-controls
 
       - name: Upload car_controls coverage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-car-controls
           path: apps/car_controls/build/coverage-car-controls
