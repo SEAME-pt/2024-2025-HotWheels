@@ -3,13 +3,13 @@ name: Car Controls
 on:
   push:
     branches:
-      - test-coverage
+      - main
     # paths:
     #   - 'apps/car_controls/**'
     #   - 'ZeroMQ/**'
   pull_request:
     branches:
-      - test-coverage
+      - main
     # paths:
     #   - 'apps/car_controls/**'
     #   - 'ZeroMQ/**'
