@@ -10,5 +10,7 @@ digraph "apps/car_controls/tests/unit"
   dir_5c2d13ff266dc3ed6d553c96b31523ee [label="mocks", fillcolor="#9fb2da", color="grey25", style="filled", URL="dir_5c2d13ff266dc3ed6d553c96b31523ee.html",tooltip=""];
   dir_94b613c1bd5cc31597221e0ccb842e6c [label="unit", fillcolor="#ecf0f7", color="grey25", style="filled,bold", URL="dir_94b613c1bd5cc31597221e0ccb842e6c.html",tooltip=""];
   }
-  dir_94b613c1bd5cc31597221e0ccb842e6c->dir_5c2d13ff266dc3ed6d553c96b31523ee [headlabel="1", labeldistance=1.5 headhref="dir_000032_000024.html" href="dir_000032_000024.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [label="includes", fillcolor="#ecf0f7", color="red", style="filled,dashed", URL="dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6.html",tooltip=""];
+  dir_94b613c1bd5cc31597221e0ccb842e6c->dir_5c2d13ff266dc3ed6d553c96b31523ee [headlabel="2", labeldistance=1.5 headhref="dir_000043_000032.html" href="dir_000043_000032.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_94b613c1bd5cc31597221e0ccb842e6c->dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [headlabel="1", labeldistance=1.5 headhref="dir_000043_000022.html" href="dir_000043_000022.html" color="steelblue1" fontcolor="steelblue1"];
 }

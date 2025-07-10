@@ -7,10 +7,14 @@ digraph "apps/cluster/app_tests/unit/system"
   compound=true
   subgraph clusterdir_44399569173f8f27c4cea4a3da0cd3f4 {
     graph [ bgcolor="#ecf0f7", pencolor="grey50", label="unit", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_44399569173f8f27c4cea4a3da0cd3f4.html",tooltip=""]
-  dir_7ee59a54ee339f8d407074da1b776cb7 [label="system", fillcolor="#ecf0f7", color="grey25", style="filled,bold", URL="dir_7ee59a54ee339f8d407074da1b776cb7.html",tooltip=""];
+  subgraph clusterdir_7ee59a54ee339f8d407074da1b776cb7 {
+    graph [ bgcolor="#ecf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_7ee59a54ee339f8d407074da1b776cb7.html",tooltip=""]
+    dir_7ee59a54ee339f8d407074da1b776cb7 [shape=plaintext, label="system"];
+  dir_47b77971d4716246ddf59fadee83408e [label="documentation", fillcolor="#9fb2da", color="grey25", style="filled", URL="dir_47b77971d4716246ddf59fadee83408e.html",tooltip=""];
+  }
   }
   dir_2a4f0eb436765d0e1bfbb2d23c4680c4 [label="includes", fillcolor="#ecf0f7", color="red", style="filled,dashed", URL="dir_2a4f0eb436765d0e1bfbb2d23c4680c4.html",tooltip=""];
   dir_e1290d5126a8a0061e25aef85cdc39ae [label="mocks", fillcolor="#ecf0f7", color="grey50", style="filled", URL="dir_e1290d5126a8a0061e25aef85cdc39ae.html",tooltip=""];
-  dir_7ee59a54ee339f8d407074da1b776cb7->dir_2a4f0eb436765d0e1bfbb2d23c4680c4 [headlabel="3", labeldistance=1.5 headhref="dir_000028_000017.html" href="dir_000028_000017.html" color="steelblue1" fontcolor="steelblue1"];
-  dir_7ee59a54ee339f8d407074da1b776cb7->dir_e1290d5126a8a0061e25aef85cdc39ae [headlabel="4", labeldistance=1.5 headhref="dir_000028_000025.html" href="dir_000028_000025.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_7ee59a54ee339f8d407074da1b776cb7->dir_2a4f0eb436765d0e1bfbb2d23c4680c4 [headlabel="3", labeldistance=1.5 headhref="dir_000039_000023.html" href="dir_000039_000023.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_7ee59a54ee339f8d407074da1b776cb7->dir_e1290d5126a8a0061e25aef85cdc39ae [headlabel="4", labeldistance=1.5 headhref="dir_000039_000033.html" href="dir_000039_000033.html" color="steelblue1" fontcolor="steelblue1"];
 }

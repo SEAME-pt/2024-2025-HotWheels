@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['opcode_0',['Opcode',['../classSPIController.html#ac1d6cf9475b5cf1ac88c233be36669e6',1,'SPIController']]]
+  ['notificationlevel_0',['NotificationLevel',['../NotificationOverlay_8hpp.html#a98ca14dd4707bc0b82e21c51ec95083a',1,'NotificationOverlay.hpp']]]
 ];

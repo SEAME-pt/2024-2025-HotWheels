@@ -124,23 +124,50 @@ Directories</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>app_tests</p>
-<p>This directory contains tests for the application, categorized to ensure clarity and maintainability. Directory Structure</p>
+<p>This directory contains all automated tests for the application, categorized to support clarity, scalability, and maintainability.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md104"></a>
+📁 Directory Structure</h1>
 <p>app_tests/ ├── unit/ # Tests for individual classes or functions ├── integration/ # Tests for interactions between components or modules ├── mocks/ # Mock files for simulating dependencies ├── functional/ # High-level tests for application-wide behavior</p>
-<p>Testing Categories</p><ol type="1">
-<li><p class="startli">Unit Tests</p>
-<p class="startli">Focus on testing individual classes or functions in isolation. Mock dependencies when required.</p>
-</li>
-<li><p class="startli">Integration Tests</p>
-<p class="startli">Verify that multiple components work together as expected. Typically involve real implementations of the components.</p>
-</li>
-<li><p class="startli">Mock Files</p>
-<p class="startli">Provide mock classes or functions for isolating dependencies in unit tests.</p>
-</li>
-<li><p class="startli">Functional Tests</p>
-<p class="startli">Test high-level application behavior. Includes scripts like test_entry_point.sh for validating overall functionality. </p>
-</li>
-</ol>
+<hr  />
+<h1><a class="anchor" id="autotoc_md106"></a>
+Testing Categories</h1>
+<h2><a class="anchor" id="autotoc_md107"></a>
+1. Unit Tests (<code>unit/</code>)</h2>
+<ul>
+<li>Test individual functions or classes in isolation.</li>
+<li>Dependencies are mocked to avoid side effects.</li>
+<li>Typically written using <a href="https://github.com/google/googletest">Google Test</a> and <a href="https://github.com/google/googletest/tree/main/googlemock">Google Mock</a>.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md108"></a>
+2. Integration Tests (<code>integration/</code>)</h2>
+<ul>
+<li>Verify correct interactions between multiple real components.</li>
+<li>Help detect interface mismatches, threading issues, and signal/slot integration (especially with Qt).</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md109"></a>
+3. Functional Tests (<code>functional/</code>)</h2>
+<ul>
+<li>Validate the application from a black-box perspective.</li>
+<li>Focus on user workflows and overall system functionality.</li>
+<li>Includes test scripts like <code>test_entry_point.sh</code>.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md110"></a>
+4. Mock Implementations (<code>mocks/</code>)</h2>
+<ul>
+<li>Provide test doubles for system-level or external dependencies.</li>
+<li>Used primarily in unit tests to isolate logic under test.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md112"></a>
+Test Documentation</h1>
+<p>Every test file is accompanied by a <code>.md</code> file that documents:</p>
+<ul>
+<li>What the test covers</li>
+<li>How it works internally</li>
+<li>Related signals, slots, or classes</li>
+<li>Edge cases or failure expectations </li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -11,6 +11,7 @@ var classMileageManager =
     [ "updateMileage", "classMileageManager.html#a912c517158c90834792c3d00c0af101c", null ],
     [ "m_calculator", "classMileageManager.html#a55bbd53e893d06639acd6451bf46a384", null ],
     [ "m_fileHandler", "classMileageManager.html#aee3f283ce2d3c0f3668478d20e3ebd4d", null ],
+    [ "m_manager", "classMileageManager.html#ad92cf988d2e7fb2c734579dea8b5fbf4", null ],
     [ "m_ownCalculator", "classMileageManager.html#a3478bd238d6228a8afc693e5908d996b", null ],
     [ "m_ownFileHandler", "classMileageManager.html#aa8e5c35e7613c525c25cae1e047707b8", null ],
     [ "m_persistenceTimer", "classMileageManager.html#ab820f34f06924f7332cfb6ae123855eb", null ],

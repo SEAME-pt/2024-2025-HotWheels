@@ -9,13 +9,8 @@ digraph "ControlsManager::ControlsManager"
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="JoysticksController\l::finished",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classJoysticksController.html#ad065a02230d5d45dda7bb3b33a3dc6c3",tooltip=" "];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="ControlsManager::isProcess\lRunning",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#a7c12f7aeb433c924a74a050c71d34d1d",tooltip="Check if a process is running."];
-  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
-  Node4 [id="Node000004",label="JoysticksController\l::processInput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209",tooltip="Runs the joystick controller loop."];
-  Node4 -> Node2 [id="edge4_Node000004_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node5 [id="edge5_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="ControlsManager::readJoystick\lEnable",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#a054951ef02cff415b8383706df4f2318",tooltip="Reads joystick enable status."];
-  Node5 -> Node6 [id="edge6_Node000005_Node000006",color="steelblue1",style="solid",tooltip=" "];
-  Node6 [id="Node000006",label="ControlsManager::setMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#aa925f92fc442ed25200f3bcd0df3d08a",tooltip="Sets the driving mode."];
-  Node1 -> Node6 [id="edge7_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="JoysticksController\l::processInput",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classJoysticksController.html#aaa71502b42d13353d35c9a6f35789209",tooltip="Runs the joystick controller loop."];
+  Node3 -> Node2 [id="edge3_Node000003_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node4 [id="edge4_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="ControlsManager::setMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#aa925f92fc442ed25200f3bcd0df3d08a",tooltip="Sets the driving mode."];
 }

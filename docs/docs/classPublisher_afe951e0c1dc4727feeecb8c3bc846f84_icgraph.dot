@@ -1,0 +1,22 @@
+digraph "Publisher::publish"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Publisher::publish",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="YOLOv5TRT::process\l_image",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classYOLOv5TRT.html#a6ade108453aa850578f3c4483f2bdd5e",tooltip="Função principal. Inicializa recursos, executa loop de inferência e exibe resultados."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Publisher::setJoystickStatus",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classPublisher.html#a0b097af5e8fc52cbe32dc24b5b34c9f0",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="ControlsManager::driving\lModeUpdated",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classControlsManager.html#ad3cd1fa6493f5e17cc1806d993266fac",tooltip="Update the driving mode of the vehicle."];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="CarManager::initializeControls\lManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#a7d8d0d9b58a5ecc33e06cae2ccbdf184",tooltip="Initialize the ControlsManager."];
+  Node5 -> Node6 [id="edge5_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="CarManager::initializeComponents",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f",tooltip="Initialize the components of the CarManager."];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="CarManager::CarManager",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d",tooltip="Construct a new CarManager object."];
+  Node7 -> Node7 [id="edge7_Node000007_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

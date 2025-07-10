@@ -1,18 +1,18 @@
 var searchData=
 [
-  ['end_5fgetcartemperaturevalue_0',['end_getCarTemperatureValue',['../classIceProxy_1_1Data_1_1CarData.html#a41a019a3c0c4fcb0a7ec9edfee5034c9',1,'IceProxy::Data::CarData']]],
-  ['end_5fgetjoystickvalue_1',['end_getJoystickValue',['../classIceProxy_1_1Data_1_1CarData.html#a8f55bb270c9ead45e4cdbde224f90526',1,'IceProxy::Data::CarData']]],
-  ['end_5fsetcartemperaturevalue_2',['end_setCarTemperatureValue',['../classIceProxy_1_1Data_1_1CarData.html#af6186674430c6d51ad283e2d2691c7ca',1,'IceProxy::Data::CarData']]],
-  ['end_5fsetjoystickvalue_3',['end_setJoystickValue',['../classIceProxy_1_1Data_1_1CarData.html#af2e7a1f1240cb90f3063c0a803081537',1,'IceProxy::Data::CarData']]],
-  ['enginecontroller_4',['EngineController',['../classEngineController.html',1,'EngineController'],['../classEngineController.html#a046ba741e7683358a38778a92d083947',1,'EngineController::EngineController()'],['../classEngineController.html#a36923247340945dd1c6edb1a073361a6',1,'EngineController::EngineController(int servo_addr, int motor_addr, QObject *parent=nullptr)']]],
-  ['enginecontroller_2ecpp_5',['EngineController.cpp',['../EngineController_8cpp.html',1,'']]],
-  ['enginecontroller_2ehpp_6',['EngineController.hpp',['../EngineController_8hpp.html',1,'']]],
-  ['enginedataprocessed_7',['engineDataProcessed',['../classDataManager.html#a23da75da1d1fa2d90c7f885b850b515d',1,'DataManager::engineDataProcessed()'],['../classVehicleDataManager.html#a344d0766b0033aa8041337b142a927e4',1,'VehicleDataManager::engineDataProcessed()']]],
-  ['ensurefileexists_8',['ensureFileExists',['../classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662',1,'MileageFileHandler']]],
-  ['enums_2ehpp_9',['enums.hpp',['../car__controls_2includes_2enums_8hpp.html',1,'(Global Namespace)'],['../cluster_2includes_2data_2enums_8hpp.html',1,'(Global Namespace)']]],
-  ['exception_10',['Exception',['../classData_1_1CallbackNC__CarData__setJoystickValue.html#ac4b01a1efd5f76fdc922530cacab6995',1,'Data::CallbackNC_CarData_setJoystickValue::Exception'],['../classData_1_1Callback__CarData__setJoystickValue.html#a13b10b939c095458ea1c0fe614f3b858',1,'Data::Callback_CarData_setJoystickValue::Exception'],['../classData_1_1CallbackNC__CarData__getJoystickValue.html#a24b7dee1092153c5b7eb7eddc050d271',1,'Data::CallbackNC_CarData_getJoystickValue::Exception'],['../classData_1_1Callback__CarData__getJoystickValue.html#a36dc466ab6c6d111fcf12581e6b88c44',1,'Data::Callback_CarData_getJoystickValue::Exception'],['../classData_1_1CallbackNC__CarData__setCarTemperatureValue.html#aceee6ab5321237acc0351ac103855aef',1,'Data::CallbackNC_CarData_setCarTemperatureValue::Exception'],['../classData_1_1Callback__CarData__setCarTemperatureValue.html#ad9e4f7b876ed7c41d8531bc5d568764d',1,'Data::Callback_CarData_setCarTemperatureValue::Exception'],['../classData_1_1CallbackNC__CarData__getCarTemperatureValue.html#ae91fb3c770e0f480615613af4b5a4cf2',1,'Data::CallbackNC_CarData_getCarTemperatureValue::Exception'],['../classData_1_1Callback__CarData__getCarTemperatureValue.html#a63bcfefe885482ad90dada672eaae227',1,'Data::Callback_CarData_getCarTemperatureValue::Exception']]],
-  ['executecommand_11',['executeCommand',['../classISystemCommandExecutor.html#aab312dabe95f379d38f848148b8a679d',1,'ISystemCommandExecutor::executeCommand()'],['../classSystemCommandExecutor.html#a3fcf74c0d253899fb690479644ef7506',1,'SystemCommandExecutor::executeCommand()']]],
-  ['exists_12',['exists',['../namespaceFileController.html#a4f8cccd67f327da9321c5db04d9d73d7',1,'FileController']]],
-  ['existsfunc_13',['existsFunc',['../classMileageFileHandler.html#a658e7ac1beb2f1486954e429cfbacc33',1,'MileageFileHandler']]],
-  ['expected_5foutput_14',['EXPECTED_OUTPUT',['../namespacetest-entry-point.html#ac6c7311c2ad71ca502701b2128bc14b9',1,'test-entry-point']]]
+  ['batterycontroller_0',['BatteryController',['../classBatteryController.html',1,'BatteryController'],['../classBatteryController.html#ab2cd6e8c9f9a6b009fd437d38162ec4a',1,'BatteryController::BatteryController()'],['../md_apps_2cluster_2app__tests_2unit_2system_2documentation_2BatteryController__TestDoc.html',1,'Unit Tests: BatteryController']]],
+  ['batterycontroller_1',['batteryController',['../classSystemManagerTest.html#ac36bd06efb57822ee88c5ca075a3ee44',1,'SystemManagerTest::batteryController'],['../classBatteryControllerTest.html#a0112c0afa78eb8a13cca1d62802272ba',1,'BatteryControllerTest::batteryController']]],
+  ['batterycontroller_2ecpp_2',['BatteryController.cpp',['../BatteryController_8cpp.html',1,'']]],
+  ['batterycontroller_2ehpp_3',['BatteryController.hpp',['../BatteryController_8hpp.html',1,'']]],
+  ['batterycontroller_5ftestdoc_2emd_4',['BatteryController_TestDoc.md',['../BatteryController__TestDoc_8md.html',1,'']]],
+  ['batterycontrollertest_5',['BatteryControllerTest',['../classBatteryControllerTest.html',1,'']]],
+  ['batterypercentageemitssignalonchange_20tt_6',['3. &lt;tt&gt;BatteryPercentageEmitsSignalOnChange&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2data_2documentation_2SystemDataManager__TestDoc.html#autotoc_md229',1,'']]],
+  ['batterypercentageupdated_7',['batteryPercentageUpdated',['../classDataManager.html#a03f614a2259b6a7070150d90ecfa987f',1,'DataManager::batteryPercentageUpdated()'],['../classSystemDataManager.html#ae265aba111c6666b80f4300a05f298df',1,'SystemDataManager::batteryPercentageUpdated()'],['../classSystemManager.html#a1d37beeb680ddc03026295dcdf7e4bc3',1,'SystemManager::batteryPercentageUpdated()']]],
+  ['bindings_8',['bindings',['../classTensorRTInferencer.html#ac0787dec31ea80f10f29727aa20d2814',1,'TensorRTInferencer::bindings'],['../classYOLOv5TRT.html#a06c4039936c7d89d5eca037c28ac3a45',1,'YOLOv5TRT::bindings']]],
+  ['bits_9',['bits',['../classSPIController.html#ab215fe00d0693bd5aa4b4711abf99ca2',1,'SPIController']]],
+  ['blended_10',['blended',['../structLaneCurveFitter_1_1CenterlineResult.html#aa92048f1e7d2971fa3647329b153871a',1,'LaneCurveFitter::CenterlineResult']]],
+  ['blob_11',['blob',['../classYOLOv5TRT.html#a966190df26d4783b396310fe6b93da20',1,'YOLOv5TRT']]],
+  ['block_12',['block',['../unioni2c__smbus__data.html#ae3dc6ce058d6ab3672bf68dc460e007d',1,'i2c_smbus_data']]],
+  ['boundaddress_13',['boundAddress',['../classPublisher.html#a8b88b5175b0e25eccef03662f7b5dcf0',1,'Publisher']]],
+  ['byte_14',['byte',['../unioni2c__smbus__data.html#a7145699abf962d118aa1c78ff864e892',1,'i2c_smbus_data']]]
 ];

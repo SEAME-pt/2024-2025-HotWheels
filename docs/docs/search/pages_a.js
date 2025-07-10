@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🏁_20🏎️_0',['HotWheels 🏁 🏎️',['../index.html',1,'']]]
+  ['raspberrypi_0',['Nvidea or RaspberryPi',['../md_ADR_2001-NvideaOrRaspberry.html',1,'']]]
 ];

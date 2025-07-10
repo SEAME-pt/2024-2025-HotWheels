@@ -1,4 +1,29 @@
 var searchData=
 [
-  ['1_20tt_20src_20tt_0',['1. &lt;tt&gt;src/&lt;/tt&gt;',['..//home/michel/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/cluster/README.md#autotoc_md7',1,'']]]
+  ['1_20tt_20addspeed_5fdoesnotcrash_20tt_0',['1. &lt;tt&gt;AddSpeed_DoesNotCrash&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2mileage_2documentation_2MileageCalculator__TestDoc.html#autotoc_md251',1,'']]],
+  ['1_20tt_20dataframetest_20tt_1',['1. &lt;tt&gt;DataFrameTest&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2MCP2515Device__TestDoc.html#autotoc_md68',1,'']]],
+  ['1_20tt_20ensurefileexists_5ffiledoesnotexist_5fcreatesfilewithzeromileage_20tt_2',['1. &lt;tt&gt;EnsureFileExists_FileDoesNotExist_CreatesFileWithZeroMileage&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2mileage_2documentation_2MileageFileHandler__TestDoc.html#autotoc_md266',1,'']]],
+  ['1_20tt_20forwardmileagedata_20tt_3',['1. &lt;tt&gt;ForwardMileageData&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2MileageManager__TestDoc.html#autotoc_md83',1,'']]],
+  ['1_20tt_20forwardspeeddatafrommcp2515_20tt_4',['1. &lt;tt&gt;ForwardSpeedDataFromMCP2515&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2CanBusManager__TestDoc.html#autotoc_md41',1,'']]],
+  ['1_20tt_20forwardspeeddatatovehicledatamanager_20tt_5',['1. &lt;tt&gt;ForwardSpeedDataToVehicleDataManager&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2DataManager__TestDoc.html#autotoc_md51',1,'']]],
+  ['1_20tt_20getwifistatus_5fconnected_20tt_6',['1. &lt;tt&gt;GetWifiStatus_Connected&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2system_2documentation_2SystemInfoProvider__TestDoc.html#autotoc_md301',1,'']]],
+  ['1_20tt_20initialization_5fcallscalibration_20tt_7',['1. &lt;tt&gt;Initialization_CallsCalibration&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2system_2documentation_2BatteryController__TestDoc.html#autotoc_md292',1,'']]],
+  ['1_20tt_20initializationsuccess_20tt_8',['1. &lt;tt&gt;InitializationSuccess&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2MCP2515Controller__TestDoc.html#autotoc_md176',1,'']]],
+  ['1_20tt_20initialize_5floadsmileagefromfile_20tt_9',['1. &lt;tt&gt;Initialize_LoadsMileageFromFile&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2mileage_2documentation_2MileageManager__TestDoc.html#autotoc_md279',1,'']]],
+  ['1_20tt_20opendevicesuccess_20tt_10',['1. &lt;tt&gt;OpenDeviceSuccess&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2SPIController__TestDoc.html#autotoc_md195',1,'']]],
+  ['1_20tt_20registerhandlersuccess_20tt_11',['1. &lt;tt&gt;RegisterHandlerSuccess&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2CANMessageProcessor__TestDoc.html#autotoc_md132',1,'']]],
+  ['1_20tt_20resetchipsuccess_20tt_12',['1. &lt;tt&gt;ResetChipSuccess&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2MCP2515Configurator__TestDoc.html#autotoc_md147',1,'']]],
+  ['1_20tt_20rpmdataemitssignal_20tt_13',['1. &lt;tt&gt;RpmDataEmitsSignal&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2data_2documentation_2VehicleDataManager__TestDoc.html#autotoc_md236',1,'']]],
+  ['1_20tt_20speedsignalemitscorrectly_20tt_14',['1. &lt;tt&gt;SpeedSignalEmitsCorrectly&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2CanBusManager__TestsDoc.html#autotoc_md117',1,'']]],
+  ['1_20tt_20src_20tt_15',['1. &lt;tt&gt;src/&lt;/tt&gt;',['..//home/michel/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/cluster/README.md#autotoc_md332',1,'']]],
+  ['1_20tt_20timedataemitssignal_20tt_16',['1. &lt;tt&gt;TimeDataEmitsSignal&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2data_2documentation_2SystemDataManager__TestDoc.html#autotoc_md225',1,'']]],
+  ['1_20tt_20toggledrivingmodeemitssignal_20tt_17',['1. &lt;tt&gt;ToggleDrivingModeEmitsSignal&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2data_2documentation_2ClusterSettiingsManager__TestDoc.html#autotoc_md214',1,'']]],
+  ['1_20tt_20updatetime_5femitscorrectsignal_20tt_18',['1. &lt;tt&gt;UpdateTime_EmitsCorrectSignal&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2system_2documentation_2SystemManager__TestDoc.html#autotoc_md320',1,'']]],
+  ['1_20tt_20updatetimesignal_20tt_19',['1. &lt;tt&gt;UpdateTimeSignal&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2SystemManager__TestDoc.html#autotoc_md95',1,'']]],
+  ['1_20unit_20tests_20tt_20unit_20tt_20',['1. Unit Tests (&lt;tt&gt;unit/&lt;/tt&gt;)',['..//home/michel/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/cluster/app_tests/README.md#autotoc_md107',1,'']]],
+  ['10_20tt_20toggleclustertheme_20tt_21',['10. &lt;tt&gt;ToggleClusterTheme&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2DataManager__TestDoc.html#autotoc_md60',1,'']]],
+  ['10_20tt_20verifymodefailure_20tt_22',['10. &lt;tt&gt;VerifyModeFailure&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2MCP2515Configurator__TestDoc.html#autotoc_md165',1,'']]],
+  ['11_20tt_20readcanmessagewithdata_20tt_23',['11. &lt;tt&gt;ReadCANMessageWithData&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2MCP2515Configurator__TestDoc.html#autotoc_md167',1,'']]],
+  ['11_20tt_20toggleclustermetrics_20tt_24',['11. &lt;tt&gt;ToggleClusterMetrics&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2DataManager__TestDoc.html#autotoc_md61',1,'']]],
+  ['12_20tt_20readcanmessagenodata_20tt_25',['12. &lt;tt&gt;ReadCANMessageNoData&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2MCP2515Configurator__TestDoc.html#autotoc_md169',1,'']]]
 ];

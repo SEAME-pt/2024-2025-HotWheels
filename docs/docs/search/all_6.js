@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['_5ficei_5fbegin_5fgetcartemperaturevalue_0',['_iceI_begin_getCarTemperatureValue',['../classIceProxy_1_1Data_1_1CarData.html#a1c91f19a75109ebf664f6a4e82e6c12d',1,'IceProxy::Data::CarData']]],
-  ['_5ficei_5fbegin_5fgetjoystickvalue_1',['_iceI_begin_getJoystickValue',['../classIceProxy_1_1Data_1_1CarData.html#a9601f8a1b34a4da7c306aa60a51ffad1',1,'IceProxy::Data::CarData']]],
-  ['_5ficei_5fbegin_5fsetcartemperaturevalue_2',['_iceI_begin_setCarTemperatureValue',['../classIceProxy_1_1Data_1_1CarData.html#a4bdbbdeb77507e580ef045fd48ac363b',1,'IceProxy::Data::CarData']]],
-  ['_5ficei_5fbegin_5fsetjoystickvalue_3',['_iceI_begin_setJoystickValue',['../classIceProxy_1_1Data_1_1CarData.html#a28d25cfcaba594bef8f7eb05737b6c75',1,'IceProxy::Data::CarData']]],
-  ['_5fresponse_4',['_response',['../classData_1_1CallbackNC__CarData__getJoystickValue.html#a94f81943c41f493b0bc3fa3bd80261f0',1,'Data::CallbackNC_CarData_getJoystickValue::_response'],['../classData_1_1Callback__CarData__getJoystickValue.html#a6f232fffb31641c574668ad276c0afef',1,'Data::Callback_CarData_getJoystickValue::_response'],['../classData_1_1CallbackNC__CarData__getCarTemperatureValue.html#a38ca5e51cba60517579d55d24a665876',1,'Data::CallbackNC_CarData_getCarTemperatureValue::_response'],['../classData_1_1Callback__CarData__getCarTemperatureValue.html#a17af2c5d46fa46a27965dca140b003b2',1,'Data::Callback_CarData_getCarTemperatureValue::_response']]]
+  ['6_20tt_20configurefiltersandmasks_20tt_0',['6. &lt;tt&gt;ConfigureFiltersAndMasks&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2MCP2515Configurator__TestDoc.html#autotoc_md157',1,'']]],
+  ['6_20tt_20forwardtemperaturedatatosystemdatamanager_20tt_1',['6. &lt;tt&gt;ForwardTemperatureDataToSystemDataManager&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2DataManager__TestDoc.html#autotoc_md56',1,'']]],
+  ['6_20tt_20getipaddress_5fvalid_20tt_2',['6. &lt;tt&gt;GetIpAddress_Valid&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2system_2documentation_2SystemInfoProvider__TestDoc.html#autotoc_md311',1,'']]],
+  ['6_20tt_20processreadingcallshandlers_20tt_3',['6. &lt;tt&gt;ProcessReadingCallsHandlers&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2MCP2515Controller__TestDoc.html#autotoc_md186',1,'']]],
+  ['6_20tt_20shutdownmileagemanager_20tt_4',['6. &lt;tt&gt;ShutdownMileageManager&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2integration_2documentation_2MileageManager__TestDoc.html#autotoc_md88',1,'']]],
+  ['6_20tt_20spitransfersuccess_20tt_5',['6. &lt;tt&gt;SpiTransferSuccess&lt;/tt&gt;',['../md_apps_2cluster_2app__tests_2unit_2canbus_2documentation_2SPIController__TestDoc.html#autotoc_md205',1,'']]]
 ];

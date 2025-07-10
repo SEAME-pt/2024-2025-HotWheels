@@ -142,10 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa925f92fc442ed25200f3bcd0df3d08a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the driving mode.  <br /></td></tr>
 <tr class="separator:aa925f92fc442ed25200f3bcd0df3d08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a054951ef02cff415b8383706df4f2318" id="r_a054951ef02cff415b8383706df4f2318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a054951ef02cff415b8383706df4f2318">readJoystickEnable</a> ()</td></tr>
-<tr class="memdesc:a054951ef02cff415b8383706df4f2318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads joystick enable status.  <br /></td></tr>
 <tr class="separator:a054951ef02cff415b8383706df4f2318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c12f7aeb433c924a74a050c71d34d1d" id="r_a7c12f7aeb433c924a74a050c71d34d1d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c12f7aeb433c924a74a050c71d34d1d">isProcessRunning</a> (const QString &amp;processName)</td></tr>
-<tr class="memdesc:a7c12f7aeb433c924a74a050c71d34d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a process is running.  <br /></td></tr>
 <tr class="separator:a7c12f7aeb433c924a74a050c71d34d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad305d285479c3ce10e8a7eb70845db5f" id="r_ad305d285479c3ce10e8a7eb70845db5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad305d285479c3ce10e8a7eb70845db5f">ControlsManager</a> (int argc, char **argv, QObject *parent=nullptr)</td></tr>
 <tr class="separator:ad305d285479c3ce10e8a7eb70845db5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,29 +158,27 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a84729614cd7d247e04668157884dd262"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27fd333bc9783fb3c655c4df1fa41ff3" id="r_a27fd333bc9783fb3c655c4df1fa41ff3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="car__controls_2includes_2enums_8hpp.html#aadcca5c9e88a4090b926cef9bf757a70">DrivingMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27fd333bc9783fb3c655c4df1fa41ff3">m_currentMode</a></td></tr>
 <tr class="separator:a27fd333bc9783fb3c655c4df1fa41ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4de356611c9537bbcba360737861bc7" id="r_ae4de356611c9537bbcba360737861bc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classClientThread.html">ClientThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4de356611c9537bbcba360737861bc7">m_clientObject</a></td></tr>
-<tr class="separator:ae4de356611c9537bbcba360737861bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f649c1700413e88c17c7f918f6c990f" id="r_a4f649c1700413e88c17c7f918f6c990f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classData_1_1CarDataI.html">Data::CarDataI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f649c1700413e88c17c7f918f6c990f">m_carDataObject</a></td></tr>
-<tr class="separator:a4f649c1700413e88c17c7f918f6c990f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd0d397d17de755d22a9df3aca7be3f2" id="r_afd0d397d17de755d22a9df3aca7be3f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSubscriber.html">Subscriber</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd0d397d17de755d22a9df3aca7be3f2">m_subscriberJoystickObject</a></td></tr>
+<tr class="separator:afd0d397d17de755d22a9df3aca7be3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1267dcf40de873f90ba7e42fedfcf6c8" id="r_a1267dcf40de873f90ba7e42fedfcf6c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCameraStreamer.html">CameraStreamer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1267dcf40de873f90ba7e42fedfcf6c8">m_cameraStreamerObject</a></td></tr>
+<tr class="separator:a1267dcf40de873f90ba7e42fedfcf6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ac1c730047a3fb2454df500b3854564" id="r_a0ac1c730047a3fb2454df500b3854564"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ac1c730047a3fb2454df500b3854564">m_running</a></td></tr>
+<tr class="separator:a0ac1c730047a3fb2454df500b3854564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6cc8bdbd8f29c8f02d61f40c1e93b66" id="r_ab6cc8bdbd8f29c8f02d61f40c1e93b66"><td class="memItemLeft" align="right" valign="top">QThread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6cc8bdbd8f29c8f02d61f40c1e93b66">m_manualControllerThread</a></td></tr>
 <tr class="separator:ab6cc8bdbd8f29c8f02d61f40c1e93b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a429927eb48e674bb006e629eb2a1c1ee" id="r_a429927eb48e674bb006e629eb2a1c1ee"><td class="memItemLeft" align="right" valign="top">QThread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a429927eb48e674bb006e629eb2a1c1ee">m_processMonitorThread</a></td></tr>
-<tr class="separator:a429927eb48e674bb006e629eb2a1c1ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4683d7439951d3f26aed751919a1337" id="r_af4683d7439951d3f26aed751919a1337"><td class="memItemLeft" align="right" valign="top">QThread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4683d7439951d3f26aed751919a1337">m_carDataThread</a></td></tr>
-<tr class="separator:af4683d7439951d3f26aed751919a1337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad885e25dba1377024076c08776b85bc9" id="r_ad885e25dba1377024076c08776b85bc9"><td class="memItemLeft" align="right" valign="top">QThread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad885e25dba1377024076c08776b85bc9">m_clientThread</a></td></tr>
-<tr class="separator:ad885e25dba1377024076c08776b85bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70755ea08a6a1acd1f5180332b49d661" id="r_a70755ea08a6a1acd1f5180332b49d661"><td class="memItemLeft" align="right" valign="top">QThread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70755ea08a6a1acd1f5180332b49d661">m_joystickControlThread</a></td></tr>
 <tr class="separator:a70755ea08a6a1acd1f5180332b49d661"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae60a25481d357512a928e65be0fc5b13" id="r_ae60a25481d357512a928e65be0fc5b13"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae60a25481d357512a928e65be0fc5b13">m_threadRunning</a></td></tr>
-<tr class="separator:ae60a25481d357512a928e65be0fc5b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c58661742cf5d643a2047d8d1595800" id="r_a2c58661742cf5d643a2047d8d1595800"><td class="memItemLeft" align="right" valign="top">QThread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c58661742cf5d643a2047d8d1595800">m_subscriberJoystickThread</a></td></tr>
+<tr class="separator:a2c58661742cf5d643a2047d8d1595800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a970f0084079ce732fa07099aa4a27f17" id="r_a970f0084079ce732fa07099aa4a27f17"><td class="memItemLeft" align="right" valign="top">QThread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a970f0084079ce732fa07099aa4a27f17">m_cameraStreamerThread</a></td></tr>
+<tr class="separator:a970f0084079ce732fa07099aa4a27f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classControlsManager.html" title="The ControlsManager class.">ControlsManager</a> class. </p>
 <p>Class that manages the car's controls. QObject.</p>
 <p>This class is responsible for managing the controls of the car. </p>
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00030">30</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00031">31</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad305d285479c3ce10e8a7eb70845db5f" name="ad305d285479c3ce10e8a7eb70845db5f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad305d285479c3ce10e8a7eb70845db5f">&#9670;&#160;</a></span>ControlsManager() <span class="overload">[1/2]</span></h2>
@@ -261,10 +257,10 @@ Here is the call graph for this function:</div>
 
 <p>Destructor for the <a class="el" href="classControlsManager.html" title="The ControlsManager class.">ControlsManager</a> class. </p>
 <p>Destroy the <a class="el" href="classControlsManager.html" title="The ControlsManager class.">ControlsManager</a> object.</p>
-<p>Safely stops and cleans up all threads and resources associated with the <a class="el" href="classControlsManager.html" title="The ControlsManager class.">ControlsManager</a>. This includes stopping the client, shared memory, process monitoring, joystick control, and manual controller threads. It also deletes associated objects such as m_carDataObject, m_clientObject, and m_manualController.</p>
+<p>Safely stops and cleans up all threads and resources associated with the <a class="el" href="classControlsManager.html" title="The ControlsManager class.">ControlsManager</a>. This includes stopping the client, shared memory, process monitoring, joystick control, and manual controller threads. It also deletes associated objects such as m_carDataObject, m_subscriberJoystickThread, and m_manualController.</p>
 <p>This destructor stops the joystick controller and waits for the thread to finish. </p>
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html#l00132">132</a> of file <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html#l00139">139</a> of file <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -382,7 +378,12 @@ Here is the caller graph for this function:</div>
 </dl>
 <p>This slot is called when the driving mode of the vehicle is changed. It updates the current driving mode by calling the <a class="el" href="#aa925f92fc442ed25200f3bcd0df3d08a" title="Sets the driving mode.">setMode()</a> method. </p>
 
-<p class="definition">Definition at line <a class="el" href="cluster_2sources_2controls_2ControlsManager_8cpp_source.html#l00067">67</a> of file <a class="el" href="cluster_2sources_2controls_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cluster_2sources_2controls_2ControlsManager_8cpp_source.html#l00051">51</a> of file <a class="el" href="cluster_2sources_2controls_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classControlsManager_ad3cd1fa6493f5e17cc1806d993266fac_cgraph.png" border="0" usemap="#aclassControlsManager_ad3cd1fa6493f5e17cc1806d993266fac_cgraph" alt=""/></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -406,23 +407,6 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Check if a process is running. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">processName</td><td>The name of the process to check. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the process is running, false otherwise.</dd></dl>
-<p>Uses the <code>pgrep</code> command to determine if a given process is active. </p>
-
-<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html#l00189">189</a> of file <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classControlsManager_a7c12f7aeb433c924a74a050c71d34d1d_icgraph.png" border="0" usemap="#aclassControlsManager_a7c12f7aeb433c924a74a050c71d34d1d_icgraph" alt=""/></div>
-</div>
-
 </div>
 </div>
 <a id="a054951ef02cff415b8383706df4f2318" name="a054951ef02cff415b8383706df4f2318"></a>
@@ -439,21 +423,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Reads joystick enable status. </p>
-<p>Checks if joystick control is enabled through the client middleware and updates the driving mode accordingly. </p>
-
-<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html#l00203">203</a> of file <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classControlsManager_a054951ef02cff415b8383706df4f2318_cgraph.png" border="0" usemap="#aclassControlsManager_a054951ef02cff415b8383706df4f2318_cgraph" alt=""/></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classControlsManager_a054951ef02cff415b8383706df4f2318_icgraph.png" border="0" usemap="#aclassControlsManager_a054951ef02cff415b8383706df4f2318_icgraph" alt=""/></div>
-</div>
 
 </div>
 </div>
@@ -481,7 +450,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <p>Updates the current driving mode if it has changed. </p>
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html#l00221">221</a> of file <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html#l00196">196</a> of file <a class="el" href="car__controls_2sources_2ControlsManager_8cpp_source.html">ControlsManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -521,8 +490,8 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
-<a id="a4f649c1700413e88c17c7f918f6c990f" name="a4f649c1700413e88c17c7f918f6c990f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f649c1700413e88c17c7f918f6c990f">&#9670;&#160;</a></span>m_carDataObject</h2>
+<a id="a1267dcf40de873f90ba7e42fedfcf6c8" name="a1267dcf40de873f90ba7e42fedfcf6c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1267dcf40de873f90ba7e42fedfcf6c8">&#9670;&#160;</a></span>m_cameraStreamerObject</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -531,7 +500,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classData_1_1CarDataI.html">Data::CarDataI</a>* ControlsManager::m_carDataObject</td>
+          <td class="memname"><a class="el" href="classCameraStreamer.html">CameraStreamer</a>* ControlsManager::m_cameraStreamerObject</td>
         </tr>
       </table>
   </td>
@@ -541,12 +510,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00038">38</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00040">40</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af4683d7439951d3f26aed751919a1337" name="af4683d7439951d3f26aed751919a1337"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4683d7439951d3f26aed751919a1337">&#9670;&#160;</a></span>m_carDataThread</h2>
+<a id="a970f0084079ce732fa07099aa4a27f17" name="a970f0084079ce732fa07099aa4a27f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a970f0084079ce732fa07099aa4a27f17">&#9670;&#160;</a></span>m_cameraStreamerThread</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -555,7 +524,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QThread* ControlsManager::m_carDataThread</td>
+          <td class="memname">QThread* ControlsManager::m_cameraStreamerThread</td>
         </tr>
       </table>
   </td>
@@ -565,55 +534,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00042">42</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ae4de356611c9537bbcba360737861bc7" name="ae4de356611c9537bbcba360737861bc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4de356611c9537bbcba360737861bc7">&#9670;&#160;</a></span>m_clientObject</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classClientThread.html">ClientThread</a> * ControlsManager::m_clientObject</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00037">37</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ad885e25dba1377024076c08776b85bc9" name="ad885e25dba1377024076c08776b85bc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad885e25dba1377024076c08776b85bc9">&#9670;&#160;</a></span>m_clientThread</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QThread * ControlsManager::m_clientThread</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00043">43</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00048">48</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -637,7 +558,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00036">36</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00037">37</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -661,7 +582,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00034">34</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00035">35</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -685,7 +606,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00044">44</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00045">45</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -709,7 +630,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00035">35</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00036">36</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
@@ -733,12 +654,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00040">40</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00044">44</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a429927eb48e674bb006e629eb2a1c1ee" name="a429927eb48e674bb006e629eb2a1c1ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a429927eb48e674bb006e629eb2a1c1ee">&#9670;&#160;</a></span>m_processMonitorThread</h2>
+<a id="a0ac1c730047a3fb2454df500b3854564" name="a0ac1c730047a3fb2454df500b3854564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac1c730047a3fb2454df500b3854564">&#9670;&#160;</a></span>m_running</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -747,7 +668,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QThread* ControlsManager::m_processMonitorThread</td>
+          <td class="memname">std::atomic&lt;bool&gt; ControlsManager::m_running</td>
         </tr>
       </table>
   </td>
@@ -757,12 +678,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00041">41</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00042">42</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae60a25481d357512a928e65be0fc5b13" name="ae60a25481d357512a928e65be0fc5b13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae60a25481d357512a928e65be0fc5b13">&#9670;&#160;</a></span>m_threadRunning</h2>
+<a id="afd0d397d17de755d22a9df3aca7be3f2" name="afd0d397d17de755d22a9df3aca7be3f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd0d397d17de755d22a9df3aca7be3f2">&#9670;&#160;</a></span>m_subscriberJoystickObject</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -771,7 +692,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; ControlsManager::m_threadRunning</td>
+          <td class="memname"><a class="el" href="classSubscriber.html">Subscriber</a>* ControlsManager::m_subscriberJoystickObject</td>
         </tr>
       </table>
   </td>
@@ -781,7 +702,31 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00046">46</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00039">39</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2c58661742cf5d643a2047d8d1595800" name="a2c58661742cf5d643a2047d8d1595800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c58661742cf5d643a2047d8d1595800">&#9670;&#160;</a></span>m_subscriberJoystickThread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QThread* ControlsManager::m_subscriberJoystickThread</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html#l00047">47</a> of file <a class="el" href="car__controls_2includes_2ControlsManager_8hpp_source.html">ControlsManager.hpp</a>.</p>
 
 </div>
 </div>

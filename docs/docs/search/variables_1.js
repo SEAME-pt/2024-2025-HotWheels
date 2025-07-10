@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['ackreceived_0',['ackReceived',['../structCANFrame.html#acf965134bf0e6566b91dcf392a1f34ff',1,'CANFrame']]],
-  ['app_1',['APP',['../namespacetest-entry-point.html#aad59e08b568b9ce8d5e97dfef6ab87f8',1,'test-entry-point']]],
-  ['app_2',['app',['../classCanBusManagerTest.html#a0e056971cf1325dbaa6448aec2f91a97',1,'CanBusManagerTest::app'],['../classDataManagerTest.html#a9fc3b8eba4b418dcb4cd9b0381005cca',1,'DataManagerTest::app'],['../classMileageManagerTest.html#aaf660189417b3c03d143ada2c6eaef3b',1,'MileageManagerTest::app'],['../classSystemManagerTest.html#a9f9c74597f93629b39bd07bd5929f3d2',1,'SystemManagerTest::app']]]
+  ['batterycontroller_0',['batteryController',['../classSystemManagerTest.html#ac36bd06efb57822ee88c5ca075a3ee44',1,'SystemManagerTest::batteryController'],['../classBatteryControllerTest.html#a0112c0afa78eb8a13cca1d62802272ba',1,'BatteryControllerTest::batteryController']]],
+  ['bindings_1',['bindings',['../classTensorRTInferencer.html#ac0787dec31ea80f10f29727aa20d2814',1,'TensorRTInferencer::bindings'],['../classYOLOv5TRT.html#a06c4039936c7d89d5eca037c28ac3a45',1,'YOLOv5TRT::bindings']]],
+  ['bits_2',['bits',['../classSPIController.html#ab215fe00d0693bd5aa4b4711abf99ca2',1,'SPIController']]],
+  ['blended_3',['blended',['../structLaneCurveFitter_1_1CenterlineResult.html#aa92048f1e7d2971fa3647329b153871a',1,'LaneCurveFitter::CenterlineResult']]],
+  ['blob_4',['blob',['../classYOLOv5TRT.html#a966190df26d4783b396310fe6b93da20',1,'YOLOv5TRT']]],
+  ['block_5',['block',['../unioni2c__smbus__data.html#ae3dc6ce058d6ab3672bf68dc460e007d',1,'i2c_smbus_data']]],
+  ['boundaddress_6',['boundAddress',['../classPublisher.html#a8b88b5175b0e25eccef03662f7b5dcf0',1,'Publisher']]],
+  ['byte_7',['byte',['../unioni2c__smbus__data.html#a7145699abf962d118aa1c78ff864e892',1,'i2c_smbus_data']]]
 ];

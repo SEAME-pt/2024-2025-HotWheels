@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['filehandler_0',['fileHandler',['../classMileageManagerTest.html#ae7b79f610074195883224a9c34b7a95e',1,'MileageManagerTest']]],
-  ['filepath_1',['filePath',['../classMileageFileHandler.html#a6c6a01e6a67269a3e4860e4a79f4361b',1,'MileageFileHandler']]]
+  ['g_5fcontrolsmanager_0',['g_controlsManager',['../car__controls_2sources_2main_8cpp.html#a254ebed8274bb5468b18365efcf4e112',1,'main.cpp']]],
+  ['gpu_5ffloat_1',['gpu_float',['../classYOLOv5TRT.html#adb334ed056b2ec39f5ed5b2e750ea344',1,'YOLOv5TRT']]],
+  ['gpu_5fimage_2',['gpu_image',['../classYOLOv5TRT.html#ae37e458f24bcefdf6ebbcfad5df9d53c',1,'YOLOv5TRT']]],
+  ['gpu_5fresized_3',['gpu_resized',['../classYOLOv5TRT.html#a146ea0361e1b0aa0ced1f0491126a0c9',1,'YOLOv5TRT']]]
 ];

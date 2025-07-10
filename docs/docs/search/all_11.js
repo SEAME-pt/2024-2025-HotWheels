@@ -1,5 +1,26 @@
 var searchData=
 [
-  ['keeprunning_0',['keepRunning',['../car__controls_2sources_2main_8cpp.html#acc2ab0d6dfe49c6a377213be87e1bf03',1,'main.cpp']]],
-  ['kilometers_1',['Kilometers',['../car__controls_2includes_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1',1,'Kilometers:&#160;enums.hpp'],['../cluster_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1',1,'Kilometers:&#160;enums.hpp'],['../car__controls_2includes_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1',1,'Kilometers:&#160;enums.hpp'],['../cluster_2includes_2data_2enums_8hpp.html#af3fd2dcbd5b122a026970fb65fdbe71eaee86f23755d4ce16a2df9b51d92eeca1',1,'Kilometers:&#160;enums.hpp']]]
+  ['h_0',['h',['../structDetection.html#a62d661df37b4f486015c2fb44ae03a6b',1,'Detection']]],
+  ['handlebatterypercentage_1',['handleBatteryPercentage',['../classDataManager.html#ac5bb6cd13af677b42ff0ce32c05b4337',1,'DataManager::handleBatteryPercentage()'],['../classSystemDataManager.html#ad4d7e0b454c38eed521f40215557f250',1,'SystemDataManager::handleBatteryPercentage()']]],
+  ['handledirectiondata_2',['handleDirectionData',['../classDataManager.html#afcadf5c275fd6fd89c4199abebc8b03d',1,'DataManager::handleDirectionData()'],['../classVehicleDataManager.html#a96a6fd992d1922733cd4e69471756f41',1,'VehicleDataManager::handleDirectionData()']]],
+  ['handleinferenceframe_3',['handleInferenceFrame',['../classDataManager.html#a9e8a662480b4e351e4c5a60ba6f6643d',1,'DataManager']]],
+  ['handleipaddressdata_4',['handleIpAddressData',['../classDataManager.html#a1619eef84eba4d778ebdfda1198257ad',1,'DataManager::handleIpAddressData()'],['../classSystemDataManager.html#ac1da4f82db9ddc9badb703f2069d6450',1,'SystemDataManager::handleIpAddressData()']]],
+  ['handlemileageupdate_5',['handleMileageUpdate',['../classDataManager.html#aa15248dd048e25abe66a9120056c5eb9',1,'DataManager::handleMileageUpdate()'],['../classVehicleDataManager.html#abb246c989c8a11c45f821c0ff32ac3b3',1,'VehicleDataManager::handleMileageUpdate()']]],
+  ['handlerpmdata_6',['handleRpmData',['../classDataManager.html#a90ce082fe6b78b39835dfb6826a3b8f3',1,'DataManager::handleRpmData()'],['../classVehicleDataManager.html#a080f5c555bb54d96455e44f1a906bc65',1,'VehicleDataManager::handleRpmData()']]],
+  ['handlers_7',['handlers',['../classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d',1,'CANMessageProcessor']]],
+  ['handlesigint_8',['handleSigint',['../car__controls_2sources_2main_8cpp.html#a0951f538a6bbe4f93045410ed3fed406',1,'handleSigint(int):&#160;main.cpp'],['../cluster_2sources_2main_2main_8cpp.html#a0951f538a6bbe4f93045410ed3fed406',1,'handleSigint(int):&#160;main.cpp']]],
+  ['handlespeeddata_9',['handleSpeedData',['../classDataManager.html#a9634f128fb690a5facc62a57efe9bcbc',1,'DataManager::handleSpeedData()'],['../classVehicleDataManager.html#a4379e81efb70186d8103e61003df1e2e',1,'VehicleDataManager::handleSpeedData()']]],
+  ['handlesteeringdata_10',['handleSteeringData',['../classDataManager.html#a8d76e60050120ecb940f90726e03cbf8',1,'DataManager::handleSteeringData()'],['../classVehicleDataManager.html#a2c390c4430b442344f03b4730b848860',1,'VehicleDataManager::handleSteeringData()']]],
+  ['handletemperaturedata_11',['handleTemperatureData',['../classDataManager.html#a866f45795ff896aecf89d853f4f1ac48',1,'DataManager::handleTemperatureData()'],['../classSystemDataManager.html#a753ebaa1e5803cd19b645c5559d21936',1,'SystemDataManager::handleTemperatureData()']]],
+  ['handletimedata_12',['handleTimeData',['../classDataManager.html#a0198245d11fb32c03ebeb4169b223001',1,'DataManager::handleTimeData()'],['../classSystemDataManager.html#aed65acc81f73877571322dec167dbbce',1,'SystemDataManager::handleTimeData()']]],
+  ['handlewifidata_13',['handleWifiData',['../classDataManager.html#aafaa2c92f70e5a3296caeab490c29de9',1,'DataManager::handleWifiData()'],['../classSystemDataManager.html#a7ad861f3ee72f7b152026b24624091de',1,'SystemDataManager::handleWifiData()']]],
+  ['handling_14',['Exception Handling',['../md_apps_2car__controls_2tests_2documentation_2PeripheralController__TestDoc.html#autotoc_md32',1,'']]],
+  ['has_5fnew_5fframe_5f_15',['has_new_frame_',['../classFrameBufferSegmentation.html#a100066d35e188f4a3914dcbeacf36849',1,'FrameBufferSegmentation::has_new_frame_'],['../classFrameBufferDetection.html#ae58303afa16efda932ad921be7d42432',1,'FrameBufferDetection::has_new_frame_']]],
+  ['hassignflip_16',['hasSignFlip',['../classLaneCurveFitter.html#ae1e25b91ea605440821ce3128f756232',1,'LaneCurveFitter']]],
+  ['hostdatabuffer_17',['hostDataBuffer',['../classYOLOv5TRT.html#afd6365f9178ca8a19cb2bc72d2c5c681',1,'YOLOv5TRT']]],
+  ['hostinput_18',['hostInput',['../classTensorRTInferencer.html#a079fa783ca990adb458376c012139e5f',1,'TensorRTInferencer']]],
+  ['hostoutput_19',['hostOutput',['../classTensorRTInferencer.html#add4433d834100df0be212260e52de17c',1,'TensorRTInferencer']]],
+  ['hotwheels_20🏁_20🏎️_20',['HotWheels 🏁 🏎️',['../index.html',1,'']]],
+  ['hotwheels_20instrument_20cluster_20⏲_20🎮_21',['HotWheels - Instrument Cluster ⏲ 🎮',['../md_Instrument-Cluster.html',1,'']]],
+  ['how_20it_20works_22',['🔧 How It Works',['../md_apps_2car__controls_2tests_2documentation_2PeripheralController__TestDoc.html#autotoc_md34',1,'']]]
 ];

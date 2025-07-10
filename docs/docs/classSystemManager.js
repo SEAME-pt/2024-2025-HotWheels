@@ -6,7 +6,6 @@ var classSystemManager =
     [ "getStatusTimer", "classSystemManager.html#a4fedb4364a32dad46754a53e797878de", null ],
     [ "getTimeTimer", "classSystemManager.html#a1afb87ba2cf06677863e52c7fe2f49f1", null ],
     [ "initialize", "classSystemManager.html#af40b45c958865de2ff03d0a8a7eafafa", null ],
-    [ "ipAddressUpdated", "classSystemManager.html#a05263f02e8e2e9a2ba441d7f55355193", null ],
     [ "shutdown", "classSystemManager.html#a79dccf0fa71b88589c122c4be79bdcfe", null ],
     [ "temperatureUpdated", "classSystemManager.html#a95c58f09a04fe52196c1c702c1f0afeb", null ],
     [ "timeUpdated", "classSystemManager.html#a294f03536732c243e439f29a4bd75bc8", null ],

@@ -5,9 +5,9 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="IPeripheralController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classIPeripheralController.html",tooltip="Interface for the peripheral controller."];
-  Node0 -> Node1 [id="edge48_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 [id="Node000001",label="MockPeripheralController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockPeripheralController.html",tooltip="Class to emulate the behavior of the peripheral controller."];
-  Node0 -> Node2 [id="edge49_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="PeripheralController",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classPeripheralController.html",tooltip="The PeripheralController class."];
+  Node0 [id="Node000000",label="IMileageCalculator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classIMileageCalculator.html",tooltip="Interface for calculating the mileage of a vehicle."];
+  Node0 -> Node1 [id="edge7_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="MileageCalculator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMileageCalculator.html",tooltip="Class that calculates the total distance traveled based on speed measurements."];
+  Node0 -> Node2 [id="edge8_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="MockMileageCalculator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classMockMileageCalculator.html",tooltip="Class to emulate the behavior of the MileageCalculator class."];
 }

@@ -132,6 +132,8 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:acc2ab0d6dfe49c6a377213be87e1bf03" id="r_acc2ab0d6dfe49c6a377213be87e1bf03"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc2ab0d6dfe49c6a377213be87e1bf03">keepRunning</a> = true</td></tr>
 <tr class="separator:acc2ab0d6dfe49c6a377213be87e1bf03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a254ebed8274bb5468b18365efcf4e112" id="r_a254ebed8274bb5468b18365efcf4e112"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classControlsManager.html">ControlsManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a254ebed8274bb5468b18365efcf4e112">g_controlsManager</a> = nullptr</td></tr>
+<tr class="separator:a254ebed8274bb5468b18365efcf4e112"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main function for the car controls service. </p>
@@ -166,7 +168,7 @@ Michel Batista (@MicchelFAB)</dd></dl>
 <p>SIGINT signal handler. </p>
 <p>This function will be called when the SIGINT signal is received. The function will quit the QCoreApplication. </p>
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2main_8cpp_source.html#l00027">27</a> of file <a class="el" href="car__controls_2sources_2main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2main_8cpp_source.html#l00029">29</a> of file <a class="el" href="car__controls_2sources_2main_8cpp_source.html">main.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -205,7 +207,7 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>An integer indicating the exit status of the application.</dd></dl>
 <p>Initializes the QCoreApplication and sets up signal handling for SIGINT. Instantiates the <a class="el" href="classControlsManager.html" title="The ControlsManager class.">ControlsManager</a> and starts the event loop. If an exception is thrown during execution, it is caught and logged, returning a non-zero exit status. The application runs until quit is invoked. </p>
 
-<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2main_8cpp_source.html#l00043">43</a> of file <a class="el" href="car__controls_2sources_2main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2main_8cpp_source.html#l00051">51</a> of file <a class="el" href="car__controls_2sources_2main_8cpp_source.html">main.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -215,6 +217,22 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a254ebed8274bb5468b18365efcf4e112" name="a254ebed8274bb5468b18365efcf4e112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a254ebed8274bb5468b18365efcf4e112">&#9670;&#160;</a></span>g_controlsManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classControlsManager.html">ControlsManager</a>* g_controlsManager = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="car__controls_2sources_2main_8cpp_source.html#l00022">22</a> of file <a class="el" href="car__controls_2sources_2main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
 <a id="acc2ab0d6dfe49c6a377213be87e1bf03" name="acc2ab0d6dfe49c6a377213be87e1bf03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc2ab0d6dfe49c6a377213be87e1bf03">&#9670;&#160;</a></span>keepRunning</h2>
 

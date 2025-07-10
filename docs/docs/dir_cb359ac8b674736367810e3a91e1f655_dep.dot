@@ -7,8 +7,15 @@ digraph "apps/car_controls/sources"
   compound=true
   subgraph clusterdir_3a73acc705ac82e894010e833d7f3973 {
     graph [ bgcolor="#ecf0f7", pencolor="grey50", label="car_controls", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_3a73acc705ac82e894010e833d7f3973.html",tooltip=""]
-  dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [label="includes", fillcolor="#9fb2da", color="grey25", style="filled", URL="dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6.html",tooltip=""];
-  dir_cb359ac8b674736367810e3a91e1f655 [label="sources", fillcolor="#ecf0f7", color="grey25", style="filled,bold", URL="dir_cb359ac8b674736367810e3a91e1f655.html",tooltip=""];
+  dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [label="includes", fillcolor="#9fb2da", color="red", style="filled", URL="dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6.html",tooltip=""];
+  subgraph clusterdir_cb359ac8b674736367810e3a91e1f655 {
+    graph [ bgcolor="#ecf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_cb359ac8b674736367810e3a91e1f655.html",tooltip=""]
+    dir_cb359ac8b674736367810e3a91e1f655 [shape=plaintext, label="sources"];
+  dir_14fe53cbd625da137d5a81cd1c759cb3 [label="inference", fillcolor="#9fb2da", color="grey25", style="filled", URL="dir_14fe53cbd625da137d5a81cd1c759cb3.html",tooltip=""];
+  dir_7a5b5e8225a7e2c9f47a1a9b047b2401 [label="objectDetection", fillcolor="#9fb2da", color="grey25", style="filled", URL="dir_7a5b5e8225a7e2c9f47a1a9b047b2401.html",tooltip=""];
   }
-  dir_cb359ac8b674736367810e3a91e1f655->dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [headlabel="4", labeldistance=1.5 headhref="dir_000026_000016.html" href="dir_000026_000016.html" color="steelblue1" fontcolor="steelblue1"];
+  }
+  dir_cb359ac8b674736367810e3a91e1f655->dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [headlabel="10", labeldistance=1.5 headhref="dir_000037_000022.html" href="dir_000037_000022.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_14fe53cbd625da137d5a81cd1c759cb3->dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [headlabel="4", labeldistance=1.5 headhref="dir_000025_000022.html" href="dir_000025_000022.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_7a5b5e8225a7e2c9f47a1a9b047b2401->dir_8ea8c5fce4af4e3cde6c27b4e1cbd2c6 [headlabel="2", labeldistance=1.5 headhref="dir_000035_000022.html" href="dir_000035_000022.html" color="steelblue1" fontcolor="steelblue1"];
 }
