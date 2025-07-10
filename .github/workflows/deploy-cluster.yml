@@ -3,13 +3,13 @@ name: Cross-Compile Cluster to aarch64
 on:
   push:
     branches:
-      - main
+      - test-coverage
     # paths:
     #   - 'apps/cluster/**'
     #   - 'ZeroMQ/**'
   pull_request:
     branches:
-      - main
+      - test-coverage
     # paths:
     #   - 'apps/cluster/**'
     #   - 'ZeroMQ/**'
@@ -70,8 +70,7 @@ jobs:
           lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/test_*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
           genhtml filtered.info --output-directory coverage-cluster
 
-      - name: Upload cluster coverage
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-cluster
-          path: apps/cluster/build/coverage-cluster
+      - name: Copy report to documentation branch
+        run: |
+          cd $DIR/build
+          cp -r coverage-cluster ~/Documents/documentation-branch
