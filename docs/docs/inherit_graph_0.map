@@ -1,0 +1,20 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,411,107,437"/>
+<area shape="rect" id="node2" href="$classBatteryControllerTest.html" title="Test fixture for testing the BatteryController class." alt="" coords="177,5,337,32"/>
+<area shape="rect" id="node3" href="$classCANMessageProcessorTest.html" title="Test fixture for testing the CANMessageProcessor class." alt="" coords="158,56,355,83"/>
+<area shape="rect" id="node4" href="$classCanBusManagerTest.html" title="Class to test the integration between the CanBusManager and the MCP2515 controller." alt="" coords="179,107,334,133"/>
+<area shape="rect" id="node5" href="$classClusterSettingsManagerTest.html" title="Test fixture for testing the ClusterSettingsManager class." alt="" coords="155,157,359,184"/>
+<area shape="rect" id="node6" href="$classDataManagerTest.html" title="Class to test the integration between the DataManager and the SystemDataManager, VehicleDataManager,..." alt="" coords="189,208,325,235"/>
+<area shape="rect" id="node7" href="$classDisplayManagerTest.html" title=" " alt="" coords="179,259,334,285"/>
+<area shape="rect" id="node8" href="$classMCP2515ConfiguratorTest.html" title="Test fixture for testing the MCP2515Configurator class." alt="" coords="162,309,351,336"/>
+<area shape="rect" id="node9" href="$classMCP2515ControllerTest.html" title="Test fixture for testing the MCP2515Controller class." alt="" coords="170,360,343,387"/>
+<area shape="rect" id="node10" href="$classMileageCalculatorTest.html" title="Test fixture for testing the MileageCalculator class." alt="" coords="173,411,340,437"/>
+<area shape="rect" id="node11" href="$classMileageFileHandlerTest.html" title="Test fixture for testing the MileageFileHandler class." alt="" coords="169,461,344,488"/>
+<area shape="rect" id="node12" href="$classMileageManagerTest.html" title="Class to test the integration between the MileageManager and the MileageCalculator and MileageFileHan..." alt="" coords="178,512,335,539"/>
+<area shape="rect" id="node13" href="$classRS485CANTest.html" title="Class to test the integration between the MCP2515 controller and the SPI controller." alt="" coords="198,563,315,589"/>
+<area shape="rect" id="node14" href="$classSPIControllerTest.html" title="Test fixture for testing the SPIController class." alt="" coords="191,613,323,640"/>
+<area shape="rect" id="node15" href="$classSystemDataManagerTest.html" title="Test fixture for testing the SystemDataManager class." alt="" coords="164,664,349,691"/>
+<area shape="rect" id="node16" href="$classSystemInfoProviderTest.html" title="Test fixture for testing the SystemInfoProvider class." alt="" coords="169,715,345,741"/>
+<area shape="rect" id="node17" href="$classSystemManagerTest.html" title="Class to test the integration between the SystemManager and the BatteryController,..." alt="" coords="179,765,334,792"/>
+<area shape="rect" id="node18" href="$classVehicleDataManagerTest.html" title="Test fixture for testing the VehicleDataManager class." alt="" coords="165,816,348,843"/>
+</map>

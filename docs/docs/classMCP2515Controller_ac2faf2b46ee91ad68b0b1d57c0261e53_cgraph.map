@@ -1,0 +1,6 @@
+<map id="MCP2515Controller::MCP2515Controller" name="MCP2515Controller::MCP2515Controller">
+<area shape="rect" id="node1" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,27,160,69"/>
+<area shape="rect" id="node2" href="$classISPIController.html#afaa405cd677e773051353f60b6cf8eb5" title=" " alt="" coords="208,5,403,32"/>
+<area shape="rect" id="node3" href="$classMCP2515Controller.html#af33937a6ecfeae8a44a2f42c9b36d4e3" title="Send a CAN message." alt="" coords="228,57,383,98"/>
+<area shape="rect" id="node4" href="$classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2" title="Destroy the CANMessageProcessor::CANMessageProcessor object." alt="" coords="451,57,621,98"/>
+</map>

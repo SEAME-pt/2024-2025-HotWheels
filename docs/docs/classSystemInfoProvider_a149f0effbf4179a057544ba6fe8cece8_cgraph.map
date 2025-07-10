@@ -1,0 +1,4 @@
+<map id="SystemInfoProvider::getWifiStatus" name="SystemInfoProvider::getWifiStatus">
+<area shape="rect" id="node1" title="Gets the current WiFi status." alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node2" href="$classISystemCommandExecutor.html#aab312dabe95f379d38f848148b8a679d" title=" " alt="" coords="204,5,403,47"/>
+</map>

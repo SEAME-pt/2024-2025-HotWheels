@@ -1,0 +1,12 @@
+<map id="ISPIController::readByte" name="ISPIController::readByte">
+<area shape="rect" id="node1" title=" " alt="" coords="768,111,945,138"/>
+<area shape="rect" id="node2" href="$classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="557,104,720,145"/>
+<area shape="rect" id="node3" href="$classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515." alt="" coords="347,5,509,47"/>
+<area shape="rect" id="node6" href="$classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator." alt="" coords="347,71,509,112"/>
+<area shape="rect" id="node9" href="$classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403" title="Send a CAN message to the MCP2515." alt="" coords="347,136,509,177"/>
+<area shape="rect" id="node10" href="$classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c" title="Verify the mode of the MCP2515." alt="" coords="347,201,509,243"/>
+<area shape="rect" id="node4" href="$classMCP2515Controller.html#a4e62b0e8e1544fe6569dad2c6a20909a" title="Start reading CAN messages." alt="" coords="133,5,288,47"/>
+<area shape="rect" id="node5" href="$test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,13,75,39"/>
+<area shape="rect" id="node7" href="$classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0" title="Initialize the MCP2515 controller." alt="" coords="123,143,299,170"/>
+<area shape="rect" id="node8" href="$test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e" title="Ensures that init() does not throw an exception." alt="" coords="5,143,75,170"/>
+</map>

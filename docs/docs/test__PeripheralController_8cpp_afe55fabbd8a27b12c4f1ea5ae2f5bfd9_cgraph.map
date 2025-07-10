@@ -1,0 +1,4 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="Ensures that i2c_smbus_read_byte_data() is called with the correct parameters." alt="" coords="5,13,60,39"/>
+<area shape="rect" id="node2" href="$classIPeripheralController.html#ab4cebe8745da65c8d4ef88e8bfa8a8a9" title=" " alt="" coords="108,5,315,47"/>
+</map>

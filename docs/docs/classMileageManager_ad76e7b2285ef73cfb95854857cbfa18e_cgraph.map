@@ -1,0 +1,4 @@
+<map id="MileageManager::saveMileage" name="MileageManager::saveMileage">
+<area shape="rect" id="node1" title="Saves the mileage to the file." alt="" coords="5,13,228,39"/>
+<area shape="rect" id="node2" href="$classIMileageFileHandler.html#aa74d18576ecbd1ddc6e077806a4f3ce7" title=" " alt="" coords="276,5,428,47"/>
+</map>

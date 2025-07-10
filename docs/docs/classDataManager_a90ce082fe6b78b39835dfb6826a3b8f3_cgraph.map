@@ -1,0 +1,4 @@
+<map id="DataManager::handleRpmData" name="DataManager::handleRpmData">
+<area shape="rect" id="node1" title="Handle CAN data." alt="" coords="5,13,228,39"/>
+<area shape="rect" id="node2" href="$classVehicleDataManager.html#a080f5c555bb54d96455e44f1a906bc65" title="Handle Rotation Per Minute data." alt="" coords="276,5,433,47"/>
+</map>

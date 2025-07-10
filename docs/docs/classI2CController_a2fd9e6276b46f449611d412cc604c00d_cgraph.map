@@ -1,0 +1,4 @@
+<map id="I2CController::writeRegister" name="I2CController::writeRegister">
+<area shape="rect" id="node1" title="Write a 16&#45;bit value to a register." alt="" coords="5,5,208,32"/>
+<area shape="rect" id="node2" href="$namespaceFileController.html#ad675dd48596341c8302d9e3b68eeeaec" title="Writes a line to the file." alt="" coords="256,5,407,32"/>
+</map>

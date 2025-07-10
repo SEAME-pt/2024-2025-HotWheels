@@ -1,0 +1,8 @@
+<map id="ClusterSettingsManager::setClusterTheme" name="ClusterSettingsManager::setClusterTheme">
+<area shape="rect" id="node1" title="Get the cluster theme." alt="" coords="1279,5,1457,47"/>
+<area shape="rect" id="node2" href="$classClusterSettingsManager.html#af21562d3ea2c834694ed001c4b2ad20e" title="Toggle the cluster theme." alt="" coords="1052,5,1231,47"/>
+<area shape="rect" id="node3" href="$classDataManager.html#a8ba9ea7dd957fadef8c562f0865ff55e" title="Toggle the cluster theme." alt="" coords="799,5,1004,47"/>
+<area shape="rect" id="node4" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,5,751,47"/>
+<area shape="rect" id="node5" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,13,488,39"/>
+<area shape="rect" id="node6" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,13,193,39"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="FileController::open" name="FileController::open">
+<area shape="rect" id="node1" title="Open a file." alt="" coords="253,64,403,91"/>
+<area shape="rect" id="node2" href="$classI2CController.html#acc26f9f8e1263b59dcd0ef7851d1a07a" title="Construct a new I2CController object." alt="" coords="5,5,205,32"/>
+<area shape="rect" id="node3" href="$classPeripheralController.html#aede8044f65cfa725464517cd4a1dfe61" title="Constructor for the PeripheralController class." alt="" coords="25,57,185,98"/>
+<area shape="rect" id="node4" href="$test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389" title="Ensures that the device opens without throwing an exception." alt="" coords="71,123,140,149"/>
+</map>

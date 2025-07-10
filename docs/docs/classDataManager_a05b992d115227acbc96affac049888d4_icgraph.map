@@ -1,0 +1,8 @@
+<map id="DataManager::systemTimeUpdated" name="DataManager::systemTimeUpdated">
+<area shape="rect" id="node1" title=" " alt="" coords="799,64,1053,91"/>
+<area shape="rect" id="node2" href="$classDataManager.html#affb37dc13db06ecf6853c9fa25e5ed7a" title="Construct a new DataManager::DataManager object." alt="" coords="540,5,747,32"/>
+<area shape="rect" id="node3" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="536,57,751,98"/>
+<area shape="rect" id="node6" href="$test__int__DataManager_8cpp.html#abcf900961f05f2c1aaae1b4b9fa38d3f" title="Ensures that the DataManager forwards time data to the SystemDataManager." alt="" coords="609,123,678,149"/>
+<area shape="rect" id="node4" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,64,488,91"/>
+<area shape="rect" id="node5" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,64,193,91"/>
+</map>

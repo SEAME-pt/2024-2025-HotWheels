@@ -1,0 +1,4 @@
+<map id="clamp" name="clamp">
+<area shape="rect" id="node1" title="Clamps a value to a given range." alt="" coords="205,13,268,39"/>
+<area shape="rect" id="node2" href="$classPeripheralController.html#a812ccf8cae6f9d5e89cb02949d4839b7" title="Sets the PWM value for a motor." alt="" coords="5,5,157,47"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="MCP2515Configurator::writeRegister" name="MCP2515Configurator::writeRegister">
+<area shape="rect" id="node1" title="Write a value to a register." alt="" coords="592,235,755,276"/>
+<area shape="rect" id="node2" href="$classMCP2515Configurator.html#a726cd02381fff63eab7bfd289067d6cf" title="Configure the baud rate for the MCP2515." alt="" coords="364,136,527,177"/>
+<area shape="rect" id="node5" href="$classMCP2515Configurator.html#ae5252bc8370e99e5ab0d9a12f7e92a54" title="Configure the filters and masks for the MCP2515." alt="" coords="347,201,544,243"/>
+<area shape="rect" id="node6" href="$classMCP2515Configurator.html#a992d30e78baa17aa952d17643b599d5d" title="Configure the interrupts for the MCP2515." alt="" coords="364,267,527,308"/>
+<area shape="rect" id="node7" href="$classMCP2515Configurator.html#a3756a8b45bb55a349c37e76fe133b45f" title="Configure the RX buffer for the MCP2515." alt="" coords="364,332,527,373"/>
+<area shape="rect" id="node8" href="$classMCP2515Configurator.html#af3688800297022aee833d54ca88d9d99" title="Configure the TX buffer for the MCP2515." alt="" coords="364,5,527,47"/>
+<area shape="rect" id="node9" href="$classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515." alt="" coords="364,463,527,504"/>
+<area shape="rect" id="node12" href="$classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403" title="Send a CAN message to the MCP2515." alt="" coords="364,397,527,439"/>
+<area shape="rect" id="node13" href="$classMCP2515Configurator.html#a522a619dc1668ac677ca9f422f8f302a" title="Set the mode for the MCP2515." alt="" coords="364,71,527,112"/>
+<area shape="rect" id="node3" href="$classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0" title="Initialize the MCP2515 controller." alt="" coords="123,177,299,203"/>
+<area shape="rect" id="node4" href="$test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e" title="Ensures that init() does not throw an exception." alt="" coords="5,177,75,203"/>
+<area shape="rect" id="node10" href="$classMCP2515Controller.html#a4e62b0e8e1544fe6569dad2c6a20909a" title="Start reading CAN messages." alt="" coords="133,463,288,504"/>
+<area shape="rect" id="node11" href="$test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,470,75,497"/>
+</map>

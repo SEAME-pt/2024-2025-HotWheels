@@ -1,0 +1,4 @@
+<map id="MCP2515Configurator::writeRegister" name="MCP2515Configurator::writeRegister">
+<area shape="rect" id="node1" title="Write a value to a register." alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node2" href="$classISPIController.html#a4a24db4176bf09874ad9031c26702947" title=" " alt="" coords="216,13,397,39"/>
+</map>

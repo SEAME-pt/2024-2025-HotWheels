@@ -1,0 +1,5 @@
+<map id="EngineController::EngineController" name="EngineController::EngineController">
+<area shape="rect" id="node1" title="Constructs an EngineController object, initializing motor and servo controllers." alt="" coords="5,39,188,80"/>
+<area shape="rect" id="node2" href="$classIPeripheralController.html#abf4e4f458fd2d9debddba31785923fec" title=" " alt="" coords="236,5,392,47"/>
+<area shape="rect" id="node3" href="$classIPeripheralController.html#a6425e49917d2bb8a99ba2cf0dcc036a2" title=" " alt="" coords="236,71,392,112"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="MileageFileHandler::MileageFileHandler" name="MileageFileHandler::MileageFileHandler">
+<area shape="rect" id="node1" title="Constructs a MileageFileHandler object with the specified file path and functions." alt="" coords="5,5,161,47"/>
+<area shape="rect" id="node2" href="$classMileageFileHandler.html#a769ecb10fa485be519e91c3960231662" title="Checks if the file exists and creates it if it does not." alt="" coords="209,5,357,47"/>
+</map>

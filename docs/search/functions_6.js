@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['getbatterypercentage_1099',['getBatteryPercentage',['../classIBatteryController.html#aa20b28b939b1d3224233e9a5bc574ee8',1,'IBatteryController::getBatteryPercentage()'],['../classBatteryController.html#ae0f3d011563baf767f5c5d6853795a40',1,'BatteryController::getBatteryPercentage() override']]],
+  ['getbusvoltage_5fv_1100',['getBusVoltage_V',['../classBatteryController.html#add316f29d2f9f264297eeec5249f42c3',1,'BatteryController']]],
+  ['getclustersettingsmanager_1101',['getClusterSettingsManager',['../classDataManager.html#a1ee4c4f72c51eb885027a692f999daed',1,'DataManager']]],
+  ['getdeviceinputptr_1102',['getDeviceInputPtr',['../classTensorRTInferencer.html#a09b3f1ac4d97f16c04893b2bba206bda',1,'TensorRTInferencer']]],
+  ['getdeviceoutputptr_1103',['getDeviceOutputPtr',['../classTensorRTInferencer.html#a4a895d46bba6aecf94f8927925fdfdf1',1,'TensorRTInferencer']]],
+  ['getextremities_1104',['getExtremities',['../classLanePostProcessor.html#a56b02a7ae11c836238b48b097f22c331',1,'LanePostProcessor']]],
+  ['getframe_1105',['getFrame',['../classFrameBufferSegmentation.html#a48c328bfa1e4eeabc9cd59bc3a6d5de8',1,'FrameBufferSegmentation::getFrame()'],['../classFrameBufferDetection.html#a63784517ad849e420068b81a786d7f09',1,'FrameBufferDetection::getFrame()']]],
+  ['getipaddress_1106',['getIpAddress',['../classISystemInfoProvider.html#ade879d62021e856577bdf4737dda85e4',1,'ISystemInfoProvider::getIpAddress()'],['../classSystemInfoProvider.html#a87f3f227d8c5894a09b823c64537c0be',1,'SystemInfoProvider::getIpAddress()']]],
+  ['getlabel_1107',['getLabel',['../classLabelManager.html#ab7dbc2910a5c5ddd69ceaafb097d9ddd',1,'LabelManager']]],
+  ['getlocalipaddress_1108',['getLocalIPAddress',['../DisplayManager_8cpp.html#a065c63b057ff3009fe6ad79207be80f6',1,'DisplayManager.cpp']]],
+  ['getmessageprocessor_1109',['getMessageProcessor',['../classMCP2515Controller.html#afed84fb03b6286e6422074cd5718f4e7',1,'MCP2515Controller']]],
+  ['getnumclasses_1110',['getNumClasses',['../classLabelManager.html#a27397e39fedfd3d3d47eb5345b343fd1',1,'LabelManager']]],
+  ['getoutputmaskgpu_1111',['getOutputMaskGpu',['../classTensorRTInferencer.html#ad2a47fda8c898dbf796b05faf5f38d66',1,'TensorRTInferencer']]],
+  ['getshuntvoltage_5fv_1112',['getShuntVoltage_V',['../classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901',1,'BatteryController']]],
+  ['getsocket_1113',['getSocket',['../classSubscriber.html#af0aca51463cb7e3f154f68ad87197df2',1,'Subscriber']]],
+  ['getstatustimer_1114',['getStatusTimer',['../classSystemManager.html#a79a4517815876cf0e3e92b8a67f47a44',1,'SystemManager']]],
+  ['getsystemdatamanager_1115',['getSystemDataManager',['../classDataManager.html#a10e2e85802fe0ffa67ae3b53db2b0a15',1,'DataManager']]],
+  ['gettemperature_1116',['getTemperature',['../classISystemInfoProvider.html#a5da52499bfc71b3ab410c514fd4c933c',1,'ISystemInfoProvider::getTemperature()'],['../classSystemInfoProvider.html#a9afa991ae3553a9cbcc9c9b2d070769e',1,'SystemInfoProvider::getTemperature()']]],
+  ['getthread_1117',['getThread',['../classCanBusManager.html#aba668fde6eed730024c70ff4bd18f87a',1,'CanBusManager']]],
+  ['gettimetimer_1118',['getTimeTimer',['../classSystemManager.html#a193712b84eb18e8b6a659a7d022be7f1',1,'SystemManager']]],
+  ['gettotalmileage_1119',['getTotalMileage',['../classMileageManager.html#a90f1735a5be87193e0872b49a0eb9174',1,'MileageManager']]],
+  ['getvehicledatamanager_1120',['getVehicleDataManager',['../classDataManager.html#a3b5dfe8e4f2f5996935fe95970adea8e',1,'DataManager']]],
+  ['getwifissid_1121',['getWifiSSID',['../DisplayManager_8cpp.html#ad34d8d6403ce6d16f5984c54816cdb56',1,'DisplayManager.cpp']]],
+  ['getwifistatus_1122',['getWifiStatus',['../classISystemInfoProvider.html#a1ebc4c5f88dade63c28f5051b2178344',1,'ISystemInfoProvider::getWifiStatus()'],['../classSystemInfoProvider.html#a149f0effbf4179a057544ba6fe8cece8',1,'SystemInfoProvider::getWifiStatus()']]]
+];

@@ -1,0 +1,5 @@
+<map id="DataManager::toggleClusterTheme" name="DataManager::toggleClusterTheme">
+<area shape="rect" id="node1" title="Toggle the cluster theme." alt="" coords="5,5,211,47"/>
+<area shape="rect" id="node2" href="$classClusterSettingsManager.html#af21562d3ea2c834694ed001c4b2ad20e" title="Toggle the cluster theme." alt="" coords="259,5,437,47"/>
+<area shape="rect" id="node3" href="$classClusterSettingsManager.html#ae85e9adc14376a37696da9996d812ad5" title="Get the cluster theme." alt="" coords="485,5,664,47"/>
+</map>

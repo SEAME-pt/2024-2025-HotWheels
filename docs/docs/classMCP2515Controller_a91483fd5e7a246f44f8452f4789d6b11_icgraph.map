@@ -1,0 +1,4 @@
+<map id="MCP2515Controller::stopReading" name="MCP2515Controller::stopReading">
+<area shape="rect" id="node1" title="Stop reading CAN messages." alt="" coords="123,5,277,47"/>
+<area shape="rect" id="node2" href="$test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,13,75,39"/>
+</map>

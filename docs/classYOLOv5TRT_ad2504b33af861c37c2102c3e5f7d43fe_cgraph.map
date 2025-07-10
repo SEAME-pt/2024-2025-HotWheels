@@ -1,0 +1,10 @@
+<map id="YOLOv5TRT::YOLOv5TRT" name="YOLOv5TRT::YOLOv5TRT">
+<area shape="rect" id="node1" title="Construtor. Carrega o engine e aloca buffers." alt="" coords="5,81,183,108"/>
+<area shape="rect" id="node2" href="$classYOLOv5TRT.html#aae4055b18ea026c14d59519baf4185f3" title=" " alt="" coords="242,5,443,32"/>
+<area shape="rect" id="node4" href="$classLabelManager.html#a27397e39fedfd3d3d47eb5345b343fd1" title="Retorna o número de classes carregadas." alt="" coords="231,56,455,83"/>
+<area shape="rect" id="node5" href="$classPublisher.html#a387233b0cdda7f9d59d3d7c59a2f3cb6" title=" " alt="" coords="270,107,415,133"/>
+<area shape="rect" id="node7" href="$classYOLOv5TRT.html#aab1b5793ec0d442f82106323e3673128" title=" " alt="" coords="255,157,430,184"/>
+<area shape="rect" id="node3" href="$classYOLOv5TRT.html#a37f31d30d8bb81205daa7e1a6ccc5351" title="Calcula o volume (número total de elementos) de um tensor dado suas dimensões." alt="" coords="503,5,713,32"/>
+<area shape="rect" id="node6" href="$classPublisher.html#aa433e35d15ff5572b3ead89611b4bfc9" title=" " alt="" coords="533,107,683,133"/>
+<area shape="rect" id="node8" href="$classLogger.html#a0e4e86db5c5399c419f6cfc440b4c944" title=" " alt="" coords="543,157,673,184"/>
+</map>

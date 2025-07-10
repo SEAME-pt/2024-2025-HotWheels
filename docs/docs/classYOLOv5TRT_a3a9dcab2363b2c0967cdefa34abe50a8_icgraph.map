@@ -1,0 +1,4 @@
+<map id="YOLOv5TRT::postprocess" name="YOLOv5TRT::postprocess">
+<area shape="rect" id="node1" title="Pós&#45;processa a saída do modelo, aplicando threshold de confiança e NMS." alt="" coords="207,13,388,39"/>
+<area shape="rect" id="node2" href="$classYOLOv5TRT.html#a6ade108453aa850578f3c4483f2bdd5e" title="Função principal. Inicializa recursos, executa loop de inferência e exibe resultados." alt="" coords="5,5,159,47"/>
+</map>

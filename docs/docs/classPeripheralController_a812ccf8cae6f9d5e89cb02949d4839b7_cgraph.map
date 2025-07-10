@@ -1,0 +1,6 @@
+<map id="PeripheralController::set_motor_pwm" name="PeripheralController::set_motor_pwm">
+<area shape="rect" id="node1" title="Sets the PWM value for a motor." alt="" coords="5,27,157,69"/>
+<area shape="rect" id="node2" href="$PeripheralController_8cpp.html#a83100694a686c920777a21081dc0db93" title="Clamps a value to a given range." alt="" coords="250,5,313,32"/>
+<area shape="rect" id="node3" href="$classPeripheralController.html#a90f289229af99c3efc8c835c2da39c85" title="Writes a byte of data to a specific register." alt="" coords="205,57,357,98"/>
+<area shape="rect" id="node4" href="$classPeripheralController.html#afdadc72629fcdcd55298e2d6925e1056" title="Writes a byte of data to a specific register." alt="" coords="405,57,616,98"/>
+</map>

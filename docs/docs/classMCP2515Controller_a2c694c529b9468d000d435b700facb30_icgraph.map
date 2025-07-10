@@ -1,0 +1,4 @@
+<map id="MCP2515Controller::isStopReadingFlagSet" name="MCP2515Controller::isStopReadingFlagSet">
+<area shape="rect" id="node1" title="Check if the stop reading flag is set." alt="" coords="123,5,287,47"/>
+<area shape="rect" id="node2" href="$test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,13,75,39"/>
+</map>
