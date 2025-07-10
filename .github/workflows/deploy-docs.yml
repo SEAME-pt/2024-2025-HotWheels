@@ -1,12 +1,7 @@
 name: Build Documentation
 
 on:
-  push:
-    branches:
-      - test-coverage
-  pull_request:
-    branches:
-      - test-coverage
+  workflow_dispatch:
 
 jobs:
   run-on-self-hosted:
