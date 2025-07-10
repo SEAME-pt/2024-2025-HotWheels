@@ -1,0 +1,7 @@
+<map id="EngineController::setDirection" name="EngineController::setDirection">
+<area shape="rect" id="node1" title="Sets the direction of the car and emits the directionUpdated signal if the direction has changed." alt="" coords="644,42,861,69"/>
+<area shape="rect" id="node2" href="$classEngineController.html#ad865d656c4d1dd4a86b9206a2a9bd926" title="Sets the speed of the car." alt="" coords="437,35,596,76"/>
+<area shape="rect" id="node3" href="$classControlsManager.html#ad305d285479c3ce10e8a7eb70845db5f" title="Constructs a ControlsManager object." alt="" coords="195,5,389,47"/>
+<area shape="rect" id="node4" href="$classEngineController.html#a074d7c44fc23053b0bc8aee6650971bf" title="Stops the engine." alt="" coords="209,71,375,98"/>
+<area shape="rect" id="node5" href="$classEngineController.html#af49b8503ec1964013a1a232de4d5ec39" title="Destructor for the EngineController class." alt="" coords="5,64,147,105"/>
+</map>

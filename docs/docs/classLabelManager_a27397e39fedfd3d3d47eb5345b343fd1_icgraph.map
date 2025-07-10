@@ -1,0 +1,5 @@
+<map id="LabelManager::getNumClasses" name="LabelManager::getNumClasses">
+<area shape="rect" id="node1" title="Retorna o número de classes carregadas." alt="" coords="231,31,455,57"/>
+<area shape="rect" id="node2" href="$test__LabelManager_8cpp.html#a932b5845d2c2b5edc70907d84e9beded" title=" " alt="" coords="67,5,121,32"/>
+<area shape="rect" id="node3" href="$classYOLOv5TRT.html#ad2504b33af861c37c2102c3e5f7d43fe" title="Construtor. Carrega o engine e aloca buffers." alt="" coords="5,56,183,83"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="Publisher::Publisher" name="Publisher::Publisher">
+<area shape="rect" id="node1" title=" " alt="" coords="1231,143,1381,170"/>
+<area shape="rect" id="node2" href="$classPublisher.html#a387233b0cdda7f9d59d3d7c59a2f3cb6" title=" " alt="" coords="1037,143,1183,170"/>
+<area shape="rect" id="node3" href="$classTensorRTInferencer.html#a5596fa6dbc8122eb567607897e369f7e" title=" " alt="" coords="823,5,969,47"/>
+<area shape="rect" id="node4" href="$classControlsManager.html#ad3cd1fa6493f5e17cc1806d993266fac" title="Update the driving mode of the vehicle." alt="" coords="803,71,989,112"/>
+<area shape="rect" id="node8" href="$classYOLOv5TRT.html#a6ade108453aa850578f3c4483f2bdd5e" title="Função principal. Inicializa recursos, executa loop de inferência e exibe resultados." alt="" coords="819,136,973,177"/>
+<area shape="rect" id="node9" href="$classTensorRTInferencer.html#aa43aac7ee0072fa7e2ba2f46310fd205" title=" " alt="" coords="819,201,973,243"/>
+<area shape="rect" id="node10" href="$classYOLOv5TRT.html#ad2504b33af861c37c2102c3e5f7d43fe" title="Construtor. Carrega o engine e aloca buffers." alt="" coords="807,267,985,294"/>
+<area shape="rect" id="node5" href="$classCarManager.html#a7d8d0d9b58a5ecc33e06cae2ccbdf184" title="Initialize the ControlsManager." alt="" coords="536,71,755,112"/>
+<area shape="rect" id="node6" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,78,488,105"/>
+<area shape="rect" id="node7" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,78,193,105"/>
+</map>

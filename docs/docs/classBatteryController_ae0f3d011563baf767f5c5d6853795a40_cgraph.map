@@ -1,0 +1,6 @@
+<map id="BatteryController::getBatteryPercentage" name="BatteryController::getBatteryPercentage">
+<area shape="rect" id="node1" title="Get the battery percentage." alt="" coords="5,39,169,80"/>
+<area shape="rect" id="node2" href="$classBatteryController.html#add316f29d2f9f264297eeec5249f42c3" title="Get the bus voltage in volts." alt="" coords="219,5,361,47"/>
+<area shape="rect" id="node4" href="$classBatteryController.html#adf2ad0dcf1a0b71f94a9d3606010c901" title="Get the shunt voltage in volts." alt="" coords="217,71,363,112"/>
+<area shape="rect" id="node3" href="$classII2CController.html#a86951c2e44bc1f7f846dc2212854ab92" title=" " alt="" coords="411,46,613,73"/>
+</map>

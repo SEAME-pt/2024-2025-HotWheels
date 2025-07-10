@@ -1,0 +1,4 @@
+<map id="BatteryController::getShuntVoltage_V" name="BatteryController::getShuntVoltage_V">
+<area shape="rect" id="node1" title="Get the shunt voltage in volts." alt="" coords="217,5,363,47"/>
+<area shape="rect" id="node2" href="$classBatteryController.html#ae0f3d011563baf767f5c5d6853795a40" title="Get the battery percentage." alt="" coords="5,5,169,47"/>
+</map>

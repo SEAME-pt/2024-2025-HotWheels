@@ -1,0 +1,4 @@
+<map id="BatteryController::setCalibration32V2A" name="BatteryController::setCalibration32V2A">
+<area shape="rect" id="node1" title="Set the calibration for 32V and 2A." alt="" coords="5,5,160,47"/>
+<area shape="rect" id="node2" href="$classII2CController.html#ae6acfc629026f4eabe7d6cdffded437d" title=" " alt="" coords="208,13,415,39"/>
+</map>

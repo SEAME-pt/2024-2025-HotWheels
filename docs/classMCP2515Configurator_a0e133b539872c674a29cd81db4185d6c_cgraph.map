@@ -1,0 +1,5 @@
+<map id="MCP2515Configurator::verifyMode" name="MCP2515Configurator::verifyMode">
+<area shape="rect" id="node1" title="Verify the mode of the MCP2515." alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node2" href="$classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="216,5,379,47"/>
+<area shape="rect" id="node3" href="$classISPIController.html#a0155550573fcd6937aeb133e56991c9a" title=" " alt="" coords="427,13,604,39"/>
+</map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['joystickscontroller_0',['JoysticksController',['../classJoysticksController.html',1,'']]]
+  ['joystickscontroller_849',['JoysticksController',['../classJoysticksController.html',1,'']]]
 ];

@@ -1,0 +1,5 @@
+<map id="LabelManager::getLabel" name="LabelManager::getLabel">
+<area shape="rect" id="node1" title="Retorna o nome da label para um dado classId." alt="" coords="207,42,385,69"/>
+<area shape="rect" id="node2" href="$classYOLOv5TRT.html#a6ade108453aa850578f3c4483f2bdd5e" title="Função principal. Inicializa recursos, executa loop de inferência e exibe resultados." alt="" coords="5,5,159,47"/>
+<area shape="rect" id="node3" href="$test__LabelManager_8cpp.html#a932b5845d2c2b5edc70907d84e9beded" title=" " alt="" coords="55,71,109,98"/>
+</map>

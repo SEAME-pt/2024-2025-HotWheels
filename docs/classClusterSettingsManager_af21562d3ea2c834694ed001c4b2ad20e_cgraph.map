@@ -1,0 +1,4 @@
+<map id="ClusterSettingsManager::toggleClusterTheme" name="ClusterSettingsManager::toggleClusterTheme">
+<area shape="rect" id="node1" title="Toggle the cluster theme." alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node2" href="$classClusterSettingsManager.html#ae85e9adc14376a37696da9996d812ad5" title="Get the cluster theme." alt="" coords="232,5,411,47"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="CarManager::initializeMileageManager" name="CarManager::initializeMileageManager">
+<area shape="rect" id="node1" title="Initialize the MileageManager." alt="" coords="5,129,223,171"/>
+<area shape="rect" id="node2" href="$classDataManager.html#aa15248dd048e25abe66a9120056c5eb9" title="Handle Engine data." alt="" coords="289,39,503,80"/>
+<area shape="rect" id="node4" href="$classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initializes the MileageManager object." alt="" coords="299,137,493,163"/>
+<area shape="rect" id="node10" href="$classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9" title="Handles the speed updated signal." alt="" coords="271,217,521,243"/>
+<area shape="rect" id="node3" href="$classVehicleDataManager.html#abb246c989c8a11c45f821c0ff32ac3b3" title="Handle mileage data." alt="" coords="601,5,774,47"/>
+<area shape="rect" id="node5" href="$classIMileageFileHandler.html#a2ffef45cb503ce46dc33de67718a8638" title=" " alt="" coords="611,71,763,112"/>
+<area shape="rect" id="node6" href="$classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title="Saves the mileage to the file." alt="" coords="576,137,799,163"/>
+<area shape="rect" id="node8" href="$classMileageManager.html#a912c517158c90834792c3d00c0af101c" title="Updates the mileage." alt="" coords="569,187,805,214"/>
+<area shape="rect" id="node7" href="$classIMileageFileHandler.html#aa74d18576ecbd1ddc6e077806a4f3ce7" title=" " alt="" coords="853,123,1005,164"/>
+<area shape="rect" id="node9" href="$classIMileageCalculator.html#adf2cad1363155e44a743d984acf0c5ff" title=" " alt="" coords="856,188,1003,229"/>
+<area shape="rect" id="node11" href="$classIMileageCalculator.html#a4b581f7ea90804517dbfda8338b96bfe" title=" " alt="" coords="615,239,759,280"/>
+</map>

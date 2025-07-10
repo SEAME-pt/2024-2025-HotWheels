@@ -1,17 +1,14 @@
 var searchData=
 [
-  ['handlebatterypercentage_0',['handleBatteryPercentage',['../classDataManager.html#ac5bb6cd13af677b42ff0ce32c05b4337',1,'DataManager::handleBatteryPercentage()'],['../classSystemDataManager.html#ad4d7e0b454c38eed521f40215557f250',1,'SystemDataManager::handleBatteryPercentage()']]],
-  ['handledirectiondata_1',['handleDirectionData',['../classDataManager.html#afcadf5c275fd6fd89c4199abebc8b03d',1,'DataManager::handleDirectionData()'],['../classVehicleDataManager.html#a96a6fd992d1922733cd4e69471756f41',1,'VehicleDataManager::handleDirectionData()']]],
-  ['handleipaddressdata_2',['handleIpAddressData',['../classDataManager.html#a1619eef84eba4d778ebdfda1198257ad',1,'DataManager::handleIpAddressData()'],['../classSystemDataManager.html#ac1da4f82db9ddc9badb703f2069d6450',1,'SystemDataManager::handleIpAddressData()']]],
-  ['handlemileageupdate_3',['handleMileageUpdate',['../classDataManager.html#aa15248dd048e25abe66a9120056c5eb9',1,'DataManager::handleMileageUpdate()'],['../classVehicleDataManager.html#abb246c989c8a11c45f821c0ff32ac3b3',1,'VehicleDataManager::handleMileageUpdate()']]],
-  ['handlerpmdata_4',['handleRpmData',['../classDataManager.html#a90ce082fe6b78b39835dfb6826a3b8f3',1,'DataManager::handleRpmData()'],['../classVehicleDataManager.html#a080f5c555bb54d96455e44f1a906bc65',1,'VehicleDataManager::handleRpmData()']]],
-  ['handlers_5',['handlers',['../classCANMessageProcessor.html#a407c506564f54f6ad4cefe1e6b9f829d',1,'CANMessageProcessor']]],
-  ['handlesigint_6',['handleSigint',['../car__controls_2sources_2main_8cpp.html#a0951f538a6bbe4f93045410ed3fed406',1,'handleSigint(int):&#160;main.cpp'],['../cluster_2sources_2main_2main_8cpp.html#a0951f538a6bbe4f93045410ed3fed406',1,'handleSigint(int):&#160;main.cpp']]],
-  ['handlespeeddata_7',['handleSpeedData',['../classDataManager.html#a9634f128fb690a5facc62a57efe9bcbc',1,'DataManager::handleSpeedData()'],['../classVehicleDataManager.html#a4379e81efb70186d8103e61003df1e2e',1,'VehicleDataManager::handleSpeedData()']]],
-  ['handlesteeringdata_8',['handleSteeringData',['../classDataManager.html#a8d76e60050120ecb940f90726e03cbf8',1,'DataManager::handleSteeringData()'],['../classVehicleDataManager.html#a2c390c4430b442344f03b4730b848860',1,'VehicleDataManager::handleSteeringData()']]],
-  ['handletemperaturedata_9',['handleTemperatureData',['../classDataManager.html#a866f45795ff896aecf89d853f4f1ac48',1,'DataManager::handleTemperatureData()'],['../classSystemDataManager.html#a753ebaa1e5803cd19b645c5559d21936',1,'SystemDataManager::handleTemperatureData()']]],
-  ['handletimedata_10',['handleTimeData',['../classDataManager.html#a0198245d11fb32c03ebeb4169b223001',1,'DataManager::handleTimeData()'],['../classSystemDataManager.html#a384830f395f9325f263db7bf0e274379',1,'SystemDataManager::handleTimeData()']]],
-  ['handlewifidata_11',['handleWifiData',['../classDataManager.html#aafaa2c92f70e5a3296caeab490c29de9',1,'DataManager::handleWifiData()'],['../classSystemDataManager.html#a7ad861f3ee72f7b152026b24624091de',1,'SystemDataManager::handleWifiData()']]],
-  ['hotwheels_20🏁_20🏎️_12',['HotWheels 🏁 🏎️',['../index.html',1,'']]],
-  ['hotwheels_20instrument_20cluster_20⏲_20🎮_13',['HotWheels - Instrument Cluster ⏲ 🎮',['../md_Instrument-Cluster.html',1,'']]]
+  ['nms_5fthresh_505',['nms_thresh',['../classYOLOv5TRT.html#a6d3ca73c299f1bd3cb342c4305a1246b',1,'YOLOv5TRT']]],
+  ['notificationlevel_506',['NotificationLevel',['../NotificationOverlay_8hpp.html#a98ca14dd4707bc0b82e21c51ec95083a',1,'NotificationOverlay.hpp']]],
+  ['notificationmanager_507',['NotificationManager',['../classNotificationManager.html',1,'NotificationManager'],['../classNotificationManager.html#a04c08e4092647a1f37b973b41a82c6e0',1,'NotificationManager::NotificationManager()']]],
+  ['notificationmanager_2ecpp_508',['NotificationManager.cpp',['../NotificationManager_8cpp.html',1,'']]],
+  ['notificationmanager_2ehpp_509',['NotificationManager.hpp',['../NotificationManager_8hpp.html',1,'']]],
+  ['notificationoverlay_510',['NotificationOverlay',['../classNotificationOverlay.html',1,'NotificationOverlay'],['../classNotificationOverlay.html#a6db878da784e7b298c7ccdae9b596c4e',1,'NotificationOverlay::NotificationOverlay()']]],
+  ['notificationoverlay_2ecpp_511',['NotificationOverlay.cpp',['../NotificationOverlay_8cpp.html',1,'']]],
+  ['notificationoverlay_2ehpp_512',['NotificationOverlay.hpp',['../NotificationOverlay_8hpp.html',1,'']]],
+  ['num_5fclasses_513',['num_classes',['../classYOLOv5TRT.html#a4019b8bf117f4f0bac81e5f77a32669b',1,'YOLOv5TRT']]],
+  ['numwindows_514',['numWindows',['../classLaneCurveFitter.html#a7a9733eec8ae62829fe0da877e41810c',1,'LaneCurveFitter']]],
+  ['nvidea_20or_20raspberrypi_515',['Nvidea or RaspberryPi',['../md_ADR_001_NvideaOrRaspberry.html',1,'']]]
 ];

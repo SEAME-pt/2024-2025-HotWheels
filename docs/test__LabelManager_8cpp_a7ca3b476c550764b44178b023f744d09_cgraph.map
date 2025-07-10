@@ -1,0 +1,5 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,60,57"/>
+<area shape="rect" id="node2" href="$classLabelManager.html#ab7dbc2910a5c5ddd69ceaafb097d9ddd" title="Retorna o nome da label para um dado classId." alt="" coords="131,5,309,32"/>
+<area shape="rect" id="node3" href="$classLabelManager.html#a27397e39fedfd3d3d47eb5345b343fd1" title="Retorna o número de classes carregadas." alt="" coords="108,56,332,83"/>
+</map>

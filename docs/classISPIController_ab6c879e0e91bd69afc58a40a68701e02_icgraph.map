@@ -1,0 +1,8 @@
+<map id="ISPIController::spiTransfer" name="ISPIController::spiTransfer">
+<area shape="rect" id="node1" title=" " alt="" coords="768,46,957,73"/>
+<area shape="rect" id="node2" href="$classMCP2515Configurator.html#af76ba874fc502fdbfe7b020ded2e1403" title="Send a CAN message to the MCP2515." alt="" coords="557,5,720,47"/>
+<area shape="rect" id="node3" href="$classMCP2515Configurator.html#aa6630dccbad67624dc8a4cdd95a7a684" title="Send a command to the MCP2515." alt="" coords="557,71,720,112"/>
+<area shape="rect" id="node4" href="$classMCP2515Configurator.html#a598f082ddb6096553ba2d1657953ebe6" title="clean up the resources used by the MCP2515Configurator." alt="" coords="347,71,509,112"/>
+<area shape="rect" id="node5" href="$classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0" title="Initialize the MCP2515 controller." alt="" coords="123,78,299,105"/>
+<area shape="rect" id="node6" href="$test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e" title="Ensures that init() does not throw an exception." alt="" coords="5,78,75,105"/>
+</map>

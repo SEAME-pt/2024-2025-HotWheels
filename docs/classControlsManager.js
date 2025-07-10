@@ -10,15 +10,14 @@ var classControlsManager =
     [ "readJoystickEnable", "classControlsManager.html#a054951ef02cff415b8383706df4f2318", null ],
     [ "setMode", "classControlsManager.html#aa925f92fc442ed25200f3bcd0df3d08a", null ],
     [ "steeringChanged", "classControlsManager.html#af4a0e934840d2b38f783e6b52fedab38", null ],
-    [ "m_carDataObject", "classControlsManager.html#a4f649c1700413e88c17c7f918f6c990f", null ],
-    [ "m_carDataThread", "classControlsManager.html#af4683d7439951d3f26aed751919a1337", null ],
-    [ "m_clientObject", "classControlsManager.html#ae4de356611c9537bbcba360737861bc7", null ],
-    [ "m_clientThread", "classControlsManager.html#ad885e25dba1377024076c08776b85bc9", null ],
+    [ "m_cameraStreamerObject", "classControlsManager.html#a1267dcf40de873f90ba7e42fedfcf6c8", null ],
+    [ "m_cameraStreamerThread", "classControlsManager.html#a970f0084079ce732fa07099aa4a27f17", null ],
     [ "m_currentMode", "classControlsManager.html#a27fd333bc9783fb3c655c4df1fa41ff3", null ],
     [ "m_engineController", "classControlsManager.html#ae69a3c9299c16800ba3b883638b348d2", null ],
     [ "m_joystickControlThread", "classControlsManager.html#a70755ea08a6a1acd1f5180332b49d661", null ],
     [ "m_manualController", "classControlsManager.html#a84729614cd7d247e04668157884dd262", null ],
     [ "m_manualControllerThread", "classControlsManager.html#ab6cc8bdbd8f29c8f02d61f40c1e93b66", null ],
-    [ "m_processMonitorThread", "classControlsManager.html#a429927eb48e674bb006e629eb2a1c1ee", null ],
-    [ "m_threadRunning", "classControlsManager.html#ae60a25481d357512a928e65be0fc5b13", null ]
+    [ "m_running", "classControlsManager.html#a0ac1c730047a3fb2454df500b3854564", null ],
+    [ "m_subscriberJoystickObject", "classControlsManager.html#afd0d397d17de755d22a9df3aca7be3f2", null ],
+    [ "m_subscriberJoystickThread", "classControlsManager.html#a2c58661742cf5d643a2047d8d1595800", null ]
 ];

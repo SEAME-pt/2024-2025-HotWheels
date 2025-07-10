@@ -1,0 +1,9 @@
+<map id="CanBusManager::rpmUpdated" name="CanBusManager::rpmUpdated">
+<area shape="rect" id="node1" title="Signal emitted when the RPM is updated." alt="" coords="819,64,1036,91"/>
+<area shape="rect" id="node2" href="$classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70" title="Method to connect signals." alt="" coords="536,5,771,32"/>
+<area shape="rect" id="node4" href="$classCarManager.html#a33ab3dce383d94c8500b74ed21f56724" title="Initialize the CanBusManager." alt="" coords="558,57,749,98"/>
+<area shape="rect" id="node7" href="$test__int__CanBusManager_8cpp.html#a408953cb0d8374c0001a881ebde64e3b" title="Ensures that the CanBusManager forwards RPM data from the MCP2515 controller." alt="" coords="619,123,688,149"/>
+<area shape="rect" id="node3" href="$classCanBusManager.html#ae99209d291de980c75c10f8c12231a30" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="243,5,486,32"/>
+<area shape="rect" id="node5" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,64,488,91"/>
+<area shape="rect" id="node6" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,64,193,91"/>
+</map>

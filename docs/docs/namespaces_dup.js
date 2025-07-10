@@ -8,7 +8,7 @@ var namespaces_dup =
     ] ],
     [ "generate_scripts", "namespacegenerate__scripts.html", null ],
     [ "test-entry-point", "namespacetest-entry-point.html", [
-      [ "APP", "namespacetest-entry-point.html#aad59e08b568b9ce8d5e97dfef6ab87f8", null ],
+      [ "APP", "namespacetest-entry-point.html#a86d25793b3958c856ab60faea61ed52f", null ],
       [ "EXPECTED_OUTPUT", "namespacetest-entry-point.html#ac6c7311c2ad71ca502701b2128bc14b9", null ],
       [ "OUTPUT", "namespacetest-entry-point.html#ab367dd6cdb31edeb71473c7c58bf0933", null ]
     ] ],

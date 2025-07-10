@@ -1,0 +1,7 @@
+<map id="SPIControllerTest::SetUp" name="SPIControllerTest::SetUp">
+<area shape="rect" id="node1" title="Set up the test environment." alt="" coords="5,49,145,90"/>
+<area shape="rect" id="node2" href="$MockSysCalls_8hpp.html#a6763dfbeac67eadf78345b6b8d8170ad" title="Mocked close function." alt="" coords="193,5,292,32"/>
+<area shape="rect" id="node4" href="$MockSysCalls_8hpp.html#a547cebdcdfafe9cdea6aa85812569739" title="Mocked ioctl function." alt="" coords="196,56,289,83"/>
+<area shape="rect" id="node5" href="$MockSysCalls_8hpp.html#aeb1b8a14acf38ef421993960b0f64ee8" title="Mocked open function." alt="" coords="194,107,291,133"/>
+<area shape="rect" id="node3" href="$classMockSysCalls.html#a6e005af35be7ea5ca9ef6ee4ac3b3d29" title="Get the instance object." alt="" coords="340,56,515,83"/>
+</map>

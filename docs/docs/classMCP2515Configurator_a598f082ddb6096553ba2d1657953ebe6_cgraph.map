@@ -1,0 +1,7 @@
+<map id="MCP2515Configurator::resetChip" name="MCP2515Configurator::resetChip">
+<area shape="rect" id="node1" title="clean up the resources used by the MCP2515Configurator." alt="" coords="5,39,168,80"/>
+<area shape="rect" id="node2" href="$classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="216,5,379,47"/>
+<area shape="rect" id="node4" href="$classMCP2515Configurator.html#aa6630dccbad67624dc8a4cdd95a7a684" title="Send a command to the MCP2515." alt="" coords="216,71,379,112"/>
+<area shape="rect" id="node3" href="$classISPIController.html#a0155550573fcd6937aeb133e56991c9a" title=" " alt="" coords="433,13,610,39"/>
+<area shape="rect" id="node5" href="$classISPIController.html#ab6c879e0e91bd69afc58a40a68701e02" title=" " alt="" coords="427,78,616,105"/>
+</map>

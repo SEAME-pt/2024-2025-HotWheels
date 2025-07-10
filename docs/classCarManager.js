@@ -13,7 +13,13 @@ var classCarManager =
     [ "m_controlsManager", "classCarManager.html#a83faace47172a1d033038fa03f9c0230", null ],
     [ "m_dataManager", "classCarManager.html#ac0417ed42e8afc27fa74ebc093e3038d", null ],
     [ "m_displayManager", "classCarManager.html#a99d87016e2a067f8f4878de108c70fbb", null ],
+    [ "m_inferenceSubscriber", "classCarManager.html#abfa621125f3953ce09b2bd3568426943", null ],
+    [ "m_inferenceSubscriberThread", "classCarManager.html#ad8105b33d78f51021fd741967ee1d2db", null ],
     [ "m_mileageManager", "classCarManager.html#a40a53e775a1be436fa8b680199e83500", null ],
+    [ "m_notificationOverlay", "classCarManager.html#a41e0affcfc9b0b9124759ec0ea3b62da", null ],
+    [ "m_running", "classCarManager.html#a594a7e32d90c0371c1d661abcd91f677", null ],
+    [ "m_subscriberNotification", "classCarManager.html#a015590e9b5db21994235a1d373223111", null ],
+    [ "m_subscriberNotificationThread", "classCarManager.html#a1dee53f383c3fdd6be0d332ed8597083", null ],
     [ "m_systemManager", "classCarManager.html#ab08d0af5d9a68e651fc073373228f921", null ],
     [ "ui", "classCarManager.html#a5532cd768f42e8ee61c6448887a76534", null ]
 ];

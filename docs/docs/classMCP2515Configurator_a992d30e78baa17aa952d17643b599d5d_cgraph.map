@@ -1,0 +1,5 @@
+<map id="MCP2515Configurator::configureInterrupts" name="MCP2515Configurator::configureInterrupts">
+<area shape="rect" id="node1" title="Configure the interrupts for the MCP2515." alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node2" href="$classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="216,5,379,47"/>
+<area shape="rect" id="node3" href="$classISPIController.html#a4a24db4176bf09874ad9031c26702947" title=" " alt="" coords="427,13,608,39"/>
+</map>

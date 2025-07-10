@@ -1,0 +1,6 @@
+<map id="IMCP2515Controller::speedUpdated" name="IMCP2515Controller::speedUpdated">
+<area shape="rect" id="node1" title="Signal emitted when the speed is updated." alt="" coords="579,23,729,65"/>
+<area shape="rect" id="node2" href="$classCanBusManager.html#a7906428f2dba8fd2488b473036c2ba70" title="Method to connect signals." alt="" coords="296,5,531,32"/>
+<area shape="rect" id="node4" href="$test__MCP2515Controller_8cpp.html#ac34886fefb15eb0151b970cb603f585c" title="Ensures that the speed signal is emitted with the correct value." alt="" coords="379,56,448,83"/>
+<area shape="rect" id="node3" href="$classCanBusManager.html#ae99209d291de980c75c10f8c12231a30" title="Construct a new CanBusManager::CanBusManager object." alt="" coords="5,5,248,32"/>
+</map>

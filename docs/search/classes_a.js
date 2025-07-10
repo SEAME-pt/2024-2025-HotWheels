@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['vehicledatamanager_0',['VehicleDataManager',['../classVehicleDataManager.html',1,'']]],
-  ['vehicledatamanagertest_1',['VehicleDataManagerTest',['../classVehicleDataManagerTest.html',1,'']]]
+  ['peripheralcontroller_880',['PeripheralController',['../classPeripheralController.html',1,'']]],
+  ['publisher_881',['Publisher',['../classPublisher.html',1,'']]]
 ];

@@ -1,0 +1,5 @@
+<map id="FileController::read" name="FileController::read">
+<area shape="rect" id="node1" title="Reads a line from the file." alt="" coords="252,31,399,57"/>
+<area shape="rect" id="node2" href="$classI2CController.html#a2c64e3a7375e1f37af191589a58d5438" title="Read a 16&#45;bit value from a register." alt="" coords="5,5,204,32"/>
+<area shape="rect" id="node3" href="$test__MileageFileHandler_8cpp.html#a781b9e1f6b68af69401341bfea7df85c" title="Ensures that the mileage file handler does not create the file if it already exists." alt="" coords="70,56,139,83"/>
+</map>

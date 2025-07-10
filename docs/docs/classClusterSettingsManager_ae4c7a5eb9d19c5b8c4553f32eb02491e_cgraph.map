@@ -1,0 +1,4 @@
+<map id="ClusterSettingsManager::toggleDrivingMode" name="ClusterSettingsManager::toggleDrivingMode">
+<area shape="rect" id="node1" title="Toggle the driving mode." alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node2" href="$classClusterSettingsManager.html#a16bdb0a115c2ca9d4d036214697414e1" title="Get the driving mode." alt="" coords="232,5,411,47"/>
+</map>

@@ -3,6 +3,9 @@ var hierarchy =
     [ "CameraStreamer", "classCameraStreamer.html", null ],
     [ "CANFrame", "structCANFrame.html", null ],
     [ "CANMessageProcessor", "classCANMessageProcessor.html", null ],
+    [ "Ui::CarManager", null, [
+      [ "FakeUI", "classFakeUI.html", null ]
+    ] ],
     [ "LaneCurveFitter::CenterlineResult", "structLaneCurveFitter_1_1CenterlineResult.html", null ],
     [ "Detection", "structDetection.html", null ],
     [ "FrameBufferDetection", "classFrameBufferDetection.html", null ],
@@ -89,6 +92,7 @@ var hierarchy =
       [ "CanBusManagerTest", "classCanBusManagerTest.html", null ],
       [ "ClusterSettingsManagerTest", "classClusterSettingsManagerTest.html", null ],
       [ "DataManagerTest", "classDataManagerTest.html", null ],
+      [ "DisplayManagerTest", "classDisplayManagerTest.html", null ],
       [ "MCP2515ConfiguratorTest", "classMCP2515ConfiguratorTest.html", null ],
       [ "MCP2515ControllerTest", "classMCP2515ControllerTest.html", null ],
       [ "MileageCalculatorTest", "classMileageCalculatorTest.html", null ],
@@ -103,7 +107,5 @@ var hierarchy =
       [ "SystemManagerTest", "classSystemManagerTest.html", null ],
       [ "VehicleDataManagerTest", "classVehicleDataManagerTest.html", null ]
     ] ],
-    [ "YOLOv5TRT", "classYOLOv5TRT.html", [
-      [ "YOLOv5TRT_Testable", "classYOLOv5TRT__Testable.html", null ]
-    ] ]
+    [ "YOLOv5TRT", "classYOLOv5TRT.html", null ]
 ];

@@ -1,17 +1,11 @@
 var searchData=
 [
-  ['object_20detection_0',['[Object Detection]()',['../index.html#autotoc_md29',1,'']]],
-  ['onspeedupdated_1',['onSpeedUpdated',['../classMileageManager.html#af314c5425f519dea34b5edcac8bce4d9',1,'MileageManager']]],
-  ['opcode_2',['Opcode',['../classSPIController.html#ac1d6cf9475b5cf1ac88c233be36669e6',1,'SPIController']]],
-  ['open_3',['open',['../namespaceFileController.html#a093a115723b6351790b2805ec3e2ff25',1,'FileController']]],
-  ['opendevice_4',['openDevice',['../classISPIController.html#afaa405cd677e773051353f60b6cf8eb5',1,'ISPIController::openDevice()'],['../classSPIController.html#aad09c12ef162826e6ddbe042c43f3a99',1,'SPIController::openDevice()']]],
-  ['openfunc_5',['OpenFunc',['../SPIController_8hpp.html#a40c14e0a7403b4e9867de2296b0ca22c',1,'SPIController.hpp']]],
-  ['openfunc_6',['openFunc',['../classMileageFileHandler.html#aa940d824539785dda03ec532d57dff57',1,'MileageFileHandler']]],
-  ['operational_7',['Operational',['../car__controls_2includes_2enums_8hpp.html#a7742add5e28549b88107eeec57b2f835a431accab7897f05b0424e002ca30391d',1,'Operational:&#160;enums.hpp'],['../cluster_2includes_2data_2enums_8hpp.html#a7742add5e28549b88107eeec57b2f835a431accab7897f05b0424e002ca30391d',1,'Operational:&#160;enums.hpp'],['../car__controls_2includes_2enums_8hpp.html#a7742add5e28549b88107eeec57b2f835a431accab7897f05b0424e002ca30391d',1,'Operational:&#160;enums.hpp'],['../cluster_2includes_2data_2enums_8hpp.html#a7742add5e28549b88107eeec57b2f835a431accab7897f05b0424e002ca30391d',1,'Operational:&#160;enums.hpp']]],
-  ['operator_3d_8',['operator=',['../classMockSysCalls.html#a5991d4b114f9bc2bcd94f0a17db75567',1,'MockSysCalls']]],
-  ['or_20raspberrypi_9',['Nvidea or RaspberryPi',['../md_ADR_2001-NvideaOrRaspberry.html',1,'']]],
-  ['output_10',['OUTPUT',['../namespacetest-entry-point.html#ab367dd6cdb31edeb71473c7c58bf0933',1,'test-entry-point']]],
-  ['overview_11',['Overview',['..//home/michel/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/cluster/README.md#autotoc_md5',1,'']]],
-  ['ownsmcp2515controller_12',['ownsMCP2515Controller',['../classCanBusManager.html#abcc1cf47f1732d855b3eaaa997b835b3',1,'CanBusManager']]],
-  ['ownsspicontroller_13',['ownsSPIController',['../classMCP2515Controller.html#a848879ce58d05a56d156fcf2cba48de8',1,'MCP2515Controller']]]
+  ['vehicledatamanager_751',['VehicleDataManager',['../classVehicleDataManager.html',1,'']]],
+  ['vehicledatamanager_752',['vehicleDataManager',['../classVehicleDataManagerTest.html#a680577430de7177135176a70685cb9f7',1,'VehicleDataManagerTest']]],
+  ['vehicledatamanager_753',['VehicleDataManager',['../classVehicleDataManager.html#a9b89358b54a58aa9aed95a04c7ea09d1',1,'VehicleDataManager']]],
+  ['vehicledatamanager_2ecpp_754',['VehicleDataManager.cpp',['../VehicleDataManager_8cpp.html',1,'']]],
+  ['vehicledatamanager_2ehpp_755',['VehicleDataManager.hpp',['../VehicleDataManager_8hpp.html',1,'']]],
+  ['vehicledatamanager_5ftestdoc_2emd_756',['VehicleDataManager_TestDoc.md',['../VehicleDataManager__TestDoc_8md.html',1,'']]],
+  ['vehicledatamanagertest_757',['VehicleDataManagerTest',['../classVehicleDataManagerTest.html',1,'']]],
+  ['verifymode_758',['verifyMode',['../classMCP2515Configurator.html#a0e133b539872c674a29cd81db4185d6c',1,'MCP2515Configurator']]]
 ];

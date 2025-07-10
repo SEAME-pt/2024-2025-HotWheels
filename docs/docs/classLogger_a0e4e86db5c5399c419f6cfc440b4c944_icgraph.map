@@ -1,0 +1,6 @@
+<map id="Logger::instance" name="Logger::instance">
+<area shape="rect" id="node1" title=" " alt="" coords="453,35,583,61"/>
+<area shape="rect" id="node2" href="$classYOLOv5TRT.html#aab1b5793ec0d442f82106323e3673128" title=" " alt="" coords="231,5,405,32"/>
+<area shape="rect" id="node4" href="$classTensorRTInferencer.html#aa43aac7ee0072fa7e2ba2f46310fd205" title=" " alt="" coords="241,57,395,98"/>
+<area shape="rect" id="node3" href="$classYOLOv5TRT.html#ad2504b33af861c37c2102c3e5f7d43fe" title="Construtor. Carrega o engine e aloca buffers." alt="" coords="5,5,183,32"/>
+</map>

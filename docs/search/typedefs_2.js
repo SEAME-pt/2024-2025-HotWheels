@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['fileexistsfunc_0',['FileExistsFunc',['../MileageFileHandler_8hpp.html#a465b74233def06952505bf1fad01a516',1,'MileageFileHandler.hpp']]],
-  ['fileopenfunc_1',['FileOpenFunc',['../MileageFileHandler_8hpp.html#af57d74450482f3b6127d699f277ecc8d',1,'MileageFileHandler.hpp']]],
-  ['filereadfunc_2',['FileReadFunc',['../MileageFileHandler_8hpp.html#ae8d31bb6ba51ae5db38659793d9fc620',1,'MileageFileHandler.hpp']]],
-  ['filewritefunc_3',['FileWriteFunc',['../MileageFileHandler_8hpp.html#abe8ba37b4130b5677a73a1f9c6b286c3',1,'MileageFileHandler.hpp']]]
+  ['ioctlfunc_1598',['IoctlFunc',['../SPIController_8hpp.html#a86b09249847f2c9a69ea4a8719a7ac3d',1,'SPIController.hpp']]]
 ];

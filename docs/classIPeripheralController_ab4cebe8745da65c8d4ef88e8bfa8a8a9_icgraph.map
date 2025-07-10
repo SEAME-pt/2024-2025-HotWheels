@@ -1,0 +1,4 @@
+<map id="IPeripheralController::i2c_smbus_read_byte_data" name="IPeripheralController::i2c_smbus_read_byte_data">
+<area shape="rect" id="node1" title=" " alt="" coords="108,5,315,47"/>
+<area shape="rect" id="node2" href="$test__PeripheralController_8cpp.html#afe55fabbd8a27b12c4f1ea5ae2f5bfd9" title="Ensures that i2c_smbus_read_byte_data() is called with the correct parameters." alt="" coords="5,13,60,39"/>
+</map>

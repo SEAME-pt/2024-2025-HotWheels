@@ -16,7 +16,9 @@ var annotated_dup =
     [ "DataManagerTest", "classDataManagerTest.html", "classDataManagerTest" ],
     [ "Detection", "structDetection.html", "structDetection" ],
     [ "DisplayManager", "classDisplayManager.html", "classDisplayManager" ],
+    [ "DisplayManagerTest", "classDisplayManagerTest.html", "classDisplayManagerTest" ],
     [ "EngineController", "classEngineController.html", "classEngineController" ],
+    [ "FakeUI", "classFakeUI.html", "classFakeUI" ],
     [ "FrameBufferDetection", "classFrameBufferDetection.html", "classFrameBufferDetection" ],
     [ "FrameBufferSegmentation", "classFrameBufferSegmentation.html", "classFrameBufferSegmentation" ],
     [ "i2c_smbus_data", "unioni2c__smbus__data.html", "unioni2c__smbus__data" ],
@@ -76,6 +78,5 @@ var annotated_dup =
     [ "TensorRTInferencer", "classTensorRTInferencer.html", "classTensorRTInferencer" ],
     [ "VehicleDataManager", "classVehicleDataManager.html", "classVehicleDataManager" ],
     [ "VehicleDataManagerTest", "classVehicleDataManagerTest.html", "classVehicleDataManagerTest" ],
-    [ "YOLOv5TRT", "classYOLOv5TRT.html", "classYOLOv5TRT" ],
-    [ "YOLOv5TRT_Testable", "classYOLOv5TRT__Testable.html", "classYOLOv5TRT__Testable" ]
+    [ "YOLOv5TRT", "classYOLOv5TRT.html", "classYOLOv5TRT" ]
 ];

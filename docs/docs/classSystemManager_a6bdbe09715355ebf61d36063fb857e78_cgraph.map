@@ -1,0 +1,6 @@
+<map id="SystemManager::updateSystemStatus" name="SystemManager::updateSystemStatus">
+<area shape="rect" id="node1" title="Updates the system status." alt="" coords="5,71,236,112"/>
+<area shape="rect" id="node2" href="$classIBatteryController.html#aa20b28b939b1d3224233e9a5bc574ee8" title=" " alt="" coords="284,5,456,47"/>
+<area shape="rect" id="node3" href="$classISystemInfoProvider.html#a5da52499bfc71b3ab410c514fd4c933c" title=" " alt="" coords="293,71,447,112"/>
+<area shape="rect" id="node4" href="$classISystemInfoProvider.html#a1ebc4c5f88dade63c28f5051b2178344" title=" " alt="" coords="293,136,447,177"/>
+</map>

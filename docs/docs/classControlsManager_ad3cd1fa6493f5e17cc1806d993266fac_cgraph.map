@@ -1,0 +1,10 @@
+<map id="ControlsManager::drivingModeUpdated" name="ControlsManager::drivingModeUpdated">
+<area shape="rect" id="node1" title="Update the driving mode of the vehicle." alt="" coords="5,100,192,141"/>
+<area shape="rect" id="node2" href="$classNotificationManager.html#a1772d907be839bd4b0effe5f03aa4753" title=" " alt="" coords="261,5,422,47"/>
+<area shape="rect" id="node4" href="$classNotificationManager.html#acdd65768abf31b1be2bf043a05e6f10e" title=" " alt="" coords="264,71,419,112"/>
+<area shape="rect" id="node5" href="$classPublisher.html#a387233b0cdda7f9d59d3d7c59a2f3cb6" title=" " alt="" coords="269,137,414,163"/>
+<area shape="rect" id="node7" href="$classPublisher.html#a0b097af5e8fc52cbe32dc24b5b34c9f0" title=" " alt="" coords="240,187,443,214"/>
+<area shape="rect" id="node3" href="$classNotificationOverlay.html#a2d4c99d4d89d45fdc730f911ae827579" title=" " alt="" coords="492,5,640,47"/>
+<area shape="rect" id="node6" href="$classPublisher.html#aa433e35d15ff5572b3ead89611b4bfc9" title=" " alt="" coords="491,137,641,163"/>
+<area shape="rect" id="node8" href="$classPublisher.html#afe951e0c1dc4727feeecb8c3bc846f84" title=" " alt="" coords="497,187,635,214"/>
+</map>

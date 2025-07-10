@@ -1,0 +1,8 @@
+<map id="MCP2515Configurator::sendCANMessage" name="MCP2515Configurator::sendCANMessage">
+<area shape="rect" id="node1" title="Send a CAN message to the MCP2515." alt="" coords="5,64,168,105"/>
+<area shape="rect" id="node2" href="$classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="229,5,392,47"/>
+<area shape="rect" id="node4" href="$classISPIController.html#ab6c879e0e91bd69afc58a40a68701e02" title=" " alt="" coords="216,71,405,98"/>
+<area shape="rect" id="node5" href="$classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="229,123,392,164"/>
+<area shape="rect" id="node3" href="$classISPIController.html#a0155550573fcd6937aeb133e56991c9a" title=" " alt="" coords="455,13,633,39"/>
+<area shape="rect" id="node6" href="$classISPIController.html#a4a24db4176bf09874ad9031c26702947" title=" " alt="" coords="453,130,635,157"/>
+</map>

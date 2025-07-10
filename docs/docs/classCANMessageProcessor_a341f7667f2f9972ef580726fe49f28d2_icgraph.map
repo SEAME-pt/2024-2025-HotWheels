@@ -1,0 +1,5 @@
+<map id="CANMessageProcessor::registerHandler" name="CANMessageProcessor::registerHandler">
+<area shape="rect" id="node1" title="Destroy the CANMessageProcessor::CANMessageProcessor object." alt="" coords="411,5,581,47"/>
+<area shape="rect" id="node2" href="$classMCP2515Controller.html#af33937a6ecfeae8a44a2f42c9b36d4e3" title="Send a CAN message." alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node3" href="$classMCP2515Controller.html#af4bec99219f1dd795c2909844ed75537" title="Construct a new MCP2515Controller::MCP2515Controller object." alt="" coords="5,5,160,47"/>
+</map>

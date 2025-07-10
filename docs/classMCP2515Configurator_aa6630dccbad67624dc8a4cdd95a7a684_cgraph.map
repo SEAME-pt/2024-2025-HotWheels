@@ -1,0 +1,4 @@
+<map id="MCP2515Configurator::sendCommand" name="MCP2515Configurator::sendCommand">
+<area shape="rect" id="node1" title="Send a command to the MCP2515." alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node2" href="$classISPIController.html#ab6c879e0e91bd69afc58a40a68701e02" title=" " alt="" coords="216,13,405,39"/>
+</map>
