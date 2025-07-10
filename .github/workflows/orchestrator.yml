@@ -5,6 +5,8 @@ on:
     workflows: ["Cross-Compile Car Controls to aarch64", "Cross-Compile Cluster to aarch64"]
     types:
       - completed
+    branches:
+      - test-coverage
 
 jobs:
   check-and-trigger-docs:
