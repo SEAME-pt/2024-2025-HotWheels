@@ -3,14 +3,14 @@ name: Build Documentation
 on:
   push:
     branches:
-      - main
+      - test-coverage
   pull_request:
     branches:
-      - main
+      - test-coverage
 
 jobs:
   run-on-self-hosted:
-    runs-on: [self-hosted, seame-computer-2]
+    runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -24,7 +24,15 @@ jobs:
       - name: Run Doxygen
         run: doxygen Doxyfile
 
-      - name: Copy folder to ~/Documents
+      - name: Copy documentation
         run: |
-          cp -r $GITHUB_WORKSPACE/docs ~/Documents/Documentation_cluster/docs
-          /bin/bash -c "~/Documents/Documentation_cluster/update.sh"
+          cp -r $GITHUB_WORKSPACE/docs ~/Documents/documentation-branch/docs
+
+      - name: Copy coverage reports
+        run: |
+          cp -r ~/dev/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/car_controls/build/coverage-car-controls ~/Documents/documentation-branch
+          cp -r ~/dev/actions-runner/_work/2024-2025-HotWheels/2024-2025-HotWheels/apps/cluster/build/coverage-cluster ~/Documents/documentation-branch
+
+      - name: Execute script to update documentation
+        run: |
+          /bin/bash -c "~/Documents/documentation-branch/update.sh"
