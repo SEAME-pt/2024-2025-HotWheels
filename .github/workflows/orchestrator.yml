@@ -23,6 +23,8 @@ jobs:
 
       - name: Check status of both workflows
         id: check
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           REPO="${{ github.repository }}"
           BRANCH="${{ github.event.workflow_run.head_branch }}"
