@@ -7,31 +7,11 @@ Publisher::Publisher(int port) : context(1), publisher(context, ZMQ_PUB), joytst
 	publisher.bind(boundAddress);  // Dynamic port binding
 }
 
-Publisher::~Publisher() {
-	try {
-		publisher.unbind(boundAddress);  // Use stored address
-		publisher.close();
-		context.close();
-		std::cout << "[Publisher] Unbound from " << boundAddress << std::endl;
-	} catch (const zmq::error_t& e) {
-		std::cerr << "[Publisher] Failed to unbind: " << e.what() << std::endl;
-	}
-}
-
-Publisher* Publisher::m_instance = nullptr;
-
 Publisher* Publisher::instance(int port) {
 	if (instances.find(port) == instances.end()) {
 		instances[port] = new Publisher(port);
 	}
 	return instances[port];
-}
-
-void Publisher::destroyAll() {
-	for (auto& pair : instances) {
-		delete pair.second;
-	}
-	instances.clear();
 }
 
 void Publisher::publish(const std::string& topic, const std::string& message) {

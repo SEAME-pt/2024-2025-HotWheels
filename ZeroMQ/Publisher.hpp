@@ -26,8 +26,7 @@ private:
 
 public:
 	//Publisher(int port);
-	~Publisher();
-	static Publisher* m_instance;
+	~Publisher() = delete;
 	static void destroyAll();
 
 	// Singleton accessor

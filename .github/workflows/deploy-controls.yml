@@ -1,59 +1,65 @@
-name: Cross-Compile Car Controls to aarch64
+name: Car Controls
 
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - 'apps/car_controls/**'
-#       - 'ZeroMQ/**'
-#   pull_request:
-#     branches:
-#       - main
-#     paths:
-#       - 'apps/car_controls/**'
-#       - 'ZeroMQ/**'
+on:
+  push:
+    branches:
+      - test-coverage
+    # paths:
+    #   - 'apps/car_controls/**'
+    #   - 'ZeroMQ/**'
+  pull_request:
+    branches:
+      - test-coverage
+    # paths:
+    #   - 'apps/car_controls/**'
+    #   - 'ZeroMQ/**'
 
 env:
   DIR: apps/car_controls
 
 jobs:
-  run-on-self-hosted:
+  compile-test-and-coverage:
     runs-on: [self-hosted, seame-computer-1]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build arm64 executable and tests executable
+      - name: Build executable
         run: |
           cd $DIR
           mkdir build
           cd build
-          ~/qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
+          ~/new_qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
           make -j$(nproc)
+          rm -rf *.o
 
-      - name: Build arm64 executable for testing
+      - name: Build tests
         run: |
-          cd $DIR
-          cd build
-          ~/qtjetson/qt5.15/bin/qmake ../car-controls-tests.pro
+          cd $DIR/build
+          qmake ../car-controls-tests.pro
           make -j$(nproc)
-
-      - name: Deploy tests on Jetson
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-tests jetson@100.108.203.64:/home/jetson/apps/tests
 
       - name: Run tests
-        env:
-          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no jetson@100.108.203.64 \
-            '/home/jetson/apps/tests/car-controls-tests'
+          cd $DIR/build
+          ./car-controls-tests
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps/test
+
+      - name: Generate coverage report
+        run: |
+          cd $DIR/build
+          pwd
+          lcov --capture --directory . --output-file full.info
+          lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/tests*' '*/tensorrt-8.6.1.6*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
+          genhtml filtered.info --output-directory coverage-car-controls
+
+      - name: Copy report to documentation branch
+        run: |
+          cd $DIR/build
+          cp -r coverage-car-controls ~/Documents/documentation-branch
+          pwd

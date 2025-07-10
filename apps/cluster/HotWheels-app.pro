@@ -84,7 +84,7 @@ RESOURCES += \
 	forms/resources.qrc
 
 # Common Libraries
-LIBS += -lSDL2 -lrt -lzmq
+LIBS += -lSDL2 -lrt -lzmq -lpthread
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
@@ -92,7 +92,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	INCLUDEPATH += $$[QT_SYSROOT]/usr/include/SDL2
 
 	# Define paths for Jetson cross-compilation
-	JETSON_SYSROOT = /home/seame/qtjetson/sysroot
+	JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
 
 	# CUDA includes - use the exact path found on Jetson
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
@@ -111,15 +111,37 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	# Library paths for ARM - add all necessary paths
 	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
 	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+	LIBS += -L$${JETSON_SYSROOT}/lib/aarch64-linux-gnu  # Add path for system libraries like pthread
 	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra  # Add Tegra libraries path
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas  # Add ATLAS BLAS/LAPACK path
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9  # Add GCC runtime libs path
 
 	# Make sure we're linking against the right libraries
 	LIBS += -lcudart -lnvinfer -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_highgui -lopencv_calib3d
 	LIBS += -lnvmedia -lnvdla_compiler
+
+	# LAPACK and BLAS libraries (required by OpenCV)
+	# Use specific gfortran version that matches target system
+	LIBS += -llapack -lcblas -lblas -ltbb
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu -lgfortran
 
 	# GStreamer libraries
 	LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
 
 	# Add rpath to help find libraries at runtime
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/local/qt5.15/lib
+
+	# Add runtime paths for target system
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/9
+
+	# Add additional linker flags for compatibility
+	QMAKE_LFLAGS += -Wl,--allow-shlib-undefined -Wl,--unresolved-symbols=ignore-in-shared-libs
+
+	# Add static libstdc++ to avoid GLIBCXX version issues
+	QMAKE_LFLAGS += -static-libstdc++
 }

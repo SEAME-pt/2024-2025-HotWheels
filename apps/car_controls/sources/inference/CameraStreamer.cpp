@@ -48,9 +48,6 @@ CameraStreamer::~CameraStreamer() {
 		cuda_resource = nullptr;
 	}
 
-	delete m_publisherFrameObject;
-	m_publisherFrameObject = nullptr;
-
 	std::cout << "[~CameraStreamer] Destructor done." << std::endl;
 }
 

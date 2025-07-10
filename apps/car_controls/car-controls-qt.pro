@@ -52,7 +52,9 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	message("Building for ARM architecture")
 
-	JETSON_SYSROOT = /home/seame/qtjetson/sysroot
+	JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
+
+	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
 
 	# CUDA includes
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
@@ -76,6 +78,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	# Library paths
 	LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
+	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/lib64
 	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
 	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
 	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
@@ -86,10 +89,9 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	# TensorRT, CUDA, OpenCV
 	LIBS += -lcudart -lnvinfer
-	LIBS += -l:libopencv_core.so.405 -l:libopencv_imgproc.so.405 -l:libopencv_imgcodecs.so.405 -l:libopencv_videoio.so.405 -l:libopencv_highgui.so.405 -l:libopencv_calib3d.so.405
-	LIBS += -l:libopencv_cudaarithm.so.405 -l:libopencv_cudawarping.so.405 -l:libopencv_cudaimgproc.so.405 -l:libopencv_cudacodec.so.405
-	LIBS += -lcublasLt -llapack -lblas
-	LIBS += -lnvmedia -lnvdla_compiler
+	LIBS += -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_videoio -lopencv_highgui -lopencv_calib3d
+	LIBS += -lopencv_cudaarithm -lopencv_cudawarping -lopencv_cudaimgproc -lopencv_cudacodec
+	LIBS += -lcublasLt -lnvmedia -lnvdla_compiler
 
 	# GStreamer libraries
 	LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
@@ -97,7 +99,31 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	# OpenGL, GLEW, GLFW libraries (ORDER MATTERS!)
 	LIBS += -lGLEW -lglfw -lGL
 
+	# LAPACK and BLAS libraries (required by OpenCV)
+	# Use specific gfortran version that matches target system
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas  # Add ATLAS BLAS/LAPACK path
+	LIBS += -llapack -lcblas -lblas -ltbb
+
+	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu -lstdc++
+
 	# RPath for custom OpenCV runtime
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/lib
 	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+
+	# Add rpath to help find libraries at runtime
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/local/qt5.15/lib
+
+	# Add runtime paths for target system
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/gcc/aarch64-linux-gnu/9
+
+	# Add additional linker flags for compatibility
+	QMAKE_LFLAGS += -Wl,--allow-shlib-undefined -Wl,--unresolved-symbols=ignore-in-shared-libs
+
+	# Add static libstdc++ to avoid GLIBCXX version issues
+	QMAKE_LFLAGS += -static-libstdc++
 }

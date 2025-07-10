@@ -123,9 +123,6 @@ void TensorRTInferencer::cleanupResources() {
 
 // Destructor: free all allocated resources
 TensorRTInferencer::~TensorRTInferencer() {
-	delete m_publisherObject;
-	m_publisherObject = nullptr;
-
 	if (hostInput) cudaFreeHost(hostInput);   // Free pinned host memory for input
 	if (hostOutput) cudaFreeHost(hostOutput); // Free pinned host memory for output
 	cleanupResources();  // Free GPU resources
@@ -206,9 +203,11 @@ void TensorRTInferencer::runInference(const cv::cuda::GpuMat& gpuInput) {
 		throw std::runtime_error("cudaMemcpy2DAsync failed: " + std::string(cudaGetErrorString(err)));
 	}
 
-	if (!context->enqueueV2(bindings.data(), stream, nullptr)) {  // Enqueue inference on the GPU
+	/* if (!context->enqueueV2(bindings.data(), stream, nullptr)) {  // Enqueue inference on the GPU
 		throw std::runtime_error("TensorRT inference execution failed");
-	}
+	} */
+
+	context->executeV2(bindings.data()); // Or executeAsyncV3 if needed
 }
 
 // Perform full prediction pipeline: preprocess, inference, and extract output

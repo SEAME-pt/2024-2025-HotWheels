@@ -7,7 +7,9 @@ NotificationOverlay::NotificationOverlay(QWidget* parent)
 	setAttribute(Qt::WA_NoSystemBackground);
 	setAttribute(Qt::WA_TranslucentBackground);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::ToolTip);
-	resize(parent->size());
+	if (parent)
+		resize(parent->size());
+	//resize(parent->size());
 	opacityEffect = new QGraphicsOpacityEffect(this);
 	setGraphicsEffect(opacityEffect);
 
@@ -17,6 +19,8 @@ NotificationOverlay::NotificationOverlay(QWidget* parent)
 	fadeOutTimer = new QTimer(this);
 	fadeOutTimer->setSingleShot(true);
 }
+
+NotificationOverlay::~NotificationOverlay() = default;
 
 void NotificationOverlay::showNotification(const QString& text, NotificationLevel notificationLevel, int durationMs)
 {

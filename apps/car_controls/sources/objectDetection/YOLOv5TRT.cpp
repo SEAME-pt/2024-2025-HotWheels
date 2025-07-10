@@ -5,17 +5,6 @@ std::chrono::steady_clock::time_point YOLOv5TRT::lastNotificationTime = std::chr
 
 YOLOv5TRT::YOLOv5TRT(const std::string& enginePath, const std::string& labelPath)
 	: labelManager(labelPath) {
-	// Correção: verificar valores de retorno do system()
-	int result1 = system("sudo nvpmodel -m 0");
-	if (result1 != 0) {
-		std::cerr << "[AVISO] Falha ao configurar nvpmodel" << std::endl;
-	}
-
-	int result2 = system("sudo jetson_clocks");
-	if (result2 != 0) {
-		std::cerr << "[AVISO] Falha ao configurar jetson_clocks" << std::endl;
-	}
-
 	// Configurar OpenCV para usar CUDA
 	cv::cuda::setDevice(0);
 	loadEngine(enginePath);
@@ -115,7 +104,9 @@ std::vector<float> YOLOv5TRT::infer(const cv::Mat& image) {
 					cudaMemcpyHostToDevice, stream);
 
 	// Executar inferência
-	context->enqueueV2(bindings.data(), stream, nullptr);
+	//context->enqueueV2(bindings.data(), stream, nullptr);
+
+	context->executeV2(bindings.data());
 
 	// Copiar resultados para o host
 	cudaMemcpyAsync(outputHost, outputDevice, outputSize,

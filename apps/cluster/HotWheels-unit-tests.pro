@@ -1,6 +1,10 @@
 QT       += core testlib network widgets
 CONFIG   += c++17
 
+CONFIG += debug
+QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
+QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
+
 # ====== Unit Tests Target ======
 TEMPLATE = app
 TARGET = HotWheels-unit-tests
@@ -33,7 +37,9 @@ SOURCES += \
 	$$UNIT_TESTS_PATH/mileage/test_MileageManager.cpp \
 	$$UNIT_TESTS_PATH/system/test_BatteryController.cpp \
 	$$UNIT_TESTS_PATH/system/test_SystemInfoProvider.cpp \
-	$$UNIT_TESTS_PATH/system/test_SystemManager.cpp
+	$$UNIT_TESTS_PATH/system/test_SystemManager.cpp \
+	$$UNIT_TESTS_PATH/display/test_DisplayManager.cpp \
+	$$UNIT_TESTS_PATH/main.cpp
 
 # Unit Test Headers (Mocks)
 HEADERS += \
@@ -44,7 +50,7 @@ HEADERS += \
 	$$MOCKS_PATH/MockMileageCalculator.hpp \
 	$$MOCKS_PATH/MockSystemCommandExecutor.hpp \
 	$$MOCKS_PATH/MockSystemInfoProvider.hpp \
-	$$MOCKS_PATH/MockBatteryController.hpp
+	$$MOCKS_PATH/MockBatteryController.hpp \
 
 # System Sources Required for Tests
 SOURCES += \
@@ -84,11 +90,6 @@ HEADERS += \
 	includes/display/NotificationManager.hpp \
 	includes/display/NotificationOverlay.hpp
 
-
-# Define paths for Jetson cross-compilation
-JETSON_SYSROOT = /home/seame/qtjetson/sysroot
-
-GMOCK_LIBDIR = $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
+GMOCK_LIBDIR = /usr/lib/aarch64-linux-gnu
 LIBS += -L$${GMOCK_LIBDIR} \
         -lgmock_main -lgtest_main -lgmock -lgtest -lpthread
-
