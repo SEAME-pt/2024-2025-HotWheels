@@ -21,13 +21,6 @@ jobs:
             sudo apt update
             sudo apt install -y gh
 
-      - name: Authenticate GitHub CLI
-        run: |
-            echo $GH_TOKEN | gh auth login --with-token
-        env:
-            GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
-
       - name: Check status of both workflows
         id: check
         run: |
