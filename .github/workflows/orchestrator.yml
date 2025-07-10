@@ -9,51 +9,13 @@ on:
       - test-coverage
 
 jobs:
-  check-and-trigger-docs:
+  debug:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Install GitHub CLI
+      - name: Debug workflow run event
         run: |
-            sudo apt update
-            sudo apt install -y gh
-
-      - name: Authenticate GitHub CLI
-        run: |
-            echo $GH_TOKEN | gh auth login --with-token
-        env:
-            GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
-
-      - name: Check status of both workflows
-        id: check
-        run: |
-          REPO="${{ github.repository }}"
-          BRANCH="${{ github.event.workflow_run.head_branch }}"
-
-          echo "Checking workflow runs for $REPO on branch $BRANCH"
-
-          # Get last successful runs of both workflows
-          CONTROLS=$(gh api -H "Accept: application/vnd.github+json" /repos/$REPO/actions/workflows/deploy-controls.yml/runs?branch=$BRANCH\&status=success\&per_page=1 --jq '.workflow_runs[0].updated_at')
-          CLUSTER=$(gh api -H "Accept: application/vnd.github+json" /repos/$REPO/actions/workflows/deploy-cluster.yml/runs?branch=$BRANCH\&status=success\&per_page=1 --jq '.workflow_runs[0].updated_at')
-
-          echo "Car controls workflow finished at: $CONTROLS"
-          echo "Cluster workflow finished at: $CLUSTER"
-
-          if [[ -z "$CONTROLS" || -z "$CLUSTER" ]]; then
-            echo "One or both workflows haven't succeeded yet."
-            echo "trigger_docs=false" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          echo "trigger_docs=true" >> $GITHUB_OUTPUT
-
-      - name: Trigger documentation workflow
-        if: steps.check.outputs.trigger_docs == 'true'
-        run: |
-          gh workflow run deploy-docs.yml --ref ${{ github.event.workflow_run.head_branch }}
-        env:
-          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          echo "Workflow run triggered!"
+          echo "Conclusion: ${{ github.event.workflow_run.conclusion }}"
+          echo "Status: ${{ github.event.workflow_run.status }}"
+          echo "Branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "Workflow: ${{ github.event.workflow_run.workflow.name }}"
