@@ -42,6 +42,7 @@ jobs:
       - name: Run tests
         run: |
           cd $DIR/build
+          pwd
           ./car-controls-tests
 
       - name: Deploy executable to target
@@ -53,6 +54,7 @@ jobs:
       - name: Generate coverage report
         run: |
           cd $DIR/build
+          pwd
           lcov --capture --directory . --output-file full.info
           lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/tests*' '*/tensorrt-8.6.1.6*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
           genhtml filtered.info --output-directory coverage-car-controls
