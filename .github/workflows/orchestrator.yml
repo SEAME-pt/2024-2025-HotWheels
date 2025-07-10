@@ -32,27 +32,28 @@ jobs:
 
           echo "Checking workflow runs for $REPO on branch $BRANCH and commit $SHA"
 
-          # Get successful run of deploy-controls.yml on the same commit
+          # Controls: Must match head_sha, status completed, and conclusion success
           CONTROLS=$(gh api -H "Accept: application/vnd.github+json" \
             /repos/$REPO/actions/workflows/deploy-controls.yml/runs \
-            --jq ".workflow_runs[] | select(.head_sha == \"$SHA\" and .conclusion == \"success\") | .id" | head -n 1)
+            --jq ".workflow_runs[] | select(.head_sha == \"$SHA\" and .status == \"completed\" and .conclusion == \"success\") | .id" | head -n 1)
 
-          # Get successful run of deploy-cluster.yml on the same commit
+          # Cluster: Same filters
           CLUSTER=$(gh api -H "Accept: application/vnd.github+json" \
             /repos/$REPO/actions/workflows/deploy-cluster.yml/runs \
-            --jq ".workflow_runs[] | select(.head_sha == \"$SHA\" and .conclusion == \"success\") | .id" | head -n 1)
+            --jq ".workflow_runs[] | select(.head_sha == \"$SHA\" and .status == \"completed\" and .conclusion == \"success\") | .id" | head -n 1)
 
           echo "Car controls workflow run ID on commit $SHA: $CONTROLS"
           echo "Cluster workflow run ID on commit $SHA: $CLUSTER"
 
           if [[ -z "$CONTROLS" || -z "$CLUSTER" ]]; then
-            echo "One or both workflows haven't succeeded on this commit."
+            echo "One or both workflows have not completed successfully yet."
             echo "trigger_docs=false" >> $GITHUB_OUTPUT
             exit 0
           fi
 
-          echo "Both workflows succeeded on the same commit."
+          echo "Both workflows completed successfully on the same commit."
           echo "trigger_docs=true" >> $GITHUB_OUTPUT
+
 
       - name: Trigger documentation workflow
         if: steps.check.outputs.trigger_docs == 'true'
