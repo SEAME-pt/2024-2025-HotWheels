@@ -62,3 +62,4 @@ jobs:
         run: |
           cd $DIR/build
           cp -r coverage-car-controls ~/Documents/documentation-branch
+          pwd
