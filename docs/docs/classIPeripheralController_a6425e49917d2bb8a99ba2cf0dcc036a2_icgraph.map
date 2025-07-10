@@ -1,5 +1,0 @@
-<map id="IPeripheralController::init_servo" name="IPeripheralController::init_servo">
-<area shape="rect" id="node1" title=" " alt="" coords="236,35,392,76"/>
-<area shape="rect" id="node2" href="$classEngineController.html#a36923247340945dd1c6edb1a073361a6" title="Constructs an EngineController object, initializing motor and servo controllers." alt="" coords="5,5,188,47"/>
-<area shape="rect" id="node3" href="$test__PeripheralController_8cpp.html#a16e05fa200ebbd82a3f90d8a93e3f9d8" title="Ensures that init_servo() is called." alt="" coords="69,71,124,98"/>
-</map>

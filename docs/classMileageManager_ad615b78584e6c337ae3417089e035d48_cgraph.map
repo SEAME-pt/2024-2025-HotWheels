@@ -1,8 +1,0 @@
-<map id="MileageManager::initialize" name="MileageManager::initialize">
-<area shape="rect" id="node1" title="Initializes the MileageManager object." alt="" coords="5,71,200,98"/>
-<area shape="rect" id="node2" href="$classIMileageFileHandler.html#a2ffef45cb503ce46dc33de67718a8638" title=" " alt="" coords="290,5,442,47"/>
-<area shape="rect" id="node3" href="$classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title="Saves the mileage to the file." alt="" coords="255,71,477,98"/>
-<area shape="rect" id="node5" href="$classMileageManager.html#a912c517158c90834792c3d00c0af101c" title="Updates the mileage." alt="" coords="248,126,484,153"/>
-<area shape="rect" id="node4" href="$classIMileageFileHandler.html#aa74d18576ecbd1ddc6e077806a4f3ce7" title=" " alt="" coords="532,60,684,101"/>
-<area shape="rect" id="node6" href="$classIMileageCalculator.html#adf2cad1363155e44a743d984acf0c5ff" title=" " alt="" coords="535,125,681,167"/>
-</map>

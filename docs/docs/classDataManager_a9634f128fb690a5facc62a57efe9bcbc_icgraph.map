@@ -1,6 +1,0 @@
-<map id="DataManager::handleSpeedData" name="DataManager::handleSpeedData">
-<area shape="rect" id="node1" title="Handle Speed data." alt="" coords="775,13,1008,39"/>
-<area shape="rect" id="node2" href="$classCarManager.html#a33ab3dce383d94c8500b74ed21f56724" title="Initialize the CanBusManager." alt="" coords="536,5,727,47"/>
-<area shape="rect" id="node3" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,13,488,39"/>
-<area shape="rect" id="node4" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,13,193,39"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="EngineController::stop" name="EngineController::stop">
-<area shape="rect" id="node1" title="Stops the engine." alt="" coords="5,105,172,131"/>
-<area shape="rect" id="node2" href="$classEngineController.html#ad865d656c4d1dd4a86b9206a2a9bd926" title="Sets the speed of the car." alt="" coords="220,64,379,105"/>
-<area shape="rect" id="node6" href="$classEngineController.html#afb4f398c794e6d6bb99b2e5426ce4567" title="Sets the steering angle of the car." alt="" coords="220,129,379,171"/>
-<area shape="rect" id="node3" href="$EngineController_8cpp.html#a83100694a686c920777a21081dc0db93" title="Clamps a value to a given range." alt="" coords="504,122,567,149"/>
-<area shape="rect" id="node4" href="$classIPeripheralController.html#a659e9348051957ed9c0f9fcea780bc98" title=" " alt="" coords="457,5,613,47"/>
-<area shape="rect" id="node5" href="$classEngineController.html#a19a12b6f34f267a3e7ed78ffe2980c4f" title="Sets the direction of the car and emits the directionUpdated signal if the direction has changed." alt="" coords="427,71,644,98"/>
-<area shape="rect" id="node7" href="$classIPeripheralController.html#a3c0649bd1777013ba1c2f127fcf8a3bf" title=" " alt="" coords="457,173,613,215"/>
-</map>

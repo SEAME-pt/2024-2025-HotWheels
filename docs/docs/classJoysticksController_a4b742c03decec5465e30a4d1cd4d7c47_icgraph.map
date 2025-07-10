@@ -1,4 +1,0 @@
-<map id="JoysticksController::requestStop" name="JoysticksController::requestStop">
-<area shape="rect" id="node1" title="Requests the joystick controller to stop." alt="" coords="260,5,404,47"/>
-<area shape="rect" id="node2" href="$classControlsManager.html#aae2c059f833ce815b96cf6a7895114a2" title="Destructor for the ControlsManager class." alt="" coords="5,5,212,47"/>
-</map>

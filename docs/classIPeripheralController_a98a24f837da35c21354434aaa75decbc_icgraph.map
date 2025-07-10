@@ -1,4 +1,0 @@
-<map id="IPeripheralController::read_byte_data" name="IPeripheralController::read_byte_data">
-<area shape="rect" id="node1" title=" " alt="" coords="108,5,264,47"/>
-<area shape="rect" id="node2" href="$test__PeripheralController_8cpp.html#a7967cd44969cd4fb3fe4faedc863aa6e" title="Ensures that read_byte_data() throws a runtime_error exception." alt="" coords="5,13,60,39"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="ClusterSettingsManager::toggleClusterMetrics" name="ClusterSettingsManager::toggleClusterMetrics">
-<area shape="rect" id="node1" title="Toggle the cluster metrics." alt="" coords="5,71,184,112"/>
-<area shape="rect" id="node2" href="$classNotificationManager.html#a1772d907be839bd4b0effe5f03aa4753" title=" " alt="" coords="241,5,402,47"/>
-<area shape="rect" id="node4" href="$classNotificationManager.html#acdd65768abf31b1be2bf043a05e6f10e" title=" " alt="" coords="244,71,399,112"/>
-<area shape="rect" id="node5" href="$classClusterSettingsManager.html#a7017650bbc4722f307c877545b4dd973" title="Get the cluster metrics." alt="" coords="232,136,411,177"/>
-<area shape="rect" id="node3" href="$classNotificationOverlay.html#a2d4c99d4d89d45fdc730f911ae827579" title=" " alt="" coords="459,5,607,47"/>
-</map>

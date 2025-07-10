@@ -1,6 +1,0 @@
-<map id="FileController::write" name="FileController::write">
-<area shape="rect" id="node1" title="Writes a line to the file." alt="" coords="256,56,407,83"/>
-<area shape="rect" id="node2" href="$classI2CController.html#a2c64e3a7375e1f37af191589a58d5438" title="Read a 16&#45;bit value from a register." alt="" coords="7,5,206,32"/>
-<area shape="rect" id="node3" href="$test__MileageFileHandler_8cpp.html#acdb4e20fe546be0a4ddb64a6d2a1638a" title="Ensures that the mileage file handler creates the file if it does not exist." alt="" coords="72,56,141,83"/>
-<area shape="rect" id="node4" href="$classI2CController.html#a2fd9e6276b46f449611d412cc604c00d" title="Write a 16&#45;bit value to a register." alt="" coords="5,107,208,133"/>
-</map>

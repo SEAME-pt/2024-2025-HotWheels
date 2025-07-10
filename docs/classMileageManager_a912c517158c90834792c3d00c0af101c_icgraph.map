@@ -1,7 +1,0 @@
-<map id="MileageManager::updateMileage" name="MileageManager::updateMileage">
-<area shape="rect" id="node1" title="Updates the mileage." alt="" coords="1044,13,1280,39"/>
-<area shape="rect" id="node2" href="$classMileageManager.html#ad615b78584e6c337ae3417089e035d48" title="Initializes the MileageManager object." alt="" coords="801,13,996,39"/>
-<area shape="rect" id="node3" href="$classCarManager.html#a5bf066ce114aea750d5d71c7618a9ac1" title="Initialize the MileageManager." alt="" coords="536,5,753,47"/>
-<area shape="rect" id="node4" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,13,488,39"/>
-<area shape="rect" id="node5" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,13,193,39"/>
-</map>

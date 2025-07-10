@@ -1,8 +1,0 @@
-<map id="PeripheralController::i2c_smbus_write_byte_data" name="PeripheralController::i2c_smbus_write_byte_data">
-<area shape="rect" id="node1" title="Writes a byte of data to a specific register." alt="" coords="405,104,616,145"/>
-<area shape="rect" id="node2" href="$classPeripheralController.html#a90f289229af99c3efc8c835c2da39c85" title="Writes a byte of data to a specific register." alt="" coords="205,104,357,145"/>
-<area shape="rect" id="node3" href="$classPeripheralController.html#a02a6b4c52df60909f6109a411f6e6bd5" title="Initializes the motor controllers." alt="" coords="5,5,157,47"/>
-<area shape="rect" id="node4" href="$classPeripheralController.html#a049a6c18f04e14f991f49cd4df178613" title="Initializes the servo controller." alt="" coords="5,71,157,112"/>
-<area shape="rect" id="node5" href="$classPeripheralController.html#a812ccf8cae6f9d5e89cb02949d4839b7" title="Sets the PWM value for a motor." alt="" coords="5,136,157,177"/>
-<area shape="rect" id="node6" href="$classPeripheralController.html#a7329bd3e4ede77e0f4ef77bb605aca2e" title="Sets the PWM of a servo motor." alt="" coords="5,201,157,243"/>
-</map>

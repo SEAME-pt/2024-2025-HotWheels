@@ -1,5 +1,0 @@
-<map id="TEST_F" name="TEST_F">
-<area shape="rect" id="node1" title="Ensures that stopReading() sets the stop flag." alt="" coords="5,46,75,73"/>
-<area shape="rect" id="node2" href="$classMCP2515Controller.html#a2c694c529b9468d000d435b700facb30" title="Check if the stop reading flag is set." alt="" coords="123,5,287,47"/>
-<area shape="rect" id="node3" href="$classMCP2515Controller.html#a91483fd5e7a246f44f8452f4789d6b11" title="Stop reading CAN messages." alt="" coords="127,71,282,112"/>
-</map>

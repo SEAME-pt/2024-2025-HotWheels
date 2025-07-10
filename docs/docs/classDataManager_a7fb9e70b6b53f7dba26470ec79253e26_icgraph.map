@@ -1,9 +1,0 @@
-<map id="DataManager::drivingModeUpdated" name="DataManager::drivingModeUpdated">
-<area shape="rect" id="node1" title=" " alt="" coords="803,90,1001,131"/>
-<area shape="rect" id="node2" href="$classDataManager.html#affb37dc13db06ecf6853c9fa25e5ed7a" title="Construct a new DataManager::DataManager object." alt="" coords="542,5,749,32"/>
-<area shape="rect" id="node3" href="$classCarManager.html#a7d8d0d9b58a5ecc33e06cae2ccbdf184" title="Initialize the ControlsManager." alt="" coords="536,57,755,98"/>
-<area shape="rect" id="node6" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="538,122,753,163"/>
-<area shape="rect" id="node7" href="$test__int__DataManager_8cpp.html#ab2970d90a688f313df073112b3dede8f" title="Ensures that the DataManager toggles the driving mode." alt="" coords="611,188,680,215"/>
-<area shape="rect" id="node4" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,97,488,124"/>
-<area shape="rect" id="node5" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,97,193,124"/>
-</map>

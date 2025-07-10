@@ -1,4 +1,0 @@
-<map id="MileageManager::shutdown" name="MileageManager::shutdown">
-<area shape="rect" id="node1" title="Shuts down the MileageManager object." alt="" coords="256,13,459,39"/>
-<area shape="rect" id="node2" href="$classMileageManager.html#ae0a2d57c60de11f16a5654f7f8031cd4" title="Destructs the MileageManager object." alt="" coords="5,5,208,47"/>
-</map>

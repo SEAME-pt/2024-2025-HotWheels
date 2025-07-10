@@ -1,5 +1,0 @@
-<map id="MileageManager::shutdown" name="MileageManager::shutdown">
-<area shape="rect" id="node1" title="Shuts down the MileageManager object." alt="" coords="5,13,208,39"/>
-<area shape="rect" id="node2" href="$classMileageManager.html#ad76e7b2285ef73cfb95854857cbfa18e" title="Saves the mileage to the file." alt="" coords="256,13,479,39"/>
-<area shape="rect" id="node3" href="$classIMileageFileHandler.html#aa74d18576ecbd1ddc6e077806a4f3ce7" title=" " alt="" coords="527,5,679,47"/>
-</map>

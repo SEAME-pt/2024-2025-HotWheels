@@ -1,7 +1,0 @@
-<map id="DisplayManager::clusterMetricsToggled" name="DisplayManager::clusterMetricsToggled">
-<area shape="rect" id="node1" title="Signal emitted when the cluster metrics are toggled." alt="" coords="827,27,1055,69"/>
-<area shape="rect" id="node2" href="$classDisplayManager.html#ae9f9ff9490927152279cbb64a05b775a" title="Construct a new DisplayManager object." alt="" coords="536,5,779,32"/>
-<area shape="rect" id="node3" href="$classCarManager.html#a3f09da6a2d42c870e12e4afce7f597c7" title="Initialize the DisplayManager." alt="" coords="550,57,765,98"/>
-<area shape="rect" id="node4" href="$classCarManager.html#a903e5c4e427a717c2f7f33eb6077475f" title="Initialize the components of the CarManager." alt="" coords="241,64,488,91"/>
-<area shape="rect" id="node5" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="5,64,193,91"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="Subscriber::getSocket" name="Subscriber::getSocket">
-<area shape="rect" id="node1" title=" " alt="" coords="260,64,423,91"/>
-<area shape="rect" id="node2" href="$classCarManager.html#ada40d7d41c1bcf3d25a122e3fecc0b0d" title="Construct a new CarManager object." alt="" coords="15,5,203,32"/>
-<area shape="rect" id="node3" href="$classControlsManager.html#ad305d285479c3ce10e8a7eb70845db5f" title="Constructs a ControlsManager object." alt="" coords="11,57,206,98"/>
-<area shape="rect" id="node4" href="$classControlsManager.html#aae2c059f833ce815b96cf6a7895114a2" title="Destructor for the ControlsManager class." alt="" coords="5,122,212,163"/>
-</map>

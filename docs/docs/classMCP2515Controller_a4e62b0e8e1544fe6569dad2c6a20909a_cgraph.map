@@ -1,9 +1,0 @@
-<map id="MCP2515Controller::processReading" name="MCP2515Controller::processReading">
-<area shape="rect" id="node1" title="Start reading CAN messages." alt="" coords="5,39,160,80"/>
-<area shape="rect" id="node2" href="$classCANMessageProcessor.html#aa539cf227ee7367ba1f498288b8bc102" title="Process a CAN message." alt="" coords="208,5,379,47"/>
-<area shape="rect" id="node3" href="$classMCP2515Configurator.html#ab14424f50fc8e6367c586f26f8dedbfb" title="Read a CAN message from the MCP2515." alt="" coords="212,71,375,112"/>
-<area shape="rect" id="node4" href="$classMCP2515Configurator.html#a88d6297ea7c98724de837f650ac05553" title="Read a value from a register." alt="" coords="427,37,589,79"/>
-<area shape="rect" id="node6" href="$classMCP2515Configurator.html#a89cb67d607b050252677428c7ef61e4a" title="Write a value to a register." alt="" coords="427,103,589,144"/>
-<area shape="rect" id="node5" href="$classISPIController.html#a0155550573fcd6937aeb133e56991c9a" title=" " alt="" coords="639,45,817,71"/>
-<area shape="rect" id="node7" href="$classISPIController.html#a4a24db4176bf09874ad9031c26702947" title=" " alt="" coords="637,110,819,137"/>
-</map>

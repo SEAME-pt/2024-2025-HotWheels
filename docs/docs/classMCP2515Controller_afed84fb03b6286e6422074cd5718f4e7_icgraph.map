@@ -1,4 +1,0 @@
-<map id="MCP2515Controller::getMessageProcessor" name="MCP2515Controller::getMessageProcessor">
-<area shape="rect" id="node1" title=" " alt="" coords="123,5,287,47"/>
-<area shape="rect" id="node2" href="$test__MCP2515Controller_8cpp.html#a90b63cd5dfc018f5b2c689faf8e66737" title="Ensures that registerHandler() does not throw an exception." alt="" coords="5,13,75,39"/>
-</map>

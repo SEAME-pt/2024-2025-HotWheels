@@ -1,5 +1,0 @@
-<map id="MCP2515Configurator::readCANMessage" name="MCP2515Configurator::readCANMessage">
-<area shape="rect" id="node1" title="Read a CAN message from the MCP2515." alt="" coords="325,5,488,47"/>
-<area shape="rect" id="node2" href="$classMCP2515Controller.html#a4e62b0e8e1544fe6569dad2c6a20909a" title="Start reading CAN messages." alt="" coords="123,5,277,47"/>
-<area shape="rect" id="node3" href="$test__MCP2515Controller_8cpp.html#a5fc832657f70bd9a73b378e51a28cb8d" title="Ensures that processReading() calls the registered handlers." alt="" coords="5,13,75,39"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="PeripheralController::read_byte_data" name="PeripheralController::read_byte_data">
-<area shape="rect" id="node1" title="Reads a byte of data from a specific register." alt="" coords="5,5,157,47"/>
-<area shape="rect" id="node2" href="$classPeripheralController.html#a74944b38fa602d38df1d7d3fd5c3e8bf" title="Reads a byte of data from a specific register." alt="" coords="205,5,412,47"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="SystemInfoProvider::getTemperature" name="SystemInfoProvider::getTemperature">
-<area shape="rect" id="node1" title="Gets the current temperature in degrees Celsius." alt="" coords="5,5,156,47"/>
-<area shape="rect" id="node2" href="$classISystemCommandExecutor.html#af6b0f40b84d6f2bd396daf93d158f91f" title=" " alt="" coords="204,5,403,47"/>
-</map>

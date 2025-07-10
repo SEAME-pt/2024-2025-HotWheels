@@ -1,8 +1,0 @@
-<map id="MockSysCalls::instance" name="MockSysCalls::instance">
-<area shape="rect" id="node1" title="Get the instance object." alt="" coords="340,81,515,108"/>
-<area shape="rect" id="node2" href="$MockSysCalls_8hpp.html#a6763dfbeac67eadf78345b6b8d8170ad" title="Mocked close function." alt="" coords="193,5,292,32"/>
-<area shape="rect" id="node4" href="$MockSysCalls_8hpp.html#a547cebdcdfafe9cdea6aa85812569739" title="Mocked ioctl function." alt="" coords="196,56,289,83"/>
-<area shape="rect" id="node5" href="$MockSysCalls_8hpp.html#aeb1b8a14acf38ef421993960b0f64ee8" title="Mocked open function." alt="" coords="194,107,291,133"/>
-<area shape="rect" id="node6" href="$test__SPIController_8cpp.html#a6acec60eff0d31561d6b1907b5c83389" title="Ensures that the device opens without throwing an exception." alt="" coords="208,157,277,184"/>
-<area shape="rect" id="node3" href="$classSPIControllerTest.html#af9b10b8f0c9489410435d9661dbfe416" title="Set up the test environment." alt="" coords="5,49,145,90"/>
-</map>

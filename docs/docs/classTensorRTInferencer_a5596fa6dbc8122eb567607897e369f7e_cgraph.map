@@ -1,9 +1,0 @@
-<map id="TensorRTInferencer::doInference" name="TensorRTInferencer::doInference">
-<area shape="rect" id="node1" title=" " alt="" coords="5,57,152,98"/>
-<area shape="rect" id="node2" href="$classPublisher.html#a387233b0cdda7f9d59d3d7c59a2f3cb6" title=" " alt="" coords="227,5,372,32"/>
-<area shape="rect" id="node4" href="$classTensorRTInferencer.html#a91c42ce7b2c5ec944e20edd436a0cf82" title=" " alt="" coords="226,57,373,98"/>
-<area shape="rect" id="node7" href="$classPublisher.html#a9012f86f18e75df615fde3ce0479bcfd" title=" " alt="" coords="200,122,399,163"/>
-<area shape="rect" id="node3" href="$classPublisher.html#aa433e35d15ff5572b3ead89611b4bfc9" title=" " alt="" coords="447,5,597,32"/>
-<area shape="rect" id="node5" href="$classTensorRTInferencer.html#a852386a396a5fc97108ce5ba1b61c259" title=" " alt="" coords="449,57,595,98"/>
-<area shape="rect" id="node6" href="$classTensorRTInferencer.html#ae901322e43c244a38b46f32231ab07de" title=" " alt="" coords="449,122,595,163"/>
-</map>

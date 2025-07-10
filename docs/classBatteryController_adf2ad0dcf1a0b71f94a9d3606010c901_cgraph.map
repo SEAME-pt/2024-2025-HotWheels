@@ -1,4 +1,0 @@
-<map id="BatteryController::getShuntVoltage_V" name="BatteryController::getShuntVoltage_V">
-<area shape="rect" id="node1" title="Get the shunt voltage in volts." alt="" coords="5,5,151,47"/>
-<area shape="rect" id="node2" href="$classII2CController.html#a86951c2e44bc1f7f846dc2212854ab92" title=" " alt="" coords="199,13,401,39"/>
-</map>

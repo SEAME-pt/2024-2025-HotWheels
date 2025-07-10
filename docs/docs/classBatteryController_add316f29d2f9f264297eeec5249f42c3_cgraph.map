@@ -1,4 +1,0 @@
-<map id="BatteryController::getBusVoltage_V" name="BatteryController::getBusVoltage_V">
-<area shape="rect" id="node1" title="Get the bus voltage in volts." alt="" coords="5,5,148,47"/>
-<area shape="rect" id="node2" href="$classII2CController.html#a86951c2e44bc1f7f846dc2212854ab92" title=" " alt="" coords="196,13,399,39"/>
-</map>

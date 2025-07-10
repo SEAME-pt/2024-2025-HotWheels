@@ -1,4 +1,0 @@
-<map id="MCP2515Controller::setupHandlers" name="MCP2515Controller::setupHandlers">
-<area shape="rect" id="node1" title="Send a CAN message." alt="" coords="5,5,160,47"/>
-<area shape="rect" id="node2" href="$classCANMessageProcessor.html#a341f7667f2f9972ef580726fe49f28d2" title="Destroy the CANMessageProcessor::CANMessageProcessor object." alt="" coords="208,5,379,47"/>
-</map>

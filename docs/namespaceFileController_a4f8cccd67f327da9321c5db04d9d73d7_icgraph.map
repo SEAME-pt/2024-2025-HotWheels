@@ -1,4 +1,0 @@
-<map id="FileController::exists" name="FileController::exists">
-<area shape="rect" id="node1" title="Checks if a file exists." alt="" coords="123,5,279,32"/>
-<area shape="rect" id="node2" href="$test__MileageFileHandler_8cpp.html#acdb4e20fe546be0a4ddb64a6d2a1638a" title="Ensures that the mileage file handler creates the file if it does not exist." alt="" coords="5,5,75,32"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="EngineController::set_steering" name="EngineController::set_steering">
-<area shape="rect" id="node1" title="Sets the steering angle of the car." alt="" coords="5,27,164,69"/>
-<area shape="rect" id="node2" href="$EngineController_8cpp.html#a83100694a686c920777a21081dc0db93" title="Clamps a value to a given range." alt="" coords="259,5,321,32"/>
-<area shape="rect" id="node3" href="$classIPeripheralController.html#a3c0649bd1777013ba1c2f127fcf8a3bf" title=" " alt="" coords="212,57,368,98"/>
-</map>

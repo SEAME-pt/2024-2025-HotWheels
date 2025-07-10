@@ -1,7 +1,0 @@
-<map id="PeripheralController::init_motors" name="PeripheralController::init_motors">
-<area shape="rect" id="node1" title="Initializes the motor controllers." alt="" coords="5,39,157,80"/>
-<area shape="rect" id="node2" href="$classPeripheralController.html#ac8031b8b0fcf47afa830301a82da98d1" title="Reads a byte of data from a specific register." alt="" coords="205,5,357,47"/>
-<area shape="rect" id="node4" href="$classPeripheralController.html#a90f289229af99c3efc8c835c2da39c85" title="Writes a byte of data to a specific register." alt="" coords="205,71,357,112"/>
-<area shape="rect" id="node3" href="$classPeripheralController.html#a74944b38fa602d38df1d7d3fd5c3e8bf" title="Reads a byte of data from a specific register." alt="" coords="407,5,614,47"/>
-<area shape="rect" id="node5" href="$classPeripheralController.html#afdadc72629fcdcd55298e2d6925e1056" title="Writes a byte of data to a specific register." alt="" coords="405,71,616,112"/>
-</map>

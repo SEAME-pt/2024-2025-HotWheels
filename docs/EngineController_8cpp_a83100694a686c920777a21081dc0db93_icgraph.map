@@ -1,8 +1,0 @@
-<map id="clamp" name="clamp">
-<area shape="rect" id="node1" title="Clamps a value to a given range." alt="" coords="644,46,707,73"/>
-<area shape="rect" id="node2" href="$classEngineController.html#ad865d656c4d1dd4a86b9206a2a9bd926" title="Sets the speed of the car." alt="" coords="437,5,596,47"/>
-<area shape="rect" id="node6" href="$classEngineController.html#afb4f398c794e6d6bb99b2e5426ce4567" title="Sets the steering angle of the car." alt="" coords="437,71,596,112"/>
-<area shape="rect" id="node3" href="$classControlsManager.html#ad305d285479c3ce10e8a7eb70845db5f" title="Constructs a ControlsManager object." alt="" coords="195,8,389,49"/>
-<area shape="rect" id="node4" href="$classEngineController.html#a074d7c44fc23053b0bc8aee6650971bf" title="Stops the engine." alt="" coords="209,75,375,102"/>
-<area shape="rect" id="node5" href="$classEngineController.html#af49b8503ec1964013a1a232de4d5ec39" title="Destructor for the EngineController class." alt="" coords="5,68,147,109"/>
-</map>

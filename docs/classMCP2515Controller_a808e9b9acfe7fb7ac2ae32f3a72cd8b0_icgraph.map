@@ -1,4 +1,0 @@
-<map id="MCP2515Controller::init" name="MCP2515Controller::init">
-<area shape="rect" id="node1" title="Initialize the MCP2515 controller." alt="" coords="123,5,299,32"/>
-<area shape="rect" id="node2" href="$test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e" title="Ensures that init() does not throw an exception." alt="" coords="5,5,75,32"/>
-</map>

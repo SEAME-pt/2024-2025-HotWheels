@@ -1,5 +1,0 @@
-<map id="BatteryController::BatteryController" name="BatteryController::BatteryController">
-<area shape="rect" id="node1" title="Construct a new BatteryController object." alt="" coords="5,5,148,47"/>
-<area shape="rect" id="node2" href="$classBatteryController.html#a2af3e0526f5bf22a6d13d79567afac6b" title="Set the calibration for 32V and 2A." alt="" coords="196,5,351,47"/>
-<area shape="rect" id="node3" href="$classII2CController.html#ae6acfc629026f4eabe7d6cdffded437d" title=" " alt="" coords="399,13,605,39"/>
-</map>

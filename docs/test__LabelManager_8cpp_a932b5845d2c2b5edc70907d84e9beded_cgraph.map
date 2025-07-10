@@ -1,6 +1,0 @@
-<map id="TEST" name="TEST">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,60,83"/>
-<area shape="rect" id="node2" href="$test__LabelManager_8cpp.html#ab7e56fa2c734693de3026f7e86a575b2" title=" " alt="" coords="142,5,298,32"/>
-<area shape="rect" id="node3" href="$classLabelManager.html#ab7dbc2910a5c5ddd69ceaafb097d9ddd" title="Retorna o nome da label para um dado classId." alt="" coords="131,56,309,83"/>
-<area shape="rect" id="node4" href="$classLabelManager.html#a27397e39fedfd3d3d47eb5345b343fd1" title="Retorna o número de classes carregadas." alt="" coords="108,107,332,133"/>
-</map>

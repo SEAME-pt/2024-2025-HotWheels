@@ -1,8 +1,0 @@
-<map id="SystemManager::initialize" name="SystemManager::initialize">
-<area shape="rect" id="node1" title="Initializes the SystemManager object." alt="" coords="5,107,197,134"/>
-<area shape="rect" id="node2" href="$classSystemManager.html#a6bdbe09715355ebf61d36063fb857e78" title="Updates the system status." alt="" coords="245,71,476,112"/>
-<area shape="rect" id="node6" href="$classSystemManager.html#ad78bc11d81e641f8e6a8c24ca5061b9d" title="Updates the current time." alt="" coords="253,137,468,163"/>
-<area shape="rect" id="node3" href="$classIBatteryController.html#aa20b28b939b1d3224233e9a5bc574ee8" title=" " alt="" coords="524,5,696,47"/>
-<area shape="rect" id="node4" href="$classISystemInfoProvider.html#a5da52499bfc71b3ab410c514fd4c933c" title=" " alt="" coords="533,71,687,112"/>
-<area shape="rect" id="node5" href="$classISystemInfoProvider.html#a1ebc4c5f88dade63c28f5051b2178344" title=" " alt="" coords="533,136,687,177"/>
-</map>

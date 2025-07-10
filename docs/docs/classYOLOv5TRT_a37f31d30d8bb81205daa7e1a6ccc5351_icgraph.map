@@ -1,5 +1,0 @@
-<map id="YOLOv5TRT::calculateVolume" name="YOLOv5TRT::calculateVolume">
-<area shape="rect" id="node1" title="Calcula o volume (número total de elementos) de um tensor dado suas dimensões." alt="" coords="480,5,691,32"/>
-<area shape="rect" id="node2" href="$classYOLOv5TRT.html#aae4055b18ea026c14d59519baf4185f3" title=" " alt="" coords="231,5,432,32"/>
-<area shape="rect" id="node3" href="$classYOLOv5TRT.html#ad2504b33af861c37c2102c3e5f7d43fe" title="Construtor. Carrega o engine e aloca buffers." alt="" coords="5,5,183,32"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="YOLOv5TRT::process_image" name="YOLOv5TRT::process_image">
-<area shape="rect" id="node1" title="Função principal. Inicializa recursos, executa loop de inferência e exibe resultados." alt="" coords="5,99,159,141"/>
-<area shape="rect" id="node2" href="$classLabelManager.html#ab7dbc2910a5c5ddd69ceaafb097d9ddd" title="Retorna o nome da label para um dado classId." alt="" coords="208,5,387,32"/>
-<area shape="rect" id="node3" href="$classYOLOv5TRT.html#a616ed8f5d53c07e82fca5cb4a1e96038" title="Executa inferência em uma imagem." alt="" coords="231,56,364,83"/>
-<area shape="rect" id="node4" href="$classPublisher.html#a387233b0cdda7f9d59d3d7c59a2f3cb6" title=" " alt="" coords="225,107,370,133"/>
-<area shape="rect" id="node6" href="$classYOLOv5TRT.html#a3a9dcab2363b2c0967cdefa34abe50a8" title="Pós&#45;processa a saída do modelo, aplicando threshold de confiança e NMS." alt="" coords="207,157,388,184"/>
-<area shape="rect" id="node7" href="$classPublisher.html#afe951e0c1dc4727feeecb8c3bc846f84" title=" " alt="" coords="229,208,366,235"/>
-<area shape="rect" id="node5" href="$classPublisher.html#aa433e35d15ff5572b3ead89611b4bfc9" title=" " alt="" coords="436,107,587,133"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="SystemManager::shutdown" name="SystemManager::shutdown">
-<area shape="rect" id="node1" title="Shuts down the SystemManager object." alt="" coords="307,5,505,32"/>
-<area shape="rect" id="node2" href="$classSystemManager.html#a0fa2e3c0906401494f6bf4e482aecc0d" title="Destructor for the SystemManager class." alt="" coords="5,5,259,32"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="MCP2515Configurator::readRegister" name="MCP2515Configurator::readRegister">
-<area shape="rect" id="node1" title="Read a value from a register." alt="" coords="5,5,168,47"/>
-<area shape="rect" id="node2" href="$classISPIController.html#a0155550573fcd6937aeb133e56991c9a" title=" " alt="" coords="216,13,393,39"/>
-</map>

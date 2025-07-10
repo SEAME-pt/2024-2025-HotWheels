@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classIPeripheralController.html" title="Interface for the peripheral controller." alt="" coords="5,31,161,57"/>
-<area shape="rect" id="node2" href="$classMockPeripheralController.html" title="Class to emulate the behavior of the peripheral controller." alt="" coords="209,5,396,32"/>
-<area shape="rect" id="node3" href="$classPeripheralController.html" title="The PeripheralController class." alt="" coords="227,56,379,83"/>
-</map>

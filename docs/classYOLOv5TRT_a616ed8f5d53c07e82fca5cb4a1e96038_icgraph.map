@@ -1,4 +1,0 @@
-<map id="YOLOv5TRT::infer" name="YOLOv5TRT::infer">
-<area shape="rect" id="node1" title="Executa inferência em uma imagem." alt="" coords="207,13,340,39"/>
-<area shape="rect" id="node2" href="$classYOLOv5TRT.html#a6ade108453aa850578f3c4483f2bdd5e" title="Função principal. Inicializa recursos, executa loop de inferência e exibe resultados." alt="" coords="5,5,159,47"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="MCP2515Configurator::configureBaudRate" name="MCP2515Configurator::configureBaudRate">
-<area shape="rect" id="node1" title="Configure the baud rate for the MCP2515." alt="" coords="347,5,509,47"/>
-<area shape="rect" id="node2" href="$classMCP2515Controller.html#a808e9b9acfe7fb7ac2ae32f3a72cd8b0" title="Initialize the MCP2515 controller." alt="" coords="123,13,299,39"/>
-<area shape="rect" id="node3" href="$test__MCP2515Controller_8cpp.html#a75a371af6e9dcb3dc45c7507f829098e" title="Ensures that init() does not throw an exception." alt="" coords="5,13,75,39"/>
-</map>

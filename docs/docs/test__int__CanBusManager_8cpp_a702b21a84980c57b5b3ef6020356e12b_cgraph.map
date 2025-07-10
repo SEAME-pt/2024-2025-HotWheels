@@ -1,7 +1,0 @@
-<map id="TEST_F" name="TEST_F">
-<area shape="rect" id="node1" title="Ensures that the CanBusManager cleans up properly." alt="" coords="5,31,75,57"/>
-<area shape="rect" id="node2" href="$classCanBusManager.html#aba668fde6eed730024c70ff4bd18f87a" title=" " alt="" coords="123,5,325,32"/>
-<area shape="rect" id="node3" href="$classCanBusManager.html#ad71049e3dacf68f009bd15f8671f9fc1" title="Initializes the CanBusManager." alt="" coords="128,56,320,83"/>
-<area shape="rect" id="node4" href="$classIMCP2515Controller.html#a29293b7633eb05f99f2a582b1d5aba3b" title=" " alt="" coords="373,15,524,57"/>
-<area shape="rect" id="node5" href="$classIMCP2515Controller.html#ae2b472f612168c2cc53da81e0dd76a0d" title=" " alt="" coords="373,81,524,122"/>
-</map>
