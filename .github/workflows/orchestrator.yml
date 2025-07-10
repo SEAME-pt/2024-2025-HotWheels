@@ -2,7 +2,7 @@ name: Orchestrator
 
 on:
   workflow_run:
-    workflows: [Cross-Compile Car Controls to aarch64, Cross-Compile Cluster to aarch64]
+    workflows: [Car Controls, Cluster]
     types:
       - completed
     branches:

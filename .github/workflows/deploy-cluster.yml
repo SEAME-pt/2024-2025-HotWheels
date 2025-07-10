@@ -1,4 +1,4 @@
-name: Cross-Compile Cluster to aarch64
+name: Cluster
 
 on:
   push:

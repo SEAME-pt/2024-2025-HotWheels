@@ -1,4 +1,4 @@
-name: Cross-Compile Car Controls to aarch64
+name: Car Controls
 
 on:
   push:
