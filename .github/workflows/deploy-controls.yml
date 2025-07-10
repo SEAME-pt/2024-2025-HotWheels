@@ -4,15 +4,9 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'apps/car_controls/**'
-    #   - 'ZeroMQ/**'
-  pull_request:
-    branches:
-      - main
-    # paths:
-    #   - 'apps/car_controls/**'
-    #   - 'ZeroMQ/**'
+    paths:
+      - 'apps/car_controls/**'
+      - 'ZeroMQ/**'
 
 env:
   DIR: apps/car_controls
@@ -48,12 +42,12 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps/test
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps
+        continue-on-error: true
 
       - name: Generate coverage report
         run: |
           cd $DIR/build
-          pwd
           lcov --capture --directory . --output-file full.info
           lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/tests*' '*/tensorrt-8.6.1.6*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
           genhtml filtered.info --output-directory coverage-car-controls
@@ -62,4 +56,3 @@ jobs:
         run: |
           cd $DIR/build
           cp -r coverage-car-controls ~/Documents/documentation-branch
-          pwd

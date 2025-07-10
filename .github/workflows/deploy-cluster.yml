@@ -4,15 +4,9 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'apps/cluster/**'
-    #   - 'ZeroMQ/**'
-  pull_request:
-    branches:
-      - main
-    # paths:
-    #   - 'apps/cluster/**'
-    #   - 'ZeroMQ/**'
+    paths:
+      - 'apps/cluster/**'
+      - 'ZeroMQ/**'
 
 env:
   DIR: apps/cluster
@@ -61,7 +55,8 @@ jobs:
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@100.108.203.64:/home/jetson/apps/test
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/HotWheels-app jetson@100.108.203.64:/home/jetson/apps
+        continue-on-error: true
 
       - name: Generate coverage report
         run: |
