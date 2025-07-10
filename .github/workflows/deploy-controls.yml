@@ -60,4 +60,5 @@ jobs:
 
       - name: Copy report to documentation branch
         run: |
+          cd $DIR/build
           cp -r coverage-car-controls ~/Documents/documentation-branch
