@@ -18,6 +18,7 @@
 #include "EngineController.hpp"
 #include "JoysticksController.hpp"
 #include "inference/CameraStreamer.hpp"
+#include "AutonomousMode.hpp"
 #include "../../ZeroMQ/Subscriber.hpp"
 #include "../../ZeroMQ/Publisher.hpp"
 #include <QObject>
@@ -38,6 +39,7 @@ private:
 
 	Subscriber *m_subscriberJoystickObject;
 	CameraStreamer *m_cameraStreamerObject;
+	AutonomousMode *m_autonomousModeObject;
 
 	std::atomic<bool> m_running;
 

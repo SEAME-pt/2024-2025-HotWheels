@@ -40,6 +40,8 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  m_cameraStreamerThread(nullptr), m_running(true)
 {
 
+	m_autonomousModeObject = new AutonomousMode (&m_engineController, this);
+
 	// Initialize the joystick controller with callbacks
 	m_manualController = new JoysticksController(
 		[this](int steering)
@@ -199,4 +201,15 @@ void ControlsManager::setMode(DrivingMode mode)
 		return;
 
 	m_currentMode = mode;
+
+	if (m_autonomousModeObject) {
+		if (m_currentMode == DrivingMode::Automatic) {
+			m_autonomousModeObject->startAutonomousControl ();
+		} else {
+			m_autonomousModeObject->stopAutonomousControl ();
+			// Stop motors when switching to manual
+			m_engineController.set_speed (0);
+			m_engineController.set_steering (0);
+		}
+	}
 }

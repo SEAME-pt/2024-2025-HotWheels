@@ -9,6 +9,8 @@
 #include <opencv2/core/cuda.hpp>
 #include <cuda_runtime.h>
 #include <opencv2/opencv.hpp>
+#include "../apps/car_controls/includes/inference/LaneCurveFitter.hpp"
+
 
 class Publisher {
 private:
@@ -35,6 +37,7 @@ public:
 	void publish(const std::string& topic, const std::string& message);
 	void setJoystickStatus(bool new_joytstick_value);
 	void publishInferenceFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image);
+	void publishPolyfittingResult(const std::string& topic, const LaneCurveFitter::CenterlineResult polyfitting_result);
 	//void publishCameraFrame(const std::string& topic, const cv::Mat& frame);
 };
 

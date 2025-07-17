@@ -59,6 +59,7 @@ private:
 
 	std::vector<char> readEngineFile(const std::string& enginePath);
 	void cleanupResources();
+	LaneCurveFitter::CenterlineResult getPolyfittingResult(const cv::cuda::GpuMat& processedMaskGpu);
 
 public:
 	TensorRTInferencer(const std::string& enginePath);
