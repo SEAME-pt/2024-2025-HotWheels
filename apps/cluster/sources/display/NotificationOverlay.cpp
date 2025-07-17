@@ -29,10 +29,16 @@ void NotificationOverlay::showNotification(const QString& text, NotificationLeve
 
 	fadeAnimation->stop();
 	disconnect(fadeAnimation, nullptr, nullptr, nullptr);
-	QMetaObject::invokeMethod(this, [this, durationMs]() {
+
+	persistent = (durationMs == 0);  // Persist if duration is 0
+
+	if (!persistent) {
 		fadeOutTimer->stop();
 		fadeOutTimer->start(durationMs);
-	}, Qt::QueuedConnection);
+		connect(fadeOutTimer, &QTimer::timeout, this, [this]() {
+			startFadeOut();
+		});
+	}
 
 	show();
 	update();
@@ -55,6 +61,27 @@ void NotificationOverlay::showNotification(const QString& text, NotificationLeve
 				hide();
 		});
 	});
+}
+
+void NotificationOverlay::startFadeOut() {
+	fadeAnimation->stop();
+	disconnect(fadeAnimation, nullptr, nullptr, nullptr);
+
+	fadeAnimation->setStartValue(1.0);
+	fadeAnimation->setEndValue(0.0);
+	fadeAnimation->start();
+
+	connect(fadeAnimation, &QPropertyAnimation::finished, this, [this]() {
+		if (opacityEffect->opacity() == 0.0)
+			hide();
+	});
+}
+
+void NotificationOverlay::hideNotification() {
+	if (persistent) {
+		persistent = false;
+		startFadeOut();
+	}
 }
 
 void NotificationOverlay::paintEvent(QPaintEvent*)

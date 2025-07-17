@@ -21,6 +21,8 @@ public:
 	explicit NotificationOverlay(QWidget* parent = nullptr);
 	virtual ~NotificationOverlay();
 	virtual void showNotification(const QString& text, NotificationLevel notificationLevel, int durationMs = 2000);
+	void hideNotification();
+	void startFadeOut();
 
 protected:
 	void paintEvent(QPaintEvent* event) override;
@@ -31,6 +33,8 @@ private:
 	QGraphicsOpacityEffect* opacityEffect;
 	QPropertyAnimation* fadeAnimation;
 	QTimer* fadeOutTimer;
+
+	bool persistent = false;
 };
 
 #endif // NOTIFICATIONOVERLAY_HPP

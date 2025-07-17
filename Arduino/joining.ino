@@ -214,11 +214,15 @@ void readSRF08() {
     byte low = Wire.read();
     int distance = (high << 8) | low;
 
-    Serial.print("Ultra-sound distance: ");
-    Serial.print(distance);
-    Serial.println(" cm");
-  } else {
-    Serial.println("Failed to read distance");
+    byte distanceMessage[2];
+    distanceMessage[0] = (distance >> 8) & 0xFF;  // High byte
+    distanceMessage[1] = distance & 0xFF;         // Low byte
+
+    if (CAN.sendMsgBuf(0x300, 0, 2, distanceMessage) == CAN_OK) {
+      Serial.println("SENT distance: " + String(distance));
+    } else {
+      Serial.println("DISTANCE CAN MESSAGE ERROR!");
+    }
   }
 }
 

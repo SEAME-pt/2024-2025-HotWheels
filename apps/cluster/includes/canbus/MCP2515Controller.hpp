@@ -58,6 +58,7 @@ private:
 	bool ownsSPIController = false;
 
 	void setupHandlers();
+	bool brakeWarningActive = false;
 };
 
 #endif // MCP2515CONTROLLER_HPP
