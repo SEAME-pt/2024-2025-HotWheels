@@ -179,6 +179,13 @@ ControlsManager::~ControlsManager()
 		m_cameraStreamerThread = nullptr;
 	}
 
+	// Stop autonomous mode if running
+	if (m_autonomousModeObject) {
+		m_autonomousModeObject->stopAutonomousControl();
+		delete m_autonomousModeObject;
+		m_autonomousModeObject = nullptr;
+	}
+
 	// Clean up objects
 	delete m_cameraStreamerObject;
 	m_cameraStreamerObject = nullptr;

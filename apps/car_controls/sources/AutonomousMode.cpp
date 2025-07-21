@@ -77,12 +77,6 @@ LaneCurveFitter::CenterlineResult AutonomousMode::extractJsonData(std::string da
         // Parse lanes
         result.lanes = parseLaneArray(json_data);
         
-        std::cout << "[AutonomousMode] Parsed CenterlineResult: valid=" << result.valid 
-                  << ", blended=" << result.blended.size() 
-                  << ", midpoint=" << result.midpoint.size() 
-                  << ", straight=" << result.straight.size() 
-                  << ", lanes=" << result.lanes.size() << std::endl;
-        
     } catch (const std::exception& e) {
         ERROR_LOG("AutonomousMode", "Exception parsing JSON data: " + std::string(e.what()));
         result.valid = false;
