@@ -62,7 +62,7 @@ jobs:
         run: |
           cd $DIR/build
           lcov --capture --directory . --output-file full.info
-          lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/test_*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
+          lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/test_*' '*/Mock*' '*/usr/*' '*/Qt*' '*/includes/*' '*/app_tests/*' --output-file filtered.info
           genhtml filtered.info --output-directory coverage-cluster
 
       - name: Copy report to documentation branch

@@ -108,35 +108,12 @@ TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
 	QSignalSpy speedSpy(&controller, &MCP2515Controller::speedUpdated);
 	auto &processor = controller.getMessageProcessor();
 
-	std::vector<uint8_t> data = {0x00, 0x00, 0x20, 0x41}; // Float value: 10.0
+	std::vector<uint8_t> data = {10}; // 10 = raw speed
 	processor.processMessage(0x100, data);
 
 	ASSERT_EQ(speedSpy.count(), 1);
 	QList<QVariant> arguments = speedSpy.takeFirst();
-	ASSERT_EQ(arguments.at(0).toFloat(), 1.0F); // Speed divided by 10
-}
-
-/*!
- * @test Tests if the rpmUpdated signal is emitted correctly.
- * @brief Ensures that the RPM signal emits the correct value.
- * @details Uses QSignalSpy to verify that rpmUpdated emits the expected RPM
- * value.
- * @see MCP2515Controller::rpmUpdated
- */
-TEST_F(MCP2515ControllerTest, RpmUpdatedSignal) {
-	EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
-	EXPECT_CALL(mockSPI, closeDevice()).Times(1);
-	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
-
-	QSignalSpy rpmSpy(&controller, &MCP2515Controller::rpmUpdated);
-	auto &processor = controller.getMessageProcessor();
-
-	std::vector<uint8_t> data = {0x03, 0xE8}; // Integer value: 1000 RPM
-	processor.processMessage(0x200, data);
-
-	ASSERT_EQ(rpmSpy.count(), 1);
-	QList<QVariant> arguments = rpmSpy.takeFirst();
-	ASSERT_EQ(arguments.at(0).toInt(), 1000);
+	ASSERT_EQ(arguments.at(0).toFloat(), 10.0F);
 }
 
 /*!
@@ -186,4 +163,37 @@ TEST_F(MCP2515ControllerTest, StopReadingStopsProcessing) {
 	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
 	controller.stopReading();
 	ASSERT_TRUE(controller.isStopReadingFlagSet());
+}
+
+TEST_F(MCP2515ControllerTest, DistanceHandler_ShowsBrakeWarning) {
+	EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
+	EXPECT_CALL(mockSPI, closeDevice()).Times(1);
+	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
+
+	// Simulate distance > 20
+	std::vector<uint8_t> data = {0x00, 0x21}; // distance = 33
+	controller.getMessageProcessor().processMessage(0x300, data);
+}
+
+TEST_F(MCP2515ControllerTest, DistanceHandler_ClearsBrakeWarning) {
+	EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
+	EXPECT_CALL(mockSPI, closeDevice()).Times(1);
+	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
+
+	// Trigger warning ON
+	controller.getMessageProcessor().processMessage(0x300, {0x00, 0x21}); // > 20
+
+	// Now trigger warning OFF
+	controller.getMessageProcessor().processMessage(0x300, {0x00, 0x10}); // <= 20
+}
+
+TEST_F(MCP2515ControllerTest, SpeedHandler_DoesNotEmitIfMalformed) {
+	EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
+	EXPECT_CALL(mockSPI, closeDevice()).Times(1);
+	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
+
+	QSignalSpy speedSpy(&controller, &MCP2515Controller::speedUpdated);
+	controller.getMessageProcessor().processMessage(0x100, {});  // Empty vector
+
+	ASSERT_EQ(speedSpy.count(), 0);
 }

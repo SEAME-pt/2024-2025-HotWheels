@@ -108,3 +108,21 @@ TEST_F(SystemDataManagerTest, BatteryPercentageEmitsSignalOnChange)
 	systemDataManager->handleBatteryPercentage(expectedBattery);
 	ASSERT_EQ(batterySpy.count(), 0);
 }
+
+TEST_F(SystemDataManagerTest, WifiDataDoesNotCrashWhenChanged)
+{
+	systemDataManager->handleWifiData("Connected", "MyWiFi");
+	systemDataManager->handleWifiData("Connected", "MyWiFi");  // Should do nothing
+	systemDataManager->handleWifiData("Disconnected", "OtherWiFi"); // Should update again
+
+	SUCCEED();
+}
+
+TEST_F(SystemDataManagerTest, IpAddressDoesNotCrashWhenChanged)
+{
+	systemDataManager->handleIpAddressData("192.168.0.42");
+	systemDataManager->handleIpAddressData("192.168.0.42"); // Should do nothing
+	systemDataManager->handleIpAddressData("10.0.0.1");     // Should update again
+
+	SUCCEED();
+}
