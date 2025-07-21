@@ -16,6 +16,8 @@ public:
 
 	void initialize(NotificationOverlay* overlay);
 	void enqueueNotification(const QString& text, NotificationLevel level = NotificationLevel::Info, int durationMs = 2000);
+	void showPersistentNotification(const QString& text, NotificationLevel level);
+	void clearNotification();
 
 private:
 	explicit NotificationManager(QObject* parent = nullptr);
@@ -25,6 +27,8 @@ private:
 	bool m_busy = false;
 
 	void showNext();
+
+	bool m_persistentActive = false;
 };
 
 #endif // NOTIFICATIONMANAGER_HPP

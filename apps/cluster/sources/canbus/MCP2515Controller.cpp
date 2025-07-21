@@ -24,6 +24,7 @@
 
 #include "MCP2515Controller.hpp"
 #include "SPIController.hpp"
+#include "NotificationManager.hpp"
 #include <QDebug>
 #include <QThread>
 #include <cstring>
@@ -141,22 +142,32 @@ void MCP2515Controller::stopReading() { stopReadingFlag = true; }
  * data.
  */
 void MCP2515Controller::setupHandlers() {
-	messageProcessor.registerHandler(
-			0x100, [this](const std::vector<uint8_t> &data) {
-				if (data.size() == sizeof(float)) {
-					float speed;
-					memcpy(&speed, data.data(), sizeof(float));
-					emit speedUpdated(speed / 10.0F);
-				}
-			});
+	messageProcessor.registerHandler(0x100, [this](const std::vector<uint8_t> &data) {
+		if (data.size() == 1) {
+			float speed = static_cast<float>(data[0]);
+			emit speedUpdated(speed);
+		}
+	});
 
-	messageProcessor.registerHandler(0x200,
-																	 [this](const std::vector<uint8_t> &data) {
-																		 if (data.size() == 2) {
-																			 uint16_t rpm = (data[0] << 8) | data[1];
-																			 emit rpmUpdated(rpm);
-																		 }
-																	 });
+	messageProcessor.registerHandler(0x300, [this](const std::vector<uint8_t> &data) {
+		if (data.size() == 2) {
+			uint16_t distance = (data[0] << 8) | data[1];
+			//emit distanceUpdated(distance);
+			qDebug() << "Distance from CAN:" << distance;
+			if (distance > 20) {
+				if (!brakeWarningActive) {
+					brakeWarningActive = true;
+					QString message = QString("Brake!");
+					NotificationManager::instance()->showPersistentNotification(message, NotificationLevel::Warning);
+				}
+			} else {
+				if (brakeWarningActive) {
+					brakeWarningActive = false;
+					NotificationManager::instance()->clearNotification();
+				}
+			}
+		}
+	});
 }
 
 /*!

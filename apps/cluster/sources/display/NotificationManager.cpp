@@ -42,6 +42,18 @@ void NotificationManager::enqueueNotification(const QString& text, NotificationL
 	m_overlay->showNotification(text, level, durationMs);
 }
 
+void NotificationManager::showPersistentNotification(const QString& text, NotificationLevel level) {
+	if (!m_overlay) return;
+	m_overlay->showNotification(text, level, 0);  // 0 = persistent
+	m_persistentActive = true;
+}
+
+void NotificationManager::clearNotification() {
+	if (!m_overlay || !m_persistentActive) return;
+	m_overlay->hideNotification();
+	m_persistentActive = false;
+}
+
 void NotificationManager::showNext()
 {
 	if (m_queue.isEmpty()) {
