@@ -19,6 +19,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <thread>
+#include <QDebug>
 
 using ::testing::_;
 using ::testing::Return;
@@ -133,19 +134,45 @@ TEST_F(MCP2515ControllerTest, ProcessReadingCallsHandlers) {
 			.WillRepeatedly([](const uint8_t *tx, uint8_t *rx, size_t length) {
 				if (length == 3 && tx[0] == 0x03) { // Read command
 					rx[1] = 0x12;                     // Frame ID part 1
-					rx[2] = 0x34;                     // Frame ID part 2
+					rx[2] = 0x34;                     // Frame ID part 2 (0x1234)
 				}
 			});
 	EXPECT_CALL(mockSPI, writeByte(_, _)).Times(::testing::AtLeast(1));
 
 	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
 
+	// Register handler for frame ID 0x1234 to trigger line 117
+	controller.getMessageProcessor().registerHandler(0x1234, [](const std::vector<uint8_t>& data) {
+		qDebug() << "[Test] Handler executed with" << data.size() << "bytes";
+	});
+
 	std::thread readerThread([&controller]() { controller.processReading(); });
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(50));
 	controller.stopReading();
-
 	readerThread.join();
+
+	ASSERT_TRUE(controller.isStopReadingFlagSet());
+}
+
+TEST_F(MCP2515ControllerTest, ProcessReadingCatchesException) {
+	EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
+	EXPECT_CALL(mockSPI, closeDevice()).Times(1);
+
+	// First call to readByte will throw, others return dummy values to prevent oversaturation
+	EXPECT_CALL(mockSPI, readByte(_))
+		.WillOnce(Throw(std::runtime_error("Simulated SPI read error")))
+		.WillRepeatedly(Return(0x00));
+
+	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
+
+	std::thread reader([&controller]() {
+		controller.processReading();  // will enter catch block
+	});
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	controller.stopReading();
+	reader.join();
 
 	ASSERT_TRUE(controller.isStopReadingFlagSet());
 }
