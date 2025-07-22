@@ -6,61 +6,60 @@ CONFIG += c++17 cmdline
 TARGET = car-controls-qt
 TEMPLATE = app
 
+# ====== PROJECT STRUCTURE ======
+ZEROMQ_PATH = $$PWD/../../ZeroMQ
+INCLUDES_PATH = $$PWD/includes
+SOURCES_PATH = $$PWD/sources
+
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
-	$$PWD/../../ZeroMQ \
-	$$PWD/includes \
-	$$PWD/includes/inference \
-	$$PWD/includes/objectDetection
-
-# Eigen (header-only)
-INCLUDEPATH += /usr/include/eigen3
-
-# OpenCV includes (for host compilation)
-# INCLUDEPATH += /usr/include/opencv4
+	$$ZEROMQ_PATH \
+	$$INCLUDES_PATH \
+	$$INCLUDES_PATH/inference \
+	$$INCLUDES_PATH/objectDetection
 
 # Application Sources
 SOURCES += \
-	sources/main.cpp \
-	sources/Debugger.cpp \
-	sources/AutonomousMode.cpp \
-    sources/MPCPlanner.cpp \
-	../../ZeroMQ/Publisher.cpp \
-	../../ZeroMQ/Subscriber.cpp \
-    sources/MPCOptimizer.cpp \
-	sources/ControlsManager.cpp \
-	sources/EngineController.cpp \
-	sources/JoysticksController.cpp \
-	sources/PeripheralController.cpp \
-	sources/inference/CameraStreamer.cpp \
-	sources/inference/LaneCurveFitter.cpp \
-	sources/objectDetection/YOLOv5TRT.cpp \
-	sources/inference/LanePostProcessor.cpp \
-	sources/objectDetection/LabelManager.cpp \
-	sources/inference/TensorRTInferencer.cpp \
+	$$SOURCES_PATH/AutonomousMode.cpp \
+	$$SOURCES_PATH/ControlsManager.cpp \
+	$$SOURCES_PATH/Debugger.cpp \
+	$$SOURCES_PATH/EngineController.cpp \
+	$$SOURCES_PATH/JoysticksController.cpp \
+	$$SOURCES_PATH/MPCOptimizer.cpp \
+	$$SOURCES_PATH/MPCPlanner.cpp \
+	$$SOURCES_PATH/PeripheralController.cpp \
+	$$SOURCES_PATH/inference/CameraStreamer.cpp \
+	$$SOURCES_PATH/inference/LaneCurveFitter.cpp \
+	$$SOURCES_PATH/inference/LanePostProcessor.cpp \
+	$$SOURCES_PATH/inference/TensorRTInferencer.cpp \
+	$$SOURCES_PATH/main.cpp \
+	$$SOURCES_PATH/objectDetection/LabelManager.cpp \
+	$$SOURCES_PATH/objectDetection/YOLOv5TRT.cpp \
+	$$ZEROMQ_PATH/Publisher.cpp \
+	$$ZEROMQ_PATH/Subscriber.cpp \
 
 HEADERS += \
-	includes/enums.hpp \
-	includes/Debugger.hpp \
-	includes/AutonomousMode.hpp \
-    includes/MPCConfig.hpp \
-    includes/MPCPlanner.hpp \
-	../../ZeroMQ/Publisher.hpp \
-	../../ZeroMQ/Subscriber.hpp \
-    includes/CommonTypes.hpp \
-    includes/MPCOptimizer.hpp \
-	includes/ControlsManager.hpp \
-	includes/EngineController.hpp \
-	includes/JoysticksController.hpp \
-	includes/PeripheralController.hpp \
-	includes/inference/IInferencer.hpp \
-	includes/IPeripheralController.hpp \
-	includes/inference/CameraStreamer.hpp \
-	includes/inference/LaneCurveFitter.hpp \
-	includes/objectDetection/YOLOv5TRT.hpp \
-	includes/inference/LanePostProcessor.hpp \
-	includes/inference/TensorRTInferencer.hpp \
-	includes/objectDetection/LabelManager.hpp \
+	$$INCLUDES_PATH/AutonomousMode.hpp \
+	$$INCLUDES_PATH/CommonTypes.hpp \
+	$$INCLUDES_PATH/ControlsManager.hpp \
+	$$INCLUDES_PATH/Debugger.hpp \
+	$$INCLUDES_PATH/EngineController.hpp \
+	$$INCLUDES_PATH/IPeripheralController.hpp \
+	$$INCLUDES_PATH/JoysticksController.hpp \
+	$$INCLUDES_PATH/MPCConfig.hpp \
+	$$INCLUDES_PATH/MPCOptimizer.hpp \
+	$$INCLUDES_PATH/MPCPlanner.hpp \
+	$$INCLUDES_PATH/PeripheralController.hpp \
+	$$INCLUDES_PATH/enums.hpp \
+	$$INCLUDES_PATH/inference/CameraStreamer.hpp \
+	$$INCLUDES_PATH/inference/IInferencer.hpp \
+	$$INCLUDES_PATH/inference/LaneCurveFitter.hpp \
+	$$INCLUDES_PATH/inference/LanePostProcessor.hpp \
+	$$INCLUDES_PATH/inference/TensorRTInferencer.hpp \
+	$$INCLUDES_PATH/objectDetection/LabelManager.hpp \
+	$$INCLUDES_PATH/objectDetection/YOLOv5TRT.hpp \
+	$$ZEROMQ_PATH/Publisher.hpp \
+	$$ZEROMQ_PATH/Subscriber.hpp \
 
 # Common Libraries
 LIBS += -lSDL2 -lrt -lzmq -lnlopt -lmlpack -lboost_system -lstdc++fs
@@ -72,45 +71,42 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	message("Building for ARM architecture")
 
-	JETSON_SYSROOT = /home/michel/new_qtjetson/sysroot
+	QMAKE_SYSROOT = /home/michel/new_qtjetson/sysroot
 
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
+	INCLUDEPATH += \
+	$${QMAKE_SYSROOT}/../qt5.15/include \
+	$${QMAKE_SYSROOT}/../qt5.15/include/QtCore \
+	$${QMAKE_SYSROOT}/usr/include
 
 	# CUDA includes
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda/include
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-10.2/include
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/cuda-11.4/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/local/cuda/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/local/cuda-10.2/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/local/cuda-11.4/include
 	
 	# TensorRT includes
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/x86_64-linux-gnu
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/aarch64-linux-gnu
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/local/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/include/x86_64-linux-gnu
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/include/aarch64-linux-gnu
 
 	# OpenCV includes
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/include/opencv4
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/opencv4
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/local/include/opencv4
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/include/opencv4
 
 	# GStreamer includes
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/gstreamer-1.0
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/glib-2.0
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/glib-2.0/include
-
-	# OpenGL, GLFW, GLEW includes
-	INCLUDEPATH += /usr/local/include
-	INCLUDEPATH += /usr/include/GL
-	INCLUDEPATH += /usr/include/GLFW
-
-	# Library paths
-	LIBS += -L$${JETSON_SYSROOT}/usr/local/lib
-	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/lib64
-	LIBS += -L$${JETSON_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
-	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
-	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/include/gstreamer-1.0
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/include/glib-2.0
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu/glib-2.0/include
 
 	# Eigen libraries
-	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include/eigen3
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/include/eigen3
+
+	# Library paths
+	LIBS += -L$${QMAKE_SYSROOT}/usr/local/lib
+	LIBS += -L$${QMAKE_SYSROOT}/usr/local/cuda-10.2/lib64
+	LIBS += -L$${QMAKE_SYSROOT}/usr/local/cuda-10.2/targets/aarch64-linux/lib
+	LIBS += -L$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+	LIBS += -L$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu/openblas
 
 	# TensorRT, CUDA, OpenCV
 	LIBS += -lcudart -lnvinfer
@@ -120,14 +116,14 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	LIBS += -lnvmedia -lnvdla_compiler
 	
 	# OpenMP from sysroot to avoid GLIBC version conflicts
-	LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
-	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
-	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas
-	LIBS += -L$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9/libgomp.a
+	LIBS += -L$${QMAKE_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+	LIBS += -L$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu
+	LIBS += -L$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu/atlas
+	LIBS += -L$${QMAKE_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9/libgomp.a
 
 	# LAPACK and BLAS libraries
 	LIBS += -llapack -lcblas -lblas -ltbb
-	LIBS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu -lgfortran
+	LIBS += -L$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu -lgfortran
 
 	# GStreamer libraries
 	LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
@@ -136,28 +132,47 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	LIBS += -lGLEW -lglfw -lGL
 
 	# ZeroMQ includes
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
-    INCLUDEPATH += $${JETSON_SYSROOT}/usr/local/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/include
+	INCLUDEPATH += $${QMAKE_SYSROOT}/usr/local/include
 
 	# RPath for custom OpenCV runtime
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/lib
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/local/cuda-10.2/lib64
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${QMAKE_SYSROOT}/usr/local/lib
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu/tegra
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${QMAKE_SYSROOT}/usr/local/cuda-10.2/lib64
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${QMAKE_SYSROOT}/usr/lib/gcc/aarch64-linux-gnu/9
 	
 	# Force using sysroot libraries for glibc compatibility
-	QMAKE_LFLAGS += -Wl,-rpath-link,$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
-	QMAKE_LFLAGS += -L$${JETSON_SYSROOT}/usr/lib/aarch64-linux-gnu
-	QMAKE_LFLAGS += -L$${JETSON_SYSROOT}/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -Wl,-rpath-link,$${QMAKE_SYSROOT}/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -L$${QMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu
+	QMAKE_LFLAGS += -L$${QMAKE_SYSROOT}/lib/aarch64-linux-gnu
 	
 	# Static link with compatible libstdc++ to avoid glibc version conflicts
 	QMAKE_LFLAGS += -static-libstdc++ -static-libgcc
 }
 
+# Configurações de debug/release
+CONFIG(debug, debug|release) {
+    message("Debug build")
+    DEFINES += DEBUG_BUILD
+    QMAKE_CXXFLAGS += -g -DDEBUG -fopenmp
+} else {
+    message("Release build")
+    DEFINES += RELEASE_BUILD
+    QMAKE_CXXFLAGS += -O3 -DNDEBUG -fopenmp
+}
+
+# Output directories
+CONFIG(debug, debug|release) {
+    DESTDIR = build/debug
+} else {
+    DESTDIR = build/release
+}
+
+OBJECTS_DIR = $$DESTDIR/.obj
+MOC_DIR = $$DESTDIR/.moc
+RCC_DIR = $$DESTDIR/.rcc
+UI_DIR = $$DESTDIR/.ui
+
 # Adicionando flags de compilação para warnings e erros
 # QMAKE_CXXFLAGS += -Wall -Werror -Wextra -pedantic
-
-# Debug flags para análise de segfaults
-QMAKE_CXXFLAGS += -g -fopenmp
-QMAKE_CFLAGS += -g -fopenmp
