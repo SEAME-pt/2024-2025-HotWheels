@@ -22,6 +22,7 @@ SOURCES += \
 	sources/JoysticksController.cpp \
 	sources/EngineController.cpp \
 	sources/PeripheralController.cpp \
+	sources/AutomaticMode.cpp \
 	sources/main.cpp
 
 HEADERS += \
@@ -40,10 +41,12 @@ HEADERS += \
 	includes/EngineController.hpp \
 	includes/PeripheralController.hpp \
 	includes/IPeripheralController.hpp \
+	includes/AutomaticMode.hpp \
+	includes/CommonTypes.hpp \
 	includes/enums.hpp
 
 # Common Libraries
-LIBS += -lSDL2 -lrt -lzmq
+LIBS += -lSDL2 -lrt -lzmq -lmlpack
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {

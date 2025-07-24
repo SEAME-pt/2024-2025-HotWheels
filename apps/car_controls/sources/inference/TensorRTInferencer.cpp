@@ -37,8 +37,8 @@ TensorRTInferencer::TensorRTInferencer(const std::string& enginePath) :
 		throw std::runtime_error("Failed to create execution context");
 	}
 
-	lanePostProcessor = new LanePostProcessor(350, 260, 10.0f, 10.0f);  // Initialize lane post-processor with parameters
-	laneCurveFitter = new LaneCurveFitter(5.0f, 20, 20, 300); // Initialize lane curve fitter with parameters
+	lanePostProcessor = new LanePostProcessor(150, 150, 10.0f, 10.0f);  // Initialize lane post-processor with parameters
+	laneCurveFitter = new LaneCurveFitter(); // Initialize lane curve fitter
 
 	for (int i = 0; i < engine->getNbBindings(); i++) {  // Loop through all bindings
 		if (engine->bindingIsInput(i)) {  // If binding is input
@@ -234,37 +234,6 @@ cv::cuda::GpuMat TensorRTInferencer::makePrediction(const cv::cuda::GpuMat& gpuI
 		cudaMemcpyDeviceToDevice, stream
 	);
 
-	//post-process starts here
-/* 	cv::cuda::GpuMat postProcessedMaskGpu = lanePostProcessor->process(outputMaskGpu);
-
-	// Download post-processed binary mask for polyfitting
-	cv::Mat maskCpu;
-	postProcessedMaskGpu.download(maskCpu);
-
-	// Fit lanes and compute centerline
-	std::vector<LaneCurveFitter::LaneCurve> lanes = laneCurveFitter->fitLanes(maskCpu);
-	std::cout << "[DEBUG] Number of fitted lanes: " << lanes.size() << std::endl;
-	auto centerlineOpt = laneCurveFitter->computeVirtualCenterline(lanes, maskCpu.cols, maskCpu.rows);
-	if (!centerlineOpt.has_value()) {
-		std::cout << "[DEBUG] No centerline could be computed." << std::endl;
-	}
-
-	// Draw centerline on CPU
-	if (centerlineOpt.has_value()) {
-		const auto& centerline = centerlineOpt.value().blended;
-		for (size_t i = 1; i < centerline.size(); ++i) {
-			cv::line(maskCpu,
-					centerline[i - 1],
-					centerline[i],
-					cv::Scalar(255), // White
-					2,               // Thickness
-					cv::LINE_AA);
-		}
-	}
-
-	// Upload mask with centerline back to GPU
-	postProcessedMaskGpu.upload(maskCpu); */
-
 	return outputMaskGpu;
 }
 
@@ -292,6 +261,23 @@ void TensorRTInferencer::initUndistortMaps() {
 	d_mapy.upload(mapy);  // Upload Y map to GPU
 }
 
+LaneCurveFitter::CenterlineResult TensorRTInferencer::getPolyfittingResult(const cv::cuda::GpuMat& processedMaskGpu) {
+	// Download the processed mask to CPU for lane fitting
+	cv::Mat maskCpu;
+	processedMaskGpu.download(maskCpu);
+
+	// Fit lanes and compute centerline
+	auto centerlineOpt = laneCurveFitter->computeCenterline(maskCpu);
+
+	if (centerlineOpt.has_value()) {
+		return centerlineOpt.value();
+	} 
+	else {
+		// std::cerr << "[Error] Failed to compute centerline from mask" << std::endl;
+		return LaneCurveFitter::CenterlineResult();  // Return empty result if fitting fails
+	}
+}
+
 void TensorRTInferencer::doInference(const cv::Mat& frame) {
 	if (frame.empty()) {
 		throw std::runtime_error("Input frame is empty");
@@ -307,21 +293,14 @@ void TensorRTInferencer::doInference(const cv::Mat& frame) {
 	cv::cuda::GpuMat d_mask_u8;
 	d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255
 
-	cv::Mat binary_mask_cpu;
-	d_mask_u8.download(binary_mask_cpu, cudaStream);
-	cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);
-	cudaStream.waitForCompletion();  // Ensure async operations are complete
+	// ---- Post-process (GPU) ----
+    cv::cuda::GpuMat d_postprocessed;
+    d_postprocessed = lanePostProcessor->process(d_prediction_mask);  // Post-process the prediction mask
 
-	// Convert model output to 8-bit binary mask on GPU
-	cv::cuda::GpuMat d_visualization;
-	d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, cudaStream);
+	// ---- Fit lanes and compute centerline ----
+	LaneCurveFitter::CenterlineResult centerlineResult = getPolyfittingResult(d_postprocessed);  // Get centerline result
 
-	cv::cuda::GpuMat d_resized_mask;
+	Publisher::instance(5556)->publishInferenceFrame("inference_frame", d_mask_u8); //Publish frame to ZeroMQ publisher
 
-	cv::cuda::resize(d_visualization, d_resized_mask,
-						cv::Size(frame.cols * 0.5, frame.rows * 0.5),
-						0, 0, cv::INTER_LINEAR, cudaStream);  // Resize for display
-	cudaStream.waitForCompletion();  // Synchronize
-
-	Publisher::instance(5556)->publishInferenceFrame("inference_frame", d_resized_mask); //Publish frame to ZeroMQ publisher
+	Publisher::instance(5569)->publishPolyfittingResult("polyfitting_result", centerlineResult); // Publish centerline result to ZeroMQ publisher
 }
