@@ -6,7 +6,7 @@ CameraStreamer::CameraStreamer(double scale)
 	: scale_factor(scale), m_publisherFrameObject(nullptr), m_running(true) {
 
 	segmentationInferencer = std::make_shared<TensorRTInferencer>("/home/jetson/models/lane-detection/model.engine");
-	yoloInferencer = std::make_shared<YOLOv5TRT>("/home/jetson/models/object-detection/yolov5m_updated.engine", "/home/jetson/models/object-detection/labels.txt");
+	yoloInferencer = std::make_shared<YOLOv5TRT>("/home/jetson/models/object-detection/models/yolov5m_updated.engine", "/home/jetson/models/object-detection/labels.txt");
 
 	// Define GStreamer pipeline for CSI camera
 	std::string pipeline = "nvarguscamerasrc sensor-mode=4 ! "

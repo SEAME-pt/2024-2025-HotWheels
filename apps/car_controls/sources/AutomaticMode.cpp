@@ -8,7 +8,7 @@
 
 AutomaticMode::AutomaticMode (EngineController *engineController, QObject *parent)
     : QObject (parent), m_curveFitter (nullptr),
-      m_engineController (engineController), m_polyfittingSubscriber (nullptr), m_automaticMode (false) {
+      m_engineController (engineController), m_polyfittingSubscriber (nullptr), m_automaticMode (false), m_objectDetectionSubscriber (nullptr) {
 
 	m_curveFitter = new LaneCurveFitter ();
 
@@ -34,6 +34,13 @@ void AutomaticMode::startAutomaticControl () {
 
 	m_polyfittingSubscriber->connect(POLYFITTING_PORT);
     m_polyfittingSubscriber->subscribe(POLYFITTING_TOPIC);
+
+    if (!m_objectDetectionSubscriber) {
+        m_objectDetectionSubscriber = new Subscriber();
+    }
+
+    m_objectDetectionSubscriber->connect(OBJECT_PORT);
+    m_objectDetectionSubscriber->subscribe(OBJECT_TOPIC);
     
 	m_automaticControlThread = QThread::create ([this] () { automaticControlLoop (); });
 	m_automaticControlThread->start ();
@@ -50,6 +57,11 @@ void AutomaticMode::stopAutomaticControl () {
     if (m_polyfittingSubscriber) {
         delete m_polyfittingSubscriber;
         m_polyfittingSubscriber = nullptr;
+    }
+
+    if (m_objectDetectionSubscriber) {
+        delete m_objectDetectionSubscriber;
+        m_objectDetectionSubscriber = nullptr;
     }
 
 	if (m_automaticControlThread) {
@@ -70,13 +82,22 @@ void AutomaticMode::stopAutomaticControl () {
 
 void AutomaticMode::automaticControlLoop () {
     auto last_control_time = std::chrono::steady_clock::now();
+    auto last_slowdown_time = std::chrono::steady_clock::now();
 
 	while (m_automaticMode == true) {
         auto current_time = std::chrono::steady_clock::now();
         auto elapsed = std::chrono::duration<double>(current_time - last_control_time).count();
+        auto elapsed_slowdown = std::chrono::duration<double>(current_time - last_slowdown_time).count();
 
         if (elapsed >= COMMAND_DELAY_S) {
             try {
+                auto newShouldSlowDown = getShouldSlowDown ();
+                if (m_shouldSlowDown && newShouldSlowDown == false && elapsed_slowdown >= SLOW_DOWN_DURATION_S) {
+                    m_shouldSlowDown = false;
+                } else if (newShouldSlowDown == true) {
+                    m_shouldSlowDown = true;
+                    last_slowdown_time = current_time;
+                }
                 auto polyfitting_result = getPolyfittingResult ();
                 if (polyfitting_result.valid) {
                     ControlCommand command = calculateSteering (polyfitting_result);
@@ -111,13 +132,17 @@ ControlCommand AutomaticMode::calculateSteering(const LaneCurveFitter::Centerlin
         auto angle = computeDirectionAngle(centerline_result.blended);
 
         controlCommand.steer = angle;
-		if (angle > TURN_ANGLE_THRESHOLD || angle < -TURN_ANGLE_THRESHOLD) {
-    		controlCommand.throttle = TURN_SPEED_THROTTLE;
+		
+        if (this->m_shouldSlowDown) {
+            controlCommand.throttle = TURN_SPEED_THROTTLE;
+            std::cout << "[AutomaticMode] Slowing down due to detected object" << std::endl;
+        } else if (angle > TURN_ANGLE_THRESHOLD || angle < -TURN_ANGLE_THRESHOLD) {
+    		controlCommand.throttle = STRAIGHT_SPEED_THROTTLE;
+            std::cout << "[AutomaticMode] Slowing down for turn, angle: " << angle << std::endl;
 		} else {
 			controlCommand.throttle = STRAIGHT_SPEED_THROTTLE;
 		}
     } catch (const std::exception &e) {
-        // std::cout << "[MPCPlanner] Error during planning: " << e.what() << std::endl;
         controlCommand.steer = 0;
         return controlCommand;
     }
@@ -143,14 +168,6 @@ int AutomaticMode::computeDirectionAngle(const std::vector<Point2D>& centerline)
 
     double angle_rad = std::atan2(dx, dy);
     double angle_deg = (angle_rad * 180.0 / CV_PI);
-
-    // std::cout << "[AutomaticMode] Computed angle: " <<  angle_deg << " degrees. Constants : "   
-    //             << "RIGHT_STEERING_SCALE = " << RIGHT_STEERING_SCALE << ", "
-    //             << "LEFT_STEERING_SCALE = " << LEFT_STEERING_SCALE << ", "
-    //             << "MAX_STEERING_ANGLE = " << MAX_STEERING_ANGLE << ", "
-    //             << "TURN_ANGLE_THRESHOLD = " << TURN_ANGLE_THRESHOLD << ", "
-    //             << "LOOK_AHEAD_START = " << LOOK_AHEAD_START << ", "
-    //             << "LOOK_AHEAD_END = " << LOOK_AHEAD_END << std::endl;
 
 	if (angle_deg < 0) {
 		angle_deg = angle_deg * LEFT_STEERING_SCALE;
@@ -326,6 +343,57 @@ std::vector<LaneCurveFitter::LaneCurve> AutomaticMode::parseLaneArray(const std:
     return lanes;
 }
 
+bool AutomaticMode::getShouldSlowDown() const {
+    if (!m_objectDetectionSubscriber) {
+        std::cerr << "[AutomaticMode] Object detection subscriber not initialized!" << std::endl;
+        return false;
+    }
+
+    try {
+        zmq::pollitem_t items[] = {
+            { static_cast<void*>(m_objectDetectionSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
+        };
+        
+        int messagesProcessed = 0;
+        bool shouldSlowDown = false;
+        
+        // Drain the queue to get the most recent message
+        while (true) {
+            // Poll with short timeout to check for available messages
+            zmq::poll(items, 1, 10); // 10ms timeout
+            
+            if (items[0].revents & ZMQ_POLLIN) {
+                zmq::message_t message;
+                if (!m_objectDetectionSubscriber->getSocket().recv(&message, ZMQ_DONTWAIT)) {
+                    break; // No more messages
+                }
+                
+                std::string received_msg(static_cast<char*>(message.data()), message.size());
+                const std::string topic = OBJECT_TOPIC;
+                
+                if (received_msg.find(topic) == 0) {
+                    for (const auto& object : SLOW_DOWN_OBJECTS) {
+                        if (received_msg.find(object) != std::string::npos) {
+                            shouldSlowDown = true;
+                            std::cout << "[AutomaticMode] Detected object " << object << ", slowing down" << std::endl;
+                            break;
+                        }
+                    }
+                    messagesProcessed++;
+                }
+            } else {
+                break; // No more messages available
+            }
+        }
+        
+        return shouldSlowDown;
+        
+    } catch (const zmq::error_t& e) {
+        std::cerr << "[Subscriber] ZMQ error: " << e.what() << std::endl;
+        return {};
+    }
+}
+
 LaneCurveFitter::CenterlineResult AutomaticMode::getPolyfittingResult() {
     if (!m_polyfittingSubscriber) {
         std::cerr << "[AutomaticMode] Polyfitting subscriber not initialized!" << std::endl;
@@ -353,7 +421,7 @@ LaneCurveFitter::CenterlineResult AutomaticMode::getPolyfittingResult() {
                 }
                 
                 std::string received_msg(static_cast<char*>(message.data()), message.size());
-                const std::string topic = "polyfitting_result";
+                const std::string topic = POLYFITTING_TOPIC;
                 
                 if (received_msg.find(topic) == 0) {
                     auto extractedResult = extractJsonData(received_msg.substr(topic.size()));

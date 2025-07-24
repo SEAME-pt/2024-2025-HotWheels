@@ -23,13 +23,13 @@ class AutomaticMode : public QObject {
 
 	private:
         // Speed when turning and going straight
-        const int TURN_SPEED_THROTTLE = 19;
+        const int TURN_SPEED_THROTTLE = 20;
         const int STRAIGHT_SPEED_THROTTLE = 23;
         // Angle from which to consider a turn and apply turn throttle
         const int TURN_ANGLE_THRESHOLD = 150;
 
         // Scale factor for steering angle
-        const double RIGHT_STEERING_SCALE = 2.7;
+        const double RIGHT_STEERING_SCALE = 2.9;
         const double LEFT_STEERING_SCALE = 3.0;
 
         // Max steering angle for the car
@@ -40,13 +40,21 @@ class AutomaticMode : public QObject {
 
         // Segment of the polyfititng blended centerline to use for calculating steering
         const double LOOK_AHEAD_START = 0.3;
-        const double LOOK_AHEAD_END = 0.7;
+        const double LOOK_AHEAD_END = 0.6;
 
         // Subscriber settings
         const std::string POLYFITTING_TOPIC = "polyfitting_result";
         const std::string POLYFITTING_PORT = "tcp://localhost:5569";
 
+        const std::string OBJECT_TOPIC = "notification";
+        const std::string OBJECT_PORT = "tcp://localhost:5557";
+
+        const std::string SLOW_DOWN_OBJECTS[4] = {"danger", "ceding", "crosswalk", "yellow"};
+        const double SLOW_DOWN_DURATION_S = 2.0;
+
+        // Driving flags
         bool m_automaticMode;
+        bool m_shouldSlowDown;
 
         EngineController *m_engineController;
 		LaneCurveFitter *m_curveFitter;
@@ -54,6 +62,7 @@ class AutomaticMode : public QObject {
 		QThread *m_automaticControlThread;
 
 		Subscriber *m_polyfittingSubscriber;
+        Subscriber *m_objectDetectionSubscriber;
 
         // === Driving Logic Methods ===
         ControlCommand calculateSteering(const LaneCurveFitter::CenterlineResult &centerline_result);
@@ -65,6 +74,7 @@ class AutomaticMode : public QObject {
 		std::vector<LaneCurveFitter::LaneCurve> parseLaneArray(const std::string& json_data);
 		std::vector<Point2D> parsePointArray(const std::string& json_data, const std::string& field_name);
 		LaneCurveFitter::CenterlineResult extractJsonData(std::string data); 
+        bool getShouldSlowDown() const;
 
         // === Thread Loop Method ===
         void automaticControlLoop ();
