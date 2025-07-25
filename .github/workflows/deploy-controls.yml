@@ -49,10 +49,15 @@ jobs:
         run: |
           cd $DIR/build
           lcov --capture --directory . --output-file full.info
-          lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/tests*' '*/tensorrt-8.6.1.6*' '*/Mock*' '*/usr/*' '*/Qt*' --output-file filtered.info
+          lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/tests*' '*/tensorrt-8.6.1.6*' '*/Mock*' '*/usr/*' '*/Qt*' '*/includes/*' --output-file filtered.info
           genhtml filtered.info --output-directory coverage-car-controls
 
       - name: Copy report to documentation branch
         run: |
           cd $DIR/build
           cp -r coverage-car-controls ~/Documents/documentation-branch
+
+      - name: Execute script to update coverage reports
+        run: |
+          /bin/bash -c "~/Documents/documentation-branch/update.sh"
+

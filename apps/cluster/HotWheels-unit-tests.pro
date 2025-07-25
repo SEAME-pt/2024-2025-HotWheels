@@ -4,6 +4,7 @@ CONFIG   += c++17
 CONFIG += debug
 QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage -O0
 QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
+QMAKE_LFLAGS += -Wl,--wrap=open -Wl,--wrap=ioctl -Wl,--wrap=read -Wl,--wrap=write
 
 # ====== Unit Tests Target ======
 TEMPLATE = app
@@ -38,7 +39,12 @@ SOURCES += \
 	$$UNIT_TESTS_PATH/system/test_BatteryController.cpp \
 	$$UNIT_TESTS_PATH/system/test_SystemInfoProvider.cpp \
 	$$UNIT_TESTS_PATH/system/test_SystemManager.cpp \
+	$$UNIT_TESTS_PATH/system/test_SystemCommandExecutor.cpp \
 	$$UNIT_TESTS_PATH/display/test_DisplayManager.cpp \
+	$$UNIT_TESTS_PATH/display/test_NotificationOverlay.cpp \
+	$$UNIT_TESTS_PATH/display/test_NotificationManager.cpp \
+	$$UNIT_TESTS_PATH/utils/test_FileController.cpp \
+	$$UNIT_TESTS_PATH/utils/test_I2CController.cpp \
 	$$UNIT_TESTS_PATH/main.cpp
 
 # Unit Test Headers (Mocks)

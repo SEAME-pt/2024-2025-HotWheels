@@ -44,6 +44,8 @@ public slots:
 	void updateEngineData(CarDirection direction, int steeringAngle);
 	void updateSystemTime(const QString &currentDate, const QString &currentTime,
 												const QString &currentDay);
+	QString getWifiSSID();
+	QString getLocalIPAddress();
 	void setupWifiDropdown();
 	void updateTemperature(const QString &temperature);
 	void updateBatteryPercentage(float batteryPercentage);
