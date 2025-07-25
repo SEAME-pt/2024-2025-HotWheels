@@ -57,7 +57,7 @@ jobs:
           cd $DIR/build
           cp -r coverage-car-controls ~/Documents/documentation-branch
 
-      - name: Execute script to update documentation and coverage reports
+      - name: Execute script to update coverage reports
         run: |
           /bin/bash -c "~/Documents/documentation-branch/update.sh"
 
