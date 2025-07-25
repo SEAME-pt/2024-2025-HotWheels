@@ -69,3 +69,7 @@ jobs:
         run: |
           cd $DIR/build
           cp -r coverage-cluster ~/Documents/documentation-branch
+
+      - name: Execute script to update documentation and coverage reports
+        run: |
+          /bin/bash -c "~/Documents/documentation-branch/update.sh"
