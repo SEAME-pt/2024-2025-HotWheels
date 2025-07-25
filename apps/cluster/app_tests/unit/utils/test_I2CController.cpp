@@ -141,5 +141,5 @@ TEST_F(I2CControllerTest, ReadRegister_FailureRead) {
 	fail_read = true;
 	I2CController ctrl("/dev/i2c-1", 0x48);
 	uint16_t value = ctrl.readRegister(0x10);  // Logs error
-	EXPECT_EQ(value, 0);;
+	EXPECT_EQ(value, 0);
 }
