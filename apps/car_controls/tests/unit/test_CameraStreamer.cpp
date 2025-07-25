@@ -1,37 +1,45 @@
-// test_TensorRTInferencer.cpp
-
 #include <gtest/gtest.h>
-#include "../mocks/MockInferencer.hpp"
-#include "../includes/inference/CameraStreamer.hpp"
+#include <opencv2/core.hpp>
+#include <thread>
+#include "../../includes/inference/CameraStreamer.hpp"
 
-/* TEST(CameraStreamerTest, ConstructorInitializesCamera) {
-    auto inferencer = std::make_shared<MockInferencer>();
-    EXPECT_NO_THROW({
-        CameraStreamer streamer(inferencer, true);
+// We’ll skip actual inference because those inferencer classes are internal
+// and not mockable without modifying CameraStreamer.
+
+/* class CameraStreamerBasicTest : public ::testing::Test {
+protected:
+    void SetUp() override {
+        // Use scale factor only, since we can't inject models
+        streamer = std::make_unique<CameraStreamer>(0.5);
+    }
+
+    void TearDown() override {
+        if (streamer) {
+            streamer->stop();  // Just in case
+        }
+    }
+
+    std::unique_ptr<CameraStreamer> streamer;
+};
+
+TEST_F(CameraStreamerBasicTest, StartsAndStopsWithoutCrash) {
+    ASSERT_NO_THROW({
+        streamer->start();
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        streamer->stop();
     });
 }
 
-TEST(CameraStreamerTest, InitUndistortMapsLoadsFile) {
-    auto inferencer = std::make_shared<MockInferencer>();
-    CameraStreamer streamer(inferencer, true);
-    streamer.initUndistortMaps();
+TEST_F(CameraStreamerBasicTest, DestructorCleansUpProperly) {
+    streamer->start();
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    streamer.reset();  // Calls destructor
+    SUCCEED();  // No crash means success
+}
+
+TEST_F(CameraStreamerBasicTest, RunsCaptureLoopBriefly) {
+    streamer->start();
+    std::this_thread::sleep_for(std::chrono::seconds(1));  // Give time for captureLoop
+    streamer->stop();
     SUCCEED();
-}
-
-TEST(CameraStreamerTest, StartCallsInference) {
-    auto inferencer = std::make_shared<NiceMock<MockInferencer>>();
-    EXPECT_CALL(*inferencer, makePrediction).Times(AtLeast(1));
-
-    CameraStreamer streamer(inferencer, true);
-
-    // Simulate a short run by calling stop() in another thread
-    std::thread stopper([&]() {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        streamer.stop();
-    });
-
-    streamer.start();  // this will run for ~1s
-    stopper.join();
 } */
-
-
