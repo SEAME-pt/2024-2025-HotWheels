@@ -23,6 +23,19 @@ void Publisher::publish(const std::string& topic, const std::string& message) {
 	publisher.send(zmq_message);  // Send the message
 }
 
+void Publisher::publishCarSpeed(const std::string& topic, float speed) {
+    std::lock_guard<std::mutex> lock(car_speed_mtx);  // Ensure thread safety
+
+    std::ostringstream ss;
+    ss << speed;  // Convert float to string
+    std::string speed_str = ss.str();
+
+    // std::cout << "[Publisher] Publishing car speed: " << speed_str << std::endl;
+
+    publish(topic, speed_str);  // Publish the car speed
+}
+
+
 void Publisher::setJoystickStatus(bool new_joytstick_value) {
 	// std::cout << "[Publisher] Publishing joystick_value: " << (joytstick_value ? "true" : "false") << std::endl;
 
@@ -70,8 +83,8 @@ void Publisher::publishInferenceFrame(const std::string& topic, const cv::cuda::
 	}
 }
 
-void Publisher::publishPolyfittingResult(const std::string& topic, const LaneCurveFitter::CenterlineResult polyfitting_result) {
-    std::lock_guard<std::mutex> lock(frame_mtx); // Ensure thread safety
+void Publisher::publishPolyfittingResult(const std::string& topic, const CenterlineResult polyfitting_result) {
+    std::lock_guard<std::mutex> lock(polyfitting_mtx); // Ensure thread safety
     
     try {
         // Create JSON-like string representation of the result

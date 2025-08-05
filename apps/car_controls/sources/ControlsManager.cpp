@@ -34,7 +34,7 @@
  */
 ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	: QObject(parent), m_engineController(0x40, 0x60, this),
-	  m_manualController(nullptr), m_currentMode(DrivingMode::Automatic),
+	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
 	  m_subscriberJoystickObject(nullptr), m_manualControllerThread(nullptr),
 	  m_joystickControlThread(nullptr), m_subscriberJoystickThread(nullptr),
 	  m_cameraStreamerThread(nullptr), m_running(true), m_automaticModeObject(nullptr),

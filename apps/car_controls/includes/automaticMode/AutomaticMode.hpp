@@ -5,8 +5,7 @@
 #include <QThread>
 
 #include "EngineController.hpp"
-#include "LaneCurveFitter.hpp"
-#include "../../ZeroMQ/Subscriber.hpp"
+#include "ControlDataHandler.hpp"
 #include "CommonTypes.hpp"
 
 class AutomaticMode : public QObject {
@@ -22,9 +21,13 @@ class AutomaticMode : public QObject {
 		void stopAutomaticControl ();
 
 	private:
-        // Speed when turning and going straight
+        // Default speed values
+        const int TURN_SPEED = 1;
+        const int STRAIGHT_SPEED = 2;
+        
+        // Throttle values for different driving conditions
         const int TURN_SPEED_THROTTLE = 20;
-        const int STRAIGHT_SPEED_THROTTLE = 23;
+        const int STRAIGHT_SPEED_THROTTLE = 20;
         // Angle from which to consider a turn and apply turn throttle
         const int TURN_ANGLE_THRESHOLD = 150;
 
@@ -36,20 +39,13 @@ class AutomaticMode : public QObject {
         const int MAX_STEERING_ANGLE = 180;
 
         // Delay between control commands to avoid flooding the controller
-        const double COMMAND_DELAY_S = 0.2;
+        const double COMMAND_DELAY_S = 0.1;
 
         // Segment of the polyfititng blended centerline to use for calculating steering
         const double LOOK_AHEAD_START = 0.3;
         const double LOOK_AHEAD_END = 0.6;
 
-        // Subscriber settings
-        const std::string POLYFITTING_TOPIC = "polyfitting_result";
-        const std::string POLYFITTING_PORT = "tcp://localhost:5569";
-
-        const std::string OBJECT_TOPIC = "notification";
-        const std::string OBJECT_PORT = "tcp://localhost:5557";
-
-        const std::string SLOW_DOWN_OBJECTS[4] = {"danger", "ceding", "crosswalk", "yellow"};
+        // Slow down duration
         const double SLOW_DOWN_DURATION_S = 2.0;
 
         // Driving flags
@@ -57,24 +53,14 @@ class AutomaticMode : public QObject {
         bool m_shouldSlowDown;
 
         EngineController *m_engineController;
-		LaneCurveFitter *m_curveFitter;
+        ControlDataHandler *m_controlDataHandler;
 
 		QThread *m_automaticControlThread;
 
-		Subscriber *m_polyfittingSubscriber;
-        Subscriber *m_objectDetectionSubscriber;
-
         // === Driving Logic Methods ===
-        ControlCommand calculateSteering(const LaneCurveFitter::CenterlineResult &centerline_result);
+        ControlCommand calculateSteering(const CenterlineResult &centerline_result);
         int computeDirectionAngle(const std::vector<Point2D>& centerline);
 		void applyControls (const ControlCommand &control);
-
-        // === Subscriber Handling Methods ===
-		LaneCurveFitter::CenterlineResult getPolyfittingResult();
-		std::vector<LaneCurveFitter::LaneCurve> parseLaneArray(const std::string& json_data);
-		std::vector<Point2D> parsePointArray(const std::string& json_data, const std::string& field_name);
-		LaneCurveFitter::CenterlineResult extractJsonData(std::string data); 
-        bool getShouldSlowDown() const;
 
         // === Thread Loop Method ===
         void automaticControlLoop ();

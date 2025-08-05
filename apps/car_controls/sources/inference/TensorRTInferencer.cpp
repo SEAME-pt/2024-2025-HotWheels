@@ -261,7 +261,7 @@ void TensorRTInferencer::initUndistortMaps() {
 	d_mapy.upload(mapy);  // Upload Y map to GPU
 }
 
-LaneCurveFitter::CenterlineResult TensorRTInferencer::getPolyfittingResult(const cv::cuda::GpuMat& processedMaskGpu) {
+CenterlineResult TensorRTInferencer::getPolyfittingResult(const cv::cuda::GpuMat& processedMaskGpu) {
 	// Download the processed mask to CPU for lane fitting
 	cv::Mat maskCpu;
 	processedMaskGpu.download(maskCpu);
@@ -274,7 +274,7 @@ LaneCurveFitter::CenterlineResult TensorRTInferencer::getPolyfittingResult(const
 	} 
 	else {
 		// std::cerr << "[Error] Failed to compute centerline from mask" << std::endl;
-		return LaneCurveFitter::CenterlineResult();  // Return empty result if fitting fails
+		return CenterlineResult();  // Return empty result if fitting fails
 	}
 }
 
@@ -298,7 +298,7 @@ void TensorRTInferencer::doInference(const cv::Mat& frame) {
     d_postprocessed = lanePostProcessor->process(d_prediction_mask);  // Post-process the prediction mask
 
 	// ---- Fit lanes and compute centerline ----
-	LaneCurveFitter::CenterlineResult centerlineResult = getPolyfittingResult(d_postprocessed);  // Get centerline result
+	CenterlineResult centerlineResult = getPolyfittingResult(d_postprocessed);  // Get centerline result
 
 	Publisher::instance(5556)->publishInferenceFrame("inference_frame", d_mask_u8); //Publish frame to ZeroMQ publisher
 

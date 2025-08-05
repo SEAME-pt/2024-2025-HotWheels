@@ -23,6 +23,7 @@
 #include "MCP2515Configurator.hpp"
 #include <QObject>
 #include <string>
+#include <iostream>
 
 /*!
  * @brief Class that controls the MCP2515 CAN controller.

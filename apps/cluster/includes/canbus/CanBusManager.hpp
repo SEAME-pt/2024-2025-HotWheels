@@ -20,6 +20,7 @@
 #include "IMCP2515Controller.hpp"
 #include <QObject>
 #include <QThread>
+#include "../../../ZeroMQ/Publisher.hpp"
 
 /*!
  * @brief Class that manages the CAN bus communication.
@@ -47,6 +48,13 @@ public:
 	 * @param newRpm The new RPM value.
 	 */
 	void rpmUpdated(int newRpm);
+
+private slots:
+	/*!
+	 * @brief Slot to handle the speed update.
+	 * @param newSpeed The new speed value.
+	 */
+	void onSpeedUpdated(float newSpeed);
 
 private:
 	/*! @brief Pointer to the IMCP2515Controller object. */

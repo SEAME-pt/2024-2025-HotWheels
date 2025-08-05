@@ -14,6 +14,7 @@
 #include "IInferencer.hpp"
 #include "LanePostProcessor.hpp"
 #include "LaneCurveFitter.hpp"
+#include "CommonTypes.hpp"
 #include "Logger.hpp"
 
 #include "../../../ZeroMQ/Subscriber.hpp"
@@ -55,12 +56,10 @@ private:
 	cv::cuda::GpuMat outputMaskGpu;
 	cv::cuda::Stream cudaStream;
 
-	Publisher *m_publisherObject;
-
 	std::vector<char> readEngineFile(const std::string& enginePath);
 	void cleanupResources();
 
-	LaneCurveFitter::CenterlineResult getPolyfittingResult(const cv::cuda::GpuMat& processedMaskGpu);
+	CenterlineResult getPolyfittingResult(const cv::cuda::GpuMat& processedMaskGpu);
 
 public:
 	TensorRTInferencer(const std::string& enginePath);

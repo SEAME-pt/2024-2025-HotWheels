@@ -1,6 +1,6 @@
 #include "LaneCurveFitter.hpp"
 
-std::optional<LaneCurveFitter::CenterlineResult> LaneCurveFitter::computeCenterline(const cv::Mat &binaryMask)
+std::optional<CenterlineResult> LaneCurveFitter::computeCenterline(const cv::Mat &binaryMask)
 {
     if (binaryMask.empty())
     {
@@ -36,7 +36,7 @@ std::optional<LaneCurveFitter::CenterlineResult> LaneCurveFitter::computeCenterl
     }
 
     auto relevantLanes = selectRelevantLanes(lanes, gray.cols, gray.rows);
-    std::vector<LaneCurveFitter::LaneCurve> selectedLanes;
+    std::vector<LaneCurve> selectedLanes;
     if (relevantLanes.first)
     {
         selectedLanes.push_back(*relevantLanes.first);
@@ -302,7 +302,7 @@ void visualizeOverlay(const cv::Mat &maskGray, const cv::Mat &debugVis, const st
     cv::imshow(windowName, overlay);
 }
 
-std::vector<LaneCurveFitter::LaneCurve> LaneCurveFitter::fitLanes(const cv::Mat &img)
+std::vector<LaneCurve> LaneCurveFitter::fitLanes(const cv::Mat &img)
 {
     auto points = extractLanePoints(img);
     auto [labels, uniqueLabels] = clusterLanePoints(points);
@@ -456,7 +456,7 @@ std::vector<LaneCurveFitter::LaneCurve> LaneCurveFitter::fitLanes(const cv::Mat 
     return lanes;
 }
 
-std::pair<LaneCurveFitter::LaneCurve *, LaneCurveFitter::LaneCurve *> LaneCurveFitter::selectRelevantLanes(
+std::pair<LaneCurve *, LaneCurve *> LaneCurveFitter::selectRelevantLanes(
     std::vector<LaneCurve> &lanes, int imgWidth, int imgHeight)
 {
     double imgCenterX = imgWidth / 2.0;
@@ -579,7 +579,7 @@ std::vector<double> LaneCurveFitter::interp(const std::vector<double> &xNew, con
     return result;
 }
 
-LaneCurveFitter::CenterlineResult LaneCurveFitter::computeVirtualCenterline(
+CenterlineResult LaneCurveFitter::computeVirtualCenterline(
     std::vector<LaneCurve> &lanes, int imgWidth, int imgHeight)
 {
     auto [leftLane, rightLane] = selectRelevantLanes(lanes, imgWidth, imgHeight);

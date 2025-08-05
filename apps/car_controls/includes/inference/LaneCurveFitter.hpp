@@ -10,22 +10,6 @@
 
 class LaneCurveFitter {
 public:
-    
-    struct LaneCurve {
-        std::vector<Point2D> centroids;
-        std::vector<Point2D> curve;
-    };
-    
-    struct CenterlineResult {
-        std::vector<Point2D> blended;
-        std::vector<Point2D> midpoint;
-        std::vector<Point2D> straight;
-        std::vector<LaneCurve> lanes;
-        bool valid;
-
-
-        CenterlineResult() : valid(false) {}
-    };
 
     // Public interface - only method that should be called externally
     std::optional<CenterlineResult> computeCenterline(const cv::Mat& binaryMask);

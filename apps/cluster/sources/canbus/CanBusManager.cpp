@@ -81,6 +81,15 @@ CanBusManager::~CanBusManager()
 	}
 }
 
+void CanBusManager::onSpeedUpdated(float newSpeed)
+{
+	emit speedUpdated(newSpeed);
+
+	// std::cout << "Speed updated: " << newSpeed << std::endl;
+
+	Publisher::instance(5568)->publishCarSpeed("car_speed", newSpeed); // Publish speed to ZeroMQ publisher
+}
+
 /*!
  * @brief Connects the signals from the MCP2515 controller to the CanBusManager
  * slots.
@@ -90,7 +99,7 @@ CanBusManager::~CanBusManager()
  */
 void CanBusManager::connectSignals()
 {
-	connect(m_controller, &IMCP2515Controller::speedUpdated, this, &CanBusManager::speedUpdated);
+	connect(m_controller, &IMCP2515Controller::speedUpdated, this, &CanBusManager::onSpeedUpdated);
 	connect(m_controller, &IMCP2515Controller::rpmUpdated, this, &CanBusManager::rpmUpdated);
 }
 

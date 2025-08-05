@@ -143,17 +143,19 @@ void MCP2515Controller::stopReading() { stopReadingFlag = true; }
  */
 void MCP2515Controller::setupHandlers() {
 	messageProcessor.registerHandler(0x100, [this](const std::vector<uint8_t> &data) {
-		if (data.size() == 1) {
-			float speed = static_cast<float>(data[0]);
+		if (data.size() == 2) {
+			uint16_t rawSpeed = (data[0] << 8) | data[1];
+			float speed = rawSpeed / 10.0f;
+			std::cout << "Received Speed data: " << speed << " km/h" << std::endl;
 			emit speedUpdated(speed);
 		}
 	});
-
+	
 	messageProcessor.registerHandler(0x300, [this](const std::vector<uint8_t> &data) {
 		if (data.size() == 2) {
 			uint16_t distance = (data[0] << 8) | data[1];
 			//emit distanceUpdated(distance);
-			qDebug() << "Distance from CAN:" << distance;
+			// qDebug() << "Distance from CAN:" << distance;
 			if (distance > 20) {
 				if (!brakeWarningActive) {
 					brakeWarningActive = true;
