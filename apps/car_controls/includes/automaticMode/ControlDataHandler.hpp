@@ -19,20 +19,16 @@ public:
     // === Data Retrieval Methods ===
     CenterlineResult getPolyfittingResult();
     bool getShouldSlowDown() const;
+    float getCarSpeed() const;
 
 private:
     // === Subscriber Settings ===
-    const std::string POLYFITTING_TOPIC = "polyfitting_result";
-    const std::string POLYFITTING_PORT = "tcp://localhost:5569";
-
-    const std::string OBJECT_TOPIC = "notification";
-    const std::string OBJECT_PORT = "tcp://localhost:5557";
-
     const std::string SLOW_DOWN_OBJECTS[4] = {"danger", "ceding", "crosswalk", "yellow"};
 
     // === Subscribers ===
     Subscriber *m_polyfittingSubscriber;
     Subscriber *m_objectDetectionSubscriber;
+    Subscriber *m_carSpeedSubscriber;
 
     // === JSON Parsing Methods ===
     CenterlineResult extractJsonData(std::string data);

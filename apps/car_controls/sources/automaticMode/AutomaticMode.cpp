@@ -75,6 +75,7 @@ void AutomaticMode::automaticControlLoop () {
 
         if (elapsed >= COMMAND_DELAY_S) {
             try {
+                float car_speed = m_controlDataHandler->getCarSpeed();
                 auto newShouldSlowDown = m_controlDataHandler->getShouldSlowDown();
                 if (m_shouldSlowDown && newShouldSlowDown == false && elapsed_slowdown >= SLOW_DOWN_DURATION_S) {
                     m_shouldSlowDown = false;

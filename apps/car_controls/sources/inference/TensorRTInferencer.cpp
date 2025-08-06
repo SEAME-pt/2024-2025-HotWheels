@@ -300,7 +300,7 @@ void TensorRTInferencer::doInference(const cv::Mat& frame) {
 	// ---- Fit lanes and compute centerline ----
 	CenterlineResult centerlineResult = getPolyfittingResult(d_postprocessed);  // Get centerline result
 
-	Publisher::instance(5556)->publishInferenceFrame("inference_frame", d_mask_u8); //Publish frame to ZeroMQ publisher
+	Publisher::instance(INFERENCE_PORT)->publishInferenceFrame(INFERENCE_TOPIC, d_mask_u8); //Publish frame to ZeroMQ publisher
 
-	Publisher::instance(5569)->publishPolyfittingResult("polyfitting_result", centerlineResult); // Publish centerline result to ZeroMQ publisher
+	Publisher::instance(POLYFITTING_PORT)->publishPolyfittingResult(POLYFITTING_TOPIC, centerlineResult); // Publish centerline result to ZeroMQ publisher
 }

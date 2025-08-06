@@ -87,7 +87,7 @@ void CanBusManager::onSpeedUpdated(float newSpeed)
 
 	// std::cout << "Speed updated: " << newSpeed << std::endl;
 
-	Publisher::instance(5568)->publishCarSpeed("car_speed", newSpeed); // Publish speed to ZeroMQ publisher
+	Publisher::instance(CAR_SPEED_PORT)->publishCarSpeed(CAR_SPEED_TOPIC, newSpeed); // Publish speed to ZeroMQ publisher
 }
 
 /*!

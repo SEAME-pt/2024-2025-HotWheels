@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 ControlDataHandler::ControlDataHandler()
-    : m_polyfittingSubscriber(nullptr), m_objectDetectionSubscriber(nullptr) {
+    : m_polyfittingSubscriber(nullptr), m_objectDetectionSubscriber(nullptr), m_carSpeedSubscriber(nullptr) {
 }
 
 ControlDataHandler::~ControlDataHandler() {
@@ -15,15 +15,22 @@ void ControlDataHandler::initializeSubscribers() {
     if (!m_polyfittingSubscriber) {
         m_polyfittingSubscriber = new Subscriber();
     }
-    m_polyfittingSubscriber->connect(POLYFITTING_PORT);
+    m_polyfittingSubscriber->connect(getZeroMQAddress(POLYFITTING_PORT));
     m_polyfittingSubscriber->subscribe(POLYFITTING_TOPIC);
 
     // Initialize object detection subscriber
     if (!m_objectDetectionSubscriber) {
         m_objectDetectionSubscriber = new Subscriber();
     }
-    m_objectDetectionSubscriber->connect(OBJECT_PORT);
+    m_objectDetectionSubscriber->connect(getZeroMQAddress(OBJECT_PORT));
     m_objectDetectionSubscriber->subscribe(OBJECT_TOPIC);
+
+    // Initialize car speed subscriber
+    if (!m_carSpeedSubscriber) {
+        m_carSpeedSubscriber = new Subscriber();
+    }
+    m_carSpeedSubscriber->connect(getZeroMQAddress(CAR_SPEED_PORT));
+    m_carSpeedSubscriber->subscribe(CAR_SPEED_TOPIC);
 }
 
 void ControlDataHandler::cleanupSubscribers() {
@@ -36,6 +43,70 @@ void ControlDataHandler::cleanupSubscribers() {
         delete m_objectDetectionSubscriber;
         m_objectDetectionSubscriber = nullptr;
     }
+
+    if (m_carSpeedSubscriber) {
+        delete m_carSpeedSubscriber;
+        m_carSpeedSubscriber = nullptr;
+    }
+}
+
+float ControlDataHandler::getCarSpeed() const {
+    if (!m_carSpeedSubscriber) {
+        std::cerr << "[ControlDataHandler] Car speed subscriber not initialized!" << std::endl;
+        return 0.0f;
+    }
+
+    try {
+        zmq::pollitem_t items[] = {
+            { static_cast<void*>(m_carSpeedSubscriber->getSocket()), 0, ZMQ_POLLIN, 0 }
+        };
+        
+        float latestSpeed = 0.0f;
+        bool foundValidMessage = false;
+        
+        // Drain the queue to get the most recent message
+        while (true) {
+            // Poll with short timeout to check for available messages
+            zmq::poll(items, 1, 10); // 10ms timeout
+            
+            if (items[0].revents & ZMQ_POLLIN) {
+                zmq::message_t message;
+                if (!m_carSpeedSubscriber->getSocket().recv(&message, ZMQ_DONTWAIT)) {
+                    break; // No more messages
+                }
+                
+                std::string received_msg(static_cast<char*>(message.data()), message.size());
+                const std::string topic = CAR_SPEED_TOPIC;
+                
+                if (received_msg.find(topic) == 0) {
+                    // Extract speed value from the message (skip topic and space)
+                    std::string speed_str = received_msg.substr(topic.size() + 1);
+                    
+                    try {
+                        if (speed_str.find('.') != std::string::npos) {
+                            speed_str.replace(speed_str.find('.'), 1, ",");
+                        }
+                        latestSpeed = std::stof(speed_str);
+                        foundValidMessage = true;
+                    } catch (const std::exception& e) {
+                        std::cerr << "[ControlDataHandler] Error parsing speed value '" << speed_str << "': " << e.what() << std::endl;
+                    }
+                }
+            } else {
+                break; // No more messages available
+            }
+        }
+        
+        if (foundValidMessage) {
+            std::cout << "[ControlDataHandler] Final parsed speed: " << latestSpeed << std::endl;
+            return latestSpeed;
+        }
+        
+    } catch (const zmq::error_t& e) {
+        std::cerr << "[ControlDataHandler] ZMQ error: " << e.what() << std::endl;
+    }
+
+    return 0.0f; // Default speed if no message is received
 }
 
 CenterlineResult ControlDataHandler::getPolyfittingResult() {

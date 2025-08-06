@@ -146,7 +146,7 @@ void MCP2515Controller::setupHandlers() {
 		if (data.size() == 2) {
 			uint16_t rawSpeed = (data[0] << 8) | data[1];
 			float speed = rawSpeed / 10.0f;
-			std::cout << "Received Speed data: " << speed << " km/h" << std::endl;
+			// std::cout << "Received Speed data: " << speed << " km/h" << std::endl;
 			emit speedUpdated(speed);
 		}
 	});
