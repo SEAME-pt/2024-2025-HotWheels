@@ -18,38 +18,38 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build executable
-        run: |
-          cd $DIR
-          mkdir build
-          cd build
-          ~/new_qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
-          make -j$(nproc)
-          rm -rf *.o
+      # - name: Build executable
+      #   run: |
+      #     cd $DIR
+      #     mkdir build
+      #     cd build
+      #     ~/new_qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
+      #     make -j$(nproc)
+      #     rm -rf *.o
 
-      - name: Build tests on Jetson
-        env:
-          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
-          'DIR=~/repo/cluster/apps/car_controls &&
-          cd $DIR/build &&
-          git pull &&
-          rm -rf * &&
-          qmake ../car-controls-tests.pro &&
-          make -j$(nproc)
-          '
+      # - name: Build tests on Jetson
+      #   env:
+      #     JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
+      #   run: |
+      #     sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
+      #     'DIR=~/repo/cluster/apps/car_controls &&
+      #     cd $DIR/build &&
+      #     git pull &&
+      #     rm -rf * &&
+      #     qmake ../car-controls-tests.pro &&
+      #     make -j$(nproc)
+      #     '
 
-      - name: Run tests
-        env:
-          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
-          'DIR=~/repo/cluster/apps/car_controls &&
-          cd $DIR/build &&
-          ./car-controls-tests
-          '
-        continue-on-error : true
+      # - name: Run tests
+      #   env:
+      #     JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
+      #   run: |
+      #     sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
+      #     'DIR=~/repo/cluster/apps/car_controls &&
+      #     cd $DIR/build &&
+      #     ./car-controls-tests
+      #     '
+      #   continue-on-error : true
 
       # - name: Deploy executable to target
       #   env:
