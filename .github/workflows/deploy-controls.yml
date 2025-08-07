@@ -18,57 +18,56 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # - name: Build executable
-      #   run: |
-      #     cd $DIR
-      #     mkdir build
-      #     cd build
-      #     ~/new_qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
-      #     make -j$(nproc)
-      #     rm -rf *.o
+      - name: Build executable
+        run: |
+          cd $DIR
+          mkdir build
+          cd build
+          ~/new_qtjetson/qt5.15/bin/qmake ../car-controls-qt.pro
+          make -j$(nproc)
+          rm -rf *.o
 
-      # - name: Build tests on Jetson
-      #   env:
-      #     JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
-      #   run: |
-      #     sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
-      #     'DIR=~/repo/cluster/apps/car_controls &&
-      #     cd $DIR/build &&
-      #     git pull &&
-      #     rm -rf * &&
-      #     qmake ../car-controls-tests.pro &&
-      #     make -j$(nproc)
-      #     '
+      - name: Build tests on Jetson
+        env:
+          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
+          'DIR=~/repo/cluster/apps/car_controls &&
+          cd $DIR/build &&
+          git pull &&
+          rm -rf * &&
+          qmake ../car-controls-tests.pro &&
+          make -j$(nproc)
+          '
 
-      # - name: Run tests
-      #   env:
-      #     JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
-      #   run: |
-      #     sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
-      #     'DIR=~/repo/cluster/apps/car_controls &&
-      #     cd $DIR/build &&
-      #     ./car-controls-tests
-      #     '
-      #   continue-on-error : true
+      - name: Run tests
+        env:
+          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
+          'DIR=~/repo/cluster/apps/car_controls &&
+          cd $DIR/build &&
+          ./car-controls-tests
+          '
+        continue-on-error : true
 
       # - name: Deploy executable to target
       #   env:
       #     SSHPASS: ${{ secrets.JETSON_PASSWORD }}
       #   run: |
       #     sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps
-      #   continue-on-error: true
 
-      # - name: Generate coverage report
-      #   env:
-      #     JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
-      #   run: |
-      #     sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car '
-      #       DIR=~/repo/cluster/apps/car_controls/build &&
-      #       cd $DIR &&
-      #       lcov --capture --directory . --output-file full.info &&
-      #       lcov --remove full.info "*/moc_*.cpp" "*/moc_*.gcda" "*/moc_*.gcno" "*/tests*" "*/tensorrt-8.6.1.6*" "*/Mock*" "*/usr/*" "*/Qt*" "*/includes/*" "*/ZeroMQ*" --output-file filtered.info &&
-      #       genhtml filtered.info --output-directory coverage-car-controls
-      #     '
+      - name: Generate coverage report
+        env:
+          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car '
+            DIR=~/repo/cluster/apps/car_controls/build &&
+            cd $DIR &&
+            lcov --capture --directory . --output-file full.info &&
+            lcov --remove full.info "*/moc_*.cpp" "*/moc_*.gcda" "*/moc_*.gcno" "*/tests*" "*/tensorrt-8.6.1.6*" "*/Mock*" "*/usr/*" "*/Qt*" "*/includes/*" "*/ZeroMQ*" --output-file filtered.info &&
+            genhtml filtered.info --output-directory coverage-car-controls
+          '
 
       - name: Copy report to documentation branch
         run: |
