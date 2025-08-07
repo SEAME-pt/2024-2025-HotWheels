@@ -77,5 +77,5 @@ jobs:
 
       - name: Execute script to update coverage reports
         run: |
-          /bin/bash -c "~/Documents/documentation-branch/update.sh"
+          ./update.sh
 
