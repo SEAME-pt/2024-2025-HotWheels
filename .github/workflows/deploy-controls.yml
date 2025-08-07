@@ -72,6 +72,7 @@ jobs:
 
       - name: Copy report to documentation branch
         run: |
+          rm -rf ~/Documents/documentation-branch/coverage-car-controls
           sshpass -p "$JETSON_PASSWORD" scp -o StrictHostKeyChecking=no -r jetson@hotwheels-car:~/repo/cluster/apps/car_controls/build/coverage-car-controls ~/Documents/documentation-branch
 
       - name: Execute script to update coverage reports
