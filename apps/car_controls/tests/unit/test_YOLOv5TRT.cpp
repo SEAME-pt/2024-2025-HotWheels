@@ -3,20 +3,12 @@
 
 #include <unistd.h>     // for readlink
 #include <limits.h>     // for PATH_MAX
-#include <filesystem>   // C++17
 #include <iostream>
-
-/* std::string getDir() {
-    char result[PATH_MAX];
-    ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
-    std::filesystem::path exePath = std::string(result, (count > 0) ? count : 0);
-    return exePath.parent_path().string();
-}
 
 class YOLOv5TRT_Testable : public YOLOv5TRT {
 public:
-	std::string modelPath = getDir() + "/yolov5m_updated.engine";
-	std::string labelsPath = getDir() + "/labels.txt";
+	std::string modelPath = "/home/jetson/models/object-detection/yolov5m_updated.engine";
+	std::string labelsPath = "/home/jetson/models/object-detection/labels.txt";
     YOLOv5TRT_Testable() : YOLOv5TRT(modelPath, labelsPath) {}
 
     using YOLOv5TRT::calculateVolume;
@@ -92,5 +84,5 @@ TEST(YOLOv5TRTTest, PostprocessWithLowConfidence) {
 
 	auto detections = yolo.postprocess(output, num_classes, conf_thresh, nms_thresh);
 	ASSERT_EQ(detections.size(), 0); // Should filter out low confidence detection
-} */
+}
 
