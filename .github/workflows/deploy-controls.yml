@@ -3,10 +3,10 @@ name: Car Controls
 on:
   push:
     branches:
-      - change-tests
-    # paths:
-    #   - 'apps/car_controls/**'
-    #   - 'ZeroMQ/**'
+      - main
+    paths:
+      - 'apps/car_controls/**'
+      - 'ZeroMQ/**'
 
 env:
   DIR: apps/car_controls
@@ -51,11 +51,11 @@ jobs:
           '
         continue-on-error : true
 
-      # - name: Deploy executable to target
-      #   env:
-      #     SSHPASS: ${{ secrets.JETSON_PASSWORD }}
-      #   run: |
-      #     sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps
+      - name: Deploy executable to target
+        env:
+          SSHPASS: ${{ secrets.JETSON_PASSWORD }}
+        run: |
+          sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps
 
       - name: Generate coverage report
         env:
