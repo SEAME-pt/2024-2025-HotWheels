@@ -58,24 +58,26 @@ jobs:
       #     sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps
       #   continue-on-error: true
 
-      - name: Generate coverage report
-        env:
-          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
-        run: |
-          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car '
-            DIR=~/repo/cluster/apps/car_controls/build &&
-            cd $DIR &&
-            lcov --capture --directory . --output-file full.info &&
-            lcov --remove full.info "*/moc_*.cpp" "*/moc_*.gcda" "*/moc_*.gcno" "*/tests*" "*/tensorrt-8.6.1.6*" "*/Mock*" "*/usr/*" "*/Qt*" "*/includes/*" "*/ZeroMQ*" --output-file filtered.info &&
-            genhtml filtered.info --output-directory coverage-car-controls
-          '
+      # - name: Generate coverage report
+      #   env:
+      #     JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
+      #   run: |
+      #     sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car '
+      #       DIR=~/repo/cluster/apps/car_controls/build &&
+      #       cd $DIR &&
+      #       lcov --capture --directory . --output-file full.info &&
+      #       lcov --remove full.info "*/moc_*.cpp" "*/moc_*.gcda" "*/moc_*.gcno" "*/tests*" "*/tensorrt-8.6.1.6*" "*/Mock*" "*/usr/*" "*/Qt*" "*/includes/*" "*/ZeroMQ*" --output-file filtered.info &&
+      #       genhtml filtered.info --output-directory coverage-car-controls
+      #     '
 
       - name: Copy report to documentation branch
         run: |
           rm -rf ~/Documents/documentation-branch/coverage-car-controls
-          sshpass -p "$JETSON_PASSWORD" scp -o StrictHostKeyChecking=no -r jetson@hotwheels-car:~/repo/cluster/apps/car_controls/build/coverage-car-controls ~/Documents/documentation-branch
+          sshpass -p "$JETSON_PASSWORD" rsync -avz -e "ssh -o StrictHostKeyChecking=no" \
+            jetson@hotwheels-car:~/repo/cluster/apps/car_controls/build/coverage-car-controls \
+            ~/Documents/documentation-branch
 
       - name: Execute script to update coverage reports
         run: |
-          ./update.sh
+          ~/Documents/documentation-branch/update.sh
 
