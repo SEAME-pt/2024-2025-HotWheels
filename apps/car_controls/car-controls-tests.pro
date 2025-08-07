@@ -14,7 +14,6 @@ INCLUDEPATH += \
     /usr/local/include/opencv4 \
     /usr/include/opencv4 \
     /usr/local/include \
-    /usr/include \
     /usr/include/eigen3 \
     /usr/include/gstreamer-1.0 \
     /usr/include/glib-2.0 \
