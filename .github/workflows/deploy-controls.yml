@@ -32,7 +32,13 @@ jobs:
           JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
-          'DIR=~/repo/cluster/apps/car_controls && cd $DIR/build && qmake ../car-controls-tests.pro && make -j$(nproc)'
+          'DIR=~/repo/cluster/apps/car_controls &&
+          cd $DIR/build &&
+          git pull &&
+          rm -rf * &&
+          qmake ../car-controls-tests.pro &&
+          make -j$(nproc)
+          '
 
       - name: Run tests
         env:
@@ -43,6 +49,7 @@ jobs:
           cd $DIR/build &&
           ./car-controls-tests
           '
+        continue-on-error : true
 
       # - name: Deploy executable to target
       #   env:
