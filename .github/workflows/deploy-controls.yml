@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - change-tests
-    paths:
-      - 'apps/car_controls/**'
-      - 'ZeroMQ/**'
+    # paths:
+    #   - 'apps/car_controls/**'
+    #   - 'ZeroMQ/**'
 
 env:
   DIR: apps/car_controls
