@@ -27,37 +27,56 @@ jobs:
           make -j$(nproc)
           rm -rf *.o
 
-      - name: Build tests
+      - name: Build tests on Jetson
+        env:
+          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          cd $DIR/build
-          qmake ../car-controls-tests.pro
+          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
+          'DIR=~/repo/cluster/apps/car_controls &&
+          cd $DIR/build &&
+          git pull &&
+          rm -rf * &&
+          qmake ../car-controls-tests.pro &&
           make -j$(nproc)
+          '
 
       - name: Run tests
+        env:
+          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          cd $DIR/build
+          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car \
+          'DIR=~/repo/cluster/apps/car_controls &&
+          cd $DIR/build &&
           ./car-controls-tests
+          '
+        continue-on-error : true
 
       - name: Deploy executable to target
         env:
           SSHPASS: ${{ secrets.JETSON_PASSWORD }}
         run: |
           sshpass -e rsync -avz --rsync-path="sudo rsync" --delete $DIR/build/car-controls-qt jetson@100.108.203.64:/home/jetson/apps
-        continue-on-error: true
 
       - name: Generate coverage report
+        env:
+          JETSON_PASSWORD: ${{ secrets.JETSON_PASSWORD }}
         run: |
-          cd $DIR/build
-          lcov --capture --directory . --output-file full.info
-          lcov --remove full.info '*/moc_*.cpp' '*/moc_*.gcda' '*/moc_*.gcno' '*/tests*' '*/tensorrt-8.6.1.6*' '*/Mock*' '*/usr/*' '*/Qt*' '*/includes/*' --output-file filtered.info
-          genhtml filtered.info --output-directory coverage-car-controls
+          sshpass -p "$JETSON_PASSWORD" ssh -o StrictHostKeyChecking=no jetson@hotwheels-car '
+            DIR=~/repo/cluster/apps/car_controls/build &&
+            cd $DIR &&
+            lcov --capture --directory . --output-file full.info &&
+            lcov --remove full.info "*/moc_*.cpp" "*/moc_*.gcda" "*/moc_*.gcno" "*/tests*" "*/tensorrt-8.6.1.6*" "*/Mock*" "*/usr/*" "*/Qt*" "*/includes/*" "*/ZeroMQ*" --output-file filtered.info &&
+            genhtml filtered.info --output-directory coverage-car-controls
+          '
 
       - name: Copy report to documentation branch
         run: |
-          cd $DIR/build
-          cp -r coverage-car-controls ~/Documents/documentation-branch
+          rm -rf ~/Documents/documentation-branch/coverage-car-controls
+          sshpass -p "$JETSON_PASSWORD" rsync -avz -e "ssh -o StrictHostKeyChecking=no" \
+            jetson@hotwheels-car:~/repo/cluster/apps/car_controls/build/coverage-car-controls \
+            ~/Documents/documentation-branch
 
       - name: Execute script to update coverage reports
         run: |
-          /bin/bash -c "~/Documents/documentation-branch/update.sh"
+          ~/Documents/documentation-branch/update.sh
 

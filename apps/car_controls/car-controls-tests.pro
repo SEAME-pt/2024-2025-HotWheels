@@ -14,13 +14,10 @@ INCLUDEPATH += \
     /usr/local/include/opencv4 \
     /usr/include/opencv4 \
     /usr/local/include \
-    /usr/include \
+	/usr/local/cuda/include \
     /usr/include/eigen3 \
     /usr/include/gstreamer-1.0 \
     /usr/include/glib-2.0 \
-    /usr/lib/x86_64-linux-gnu/glib-2.0/include \
-    /usr/local/cuda-12.4/targets/x86_64-linux/include/ \
-    /home/seame/tensorrt-8.6.1.6/include
 
 # Test Sources
 TESTS_PATH = tests
@@ -77,5 +74,3 @@ LIBS += -lGLEW -lglfw -lGL
 
 # BLAS/LAPACK
 LIBS += -ltbb -llapack -lblas
-
-QMAKE_LFLAGS += -Wl,-rpath,/home/seame/tensorrt-8.6.1.6/lib
