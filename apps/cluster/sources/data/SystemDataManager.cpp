@@ -49,11 +49,11 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 		m_wifiStatus = status;
 		m_wifiName = wifiName;
 
-        QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-        QString apiBaseUrl = env.value("API_KEY");
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		QString apiBaseUrl = env.value("API_KEY");
 
-        QUrl baseUrl(apiBaseUrl);
-        QUrl fullUrl = baseUrl.resolved(QUrl("/wifi"));
+		QUrl baseUrl(apiBaseUrl);
+		QUrl fullUrl = baseUrl.resolved(QUrl("/wifi"));
 
 		QJsonObject json;
 		json["wifi"] = wifiName;
@@ -61,10 +61,10 @@ void SystemDataManager::handleWifiData(const QString &status, const QString &wif
 		QJsonDocument doc(json);
 		QByteArray jsonData = doc.toJson();
 
-        QNetworkRequest request(fullUrl);
+		QNetworkRequest request(fullUrl);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-        m_manager->post(request,jsonData);
+		m_manager->post(request,jsonData);
 	}
 }
 
@@ -127,7 +127,7 @@ void SystemDataManager::handleIpAddressData(const QString &ipAddress)
 		QNetworkRequest request(fullUrl);
 		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-        m_manager->post(request,jsonData);
+		m_manager->post(request,jsonData);
 	}
 }
 

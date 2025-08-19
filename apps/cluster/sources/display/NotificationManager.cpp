@@ -54,7 +54,7 @@ void NotificationManager::clearNotification() {
 	m_persistentActive = false;
 }
 
-void NotificationManager::showNext()
+/* void NotificationManager::showNext()
 {
 	if (m_queue.isEmpty()) {
 		m_busy = false;
@@ -69,4 +69,4 @@ void NotificationManager::showNext()
 	QTimer::singleShot(duration, this, [this]() {
 		showNext();
 	});
-}
+} */

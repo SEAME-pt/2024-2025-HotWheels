@@ -110,19 +110,6 @@ void DisplayManager::updateEngineData(CarDirection direction,
 		m_ui->directionNeutralLabel->update();
 		m_ui->directionDriveLabel->update();
 		break;
-	case CarDirection::Stop:
-	default:
-		//directionText = "D";
-		m_ui->directionParkLabel->setStyleSheet("color: white; background: transparent;");
-		m_ui->directionReverseLabel->setStyleSheet("color: white; background: transparent;");
-		m_ui->directionNeutralLabel->setStyleSheet("color: white; background: transparent;");
-		m_ui->directionDriveLabel->setStyleSheet("color: lightgreen; background: transparent;");
-
-		m_ui->directionParkLabel->update();
-		m_ui->directionReverseLabel->update();
-		m_ui->directionNeutralLabel->update();
-		m_ui->directionDriveLabel->update();
-		break;
 	}
 }
 
@@ -141,7 +128,7 @@ void DisplayManager::updateSystemTime(const QString &currentMonth,
 	m_ui->timeLabel->setText(currentTime);
 }
 
-QString getWifiSSID() {
+QString DisplayManager::getWifiSSID() {
     // Linux: read active SSID using shell command
     QProcess proc;
     proc.start("iwgetid -r");  // Gets current SSID
@@ -150,7 +137,7 @@ QString getWifiSSID() {
     return output.isEmpty() ? "Not connected" : output;
 }
 
-QString getLocalIPAddress() {
+QString DisplayManager::getLocalIPAddress() {
     const QList<QHostAddress> &addresses = QNetworkInterface::allAddresses();
     for (const QHostAddress &address : addresses) {
         if (address.protocol() == QAbstractSocket::IPv4Protocol && !address.isLoopback())

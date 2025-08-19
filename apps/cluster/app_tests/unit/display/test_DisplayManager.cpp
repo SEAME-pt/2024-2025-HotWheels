@@ -147,3 +147,70 @@ TEST_F(DisplayManagerTest, UpdateClusterMetrics_SetsText) {
 	displayManager->updateClusterMetrics(ClusterMetrics::Miles);
 	EXPECT_EQ(fakeUI->speedMetricsLabel->text(), "MPH");
 }
+
+//NEW ONES
+
+TEST_F(DisplayManagerTest, UpdateEngineData_UpdatesDriveStyle) {
+	displayManager->updateEngineData(CarDirection::Drive, 0);
+	EXPECT_EQ(fakeUI->directionDriveLabel->styleSheet(), "color: green; background: transparent;");
+	EXPECT_EQ(fakeUI->directionNeutralLabel->styleSheet(), "color: white; background: transparent;");
+}
+
+TEST_F(DisplayManagerTest, UpdateEngineData_UpdatesReverseStyle) {
+	displayManager->updateEngineData(CarDirection::Reverse, 0);
+	EXPECT_EQ(fakeUI->directionReverseLabel->styleSheet(), "color: lightgreen; background: transparent;");
+	EXPECT_EQ(fakeUI->directionDriveLabel->styleSheet(), "color: white; background: transparent;");
+}
+
+TEST_F(DisplayManagerTest, UpdateDrivingMode_SwitchToManual) {
+	displayManager->updateDrivingMode(DrivingMode::Manual);
+	EXPECT_EQ(fakeUI->drivingModeLabel->text(), "Manual");
+	EXPECT_TRUE(fakeUI->laneKeepingAssistLabel->isVisible());
+	EXPECT_TRUE(fakeUI->laneDepartureWarningLabel->isVisible());
+}
+
+TEST_F(DisplayManagerTest, UpdateDrivingMode_SwitchToAutomatic) {
+	displayManager->updateDrivingMode(DrivingMode::Automatic);
+	EXPECT_EQ(fakeUI->drivingModeLabel->text(), "Automatic");
+	EXPECT_FALSE(fakeUI->laneKeepingAssistLabel->isVisible());
+	// Can't test blinking visibility toggle in unit test without waiting/timers
+}
+
+TEST_F(DisplayManagerTest, UpdateClusterTheme_NoCrash) {
+	EXPECT_NO_THROW(displayManager->updateClusterTheme(ClusterTheme::Dark));
+	EXPECT_NO_THROW(displayManager->updateClusterTheme(ClusterTheme::Light));
+}
+
+TEST_F(DisplayManagerTest, UpdateSpeedLimitLabels_Shows50) {
+	displayManager->updateSpeedLimitLabels(50);
+	EXPECT_TRUE(fakeUI->speedLimit50Label->isVisible());
+	EXPECT_FALSE(fakeUI->speedLimit80Label->isVisible());
+}
+
+TEST_F(DisplayManagerTest, UpdateSpeedLimitLabels_Shows80) {
+	displayManager->updateSpeedLimitLabels(80);
+	EXPECT_TRUE(fakeUI->speedLimit80Label->isVisible());
+	EXPECT_FALSE(fakeUI->speedLimit50Label->isVisible());
+}
+
+TEST_F(DisplayManagerTest, DisplayInferenceImage_SetsPixmap) {
+	QImage image(100, 100, QImage::Format_ARGB32);
+	image.fill(Qt::red);
+	displayManager->displayInferenceImage(image);
+	EXPECT_FALSE(fakeUI->inferenceLabel->pixmap(Qt::ReturnByValue).isNull());
+}
+
+TEST_F(DisplayManagerTest, GetWifiSSID_ReturnsString) {
+	QString ssid = displayManager->getWifiSSID();
+	EXPECT_FALSE(ssid.isEmpty());  // Should be "Not connected" or a valid SSID
+}
+
+TEST_F(DisplayManagerTest, GetLocalIPAddress_ReturnsString) {
+	QString ip = displayManager->getLocalIPAddress();
+	EXPECT_FALSE(ip.isEmpty());
+
+	if (ip != "No IP") {
+		// Optionally check format
+		EXPECT_TRUE(ip.contains('.'));  // Basic IPv4 check
+	}
+}

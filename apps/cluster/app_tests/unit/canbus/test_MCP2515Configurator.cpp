@@ -211,3 +211,36 @@ TEST_F(MCP2515ConfiguratorTest, ReadCANMessageNoData) {
 	auto data = configurator.readCANMessage(frameID);
 	ASSERT_TRUE(data.empty());
 }
+
+/*!
+ * @test Tests sending a CAN message using sendCANMessage().
+ * @brief Ensures correct register writes and RTS command execution.
+ *
+ * @see MCP2515Configurator::sendCANMessage
+ */
+TEST_F(MCP2515ConfiguratorTest, SendCANMessage_Success) {
+	const uint16_t frameID = 0x123;
+	uint8_t messageData[3] = {0xA1, 0xB2, 0xC3};
+	uint8_t length = 3;
+
+	// Simulate TXREQ bit set in CAN_RD_STATUS (0x04)
+	EXPECT_CALL(mockSPI, readByte(MCP2515Configurator::CAN_RD_STATUS))
+		.WillOnce(Return(0x04)) // Before loop
+		.WillRepeatedly(Return(0x00)); // Clears in loop
+
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0SIDH, (frameID >> 3) & 0xFF)).Times(1);
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0SIDL, (frameID & 0x07) << 5)).Times(1);
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0EID8, 0)).Times(1);
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0EID0, 0)).Times(1);
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0DLC, length)).Times(1);
+
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0D0, messageData[0])).Times(1);
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0D0 + 1, messageData[1])).Times(1);
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0D0 + 2, messageData[2])).Times(1);
+
+	EXPECT_CALL(mockSPI, writeByte(MCP2515Configurator::TXB0CTRL, 0x00)).Times(1);
+
+	EXPECT_CALL(mockSPI, spiTransfer(::testing::NotNull(), nullptr, 1)).Times(1);
+
+	configurator.sendCANMessage(frameID, messageData, length);
+}

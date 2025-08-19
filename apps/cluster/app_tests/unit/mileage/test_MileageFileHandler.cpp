@@ -31,12 +31,17 @@ using ::testing::Return;
 class MileageFileHandlerTest : public ::testing::Test
 {
 protected:
-	MockFileController mockFileController;
+	::testing::NiceMock<MockFileController> mockFileController;
 	QString testFilePath = "test_mileage.txt";
 
 	MileageFileHandler *mileageFileHandler;
 
-	void SetUp() override { initFileHandler(); }
+	void SetUp() override {
+		ON_CALL(mockFileController, exists(::testing::_)).WillByDefault(::testing::Return(false));
+		ON_CALL(mockFileController, open(::testing::_, ::testing::_)).WillByDefault(::testing::Return(false));
+
+		initFileHandler();
+	}
 
 	void TearDown() override { delete mileageFileHandler; }
 
@@ -59,7 +64,7 @@ protected:
  * @test Tests if the mileage file handler creates the file if it does not exist.
  * @brief Ensures that the mileage file handler creates the file if it does not exist.
  * @details This test verifies that the mileage file handler creates the file if it does not exist.
- * 
+ *
  * @see MileageFileHandler::ensureFileExists
 */
 TEST_F(MileageFileHandlerTest, EnsureFileExists_FileDoesNotExist_CreatesFileWithZeroMileage)
@@ -91,7 +96,7 @@ TEST_F(MileageFileHandlerTest, EnsureFileExists_FileDoesNotExist_CreatesFileWith
  * @test Tests if the mileage file handler does not create the file if it already exists.
  * @brief Ensures that the mileage file handler does not create the file if it already exists.
  * @details This test verifies that the mileage file handler does not create the file if it already exists.
- * 
+ *
  * @see MileageFileHandler::ensureFileExists
 */
 TEST_F(MileageFileHandlerTest, ReadMileage_ValidNumber_ReturnsParsedValue)
@@ -110,7 +115,7 @@ TEST_F(MileageFileHandlerTest, ReadMileage_ValidNumber_ReturnsParsedValue)
  * @test Tests if the mileage file handler reads zero mileage if the file is empty.
  * @brief Ensures that the mileage file handler reads zero mileage if the file is empty.
  * @details This test verifies that the mileage file handler reads zero mileage if the file is empty.
- * 
+ *
  * @see MileageFileHandler::readMileage
 */
 TEST_F(MileageFileHandlerTest, ReadMileage_InvalidNumber_ReturnsZero)
@@ -129,7 +134,7 @@ TEST_F(MileageFileHandlerTest, ReadMileage_InvalidNumber_ReturnsZero)
  * @test Tests if the mileage file handler writes the mileage to the file.
  * @brief Ensures that the mileage file handler writes the mileage to the file.
  * @details This test verifies that the mileage file handler writes the mileage to the file.
- * 
+ *
  * @see MileageFileHandler::writeMileage
 */
 TEST_F(MileageFileHandlerTest, WriteMileage_ValidNumber_WritesToFile)
