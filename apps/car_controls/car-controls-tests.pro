@@ -9,6 +9,8 @@ QMAKE_LFLAGS   += -fprofile-arcs -ftest-coverage
 # Include Paths
 INCLUDEPATH += \
     $$PWD/includes \
+    $$PWD/includes/inference \
+    $$PWD/includes/objectDetection \
     $$PWD/tests/mocks \
     $$PWD/sources \
     /usr/local/include/opencv4 \
