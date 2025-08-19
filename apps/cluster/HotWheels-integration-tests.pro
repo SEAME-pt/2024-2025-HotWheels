@@ -5,6 +5,8 @@ CONFIG   += c++17
 TEMPLATE = app
 TARGET = HotWheels-integration-tests
 
+QMAKE_CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=1
+
 # Include Paths
 INCLUDEPATH += \
 	$$PWD/includes/data \
@@ -12,7 +14,10 @@ INCLUDEPATH += \
 	$$PWD/includes/utils \
 	$$PWD/includes/system \
 	$$PWD/includes/canbus \
-	$$PWD/includes/display
+	$$PWD/includes/display \
+	/usr/local/include/opencv4 \
+	/usr/include/opencv4 \
+	/usr/local/cuda/include
 
 # Integration Test Sources
 INTEGRATION_TESTS_PATH = app_tests/integration
@@ -45,7 +50,9 @@ SOURCES += \
 	sources/data/VehicleDataManager.cpp \
 	sources/display/DisplayManager.cpp \
 	sources/display/NotificationManager.cpp \
-	sources/display/NotificationOverlay.cpp
+	sources/display/NotificationOverlay.cpp \
+	../../ZeroMQ/Publisher.cpp \
+	../../ZeroMQ/Subscriber.cpp
 
 # Sytem includes Required for Tests
 HEADERS += \
@@ -60,8 +67,11 @@ HEADERS += \
 	includes/data/VehicleDataManager.hpp \
 	includes/display/DisplayManager.hpp \
 	includes/display/NotificationManager.hpp \
-	includes/display/NotificationOverlay.hpp
+	includes/display/NotificationOverlay.hpp \
+	../../ZeroMQ/Publisher.hpp \
+	../../ZeroMQ/Subscriber.hpp \
+	../../ZeroMQ/CommonTypes.hpp
 
-GMOCK_LIBDIR = /usr/lib/aarch64-linux-gnu
-LIBS += -L$${GMOCK_LIBDIR} \
-        -lgmock_main -lgtest_main -lgmock -lgtest -lpthread
+LIBS += -lgmock_main -lgtest_main -lgmock -lgtest -lpthread -lzmq
+LIBS += -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs
+LIBS += -L/usr/local/cuda/lib64 -lcudart -lcublas

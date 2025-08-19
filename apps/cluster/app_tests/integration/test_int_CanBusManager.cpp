@@ -24,6 +24,24 @@
  * MCP2515 controller.
  * @class CanBusManagerTest
  */
+
+class FakeMCP2515Controller : public IMCP2515Controller {
+	Q_OBJECT
+public:
+	FakeMCP2515Controller() = default;
+	~FakeMCP2515Controller() override = default;
+
+	// Implement pure virtuals with no-ops
+	bool init() override { return true; }
+	void processReading() override {}
+	void stopReading() override {}
+	bool isStopReadingFlagSet() const override { return false; }
+
+	// Helpers so tests can simulate hardware signals
+	void emitSpeed(float value) { emit speedUpdated(value); }
+	void emitRpm(int value) { emit rpmUpdated(value); }
+};
+
 class CanBusManagerTest : public ::testing::Test
 {
 protected:
@@ -42,7 +60,7 @@ protected:
 
 	void SetUp() override
 	{
-		controller = new MCP2515Controller("/dev/spidev0.0");
+		controller = new FakeMCP2515Controller();
 		ASSERT_NE(controller, nullptr);
 
 		canBusManager = new CanBusManager(controller);
@@ -135,3 +153,5 @@ TEST_F(CanBusManagerTest, ManagerCleanUpBehavior)
 
 	ASSERT_EQ(tmpManager->getThread(), nullptr) << "Thread not deleted!";
 }
+
+#include "test_int_CanBusManager.moc"

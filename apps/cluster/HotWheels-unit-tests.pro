@@ -18,7 +18,10 @@ INCLUDEPATH += \
 	$$PWD/includes/utils \
 	$$PWD/includes/system \
 	$$PWD/includes/display \
-	$$PWD/app_tests/mocks
+	$$PWD/app_tests/mocks \
+	/usr/local/include/opencv4 \
+	/usr/include/opencv4 \
+	/usr/local/cuda/include
 
 # Unit Test Sources
 UNIT_TESTS_PATH = app_tests/unit
@@ -79,7 +82,9 @@ SOURCES += \
 	sources/data/VehicleDataManager.cpp \
 	sources/display/DisplayManager.cpp \
 	sources/display/NotificationManager.cpp \
-	sources/display/NotificationOverlay.cpp
+	sources/display/NotificationOverlay.cpp \
+	../../ZeroMQ/Publisher.cpp \
+	../../ZeroMQ/Subscriber.cpp
 
 # Sytem includes Required for Tests
 HEADERS += \
@@ -94,8 +99,13 @@ HEADERS += \
 	includes/data/VehicleDataManager.hpp \
 	includes/display/DisplayManager.hpp \
 	includes/display/NotificationManager.hpp \
-	includes/display/NotificationOverlay.hpp
+	includes/display/NotificationOverlay.hpp \
+	../../ZeroMQ/Publisher.hpp \
+	../../ZeroMQ/Subscriber.hpp \
+	../../ZeroMQ/CommonTypes.hpp
 
 GMOCK_LIBDIR = /usr/lib/aarch64-linux-gnu
 LIBS += -L$${GMOCK_LIBDIR} \
-        -lgmock_main -lgtest_main -lgmock -lgtest -lpthread
+        -lgmock_main -lgtest_main -lgmock -lgtest -lpthread -lzmq
+LIBS += -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs
+LIBS += -L/usr/local/cuda/lib64 -lcudart -lcublas
