@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2025-08-18 12:36:16</td>
+            <td class="headerValue">2025-08-19 17:07:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
-            <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntryMed">80.0 %</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryLo">72.7 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -99,8 +99,8 @@
 <a name="37"><span class="lineNum">      37 </span><span class="lineNoCov">          0 :                 throw std::runtime_error(&quot;Failed to create execution context&quot;);</span></a>
 <a name="38"><span class="lineNum">      38 </span>            :         }</a>
 <a name="39"><span class="lineNum">      39 </span>            : </a>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">         23 :         lanePostProcessor = new LanePostProcessor(350, 260, 10.0f, 10.0f);  // Initialize lane post-processor with parameters</span></a>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         23 :         laneCurveFitter = new LaneCurveFitter(5.0f, 20, 20, 300); // Initialize lane curve fitter with parameters</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">         23 :         lanePostProcessor = new LanePostProcessor(150, 150, 10.0f, 10.0f);  // Initialize lane post-processor with parameters</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         23 :         laneCurveFitter = new LaneCurveFitter(); // Initialize lane curve fitter</span></a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
 <a name="43"><span class="lineNum">      43 </span><span class="lineCov">         69 :         for (int i = 0; i &lt; engine-&gt;getNbBindings(); i++) {  // Loop through all bindings</span></a>
 <a name="44"><span class="lineNum">      44 </span><span class="lineCov">         46 :                 if (engine-&gt;bindingIsInput(i)) {  // If binding is input</span></a>
@@ -296,97 +296,76 @@
 <a name="234"><span class="lineNum">     234 </span>            :                 cudaMemcpyDeviceToDevice, stream</a>
 <a name="235"><span class="lineNum">     235 </span>            :         );</a>
 <a name="236"><span class="lineNum">     236 </span>            : </a>
-<a name="237"><span class="lineNum">     237 </span>            :         //post-process starts here</a>
-<a name="238"><span class="lineNum">     238 </span>            : /*      cv::cuda::GpuMat postProcessedMaskGpu = lanePostProcessor-&gt;process(outputMaskGpu);</a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         34 :         return outputMaskGpu;</span></a>
+<a name="238"><span class="lineNum">     238 </span>            : }</a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
-<a name="240"><span class="lineNum">     240 </span>            :         // Download post-processed binary mask for polyfitting</a>
-<a name="241"><span class="lineNum">     241 </span>            :         cv::Mat maskCpu;</a>
-<a name="242"><span class="lineNum">     242 </span>            :         postProcessedMaskGpu.download(maskCpu);</a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         23 : void TensorRTInferencer::initUndistortMaps() {</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         23 :         cv::Mat cameraMatrix, distCoeffs;</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">         46 :         cv::FileStorage fs(&quot;/home/jetson/models/lane-detection/camera_calibration.yml&quot;, cv::FileStorage::READ);  // Open calibration file</span></a>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
-<a name="244"><span class="lineNum">     244 </span>            :         // Fit lanes and compute centerline</a>
-<a name="245"><span class="lineNum">     245 </span>            :         std::vector&lt;LaneCurveFitter::LaneCurve&gt; lanes = laneCurveFitter-&gt;fitLanes(maskCpu);</a>
-<a name="246"><span class="lineNum">     246 </span>            :         std::cout &lt;&lt; &quot;[DEBUG] Number of fitted lanes: &quot; &lt;&lt; lanes.size() &lt;&lt; std::endl;</a>
-<a name="247"><span class="lineNum">     247 </span>            :         auto centerlineOpt = laneCurveFitter-&gt;computeVirtualCenterline(lanes, maskCpu.cols, maskCpu.rows);</a>
-<a name="248"><span class="lineNum">     248 </span>            :         if (!centerlineOpt.has_value()) {</a>
-<a name="249"><span class="lineNum">     249 </span>            :                 std::cout &lt;&lt; &quot;[DEBUG] No centerline could be computed.&quot; &lt;&lt; std::endl;</a>
-<a name="250"><span class="lineNum">     250 </span>            :         }</a>
-<a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span>            :         // Draw centerline on CPU</a>
-<a name="253"><span class="lineNum">     253 </span>            :         if (centerlineOpt.has_value()) {</a>
-<a name="254"><span class="lineNum">     254 </span>            :                 const auto&amp; centerline = centerlineOpt.value().blended;</a>
-<a name="255"><span class="lineNum">     255 </span>            :                 for (size_t i = 1; i &lt; centerline.size(); ++i) {</a>
-<a name="256"><span class="lineNum">     256 </span>            :                         cv::line(maskCpu,</a>
-<a name="257"><span class="lineNum">     257 </span>            :                                         centerline[i - 1],</a>
-<a name="258"><span class="lineNum">     258 </span>            :                                         centerline[i],</a>
-<a name="259"><span class="lineNum">     259 </span>            :                                         cv::Scalar(255), // White</a>
-<a name="260"><span class="lineNum">     260 </span>            :                                         2,               // Thickness</a>
-<a name="261"><span class="lineNum">     261 </span>            :                                         cv::LINE_AA);</a>
-<a name="262"><span class="lineNum">     262 </span>            :                 }</a>
-<a name="263"><span class="lineNum">     263 </span>            :         }</a>
-<a name="264"><span class="lineNum">     264 </span>            : </a>
-<a name="265"><span class="lineNum">     265 </span>            :         // Upload mask with centerline back to GPU</a>
-<a name="266"><span class="lineNum">     266 </span>            :         postProcessedMaskGpu.upload(maskCpu); */</a>
-<a name="267"><span class="lineNum">     267 </span>            : </a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">         34 :         return outputMaskGpu;</span></a>
-<a name="269"><span class="lineNum">     269 </span>            : }</a>
-<a name="270"><span class="lineNum">     270 </span>            : </a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         23 : void TensorRTInferencer::initUndistortMaps() {</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">         23 :         cv::Mat cameraMatrix, distCoeffs;</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         46 :         cv::FileStorage fs(&quot;/home/jetson/models/lane-detection/camera_calibration.yml&quot;, cv::FileStorage::READ);  // Open calibration file</span></a>
-<a name="274"><span class="lineNum">     274 </span>            : </a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">         23 :         if (!fs.isOpened()) {</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :                 std::cerr &lt;&lt; &quot;[Error] Failed to open camera_calibration.yml&quot; &lt;&lt; std::endl;</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :                 return;  // Handle file opening error</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">         23 :         if (!fs.isOpened()) {</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :                 std::cerr &lt;&lt; &quot;[Error] Failed to open camera_calibration.yml&quot; &lt;&lt; std::endl;</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :                 return;  // Handle file opening error</span></a>
+<a name="247"><span class="lineNum">     247 </span>            :         }</a>
+<a name="248"><span class="lineNum">     248 </span>            : </a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">         23 :         fs[&quot;camera_matrix&quot;] &gt;&gt; cameraMatrix;  // Read camera matrix</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         23 :         fs[&quot;distortion_coefficients&quot;] &gt;&gt; distCoeffs;  // Read distortion coefficients</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         23 :         fs.release();  // Close file</span></a>
+<a name="252"><span class="lineNum">     252 </span>            : </a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         46 :         cv::Mat mapx, mapy;</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         69 :         cv::initUndistortRectifyMap(</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">         46 :                 cameraMatrix, distCoeffs, cv::Mat(), cameraMatrix,</span></a>
+<a name="256"><span class="lineNum">     256 </span>            :                 cv::Size(1280, 720),</a>
+<a name="257"><span class="lineNum">     257 </span>            :                 CV_32FC1, mapx, mapy</a>
+<a name="258"><span class="lineNum">     258 </span>            :         );  // Compute undistortion mapping</a>
+<a name="259"><span class="lineNum">     259 </span>            : </a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         23 :         d_mapx.upload(mapx);  // Upload X map to GPU</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         23 :         d_mapy.upload(mapy);  // Upload Y map to GPU</span></a>
+<a name="262"><span class="lineNum">     262 </span>            : }</a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 : CenterlineResult TensorRTInferencer::getPolyfittingResult(const cv::cuda::GpuMat&amp; processedMaskGpu) {</span></a>
+<a name="265"><span class="lineNum">     265 </span>            :         // Download the processed mask to CPU for lane fitting</a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :         cv::Mat maskCpu;</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :         processedMaskGpu.download(maskCpu);</span></a>
+<a name="268"><span class="lineNum">     268 </span>            : </a>
+<a name="269"><span class="lineNum">     269 </span>            :         // Fit lanes and compute centerline</a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :         auto centerlineOpt = laneCurveFitter-&gt;computeCenterline(maskCpu);</span></a>
+<a name="271"><span class="lineNum">     271 </span>            : </a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :         if (centerlineOpt.has_value()) {</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :                 return centerlineOpt.value();</span></a>
+<a name="274"><span class="lineNum">     274 </span>            :         } </a>
+<a name="275"><span class="lineNum">     275 </span>            :         else {</a>
+<a name="276"><span class="lineNum">     276 </span>            :                 // std::cerr &lt;&lt; &quot;[Error] Failed to compute centerline from mask&quot; &lt;&lt; std::endl;</a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :                 return CenterlineResult();  // Return empty result if fitting fails</span></a>
 <a name="278"><span class="lineNum">     278 </span>            :         }</a>
-<a name="279"><span class="lineNum">     279 </span>            : </a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">         23 :         fs[&quot;camera_matrix&quot;] &gt;&gt; cameraMatrix;  // Read camera matrix</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">         23 :         fs[&quot;distortion_coefficients&quot;] &gt;&gt; distCoeffs;  // Read distortion coefficients</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         23 :         fs.release();  // Close file</span></a>
-<a name="283"><span class="lineNum">     283 </span>            : </a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         46 :         cv::Mat mapx, mapy;</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">         69 :         cv::initUndistortRectifyMap(</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">         46 :                 cameraMatrix, distCoeffs, cv::Mat(), cameraMatrix,</span></a>
-<a name="287"><span class="lineNum">     287 </span>            :                 cv::Size(1280, 720),</a>
-<a name="288"><span class="lineNum">     288 </span>            :                 CV_32FC1, mapx, mapy</a>
-<a name="289"><span class="lineNum">     289 </span>            :         );  // Compute undistortion mapping</a>
-<a name="290"><span class="lineNum">     290 </span>            : </a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         23 :         d_mapx.upload(mapx);  // Upload X map to GPU</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         23 :         d_mapy.upload(mapy);  // Upload Y map to GPU</span></a>
-<a name="293"><span class="lineNum">     293 </span>            : }</a>
-<a name="294"><span class="lineNum">     294 </span>            : </a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 : void TensorRTInferencer::doInference(const cv::Mat&amp; frame) {</span></a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :         if (frame.empty()) {</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 :                 throw std::runtime_error(&quot;Input frame is empty&quot;);</span></a>
-<a name="298"><span class="lineNum">     298 </span>            :         }</a>
+<a name="279"><span class="lineNum">     279 </span>            : }</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 : void TensorRTInferencer::doInference(const cv::Mat&amp; frame) {</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :         if (frame.empty()) {</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :                 throw std::runtime_error(&quot;Input frame is empty&quot;);</span></a>
+<a name="284"><span class="lineNum">     284 </span>            :         }</a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_undistorted;</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :         cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), cudaStream);  // Undistort frame</span></a>
+<a name="289"><span class="lineNum">     289 </span>            : </a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_prediction_mask = makePrediction(d_undistorted);  // Run model inference</span></a>
+<a name="291"><span class="lineNum">     291 </span>            : </a>
+<a name="292"><span class="lineNum">     292 </span>            :         // Convert to 8-bit (0 or 255) in a new GpuMat</a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_mask_u8;</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :         d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255</span></a>
+<a name="295"><span class="lineNum">     295 </span>            : </a>
+<a name="296"><span class="lineNum">     296 </span>            :         // ---- Post-process (GPU) ----</a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineNoCov">          0 :     cv::cuda::GpuMat d_postprocessed;</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :     d_postprocessed = lanePostProcessor-&gt;process(d_prediction_mask);  // Post-process the prediction mask</span></a>
 <a name="299"><span class="lineNum">     299 </span>            : </a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_frame(frame);  // Upload frame to GPU</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_undistorted;</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 :         cv::cuda::remap(d_frame, d_undistorted, d_mapx, d_mapy, cv::INTER_LINEAR, 0, cv::Scalar(), cudaStream);  // Undistort frame</span></a>
-<a name="303"><span class="lineNum">     303 </span>            : </a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_prediction_mask = makePrediction(d_undistorted);  // Run model inference</span></a>
-<a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span>            :         // Convert to 8-bit (0 or 255) in a new GpuMat</a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_mask_u8;</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :         d_prediction_mask.convertTo(d_mask_u8, CV_8U, 255.0);  // Multiply 0/1 float to 0/255</span></a>
-<a name="309"><span class="lineNum">     309 </span>            : </a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :         cv::Mat binary_mask_cpu;</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :         d_mask_u8.download(binary_mask_cpu, cudaStream);</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :         cv::threshold(binary_mask_cpu, binary_mask_cpu, 128, 255, cv::THRESH_BINARY);</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineNoCov">          0 :         cudaStream.waitForCompletion();  // Ensure async operations are complete</span></a>
-<a name="314"><span class="lineNum">     314 </span>            : </a>
-<a name="315"><span class="lineNum">     315 </span>            :         // Convert model output to 8-bit binary mask on GPU</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_visualization;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :         d_prediction_mask.convertTo(d_visualization, CV_8U, 255.0, 0, cudaStream);</span></a>
-<a name="318"><span class="lineNum">     318 </span>            : </a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :         cv::cuda::GpuMat d_resized_mask;</span></a>
-<a name="320"><span class="lineNum">     320 </span>            : </a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :         cv::cuda::resize(d_visualization, d_resized_mask,</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :                                                 cv::Size(frame.cols * 0.5, frame.rows * 0.5),</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :                                                 0, 0, cv::INTER_LINEAR, cudaStream);  // Resize for display</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :         cudaStream.waitForCompletion();  // Synchronize</span></a>
-<a name="325"><span class="lineNum">     325 </span>            : </a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineNoCov">          0 :         Publisher::instance(5556)-&gt;publishInferenceFrame(&quot;inference_frame&quot;, d_resized_mask); //Publish frame to ZeroMQ publisher</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="300"><span class="lineNum">     300 </span>            :         // ---- Fit lanes and compute centerline ----</a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :         CenterlineResult centerlineResult = getPolyfittingResult(d_postprocessed);  // Get centerline result</span></a>
+<a name="302"><span class="lineNum">     302 </span>            : </a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :         Publisher::instance(INFERENCE_PORT)-&gt;publishInferenceFrame(INFERENCE_TOPIC, d_mask_u8); //Publish frame to ZeroMQ publisher</span></a>
+<a name="304"><span class="lineNum">     304 </span>            : </a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :         Publisher::instance(POLYFITTING_PORT)-&gt;publishPolyfittingResult(POLYFITTING_TOPIC, centerlineResult); // Publish centerline result to ZeroMQ publisher</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 : }</span></a>
 </pre>
       </td>
     </tr>
