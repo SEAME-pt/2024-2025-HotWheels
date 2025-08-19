@@ -43,6 +43,7 @@ HEADERS += \
     $$TESTS_PATH/mocks/MockInferencer.hpp \
     ../../ZeroMQ/Publisher.hpp \
     ../../ZeroMQ/Subscriber.hpp \
+    ../../ZeroMQ/CommonTypes.hpp \
     includes/inference/CameraStreamer.hpp \
     includes/inference/TensorRTInferencer.hpp \
     includes/inference/LanePostProcessor.hpp \
