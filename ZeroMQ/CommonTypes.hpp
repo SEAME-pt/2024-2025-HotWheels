@@ -9,10 +9,11 @@ struct Point2D
 
 struct ControlCommand
 {
-    int throttle, steer;
+    float throttle;
+    int steer;
 
     ControlCommand() : throttle(0), steer(0) {}
-    ControlCommand(int t, int s) : throttle(t), steer(s) {}
+    ControlCommand(float t, int s) : throttle(t), steer(s) {}
 };
 
 struct LaneCurve
