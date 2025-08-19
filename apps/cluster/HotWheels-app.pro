@@ -12,7 +12,8 @@ INCLUDEPATH += \
 	$$PWD/includes/system \
 	$$PWD/includes/mileage \
 	$$PWD/includes/utils \
-	$$PWD/includes/camera
+	$$PWD/includes/camera \
+	$$PWD/../../ZeroMQ
 
 # Application Sources
 SOURCES += \
@@ -46,6 +47,7 @@ SOURCES += \
 HEADERS += \
 	../../ZeroMQ/Publisher.hpp \
 	../../ZeroMQ/Subscriber.hpp \
+	../../ZeroMQ/CommonTypes.hpp \
 	includes/main/CarManager.hpp \
 	includes/data/DataManager.hpp \
 	includes/data/SystemDataManager.hpp \

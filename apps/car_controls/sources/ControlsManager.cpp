@@ -37,8 +37,23 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  m_manualController(nullptr), m_currentMode(DrivingMode::Manual),
 	  m_subscriberJoystickObject(nullptr), m_manualControllerThread(nullptr),
 	  m_joystickControlThread(nullptr), m_subscriberJoystickThread(nullptr),
-	  m_cameraStreamerThread(nullptr), m_running(true)
+	  m_cameraStreamerThread(nullptr), m_running(true), m_automaticModeObject(nullptr),
+	  m_automaticModeThread(nullptr) 
 {
+
+	m_automaticModeObject = new AutomaticMode(&m_engineController);
+
+	if (m_currentMode == DrivingMode::Automatic) {
+		m_automaticModeThread = QThread::create([this, argc, argv]()
+		{
+			try {
+				m_automaticModeObject->startAutomaticControl();
+			} catch (const std::exception &e) {
+				std::cerr << "Error: " << e.what() << std::endl;
+			}
+		});
+		m_automaticModeThread->start();
+	}
 
 	// Initialize the joystick controller with callbacks
 	m_manualController = new JoysticksController(
@@ -177,6 +192,16 @@ ControlsManager::~ControlsManager()
 		m_cameraStreamerThread = nullptr;
 	}
 
+	if (m_automaticModeThread) {
+		if (m_automaticModeObject)
+			m_automaticModeObject->stopAutomaticControl();
+
+		m_automaticModeThread->quit();
+		m_automaticModeThread->wait();
+		delete m_automaticModeThread;
+		m_automaticModeThread = nullptr;
+	}
+
 	// Clean up objects
 	delete m_cameraStreamerObject;
 	m_cameraStreamerObject = nullptr;
@@ -186,6 +211,11 @@ ControlsManager::~ControlsManager()
 
 	delete m_subscriberJoystickObject;
 	m_subscriberJoystickObject = nullptr;
+
+	if (m_automaticModeObject) {
+		delete m_automaticModeObject;
+		m_automaticModeObject = nullptr;
+	}
 }
 
 /*!
@@ -199,4 +229,35 @@ void ControlsManager::setMode(DrivingMode mode)
 		return;
 
 	m_currentMode = mode;
+
+	if (m_automaticModeObject) {
+		if (m_currentMode == DrivingMode::Automatic) {
+			std::cout << "[ControlsManager] Switching to Automatic Mode" << std::endl;
+			m_automaticModeThread = QThread::create([this]()
+			{
+				try {
+					m_automaticModeObject->startAutomaticControl();
+				} catch (const std::exception &e) {
+					std::cerr << "Error: " << e.what() << std::endl;
+				}
+			});
+			m_automaticModeThread->start();
+		} else {
+			m_automaticModeObject->stopAutomaticControl ();
+
+			m_engineController.set_speed (0);
+			m_engineController.set_steering (0);
+
+			// Stop the automatic mode thread
+			if (m_automaticModeThread) {
+				m_automaticModeThread->quit();
+				if (!m_automaticModeThread->wait(2000)) {
+					m_automaticModeThread->terminate();
+					m_automaticModeThread->wait(1000);
+				}
+				delete m_automaticModeThread;
+				m_automaticModeThread = nullptr;
+			}
+		}
+	}
 }

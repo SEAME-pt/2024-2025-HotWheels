@@ -9,6 +9,7 @@
 #include <opencv2/core/cuda.hpp>
 #include <cuda_runtime.h>
 #include <opencv2/opencv.hpp>
+#include "CommonTypes.hpp"
 
 class Publisher {
 private:
@@ -19,6 +20,8 @@ private:
 	bool joytstick_value;
 	std::mutex joystick_mtx;
 	std::mutex frame_mtx;
+	std::mutex polyfitting_mtx;
+	std::mutex car_speed_mtx;
 	std::string boundAddress;
 	bool running;
 
@@ -33,9 +36,10 @@ public:
 	static Publisher* instance(int port);  // default port
 
 	void publish(const std::string& topic, const std::string& message);
+	void publishCarSpeed(const std::string& topic, float speed);
 	void setJoystickStatus(bool new_joytstick_value);
 	void publishInferenceFrame(const std::string& topic, const cv::cuda::GpuMat& gpu_image);
-	//void publishCameraFrame(const std::string& topic, const cv::Mat& frame);
+	void publishPolyfittingResult(const std::string& topic, const CenterlineResult polyfitting_result);
 };
 
 #endif // PUBLISHER_HPP

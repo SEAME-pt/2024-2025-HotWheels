@@ -5,7 +5,9 @@ CONFIG += c++17 cmdline
 # Include Paths (explicit inheritance from root)
 INCLUDEPATH += \
 	$$PWD/includes \
-	$$PWD/includes/inference
+	$$PWD/includes/inference \
+	$$PWD/includes/automaticMode \
+	$$PWD/../../ZeroMQ
 
 
 # Application Sources
@@ -22,11 +24,14 @@ SOURCES += \
 	sources/JoysticksController.cpp \
 	sources/EngineController.cpp \
 	sources/PeripheralController.cpp \
+	sources/automaticMode/AutomaticMode.cpp \
+	sources/automaticMode/ControlDataHandler.cpp \
 	sources/main.cpp
 
 HEADERS += \
 	../../ZeroMQ/Publisher.hpp \
 	../../ZeroMQ/Subscriber.hpp \
+	../../ZeroMQ/CommonTypes.hpp \
 	includes/inference/CameraStreamer.hpp \
 	includes/inference/TensorRTInferencer.hpp \
 	includes/inference/IInferencer.hpp \
@@ -40,10 +45,12 @@ HEADERS += \
 	includes/EngineController.hpp \
 	includes/PeripheralController.hpp \
 	includes/IPeripheralController.hpp \
+	includes/automaticMode/AutomaticMode.hpp \
+	includes/automaticMode/ControlDataHandler.hpp \
 	includes/enums.hpp
 
 # Common Libraries
-LIBS += -lSDL2 -lrt -lzmq
+LIBS += -lSDL2 -lrt -lzmq -lmlpack
 
 # Conditionally add paths for cross-compilation
 contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {

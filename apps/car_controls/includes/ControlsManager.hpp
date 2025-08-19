@@ -20,6 +20,8 @@
 #include "inference/CameraStreamer.hpp"
 #include "../../ZeroMQ/Subscriber.hpp"
 #include "../../ZeroMQ/Publisher.hpp"
+#include "AutomaticMode.hpp"
+
 #include <QObject>
 #include <QThread>
 #include <QProcess>
@@ -34,6 +36,7 @@ class ControlsManager : public QObject {
 private:
 	EngineController m_engineController;
 	JoysticksController *m_manualController;
+	AutomaticMode *m_automaticModeObject;
 	DrivingMode m_currentMode;
 
 	Subscriber *m_subscriberJoystickObject;
@@ -46,6 +49,8 @@ private:
 
 	QThread *m_subscriberJoystickThread;
 	QThread *m_cameraStreamerThread;
+	QThread *m_automaticModeThread;
+
 
 public:
 	explicit ControlsManager(int argc, char **argv, QObject *parent = nullptr);

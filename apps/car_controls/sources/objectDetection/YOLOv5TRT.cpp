@@ -213,7 +213,7 @@ void YOLOv5TRT::process_image(const cv::Mat& frame) {
 		// Verificar se o retângulo é válido
 		if (x2 > x1 && y2 > y1) {
 			std::string className = labelManager.getLabel(det.class_id);
-			std::cout << "Object found: " << className << " at (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << std::endl;
+			// std::cout << "Object found: " << className << " at (" << x1 << "," << y1 << ")-(" << x2 << "," << y2 << ")" << std::endl;
 
 			auto now = std::chrono::steady_clock::now();
 			auto elapsedMs = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastNotificationTime).count();
