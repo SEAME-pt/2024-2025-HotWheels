@@ -6,7 +6,7 @@
 
 #include "EngineController.hpp"
 #include "ControlDataHandler.hpp"
-#include "CommonTypes.hpp"
+#include "../../ZeroMQ/CommonTypes.hpp"
 
 class AutomaticMode : public QObject {
 	Q_OBJECT
@@ -24,7 +24,7 @@ class AutomaticMode : public QObject {
         // Default speed values
         const int TURN_SPEED = 1;
         const int STRAIGHT_SPEED = 2;
-        
+
         // Throttle values for different driving conditions
         const int TURN_SPEED_THROTTLE = 20;
         const int STRAIGHT_SPEED_THROTTLE = 20;
