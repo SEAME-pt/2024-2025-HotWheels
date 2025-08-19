@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "../../ZeroMQ/Subscriber.hpp"
-#include "CommonTypes.hpp"
+#include "../../ZeroMQ/CommonTypes.hpp"
 
 class ControlDataHandler {
 public:
