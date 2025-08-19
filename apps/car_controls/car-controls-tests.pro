@@ -76,4 +76,4 @@ LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
 LIBS += -lGLEW -lglfw -lGL
 
 # BLAS/LAPACK
-LIBS += -ltbb -llapack -lblas
+LIBS += -ltbb -llapack -lblas -lmlpack -larmadillo
