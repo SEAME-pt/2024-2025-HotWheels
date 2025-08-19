@@ -98,12 +98,12 @@ float ControlDataHandler::getCarSpeed() const {
         }
         
         if (foundValidMessage) {
-            std::cout << "[ControlDataHandler] Final parsed speed: " << latestSpeed << std::endl;
+            // std::cout << "[ControlDataHandler] Final parsed speed: " << latestSpeed << std::endl;
             return latestSpeed;
         }
         
     } catch (const zmq::error_t& e) {
-        std::cerr << "[ControlDataHandler] ZMQ error: " << e.what() << std::endl;
+        std::cerr << "[ControlDataHandler] ZMQ error (getCarSpeed): " << e.what() << std::endl;
     }
 
     return 0.0f; // Default speed if no message is received
@@ -112,7 +112,7 @@ float ControlDataHandler::getCarSpeed() const {
 CenterlineResult ControlDataHandler::getPolyfittingResult() {
     if (!m_polyfittingSubscriber) {
         std::cerr << "[ControlDataHandler] Polyfitting subscriber not initialized!" << std::endl;
-        return {};
+        return {}; 
     }
 
     try {
@@ -156,7 +156,7 @@ CenterlineResult ControlDataHandler::getPolyfittingResult() {
         }
         
     } catch (const zmq::error_t& e) {
-        std::cerr << "[ControlDataHandler] ZMQ error: " << e.what() << std::endl;
+        std::cerr << "[ControlDataHandler] ZMQ error (getPolytfittingReuslt): " << e.what() << std::endl;
         return CenterlineResult();
     }
 
@@ -210,7 +210,7 @@ bool ControlDataHandler::getShouldSlowDown() const {
         return shouldSlowDown;
         
     } catch (const zmq::error_t& e) {
-        std::cerr << "[ControlDataHandler] ZMQ error: " << e.what() << std::endl;
+        std::cerr << "[ControlDataHandler] ZMQ error (getShouldSlowDown): " << e.what() << std::endl;
         return false;
     }
 }

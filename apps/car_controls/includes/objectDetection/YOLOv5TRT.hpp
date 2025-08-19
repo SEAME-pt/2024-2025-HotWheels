@@ -64,7 +64,7 @@ private:
 	std::vector<void*> bindings;
 
 	LabelManager labelManager;
-	float conf_thresh = 0.25f;
+	float conf_thresh = 0.75f;
 	float nms_thresh = 0.45f;
 	int num_classes;
 
