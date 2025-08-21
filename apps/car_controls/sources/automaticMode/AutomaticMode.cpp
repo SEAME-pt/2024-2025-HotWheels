@@ -99,7 +99,7 @@ void AutomaticMode::automaticControlLoop () {
                     static auto   last_reverse_time = std::chrono::steady_clock::now();
 
                     // Tunables (you can move these to class constants)
-                    constexpr double ULTRA_TRIGGER_M        = 0.20;  // 20 cm
+                    constexpr double ULTRA_TRIGGER_M        = 0.15;  // 15 cm
                     constexpr double STOP_SPEED_MPS         = 0.02;  // ~0.18 km/h => considered stopped
                     constexpr double MIN_SPEED_FOR_REVERSE  = 0.04;  // don't reverse at crawl
                     constexpr double DERIV_EPS_M            = 0.004; // 4 mm change threshold
