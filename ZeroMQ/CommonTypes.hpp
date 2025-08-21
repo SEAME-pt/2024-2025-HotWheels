@@ -46,6 +46,9 @@ const int INFERENCE_PORT = 5556;
 const std::string POLYFITTING_TOPIC = "polyfitting_result";
 const int POLYFITTING_PORT = 5569;
 
+const std::string ULTRASOUND_TOPIC = "ultrasound";
+const int ULTRASOUND_PORT = 5570;
+
 static const std::string getZeroMQAddress(int port) {
     return "tcp://localhost:" + std::to_string(port);
 }

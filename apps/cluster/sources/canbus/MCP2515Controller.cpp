@@ -44,6 +44,9 @@ MCP2515Controller::MCP2515Controller(const std::string &spiDevice)
 		throw std::runtime_error("Failed to open SPI device : " + spiDevice);
 	}
 	setupHandlers();
+
+	//Start publisher for ultrasound sensor
+	Publisher::instance(5570);
 }
 
 /*!
@@ -150,13 +153,14 @@ void MCP2515Controller::setupHandlers() {
 			emit speedUpdated(speed);
 		}
 	});
-	
+
 	messageProcessor.registerHandler(0x300, [this](const std::vector<uint8_t> &data) {
 		if (data.size() == 2) {
 			uint16_t distance = (data[0] << 8) | data[1];
 			//emit distanceUpdated(distance);
 			// qDebug() << "Distance from CAN:" << distance;
-			if (distance > 20) {
+			Publisher::instance(5570)->publish("ultrasound", std::to_string(distance));
+			/* if (distance > 20) {
 				if (!brakeWarningActive) {
 					brakeWarningActive = true;
 					QString message = QString("Brake!");
@@ -167,7 +171,7 @@ void MCP2515Controller::setupHandlers() {
 					brakeWarningActive = false;
 					NotificationManager::instance()->clearNotification();
 				}
-			}
+			} */
 		}
 	});
 }

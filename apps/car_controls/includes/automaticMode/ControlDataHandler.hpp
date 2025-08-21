@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <QThread>
 #include "../../ZeroMQ/Subscriber.hpp"
 #include "../../ZeroMQ/CommonTypes.hpp"
 
@@ -21,6 +22,10 @@ public:
     bool getShouldSlowDown() const;
     float getCarSpeed() const;
 
+    double latestUltrasoundMeters() const {
+        return m_latestUltraMeters.load(std::memory_order_relaxed);
+    }
+
 private:
     // === Subscriber Settings ===
     const std::string SLOW_DOWN_OBJECTS[4] = {"danger", "ceding", "crosswalk", "yellow"};
@@ -29,6 +34,11 @@ private:
     Subscriber *m_polyfittingSubscriber;
     Subscriber *m_objectDetectionSubscriber;
     Subscriber *m_carSpeedSubscriber;
+    Subscriber *m_ultrasoundSubscriber;
+
+    QThread *m_ultrasoundThread;
+    std::atomic<bool>   m_ultraRunning { false };
+    std::atomic<double> m_latestUltraMeters { std::numeric_limits<double>::quiet_NaN() };
 
     // === JSON Parsing Methods ===
     CenterlineResult extractJsonData(std::string data);
