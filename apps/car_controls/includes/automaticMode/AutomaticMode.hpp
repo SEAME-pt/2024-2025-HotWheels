@@ -48,6 +48,16 @@ class AutomaticMode : public QObject {
         // Slow down duration
         const double SLOW_DOWN_DURATION_S = 2.0;
 
+        // BRAKING VARIABLES
+        const double ULTRA_TRIGGER_M        = 0.10;  // 10 cm → start braking logic
+        const double SAFE_STOP_BUFFER_M     = 0.05;  // keep ~5 cm buffer
+        const double MAX_DECEL_MPS2         = 2.0;   // "comfortable" decel for scaling
+        const double DECEL_SAFETY_CLAMP     = 6.0;   // never demand more than this
+        const float  MAX_REVERSE_THROTTLE   = 15.0f; // cap reverse torque (your units)
+        const double MIN_SPEED_FOR_REVERSE  = 0.20;  // m/s; below this, just coast
+
+        double computeBrakeFromDistance(double distance_m, double speed_mps) const;
+
         // Driving flags
         bool m_automaticMode;
         bool m_shouldSlowDown;

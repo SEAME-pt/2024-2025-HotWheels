@@ -8,7 +8,7 @@
 
 AutomaticMode::AutomaticMode (EngineController *engineController, QObject *parent)
     : QObject (parent),
-      m_engineController (engineController), 
+      m_engineController (engineController),
       m_controlDataHandler (nullptr),
       m_automaticMode (false),
       m_shouldSlowDown (false) {
@@ -28,7 +28,7 @@ void AutomaticMode::startAutomaticControl () {
         m_controlDataHandler = new ControlDataHandler();
     }
     m_controlDataHandler->initializeSubscribers();
-    
+
 	m_automaticControlThread = QThread::create ([this] () { automaticControlLoop (); });
 	m_automaticControlThread->start ();
 
@@ -40,7 +40,7 @@ void AutomaticMode::stopAutomaticControl () {
 	if (m_automaticMode == false) return;
 
     m_automaticMode = false;
-    
+
     // Cleanup control data handler
     if (m_controlDataHandler) {
         m_controlDataHandler->cleanupSubscribers();
@@ -57,7 +57,7 @@ void AutomaticMode::stopAutomaticControl () {
 		delete m_automaticControlThread;
 		m_automaticControlThread = nullptr;
 	}
-    
+
 	if (m_engineController) {
         m_engineController->set_speed (0);
 		m_engineController->set_steering (0);
@@ -83,12 +83,79 @@ void AutomaticMode::automaticControlLoop () {
                     m_shouldSlowDown = true;
                     last_slowdown_time = current_time;
                 }
-                
+
                 auto polyfitting_result = m_controlDataHandler->getPolyfittingResult();
                 if (polyfitting_result.valid) {
                     ControlCommand command = calculateSteering (polyfitting_result);
-                    // std::cout << "[AutomaticMode] Applying controls: Throttle = "
-                    //           << command.throttle << ", Steering = " << command.steer << std::endl;
+
+                    // command already computed above
+                    // Read latest distance in meters and vehicle speed in m/s
+                    double d = m_controlDataHandler->latestUltrasoundMeters();
+                    double speed_mps = static_cast<double>(m_controlDataHandler->getCarSpeed()) * (1000.0 / 3600.0);
+
+                    // --- BEGIN: ultrasound-based braking with anti-creep ---
+                    static double prev_d = std::numeric_limits<double>::quiet_NaN();
+                    static bool   braking_active = false;
+                    static auto   last_reverse_time = std::chrono::steady_clock::now();
+
+                    // Tunables (you can move these to class constants)
+                    constexpr double ULTRA_TRIGGER_M        = 0.20;  // 20 cm
+                    constexpr double STOP_SPEED_MPS         = 0.02;  // ~0.18 km/h => considered stopped
+                    constexpr double MIN_SPEED_FOR_REVERSE  = 0.04;  // don't reverse at crawl
+                    constexpr double DERIV_EPS_M            = 0.004; // 4 mm change threshold
+                    constexpr double HYSTERESIS_CLEAR_M     = 0.05;  // +5 cm to re-arm after braking
+                    constexpr auto   REVERSE_COOLDOWN       = std::chrono::milliseconds(400);
+                    constexpr float  MAX_REVERSE_THROTTLE   = 8.0f; // your throttle units cap
+
+                    if (std::isfinite(d) && d <= ULTRA_TRIGGER_M) {
+                        bool have_prev      = std::isfinite(prev_d);
+                        bool getting_closer = have_prev ? (d <  prev_d - DERIV_EPS_M) : false;
+                        bool getting_farther= have_prev ? (d >  prev_d + DERIV_EPS_M) : false;
+
+                        float targetThrottle = 0.0f; // default: coast
+
+                        if (speed_mps > MIN_SPEED_FOR_REVERSE && getting_closer) {
+                            // Physics-based reverse torque
+                            double brake = computeBrakeFromDistance(d, speed_mps); // 0..1
+                            float reverse = static_cast<float>(std::clamp(brake, 0.0, 1.0) * MAX_REVERSE_THROTTLE);
+
+                            // IMPORTANT: applyControls() does set_speed(-throttle),
+                            // so a NEGATIVE throttle here produces reverse torque at the wheels.
+                            targetThrottle = -reverse;
+
+                            braking_active = true;
+                            last_reverse_time = current_time; // reuse your loop's timestamp
+                        } else {
+                            targetThrottle = 0.0f; // hold zero (no creep)
+                            if (braking_active && (current_time - last_reverse_time) >= REVERSE_COOLDOWN) {
+                                braking_active = false;
+                            }
+                        }
+
+                        // If distance is increasing or we've effectively stopped, cut reverse immediately
+                        if (getting_farther || std::abs(speed_mps) <= STOP_SPEED_MPS) {
+                            targetThrottle = 0.0f;
+                        }
+                        command.throttle = targetThrottle;
+
+                    } else if (braking_active) {
+                        // Stay at zero until we gain some clearance (hysteresis), then disarm
+                        command.throttle = 0.0f;
+                        if (std::isfinite(d) && d >= ULTRA_TRIGGER_M + HYSTERESIS_CLEAR_M) {
+                            braking_active = false;
+                        }
+                    }
+
+                    // Remember this distance for the next iteration
+                    prev_d = d;
+                    // --- END: ultrasound-based braking with anti-creep ---
+
+                    if (command.throttle < 0.0f) {
+                        std::cout << "[BrakeDBG] REVERSE d=" << d*100.0 << "cm v=" << speed_mps
+                                << " throttle=" << command.throttle
+                                << " brake=" << std::clamp(computeBrakeFromDistance(d, speed_mps), 0.0, 1.0)
+                                << std::endl;
+                    }
                     applyControls (command);
                 }
             } catch (const std::exception &e) {
@@ -98,7 +165,7 @@ void AutomaticMode::automaticControlLoop () {
             }
             last_control_time = current_time;
         }
-        
+
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
 }
@@ -113,12 +180,12 @@ void AutomaticMode::applyControls (const ControlCommand &control) {
 
 ControlCommand AutomaticMode::calculateSteering(const CenterlineResult &centerline_result) {
     ControlCommand controlCommand;
-	    
+
     try {
         auto angle = computeDirectionAngle(centerline_result.blended);
 
         controlCommand.steer = angle;
-		
+
         if (this->m_shouldSlowDown) {
             controlCommand.throttle = TURN_SPEED_THROTTLE;
             std::cout << "[AutomaticMode] Slowing down due to detected object" << std::endl;
@@ -132,7 +199,7 @@ ControlCommand AutomaticMode::calculateSteering(const CenterlineResult &centerli
         controlCommand.steer = 0;
         return controlCommand;
     }
-    
+
     return controlCommand;
 }
 
@@ -168,4 +235,18 @@ int AutomaticMode::computeDirectionAngle(const std::vector<Point2D>& centerline)
     }
 
     return static_cast<int> (angle_deg);
+}
+
+double AutomaticMode::computeBrakeFromDistance(double d, double v_mps) const {
+    if (v_mps <= 0.01) return 0.0;
+    const double SAFE_STOP_BUFFER_M = 0.05;
+    const double MAX_DECEL_MPS2 = 2.0;
+    const double DECEL_SAFETY_CLAMP = 6.0;
+
+    double d_rem = d - SAFE_STOP_BUFFER_M;
+    if (d_rem <= 0.0) return 1.0;
+
+    double a_needed = std::min((v_mps*v_mps) / (2.0 * d_rem), DECEL_SAFETY_CLAMP);
+    double brake = a_needed / MAX_DECEL_MPS2;
+    return std::clamp(brake, 0.0, 1.0);
 }
