@@ -6,6 +6,30 @@
 #include <iostream>
 #include <thread>
 
+using Clock = std::chrono::steady_clock;
+
+//! ## --- TEST BLOCK CODE ---
+
+// Defina limiares experimentais, ajuste conforme necessário após teste real.
+constexpr double ANGLE_OPEN_CURVE = 10.0;  // graus
+constexpr double ANGLE_SHARP_CURVE = 20.0; // graus
+
+struct SegmentType {
+    const char* name;
+    double LOOK_AHEAD_START;
+    double LOOK_AHEAD_END;
+    
+    SegmentType(const char* n, double start, double end) 
+        : name(n), LOOK_AHEAD_START(start), LOOK_AHEAD_END(end) {}
+};
+
+static const SegmentType RETA("RETA", 0.1, 0.5);
+static const SegmentType CURVA_ABERTA("CURVA_ABERTA", 0.2, 0.7);
+static const SegmentType CURVA_FECHADA("CURVA_FECHADA", 0.3, 0.9);
+
+
+//! ## --- END TEST BLOCK CODE ---
+
 AutomaticMode::AutomaticMode (EngineController *engineController, QObject *parent)
     : QObject (parent),
       m_engineController (engineController), 
@@ -136,13 +160,66 @@ ControlCommand AutomaticMode::calculateSteering(const CenterlineResult &centerli
     return controlCommand;
 }
 
+//! ##  --- Segment Classification Logic ---
+SegmentType classifySegmentType(const std::vector<Point2D> &centerline)
+{
+    if (centerline.size() < 6)
+        return RETA; // Não há pontos suficientes para análise
+
+    // Obtenha três pontos ao longo da centerline
+    size_t N = centerline.size();
+    size_t idx0 = static_cast<size_t>(N * 0.2);
+    size_t idx1 = static_cast<size_t>(N * 0.5);
+    size_t idx2 = static_cast<size_t>(N * 0.8);
+
+    const auto &p0 = centerline[idx0];
+    const auto &p1 = centerline[idx1];
+    const auto &p2 = centerline[idx2];
+
+    // Calcula os vetores de direção
+    double dx1 = p1.x - p0.x;
+    double dy1 = p1.y - p0.y;
+    double dx2 = p2.x - p1.x;
+    double dy2 = p2.y - p1.y;
+
+    // Calcula ângulo entre os dois vetores em graus
+    double dot = dx1 * dx2 + dy1 * dy2;
+    double mag1 = std::sqrt(dx1 * dx1 + dy1 * dy1);
+    double mag2 = std::sqrt(dx2 * dx2 + dy2 * dy2);
+
+    if (mag1 < 1e-3 || mag2 < 1e-3)
+        return RETA; // Segmento muito curto para analisar
+
+    double cosTheta = dot / (mag1 * mag2);
+    // Protege de erro numérico
+    if (cosTheta > 1.0)
+        cosTheta = 1.0;
+    if (cosTheta < -1.0)
+        cosTheta = -1.0;
+    double angle_deg = std::acos(cosTheta) * 180.0 / M_PI;
+
+    // Lógica de decisão pelos limiares definidos
+    if (angle_deg < ANGLE_OPEN_CURVE)
+        return RETA;
+    else if (angle_deg < ANGLE_SHARP_CURVE)
+        return CURVA_ABERTA;
+    else
+        return CURVA_FECHADA;
+}
+
+//! ## --- END Segment Classification Logic ---
+
 int AutomaticMode::computeDirectionAngle(const std::vector<Point2D>& centerline)
 {
     if (centerline.size() < 6) return 0.0;
 
+    auto segmentType = classifySegmentType(centerline);
+
+    std::cout << "[AutomaticMode] Segment type: " << segmentType.name << std::endl;
+
     size_t N = centerline.size();
-    size_t startIdx = N * LOOK_AHEAD_START;
-    size_t endIdx = N * LOOK_AHEAD_END;
+    size_t startIdx = static_cast<size_t>(N * segmentType.LOOK_AHEAD_START);
+    size_t endIdx = static_cast<size_t>(N * segmentType.LOOK_AHEAD_END);
 
     const auto& p0 = centerline[startIdx];
     const auto& p1 = centerline[endIdx];

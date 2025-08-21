@@ -59,7 +59,8 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	message("Building for ARM architecture")
 
-	JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
+	JETSON_SYSROOT = /home/michel/new_qtjetson/sysroot
+	# JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
 
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
 
@@ -134,3 +135,26 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 	# Add static libstdc++ to avoid GLIBCXX version issues
 	QMAKE_LFLAGS += -static-libstdc++
 }
+
+# Configurações de debug/release
+CONFIG(release, debug|release) {
+    message("Release build")
+    DEFINES += RELEASE_BUILD
+    QMAKE_CXXFLAGS += -O3 -DNDEBUG
+} else {
+    message("Debug build")
+    DEFINES += DEBUG_BUILD
+    QMAKE_CXXFLAGS += -g -DDEBUG
+}
+
+# Output directories
+CONFIG(release, debug|release) {
+    DESTDIR = build/
+} else {
+    DESTDIR = build/debug
+}
+
+OBJECTS_DIR = $$DESTDIR/.obj
+MOC_DIR = $$DESTDIR/.moc
+RCC_DIR = $$DESTDIR/.rcc
+UI_DIR = $$DESTDIR/.ui
