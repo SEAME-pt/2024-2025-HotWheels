@@ -34,14 +34,29 @@ AutomaticMode::AutomaticMode (EngineController *engineController, QObject *paren
     : QObject (parent),
       m_engineController (engineController), 
       m_controlDataHandler (nullptr),
+      m_speedController (nullptr),
       m_automaticMode (false),
       m_shouldSlowDown (false) {
 
-    // std::cout << "[AutomaticMode] Initialized" << std::endl;
+    // Inicializa o controlador de velocidade com parâmetros otimizados para carga real
+    m_speedController = new SpeedController(this);
+    m_speedController->setTargetStraightSpeed(STRAIGHT_TARGET_SPEED);
+    m_speedController->setTargetTurnSpeed(TURN_TARGET_SPEED);
+    
+    // Ajusta parâmetros PID para resposta forte com peso real
+    m_speedController->setPIDGains(20.0f, 4.0f, 1.5f); // Ganhos muito mais altos!
+
+    std::cout << "[AutomaticMode] Initialized with intelligent speed control" << std::endl;
 }
 
 AutomaticMode::~AutomaticMode (void) {
 	stopAutomaticControl ();
+	
+	// Cleanup speed controller
+	if (m_speedController) {
+		delete m_speedController;
+		m_speedController = nullptr;
+	}
 }
 
 void AutomaticMode::startAutomaticControl () {
@@ -53,10 +68,15 @@ void AutomaticMode::startAutomaticControl () {
     }
     m_controlDataHandler->initializeSubscribers();
     
+    // Reset speed controller for clean start
+    if (m_speedController) {
+        m_speedController->resetPID();
+    }
+    
 	m_automaticControlThread = QThread::create ([this] () { automaticControlLoop (); });
 	m_automaticControlThread->start ();
 
-    // std::cout << "[AutomaticMode] Automatic control started" << std::endl;
+    std::cout << "[AutomaticMode] Automatic control started with speed feedback" << std::endl;
     m_automaticMode = true;
 }
 
@@ -99,8 +119,11 @@ void AutomaticMode::automaticControlLoop () {
 
         if (elapsed >= COMMAND_DELAY_S) {
             try {
+                // Obtém dados atuais
                 float car_speed = m_controlDataHandler->getCarSpeed();
                 auto newShouldSlowDown = m_controlDataHandler->getShouldSlowDown();
+                
+                // Gerencia estado de desaceleração
                 if (m_shouldSlowDown && newShouldSlowDown == false && elapsed_slowdown >= SLOW_DOWN_DURATION_S) {
                     m_shouldSlowDown = false;
                 } else if (newShouldSlowDown == true) {
@@ -110,50 +133,82 @@ void AutomaticMode::automaticControlLoop () {
                 
                 auto polyfitting_result = m_controlDataHandler->getPolyfittingResult();
                 if (polyfitting_result.valid) {
-                    ControlCommand command = calculateSteering (polyfitting_result);
-                    // std::cout << "[AutomaticMode] Applying controls: Throttle = "
-                    //           << command.throttle << ", Steering = " << command.steer << std::endl;
-                    applyControls (command);
+                    ControlCommand command = calculateSteeringAndThrottle(polyfitting_result, car_speed);
+                    applyControls(command);
                 }
             } catch (const std::exception &e) {
+                std::cerr << "[AutomaticMode] Error in control loop: " << e.what() << std::endl;
                 if (m_engineController) {
-                    m_engineController->set_speed (0); // Safety
+                    m_engineController->set_speed(0); // Safety
                 }
             }
             last_control_time = current_time;
         }
         
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        std::this_thread::sleep_for(std::chrono::milliseconds(5)); // Menor delay para melhor responsividade
 	}
 }
 
 void AutomaticMode::applyControls (const ControlCommand &control) {
-	if (!m_engineController) return;
+	if (!m_engineController) {
+		std::cerr << "[AutomaticMode] EngineController not available!" << std::endl;
+		return;
+	}
 
-	// Apply to hardware
-	m_engineController->set_speed (-control.throttle); // Inverted for motor cross-connection
-	m_engineController->set_steering (control.steer);
+	// Debug informativo apenas para mudanças significativas
+	static int lastThrottle = 0;
+	static int lastSteer = 0;
+	
+	if (std::abs(control.throttle - lastThrottle) > 2 || std::abs(control.steer - lastSteer) > 5) {
+		std::cout << "[AutomaticMode] Applying controls: Throttle = "
+		          << control.throttle << " (Δ" << (control.throttle - lastThrottle) 
+		          << "), Steering = " << control.steer << " (Δ" << (control.steer - lastSteer) 
+		          << ")" << std::endl;
+		lastThrottle = control.throttle;
+		lastSteer = control.steer;
+	}
+
+	// Apply to hardware (com inversão para compatibilidade)
+	m_engineController->set_speed(-control.throttle); // Inverted for motor cross-connection
+	m_engineController->set_steering(control.steer);
 }
 
-ControlCommand AutomaticMode::calculateSteering(const CenterlineResult &centerline_result) {
+ControlCommand AutomaticMode::calculateSteeringAndThrottle(const CenterlineResult &centerline_result, float currentSpeed) {
     ControlCommand controlCommand;
 	    
     try {
         auto angle = computeDirectionAngle(centerline_result.blended);
-
         controlCommand.steer = angle;
-		
-        if (this->m_shouldSlowDown) {
-            controlCommand.throttle = TURN_SPEED_THROTTLE;
+
+        // Determina se está fazendo curva baseado no ângulo
+        bool isTurning = std::abs(angle) > TURN_ANGLE_THRESHOLD;
+        bool isSharpTurn = std::abs(angle) > SHARP_TURN_ANGLE_THRESHOLD;
+
+        // Define velocidade alvo baseada no contexto
+        float targetSpeed = STRAIGHT_TARGET_SPEED;
+        if (m_shouldSlowDown) {
+            targetSpeed = 0.8f; // Velocidade muito reduzida para obstáculos
             std::cout << "[AutomaticMode] Slowing down due to detected object" << std::endl;
-        } else if (angle > TURN_ANGLE_THRESHOLD || angle < -TURN_ANGLE_THRESHOLD) {
-    		controlCommand.throttle = STRAIGHT_SPEED_THROTTLE;
-            std::cout << "[AutomaticMode] Slowing down for turn, angle: " << angle << std::endl;
-		} else {
-			controlCommand.throttle = STRAIGHT_SPEED_THROTTLE;
-		}
+        } else if (isSharpTurn) {
+            targetSpeed = SHARP_TURN_TARGET_SPEED;
+            std::cout << "[AutomaticMode] Sharp turn detected, angle: " << angle << std::endl;
+        } else if (isTurning) {
+            targetSpeed = TURN_TARGET_SPEED;
+            std::cout << "[AutomaticMode] Turn detected, angle: " << angle << std::endl;
+        }
+
+        // Usa o controlador inteligente para calcular throttle
+        if (m_speedController) {
+            controlCommand.throttle = m_speedController->calculateThrottle(targetSpeed, currentSpeed, isTurning);
+        } else {
+            // Fallback básico se controlador não estiver disponível
+            controlCommand.throttle = static_cast<int>(targetSpeed * 8); // Aproximação básica
+        }
+
     } catch (const std::exception &e) {
+        std::cerr << "[AutomaticMode] Error calculating steering and throttle: " << e.what() << std::endl;
         controlCommand.steer = 0;
+        controlCommand.throttle = 0;
         return controlCommand;
     }
     
@@ -218,8 +273,8 @@ int AutomaticMode::computeDirectionAngle(const std::vector<Point2D>& centerline)
     std::cout << "[AutomaticMode] Segment type: " << segmentType.name << std::endl;
 
     size_t N = centerline.size();
-    size_t startIdx = static_cast<size_t>(N * segmentType.LOOK_AHEAD_START);
-    size_t endIdx = static_cast<size_t>(N * segmentType.LOOK_AHEAD_END);
+    size_t startIdx = static_cast<size_t>(N * LOOK_AHEAD_START);
+    size_t endIdx = static_cast<size_t>(N * LOOK_AHEAD_END);
 
     const auto& p0 = centerline[startIdx];
     const auto& p1 = centerline[endIdx];

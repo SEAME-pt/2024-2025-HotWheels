@@ -24,6 +24,7 @@ SOURCES += \
 	sources/JoysticksController.cpp \
 	sources/EngineController.cpp \
 	sources/PeripheralController.cpp \
+	sources/SpeedController.cpp \
 	sources/automaticMode/AutomaticMode.cpp \
 	sources/automaticMode/ControlDataHandler.cpp \
 	sources/main.cpp
@@ -45,6 +46,7 @@ HEADERS += \
 	includes/EngineController.hpp \
 	includes/PeripheralController.hpp \
 	includes/IPeripheralController.hpp \
+	includes/SpeedController.hpp \
 	includes/automaticMode/AutomaticMode.hpp \
 	includes/automaticMode/ControlDataHandler.hpp \
 	includes/enums.hpp
