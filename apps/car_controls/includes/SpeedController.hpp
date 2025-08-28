@@ -48,17 +48,6 @@ public:
     int calculateThrottle(float targetSpeed, float currentSpeed, bool isTurning = false);
 
     /*!
-     * @brief Calcula throttle com compensação específica para peso e atrito
-     * @param targetSpeed Velocidade alvo
-     * @param currentSpeed Velocidade atual
-     * @param isTurning Se está em curva
-     * @param isStationary Se o carro está parado (para boost de atrito estático)
-     * @return Throttle com compensação de atrito
-     */
-    int calculateThrottleWithFrictionCompensation(float targetSpeed, float currentSpeed, 
-                                                 bool isTurning, bool isStationary);
-
-    /*!
      * @brief Define a velocidade alvo para retas
      * @param speed Velocidade em km/h
      */

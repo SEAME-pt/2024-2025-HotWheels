@@ -11,8 +11,10 @@ using Clock = std::chrono::steady_clock;
 //! ## --- TEST BLOCK CODE ---
 
 // Defina limiares experimentais, ajuste conforme necessário após teste real.
-constexpr double ANGLE_OPEN_CURVE = 10.0;  // graus
-constexpr double ANGLE_SHARP_CURVE = 20.0; // graus
+constexpr double ANGLE_OPEN_CURVE = 12.0;  // graus
+constexpr double ANGLE_SHARP_CURVE = 42.5; // graus Forti-thu
+// constexpr double ANGLE_OPEN_CURVE = 8.0;   // Detecta curvas mais cedo
+// constexpr double ANGLE_SHARP_CURVE = 15.0; // Curva fechada detectada antes
 
 struct SegmentType {
     const char* name;
@@ -24,8 +26,8 @@ struct SegmentType {
 };
 
 static const SegmentType RETA("RETA", 0.1, 0.5);
-static const SegmentType CURVA_ABERTA("CURVA_ABERTA", 0.2, 0.7);
-static const SegmentType CURVA_FECHADA("CURVA_FECHADA", 0.3, 0.9);
+static const SegmentType CURVA_ABERTA("CURVA_ABERTA", 0.3, 0.6);
+static const SegmentType CURVA_FECHADA("CURVA_FECHADA", 0.4, 0.8);
 
 
 //! ## --- END TEST BLOCK CODE ---
@@ -44,7 +46,7 @@ AutomaticMode::AutomaticMode (EngineController *engineController, QObject *paren
     m_speedController->setTargetTurnSpeed(TURN_TARGET_SPEED);
     
     // Ajusta parâmetros PID para resposta forte com peso real
-    m_speedController->setPIDGains(20.0f, 4.0f, 1.5f); // Ganhos muito mais altos!
+    // m_speedController->setPIDGains(20.0f, 4.0f, 1.5f); // Ganhos muito mais altos!
 
     std::cout << "[AutomaticMode] Initialized with intelligent speed control" << std::endl;
 }
@@ -69,9 +71,9 @@ void AutomaticMode::startAutomaticControl () {
     m_controlDataHandler->initializeSubscribers();
     
     // Reset speed controller for clean start
-    if (m_speedController) {
+/*     if (m_speedController) {
         m_speedController->resetPID();
-    }
+    } */
     
 	m_automaticControlThread = QThread::create ([this] () { automaticControlLoop (); });
 	m_automaticControlThread->start ();
@@ -186,15 +188,11 @@ ControlCommand AutomaticMode::calculateSteeringAndThrottle(const CenterlineResul
 
         // Define velocidade alvo baseada no contexto
         float targetSpeed = STRAIGHT_TARGET_SPEED;
+		std::cout << "[AutomaticMode] Polifitting angle: " << angle << std::endl;
         if (m_shouldSlowDown) {
-            targetSpeed = 0.8f; // Velocidade muito reduzida para obstáculos
-            std::cout << "[AutomaticMode] Slowing down due to detected object" << std::endl;
-        } else if (isSharpTurn) {
-            targetSpeed = SHARP_TURN_TARGET_SPEED;
-            std::cout << "[AutomaticMode] Sharp turn detected, angle: " << angle << std::endl;
-        } else if (isTurning) {
-            targetSpeed = TURN_TARGET_SPEED;
-            std::cout << "[AutomaticMode] Turn detected, angle: " << angle << std::endl;
+            targetSpeed = TURN_TARGET_SPEED; // Velocidade muito reduzida para obstáculos
+        } else if (angle > TURN_ANGLE_THRESHOLD || angle < -TURN_ANGLE_THRESHOLD) {
+    		targetSpeed = SHARP_TURN_TARGET_SPEED;
         }
 
         // Usa o controlador inteligente para calcular throttle
@@ -252,7 +250,7 @@ SegmentType classifySegmentType(const std::vector<Point2D> &centerline)
     if (cosTheta < -1.0)
         cosTheta = -1.0;
     double angle_deg = std::acos(cosTheta) * 180.0 / M_PI;
-
+	qDebug() << "[LOOK INTO HERE] Segment angle: " << angle_deg;
     // Lógica de decisão pelos limiares definidos
     if (angle_deg < ANGLE_OPEN_CURVE)
         return RETA;
@@ -273,8 +271,19 @@ int AutomaticMode::computeDirectionAngle(const std::vector<Point2D>& centerline)
     std::cout << "[AutomaticMode] Segment type: " << segmentType.name << std::endl;
 
     size_t N = centerline.size();
-    size_t startIdx = static_cast<size_t>(N * LOOK_AHEAD_START);
-    size_t endIdx = static_cast<size_t>(N * LOOK_AHEAD_END);
+    
+    // CORREÇÃO: Look-ahead mais agressivo para curvas fechadas
+    double closedangleLeft, closedangleRight;
+    if (segmentType.name == "CURVA_FECHADA") {
+        closedangleLeft = 4.4;  // Vê mais à frente
+        closedangleRight = 4.8;    // Reação antecipada
+    } else {
+        closedangleLeft = LEFT_STEERING_SCALE;  // Original
+        closedangleRight = RIGHT_STEERING_SCALE;
+    }
+    
+    size_t startIdx = static_cast<size_t>(N * segmentType.LOOK_AHEAD_START);
+    size_t endIdx = static_cast<size_t>(N * segmentType.LOOK_AHEAD_END);
 
     const auto& p0 = centerline[startIdx];
     const auto& p1 = centerline[endIdx];
@@ -287,10 +296,11 @@ int AutomaticMode::computeDirectionAngle(const std::vector<Point2D>& centerline)
     double angle_rad = std::atan2(dx, dy);
     double angle_deg = (angle_rad * 180.0 / CV_PI);
 
+	// Aplicar escalas aumentadas
 	if (angle_deg < 0) {
-		angle_deg = angle_deg * LEFT_STEERING_SCALE;
+		angle_deg = angle_deg * closedangleLeft;
 	} else {
-		angle_deg = angle_deg * RIGHT_STEERING_SCALE;
+		angle_deg = angle_deg * closedangleRight;
 	}
 
     if (angle_deg > MAX_STEERING_ANGLE) {
@@ -299,5 +309,5 @@ int AutomaticMode::computeDirectionAngle(const std::vector<Point2D>& centerline)
         angle_deg = -MAX_STEERING_ANGLE;
     }
 
-    return static_cast<int> (angle_deg);
+    return static_cast<int>(angle_deg);
 }

@@ -31,7 +31,7 @@ class AutomaticMode : public QObject {
         // Velocidades alvo realistas considerando peso e atrito no tapete TNT
         const float STRAIGHT_TARGET_SPEED = 1.2f;      // km/h - retas (reduzido)
         const float TURN_TARGET_SPEED = 0.8f;          // km/h - curvas normais
-        const float SHARP_TURN_TARGET_SPEED = 0.5f;    // km/h - curvas fechadas
+        const float SHARP_TURN_TARGET_SPEED = 0.6f;    // km/h - curvas fechadas
         
         // Limiar de ângulo para detecção de curvas
         const int TURN_ANGLE_THRESHOLD = 15;       // graus
