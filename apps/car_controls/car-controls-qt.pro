@@ -9,7 +9,6 @@ INCLUDEPATH += \
 	$$PWD/includes/automaticMode \
 	$$PWD/../../ZeroMQ
 
-
 # Application Sources
 SOURCES += \
 	../../ZeroMQ/Publisher.cpp \
@@ -61,8 +60,8 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	message("Building for ARM architecture")
 
-	JETSON_SYSROOT = /home/michel/new_qtjetson/sysroot
-	# JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
+	#JETSON_SYSROOT = /home/michel/new_qtjetson/sysroot
+	JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
 
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
 

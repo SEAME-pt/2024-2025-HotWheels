@@ -32,7 +32,7 @@ class AutomaticMode : public QObject {
         const float STRAIGHT_TARGET_SPEED = 1.2f;      // km/h - retas (reduzido)
         const float TURN_TARGET_SPEED = 0.8f;          // km/h - curvas normais
         const float SHARP_TURN_TARGET_SPEED = 0.6f;    // km/h - curvas fechadas
-        
+
         // Limiar de ângulo para detecção de curvas
         const int TURN_ANGLE_THRESHOLD = 15;       // graus
         const int SHARP_TURN_ANGLE_THRESHOLD = 45; // graus
@@ -53,6 +53,16 @@ class AutomaticMode : public QObject {
 
         // Slow down duration
         const double SLOW_DOWN_DURATION_S = 2.0;
+
+        // BRAKING VARIABLES
+        // const double ULTRA_TRIGGER_M        = 0.20;  // 20 cm → start braking logic
+        // const double SAFE_STOP_BUFFER_M     = 0.05;  // keep ~5 cm buffer
+        // const double MAX_DECEL_MPS2         = 2.0;   // "comfortable" decel for scaling
+        // const double DECEL_SAFETY_CLAMP     = 6.0;   // never demand more than this
+        // const float  MAX_REVERSE_THROTTLE   = 15.0f; // cap reverse torque (your units)
+        // const double MIN_SPEED_FOR_REVERSE  = 0.20;  // m/s; below this, just coast
+
+        double computeBrakeFromDistance(double distance_m, double speed_mps) const;
 
         // Driving flags
         bool m_automaticMode;
