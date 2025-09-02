@@ -7,7 +7,7 @@
 #include "EngineController.hpp"
 #include "ControlDataHandler.hpp"
 #include "SpeedController.hpp"
-#include "../../ZeroMQ/CommonTypes.hpp"
+#include "CommonTypes.hpp"
 
 class AutomaticMode : public QObject {
 	Q_OBJECT
@@ -29,12 +29,12 @@ class AutomaticMode : public QObject {
 
         // === Configurações de Velocidade Adaptativa (Otimizadas para Carga Real) ===
         // Velocidades alvo realistas considerando peso e atrito no tapete TNT
-        const float STRAIGHT_TARGET_SPEED = 0.9f;      // km/h - retas (reduzido)
+        const float STRAIGHT_TARGET_SPEED = 1.2f;      // km/h - retas (reduzido)
         const float TURN_TARGET_SPEED = 0.8f;          // km/h - curvas normais
         const float SHARP_TURN_TARGET_SPEED = 0.6f;    // km/h - curvas fechadas
 
         // Limiar de ângulo para detecção de curvas
-        const int TURN_ANGLE_THRESHOLD = 15;       // graus
+        const int TURN_ANGLE_THRESHOLD = 12;       // graus
         const int SHARP_TURN_ANGLE_THRESHOLD = 45; // graus
 
         // Scale factor for steering angle
@@ -45,9 +45,9 @@ class AutomaticMode : public QObject {
         const int MAX_STEERING_ANGLE = 180;
 
         // Delay between control commands to avoid flooding the controller
-        const double COMMAND_DELAY_S = 0.01;  // Reduzido para melhor responsividade
+        const double COMMAND_DELAY_S = 0.05;  // Reduzido para melhor responsividade
 
-        // Segment of the polyfititng blended centerlin to use for calculating steering
+        // Segment of the polyfititng blended centerline to use for calculating steering
         const double LOOK_AHEAD_START = 0.3;
         const double LOOK_AHEAD_END = 0.6;
 
@@ -60,12 +60,12 @@ class AutomaticMode : public QObject {
         bool m_automaticMode;
         bool m_shouldSlowDown;
 
-        QThread *m_automaticControlThread;
+		QThread *m_automaticControlThread;
 
         // === Driving Logic Methods ===
         ControlCommand calculateSteeringAndThrottle(const CenterlineResult &centerline_result, float currentSpeed);
         int computeDirectionAngle(const std::vector<Point2D>& centerline);
-		    void applyControls (const ControlCommand &control);
+		void applyControls (const ControlCommand &control);
 
         // === Thread Loop Method ===
         void automaticControlLoop ();

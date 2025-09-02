@@ -100,8 +100,8 @@ private:
     
     // === Parâmetros de Segurança e Força ===
     static const int MAX_THROTTLE = 80;         ///< Throttle máximo para segurança
-    static const int MIN_MOVING_THROTTLE = 26;  ///< Throttle mínimo para movimento real no chão
-    static const int STATIC_FRICTION_BOOST = 20; ///< Boost extra para vencer atrito estático
+    static const int MIN_MOVING_THROTTLE = 22;  ///< Throttle mínimo para movimento real no chão
+    static const int STATIC_FRICTION_BOOST = 8; ///< Boost extra para vencer atrito estático
     static const int DYNAMIC_FRICTION_OFFSET = 15; ///< Offset constante para atrito dinâmico
     constexpr static const float MAX_INTEGRAL = 100.0f; ///< Limite do termo integral (aumentado)
 

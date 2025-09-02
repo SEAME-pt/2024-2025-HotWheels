@@ -76,13 +76,13 @@ void AutomaticMode::startAutomaticControl () {
     } */
 
 	m_automaticControlThread = QThread::create ([this]() {
-        // 1) Create ZMQ sockets in this thread
+        // 1) Create ZMQ sockets IN THIS THREAD
         m_controlDataHandler->initializeSubscribers();
 
         // 2) Run the loop (uses those sockets)
         automaticControlLoop ();
 
-        // 3) Destroy sockets in this thread
+        // 3) Destroy sockets IN THIS THREAD
         m_controlDataHandler->cleanupSubscribers();
     });
 	m_automaticControlThread->start ();

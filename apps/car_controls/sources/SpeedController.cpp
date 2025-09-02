@@ -50,24 +50,32 @@ int SpeedController::calculateThrottle(float targetSpeed, float currentSpeed, bo
 
     // Calcula erro de velocidade
     float error = m_targetSpeed - currentSpeed;
-    int turnThrottle = MIN_MOVING_THROTTLE - 5;
-
+    
     //! MELO 
-    static int compensatedThrottle = MIN_MOVING_THROTTLE;
+
+    int compensatedThrottle = 21;
+
     if (m_targetSpeed > 0.1f) {
+        //qDebug() << "[SpeedController] TARGET SPEED: " << targetSpeed << "km/h";
+        //qDebug() << "[SpeedController] CURRENT SPEED:" << currentSpeed << "km/h";
+        
         if (currentSpeed == 0.0f){
-            compensatedThrottle = MIN_MOVING_THROTTLE;
+            compensatedThrottle = 30;
+            //if (isTurning) compensatedThrottle+=2;
         }
-        else if (error < 0){
-            //compensatedThrottle = compensatedThrottle-2;
-            compensatedThrottle = (compensatedThrottle-2 < MIN_MOVING_THROTTLE-3) ? turnThrottle : compensatedThrottle-2;
+        else if (currentSpeed > 1.0f){
+            compensatedThrottle--;
         }
-        else if (error > 0.2f){
+        else if (currentSpeed < 1.0f){
             compensatedThrottle++;
         }
+
+        //qDebug() << "[SpeedController] RESULTING THROTTLE:" << compensatedThrottle << " \n\n";
     }
 
     return compensatedThrottle;
+
+    //! FIM MELO
 }
 
 
