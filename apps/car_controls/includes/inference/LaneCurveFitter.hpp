@@ -27,27 +27,27 @@ private:
     std::vector<Point2D> extractLanePoints(const cv::Mat& img);
     std::pair<std::vector<int>, std::vector<int>> clusterLanePoints(const std::vector<Point2D>& pts);
     std::pair<std::vector<double>, std::vector<double>> slidingWindowCentroids(
-        const std::vector<double>& x, const std::vector<double>& y, 
+        const std::vector<double>& x, const std::vector<double>& y,
         const cv::Size& imgShape, bool smooth = false);
-    
+
     bool hasSignFlip(const std::vector<double>& curve);
     bool isStraightLine(const std::vector<double>& y, const std::vector<double>& x);
-    
+
     std::vector<double> polyfit(const std::vector<double>& x, const std::vector<double>& y, int degree);
     std::vector<double> polyval(const std::vector<double>& coeffs, const std::vector<double>& x);
-    
-    std::vector<double> fitLaneCurve(const std::vector<double>& y, const std::vector<double>& x, 
+
+    std::vector<double> fitLaneCurve(const std::vector<double>& y, const std::vector<double>& x,
                                    int imgWidth, const std::vector<double>& yPlot);
-    
+
     std::vector<LaneCurve> fitLanes(const cv::Mat& img);
     std::pair<LaneCurve*, LaneCurve*> selectRelevantLanes(std::vector<LaneCurve>& lanes, int imgWidth, int imgHeight);
-    
+
     std::vector<double> linspace(double start, double end, int num);
-    std::vector<double> interp(const std::vector<double>& xNew, const std::vector<double>& x, 
+    std::vector<double> interp(const std::vector<double>& xNew, const std::vector<double>& x,
                              const std::vector<double>& y, double leftVal, double rightVal);
-    
+
     CenterlineResult computeVirtualCenterline(std::vector<LaneCurve>& lanes, int imgWidth, int imgHeight);
-    std::vector<Point2D> computeDirectionalCenterline(const std::vector<Point2D>& originalCenterline, 
+    std::vector<Point2D> computeDirectionalCenterline(const std::vector<Point2D>& originalCenterline,
                                                   int imgWidth, int imgHeight);
 };
 

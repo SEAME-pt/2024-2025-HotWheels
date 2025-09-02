@@ -6,7 +6,7 @@
  * @details This file contains the implementation of the JoysticksController class,
  * which is responsible for handling joystick input and updating the steering and speed
  * of the car accordingly.
- * 
+ *
  * @author Félix LE BIHAN (@Fle-bihh)
  * @author Tiago Pereira (@t-pereira06)
  * @author Ricardo Melo (@reomelo)

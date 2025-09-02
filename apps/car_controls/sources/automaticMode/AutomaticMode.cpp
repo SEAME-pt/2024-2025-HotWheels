@@ -76,13 +76,13 @@ void AutomaticMode::startAutomaticControl () {
     } */
 
 	m_automaticControlThread = QThread::create ([this]() {
-        // 1) Create ZMQ sockets IN THIS THREAD
+        // 1) Create ZMQ sockets in this thread
         m_controlDataHandler->initializeSubscribers();
 
         // 2) Run the loop (uses those sockets)
         automaticControlLoop ();
 
-        // 3) Destroy sockets IN THIS THREAD
+        // 3) Destroy sockets in this thread
         m_controlDataHandler->cleanupSubscribers();
     });
 	m_automaticControlThread->start ();
@@ -145,73 +145,59 @@ void AutomaticMode::automaticControlLoop () {
                 if (polyfitting_result.valid) {
                     ControlCommand command = calculateSteeringAndThrottle(polyfitting_result, car_speed);
 
-                    // command already computed above
-                    // Read latest distance in meters and vehicle speed in m/s
-                    double d = m_controlDataHandler->latestUltrasoundMeters();
-                    double speed_mps = static_cast<double>(m_controlDataHandler->getCarSpeed()) * (1000.0 / 3600.0);
+                    // --- HARD STOP: one-shot 4095, then hold 0 until clear (with pulse + debounce) ---
+                    double d = m_controlDataHandler->latestUltrasoundMeters(); // meters
+                    // (you can keep using car_speed if you want for logging; not required here)
 
-                    // --- BEGIN: ultrasound-based braking with anti-creep ---
-                    static double prev_d = std::numeric_limits<double>::quiet_NaN();
-                    static bool   braking_active = false;
-                    static auto   last_reverse_time = std::chrono::steady_clock::now();
+                    // Tunables
+                    constexpr double BRAKE_DIST_M    = 0.20;   // trigger at 20 cm
+                    constexpr double CLEARANCE_M     = 0.05;   // require +5 cm beyond trigger to release -> > 20 cm
+                    constexpr auto   PULSE_MS        = std::chrono::milliseconds(50); // hold 4095 for this long
+                    constexpr auto   CLEAR_DEBOUNCE  = std::chrono::milliseconds(50); // need this long of clear readings
+                    constexpr auto   SENSOR_STICKY   = std::chrono::milliseconds(200); // safety: auto-release if no finite data
 
-                    // Tunables (you can move these to class constants)
-                    constexpr double ULTRA_TRIGGER_M        = 0.15;  // 15 cm
-                    constexpr double STOP_SPEED_MPS         = 0.012;  // consider “stopped” later to avoid cutting reverse early
-                    constexpr double MIN_SPEED_FOR_REVERSE  = 0.025;  // don't reverse at crawl
-                    constexpr double DERIV_EPS_M            = 0.004; // 4 mm change threshold
-                    constexpr double HYSTERESIS_CLEAR_M     = 0.05;  // +5 cm to re-arm after braking
-                    constexpr auto   REVERSE_COOLDOWN       = std::chrono::milliseconds(400);
-                    constexpr float  MAX_REVERSE_THROTTLE   = 60.0f; // your throttle units cap
+                    static bool  hs_active = false;
+                    static auto  hs_pulse_until = std::chrono::steady_clock::now();
+                    static auto  hs_clear_since = std::chrono::steady_clock::time_point{};
+                    static auto  hs_last_finite = std::chrono::steady_clock::now();
 
-                    if (std::isfinite(d) && d <= ULTRA_TRIGGER_M) {
-                        bool have_prev      = std::isfinite(prev_d);
-                        bool getting_closer = have_prev ? (d <  prev_d - DERIV_EPS_M) : false;
-                        bool getting_farther= have_prev ? (d >  prev_d + DERIV_EPS_M) : false;
+                    auto now = std::chrono::steady_clock::now();
+                    if (std::isfinite(d)) hs_last_finite = now;  // remember last valid sensor time
 
-                        float targetThrottle = 0.0f; // default: coast
-
-                        if (speed_mps > MIN_SPEED_FOR_REVERSE && getting_closer) {
-                            // Physics-based reverse torque
-                            double brake = computeBrakeFromDistance(d, speed_mps); // 0..1
-                            float reverse = static_cast<float>(std::clamp(brake, 0.0, 1.0) * MAX_REVERSE_THROTTLE);
-
-                            // IMPORTANT: applyControls() does set_speed(-throttle),
-                            // so a NEGATIVE throttle here produces reverse torque at the wheels.
-                            targetThrottle = -reverse;
-
-                            braking_active = true;
-                            last_reverse_time = current_time; // reuse your loop's timestamp
+                    // If already latched, keep overriding motor until release conditions met
+                    if (hs_active) {
+                        bool clear_now = std::isfinite(d) && d > (BRAKE_DIST_M + CLEARANCE_M);
+                        if (clear_now) {
+                            if (hs_clear_since.time_since_epoch().count() == 0) hs_clear_since = now;
+                            if (now - hs_clear_since >= CLEAR_DEBOUNCE) {
+                                hs_active = false;  // release after stable clearance
+                                hs_clear_since = {};
+                            }
                         } else {
-                            targetThrottle = 0.0f; // hold zero (no creep)
-                            if (braking_active && (current_time - last_reverse_time) >= REVERSE_COOLDOWN) {
-                                braking_active = false;
+                            hs_clear_since = {};
+                            // Optional: auto-release if sensor goes dead too long
+                            if (now - hs_last_finite > SENSOR_STICKY) {
+                                hs_active = false;
                             }
                         }
 
-                        // If distance is increasing or we've effectively stopped, cut reverse immediately
-                        if (getting_farther || std::abs(speed_mps) <= STOP_SPEED_MPS) {
-                            targetThrottle = 0.0f;
-                        }
-                        command.throttle = targetThrottle;
-
-                    } else if (braking_active) {
-                        // Stay at zero until we gain some clearance (hysteresis), then disarm
-                        command.throttle = 0.0f;
-                        if (std::isfinite(d) && d >= ULTRA_TRIGGER_M + HYSTERESIS_CLEAR_M) {
-                            braking_active = false;
+                        if (hs_active) {
+                            if (now < hs_pulse_until) {
+                                m_engineController->set_speed(car_speed + 20); // keep hard reverse pulse
+                            } else {
+                                m_engineController->set_speed(0); // then hold zero while still close
+                            }
+                            continue;
                         }
                     }
 
-                    // Remember this distance for the next iteration
-                    prev_d = d;
-                    // --- END: ultrasound-based braking with anti-creep ---
-
-                    if (command.throttle < 0.0f) {
-                        std::cout << "[BrakeDBG] REVERSE d=" << d*100.0 << "cm v=" << speed_mps
-                                << " throttle=" << command.throttle
-                                << " brake=" << std::clamp(computeBrakeFromDistance(d, speed_mps), 0.0, 1.0)
-                                << std::endl;
+                    // Not latched: check trigger
+                    if (std::isfinite(d) && d <= BRAKE_DIST_M) {
+                        hs_active = true;
+                        hs_pulse_until = now + PULSE_MS;
+                        hs_clear_since = {};
+                        m_engineController->set_speed(car_speed + 20); // start the pulse immediately
+                        continue;
                     }
                     applyControls(command);
                 }

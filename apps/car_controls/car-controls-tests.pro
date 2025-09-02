@@ -43,6 +43,7 @@ HEADERS += \
     $$TESTS_PATH/mocks/MockInferencer.hpp \
     ../../ZeroMQ/Publisher.hpp \
     ../../ZeroMQ/Subscriber.hpp \
+    ../../ZeroMQ/CommonTypes.hpp \
     includes/inference/CameraStreamer.hpp \
     includes/inference/TensorRTInferencer.hpp \
     includes/inference/LanePostProcessor.hpp \
@@ -73,4 +74,4 @@ LIBS += -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
 LIBS += -lGLEW -lglfw -lGL
 
 # BLAS/LAPACK
-LIBS += -ltbb -llapack -lblas
+LIBS += -ltbb -llapack -lblas -lmlpack -larmadillo

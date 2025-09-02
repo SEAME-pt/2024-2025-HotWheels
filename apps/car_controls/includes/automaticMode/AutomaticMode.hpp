@@ -29,7 +29,7 @@ class AutomaticMode : public QObject {
 
         // === Configurações de Velocidade Adaptativa (Otimizadas para Carga Real) ===
         // Velocidades alvo realistas considerando peso e atrito no tapete TNT
-        const float STRAIGHT_TARGET_SPEED = 1.2f;      // km/h - retas (reduzido)
+        const float STRAIGHT_TARGET_SPEED = 0.9f;      // km/h - retas (reduzido)
         const float TURN_TARGET_SPEED = 0.8f;          // km/h - curvas normais
         const float SHARP_TURN_TARGET_SPEED = 0.6f;    // km/h - curvas fechadas
 
@@ -45,22 +45,14 @@ class AutomaticMode : public QObject {
         const int MAX_STEERING_ANGLE = 180;
 
         // Delay between control commands to avoid flooding the controller
-        const double COMMAND_DELAY_S = 0.05;  // Reduzido para melhor responsividade
+        const double COMMAND_DELAY_S = 0.01;  // Reduzido para melhor responsividade
 
-        // Segment of the polyfititng blended centerline to use for calculating steering
+        // Segment of the polyfititng blended centerlin to use for calculating steering
         const double LOOK_AHEAD_START = 0.3;
         const double LOOK_AHEAD_END = 0.6;
 
         // Slow down duration
         const double SLOW_DOWN_DURATION_S = 2.0;
-
-        // BRAKING VARIABLES
-        // const double ULTRA_TRIGGER_M        = 0.20;  // 20 cm → start braking logic
-        // const double SAFE_STOP_BUFFER_M     = 0.05;  // keep ~5 cm buffer
-        // const double MAX_DECEL_MPS2         = 2.0;   // "comfortable" decel for scaling
-        // const double DECEL_SAFETY_CLAMP     = 6.0;   // never demand more than this
-        // const float  MAX_REVERSE_THROTTLE   = 15.0f; // cap reverse torque (your units)
-        // const double MIN_SPEED_FOR_REVERSE  = 0.20;  // m/s; below this, just coast
 
         double computeBrakeFromDistance(double distance_m, double speed_mps) const;
 
@@ -68,7 +60,7 @@ class AutomaticMode : public QObject {
         bool m_automaticMode;
         bool m_shouldSlowDown;
 
-		QThread *m_automaticControlThread;
+        QThread *m_automaticControlThread;
 
         // === Driving Logic Methods ===
         ControlCommand calculateSteeringAndThrottle(const CenterlineResult &centerline_result, float currentSpeed);

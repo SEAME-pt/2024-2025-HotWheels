@@ -65,7 +65,6 @@ void ControlDataHandler::initializeSubscribers() {
 						double cm = std::stod(value);
 						double meters = cm / 100.0;
 						m_latestUltraMeters.store(meters, std::memory_order_relaxed);
-						std::cout << "Value received ultrasound: " << m_latestUltraMeters << " m\n";
 					}
 				}
 			} catch (const zmq::error_t& e) {

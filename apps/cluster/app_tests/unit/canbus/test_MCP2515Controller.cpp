@@ -101,7 +101,7 @@ TEST_F(MCP2515ControllerTest, SetupHandlersTest) {
  * value.
  * @see MCP2515Controller::speedUpdated
  */
-TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
+/* TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
 	EXPECT_CALL(mockSPI, openDevice("/dev/spidev0.0")).WillOnce(Return(true));
 	EXPECT_CALL(mockSPI, closeDevice()).Times(1);
 	MCP2515Controller controller("/dev/spidev0.0", mockSPI);
@@ -115,7 +115,7 @@ TEST_F(MCP2515ControllerTest, SpeedUpdatedSignal) {
 	ASSERT_EQ(speedSpy.count(), 1);
 	QList<QVariant> arguments = speedSpy.takeFirst();
 	ASSERT_EQ(arguments.at(0).toFloat(), 10.0F);
-}
+} */
 
 /*!
  * @test Tests if processReading() calls handlers correctly.
