@@ -109,9 +109,9 @@ void EngineController::setDirection(CarDirection newDirection) {
  * car's direction accordingly and clamps the speed to ensure it is within the valid range.
  */
 
-void EngineController::set_speed(int speed) {
+void EngineController::set_speed(float speed) {
 
-	speed = clamp(speed, -100, 100);
+	speed = clamp(speed, -100.0f, 100.0f);
 	int pwm_value = static_cast<int>(std::abs(speed) / 100.0 * 4096);
 
 	if (speed <

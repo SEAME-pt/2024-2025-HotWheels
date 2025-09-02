@@ -116,7 +116,7 @@ void CameraStreamer::captureLoop() {
 		auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start_time).count();
 
 		if (elapsed >= 1) {
-			std::cout << "Average FPS: " << frame_count / static_cast<double>(elapsed) << std::endl;
+			//std::cout << "Average FPS: " << frame_count / static_cast<double>(elapsed) << std::endl;
 			start_time = now;
 			frame_count = 0;
 		}

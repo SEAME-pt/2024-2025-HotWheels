@@ -50,7 +50,7 @@ public:
 
 	void start();
 	void stop();
-	void set_speed(int speed);
+	void set_speed(float speed);
 	void set_steering(int angle);
 
 signals:

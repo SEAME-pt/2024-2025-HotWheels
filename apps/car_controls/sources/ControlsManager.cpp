@@ -38,7 +38,7 @@ ControlsManager::ControlsManager(int argc, char **argv, QObject *parent)
 	  m_subscriberJoystickObject(nullptr), m_manualControllerThread(nullptr),
 	  m_joystickControlThread(nullptr), m_subscriberJoystickThread(nullptr),
 	  m_cameraStreamerThread(nullptr), m_running(true), m_automaticModeObject(nullptr),
-	  m_automaticModeThread(nullptr) 
+	  m_automaticModeThread(nullptr)
 {
 
 	m_automaticModeObject = new AutomaticMode(&m_engineController);

@@ -9,7 +9,6 @@ INCLUDEPATH += \
 	$$PWD/includes/automaticMode \
 	$$PWD/../../ZeroMQ
 
-
 # Application Sources
 SOURCES += \
 	../../ZeroMQ/Publisher.cpp \
@@ -24,6 +23,7 @@ SOURCES += \
 	sources/JoysticksController.cpp \
 	sources/EngineController.cpp \
 	sources/PeripheralController.cpp \
+	sources/SpeedController.cpp \
 	sources/automaticMode/AutomaticMode.cpp \
 	sources/automaticMode/ControlDataHandler.cpp \
 	sources/main.cpp
@@ -45,6 +45,7 @@ HEADERS += \
 	includes/EngineController.hpp \
 	includes/PeripheralController.hpp \
 	includes/IPeripheralController.hpp \
+	includes/SpeedController.hpp \
 	includes/automaticMode/AutomaticMode.hpp \
 	includes/automaticMode/ControlDataHandler.hpp \
 	includes/enums.hpp
@@ -59,6 +60,7 @@ contains(QT_ARCH, arm)|contains(QT_ARCH, arm64)|contains(QT_ARCH, aarch64) {
 
 	message("Building for ARM architecture")
 
+	#JETSON_SYSROOT = /home/michel/new_qtjetson/sysroot
 	JETSON_SYSROOT = /home/seame/new_qtjetson/sysroot
 
 	INCLUDEPATH += $${JETSON_SYSROOT}/usr/include
