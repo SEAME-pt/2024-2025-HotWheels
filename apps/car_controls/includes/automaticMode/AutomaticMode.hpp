@@ -7,7 +7,7 @@
 #include "EngineController.hpp"
 #include "ControlDataHandler.hpp"
 #include "SpeedController.hpp"
-#include "CommonTypes.hpp"
+#include "../../ZeroMQ/CommonTypes.hpp"
 
 class AutomaticMode : public QObject {
 	Q_OBJECT
@@ -65,7 +65,7 @@ class AutomaticMode : public QObject {
         // === Driving Logic Methods ===
         ControlCommand calculateSteeringAndThrottle(const CenterlineResult &centerline_result, float currentSpeed);
         int computeDirectionAngle(const std::vector<Point2D>& centerline);
-		void applyControls (const ControlCommand &control);
+		    void applyControls (const ControlCommand &control);
 
         // === Thread Loop Method ===
         void automaticControlLoop ();

@@ -6,7 +6,7 @@
 #include <optional>
 #include <mlpack/methods/dbscan/dbscan.hpp>
 #include <mlpack/core.hpp>
-#include "CommonTypes.hpp"
+#include "../../../ZeroMQ/CommonTypes.hpp"
 
 class LaneCurveFitter {
 public:
