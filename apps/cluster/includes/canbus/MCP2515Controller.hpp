@@ -21,6 +21,7 @@
 #include "IMCP2515Controller.hpp"
 #include "ISPIController.hpp"
 #include "MCP2515Configurator.hpp"
+#include "../../ZeroMQ/Publisher.hpp"
 #include <QObject>
 #include <string>
 #include <iostream>
