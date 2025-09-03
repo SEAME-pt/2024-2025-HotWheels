@@ -67,7 +67,6 @@ signals:
 private:
 	/*! @brief Pointer to the UI object. */
 	Ui::CarManager *m_ui;
-	QTimer* m_blinkTimer = nullptr;
 
 	QTimer* m_speed50Timer;
 	QTimer* m_speed80Timer;
