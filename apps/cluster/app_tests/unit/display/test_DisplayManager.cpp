@@ -24,7 +24,6 @@ public:
 		directionParkLabel = new QLabel;
 
 		laneKeepingAssistLabel = new QLabel;
-		laneDepartureWarningLabel = new QLabel;
 
 		speedLimit50Label = new QLabel;
 		speedLimit80Label = new QLabel;
@@ -50,7 +49,6 @@ public:
 		delete directionReverseLabel;
 		delete directionParkLabel;
 		delete laneKeepingAssistLabel;
-		delete laneDepartureWarningLabel;
 		delete speedLimit50Label;
 		delete speedLimit80Label;
 		delete wifiToggleButton;
@@ -166,7 +164,6 @@ TEST_F(DisplayManagerTest, UpdateDrivingMode_SwitchToManual) {
 	displayManager->updateDrivingMode(DrivingMode::Manual);
 	EXPECT_EQ(fakeUI->drivingModeLabel->text(), "Manual");
 	EXPECT_TRUE(fakeUI->laneKeepingAssistLabel->isVisible());
-	EXPECT_TRUE(fakeUI->laneDepartureWarningLabel->isVisible());
 }
 
 TEST_F(DisplayManagerTest, UpdateDrivingMode_SwitchToAutomatic) {
