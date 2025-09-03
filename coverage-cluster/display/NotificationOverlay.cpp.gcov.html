@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2025-07-25 11:48:17</td>
+            <td class="headerValue">2025-09-03 15:49:12</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -146,61 +146,61 @@
 <a name="84"><span class="lineNum">      84 </span>            :         }</a>
 <a name="85"><span class="lineNum">      85 </span><span class="lineCov">          2 : }</span></a>
 <a name="86"><span class="lineNum">      86 </span>            : </a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        235 : void NotificationOverlay::paintEvent(QPaintEvent*)</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        230 : void NotificationOverlay::paintEvent(QPaintEvent*)</span></a>
 <a name="88"><span class="lineNum">      88 </span>            : {</a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">        470 :         QPainter painter(this);</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">        235 :         painter.setRenderHint(QPainter::Antialiasing);</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">        460 :         QPainter painter(this);</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">        230 :         painter.setRenderHint(QPainter::Antialiasing);</span></a>
 <a name="91"><span class="lineNum">      91 </span>            : </a>
 <a name="92"><span class="lineNum">      92 </span>            :         // Setup font</a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">        470 :         QFont font = painter.font();</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        235 :         font.setPointSize(12);</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        235 :         painter.setFont(font);</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">        460 :         QFont font = painter.font();</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        230 :         font.setPointSize(12);</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        230 :         painter.setFont(font);</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span>            :         // Measure text width</a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        470 :         QFontMetrics metrics(font);</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        235 :         int textWidth = metrics.horizontalAdvance(message);</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        460 :         QFontMetrics metrics(font);</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        230 :         int textWidth = metrics.horizontalAdvance(message);</span></a>
 <a name="100"><span class="lineNum">     100 </span>            : </a>
 <a name="101"><span class="lineNum">     101 </span>            :         // Icon parameters</a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">        235 :         int iconSize = 30;</span></a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        235 :         int iconMargin = 20;</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">        230 :         int iconSize = 30;</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        230 :         int iconMargin = 20;</span></a>
 <a name="104"><span class="lineNum">     104 </span>            : </a>
 <a name="105"><span class="lineNum">     105 </span>            :         // Compute box width based on text and icon</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">        235 :         int boxWidth = iconMargin + iconSize + 10 + textWidth + 20;  // iconMargin + icon + spacing + text + right margin</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        235 :         int maxWidth = width() * 0.8;</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">        235 :         boxWidth = std::min(boxWidth, maxWidth);</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">        230 :         int boxWidth = iconMargin + iconSize + 10 + textWidth + 20;  // iconMargin + icon + spacing + text + right margin</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        230 :         int maxWidth = width() * 0.8;</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">        230 :         boxWidth = std::min(boxWidth, maxWidth);</span></a>
 <a name="109"><span class="lineNum">     109 </span>            : </a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">        235 :         int boxHeight = 80;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">        235 :         int boxX = (width() - boxWidth) / 2;</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">        235 :         int boxY = 50;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">        230 :         int boxHeight = 80;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">        230 :         int boxX = (width() - boxWidth) / 2;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">        230 :         int boxY = 50;</span></a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        235 :         QRect rect(boxX, boxY, boxWidth, boxHeight);</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        230 :         QRect rect(boxX, boxY, boxWidth, boxHeight);</span></a>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <a name="116"><span class="lineNum">     116 </span>            :         // Background</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        235 :         QColor backgroundColor(1, 32, 44, 255);</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        235 :         painter.setBrush(backgroundColor);</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        235 :         painter.setPen(Qt::NoPen);</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        235 :         painter.drawRoundedRect(rect, 20, 20);</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        230 :         QColor backgroundColor(1, 32, 44, 255);</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        230 :         painter.setBrush(backgroundColor);</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        230 :         painter.setPen(Qt::NoPen);</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        230 :         painter.drawRoundedRect(rect, 20, 20);</span></a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
 <a name="122"><span class="lineNum">     122 </span>            :         // Icon</a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        470 :         QString iconPath;</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        235 :         switch (level) {</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        110 :                 case NotificationLevel::Info:</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        110 :                         iconPath = &quot;:/images/info.png&quot;;</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        110 :                         break;</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        125 :                 case NotificationLevel::Warning:</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">        125 :                         iconPath = &quot;:/images/warning.png&quot;;</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">        125 :                         break;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        460 :         QString iconPath;</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        230 :         switch (level) {</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        108 :                 case NotificationLevel::Info:</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        108 :                         iconPath = &quot;:/images/info.png&quot;;</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        108 :                         break;</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        122 :                 case NotificationLevel::Warning:</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">        122 :                         iconPath = &quot;:/images/warning.png&quot;;</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">        122 :                         break;</span></a>
 <a name="131"><span class="lineNum">     131 </span>            :         }</a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">        235 :         QPixmap icon(iconPath);</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        235 :         int iconX = rect.left() + iconMargin;</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        235 :         int iconY = rect.top() + (rect.height() - iconSize) / 2;</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">        235 :         painter.drawPixmap(iconX, iconY, iconSize, iconSize, icon);</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">        230 :         QPixmap icon(iconPath);</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        230 :         int iconX = rect.left() + iconMargin;</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        230 :         int iconY = rect.top() + (rect.height() - iconSize) / 2;</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">        230 :         painter.drawPixmap(iconX, iconY, iconSize, iconSize, icon);</span></a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
 <a name="137"><span class="lineNum">     137 </span>            :         // Text</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        235 :         QRect textRect = rect.adjusted(iconMargin + iconSize + 10, 0, -20, 0);</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        235 :         painter.setPen(Qt::white);</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        235 :         painter.drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft, message);</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        235 : }</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        230 :         QRect textRect = rect.adjusted(iconMargin + iconSize + 10, 0, -20, 0);</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        230 :         painter.setPen(Qt::white);</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        230 :         painter.drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft, message);</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        230 : }</span></a>
 </pre>
       </td>
     </tr>
