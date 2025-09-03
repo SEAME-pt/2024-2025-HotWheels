@@ -22,6 +22,7 @@
 #include <linux/i2c-dev.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <iostream>
 
 /*!
  * @brief Clamps a value to a given range.
@@ -139,16 +140,40 @@ void EngineController::set_speed(float speed) {
 	m_current_speed = speed;
 }
 
-	/*!
-	 * @brief Sets the steering angle of the car.
-	 *
-	 * @param angle The desired steering angle in degrees, ranging from -MAX_ANGLE to MAX_ANGLE.
-	 *
-	 * @details This function adjusts the servo PWM signal based on the input angle value.
-	 * The function clamps the angle to ensure it is within the valid range and calculates the
-	 * corresponding PWM value. The function also updates the internal steering angle and emits
-	 * the steeringUpdated signal.
-	 */
+void EngineController::set_braking() {
+	try {
+		// Configura IN1=IN2=HIGH e ENA=HIGH para motor esquerdo
+		pcontrol->set_motor_pwm(0, 4095); // IN1
+		pcontrol->set_motor_pwm(1, 4095); // IN2
+		pcontrol->set_motor_pwm(2, 4095); // ENA
+
+		// Configura IN3=IN4=HIGH e ENB=HIGH para motor direito
+		pcontrol->set_motor_pwm(5, 4095); // IN3
+		pcontrol->set_motor_pwm(6, 4095); // IN4
+		pcontrol->set_motor_pwm(7, 4095); // ENB
+
+		// Pequeno delay para garantir travagem (opcional, ajusta conforme testes)
+		usleep(500000); // 0.5 segundos
+
+		// Após travagem, desativa todos os canais (opcional, para "coast" final)
+		for (int channel = 0; channel < 9; ++channel) {
+			pcontrol->set_motor_pwm(channel, 0);
+		}
+	} catch (const std::exception &e) {
+		std::cout << "Error in emergency braking: " << e.what() << std::endl;
+	}
+}
+
+/*!
+ * @brief Sets the steering angle of the car.
+ *
+ * @param angle The desired steering angle in degrees, ranging from -MAX_ANGLE to MAX_ANGLE.
+ *
+ * @details This function adjusts the servo PWM signal based on the input angle value.
+ * The function clamps the angle to ensure it is within the valid range and calculates the
+ * corresponding PWM value. The function also updates the internal steering angle and emits
+ * the steeringUpdated signal.
+ */
 void EngineController::set_steering(int angle) {
 	angle = clamp(angle, -MAX_ANGLE, MAX_ANGLE);
 	int pwm = 0;

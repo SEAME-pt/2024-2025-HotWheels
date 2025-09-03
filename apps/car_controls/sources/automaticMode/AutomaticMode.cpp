@@ -183,7 +183,7 @@ void AutomaticMode::automaticControlLoop () {
 
                         if (hs_active) {
                             if (now < hs_pulse_until) {
-                                m_engineController->set_speed(car_speed + 20); // keep hard reverse pulse
+                                m_engineController->set_braking();
                             } else {
                                 m_engineController->set_speed(0); // then hold zero while still close
                             }
@@ -196,7 +196,7 @@ void AutomaticMode::automaticControlLoop () {
                         hs_active = true;
                         hs_pulse_until = now + PULSE_MS;
                         hs_clear_since = {};
-                        m_engineController->set_speed(car_speed + 20); // start the pulse immediately
+                        m_engineController->set_braking();
                         continue;
                     }
                     applyControls(command);
