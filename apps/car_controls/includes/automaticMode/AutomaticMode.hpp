@@ -7,7 +7,7 @@
 #include "EngineController.hpp"
 #include "ControlDataHandler.hpp"
 #include "SpeedController.hpp"
-#include "CommonTypes.hpp"
+#include "../../../ZeroMQ/CommonTypes.hpp"
 
 class AutomaticMode : public QObject {
 	Q_OBJECT
